@@ -1,0 +1,7 @@
+{
+	"server" : {
+		"carbon_url" : "dialog.mifetest.com:9443/",
+		"webapps_url" : "dialog.mifetest.com:9763/",
+		"am_url" : "54.87.71.31:9443/",
+	}
+}

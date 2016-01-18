@@ -1,0 +1,46 @@
+<%
+//var log = new Log();
+var serverDetails = require("/site/jagg/site.jag");
+var msisdn = request.getParameter("msisdn") ;
+
+//saveRequestDetails();
+getUserChallanges();
+
+function getUserChallanges() {
+		//var strBackend = "http://localhost:9763/mavenproject1-1.0-SNAPSHOT/webresources/endpoint/sms/response?msisdn=" + msisdn;
+		var strBackend = serverDetails.getWebAppsUrl() + "UserRegistration-1.0-SNAPSHOT/webresources/endpoint/sms/response?msisdn=" + msisdn;
+
+		var xhr = new XMLHttpRequest();
+		xhr.open("GET", strBackend, true);//async=true
+		xhr.send();
+		var returnString = "<!DOCTYPE html> <html lang='en'> <head> <meta charset='utf-8'> <meta http-equiv='X-UA-Compatible' content='IE=edge'> <meta name='viewport' content='width=device-width, initial-scale=1'> <title>MIFE Connect<\/title> <style> .blog-masthead { background-color: #425C81; -webkit-box-shadow: inset 0 -2px 5px rgba(0, 0, 0, .1); box-shadow: inset 0 -2px 5px rgba(0, 0, 0, .1); font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; } .blog-title { margin-top: 30px; margin-bottom: 0; font-size: 20px; font-weight: normal; } h1 { margin-top: 0; font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; font-weight: normal; color: #333; } body { margin: 0; font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; font-size: 14px; line-height: 1.42857143; color: #333; background-color: #fff; } a { color: #337ab7; text-decoration: none; } .container { padding-right: 15px; padding-left: 15px; margin-right: auto; margin-left: auto; } .blog-nav-item { position: relative; display: inline-block; padding: 10px; font-weight: 500; color: #cdddeb; } .blog-footer { padding: 20px 0; color: #999; text-align: center; background-color: #f9f9f9; border-top: 1px solid #e5e5e5; } .sidebar-module-inset { padding: 15px; margin: 0 -15px 15px; padding: 15px; background-color: #f5f5f5; border-radius: 4px; } <\/style> <\/head> <body> <div class='blog-masthead'> <div class='container'> <nav class='blog-nav'> <span class='blog-nav-item ' href='#'>MIFE Connect<\/span> <\/nav> <\/div> <\/div> <div class='container '> <div class='blog-header '> <br> <div class='sidebar-module-inset'> <h1 class='blog-title'>Mobile Connect Registration<\/h1> <br> <p class='lead blog-description'>You are successfully registered to mobile connect<\/p> <br> <br> <\/div> <\/div> <\/div> <footer class='blog-footer'> <p>Powered by MIFE Connect<\/p> <\/footer> <\/body> <\/html> ";
+		print(returnString);				
+
+}
+
+//function saveRequestDetails() {
+//	var url = serverDetails.getWebAppsUrl() + "mavenproject1-1.0-SNAPSHOT/webresources/endpoint/ussd/saverequest?msisdn=" + msisdn + "&requesttype=1";
+//	log.info("xxxxxxx>" + url);
+//	var xhr = new XMLHttpRequest();
+//	xhr.open("GET", url, false);//async=false
+//	xhr.send();
+//	log.info("fffffffffffffffffffffff>" + xhr.responseText.toString());
+//	var result = parse(xhr.responseText.toString());
+//	return result.status;
+//}
+%>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
