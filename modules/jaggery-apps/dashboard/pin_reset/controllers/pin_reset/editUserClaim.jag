@@ -1,0 +1,82 @@
+<%
+var serverDetails = require("/site/jagg/site.jag");
+var log = new Log();
+var identityClient = require('identityMgtClient.jag');
+var userInfoRecoveryClient = require('userInfoRecoveryClient.jag');
+var userProfileMgtClient = require('userProfileMgtClient.jag');
+
+var i18n = session.get("i18n");
+edit();
+
+function edit(){
+	
+	var result = {status:"",message:""};
+	var action = request.getParameter("action");
+		var userName = request.getParameter("user");
+		var claimValue=request.getParameter("claimValue");
+		var captchaAns = request.getParameter("ans_3");
+		var captchaPath = request.getParameter("captcha_path");
+		var secretKey = request.getParameter("secretKey");
+		
+		
+		var userVerifyData = userInfoRecoveryClient.verifyUser(new Array(userName, captchaPath, secretKey, captchaAns));
+       
+ 		if(userVerifyData.verified == "true") {//captcha verifified
+			
+		    var client = require('identityMgtClient.jag');
+			var userChallenges = client.getUserChallengeQuestions(userName);
+            var userProfileMgtClient = require('userProfileMgtClient.jag');
+			var hashedPreviousAns1 = userProfileMgtClient.getChallengeAns1(userName);
+			var hashedPreviousAns2 = userProfileMgtClient.getChallengeAns2(userName);
+			
+            var ans1 = request.getParameter("ans_1");
+            var ans2 = request.getParameter("ans_2");
+
+
+			if(validateAnswer(hashedPreviousAns1, ans1)) {//answer1 correct
+
+				if(validateAnswer(hashedPreviousAns2, ans2)/* verifyAns2.verified == "true" */) {//answer2 correct
+
+					var msisdn = userProfileMgtClient.getMSISDN(userName);
+					//format of msisdn should be 94xxxxxxxxx
+					try {
+
+						var url = serverDetails.getWebAppsUrl() + "UserRegistration-1.0-SNAPSHOT/webresources/endpoint/user/setclaim?"+ "msisdn=" + msisdn + "&claimValue="+claimValue;
+						
+						var xhr = new XMLHttpRequest();
+						xhr.open("GET", url, true);//async=true
+						xhr.send();
+						
+						result.status = 'success';
+						result.message = "Successfully change your authenticator";
+						print(result);
+					} catch(e) {
+						log.error(e);
+						result.status = 'error';
+						result.message = e.message;//"USSD push failed.";
+						print(result);
+					}
+				} else {
+					result.status = 'error';
+					result.message = "Your answer for <b>Challange Question 2</b> is incorrect.";
+					print(result);
+				}
+			} else {
+				result.status = 'error';
+				result.message = "Your answer for <b>Challange Question 1</b> is incorrect.";
+				print(result);
+			}
+		} else {
+			result.status = 'error';
+			result.message = "Captcha validation failed. Your answer doesn't match the captcha text.";
+			print(result);
+		}
+}
+
+
+
+function validateAnswer(previousAnswer, userEnteredAnswer) {
+	return userEnteredAnswer.toLowerCase().equalsIgnoreCase(previousAnswer);
+}
+
+%>

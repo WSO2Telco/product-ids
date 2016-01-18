@@ -1,0 +1,3 @@
+<%
+var status = request.getParameter("status");
+%>{"status":"<%=status%>"}

@@ -1,0 +1,40 @@
+<%
+
+include("../wsUtil.jag");
+var util = require("../../util/utility.jag");
+//var userReg = require("userRegistrationClient.jag");
+
+var log = new Log();
+var serverUrl = util.getServerUrl();
+serverUrl = serverUrl + "/UserIdentityManagementAdminService";//UserIdentityManagementAdminService
+
+var ws = require('ws');
+var webService = new ws.WSRequest();
+
+function getAllRecoveryQuestions(){
+    return callWSReturnJSON(webService, serverUrl, "urn:getAllChallengeQuestions", null, null, true);
+}
+function getQuestionSet(uri){
+    var allQuestions = getAllRecoveryQuestions();
+    var questionSet = {};
+    var j = 0;
+    for(i = 0; i < allQuestions.return.length; i++) {
+    	if(allQuestions.return[i].questionSetId == uri) {
+    		questionSet[j] = allQuestions.return[i].question;
+    		j++;
+    	}
+    }
+    return questionSet;
+}
+function getRecoveryQuestions(){
+	var questionSet = request.getParameter('questionSet');
+	if(questionSet == 1) {
+	    print(getQuestionSet('http://wso2.org/claims/challengeQuestion1'));
+	} else if(questionSet == 2) {
+	    print(getQuestionSet('http://wso2.org/claims/challengeQuestion2'));
+	}
+}
+
+
+getRecoveryQuestions();
+%>

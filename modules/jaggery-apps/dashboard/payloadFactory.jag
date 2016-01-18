@@ -1,0 +1,51 @@
+<%
+include("util/constants.jag");
+
+var log = new Log();
+
+
+var isExistingUser = "<ser:isExistingUser xmlns:ser=\"http://service.ws.um.carbon.wso2.org\">\n" +
+                         "<ser:userName>{0}</ser:userName>\n" +
+                      "</ser:isExistingUser>";
+
+var deleteUser = "<ser:deleteUser xmlns:ser=\"http://service.ws.um.carbon.wso2.org\">\n" +
+                         "<ser:userName>{0}</ser:userName>\n" +
+                      "</ser:deleteUser>";
+
+var getOAuthApplicationDataByAppName = "<ser:getOAuthApplicationDataByAppName xmlns:ser=\"http://org.apache.axis2/xsd\">\n" +
+                         "<ser:appName>{0}</ser:appName>\n" +
+                      "</ser:getOAuthApplicationDataByAppName>";                 
+
+application.put("urn:isExistingUser", isExistingUser);
+application.put("urn:deleteUser", deleteUser);
+application.put("urn:getOAuthApplicationDataByAppName", getOAuthApplicationDataByAppName);
+
+
+function getPayload(method, param){
+    var payload = application.get(method);
+    if(payload != null){
+        if(param instanceof Array){
+            for(var x = 0; x < param.length; x++){
+                payload = format(payload, param[x], x);
+            }
+        }else{
+            payload = format(payload, param, 0);
+        }
+    }
+    return payload;
+}
+
+function format(variable, value, index){
+    var placeHolder = "{" + index + "}";
+    var index = variable.indexOf(placeHolder);
+    if(index > -1){
+        var data = variable.split(placeHolder);
+        var newData = data[0] + value;
+        if(data.length > 1){
+            newData += data[1];
+        }
+        return newData;
+    }
+    return variable;
+}
+%>

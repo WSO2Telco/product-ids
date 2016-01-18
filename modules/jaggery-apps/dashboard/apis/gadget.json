@@ -1,0 +1,58 @@
+{"title":"dashboard", "widgets":[
+        {
+        "wid":"42",
+        "x":"1",
+        "y":"3",
+        "title":"Application Login History",
+        "width":"2",
+        "height":"1",
+        "prefs":"{}",
+        "wclass":"",
+        "url":"portal/gadgets/user_login_history/gadget.xml",
+        "permissions":["/permission/admin/login"],
+        "authorized":"true",
+	"id" : "user_login_history"
+    },
+    {
+        "wid":"41",
+        "x":"3",
+        "y":"2",
+        "title":"PIN Reset",
+        "width":"2",
+        "height":"1",
+        "prefs":"{}",
+        "wclass":"",
+        "url":"portal/gadgets/pin_reset/gadget.xml",
+        "permissions":["/permission/admin/login"],
+        "authorized":"true",
+	"id" : "pin_reset"
+    },
+    {
+        "wid":"40",
+        "x":"5",
+        "y":"2",
+        "title":"Authorized Apps",
+        "width":"2",
+        "height":"1",
+        "prefs":"{}",
+        "wclass":"",
+        "url":"portal/gadgets/user_auth_apps/gadget.xml",
+        "permissions":["/permission/admin/login"],
+        "authorized":"true",
+	"id" : "user_auth_apps"
+    },
+    {
+        "wid":"39",
+        "x":"1",
+        "y":"2",
+        "title":"My Profiles",
+        "width":"2",
+        "height":"1",
+        "prefs":"{}",
+        "wclass":"",
+        "url":"portal/gadgets/user_profile/gadget.xml",
+        "permissions":["/permission/admin/login"],
+        "authorized":"true",
+	"id" : "user_profile"
+    }
+]}

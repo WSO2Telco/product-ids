@@ -1,0 +1,8 @@
+{
+	"server" : {
+		"carbon_url" : "dialog.mifetest.is.com:9443/",
+		"webapps_url" : "dialog.mifetest.is.com:9763/",
+		"sample_msisdn" : "94773333428",
+		"am_url" : "dialog.mifetest.apim.com:9443/",
+	}
+}

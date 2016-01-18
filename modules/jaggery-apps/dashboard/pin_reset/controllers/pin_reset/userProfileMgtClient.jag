@@ -1,0 +1,64 @@
+<%
+
+include("../wsUtil.jag");
+var util = require("../../util/utility.jag");
+
+var log = new Log();
+var serverUrl = util.getServerUrl();
+serverUrl = serverUrl + "/UserProfileMgtService";
+
+var ws = require('ws');
+var webService = new ws.WSRequest();
+
+function getMSISDN(username){
+	return getFieldValue(username, "http://wso2.org/claims/mobile");
+}
+
+function getChallengeQestion1(username){
+	return getChallengeQestion(username, "http://wso2.org/claims/challengeQuestion1");
+}
+
+function getChallengeQestion2(username){
+	return getChallengeQestion(username, "http://wso2.org/claims/challengeQuestion2");
+}
+
+function getChallengeQestion(username, uri){
+	var fieldValue = getFieldValue(username, uri);
+	if(fieldValue) {
+		return fieldValue.substring(0, fieldValue.indexOf("?") + 1);
+	}
+	return "";
+}
+
+function getChallengeAns1(username){
+	return getChallengeAns(username, "http://wso2.org/claims/challengeQuestion1");
+}
+
+function getChallengeAns2(username){
+	return getChallengeAns(username, "http://wso2.org/claims/challengeQuestion2");
+}
+
+function getChallengeAns(username, uri){
+	var fieldValue = getFieldValue(username, uri);
+	//log.info(">>>>>>>>>>>>" + uri + ">" + fieldValue);
+	if(fieldValue) {
+		return fieldValue.substring(fieldValue.indexOf("?") + 2);
+	}
+	return "";
+}
+
+function getFieldValue(username, uri){
+	var profileName = 'default';
+    var result = callWSReturnJSON(webService, serverUrl, "urn:getUserProfile", new Array(username, profileName));
+    for(var x = 0; x < result.return.fieldValues.length; x++){
+        var obj = result.return.fieldValues[x];
+        if(obj.claimUri == uri){
+            return obj.fieldValue;
+        }
+    }
+    return null;
+}
+
+
+
+%>

@@ -1,0 +1,76 @@
+<%
+var log = new Log();
+var msisdn = request.getParameter("msisdn") ;
+
+var selfReg = require('/controllers/user-registration/userRegistrationClient.jag');
+var util = require("util/utility.jag");
+var constants = require("util/constants.jag");
+
+var claim = constants.DEFAULT_CLAIM_URL;
+if(session.get('openid') != null){
+    claim = constants.OPENID_REG_CLAIM_URL;
+}
+
+String.prototype.replaceAt=function(index, character) {
+    return this.substr(0, index) + character + this.substr(index+character.length);
+}
+
+function doRender(){
+	try{
+
+		
+		var i18n = util.initI18N();
+		
+		var path = "/operator.txt";
+		var file = new File(path);
+		file.open("r");
+		var message = "";
+	 
+		message = file.readAll(); 
+        //log.info(message);
+	   
+	    var operatorCodes = message.split(",")
+		
+		var originalmsisdn= msisdn;
+		
+		var n = -1;
+		var k = -1;
+
+		for(j = 0; j < operatorCodes.length -1 ; j++){
+		  
+			var lengthArray = parseInt(operatorCodes[operatorCodes.length -1]) ;
+			
+			 msisdn = msisdn.replaceAt(lengthArray, " ");
+			
+			 var re = new RegExp(operatorCodes[j],"i");
+			 //log.info(k);
+			 //log.info(msisdn);
+			 k = msisdn.search(re);
+		     
+			 //log.info(k);
+			 if (k == 0) {break;}
+			 msisdn = originalmsisdn;
+		}
+		
+		var json;
+		
+		
+		if (k == 0){
+			json = {"operator": "true"};
+		}
+		else{
+			json = {"operator": "false"};
+		}
+
+		
+		print(json);
+
+	}catch(e){
+		log.error(e);
+        response.sendRedirect("index.jag?e=1&error=service_invok_error");
+		
+	}
+}
+
+doRender();
+%>

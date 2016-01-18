@@ -1,0 +1,111 @@
+<%
+var serverDetails = require("/site/jagg/site.jag");
+var log = new Log();
+//var userName = session.get("user");
+var identityClient = require('identityMgtClient.jag');
+var userInfoRecoveryClient = require('userInfoRecoveryClient.jag');
+var userProfileMgtClient = require('userProfileMgtClient.jag');
+
+var i18n = session.get("i18n");
+
+function edit(){
+	var result = {status:"",message:""};
+	var action = request.getParameter("action");
+		var userName = request.getParameter("user");
+		var captchaAns = request.getParameter("ans_3");
+		var captchaPath = request.getParameter("captcha_path");
+		var secretKey = request.getParameter("secretKey");
+		//log.info("9999999999999>" + userName + "," + captchaPath + "," + secretKey + "," + captchaAns);
+		var userVerifyData = userInfoRecoveryClient.verifyUser(new Array(userName, captchaPath, secretKey, captchaAns));
+// 		log.info("userVerifyData.verified =============" + userVerifyData.verified);
+		if(userVerifyData.verified == "true") {//captcha verifified
+			
+			
+			
+			var client = require('identityMgtClient.jag');
+			var userChallenges = client.getUserChallengeQuestions(userName);
+
+			
+			var userProfileMgtClient = require('userProfileMgtClient.jag');
+			var hashedPreviousAns1 = userProfileMgtClient.getChallengeAns1(userName);
+			var hashedPreviousAns2 = userProfileMgtClient.getChallengeAns2(userName);
+			
+            var ans1 = request.getParameter("ans_1");
+            var ans2 = request.getParameter("ans_2");
+			
+			
+// 			log.info("**************************************************xxxxxx");
+// 			log.info("111111previousAns1>" + hashedPreviousAns1);
+// 			log.info("222222previousAns2>" + hashedPreviousAns2);
+// 			log.info("333333enteredAns1>" + ans1);
+// 			log.info("444444enteredAns2>" + ans2);
+			
+			
+
+			if(validateAnswer(hashedPreviousAns1, ans1)) {//answer1 correct
+// 				log.info("5555555enteredAns2>answer1 correct");
+				if(validateAnswer(hashedPreviousAns2, ans2)/* verifyAns2.verified == "true" */) {//answer2 correct
+// 				log.info("6666666enteredAns2>answer2 correct");
+					var msisdn = userProfileMgtClient.getMSISDN(userName);
+					//format of msisdn should be 94xxxxxxxxx
+					try {
+// 						var url = "http://10.62.96.187:9764/mavenproject1-1.0-SNAPSHOT/webresources/endpoint/ussd/pin?" + "username=" + userName + "&msisdn=" + msisdn;
+// 						var url1 = "http://localhost:9764/mavenproject1-1.0-SNAPSHOT/webresources/endpoint/ussd/pin?" + "username=" + userName + "&msisdn=" + msisdn;
+
+						var statusSaved = saveRequestDetails(msisdn);
+						if(statusSaved != 1) {
+							log.warn("Couldn't save to 'pendingussd' table. Phones that can't do NI USSD will not support.");
+						}
+						
+						
+						var url = serverDetails.getWebAppsUrl() + "UserRegistration-1.0-SNAPSHOT/webresources/endpoint/ussd/pin?"+ "msisdn=" + msisdn + "&username=" + msisdn;
+						
+						var xhr = new XMLHttpRequest();
+						xhr.open("GET", url, true);//async=true
+						xhr.send();
+						
+						result.status = 'success';
+						result.message = "PIN reset request sent to your mobile phone " + msisdn + ". Check phone to create new PIN.";
+						print(result);
+					} catch(e) {
+						log.error(e);
+						result.status = 'error';
+						result.message = e.message;//"USSD push failed.";
+						print(result);
+					}
+				} else {
+					result.status = 'error';
+					result.message = "Your answer for <b>Challange Question 2</b> is incorrect.";
+					print(result);
+				}
+			} else {
+				result.status = 'error';
+				result.message = "Your answer for <b>Challange Question 1</b> is incorrect.";
+				print(result);
+			}
+		} else {
+			result.status = 'error';
+			result.message = "Captcha validation failed. Your answer doesn't match the captcha text.";
+			print(result);
+		}
+}
+
+function saveRequestDetails(msisdn) {
+	var url = serverDetails.getWebAppsUrl() + "UserRegistration-1.0-SNAPSHOT/webresources/endpoint/ussd/saverequest?msisdn=" + msisdn + "&requesttype=3";
+	//log.info("uuuuuuuuuuuuuuuuuuuuuu>" + url)
+	var xhr = new XMLHttpRequest();
+	xhr.open("GET", url, false);//async=false
+	xhr.send();
+	//var result = parse(xhr.responseText.toString());
+	//return result.status;
+}
+
+function validateAnswer(previousAnswer, userEnteredAnswer) {
+	return userEnteredAnswer.toLowerCase().equalsIgnoreCase(previousAnswer);
+}
+
+
+edit();
+
+
+%>

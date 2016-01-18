@@ -1,0 +1,37 @@
+<%
+//var log = new Log();
+var msisdn = request.getParameter("msisdn") ;
+var serverDetails = require("/site/jagg/site.jag");
+
+function saveLoginDetails() {
+        //log.info('msisdn for saverequest : '+msisdn);		
+		var strBackend = serverDetails.getWebAppsUrl() +"UserRegistration-1.0-SNAPSHOT/webresources/endpoint/ussd/saverequest?msisdn=" + msisdn + "&" + "requesttype=2";
+		//log.info(strBackend);
+		var xhr = new XMLHttpRequest();
+		xhr.open("GET", strBackend, false);//async=true
+		xhr.send();
+		
+		var result = parse(xhr.responseText.toString());
+		
+		//log.info("EEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEE Result : "+result);
+		//log.info("EEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEE Result : "+result.status);
+		
+		var statusSaved = result.status;
+		
+		if(statusSaved != 1) {
+					log.warn("Couldn't save to 'pendingussd' table. Phones that can't do NI USSD will not support.");
+		}
+		//log.info("EEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEE saveLoginDetails DONE EEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEE");
+		//print(xhr.responseText);
+		
+		/* log.info(jsonresponse);
+		print (jsonresponse); 
+		
+		*/
+		
+}
+
+saveLoginDetails();
+
+
+%>
