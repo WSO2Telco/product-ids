@@ -1,0 +1,42 @@
+<%
+
+var serverDetails = require("/site/jagg/site.jag");
+var log = new Log();
+var userName = session.get("user");
+var oauthClient = require('oauthAdminClient.jag');
+
+var i18n = session.get("i18n");
+
+function getLoginLst(){
+	var result;
+
+	try {
+
+	var log = new Log();
+	var userid = userName;//request.getParameter("userName");	
+	var appId =  request.getParameter("appName");
+	var fromdate = request.getParameter("fromDate");
+	var todate = request.getParameter("toDate");
+	
+	log.info(userid+','+appId+','+fromdate+','+todate);
+	
+	var xhr = new XMLHttpRequest();
+	        var endpoint = serverDetails.getWebAppsUrl()+"MediationTest/tnspoints/endpoint/login/history?userID="+userid+"&appID="+appId+"&fromDate="+fromdate+"&toDate="+todate;
+			xhr.open("GET", endpoint);
+			xhr.setRequestHeader("Content-type","application/x-www-form-urlencoded");
+	  	    //var payload = "userID=94773335976";
+			xhr.send();
+	
+			var result = parse(xhr.responseText.toString());
+			//log.info(result);
+			print(result);
+			
+	} catch (e) {	        
+			log.error(e.message);
+        print("error");
+}
+}
+
+getLoginLst();
+
+%>

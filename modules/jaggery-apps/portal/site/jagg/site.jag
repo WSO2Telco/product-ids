@@ -1,0 +1,19 @@
+<%
+var log = new Log();
+var site = require("/site/conf/site.json");
+var server = site.server;
+
+function getCarbonUrl() {
+	return "https://" + server.carbon_url;
+}
+function getWebAppsUrl() {
+	return "http://" + server.webapps_url;
+}
+
+(function () {
+	var action = request.getParameter('action');
+	if(action == 'js') {
+		print(server);
+	}
+})();
+%>

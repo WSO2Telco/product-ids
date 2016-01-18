@@ -1,0 +1,72 @@
+<%
+var log = new Log();
+var cookie = request.getParameter("cookie") ;
+var user = request.getParameter("user");
+var captchaOnly = request.getParameter("captcha");
+var allChallanges = {};
+
+getUserChallanges();
+
+function getUserChallanges() {
+	session.put('auth-cookie', cookie);
+	session.put('user', user);
+	try {
+		setCaptchaData();
+		if(captchaOnly != 1) { 
+			setChallengeQuestions();
+		}
+		print( allChallanges );
+	} catch(e) {
+		print(e);
+	    log.error(e);
+	}
+}
+
+function setCaptchaData() {
+	try {
+		var userInfoRecoveryClient = require('controllers/pin_reset/userInfoRecoveryClient.jag');
+		var captchaData = userInfoRecoveryClient.getCaptchaData();
+		allChallanges.captchaData = captchaData;
+	} catch(e) {
+		print(e);
+	    log.error(e);
+	}
+}
+
+function setChallengeQuestions() {
+	try {
+		var userProfileMgtClient = require('controllers/pin_reset/userProfileMgtClient.jag');
+		allChallanges.challenge1 = userProfileMgtClient.getChallengeQestion1(user);
+		allChallanges.challenge2 = userProfileMgtClient.getChallengeQestion2(user);
+// 		log.info("999999999999999999999999999999999999999999999");
+// 		log.info(allChallanges.challenge1);
+// 		log.info(allChallanges.challenge2);
+	} catch(e) {
+		print(e);
+	    log.error(e);
+	}
+}
+/* function setChallengeQuestions() {
+	try {
+		var client = require('controllers/pin_reset/identityMgtClient.jag');
+		var userChallenges = client.getUserChallengeQuestions(user);
+		
+		allChallanges.challenge1;
+		allChallanges.challenge2;
+		
+		if(userChallenges.return != null) {
+			for (var i in userChallenges.return) {
+				if(userChallenges.return[i].id == 'http://wso2.org/claims/challengeQuestion1') {
+					allChallanges.challenge1 = userChallenges.return[i].question;
+				} else {
+					allChallanges.challenge2 = userChallenges.return[i].question;
+				}
+			}
+		}
+	} catch(e) {
+		print(e);
+	    log.error(e);
+	}
+} */
+
+%>

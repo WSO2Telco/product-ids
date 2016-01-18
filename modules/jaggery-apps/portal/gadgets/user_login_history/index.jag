@@ -1,0 +1,28 @@
+<%
+var log = new Log();
+var cookie = request.getParameter("cookie") ;
+var user = request.getParameter("user");
+getApps();
+//setDateFields();
+function getApps(){
+
+session.put('auth-cookie', cookie);
+session.put('user', user);
+
+ try{
+
+var oauthAdminClient = require('controllers/user_login_history/oauthAdminClient.jag');
+var fieldValues = oauthAdminClient.getAppsByUser(user);
+//log.info('field values '+fieldValues);
+
+print( fieldValues );
+    }catch(e){
+print(e);
+        log.error(e);
+            }
+
+}
+
+
+
+%>

@@ -1,0 +1,55 @@
+<%
+
+include("../wsUtil.jag");
+var util = require("../../util/utility.jag");
+
+var log = new Log();
+var serverUrl = util.getServerUrl();
+serverUrl = serverUrl + "/UserInformationRecoveryService";
+
+var ws = require('ws');
+var webService = new ws.WSRequest();
+
+function getCaptchaData() {
+    var result = callWSReturnJSON(webService, serverUrl, "urn:getCaptcha", null);
+    var json = stringify(result);
+    var obj = parse(json);
+    var retVal = {imagePath:obj.return.imagePath, secretKey:obj.return.secretKey};
+    return retVal;
+}
+
+function verifyUser(payload) {
+	var result = callWSReturnJSON(webService, serverUrl, "urn:verifyUser", payload);
+    var json = stringify(result);
+    var obj = parse(json);
+    var userVerifyData = {verified:obj.return.verified, secretKey:obj.return.key};
+    return userVerifyData;
+}
+
+function getUserChallengeQuestionIds(payload) {
+    var result = callWSReturnJSON(webService, serverUrl, "urn:getUserChallengeQuestionIds", payload);
+    var json = stringify(result);
+    var obj = parse(json);
+    var questionData = {ids:obj.return.ids, secretKey:obj.return.key};
+    return questionData;
+}
+
+function getUserChallengeQuestion(payload) {
+    var result = callWSReturnJSON(webService, serverUrl, "urn:getUserChallengeQuestion", payload);
+    var json = stringify(result);
+    var obj = parse(json);
+    var questionData = {id:obj.return.id, secretKey:obj.return.key};
+//     var questionData = {id:obj.return.id, secretKey:obj.return.key, order:obj.return.order, primary:obj.return.primary
+//     						, question:obj.return.question, verfied:obj.return.verfied};
+    return questionData;
+}
+
+function verifyUserChallengeAnswer(payload) {
+    var result = callWSReturnJSON(webService, serverUrl, "urn:verifyUserChallengeAnswer", payload);
+    var json = stringify(result);
+    var obj = parse(json);
+    var verifyAnsData = {secretKey:obj.return.key, verified:obj.return.verified};
+    return verifyAnsData;
+}
+
+%>
