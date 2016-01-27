@@ -1,0 +1,126 @@
+<!doctype html>
+<html class="site site--footer site--selfcare site--tab no-js lang--en" lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  <title>Mobile Connect</title>
+  <meta name="description" content="">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0, user-scalable=no">
+
+  <link rel="apple-touch-icon" href="apple-touch-icon.png">
+  <link rel="stylesheet" href="../mcresources/css/style.css">
+
+  <!-- load main script early asyncronously -->
+  <script type="text/javascript" src="../mcresources/js/main.js" async></script>
+
+  <noscript>
+    <!-- Fallback synchronous download, halt page rendering if load is slow  -->
+    <link href="//fonts.googleapis.com/css?family=Roboto:400,300,700,400italic,300italic,700italic" rel="stylesheet" type="text/css">
+  </noscript>
+  <!-- loads fonts asyncronously preventing font loading from block page render -->
+  <script>
+    // Config for loading the web fonts
+    var WebFontConfig = {
+      google: {
+        families: ['Roboto:400,300,700,400italic,300italic,700italic']
+      },
+      active: function() {
+        // Set a cookie that the font has been downloaded and should be cached
+        var d = new Date();
+        d.setTime(d.getTime() + (7 * 86400000)); // plus 7 Days
+        document.cookie = "cachedroboto=true; expires=" + d.toGMTString() + "; path=/";
+      }
+    };
+  </script>
+  <script src="../mcresources/js/vendor/webfontloader.js"></script>
+  <!-- Adds IE root class without breaking doctype -->
+  <!--[if IE]>
+		<script>document.documentElement.className = document.documentElement.className + " ie";</script>
+		<![endif]-->
+  <script type="text/javascript" src="../mcresources/js/vendor/modernizr.js"></script>
+</head>
+
+<body class="theme--light">
+  <div class="site__root">
+    <header class="site-header">
+      <div class="site-header__inner site__wrap">
+        <h1 class="visuallyhidden">Mobile&nbsp;Connect</h1>
+        <a href="/selfcare/home"><img src="../mcresources/img/svg/mobile-connect.svg" alt="Mobile Connect&nbsp;Logo" width="150" class="site-header__logo"></a>
+        <div class="site-header__account-menu dropdown-menu">
+          <a href="#account-menu" class="dropdown-menu__trigger">Gloria <img src="../mcresources/img/svg/account.svg" width="30" height="30"></a>
+        </div>
+      </div>
+    </header>
+
+    <main class="page site__main site__wrap v-grow section">
+      <section class="page__section">
+        <h2>Your latest&nbsp;activity</h2>
+        <ol class="event-list plain-list">
+          <li>
+            <p> Verified for The&nbsp;Guardian</p>
+            <abbr title="Thursday, 24 September 2015 at 13:03"> 2 days&nbsp;ago</abbr>
+          </li>
+          <li>
+            <p> Verified for&nbsp;Spotify</p>
+            <abbr title="Thursday, 24 September 2015 at 13:03"> 3 days&nbsp;ago</abbr>
+          </li>
+          <li>
+            <p> Verified for The Royal Bank of&nbsp;Scotland</p>
+            <abbr title="Thursday, 24 September 2015 at 13:03"> 5 days&nbsp;ago</abbr>
+          </li>
+          <li>
+            <p> Verified for&nbsp;Gov.uk</p>
+            <abbr title="Thursday, 24 September 2015 at 13:03"> 6 days&nbsp;ago</abbr>
+          </li>
+        </ol>
+      </section>
+
+      <section class="page__section">
+        <h2><a href="/selfcare/connected-apps" class="inherit">Your Connected Services&nbsp;(8)</a></h2>
+        <p>You have been verified for access to these services through Mobile&nbsp;Connect.</p>
+        <ol class="column-list plain-list">
+          <li>
+            The Guardian
+          </li>
+          <li>
+            Spotify
+          </li>
+          <li>
+            Gov.uk
+          </li>
+        </ol>
+        <a href="/selfcare/connected-apps" class="cta">See&nbsp;more <img src="../mcresources/img/svg/arrow-circle-right.svg" width="25" height="25"></a>
+      </section>
+
+    </main>
+  </div>
+  <footer class="site__footer site-footer">
+    <div class="site-footer__inner site__wrap">
+      <div class="site-footer__content-wrap">
+        <ul class="grid site-footer__links">
+          <li class="grid__item">
+            <a href="/registration/terms" target="_blank">Terms and&nbsp;Conditions</a>
+          </li>
+          <li class="grid__item">
+            <a href="/no-page" target="_blank">Privacy&nbsp;Policy</a>
+          </li>
+          <li class="grid__item">
+            <a href="/no-page" target="_blank">GSMA</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </footer>
+  <div class="site__wrap js-visuallyhidden">
+    <nav class="dropdown-menu__menu" id="account-menu">
+      <ul class="plain-list">
+        <li><a href="/selfcare/home">Dashboard</a></li>
+        <li><a href="/selfcare/personal-info">Personal&nbsp;Info</a></li>
+        <li><a href="/selfcare">Logout</a></li>
+      </ul>
+    </nav>
+  </div>
+</body>
+
+</html>

@@ -1,0 +1,7 @@
+a.brand{
+    background:transparent url(../../images/branding/airtel_logo.gif) no-repeat left top;
+    display: block;
+    width: 47px;
+    height: 16px;
+    margin-bottom:6px;
+}

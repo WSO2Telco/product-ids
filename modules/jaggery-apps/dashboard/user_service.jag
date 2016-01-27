@@ -5,7 +5,7 @@ var log = new Log();
 
 var msisdn = request.getParameter("username") ;
 var serverUrl = util.getServerUrl();
-serverUrl = serverUrl + "/RemoteUserStoreManagerService";
+serverUrl = serverUrl + "RemoteUserStoreManagerService";
 var ws = require('ws');
 
 
@@ -16,6 +16,8 @@ function checkIfExistUser(){
     //log.info(jsonresponse);
     print (jsonresponse);
 }
+
+checkIfExistUser();
 
 function getAdminData() {
 	var configPath = "file://" + Packages.java.lang.System.getProperty("carbon.config.dir.path");

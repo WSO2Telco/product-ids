@@ -3,18 +3,17 @@ var log = new Log();
 var site = require("/site/conf/site.json");
 var server = site.server;
 //getServerDetails();
-
 function getCarbonUrl() {
 	//log.info("FFFFFFFFFFFFFFFFFFFFFFFFFF>" + server.carbon_url);
 	return "https://" + server.carbon_url;
 }
 function getWebAppsUrl() {
 	//log.info("FFFFFFFFFFFFFFFFFFFFFFFFFF>" + server.carbon_url);
-	return "http://" + server.webapps_url;
+	return "https://" + server.webapps_url;
 }
 function getAmUrl() {
 	//log.info("FFFFFFFFFFFFFFFFFFFFFFFFFF>" + server.carbon_url);
-	return "http://" + server.am_url;
+	return "https://" + server.am_url;
 }
 
 function getMSISDN() {

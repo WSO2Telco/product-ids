@@ -2,411 +2,350 @@
 
 <html lang="en">
 <head>
-    <meta charset="utf-8">
-    <title>Login with WSO2 Identity Server</title>
-    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="">
-    <meta name="author" content="">
-    <meta http-equiv="Cache-Control" content="no-cache" />
+  <meta charset="utf-8">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  <title>Mobile Connect</title>
+  <meta name="description" content="">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0, user-scalable=no">
 
-    <!-- Le styles -->
-    <link href="/dashboard/assets/css/bootstrap.min.css" rel="stylesheet">
-    <script src="/portal/gadgets/user_profile/js/jquery.min.js" type="text/javascript"></script>
-    <script src="/portal/gadgets/user_profile/js/main.js" type="text/javascript"></script>
-    <script src="/portal/gadgets/user_profile/js/modal.js" type="text/javascript"></script>
-    <script src="/dashboard/js/landing.js" type="text/javascript"></script>
-    <link href="css/styles-axiata-dashboard.css" rel="stylesheet" type="text/css" />
+  <link rel="apple-touch-icon" href="apple-touch-icon.png">
 
+  <!-- styles -->
+  <script src="/dashboard/js/landing.js" type="text/javascript"></script>
+  <script src="/portal/gadgets/user_profile/js/jquery.min.js" type="text/javascript"></script>
+  <script src="/portal/gadgets/user_profile/js/main.js" type="text/javascript"></script>
+  <script src="/portal/gadgets/user_profile/js/modal.js" type="text/javascript"></script>
+  
+  
+  <link rel="stylesheet" href="mcresources/css/style.css">
 
-</head>
+  <!-- load main script early asyncronously -->
+  <script type="text/javascript" src="/dashboard/mcresources/js/main.js" ></script>
 
-<body>
+  <noscript>
+    <!-- Fallback synchronous download, halt page rendering if load is slow  -->
+    <link href="//fonts.googleapis.com/css?family=Roboto:400,300,700,400italic,300italic,700italic" rel="stylesheet" type="text/css">
+  </noscript>
+  <!-- loads fonts asyncronously preventing font loading from block page render -->
+  <script>
+    // Config for loading the web fonts
+    var WebFontConfig = {
+      google: {
+        families: ['Roboto:400,300,700,400italic,300italic,700italic']
+      },
+      active: function() {
+        // Set a cookie that the font has been downloaded and should be cached
+        var d = new Date();
+        d.setTime(d.getTime() + (7 * 86400000)); // plus 7 Days
+        document.cookie = "cachedroboto=true; expires=" + d.toGMTString() + "; path=/";
+      }
+    };
+    </script>
+    <script src="mcresources/js/vendor/webfontloader.js"></script>
+    
+    <script type="text/javascript" src="mcresources/js/vendor/modernizr.js"></script>
 
+    <%
+    var log = new Log();
+    
 
-<div id="wrap">
-    <a class="brand"
-       href="/dashboard/landing.html?"
-       onclick="jagg.sessionAwareJS({redirect:'/dashboard/landing.html?',e:event})">
-        <img
-                alt="API Store"
-                src="/authenticationendpoint/images/logo.png"
-                >
-    </a>
+    var operator = request.getParameter("operator")!= null ?  request.getParameter("operator") : "";
+    log.info( "operator :"+operator );
+    var token =request.getParameter("token")!= null ? request.getParameter("token") : "";
+    log.info( "token :"+token );
+    var updateProfile = request.getParameter("updateProfile")!= null ?  request.getParameter("updateProfile") : "";
+    log.info( "updateProfile :"+updateProfile );
 
-    <div class="navbar main-menu">
-        <div class="navbar-inner main-menu-navbar">
+    
 
-            <ul class="nav orderFix">
-
-                <li>
-                    <a class="link-home" href="landing.html" title="WSO2Telco home page.">
-                        Home
-                    </a>
-                </li>
-                <li>
-                    <a href="index.jag" >Login</a>
-                </li>
-                <li class="active">
-                    <a href="register.jag" >Sign-up</a>
-                </li>
-            </ul>
-
-
-        </div>
-    </div>
-
-
-
-    <div class="container-fluid">
-        <div class="row-fluid">
-
-
-            <div class="span12">
-
-
-
-                <div class="container login-container">
-                    <div class="row-fluid">
-                        <div class="span12 login-content">
-
-                            <div class="clear"></div>
-                            <div class="content-data">
-                                <div id="local_auth_div">
-
-                                    <div class="listing" id="listing">
-                                        <div class="title-section">
-                                            <h2>Register</h2>
-                                        </div>
+    if(operator != ""){
+      %>
+      <link href="css/branding/<%=operator%>-style.css" rel="stylesheet">
+      <%}%>
+    </head>
 
 
-                                       <%
-                                        var log = new Log();
+    <body>
 
-                                        var selfReg = require('/controllers/user-registration/userRegistrationClient.jag');
-                                        var util = require("util/utility.jag");
-                                        var constants = require("util/constants.jag");
+      <body class="theme--light">
+        <div class="site__root">
+          <header class="site-header">
+            <div class="site-header__inner site__wrap">
+              <h1 class="visuallyhidden">Mobile&nbsp;Connect</h1>
+              <a href="/"><img src="mcresources/img/svg/mobile-connect.svg" alt="Mobile Connect&nbsp;Logo" width="150" class="site-header__logo"></a>
+              <% if(operator != ""){ 
+                var imgPath = "img/branding/" + operator + "_logo.svg";
+                %>
+                <p class="site-header__powered-by">powered&nbsp;by      
+                </p>
+                <a >
+                  <img class="brandLogo" src='<%= imgPath %>' alt='<%= operator %>' >
+                </a>
+                <% } %>
 
-					     var msisdn_jagg = require("site/jagg/site.jag");
-					     var msisdn = msisdn_jagg.getMSISDN();
+              </div>
+            </header>
 
-                                        var claim = constants.DEFAULT_CLAIM_URL;
-                                        if(session.get('openid') != null){
-                                            claim = constants.OPENID_REG_CLAIM_URL;
-                                        }
+            
 
-                                        function doRender(){
-                                            try{
+            <main class="site__main site__wrap section v-distribute v-grow">
+              <header class="page__header" id="ussdpin_header" style="display:none">
+                <h1 class="page__heading">Now, let’s make your account&nbsp;secure</h1>
+                <p>Create a PIN for secure log-in and two questions we can ask you in case you ever forget your&nbsp;PIN.</p>
+              </header>
+              <header class="page__header" id="ussdpin_update_header" style="display:none">
+                <h1 class="page__heading">Looks like you have to update your account, let’s make your account&nbsp;secure</h1>
+                <p>Create a PIN for secure log-in and two questions we can ask you in case you ever forget your&nbsp;PIN.</p>
+              </header>
 
-
-
-                                                var fieldValues = selfReg.readUserFieldsForUserRegistration(claim);
-                                                var pwdRegexps = selfReg.getPasswordRegularExpressions();
-
-                                                var i18n = util.initI18N();
-
-                                                var json = {};
-						      json.msisdn = msisdn;
-						      
-
-                                                json.fieldValues = fieldValues;
-                                                var pwdObjs = stringify(pwdRegexps['return']);
-
-                                                if(pwdObjs.indexOf("[{") < 0){
-                                                    var pwdObjsAray = [];
-                                                    pwdObjsAray.push(pwdRegexps['return']);
-                                                    pwdRegexps['return'] = pwdObjsAray;
-                                                }
-                                                json.pwdRegexps = pwdRegexps;
-
-                                                session.put("pwdReg", pwdRegexps['return']);
-                                                log.debug(session.get('pwdReg'));
-
-
-                                               //html code
-                                                    %>
-
-
-                                                <form class="form-horizontal" id="selfReg" name="selfReg">
-                                                    <%
-                                                    for (var i in json.pwdRegexps.return) {
-                                                    %>
-                                                    <input type="hidden" name="regExp_<%=json.pwdRegexps.return[i].domainName%>" value="<%=json.pwdRegexps.return[i].regEx%>" />
-                                                    <%
-                                                    }
-                                                    %>
-                                                    <div class="control-group">
-                                                        <div class="controls" style="display:none;" type="hidden">
-                                                            <select class="col-lg-3" name="domain">
-                                                            <%
-                                                            for (var i in json.pwdRegexps.return) {
-                                                            %>
-                                                            <option value="<%=json.pwdRegexps.return[i].domainName%>"><%=json.pwdRegexps.return[i].domainName%></option>
-                                                            <%
-                                                            }
-                                                            %>
-                                                            </select>
-                                                        </div>
-                                                    </div>
-                                                    <input class="col-lg-3" type="hidden" value="" name="http://wso2.org/claims/challengeQuestion1"  />
-													<input class="col-lg-3" type="hidden" value="" name="http://wso2.org/claims/challengeQuestion2"  />
-                                                    <input class="col-lg-3" type="hidden" value="" id="user_name" name="userName"  />
-                                                    <input class="col-lg-3" type="hidden" value="" id="password" name="pwd"  />
-                                                    <input class="col-lg-3" type="hidden" value="" id="retype_pwd" name="retypePwd"  />
-                                                    <input class="col-lg-3" type="hidden" value="" name="http://wso2.org/claims/authenticator"  />
-
-
-
-                                                    <%
-                                                    for (var i in json.fieldValues.return) {
-	                                                    if (json.fieldValues.return[i].required == "true") {
-	
-	                                                    %>
-	                                                    <div class="control-group">
-	                                                    <%
-	                                                    	if(json.fieldValues.return[i].claimUri == 'http://wso2.org/claims/challengeQuestion1') {
-	                                                    %>
-															<select id="q1" name="challengeQuestion1" class="control-label">
-															<%
-																var identityMgtClient = require('/controllers/user-registration/identityMgtClient.jag');
-																var allQuestionJson = identityMgtClient.getAllRecoveryQuestions();
-																for(i = 0; i < allQuestionJson.return.length; i++) {
-															    	if(allQuestionJson.return[i].questionSetId == 'http://wso2.org/claims/challengeQuestion1') {
-												    		%>
-															    		<option name="q" value="<%=allQuestionJson.return[i].question%>"><%=allQuestionJson.return[i].question%></option>
-												    		<%
-															    	}
-															    }
-															%>
-															</select>
-											            	<div class="controls">
-											            		<input class="col-lg-3" type="text" value="" name="challengeAns1" + json.fieldValues.return[i].fieldName + "" name="challengeAns1"  />
-											            	</div>
-                                                    	</div>
-	                                                    <%
-												            } else if(json.fieldValues.return[i].claimUri == 'http://wso2.org/claims/challengeQuestion2') {
-	                                                    %>
-															<select id="q2" name="challengeQuestion2" class="control-label">
-											            	<%
-																var identityMgtClient2 = require('/controllers/user-registration/identityMgtClient.jag');
-																var allQuestionJson2 = identityMgtClient2.getAllRecoveryQuestions();
-																for(i = 0; i < allQuestionJson2.return.length; i++) {
-															    	if(allQuestionJson2.return[i].questionSetId == 'http://wso2.org/claims/challengeQuestion2') {
-												    		%>
-															    		<option name="q" value="<%=allQuestionJson2.return[i].question%>"><%=allQuestionJson2.return[i].question%></option>
-												    		<%
-															    	}
-															    }
-															%>
-															</select>
-											            	<div class="controls">
-											            		<input class="col-lg-3" type="text" value="" name="challengeAns2" + json.fieldValues.return[i].fieldName + "" name="challengeAns1"  />
-											            	</div>
-                                                    	</div>
-	                                                    <%
-												            } else {
-	                                                    %>
-	                                                        <label class="control-label" for="<%=json.fieldValues.return[i].fieldName%>"><%=json.fieldValues.return[i].fieldName%>
-	                                                        <%
-	
-	                                                        %>
-	                                                        <span class="required">*</span>
-	                                                        <%
-	                                                        if (json.fieldValues.return[i].regEx != "") {
-	                                                        %>
-	                                                        <input type="hidden" name="mailRegEx" value="<%=json.fieldValues.return[i].regEx%>" />
-	                                                        <input type="hidden" name="mailInput" value="<%=json.fieldValues.return[i].claimUri%>" />
-	                                                        <%
-	                                                        }
-	                                                        %>
-	                                                        </label>
-	                                                        <div class="controls">
-	                                                            <input class="col-lg-3" type="text" value="" id="<%=json.fieldValues.return[i].fieldName%>" name="<%=json.fieldValues.return[i].claimUri%>"  />
-	                                                            <br/>
-	                                                            <label class=\"control-label-3\" for=\"sample\"><%=json.msisdn%></label>
-	                                                        </div>
-	                                                    </div>
-	                                                    <%
-	                                                    }
-	                                                }
-                                                }
-                                            %>
-                                                    <div class="control-group">
-                                                         <div class="controls" style="border: 2px solid #b8b8b8; border-radius: 5px; background-color: #fcf8e3; padding-left: 15px">
-                                                         <label class="checkbox">
-                                                            <input type="checkbox" name="tc" value="tc"> By selecting,you agree to our <a href="termsConditions.html" target="_blank" >Terms & Conditions</a>
-                                                         </label>
-
-
-
-                                                            <b>Mobile Connect Privacy Notice</b>
-                                                            <ul type="circle">
-                                                                
-                                                                <li>Mobile Connect service is provided to you by your local operator. We
-                                                                care about your privacy and we've kept it Simple<br />
-                                                                <li>You can login-in privately with Mobile connect and we: <br />
-                                                                    <ul type="disc">
-                                                                    <li>Never share your phone number with anyone else.<br />
-                                                                    <li>Never disclose your personal information unless you choose to
-                                                                    share and give your consent.<br />
-                                                                    </ul>
-                                                                </li>
-                                                                <li>Click here
-                                                                    <link to Mobile connect Privacy Policy> find out how mobile
-                                                                    connect works and your choices.<br />
-                                                                </li>
-                                                                <li>We don't want you to worry. You can contact us with any queries or
-                                                                concerns about Mobile Connect by sending an email to
-                                                                </li>
-                                                            </ul>
-                                                        </div>
-                                                    </div>
-                                                    <div class="form-actions">
-
-                                                        <input type="button" id ="validate-btn" onclick="validate();" class="btn btn-primary" value="Register"/>
-                                                        <input type="button" onclick="cancelProcessToLogin();" class="btn" value="Cancel" data-dismiss="modal" />
-
-
-                                                </form>
-
-                                        <%
-                                            }catch(e){
-                                                log.error(e);
-                                                response.sendRedirect("index.jag?e=1&error=service_invok_error");
-
-                                            }
-                                        }
-
-                                        doRender();
-                                        %>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
+              <div class="slider slider--all slick v-grow" id="slider">
+                <section class="slider__slide">
+                  <div class="slider__slide-inner v-distribute">
+                    <header class="page__header">
+                      <h1 class="page__heading">Secure</h1>
+                      <p>A safer, more secure way to&nbsp;log-in.</p>
+                      <a href="https://mobileconnect.io/" class="cta">Learn&nbsp;more</a>
+                    </header>
+                    <div class="page__illustration v-grow v-align-content">
+                      <div>
+                        <img src="mcresources/img/svg/secure.svg" alt="Secure" width="106" height="126">
+                      </div>
                     </div>
+                  </div>
+                </section>
+
+                <section class="slider__slide">
+                  <div class="slider__slide-inner v-distribute">
+                    <header class="page__header">
+                      <h1 class="page__heading">Private</h1>
+                      <p>Your personal data is never shared without your&nbsp;permission.</p>
+                      <a href="https://mobileconnect.io/" class="cta">Learn&nbsp;more</a>
+                    </header>
+                    <div class="page__illustration v-grow v-align-content">
+                      <div>
+                        <img src="mcresources/img/svg/private.svg" alt="Private" width="160" height="107">
+                      </div>
+                    </div>
+                  </div>
+                </section>
+
+                <section class="slider__slide">
+                  <div class="slider__slide-inner v-distribute">
+                    <header class="page__header">
+                      <h1 class="page__heading">Convenient</h1>
+                      <p>No need for multiple passwords or&nbsp;usernames.</p>
+                      <a href="https://mobileconnect.io/" class="cta">Learn&nbsp;more</a>
+                    </header>
+                    <div class="page__illustration v-grow v-align-content">
+                      <div>
+                        <img src="mcresources/img/svg/convenient.svg" alt="Convenient" width="106" height="127">
+                      </div>
+                    </div>
+                  </div>
+                </section>
+              </div>
+
+              <div class="page__copy" id="msg">
+                <p>
+                  Looks like you don't yet have an account. Want to set one up? It's quick and&nbsp;easy.
+                </p>
+              </div>
+
+
+              <form  class="form-horizontal" id="selfReg" name="selfReg" data-parsley-validate novalidate>
+
+                <input type="hidden" name="regExp_PRIMARY" value="^[\S]{5,30}$">
+
+                <div class="control-group">
+                  <div class="controls" style="display:none;" type="hidden">
+                    <select name="domain">
+
+                      <option value="PRIMARY">PRIMARY</option>
+
+                    </select>
+                  </div>
+                </div>
+
+                <div id="questions" style="display:none">
+                  <input type="hidden" value="" name="http://wso2.org/claims/challengeQuestion1">
+                  <input type="hidden" value="" name="http://wso2.org/claims/challengeQuestion2">
+
+
+
+
+
+                  <li class="field--select field--select-block">
+                    <label for="field-account-security-question-1">Choose a security&nbsp;question</label>
+                    <select name="challengeQuestion1" id="q1" class="field__select-native" required autofocus data-parsley-error-message="Please choose a security&nbsp;question.">
+                      <option disabled selected>Choose a&nbsp;question</option>
+
+                      <option name="q" value="City where you were born ?">City where you were born ?</option>
+
+                      <option name="q" value="Favorite vacation location ?">Favorite vacation location ?</option>
+
+                      <option name="q" value="Father's middle name ?">Father's middle name ?</option>
+
+                      <option name="q" value="Favorite food ?">Favorite food ?</option>
+                    </select>
+                  </li>
+                  <li>
+                    <label for="field-account-security-answer-1">Type the answer to your question&nbsp;here</label>
+                    <input type="text" name="challengeAns1" +="" json.fieldvalues.return[i].fieldname="" ""="" id="field-account-security-answer-1" placeholder="Answer your&nbsp;question" required autofocus data-parsley-error-message="Please answer your security&nbsp;question.">
+                  </li>
+                  <li class="field--select field--select-block">
+                    <label for="field-account-security-question-2">Choose a second&nbsp;question</label>
+                    <select id="q2" name="challengeQuestion2" class="field__select-native" required data-parsley-notequalto="#field-account-security-question-1" data-parsley-required-message="Please choose a security&nbsp;question." data-parsley-notequalto-message="Please choose a different security&nbsp;question.">
+                      <option disabled selected>Choose a&nbsp;question</option>
+                      <option name="q" value="Favorite sport ?">Favorite sport ?</option>
+
+                      <option name="q" value="Name of the hospital where you were born ?">Name of the hospital where you were born ?</option>
+
+                      <option name="q" value="Name of your first pet ?">Name of your first pet ?</option>
+
+                      <option name="q" value="Model of your first car ?">Model of your first car ?</option>
+                    </select>
+                  </li>
+                  <li>
+                    <label for="field-account-security-answer-2">Type the answer to your second question&nbsp;here</label>
+                    <input type="text" name="challengeAns2" +="" json.fieldvalues.return[i].fieldname="" ""="" id="field-account-security-answer-2" placeholder="Answer your&nbsp;question" required data-parsley-error-message="Please answer your security&nbsp;question.">
+                  </li>
+
                 </div>
 
 
-            </div>
 
 
-        </div>
-    </div>
-    <div id="push"></div>
-</div>
 
-<div id="footer" class="footer-main">
-         <div class="row-fluid">
-                   <div class="span12">
-                           <div class="container-fluid">
-		                      <div class="row-fluid">
-				                   <div class="span3 footer-left-most">
-				                          <ul class="help-links">
-				                                <li><h5><a href="http://wso2telco.com" target="_blank">About Us</a></h5></li>
-				                          </ul>
-				                     </div>
-				                     <div class="span9 help-and-links">
+              </br>
+              <ul class="form-fields" >
+                <li class="size--medium" id ="term" style="display:none" >
+                  <p align="center">By setting up an account, you are agreeing to the <a href="https://india.mconnect.wso2telco.com/dashboard/termsConditions.html" target="_blank">Terms and Conditions</a></p>
+                  <p align="center">The <a href="/no-page" target="_blank">Mobile Connect Privacy Promise</a> means that your mobile number won’t be shared and no personal information will be disclosed without your consent. See our full <a href="/no-page" target="_blank">privacy policy&nbsp;here</a>.</p>
+                </li>
+                <li></li>
 
-						                <div class="span3">
-						                  <ul class="help-links">
-						                        <li><h5><a href="http://wso2.com/privacy-policy" target="_blank">Privacy Policy</a></h5></li>
-						                        <li><h5><a href="http://wso2.com/terms-of-use" target="_blank">Terms and Conditions</a></h5></li>
-
-						                  </ul>
-						                </div>
-						                <div class="span3">
-						                  <ul class="help-links">
-						                        <li><h5>Social Networking</h5></li>
-						                        <li>
-						                        <h5>
-						                        <table class="share-pane">
-						                      <tr>
-						                          <td><a class="facebook" target="_blank" rel="external nofollow" href="https://www.facebook.com/wso2telco" title="Share with your friends on Facebook"></a></td>
-						                          <td><a class="twitter" target="_blank" rel="external nofollow" href="http://twitter.com/wso2telco" title="Twitter"></a></td>
-						                          <td><a class="linkedin" target="_blank" rel="external nofollow" href="https://www.linkedin.com/groups/WSO2-Telco-8263390?gid=8263390&mostPopular=&trk=tyah&trkInfo=idx%3A1-1-1%2CtarId%3A1425100882984%2Ctas%3Awso2.telco" title="Share this post on linkedin" title="Share this post on linkedin"></a></td>
-						                      </tr>
-						                    </table>
-						                   </li>
-						                   </ul>
-						                 </div>
-
-						                 <div class="span3">
-						                  <ul class="help-links">
-						                        <li><h5><a href="http://wso2telco.com" target="_blank">Contact Us</a></h5></li>
-						                        <li><h5><a href="http://wso2.com/support" target="_blank">Support</a></h5></li>
-						                  </ul>
-						                </div>
-						    		<div  style="clear:both">
-								</div>   <hr />  <a class="powered-by-logo pull-right" href="http://wso2telco.com" target="_blank"></a>
-						            
-							</div>
-		                            </div>
-                                   </div>
+                  <li>
+                    <div class="grid">
+                      <div class="grid__item one-half">
+                        <a onclick="cancelProcessToRegister('<%=token%>')" class="btn btn--outline btn--full btn--large" data-dismiss="modal">
+                          No&nbsp;thanks
+                        </a>
                       </div>
+                      <div class="grid__item one-half">
+                        <button type="button" id="validate-btn1" name="action" onclick="flow()" value="yes" class="btn btn--full btn--fill btn--large btn--color">
+                          Yes
+                        </button>
+                        <button type="button" id="validate-btn2" name="action" onclick="registration()" value="yes" class="btn btn--full btn--fill btn--large btn--color" style="display:none">
+                          Yes
+                        </button>
+                      </div>
+                    </div>
+                  </li>                  
+
+                </ul>
+              </form>
+
+              <!-- Modal -->
+
+            </main>
           </div>
-</div>
-<!--
-<div id="footer" class="footer-main">
-    <div class="container">
-        <div class="row-fluid">
-            <div class="span12">
-                <ul class="help-links footer-left-most">
-                    <li><h5><a href="" target="_blank">About Us</a></h5></li>
-                    <li><h5><a href="" target="_blank">Our APIs</a></h5></li>
-                </ul>
-                <ul class="help-links">
-                    <li><h5><a href="" target="_blank">Privacy Policy</a></h5></li>
-                    <li><h5><a href="http://www.ideamart.lk/content/terms-conditions" target="_blank">Terms and Conditions</a></h5></li>
-                    <li><h5><a href="" target="_blank">Useful Guidelines</a></h5></li>
-                </ul>
-                <ul class="help-links">
-                    <li><h5>Social Networking</h5></li>
-                    <li>
-                        <h5>
-                            <table class="share-pane">
-                                <tr>
-                                    <td><a class="facebook" target="_blank" rel="external nofollow" href="https://www.facebook.com/groups/ideamartlk/" title="Share with your friends on Facebook"></a></td>
-                                    <td><a class="twitter" target="_blank" rel="external nofollow" href="" title="Twitter"></a></td>
-                                    <td><a class="linkedin" target="_blank" rel="external nofollow" href="" title="Share this post on linkedin"></a></td>
-                                </tr>
-                            </table>
-                        </h5>
-                    </li>
-                    <li><h5><a href="http://www.ideamart.lk/content/solutions" target="_blank">Applications for Use</a></h5></li>
-                </ul>
-                <ul class="help-links">
-                    <li><h5><a href="http://www.ideamart.lk/content/contactus" target="_blank">Contact Us</a></h5></li>
-                    <li><h5><a href="" target="_blank">Support</a></h5></li>
-                </ul>
-                <div style="clear:both"></div>
-            </div>
-        </div>
-    </div>
-</div>
 
--->
-<!-- Modal -->
-<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-    <div class="modal-dialog">
-        <div class="modal-content">
-            <div class="modal-header">
-                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span></button>
-                <h4 class="modal-title" id="myModalLabel">Register</h4>
-            </div>
-            <div id="modalData">
+          <script type="text/javascript">
+          /*
+          * geting acr code from acr value and make the register page template according to acr *code
+          *USSDAuthenticator ==>
+          * Display Slider
+          * Display message for new account
+          * Display term and condition
+          * Display button validate-btn1
+          * Yes = call flow then register
+          *USSDPinAuthenticator ==>
+          * Display Slider
+          * Hide term and condition
+          * Display message for new account
+          * Display button validate-btn1
+          * Yes = call flow
+          *   Hide slider 
+          *   Hide message for new account
+          *   Hide button validate-btn1
+          *   Display Header ussdpin_header
+          *   Display chllenge queqtion form
+          *   Display button validate-btn2
+          *   Yes = call registration
+          *
+          * if updateProfile = true
+          *   Hide Header ussdpin_header
+          *   Display Header ussdpin_header_update
+          *   Display chllenge queqtion form
+          *   Display button validate-btn2
+          *   Yes = call registration
+          */
 
-            </div>
-        </div>
-    </div>
-</div>
+          var auth;
+          var acr_code=getAcrValue();
+
+          var term = document.getElementById("term");
+          var slider = document.getElementById("slider");
+          var header = document.getElementById("ussdpin_header");
+          var header_update = document.getElementById("ussdpin_update_header");
+          var questions = document.getElementById("questions");
+          var msg = document.getElementById("msg");
+          var btn1 = document.getElementById("validate-btn1");
+          var btn2 = document.getElementById("validate-btn2");
+
+          /*
+          * USSD Pin Registration page 1
+          * hide terms
+          */
+          if(acr_code=="USSDPinAuthenticator"){
+            term.style.display = 'none';
+            auth="LoA3";
+          }
+
+          /*
+          * USSD Registration page 1
+          * display terms
+          */
+          if(acr_code=="USSDAuthenticator"){
+            term.style.display = 'block';
+
+          }
+
+          if('<%=updateProfile%>'=="true"){
+            flow();
+            term.style.display = 'none';
+            header.style.display='none';
+            header_update.style.display='block';
+          }
+
+          /*
+          * USSD Registration or USSD Pin Registration page 1
+          * click on YES button
+          */
+          function flow(){
+
+          /*
+          * USSD Registration or USSD Pin Registration page 1
+          * click on YES button
+          */
+          if(auth=="LoA3"){
+            header.style.display='block';
+            term.style.display = 'block';
+            slider.style.display = 'none';
+            questions.style.display = 'block';
+            msg.style.display = 'none';
+            btn1.style.display = 'none';
+            btn2.style.display = 'block';
+
+          }else{
+            registration();
+          }
+
+        }
+
+        </script>
 
 
-<div id="message"></div>
-<script src="/portal/gadgets/user_profile/js/modal.js" type="text/javascript"></script>
+      </body>
 
-
-<div id="gadgetBody"></div>
-<div id="message"></div>
-
-</body>
-</html>
+      </html>

@@ -1,7 +1,9 @@
 <%
 
-var util = require("util/utility.jag");
+
 include("util/constants.jag");
+include("util/utility.jag");
+var util = require("util/utility.jag");
 
 var i18n = util.initI18N();
 
@@ -110,7 +112,9 @@ function initAuthenticationProtocol(){
 	if(application.get(AUTH_CONFIG_PARSED)){
 		return;
 	}
-	var authConfig = readFile("/authentication/auth_config.json");
+	//var authConfig = readFile("/authentication/auth_config.json");
+        var authConfig = require("/authentication/auth_config.json");
+
 	if(authConfig.EnableSAMLSSOLogin === "true"){
 	
 

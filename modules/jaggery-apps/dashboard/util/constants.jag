@@ -1,5 +1,5 @@
 <%
-
+include("/site/jagg/site.jag");
 var DEFAULT_CLAIM_URL = "http://wso2.org/claims";
 var OPENID_REG_CLAIM_URL = "http://schema.openid.net/2007/05/claims";
 var UI_USER_PERMISSIONS = "user-permissions";
@@ -10,7 +10,8 @@ var USER_NAME = "user.name";
 var USER_HEADER = "user-header";
 
 var I18N = "i18n";
-var SERVER_URL = "serverUrl";
+//var SERVER_URL = "serverUrl";
+var SERVER_URL =  getCarbonUrl() + "services";
 
 var AUTH_CONFIG_PARSED = "auth.config.parsed";
 var SAML_ENABLED = "saml.enabled";

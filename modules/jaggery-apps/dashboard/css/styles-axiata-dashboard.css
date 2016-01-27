@@ -294,6 +294,13 @@ background: transparent;
     margin-left: 20px;
     display: block;
 }
+a.brand{
+    background:transparent url(../img/logo.png) no-repeat left top;
+    display: block;
+    width: 110px;
+    height: 35px;
+    margin-bottom:6px;
+}
 .btn-primary {
     background: rgb(245,128,32); /* Old browsers */
     /* IE9 SVG, needs conditional override of 'filter' to 'none' */
@@ -417,7 +424,7 @@ div.control-group ul li{
         padding-left: 0;
         text-align: left;
         text-indent: 0;
-        width: 80px;
+        width: 220px;
     }
 
     .form-horizontal .controls {
@@ -428,8 +435,15 @@ div.control-group ul li{
         margin-left: 0;
     }
 }
-
-
+.control-label-axiata {
+    float: left;
+    width: 220px;
+    padding-top: 5px;
+    text-align: right;
+}
+.controls-axiata {
+    margin-left: 227px;
+}
 .alert-heading span{
     font-size: 30px;
     font-family: "Open Sans","Helvetica Neue",Helvetica,Arial,sans-serif;

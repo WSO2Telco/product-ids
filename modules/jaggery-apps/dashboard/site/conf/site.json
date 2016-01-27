@@ -1,8 +1,8 @@
 {
-	"server" : {
-		"carbon_url" : "dialog.mifetest.is.com:9443/",
-		"webapps_url" : "dialog.mifetest.is.com:9763/",
-		"sample_msisdn" : "94773333428",
-		"am_url" : "dialog.mifetest.apim.com:9443/",
+	"server" : {       
+		"carbon_url" : "Identity Server URL/",    // identity.example.com:9444
+		"webapps_url" : "Identity Server URL/",    // identity.example.com:9764
+		"sample_msisdn" : "A sample MSISDN",
+		"am_url" : "API Manager URL/",    // apimanager.example.com:9443
 	}
 }
