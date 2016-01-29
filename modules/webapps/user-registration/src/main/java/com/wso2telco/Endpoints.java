@@ -976,7 +976,7 @@ public class Endpoints {
 	@Path("/user/setclaim")
 	@Produces("application/json")
 	public Response setUserClaimValue(@QueryParam("msisdn") String msisdn, @QueryParam("claimValue") String claimValue)
-			throws SQLException, org.codehaus.jettison.json.JSONException, JSONException, RemoteException,
+			throws SQLException, JSONException, JSONException, RemoteException,
 			LoginAuthenticationExceptionException, RemoteUserStoreManagerServiceUserStoreExceptionException {
 
 		LoginAdminServiceClient lAdmin = new LoginAdminServiceClient(FileUtil.getApplicationProperty("isadminurl"));

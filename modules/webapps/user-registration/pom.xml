@@ -36,36 +36,9 @@
 			<type>jar</type>
 		</dependency>
 		<dependency>
-			<groupId>com.google.code.gson</groupId>
-			<artifactId>gson</artifactId>
-			<version>2.1</version>
-			<type>jar</type>
-		</dependency>
-		<!--dependency> <groupId>com.google.gson</groupId> <artifactId>gson</artifactId> 
-			<version>1.0.0</version> </dependency -->
-		<dependency>
-			<groupId>org.json</groupId>
-			<artifactId>json</artifactId>
-			<version>20090211</version>
-			<scope>provided</scope>
-		</dependency>
-		<dependency>
 			<groupId>com.atlassian.httpclient</groupId>
 			<artifactId>atlassian-httpclient-plugin</artifactId>
 			<version>0.17.3</version>
-			<type>jar</type>
-		</dependency>
-		<dependency>
-			<groupId>org.apache.httpcomponents</groupId>
-			<artifactId>httpclient</artifactId>
-			<version>4.4-alpha1-SNAPSHOT</version>
-			<type>jar</type>
-		</dependency>
-		<dependency>
-			<groupId>org.wso2.carbon</groupId>
-			<artifactId>org.wso2.carbon.user.core</artifactId>
-			<version>4.2.0</version>
-			<scope>provided</scope>
 			<type>jar</type>
 		</dependency>
 		<dependency>
@@ -88,44 +61,8 @@
 		</dependency>
 		<dependency>
 			<groupId>org.wso2.carbon</groupId>
-			<artifactId>org.wso2.carbon.user.mgt.stub</artifactId>
-			<version>4.2.0</version>
-			<scope>provided</scope>
-		</dependency>
-		<dependency>
-			<groupId>org.wso2.carbon</groupId>
 			<artifactId>org.wso2.carbon.identity.user.registration.stub</artifactId>
 			<version>4.2.0</version>
-		</dependency>
-		<dependency>
-			<groupId>org.apache.axis2.wso2</groupId>
-			<artifactId>axis2</artifactId>
-			<version>1.6.1.wso2v10</version>
-			<scope>provided</scope>
-		</dependency>
-		<dependency>
-			<groupId>org.apache.ws.commons.axiom.wso2</groupId>
-			<artifactId>axiom</artifactId>
-			<version>1.2.11.wso2v4</version>
-			<scope>provided</scope>
-		</dependency>
-		<dependency>
-			<groupId>wsdl4j.wso2</groupId>
-			<artifactId>wsdl4j</artifactId>
-			<version>1.6.2.wso2v2</version>
-			<scope>provided</scope>
-		</dependency>
-		<dependency>
-			<groupId>org.apache.neethi.wso2</groupId>
-			<artifactId>neethi</artifactId>
-			<version>2.0.4.wso2v4</version>
-			<scope>provided</scope>
-		</dependency>
-		<dependency>
-			<groupId>org.apache.ws.commons.schema.wso2</groupId>
-			<artifactId>XmlSchema</artifactId>
-			<version>1.4.7.wso2v2</version>
-			<scope>provided</scope>
 		</dependency>
 		<dependency>
 			<groupId>org.wso2.carbon</groupId>
@@ -140,103 +77,16 @@
 			<version>4.2.1</version>
 			<scope>provided</scope>
 		</dependency>
-
-		<dependency>
-			<groupId>org.apache.axis2.wso2</groupId>
-			<artifactId>axis2-client</artifactId>
-			<version>1.6.1.wso2v5</version>
-			<scope>provided</scope>
-			<type>jar</type>
-		</dependency>
-		<dependency>
-			<groupId>com.ibm.icu</groupId>
-			<artifactId>icu4j</artifactId>
-			<version>2.6.1</version>
-		</dependency>
-
-		<!--dependency> <groupId>org.apache.axis2.databinding</groupId> <artifactId>Databinding</artifactId> 
-			<version>1.0.0</version> </dependency -->
-		<dependency>
-			<groupId>com.sun.jersey</groupId>
-			<artifactId>jersey-atom</artifactId>
-			<version>1.8</version>
-		</dependency>
-		<dependency>
-			<groupId>com.sun.jersey</groupId>
-			<artifactId>jersey-json</artifactId>
-			<version>1.8</version>
-		</dependency>
-		<dependency>
-			<groupId>com.sun.jersey</groupId>
-			<artifactId>jersey-core</artifactId>
-			<version>1.8</version>
-		</dependency>
-		<dependency>
-			<groupId>com.sun.jersey</groupId>
-			<artifactId>jersey-server</artifactId>
-			<version>1.8</version>
-		</dependency>
-		<dependency>
-			<groupId>com.sun.jersey</groupId>
-			<artifactId>jersey-client</artifactId>
-			<version>1.8</version>
-		</dependency>
-		<dependency>
-			<groupId>com.sun.jersey.contribs</groupId>
-			<artifactId>jersey-atom-abdera</artifactId>
-			<version>1.8</version>
-			<exclusions>
-				<exclusion>
-					<groupId>org.apache.ws.commons.axiom</groupId>
-					<artifactId>axiom-impl</artifactId>
-				</exclusion>
-			</exclusions>
-		</dependency>
-		<dependency>
-			<groupId>com.sun.jersey.contribs</groupId>
-			<artifactId>jersey-apache-client</artifactId>
-			<version>1.8</version>
-		</dependency>
-		<dependency>
-			<groupId>com.sun.jersey.contribs</groupId>
-			<artifactId>jersey-spring</artifactId>
-			<version>1.8</version>
-		</dependency>
-		<dependency>
-			<groupId>com.sun.jersey.contribs</groupId>
-			<artifactId>jersey-multipart</artifactId>
-			<version>1.8</version>
-		</dependency>
-		<dependency>
-			<groupId>com.sun.jersey.contribs</groupId>
-			<artifactId>jersey-guice</artifactId>
-			<version>1.8</version>
-		</dependency>
-		<dependency>
-			<groupId>com.sun.jersey.contribs</groupId>
-			<artifactId>jersey-simple-server</artifactId>
-			<version>1.8</version>
-		</dependency>
-		<dependency>
-			<groupId>com.sun.jersey.contribs.jersey-oauth</groupId>
-			<artifactId>oauth-client</artifactId>
-			<version>1.8</version>
-		</dependency>
-		<dependency>
-			<groupId>com.sun.jersey.contribs.jersey-oauth</groupId>
-			<artifactId>oauth-server</artifactId>
-			<version>1.8</version>
-		</dependency>
-		<dependency>
-			<groupId>com.sun.jersey.contribs.jersey-oauth</groupId>
-			<artifactId>oauth-signature</artifactId>
-			<version>1.8</version>
-		</dependency>
 		<dependency>
 			<groupId>com.wso2telco.ids</groupId>
 			<artifactId>url-shorten</artifactId>
 			<version>${url.shorten.version}</version>
 			<scope>provided</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.codehaus.jackson</groupId>
+			<artifactId>jackson-mapper-asl</artifactId>
+			<version>${jackson-mapper-asl.version}</version>
 		</dependency>
 	</dependencies>
 

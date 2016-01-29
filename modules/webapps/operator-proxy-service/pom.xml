@@ -47,7 +47,11 @@
 			<artifactId>commons-fileupload</artifactId>
 			<version>${commons-fileupload.version}</version>
 		</dependency>
-
+		<dependency>
+			<groupId>javax.ws.rs</groupId>
+			<artifactId>javax.ws.rs</artifactId>
+			<version>${javax.ws.rs.version}</version>
+		</dependency>
 	</dependencies>
 	<build>
 		<finalName>OperatorProxyService</finalName>
