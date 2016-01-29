@@ -1,16 +1,32 @@
 <?xml version="1.0" encoding="UTF-8"?><!DOCTYPE web-app PUBLIC "-//Sun Microsystems, Inc.//DTD Web Application 2.3//EN"
         "http://java.sun.com/dtd/web-app_2_3.dtd" >
 
+<!--
+  Copyright (c) 2015-2016, WSO2.Telco Inc. (http://www.wso2telco.com) 
+  
+  All Rights Reserved. WSO2.Telco Inc. licences this file to youunder the Apache License, Version 2.0 (the "License");
+  you may not use this file except in compliance with the License.
+  You may obtain a copy of the License at
+  
+    http://www.apache.org/licenses/LICENSE-2.0
+  
+  Unless required by applicable law or agreed to in writing, software
+  distributed under the License is distributed on an "AS IS" BASIS,
+  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+  See the License for the specific language governing permissions and
+  limitations under the License.
+-->
+
 <web-app>
 
     <servlet>
         <servlet-name>AuthenticationEndpoint</servlet-name>
-        <servlet-class>org.wso2.carbon.identity.application.authentication.endpoint.AuthenticationEndpoint</servlet-class>
+        <servlet-class>com.wso2telco.identity.application.authentication.endpoint.AuthenticationEndpoint</servlet-class>
     </servlet>
 
     <servlet>
         <servlet-name>OAuth2Login</servlet-name>
-        <servlet-class>org.wso2.carbon.identity.application.authentication.endpoint.oauth2.OAuth2Login</servlet-class>
+        <servlet-class>com.wso2telco.identity.application.authentication.endpoint.oauth2.OAuth2Login</servlet-class>
         <!--  Custom Page configurations -->
 
         <!-- *************** LoginPage configs for SampleApp ********************** -->
@@ -54,17 +70,17 @@
 
     <servlet>
         <servlet-name>SAML2SSO</servlet-name>
-        <servlet-class>org.wso2.carbon.identity.application.authentication.endpoint.samlsso.SAMLSSOLogin</servlet-class>
+        <servlet-class>com.wso2telco.identity.application.authentication.endpoint.samlsso.SAMLSSOLogin</servlet-class>
     </servlet>
 
     <servlet>
         <servlet-name>OpenIDLogin</servlet-name>
-        <servlet-class>org.wso2.carbon.identity.application.authentication.endpoint.openid.OpenIDLogin</servlet-class>
+        <servlet-class>com.wso2telco.identity.application.authentication.endpoint.openid.OpenIDLogin</servlet-class>
     </servlet>
 
     <servlet>
         <servlet-name>PassiveSTSLogin</servlet-name>
-        <servlet-class>org.wso2.carbon.identity.application.authentication.endpoint.passivests.PassiveSTSLogin</servlet-class>
+        <servlet-class>com.wso2telco.identity.application.authentication.endpoint.passivests.PassiveSTSLogin</servlet-class>
     </servlet>
 
     <servlet-mapping>

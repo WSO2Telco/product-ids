@@ -1,7 +1,7 @@
 /*******************************************************************************
- * Copyright  (c) 2015-2016, WSO2.Telco Inc. (http://www.wso2telco.com) All Rights Reserved.
+ * Copyright (c) 2015-2016, WSO2.Telco Inc. (http://www.wso2telco.com) 
  * 
- * WSO2.Telco Inc. licences this file to you under the Apache License, Version 2.0 (the "License");
+ * All Rights Reserved. WSO2.Telco Inc. licences this file to you under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
  * 
@@ -30,15 +30,18 @@ import java.util.Properties;
  
 // TODO: Auto-generated Javadoc
  
+ 
 /**
  * The Class FileUtil.
  */
 public class FileUtil {
 
 	 
+	 
 	/** The props. */
 	private static Properties props = new Properties();
 
+	 
 	 
 	/**
 	 * Creates the directory.
@@ -56,6 +59,7 @@ public class FileUtil {
 		}
 	}
 
+	 
 	 
 	 
 	 
@@ -80,6 +84,7 @@ public class FileUtil {
 	}
 
 	 
+	 
 	/**
 	 * Gets the correct file name.
 	 *
@@ -95,6 +100,7 @@ public class FileUtil {
 		return fileName;
 	}
 
+	 
 	 
 	/**
 	 * File write.
@@ -134,6 +140,7 @@ public class FileUtil {
 
 	 
 	 
+	 
 	/**
 	 * Gets the application property.
 	 *
@@ -144,6 +151,7 @@ public class FileUtil {
 		return props.getProperty(key);
 	}
 
+	 
 	 
 	/**
 	 * Read fully into var.
@@ -168,6 +176,7 @@ public class FileUtil {
 		return result;
 	}
 
+	 
 	 
 	/**
 	 * Copy.

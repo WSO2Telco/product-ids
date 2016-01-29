@@ -1,3 +1,18 @@
+/*******************************************************************************
+ * Copyright (c) 2015-2016, WSO2.Telco Inc. (http://www.wso2telco.com) 
+ * 
+ * All Rights Reserved. WSO2.Telco Inc. licences this file to you under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ * 
+ *   http://www.apache.org/licenses/LICENSE-2.0
+ * 
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ ******************************************************************************/
 package com.wso2telco.manager;
 
 import java.rmi.RemoteException;
@@ -21,15 +36,27 @@ import com.wso2telco.UserRegistrationAdminServiceClient;
 import com.wso2telco.UserRegistrationData;
 import com.wso2telco.manager.UserProfileClaimsConstant;
 
+// TODO: Auto-generated Javadoc
+/**
+ * The Class UserProfileManager.
+ */
 public class UserProfileManager {
 	
+/** The user profile manager. */
 private static UserProfileManager userProfileManager;
+
+/** The remote user store service admin client. */
 private RemoteUserStoreServiceAdminClient remoteUserStoreServiceAdminClient;
+
+/** The log. */
 private static Log log = LogFactory.getLog(UserProfileManager.class);
     
+    /**
+     * Instantiates a new user profile manager.
+     */
     private UserProfileManager(){}
     
-    /*static block initialization for exception handling*/
+     
     static{
         try{
         	userProfileManager = new UserProfileManager();
@@ -39,23 +66,28 @@ private static Log log = LogFactory.getLog(UserProfileManager.class);
         }
     }
     
+    /**
+     * Gets the single instance of UserProfileManager.
+     *
+     * @return single instance of UserProfileManager
+     */
     public static UserProfileManager getInstance(){
         return userProfileManager;
     }
     
+     
     /**
-	 * check whether the user exists or not and depend on that call add user or update user
-     * @throws Exception 
-     * @throws UserRegistrationAdminServiceException 
-     * @throws RemoteUserStoreManagerServiceUserStoreExceptionException 
-     * @throws LoginAuthenticationExceptionException 
-     * @throws UserRegistrationAdminServiceIdentityException 
-     * @throws SQLException 
-     * @throws RemoteException
-     * @param  userRegistrationData
-	 * 
-	 * 
-	 */
+     * Manage profile.
+     *
+     * @param userRegistrationData the user registration data
+     * @throws RemoteException the remote exception
+     * @throws SQLException the SQL exception
+     * @throws UserRegistrationAdminServiceIdentityException the user registration admin service identity exception
+     * @throws LoginAuthenticationExceptionException the login authentication exception exception
+     * @throws RemoteUserStoreManagerServiceUserStoreExceptionException the remote user store manager service user store exception exception
+     * @throws UserRegistrationAdminServiceException the user registration admin service exception
+     * @throws Exception the exception
+     */
     public void manageProfile(UserRegistrationData userRegistrationData) throws RemoteException, SQLException, UserRegistrationAdminServiceIdentityException, LoginAuthenticationExceptionException, RemoteUserStoreManagerServiceUserStoreExceptionException, UserRegistrationAdminServiceException, Exception {
 
 		if (isUserExists(userRegistrationData.getUserName())) {
@@ -67,16 +99,17 @@ private static Log log = LogFactory.getLog(UserProfileManager.class);
 	}
     
     
-    /**
-	 * check whether the user exists or not
-	 * 
-	 * @throws Exception
-	 * @throws SQLException
-	 * @param  userName
-	 * @return true if user exists.
+     
+	/**
+	 * Checks if is user exists.
+	 *
+	 * @param userName the user name
+	 * @return true, if is user exists
+	 * @throws SQLException the SQL exception
+	 * @throws Exception the exception
 	 */
 	public boolean isUserExists(String userName) throws SQLException, Exception {
-		/*getting remote user store service admin client connection */
+		 
 		getAdminClient();
 		boolean userExists = false;
 		if (remoteUserStoreServiceAdminClient.isExistingUser(userName)) {
@@ -86,54 +119,56 @@ private static Log log = LogFactory.getLog(UserProfileManager.class);
 		return userExists;
 	}
 
+	 
 	/**
-	 * getting connection to the admin services of the identity server
-	 * 
-	 * @throws Exception
-	 * @throws SQLException
-	 * 
+	 * Gets the admin client.
+	 *
+	 * @return the admin client
+	 * @throws SQLException the SQL exception
+	 * @throws RemoteException the remote exception
+	 * @throws Exception the exception
 	 */
 	public void getAdminClient() throws SQLException, RemoteException, Exception {
-		/*reading admin url from application properties*/
+		 
 		LoginAdminServiceClient lAdmin = new LoginAdminServiceClient(FileUtil.getApplicationProperty("isadminurl"));
-		/*getting session cookie by sending username and password to the authenticate admin service*/
+		 
 		String sessionCookie = lAdmin.authenticate(FileUtil.getApplicationProperty("adminusername"),
 				FileUtil.getApplicationProperty("adminpassword"));
-		/*using the session cookie as a key getting user store admin client*/
+		 
 		remoteUserStoreServiceAdminClient = new RemoteUserStoreServiceAdminClient(
 				FileUtil.getApplicationProperty("isadminurl"), sessionCookie);
 		log.debug("RemoteUserStoreServiceAdminClient "+remoteUserStoreServiceAdminClient);
 	}
 
+	 
 	/**
-	 * add new user profile for the registration of new user
-	 * 
-	 * @throws SQLException
-	 * @throws UserRegistrationAdminServiceException
-	 * @throws UserRegistrationAdminServiceIdentityException
-	 * @throws RemoteException
-	 * @throws Exception
-	 * @param  userRegistrationData
+	 * Creates the user profile.
+	 *
+	 * @param userRegistrationData the user registration data
+	 * @throws RemoteException the remote exception
+	 * @throws UserRegistrationAdminServiceIdentityException the user registration admin service identity exception
+	 * @throws UserRegistrationAdminServiceException the user registration admin service exception
+	 * @throws SQLException the SQL exception
 	 */
 	public void createUserProfile(UserRegistrationData userRegistrationData) throws RemoteException,
 			UserRegistrationAdminServiceIdentityException, UserRegistrationAdminServiceException, SQLException {
 		
-		/*reading admin url from application properties*/
+		 
 		String adminURL = FileUtil.getApplicationProperty("isadminurl") + UserProfileClaimsConstant.SERVICE_URL;
 		log.debug(adminURL);
-		/*getting user registration admin service*/
+		 
 		UserRegistrationAdminServiceClient userRegistrationAdminServiceClient = new UserRegistrationAdminServiceClient(
 				adminURL);
-		/*by sending the claim dialects gets exsisting claims list*/
+		 
 		UserFieldDTO[] userFieldDTOs = userRegistrationAdminServiceClient
 				.readUserFieldsForUserRegistration(userRegistrationData.getClaim());
 		
-		/*get user registration claim value list*/
+		 
 		String[] fieldValues = userRegistrationData.getFieldValues().split(",");
 		for (int count = 0; count < fieldValues.length; count++) {
 			userFieldDTOs[count].setFieldValue(fieldValues[count]);
 			log.info("userFieldDTOs : "+userFieldDTOs[count].getFieldName()+" = "+fieldValues[count]);
-			/*for the ussd pin registration add pin*/
+			 
 			if (userRegistrationData.getHashPin() != null && userFieldDTOs[count].getFieldName().equals("pin")) {
 				userFieldDTOs[count].setFieldValue(userRegistrationData.getHashPin());
 				log.info("userFieldDTOs : "+userFieldDTOs[count].getFieldName()+" = "+userRegistrationData.getHashPin());
@@ -157,17 +192,16 @@ private static Log log = LogFactory.getLog(UserProfileManager.class);
 		log.info("user registration successfull "+userRegistrationData.getUserName());
 	}
 
+	 
 	/**
-	 * update user profile when LOA2 registered user registration with LOA3 or
-	 * update pin for pin reset
-	 * 
-	 * @throws SQLException
-	 * @throws RemoteUserStoreManagerServiceUserStoreExceptionException
-	 * @throws LoginAuthenticationExceptionException
-	 * @throws UserRegistrationAdminServiceIdentityException
-	 * @throws RemoteException
-	 * @throws Exception
-	 * @param  userRegistrationData
+	 * Update user profile.
+	 *
+	 * @param userRegistrationData the user registration data
+	 * @throws RemoteException the remote exception
+	 * @throws UserRegistrationAdminServiceIdentityException the user registration admin service identity exception
+	 * @throws LoginAuthenticationExceptionException the login authentication exception exception
+	 * @throws RemoteUserStoreManagerServiceUserStoreExceptionException the remote user store manager service user store exception exception
+	 * @throws SQLException the SQL exception
 	 */
 	public void updateUserProfile(UserRegistrationData userRegistrationData) throws RemoteException,
 			UserRegistrationAdminServiceIdentityException, LoginAuthenticationExceptionException,
@@ -179,36 +213,36 @@ private static Log log = LogFactory.getLog(UserProfileManager.class);
 		if (userRegistrationData.isUpdateProfile()) {
 			
 			log.info("user profile update for the loa2 to loa3 registration "+userRegistrationData.getUserName());
-			/*reading admin url from application properties*/
+			 
 			String adminURL = FileUtil.getApplicationProperty("isadminurl") + UserProfileClaimsConstant.SERVICE_URL;
 			log.debug(adminURL);
-			/*getting user registration admin service*/
+			 
 			UserRegistrationAdminServiceClient userRegistrationAdminServiceClient = new UserRegistrationAdminServiceClient(
 					adminURL);
-			/*by sending the claim dialects gets exsisting claims list*/
+			 
 			UserFieldDTO[] userFieldDTOs = userRegistrationAdminServiceClient
 					.readUserFieldsForUserRegistration(userRegistrationData.getClaim());
 			
-			/*get user registration claim value list*/
+			 
 			String[] fieldValues = userRegistrationData.getFieldValues().split(",");
 			
 			for (int count = 0; count < fieldValues.length; count++) {
 				
 								
-				/*updating loa cliam for the loa2 to loa3 registration*/
+				 
 				if (userFieldDTOs[count].getClaimUri().equals(UserProfileClaimsConstant.LOA)) {
 					log.debug(userFieldDTOs[count].getClaimUri()+" : "+fieldValues[count]);
 					remoteUserStoreServiceAdminClient.setUserClaim(userName, UserProfileClaimsConstant.LOA,
 							fieldValues[count], UserCoreConstants.DEFAULT_PROFILE);
 				}
-				/*updating challenge question 1 cliam for the loa2 to loa3 registration*/
+				 
 				if (userFieldDTOs[count].getClaimUri().equals(UserProfileClaimsConstant.CHALLENGEQUESTION1)) {
 					log.debug(userFieldDTOs[count].getClaimUri()+" : "+fieldValues[count]);
 					remoteUserStoreServiceAdminClient.setUserClaim(userName,
 							UserProfileClaimsConstant.CHALLENGEQUESTION1, fieldValues[count],
 							UserCoreConstants.DEFAULT_PROFILE);
 				}
-				/*updating challenge question 2 cliam for the loa2 to loa3 registration*/
+				 
 				if (userFieldDTOs[count].getClaimUri().equals(UserProfileClaimsConstant.CHALLENGEQUESTION2)) {
 					log.debug(userFieldDTOs[count].getClaimUri()+" : "+fieldValues[count]);
 					remoteUserStoreServiceAdminClient.setUserClaim(userName,
@@ -220,7 +254,7 @@ private static Log log = LogFactory.getLog(UserProfileManager.class);
 		}
 		
 		log.info("user profile update for pin "+userRegistrationData.getUserName());
-		/*updating pin cliam for the loa2 to loa3 registration or pin reset*/
+		 
 		log.debug(UserProfileClaimsConstant.PIN+" : "+pinHash);
 		remoteUserStoreServiceAdminClient.setUserClaim(userName, UserProfileClaimsConstant.PIN, pinHash,
 				UserCoreConstants.DEFAULT_PROFILE);

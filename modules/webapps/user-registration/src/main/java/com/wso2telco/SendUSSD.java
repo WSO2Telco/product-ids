@@ -1,3 +1,18 @@
+/*******************************************************************************
+ * Copyright (c) 2015-2016, WSO2.Telco Inc. (http://www.wso2telco.com) 
+ * 
+ * All Rights Reserved. WSO2.Telco Inc. licences this file to you under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ * 
+ *   http://www.apache.org/licenses/LICENSE-2.0
+ * 
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ ******************************************************************************/
 package com.wso2telco;
 
 
@@ -15,12 +30,30 @@ import org.apache.http.util.EntityUtils;
 
 import java.io.IOException;
 
+// TODO: Auto-generated Javadoc
+/**
+ * The Class SendUSSD.
+ */
 public class SendUSSD {
 
+    /** The log. */
     private static Log log = LogFactory.getLog(SendUSSD.class);
+    
+    /** The const mtinit. */
     //private MobileConnectConfig.USSDConfig ussdConfig;
     private static String CONST_MTINIT = "mtinit";
 
+    /**
+     * Send ussd.
+     *
+     * @param msisdn the msisdn
+     * @param sessionID the session id
+     * @param noOfAttempts the no of attempts
+     * @param action the action
+     * @param operator the operator
+     * @return the string
+     * @throws IOException Signals that an I/O exception has occurred.
+     */
     protected String sendUSSD(String msisdn, String sessionID, int noOfAttempts,String action, String operator) throws IOException {
        // ussdConfig = DataHolder.getInstance().getMobileConnectConfig().getUssdConfig();
         //FileUtil.getApplicationPropery("ussdsend");
@@ -71,6 +104,16 @@ public class SendUSSD {
         return returnString;
     }
 
+    /**
+     * Send ussd push.
+     *
+     * @param msisdn the msisdn
+     * @param sessionID the session id
+     * @param action the action
+     * @param operator the operator
+     * @return the string
+     * @throws IOException Signals that an I/O exception has occurred.
+     */
     protected String sendUSSDPush(String msisdn, String sessionID, String action, String operator) throws IOException {
         // ussdConfig = DataHolder.getInstance().getMobileConnectConfig().getUssdConfig();
     	log.info("USSD Push request with tel:"+msisdn);
@@ -112,6 +155,19 @@ public class SendUSSD {
          return returnString;
      }
     
+    /**
+     * Send ussd.
+     *
+     * @param msisdn the msisdn
+     * @param sessionID the session id
+     * @param noOfAttempts the no of attempts
+     * @param action the action
+     * @param ussdSessionID the ussd session id
+     * @param isResend the is resend
+     * @param operator the operator
+     * @return the string
+     * @throws IOException Signals that an I/O exception has occurred.
+     */
     protected String sendUSSD(String msisdn, String sessionID, int noOfAttempts,String action, String ussdSessionID, boolean isResend, String operator) throws IOException {
         // ussdConfig = DataHolder.getInstance().getMobileConnectConfig().getUssdConfig();
         //FileUtil.getApplicationPropery("ussdsend");
@@ -163,6 +219,17 @@ public class SendUSSD {
         return returnString;
     }
 
+    /**
+     * Sets the outbound ussd message request.
+     *
+     * @param msisdn the msisdn
+     * @param sessionID the session id
+     * @param action the action
+     * @param notifyUrl the notify url
+     * @param message the message
+     * @param ussdSessionID the ussd session id
+     * @return the USSD request
+     */
     private static USSDRequest setOutboundUSSDMessageRequest(String msisdn, String sessionID, String action, String notifyUrl, String message, String ussdSessionID) {
         USSDRequest req = new USSDRequest();
 
@@ -189,6 +256,16 @@ public class SendUSSD {
         return req;
     }
 
+    /**
+     * Sets the outbound ussd message request.
+     *
+     * @param msisdn the msisdn
+     * @param sessionID the session id
+     * @param action the action
+     * @param notifyUrl the notify url
+     * @param message the message
+     * @return the USSD request
+     */
     private static USSDRequest setOutboundUSSDMessageRequest(String msisdn, String sessionID, String action, String notifyUrl, String message) {
         USSDRequest req = new USSDRequest();
 
@@ -213,6 +290,19 @@ public class SendUSSD {
         req.setOutboundUSSDMessageRequest(outboundUSSDMessageRequest);
         return req;
     }
+    
+    /**
+     * Gets the json payload.
+     *
+     * @param msisdn the msisdn
+     * @param sessionID the session id
+     * @param noOfAttempts the no of attempts
+     * @param action the action
+     * @param notifyUrl the notify url
+     * @param ussdSessionID the ussd session id
+     * @param isUssdSessionId the is ussd session id
+     * @return the json payload
+     */
     public static String getJsonPayload(String msisdn, String sessionID, int noOfAttempts, String action, String notifyUrl, String ussdSessionID, boolean isUssdSessionId) {
         String message = null;
         if (noOfAttempts == 1){
@@ -243,6 +333,16 @@ public class SendUSSD {
         return reqString;
     }
 
+    /**
+     * Gets the json payload.
+     *
+     * @param msisdn the msisdn
+     * @param sessionID the session id
+     * @param noOfAttempts the no of attempts
+     * @param action the action
+     * @param notifyUrl the notify url
+     * @return the json payload
+     */
     public static String getJsonPayload(String msisdn, String sessionID, int noOfAttempts, String action, String notifyUrl) {
         String message = null;
         if (noOfAttempts == 1){
@@ -274,6 +374,16 @@ public class SendUSSD {
     }
 
 
+    /**
+     * Gets the json payload.
+     *
+     * @param msisdn the msisdn
+     * @param sessionID the session id
+     * @param action the action
+     * @param notifyUrl the notify url
+     * @param message the message
+     * @return the json payload
+     */
     public static String getJsonPayload(String msisdn, String sessionID, String action, String notifyUrl, String message) {
         USSDRequest req = setOutboundUSSDMessageRequest(msisdn, sessionID, action, notifyUrl, message);
         Gson gson = new GsonBuilder().serializeNulls().create();
@@ -281,6 +391,15 @@ public class SendUSSD {
         return reqString;
     }
     
+    /**
+     * Post request.
+     *
+     * @param url the url
+     * @param requestStr the request str
+     * @param operator the operator
+     * @return the string
+     * @throws IOException Signals that an I/O exception has occurred.
+     */
     private String postRequest(String url, String requestStr, String operator) throws IOException {
 
         HttpClient client = new DefaultHttpClient();
@@ -315,6 +434,17 @@ public class SendUSSD {
         return responseStr;
     }
     
+    /**
+     * Send ussd login.
+     *
+     * @param msisdn the msisdn
+     * @param sessionID the session id
+     * @param noOfAttempts the no of attempts
+     * @param action the action
+     * @param operator the operator
+     * @return the string
+     * @throws IOException Signals that an I/O exception has occurred.
+     */
     protected String sendUSSDLogin(String msisdn, String sessionID, int noOfAttempts,String action, String operator) throws IOException {
          
          USSDRequest req = new USSDRequest();

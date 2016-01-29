@@ -1,3 +1,18 @@
+/*******************************************************************************
+ * Copyright (c) 2015-2016, WSO2.Telco Inc. (http://www.wso2telco.com) 
+ * 
+ * All Rights Reserved. WSO2.Telco Inc. licences this file to you under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ * 
+ *   http://www.apache.org/licenses/LICENSE-2.0
+ * 
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ ******************************************************************************/
 package com.wso2telco;
 
 import java.rmi.RemoteException;
@@ -13,15 +28,31 @@ import org.wso2.carbon.um.ws.api.stub.SetUserClaimValues;
 import org.apache.axis2.client.Options;
 import org.apache.axis2.client.ServiceClient;
 
+// TODO: Auto-generated Javadoc
 //import org.wso2.
 
 
         
+/**
+ * The Class LoginAdminServiceClient.
+ */
 public class LoginAdminServiceClient {
+	
+	/** The service name. */
 	private final String serviceName = "AuthenticationAdmin";
+    
+    /** The authentication admin stub. */
     private AuthenticationAdminStub authenticationAdminStub;
+    
+    /** The end point. */
     private String endPoint;
 
+    /**
+     * Instantiates a new login admin service client.
+     *
+     * @param backEndUrl the back end url
+     * @throws AxisFault the axis fault
+     */
     public LoginAdminServiceClient(String backEndUrl) throws AxisFault {
         //String path = "D:/currLife/is/wso2is-5.0.0/repository/resources/security/"
        //         + "wso2carbon.jks";
@@ -34,6 +65,15 @@ public class LoginAdminServiceClient {
         
     }
 
+    /**
+     * Authenticate.
+     *
+     * @param userName the user name
+     * @param password the password
+     * @return the string
+     * @throws RemoteException the remote exception
+     * @throws LoginAuthenticationExceptionException the login authentication exception exception
+     */
     public String authenticate(String userName, String password)
             throws RemoteException, LoginAuthenticationExceptionException {
 
@@ -53,11 +93,25 @@ public class LoginAdminServiceClient {
         return sessionCookie;
     }
 
+    /**
+     * Log out.
+     *
+     * @throws RemoteException the remote exception
+     * @throws LogoutAuthenticationExceptionException the logout authentication exception exception
+     */
     public void logOut() throws RemoteException,
             LogoutAuthenticationExceptionException {
         authenticationAdminStub.logout();
     }
     
+    /**
+     * Login user.
+     *
+     * @param userName the user name
+     * @param password the password
+     * @return the string
+     * @throws RemoteUserStoreManagerServiceUserStoreExceptionException the remote user store manager service user store exception exception
+     */
     public String LoginUser(String userName,String password) throws RemoteUserStoreManagerServiceUserStoreExceptionException{
         String sessionKey = null;
         
@@ -81,6 +135,11 @@ public class LoginAdminServiceClient {
         
     }
     
+    /**
+     * Sets the pin.
+     *
+     * @param pin the new pin
+     */
     public void setPIN(String pin){
         ServiceClient serviceClient;
         Options option;

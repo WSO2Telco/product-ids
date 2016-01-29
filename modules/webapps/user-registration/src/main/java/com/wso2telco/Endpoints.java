@@ -1,10 +1,18 @@
-/*
- * Queries.java
- * Apr 2, 2013  11:20:38 AM
- * Dialog Axiata
- *
- * Copyright (C) Dialog Axiata PLC. All Rights Reserved.
- */
+/*******************************************************************************
+ * Copyright (c) 2015-2016, WSO2.Telco Inc. (http://www.wso2telco.com) 
+ * 
+ * All Rights Reserved. WSO2.Telco Inc. licences this file to you under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ * 
+ *   http://www.apache.org/licenses/LICENSE-2.0
+ * 
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ ******************************************************************************/
 package com.wso2telco;
 
 import java.io.IOException;
@@ -58,38 +66,61 @@ import com.wso2telco.utils.LOA.MIFEAbstractAuthenticator;
 import com.wso2telco.utils.LOAConfig;
 import com.wso2telco.utils.ReadMobileConnectConfig;
 
+// TODO: Auto-generated Javadoc
 //import org.json.JSONException;
 //import Aloo.AdminServicesInvoker.LoginAdminServiceClient;
 
+ 
 /**
- * REST Web Service Dialog Axiata
- * 
- * @version $Id: Queries.java,v 1.00.000
+ * The Class Endpoints.
  */
 @Path("/endpoint")
 public class Endpoints {
 
+	/** The context. */
 	@Context
 	private UriInfo context;
+	
+	/** The log. */
 	private static Log log = LogFactory.getLog(Endpoints.class);
+	
+	/** The user map. */
 	private static Map<String, UserRegistrationData> userMap = new HashMap<String, UserRegistrationData>();
+	
+	/** The pin reset request. */
 	// Map to keep msisdns of PIN_RESET requested.
 	private static Map<String, String> pinResetRequest = new HashMap<String, String>();
 	
+	/** The user profile manager. */
 	private static UserProfileManager userProfileManager=null;
 
+	/** The success response. */
 	String successResponse = "\"" + "amountTransaction" + "\"";
+	
+	/** The service exception. */
 	String serviceException = "\"" + "serviceException" + "\"";
+	
+	/** The policy exception. */
 	String policyException = "\"" + "policyException" + "\"";
+	
+	/** The error return. */
 	String errorReturn = "\"" + "errorreturn" + "\"";
 
+	 
 	/**
-	 * Creates a new instance of QueriesResource
+	 * Instantiates a new endpoints.
 	 */
 	public Endpoints() {
 		userProfileManager=UserProfileManager.getInstance();
 	}
 
+	/**
+	 * Ussd receive.
+	 *
+	 * @param jsonBody the json body
+	 * @return the response
+	 * @throws Exception the exception
+	 */
 	@POST
 	@Path("/ussd/receive")
 	@Consumes("application/json")
@@ -181,10 +212,7 @@ public class Endpoints {
 				// update PIN in IS user profile and usr is deleted
 				// addUser(msisdn, message);
 
-				/*
-				 * calling add or update user through profile manage holder -
-				 * refactoring start
-				 */
+				 
 				UserRegistrationData userRegistrationData = userMap.get(msisdn);
 				userRegistrationData.setHashPin(getHashValue(message));
 
@@ -200,7 +228,7 @@ public class Endpoints {
 				} else {
 					responseString = "User Registration Cancelled.";
 				}
-				/* refactoring finished for USSD PIN profile */
+				 
 
 				DatabaseUtils.deleteUser(sessionID);
 				log.debug("####### LOGS  finally  --->>> ");
@@ -252,6 +280,13 @@ public class Endpoints {
 		return Response.status(responseCode).entity(responseString).build();
 	}
 
+	/**
+	 * Ussd push receive.
+	 *
+	 * @param jsonBody the json body
+	 * @return the response
+	 * @throws Exception the exception
+	 */
 	@POST
 	@Path("/ussd/push/receive")
 	@Consumes("application/json")
@@ -295,12 +330,9 @@ public class Endpoints {
 			if ((userRegistrationData != null)
 					&& (currentTime - userRegistrationData.getUserRegistrationTime()) <= waitingTime) {
 
-				/*
-				 * calling add user through profile manage holder - refactoring
-				 * start
-				 */
+				 
 				userProfileManager.manageProfile(userRegistrationData);
-				/* refactoring finished for ussd push */
+				 
 				
 				responseString = SendUSSD.getJsonPayload(msisdn, sessionID, 5, "mtfin", notifyUrl, ussdSessionID, true);
 				userMap.remove(msisdn);
@@ -313,6 +345,26 @@ public class Endpoints {
 		return Response.status(200).entity(responseString).build();
 	}
 
+	/**
+	 * User pin.
+	 *
+	 * @param userName the user name
+	 * @param msisdn the msisdn
+	 * @param openId the open id
+	 * @param pwd the pwd
+	 * @param claim the claim
+	 * @param domain the domain
+	 * @param params the params
+	 * @param jsonBody the json body
+	 * @param operator the operator
+	 * @param updateProfile the update profile
+	 * @param action the action
+	 * @param sessionDataKey the session data key
+	 * @return the response
+	 * @throws IOException Signals that an I/O exception has occurred.
+	 * @throws SQLException the SQL exception
+	 * @throws JSONException the JSON exception
+	 */
 	@GET
 	@Path("/ussd/pin")
 	// @Consumes("application/json")
@@ -360,21 +412,31 @@ public class Endpoints {
 
 		DatabaseUtils.insertUserStatus(userName, "pending");
 
-		/*
-		 * DatabaseUtils.insertMultiplePasswordPIN(userName);
-		 * DatabaseUtils.updateMultiplePasswordNoOfAttempts(userName, 1);
-		 * DatabaseUtils.updateMultiplePasswordPIN(userName, 1111); log.info(
-		 * "No of Attempts = " +
-		 * DatabaseUtils.readMultiplePasswordNoOfAttempts(userName)); log.info(
-		 * "User PIN = " + DatabaseUtils.readMultiplePasswordPIN(userName));
-		 * DatabaseUtils.deleteUser("94777335365");
-		 */
+		 
 
 		// Send USSD push to user's mobile
 		ussdPush.sendUSSD(msisdn, userName, 1, "mtinit", operator);
 		return Response.status(200).entity(responseString).build();
 	}
 
+	/**
+	 * Ussd push.
+	 *
+	 * @param userName the user name
+	 * @param msisdn the msisdn
+	 * @param openId the open id
+	 * @param pwd the pwd
+	 * @param claim the claim
+	 * @param domain the domain
+	 * @param params the params
+	 * @param jsonBody the json body
+	 * @param operator the operator
+	 * @param updateProfile the update profile
+	 * @return the response
+	 * @throws IOException Signals that an I/O exception has occurred.
+	 * @throws SQLException the SQL exception
+	 * @throws JSONException the JSON exception
+	 */
 	@GET
 	@Path("/ussd/push")
 	// @Consumes("application/json")
@@ -399,6 +461,14 @@ public class Endpoints {
 		return Response.status(200).entity(null).build();
 	}
 
+	/**
+	 * User status.
+	 *
+	 * @param username the username
+	 * @param jsonBody the json body
+	 * @return the response
+	 * @throws SQLException the SQL exception
+	 */
 	@GET
 	@Path("/ussd/status")
 	// @Consumes("application/json")
@@ -422,6 +492,24 @@ public class Endpoints {
 		return Response.status(200).entity(responseString).build();
 	}
 
+	/**
+	 * Send sms.
+	 *
+	 * @param userName the user name
+	 * @param msisdn the msisdn
+	 * @param openId the open id
+	 * @param pwd the pwd
+	 * @param claim the claim
+	 * @param domain the domain
+	 * @param params the params
+	 * @param jsonBody the json body
+	 * @param operator the operator
+	 * @param updateProfile the update profile
+	 * @return the response
+	 * @throws SQLException the SQL exception
+	 * @throws RemoteException the remote exception
+	 * @throws Exception the exception
+	 */
 	@GET
 	@Path("/sms/send")
 	// @Consumes("application/json")
@@ -488,6 +576,24 @@ public class Endpoints {
 		return Response.status(200).entity(returnString).build();
 	}
 
+	/**
+	 * Send sms one api.
+	 *
+	 * @param userName the user name
+	 * @param msisdn the msisdn
+	 * @param openId the open id
+	 * @param pwd the pwd
+	 * @param claim the claim
+	 * @param domain the domain
+	 * @param params the params
+	 * @param jsonBody the json body
+	 * @param operator the operator
+	 * @param updateProfile the update profile
+	 * @return the response
+	 * @throws SQLException the SQL exception
+	 * @throws RemoteException the remote exception
+	 * @throws Exception the exception
+	 */
 	@GET
 	@Path("/sms/oneapi")
 	// @Consumes("application/json")
@@ -559,6 +665,13 @@ public class Endpoints {
 		return Response.status(200).entity(returnString).build();
 	}
 
+	/**
+	 * Sms confirm.
+	 *
+	 * @param id the id
+	 * @return the response
+	 * @throws Exception the exception
+	 */
 	@GET
 	@Path("/sms/response")
 	// @Consumes("application/json")
@@ -593,12 +706,9 @@ public class Endpoints {
 		if ((userRegistrationData != null)
 				&& (currentTime - userRegistrationData.getUserRegistrationTime()) <= waitingTime) {
 
-			/*
-			 * calling add user through profile manage holder - refactoring
-			 * start
-			 */
+			 
 			userProfileManager.manageProfile(userRegistrationData);
-			/* refactoring finished for SMS registrationz */
+			 
 			userMap.remove(msisdn);
 
 			responseHtmlFooter = "</p>" + "</header>" + "<div class='page__illustration v-grow v-align-content'><div>"
@@ -613,6 +723,14 @@ public class Endpoints {
 		return Response.status(200).entity(responseString).build();
 	}
 
+	/**
+	 * User hash.
+	 *
+	 * @param answer1 the answer1
+	 * @return the response
+	 * @throws IOException Signals that an I/O exception has occurred.
+	 * @throws NoSuchAlgorithmException the no such algorithm exception
+	 */
 	@GET
 	@Path("/ussd/hash")
 	// @Consumes("application/json")
@@ -642,6 +760,12 @@ public class Endpoints {
 		return Response.status(200).entity(responseString).build();
 	}
 
+	/**
+	 * Inits the ussd.
+	 *
+	 * @param msisdn the msisdn
+	 * @return the response
+	 */
 	@GET
 	@Path("/ussd/init")
 	@Produces("application/json")
@@ -680,6 +804,13 @@ public class Endpoints {
 		return Response.status(200).entity(responseString).build();
 	}
 
+	/**
+	 * Save request type.
+	 *
+	 * @param msisdn the msisdn
+	 * @param requestType the request type
+	 * @return the response
+	 */
 	@GET
 	@Path("/ussd/saverequest")
 	@Produces("application/json")
@@ -699,6 +830,14 @@ public class Endpoints {
 		return Response.status(200).entity(responseString).build();
 	}
 
+	/**
+	 * Gets the hash value.
+	 *
+	 * @param value the value
+	 * @return the hash value
+	 * @throws NoSuchAlgorithmException the no such algorithm exception
+	 * @throws UnsupportedEncodingException the unsupported encoding exception
+	 */
 	private static String getHashValue(String value) throws NoSuchAlgorithmException, UnsupportedEncodingException {
 
 		MessageDigest digest = MessageDigest.getInstance("SHA-256");
@@ -721,6 +860,14 @@ public class Endpoints {
 		return hashString;
 	}
 
+	/**
+	 * Post request.
+	 *
+	 * @param url the url
+	 * @param requestStr the request str
+	 * @param operator the operator
+	 * @throws IOException Signals that an I/O exception has occurred.
+	 */
 	protected void postRequest(String url, String requestStr, String operator) throws IOException {
 
 		HttpClient client = new DefaultHttpClient();
@@ -745,6 +892,15 @@ public class Endpoints {
 
 	}
 
+	/**
+	 * Ussd pin resend.
+	 *
+	 * @param operator the operator
+	 * @param jsonBody the json body
+	 * @return the response
+	 * @throws SQLException the SQL exception
+	 * @throws JSONException the JSON exception
+	 */
 	@POST
 	@Path("/ussd/pin/resend")
 	@Consumes("application/json")
@@ -780,6 +936,16 @@ public class Endpoints {
 		return Response.status(200).entity("{message:SUCCESS}").build();
 	}
 
+	/**
+	 * Send sms one api.
+	 *
+	 * @param userName the user name
+	 * @param jsonBody the json body
+	 * @return the response
+	 * @throws SQLException the SQL exception
+	 * @throws RemoteException the remote exception
+	 * @throws Exception the exception
+	 */
 	@GET
 	@Path("/user/exists")
 	// @Consumes("application/json")
@@ -787,12 +953,25 @@ public class Endpoints {
 	public Response sendSMSOneAPI(@QueryParam("username") String userName, String jsonBody)
 			throws SQLException, RemoteException, Exception {
 
-		/*connect to user store through user profile manager*/
+		 
 		String returnString = String.valueOf(userProfileManager.isUserExists(userName));
 
 		return Response.status(200).entity(returnString).build();
 	}
 
+	/**
+	 * Sets the user claim value.
+	 *
+	 * @param msisdn the msisdn
+	 * @param claimValue the claim value
+	 * @return the response
+	 * @throws SQLException the SQL exception
+	 * @throws JSONException the JSON exception
+	 * @throws JSONException the JSON exception
+	 * @throws RemoteException the remote exception
+	 * @throws LoginAuthenticationExceptionException the login authentication exception exception
+	 * @throws RemoteUserStoreManagerServiceUserStoreExceptionException the remote user store manager service user store exception exception
+	 */
 	@GET
 	@Path("/user/setclaim")
 	@Produces("application/json")
@@ -812,6 +991,22 @@ public class Endpoints {
 
 	}
 
+	/**
+	 * User authenticator.
+	 *
+	 * @param userName the user name
+	 * @param msisdn the msisdn
+	 * @param openId the open id
+	 * @param pwd the pwd
+	 * @param claim the claim
+	 * @param domain the domain
+	 * @param params the params
+	 * @param updateProfile the update profile
+	 * @param authenticator the authenticator
+	 * @param jsonBody the json body
+	 * @return the response
+	 * @throws Exception the exception
+	 */
 	@GET
 	@Path("/user/authenticator")
 	@Produces("application/json")
@@ -838,9 +1033,9 @@ public class Endpoints {
 		}
 
 		// addUser(msisdn, pwd);
-		/* calling add user through profile manage holder - refactoring start */
+		 
 		userProfileManager.manageProfile(userRegistrationData);
-		/* refactoring finished */
+		 
 
 		DatabaseUtils.insertUserStatus(userName, "Approved");
 
@@ -848,6 +1043,23 @@ public class Endpoints {
 
 	}
 
+	/**
+	 * Send authatication.
+	 *
+	 * @param scope the scope
+	 * @param redirectUri the redirect uri
+	 * @param clientId the client id
+	 * @param responseType the response type
+	 * @param acrValue the acr value
+	 * @param msisdn the msisdn
+	 * @param state the state
+	 * @param nonce the nonce
+	 * @param jsonBody the json body
+	 * @return the response
+	 * @throws SQLException the SQL exception
+	 * @throws RemoteException the remote exception
+	 * @throws Exception the exception
+	 */
 	// add data for in-line authentication
 	@GET
 	@Path("/user/authenticate/add")
@@ -873,6 +1085,16 @@ public class Endpoints {
 		return Response.status(200).entity(responseString).build();
 	}
 
+	/**
+	 * Gets the authatication.
+	 *
+	 * @param tokenid the tokenid
+	 * @param jsonBody the json body
+	 * @return the authatication
+	 * @throws SQLException the SQL exception
+	 * @throws RemoteException the remote exception
+	 * @throws Exception the exception
+	 */
 	// get data for in-line authentication
 	@GET
 	@Path("/user/authenticate/get")
@@ -885,6 +1107,17 @@ public class Endpoints {
 		return Response.status(200).entity(json.toString()).build();
 	}
 
+	/**
+	 * Update authatication msisdn.
+	 *
+	 * @param tokenid the tokenid
+	 * @param msisdn the msisdn
+	 * @param jsonBody the json body
+	 * @return the response
+	 * @throws SQLException the SQL exception
+	 * @throws RemoteException the remote exception
+	 * @throws Exception the exception
+	 */
 	@GET
 	@Path("/user/authenticate/updatemsisdn")
 	@Produces("application/json")
@@ -897,14 +1130,13 @@ public class Endpoints {
 		return Response.status(200).entity(json.toString()).build();
 	}
 
+	 
 	/**
-	 * Return the authenticator, based on the defined order in the LOA.xml and
-	 * the given the acr value.
-	 * 
-	 * @param acr
-	 *            value of the acr.
-	 * @return Json string with authenticator.
-	 * @throws Exception
+	 * Gets the correct authenticator.
+	 *
+	 * @param acr the acr
+	 * @return the correct authenticator
+	 * @throws Exception the exception
 	 */
 	@GET
 	@Path("/loa/authenticator")
@@ -944,13 +1176,12 @@ public class Endpoints {
 		return Response.status(statusCode).entity(returnJson).build();
 	}
 
+	 
 	/**
-	 * Select the first authenticator from, SMSAuthenticator, USSDAuthenticator
-	 * or USSDPinAuthenticator
-	 * 
-	 * @param name
-	 *            name of the authenticator.
-	 * @return true if valid authenticator found.
+	 * Select default authenticator.
+	 *
+	 * @param authenticators the authenticators
+	 * @return the string
 	 */
 	private String selectDefaultAuthenticator(List<MIFEAbstractAuthenticator> authenticators) {
 		try {

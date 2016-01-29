@@ -29,7 +29,7 @@
     }
 %>
 
-<fmt:bundle basename="org.wso2.carbon.identity.application.authentication.endpoint.i18n.Resources">
+<fmt:bundle basename="com.wso2telco.identity.application.authentication.endpoint.i18n.Resources">
 <html lang="en">
     <head>
         <meta charset="utf-8">
