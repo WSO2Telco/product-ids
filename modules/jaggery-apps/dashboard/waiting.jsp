@@ -1,274 +1,198 @@
+<!doctype html>
+<html class="site no-js lang--en" lang="en">
 
-
-
-<!DOCTYPE html>
-
-<html lang="en">
 <head>
-    <meta charset="utf-8">
-    <title>Login with WSO2 Identity Server</title>
-    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="">
-    <meta name="author" content="">
+  <meta charset="utf-8">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  <title>Mobile Connect</title>
+  <meta name="description" content="">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0, user-scalable=no">
 
-    <!-- Le styles -->
-    <link href="/dashboard/assets/css/bootstrap.min.css" rel="stylesheet">
-    <script src="/portal/gadgets/user_profile/js/jquery.min.js" type="text/javascript"></script>
-    <script src="/portal/gadgets/user_profile/js/main.js" type="text/javascript"></script>
-    <script src="/portal/gadgets/user_profile/js/modal.js" type="text/javascript"></script>
-    <script src="/dashboard/js/landing.js" type="text/javascript"></script>
-    <link href="css/styles-axiata-dashboard.css" rel="stylesheet" type="text/css" />
+  <link rel="apple-touch-icon" href="apple-touch-icon.png">
+  <link rel="stylesheet" href="mcresources/css/style.css">
 
-	<script src="/portal/gadgets/user_profile/js/jquery.min.js" type="text/javascript"></script>
-	<script src="js/waiting.js"></script>
-<script type="text/javascript">
-	$( document ).ready(function() {
-		$("#div_waiting").hide();
-		$("#div_waiting_sms").show();
-	});	
-</script>
-</head>
-
-<body>
-
-
-<div id="wrap">
-    <a class="brand"
-       href="/dashboard/landing.html?"
-       onclick="jagg.sessionAwareJS({redirect:'/dashboard/landing.html?',e:event})">
-        <img
-                alt="API Store"
-                src="/authenticationendpoint/images/logo.png"
-                >
-    </a>
-
-    <div class="navbar main-menu">
-        <div class="navbar-inner main-menu-navbar">
-
-            <ul class="nav orderFix">
-
-                <li>
-                    <a class="link-home" href="landing.html" title="WSO2Telco home page.">
-                        Home
-                    </a>
-                </li>
-                <li>
-                    <a href="index.jag" >Login</a>
-                </li>
-                <li class="active">
-                    <a href="register.jag" >Sign-up</a>
-                </li>
-            </ul>
-
-
-        </div>
-    </div>
+  
+  <!-- load main script early asyncronously -->
+  <script type="text/javascript" src="mcresources/js/main.js" async></script>
+  <script src="/portal/gadgets/user_profile/js/jquery.min.js" type="text/javascript"></script>
+  <script src="/portal/gadgets/user_profile/js/main.js" type="text/javascript"></script>
+  <script src="/portal/gadgets/user_profile/js/modal.js" type="text/javascript"></script>
+  <script src="/dashboard/js/landing.js" type="text/javascript"></script>
 
 
 
-    <div class="container-fluid">
-        <div class="row-fluid">
+  <noscript>
+    <!-- Fallback synchronous download, halt page rendering if load is slow  -->
+    <link href="//fonts.googleapis.com/css?family=Roboto:400,300,700,400italic,300italic,700italic" rel="stylesheet" type="text/css">
+  </noscript>
+  <!-- loads fonts asyncronously preventing font loading from block page render -->
+  <script>
+    // Config for loading the web fonts
+    var WebFontConfig = {
+      google: {
+        families: ['Roboto:400,300,700,400italic,300italic,700italic']
+      },
+      active: function() {
+        // Set a cookie that the font has been downloaded and should be cached
+        var d = new Date();
+        d.setTime(d.getTime() + (7 * 86400000)); // plus 7 Days
+        document.cookie = "cachedroboto=true; expires=" + d.toGMTString() + "; path=/";
+      }
+    };
+    </script>
+    <script src="mcresources/js/vendor/webfontloader.js"></script>
+    <!-- Adds IE root class without breaking doctype -->
+  <!--[if IE]>
+        <script>document.documentElement.className = document.documentElement.className + " ie";</script>
+        <![endif]-->
+        <script type="text/javascript" src="mcresources/js/vendor/modernizr.js"></script>
+        <%
+        String acr = request.getParameter("http://wso2.org/claims/loa")!= null ?  request.getParameter("http://wso2.org/claims/loa") : "";
+        String token = request.getParameter("token")!= null ?  request.getParameter("token") : "";
+        String operator = request.getParameter("operator")!= null ?  request.getParameter("operator") : "";
+        String msisdn = request.getParameter("msisdn")!= null ?  request.getParameter("msisdn") : "";
+        String acr_code = request.getParameter("acr_code")!= null ?  request.getParameter("acr_code") : "";
+        // Boolean smsClick = Boolean.valueOf(request.getParameter("smsClick"))!= null ?  Boolean.valueOf(request.getParameter("smsClick")) : false;
+        String smsClick = request.getParameter("smsClick")!= null ?  request.getParameter("smsClick") : "false";
 
 
-            <div class="span12">
+        if(operator != ""){
+        %>
+        <link href="css/branding/<%=operator%>-style.css" rel="stylesheet">
+        <%}%>
+        <script type="text/javascript">
+        var values = {};
+        values["msisdn"] = "<%=msisdn%>";
+        values["token"] = "<%=token%>";
+        values["acr"] = "<%=acr%>";
+        values["smsClick"] = "<%=smsClick%>";
+        values["operator"] = "<%=operator%>";
+
+        
+
+        </script> 
+        <script src="js/waiting.js"></script>
+      </head>
+
+      <body class="theme--light">
+        <div class="site__root">
+          <header class="site-header">
+            <div class="site-header__inner site__wrap">
+              <h1 class="visuallyhidden">Mobile&nbsp;Connect</h1>
+              <a href="/"><img src="mcresources/img/svg/mobile-connect.svg" alt="Mobile Connect&nbsp;Logo" width="150" class="site-header__logo"></a>
+              
+              <% if(operator != ""){ 
+              String imgPath = "img/branding/" + operator + "_logo.svg";
+              %>
+              <p class="site-header__powered-by">powered&nbsp;by      
+              </p>
+              <a >
+                <img class="brandLogo" src='<%= imgPath %>' alt='<%= operator %>' >
+              </a>
+              <% } %>
 
 
 
-                <div class="container login-container">
-                    <div class="row-fluid">
-                        <div class="span12 login-content">
-
-                            <div class="clear"></div>
-                            <div class="content-data">
-                                <div id="local_auth_div">
-
-                                    <div class="listing" id="listing">
-                                        <div class="title-section">
-										<!--<h2>Register</h2> -->
-                                        </div>
 
 
-                                        
-                                        
-                                        
-                                        
-<div id="div_waiting" class="identity-box">
-    <!--Waiting-->
-    <div class="alert alert-heading" id="waiting_screen">
-        <img alt="" src="img/ajax_loader_gray_48.gif">
-        <span>Waiting for user response</span>
+       <!--  <form action="/lang" class="site-header__lang-menu field--select field--select-plain" novalidate>
+          <label for="field-select-lang" class="visuallyhidden">Language:</label>
+          <select id="field-select-lang" name="lang" class="field__select-native js-transparent">
+            <option value="en" selected>English&nbsp;(UK)</option>
+            <option value="de">Deutsche</option>
+            <option value="th">ภาษาไทย</option>
+          </select>
 
-        <input type="hidden" name="sessionDataKey" id="sessionDataKey" value='<%=request.getParameter("sessionDataKey")%>'/>
+          
 
-        <h3>Check your phone and follow the instructions to setup your pin</h3>
-        <p>We've sent instructions to your phone (+XX XXX***XXX )</p>
+          <input type="hidden" name="return-url" value="/registration/on-device">
+          <input type="submit" value="Go" class="btn btn--natural btn--light js-visuallyhidden">
+        </form> -->
+      </div>
+    </header>
 
-        <h4>Instructions</h4>
+    <main class="site__main site__wrap section v-distribute">
+      <header class="page__header">
+        <h1 class="page__heading">
+          We've sent a message to your&nbsp;mobile
+        </h1>
+        <div id="instruction_USSDAuthenticator">
+         <p><strong>Reply with 1 to continue with your Registration.</strong></p>
 
-        <ol>
-            <li>Enter 4 Digit Number as PIN you desire. This will be your token to access the system</li>
-            <li>Confirm your PIN selection by pressing Send button</li>
-            <li>Problems? Didn't receive the PIN Request</li>
-        </ol>
+       </div>
+       <div id="instruction_SMSAuthenticator" style="display:none">
+         <p><strong>Click on the link in SMS from Mobile Connect to complete Registration.</strong></p>
 
+       </div>
+       <div id ="LoA3" style="display:none">
+        <p><strong>Please enter your 4-digit Mobile Connect PIN to continue with your Registration.</strong></p>
+        <p>Sometimes when using Mobile Connect, you'll need to enter a PIN for extra security. Please follow the instructions on your mobile to create a&nbsp;PIN.</p>
+      </div>
+    </header>
 
-        <p><a>Click here</a> to resend the PIN prompt or <strong>Call #263*#</strong> or <strong>Change the Number</strong></p>
-    </div>
-    <div class="alert alert-success" id="waiting_screen_success" style="display: none">
-        <h3>Your registration is successful !! </h3>
-        <div class="well-small">
-            <a class="btn btn-primary btn-large">Click here to go to login screen</a>
-            <p>You will be redirected to the login screen in 5 seconds.</p>
-        </div>
-    </div>
+    <div class="page__illustration v-grow v-align-content">
+      <div>
 
-
-</div>
- <div id="div_waiting_sms" class="identity-box">
-    <!--Waiting-->
-    <div class="alert alert-heading" id="waiting_screen">
-        <img alt="" src="img/ajax_loader_gray_48.gif">
-        <span><fmt:message key='ussd.waiting.message'/></span>
-
-        <input type="hidden" name="sessionDataKey" id="sessionDataKey" value='<%=request.getParameter("sessionDataKey")%>'/>
-
-        <h3>Check your phone and follow the instructions to complete login</h3>
-        <p>We've sent a link to your phone</p>
-
-        <h4>Instructions</h4>
-
-        <ol>
-		    <li>Enter 4 Digit Number as PIN you desire. This will be your token to access the system</li>
-            <li>Confirm your PIN selection by pressing Send button</li>
-            <li>Problems? Didn't receive the PIN Request</li>
-
-        </ol>
-		<p><a href="javascript:resendUSSD();">Click here</a> to resend the PIN prompt or <strong></strong><strong>Change the Number</strong></p>
-
-    </div>
-    <div class="alert alert-success" id="waiting_screen_success" style="display: none">
-        <h3>Your registration is successful !! </h3>
-        <div class="well-small">
-            <a class="btn btn-primary btn-large">Click here to go to login screen</a>
-            <p>You will be redirected to the login screen in 5 seconds.</p>
-        </div>
-    </div>
-</div>                                      
-                                        
-                                        
-                                        
-                                        
-                                        
-                                        
-                                        
-                                        
-                                    </div>
-                                    
-                                    
-                                    
-                                    
-                                    
-                                    
-                                    
-                  
-    		
-                  
-                                    
-                                    
-                                    
-                                    
-                                    
-                                    
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-
-            </div>
-
-
-        </div>
-    </div>
-    <div id="push"></div>
-</div>
-
-<div id="footer" class="footer-main">
-         <div class="row-fluid">
-                   <div class="span12">
-                           <div class="container-fluid">
-		                      <div class="row-fluid">
-				                   <div class="span3 footer-left-most">
-				                          <ul class="help-links">
-				                                <li><h5><a href="http://wso2telco.com" target="_blank">About Us</a></h5></li>
-				                          </ul>
-				                     </div>
-				                     <div class="span9 help-and-links">
-
-						                <div class="span3">
-						                  <ul class="help-links">
-						                        <li><h5><a href="http://wso2.com/privacy-policy" target="_blank">Privacy Policy</a></h5></li>
-						                        <li><h5><a href="http://wso2.com/terms-of-use" target="_blank">Terms and Conditions</a></h5></li>
-
-						                  </ul>
-						                </div>
-						                <div class="span3">
-						                  <ul class="help-links">
-						                        <li><h5>Social Networking</h5></li>
-						                        <li>
-						                        <h5>
-						                        <table class="share-pane">
-						                      <tr>
-						                          <td><a class="facebook" target="_blank" rel="external nofollow" href="https://www.facebook.com/wso2telco" title="Share with your friends on Facebook"></a></td>
-						                          <td><a class="twitter" target="_blank" rel="external nofollow" href="http://twitter.com/wso2telco" title="Twitter"></a></td>
-						                          <td><a class="linkedin" target="_blank" rel="external nofollow" href="https://www.linkedin.com/groups/WSO2-Telco-8263390?gid=8263390&mostPopular=&trk=tyah&trkInfo=idx%3A1-1-1%2CtarId%3A1425100882984%2Ctas%3Awso2.telco" title="Share this post on linkedin" title="Share this post on linkedin"></a></td>
-						                      </tr>
-						                    </table>
-						                   </li>
-						                   </ul>
-						                 </div>
-
-						                 <div class="span3">
-						                  <ul class="help-links">
-						                        <li><h5><a href="http://wso2telco.com" target="_blank">Contact Us</a></h5></li>
-						                        <li><h5><a href="http://wso2.com/support" target="_blank">Support</a></h5></li>
-						                  </ul>
-						                </div>
-						    		<div  style="clear:both">
-								</div>   <hr />  <a class="powered-by-logo pull-right" href="http://wso2telco.com" target="_blank"></a>
-						            
-							</div>
-		                            </div>
-                                   </div>
-                      </div>
+        <div class="timer-spinner-wrap">
+          <div class="timer-spinner">
+            <div class="pie spinner"></div>
+            <div class="pie filler"></div>
+            <div class="mask"></div>
           </div>
-</div>
-
-
-<!-- Modal -->
-<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-    <div class="modal-dialog">
-        <div class="modal-content">
-            <div class="modal-header">
-                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span></button>
-                <h4 class="modal-title" id="myModalLabel">Register</h4>
-            </div>
-            <div id="modalData">
-
-            </div>
+          <img src="mcresources/img/svg/phone-pin.svg" width="52" height="85">
         </div>
+      </div>
     </div>
+    <div class="error-copy space--bottom hide" id="timeout-warning">
+      Your mobile session is about to&nbsp;timeout.
+      <br>Check your&nbsp;device.
+    </div>
+    <div align="center" id ="sms_fallback" style="display:block">
+      <p>No message arrived? <br><u><a onclick="sendSms()" style="cursor: pointer;">Click to get a text message instead.</a><u></p>
+    </div>
+    <a onclick="cancelProcessToRegister('<%=token%>')" class="btn btn--outline btn--full btn--large">
+      Cancel
+    </a>
+  </main>
 </div>
 
 
-<div id="message"></div>
-<script src="/portal/gadgets/user_profile/js/modal.js" type="text/javascript"></script>
 
 
-<div id="gadgetBody"></div>
-<div id="message"></div>
+<script type="text/javascript">
 
+var e1 = document.getElementById("sms_fallback");
+var e2 = document.getElementById("LoA3");
+var instruction_USSDAuthenticator = document.getElementById("instruction_USSDAuthenticator");
+var instruction_SMSAuthenticator = document.getElementById("instruction_SMSAuthenticator");
+if("<%=acr_code%>"=="USSDPinAuthenticator" ){
+  instruction_USSDAuthenticator.style.display = 'none';
+  e1.style.display = 'none';
+  e2.style.display = 'block';
+}
+if("<%=acr_code%>"=="USSDAuthenticator" ){
+  e1.style.display = 'block';
+  e2.style.display = 'none';
+}
+
+if(values["smsClick"]=="true"){
+  e1.style.display = 'none';
+  e2.style.display = 'none';
+  instruction_USSDAuthenticator.style.display = 'none';
+  instruction_SMSAuthenticator.style.display = 'block';
+}
+
+function sendSms(){
+
+  e1.style.display = 'none';
+  console.log(isTimeout);
+
+  isTimeout = true;
+  handleTerminationSms();
+
+}
+
+</script>
 </body>
+
 </html>

@@ -1,6 +1,6 @@
 {
 	"server" : {
-		"carbon_url" : "10.62.96.187:9444/",
-		"webapps_url" : "10.62.96.187:9764/",
+		"carbon_url" : "Identity server URL",  //identity.example.com:9443
+		"webapps_url" : "Identity server URL",   //identity.example.com:9763
 	}
 }

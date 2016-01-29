@@ -37,7 +37,6 @@ function call(webService, serverUrl, options, payload){
     }
 
     log.debug(payload);
-
     webService.send(payload);
 
 }

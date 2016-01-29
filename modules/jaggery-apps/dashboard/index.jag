@@ -1,5 +1,6 @@
 <%
-include("/site/jagg/site.jag");
+
+include("/util/constants.jag");
 var SERVER_URL = getWebAppsUrl();
 var AM_URL = getAmUrl();
 var user = session.get('user');
@@ -79,8 +80,7 @@ response.sendRedirect("login.jag");
 
                     <li>
 
-                        <a class="dropdown-toggle" data-toggle="dropdown" href="#"><i class="icon-user"></i> <%=
-                            session.get(LOGGED_IN_USER) %> <b class="caret"></b></a>
+                        <a class="dropdown-toggle" data-toggle="dropdown" href="#"><i class="icon-user"></i> <%=session.get(LOGGED_IN_USER) %> <b class="caret"></b></a>
                         <ul class="dropdown-menu dropdown-account" role="menu" aria-labelledby="dLabel">
                             <li>
                                 <a href="/dashboard/samlsso.jag?logout=true"><i class="icon-signout"></i> Sign

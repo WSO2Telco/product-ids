@@ -2,6 +2,7 @@
 response.addHeader("Access-Control-Allow-Origin", "*");
 response.addHeader("Content-Type", "application/json");
 include("/site/jagg/site.jag");
+include("/util/constants.jag");
 var SERVER_URL = getWebAppsUrl();
 (function () {
 

@@ -1,3 +1,18 @@
+/*******************************************************************************
+ * Copyright (c) 2015-2016, WSO2.Telco Inc. (http://www.wso2telco.com) 
+ * 
+ * All Rights Reserved. WSO2.Telco Inc. licences this file to you under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ * 
+ *   http://www.apache.org/licenses/LICENSE-2.0
+ * 
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ ******************************************************************************/
 package com.wso2telco;
 
 import javax.naming.Context;
@@ -18,23 +33,29 @@ import java.util.logging.Logger;
 
 
 
+ 
+// TODO: Auto-generated Javadoc
 /**
- * Created with IntelliJ IDEA
- * User: Tharanga Ranaweera
- * Date: 8/07/14
- * Time: 11:59 AM
- * To change this template use File | Settings | File Templates.
+ * The Class DatabaseUtils.
  */
 public class DatabaseUtils {
 
+    /** The ussd datasource. */
     private static volatile DataSource ussdDatasource = null;
+    
+    /** The log. */
     private static Log log = LogFactory.getLog(DatabaseUtils.class);
     
    // private static final org.apache.log4j.Logger LOG = org.apache.log4j.Logger.getLogger(Endpoints.class.getName());
 
     //private static Log log = LogFactory.getLog(DatabaseUtils.class);
 
-    public static void initializeDataSource() throws NamingException {
+    /**
+    * Initialize data source.
+    *
+    * @throws NamingException the naming exception
+    */
+   public static void initializeDataSource() throws NamingException {
         if (ussdDatasource != null ) {
             return;
         }
@@ -54,6 +75,13 @@ public class DatabaseUtils {
     }
 
 
+    /**
+     * Insert multiple password pin.
+     *
+     * @param username the username
+     * @param ussdSessionID the ussd session id
+     * @throws SQLException the SQL exception
+     */
     public static void insertMultiplePasswordPIN(String username, String ussdSessionID) throws SQLException{
 
 
@@ -108,6 +136,14 @@ public class DatabaseUtils {
         }
 
     }
+     
+     /**
+      * Update u ser status.
+      *
+      * @param sessionID the session id
+      * @param status the status
+      * @throws SQLException the SQL exception
+      */
      public static void updateUSerStatus(String sessionID, String status) throws SQLException{
         Connection connection = null;
         PreparedStatement ps = null;
@@ -136,6 +172,13 @@ public class DatabaseUtils {
             
     }
      
+    /**
+     * Update status.
+     *
+     * @param sessionID the session id
+     * @param status the status
+     * @throws SQLException the SQL exception
+     */
     public static void updateStatus(String sessionID, String status) throws SQLException{
         Connection connection = null;
         PreparedStatement ps = null;
@@ -167,12 +210,14 @@ public class DatabaseUtils {
             
     }
      
+     
     /**
-     * Insert pin to PIN_RESET.
-     * @param sessionID sessionId
-     * @param status status
-     * @param pin PIN
-     * @throws SQLException exception
+     * Insert pin reset request.
+     *
+     * @param sessionID the session id
+     * @param status the status
+     * @param pin the pin
+     * @throws SQLException the SQL exception
      */
     public static void insertPinResetRequest(String sessionID, String status, String pin) throws SQLException{
         Connection connection = null;
@@ -204,6 +249,13 @@ public class DatabaseUtils {
             
     }
     
+    /**
+     * Gets the u ser pin.
+     *
+     * @param sessionID the session id
+     * @return the u ser pin
+     * @throws SQLException the SQL exception
+     */
     public static String getUSerPIN(String sessionID) throws SQLException{
         Connection connection = null;
         PreparedStatement ps = null;
@@ -240,6 +292,12 @@ public class DatabaseUtils {
             return pin;
      }
     
+    /**
+     * Insert multiple password pin.
+     *
+     * @param username the username
+     * @throws SQLException the SQL exception
+     */
     //insert initial Entry
     public static void insertMultiplePasswordPIN(String username) throws SQLException{
         
@@ -270,6 +328,13 @@ public class DatabaseUtils {
     }
 
     
+    /**
+     * Update multiple password pin.
+     *
+     * @param username the username
+     * @param pin the pin
+     * @throws SQLException the SQL exception
+     */
     //Update PIN
     public static void updateMultiplePasswordPIN(String username,int pin) throws SQLException{
         
@@ -302,6 +367,13 @@ public class DatabaseUtils {
             }
     }
     
+    /**
+     * Update multiple password no of attempts.
+     *
+     * @param username the username
+     * @param attempts the attempts
+     * @throws SQLException the SQL exception
+     */
     //Update no of attempts
     public static void updateMultiplePasswordNoOfAttempts(String username,int attempts) throws SQLException{
         
@@ -333,6 +405,14 @@ public class DatabaseUtils {
                 connection.close();			
             }
     }
+      
+      /**
+       * Read multiple password pin.
+       *
+       * @param username the username
+       * @return the int
+       * @throws SQLException the SQL exception
+       */
       //Read PIN  
       public static int readMultiplePasswordPIN(String username) throws SQLException{
         
@@ -372,6 +452,13 @@ public class DatabaseUtils {
             return pin;
     }
     
+    /**
+     * Read multiple password no of attempts.
+     *
+     * @param username the username
+     * @return the int
+     * @throws SQLException the SQL exception
+     */
     //Read Attempts
     public static int readMultiplePasswordNoOfAttempts(String username) throws SQLException{
         
@@ -411,6 +498,13 @@ public class DatabaseUtils {
             return noOfAttempts;
     }
     
+    /**
+     * Checks if is existing user.
+     *
+     * @param username the username
+     * @return true, if is existing user
+     * @throws SQLException the SQL exception
+     */
     public static boolean isExistingUser(String username) throws SQLException{
         boolean isUser = false;
         
@@ -457,6 +551,12 @@ public class DatabaseUtils {
 
       }
     
+    /**
+     * Delete user.
+     *
+     * @param username the username
+     * @throws SQLException the SQL exception
+     */
     //Delete Entry
     public static void deleteUser(String username) throws SQLException{
         
@@ -489,6 +589,13 @@ public class DatabaseUtils {
 		}
     }
     
+    /**
+     * Gets the u ser status.
+     *
+     * @param username the username
+     * @return the u ser status
+     * @throws SQLException the SQL exception
+     */
     public static String getUSerStatus(String username) throws SQLException{
         Connection connection = null;
         PreparedStatement ps = null;
@@ -526,6 +633,14 @@ public class DatabaseUtils {
      }
 
 
+    /**
+     * Insert user status.
+     *
+     * @param username the username
+     * @param status the status
+     * @return the string
+     * @throws SQLException the SQL exception
+     */
     //insert initial Entry
     public static String insertUserStatus(String username,String status) throws SQLException{
 
@@ -560,6 +675,13 @@ public class DatabaseUtils {
 
      
      
+    /**
+     * Checks if is existing user status.
+     *
+     * @param username the username
+     * @return true, if is existing user status
+     * @throws SQLException the SQL exception
+     */
     public static boolean isExistingUserStatus(String username) throws SQLException{
         boolean isUser = false;
         
@@ -606,6 +728,12 @@ public class DatabaseUtils {
 
       }
     
+    /**
+     * Delete user status.
+     *
+     * @param username the username
+     * @throws SQLException the SQL exception
+     */
     //Delete Entry
     public static void deleteUserStatus(String username) throws SQLException{
         
@@ -638,6 +766,13 @@ public class DatabaseUtils {
 		}
     }
     
+     /**
+      * Update reg status.
+      *
+      * @param username the username
+      * @param status the status
+      * @throws SQLException the SQL exception
+      */
      public static void updateRegStatus(String username, String status) throws SQLException{
         Connection connection = null;
         PreparedStatement ps = null;
@@ -668,6 +803,13 @@ public class DatabaseUtils {
             }
     }
     
+    /**
+     * Gets the pending ussd request type.
+     *
+     * @param msisdn the msisdn
+     * @return the pending ussd request type
+     * @throws SQLException the SQL exception
+     */
     static Integer getPendingUSSDRequestType(String msisdn) throws SQLException {
         
         Connection connection = null;
@@ -702,6 +844,15 @@ public class DatabaseUtils {
         return requestType;
     }
 
+    /**
+     * Save request type.
+     *
+     * @param msisdn the msisdn
+     * @param requestType the request type
+     * @return the int
+     * @throws SQLException the SQL exception
+     * @throws NamingException the naming exception
+     */
     static int saveRequestType(String msisdn, Integer requestType) throws SQLException,NamingException {
         Connection connection = null;
 //        String sql = "insert into pendingussd (msisdn, requesttype) values (?,?)";
@@ -725,6 +876,12 @@ public class DatabaseUtils {
         return -1;
     }
 
+    /**
+     * Delete request type.
+     *
+     * @param msisdn the msisdn
+     * @throws SQLException the SQL exception
+     */
     static void deleteRequestType(String msisdn) throws SQLException {
         Connection connection = null;
         String sql = "delete from pendingussd where msisdn = ?";
@@ -741,6 +898,13 @@ public class DatabaseUtils {
         }
     }
     
+    /**
+     * Gets the ussd db connection.
+     *
+     * @return the ussd db connection
+     * @throws SQLException the SQL exception
+     * @throws NamingException the naming exception
+     */
     public static Connection getUssdDBConnection() throws SQLException,NamingException {
         initializeDataSource();
         if (ussdDatasource != null) {
@@ -750,6 +914,14 @@ public class DatabaseUtils {
         }
     }
 
+    /**
+     * Save authenticate data.
+     *
+     * @param authenticationData the authentication data
+     * @return the int
+     * @throws SQLException the SQL exception
+     * @throws NamingException the naming exception
+     */
     public static int saveAuthenticateData(AuthenticationData authenticationData) throws SQLException,NamingException {
         Connection connection = null;
 
@@ -782,6 +954,14 @@ public class DatabaseUtils {
         return -1;
     }
 
+    /**
+     * Gets the authenticate data.
+     *
+     * @param tokenID the token id
+     * @return the authenticate data
+     * @throws SQLException the SQL exception
+     * @throws NamingException the naming exception
+     */
     public static AuthenticationData getAuthenticateData(String tokenID) throws SQLException,NamingException {
 
         Connection connection = null;
@@ -824,6 +1004,13 @@ public class DatabaseUtils {
 
 
 
+    /**
+     * Update authenticate data.
+     *
+     * @param msisdn the msisdn
+     * @param status the status
+     * @throws SQLException the SQL exception
+     */
     public static void updateAuthenticateData(String msisdn, String status) throws SQLException{
         Connection connection = null;
         PreparedStatement ps = null;
@@ -850,6 +1037,13 @@ public class DatabaseUtils {
     }
 
 
+    /**
+     * Update authenticate data msisdn.
+     *
+     * @param tokenId the token id
+     * @param msisdn the msisdn
+     * @throws SQLException the SQL exception
+     */
     public static void updateAuthenticateDataMsisdn(String tokenId, String msisdn) throws SQLException{
         Connection connection = null;
         PreparedStatement ps = null;
@@ -876,6 +1070,13 @@ public class DatabaseUtils {
     }
 
 
+    /**
+     * Gets the user name by id.
+     *
+     * @param uuid the uuid
+     * @return the user name by id
+     * @throws SQLException the SQL exception
+     */
     //insert initial Entry
     public static String getUserNameById(String uuid) throws SQLException{
 

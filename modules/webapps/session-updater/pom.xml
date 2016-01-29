@@ -1,11 +1,4 @@
-<!-- Copyright (c) 2015-2016, WSO2.Telco Inc. (http://www.wso2telco.com) 
-	All Rights Reserved. WSO2.Telco Inc. licences this file to you under the 
-	Apache License, Version 2.0 (the "License"); you may not use this file except 
-	in compliance with the License. You may obtain a copy of the License at http://www.apache.org/licenses/LICENSE-2.0 
-	Unless required by applicable law or agreed to in writing, software distributed 
-	under the License is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES 
-	OR CONDITIONS OF ANY KIND, either express or implied. See the License for 
-	the specific language governing permissions and limitations under the License. -->
+<?xml version="1.0" encoding="UTF-8"?>
 <!-- Copyright (c) 2015-2016, WSO2.Telco Inc. (http://www.wso2telco.com) 
 	All Rights Reserved. WSO2.Telco Inc. licences this file to you under the 
 	Apache License, Version 2.0 (the "License"); you may not use this file except 
@@ -20,83 +13,56 @@
 	<parent>
 		<groupId>com.wso2telco.ids</groupId>
 		<artifactId>webapps</artifactId>
-		<version>1.0.0-SNAPSHOT</version>
+		<version>2.0.0-SNAPSHOT</version>
+		
 	</parent>
 
-	<modelVersion>4.0.0</modelVersion>	
-	<artifactId>session-updater</artifactId>	
+	<modelVersion>4.0.0</modelVersion>
+	<artifactId>session-updater</artifactId>
 	<packaging>war</packaging>
 
 	<name>Session Updater - Webapps</name>
 
-	<properties>
-		<commons-codec.version>1.9</commons-codec.version>
-		<javax.servlet.version>2.5</javax.servlet.version>
-	</properties>
-
 	<dependencies>
 		<dependency>
-			<groupId>com.google.code.gson</groupId>
-			<artifactId>gson</artifactId>
-			<version>2.1</version>
-			<scope>provided</scope>
+			<groupId>com.googlecode.json-simple</groupId>
+			<artifactId>json-simple</artifactId>
+			<version>${json.simple.version}</version>
 		</dependency>
 		<dependency>
-			<groupId>org.json</groupId>
+			<groupId>org.json.wso2</groupId>
 			<artifactId>json</artifactId>
-			<version>20090211</version>
-			<scope>provided</scope>
-		</dependency>
-		<dependency>
-			<groupId>com.sun.jersey</groupId>
-			<artifactId>jersey-core</artifactId>
-			<version>1.8</version>
-		</dependency>
-		<dependency>
-			<groupId>com.sun.jersey</groupId>
-			<artifactId>jersey-server</artifactId>
-			<version>1.8</version>
-		</dependency>
-		<!--<dependency> -->
-		<!--<groupId>org.apache.axis2.wso2</groupId> -->
-		<!--<artifactId>axis2</artifactId> -->
-		<!--<version>1.6.1.wso2v10</version> -->
-		<!--<scope>provided</scope> -->
-		<!--</dependency> -->
+			<version>${org.json.wso2.version}</version>
+		</dependency>		
 		<dependency>
 			<groupId>org.wso2.carbon</groupId>
 			<artifactId>org.wso2.carbon.authenticator.stub</artifactId>
-			<version>4.2.0</version>
-			<scope>provided</scope>
+			<version>${carbon.kernel.version}</version>
 		</dependency>
 		<dependency>
-			<groupId>org.wso2.carbon</groupId>
+			<groupId>org.wso2.carbon.identity</groupId>
 			<artifactId>org.wso2.carbon.identity.mgt.stub</artifactId>
-			<version>4.2.0</version>
-			<scope>provided</scope>
+			<version>${carbon.identity.version}</version>
 		</dependency>
 		<dependency>
-			<groupId>org.wso2.carbon</groupId>
+			<groupId>org.wso2.carbon.identity</groupId>
 			<artifactId>org.wso2.carbon.um.ws.api.stub</artifactId>
-			<version>4.2.0</version>
-			<scope>provided</scope>
+			<version>${carbon.identity.version}</version>
 		</dependency>
 		<dependency>
 			<groupId>org.apache.httpcomponents</groupId>
 			<artifactId>httpclient</artifactId>
-			<version>4.1.1</version>
-			<scope>provided</scope>
+			<version>${httpclient.version}</version>
 		</dependency>
 		<dependency>
-			<groupId>commons-codec</groupId>
+			<groupId>commons-codec.wso2</groupId>
 			<artifactId>commons-codec</artifactId>
 			<version>${commons-codec.version}</version>
-			<scope>provided</scope>
 		</dependency>
 		<dependency>
 			<groupId>javax.servlet</groupId>
 			<artifactId>servlet-api</artifactId>
-			<version>${javax.servlet.version}</version>
+			<version>${sevlet.api.version}</version>
 		</dependency>
 	</dependencies>
 	<build>
@@ -104,25 +70,24 @@
 		<plugins>
 			<plugin>
 				<artifactId>maven-compiler-plugin</artifactId>
-				<version>3.1</version>
 				<configuration>
-					<source />
-					<target />
+					<source>${maven-compiler-plugin.version}</source>
+					<target>${maven-compiler-plugin.version}</target>
+				</configuration>
+			</plugin>
+			<plugin>
+				<artifactId>maven-war-plugin</artifactId>
+				<version>${maven-war-plugin.version}</version>
+				<configuration>
+					<webResources>
+						<resource>
+							<!-- this is relative to the pom.xml directory -->
+							<directory>src/main/webapp</directory>
+						</resource>
+					</webResources>
+					<warName>SessionUpdater</warName>
 				</configuration>
 			</plugin>
 		</plugins>
 	</build>
-
-	<repositories>
-		<repository>
-			<id>wso2-nexus</id>
-			<name>WSO2 internal Repository</name>
-			<url>http://maven.wso2.org/nexus/content/groups/wso2-public/</url>
-			<releases>
-				<enabled>true</enabled>
-				<updatePolicy>daily</updatePolicy>
-				<checksumPolicy>ignore</checksumPolicy>
-			</releases>
-		</repository>
-	</repositories>
 </project>

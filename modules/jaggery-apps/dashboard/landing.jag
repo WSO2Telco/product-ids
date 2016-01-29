@@ -1,0 +1,91 @@
+<!doctype html>
+<html class="site no-js lang--en" lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  <title>Mobile Connect</title>
+  <meta name="description" content="">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0, user-scalable=no">
+
+  <link rel="apple-touch-icon" href="apple-touch-icon.png">
+  <link rel="stylesheet" href="mcresources/css/style.css">
+
+  <!-- load main script early asyncronously -->
+  <script type="text/javascript" src="mcresources/js/main.js" async></script>
+  <script type="text/javascript" src="js/landing.js" async></script>
+
+  <noscript>
+    <!-- Fallback synchronous download, halt page rendering if load is slow  -->
+    <link href="//fonts.googleapis.com/css?family=Roboto:400,300,700,400italic,300italic,700italic" rel="stylesheet" type="text/css">
+  </noscript>
+  <!-- loads fonts asyncronously preventing font loading from block page render -->
+  <script>
+    // Config for loading the web fonts
+    var WebFontConfig = {
+      google: {
+        families: ['Roboto:400,300,700,400italic,300italic,700italic']
+      },
+      active: function() {
+        // Set a cookie that the font has been downloaded and should be cached
+        var d = new Date();
+        d.setTime(d.getTime() + (7 * 86400000)); // plus 7 Days
+        document.cookie = "cachedroboto=true; expires=" + d.toGMTString() + "; path=/";
+      }
+    };
+    </script>
+    <script src="mcresources/js/vendor/webfontloader.js"></script>
+    <!-- Adds IE root class without breaking doctype -->
+    <!--[if IE]>
+        <script>document.documentElement.className = document.documentElement.className + " ie";</script>
+        <![endif]-->
+        <script type="text/javascript" src="mcresources/js/vendor/modernizr.js"></script>
+
+        
+      </head>
+
+      <body class="theme--dark">
+        <div class="site__root">
+          <header class="site-header">
+            <div class="site-header__inner site__wrap">
+              <h1 class="visuallyhidden">Mobile&nbsp;Connect</h1>
+              <a href="/dashboard/selfcare/index.html"><img src="mcresources/img/svg/mobile-connect.svg" alt="Mobile Connect&nbsp;Logo" width="150" class="site-header__logo"></a>
+              
+              
+        <!-- <form action="/lang" class="site-header__lang-menu field--select field--select-plain" novalidate>
+          <label for="field-select-lang" class="visuallyhidden">Language:</label>
+          <select id="field-select-lang" name="lang" class="field__select-native js-transparent">
+            <option value="en" selected>English&nbsp;(UK)</option>
+            <option value="de">Deutsche</option>
+            <option value="th">ภาษาไทย</option>
+          </select>
+          <input type="hidden" name="return-url" value="/registration/">
+          <input type="submit" value="Go" class="btn btn--natural btn--light js-visuallyhidden">
+        </form> -->
+      </div>
+    </header>
+
+    <main class="site__main site__wrap section v-distribute">
+      <header class="page__header">
+        <h1 class="page__heading">What's your mobile&nbsp;number?</h1>
+        <p>This is simply for your operator to check if you already have a Mobile Connect&nbsp;account.</p>
+      </header>
+      <form action='register.jag' method="post" class="page__form v-grow v-align-content" data-parsley-validate novalidate onsubmit="return validateUser()">
+        <ul class="form-fields">
+          <li>
+            <label for="field-msdin-entry-phone-number">Mobile&nbsp;number</label>
+            
+            <input type="tel" name="msisdn" id="field-msdin-entry-phone-number" autofocus required pattern="^\+?[\d\s\-\(\)]{7,}$" data-parsley-error-message="Please provide a valid mobile&nbsp;number">
+          </li>
+          <li>
+            <button type="submit" class="btn btn--outline btn--large btn--full" >
+              Next
+            </button>
+          </li>
+        </ul>
+      </form>
+    </main>
+  </div>
+</body>
+
+</html>

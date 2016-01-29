@@ -1,0 +1,7 @@
+a.brand{
+    background:transparent url(../../images/branding/tatadocomo_logo.png) no-repeat left top;
+    display: block;
+    width: 212px;
+    height: 102px;
+    margin-bottom:6px;
+}

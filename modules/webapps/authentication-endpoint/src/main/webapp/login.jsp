@@ -27,21 +27,12 @@
 <%@page import="java.net.URLEncoder"%>
 <%@page import="org.apache.log4j.Logger"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
-<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
-<%@ page import="org.wso2.carbon.identity.application.authentication.endpoint.util.CharacterEncoder"%>
-<%@ page import="org.wso2.carbon.identity.application.common.util.IdentityApplicationConstants"%>
-
+<%@ taglib prefix="fmt"     uri="http://java.sun.com/jsp/jstl/fmt" %>
 <%@ page import="java.util.Map" %>
-<%@ page import="org.wso2.carbon.identity.application.authentication.endpoint.Constants" %>
-<%@ page import="org.wso2.carbon.identity.oauth2.model.OAuth2Parameters" %>
-<%@ page import="org.wso2.carbon.identity.oauth.common.OAuthConstants" %>
-<%@ page import="org.wso2.carbon.identity.oauth.cache.*" %>
-<%@ page import="org.wso2.carbon.identity.application.authentication.framework.cache.*" %>
-<%@ page import="org.wso2.carbon.identity.application.authentication.framework.model.*" %>
-<%@ page import="org.wso2.carbon.identity.application.authentication.framework.util.*" %>
-<%@ page import="org.wso2.carbon.identity.application.authentication.framework.context.*" %>
+<%@ page import="com.wso2telco.identity.application.authentication.*" %>
 
-<fmt:bundle basename="org.wso2.carbon.identity.application.authentication.endpoint.i18n.Resources">
+
+<fmt:bundle basename="com.wso2telco.identity.application.authentication.endpoint.i18n.Resources">
 
     <html lang="en">
     <head>

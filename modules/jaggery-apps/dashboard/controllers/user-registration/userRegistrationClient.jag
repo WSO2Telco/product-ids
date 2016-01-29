@@ -6,10 +6,10 @@ var log = new Log();
 
 
 setServerURL();
-log.debug(application.get('serverUrl'));
+log.info("PPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPP"+application.get('serverUrl'));
 
 var serverUrl = application.get('serverUrl');
-serverUrl = serverUrl + "/UserRegistrationAdminService";
+serverUrl = serverUrl + "UserRegistrationAdminService";
 
 var ws = require('ws');
 var webService = new ws.WSRequest();
@@ -43,12 +43,14 @@ function readUserFieldsForUserRegistration(claim, xml){
 
 function setServerURL(){
 	
-	var serverUrl = stringify(application.get(SERVER_URL));
+	var serverUrl = stringify(application.get('serverUrl'));
+	log.info("SERVER_URL ==="+SERVER_URL);
+	log.info("SERVER_URL2222 ==="+serverUrl);
 	if(serverUrl === 'null' || serverUrl == null || serverUrl.length <= 0){
 		//Server URL is not specified in the jaggery.conf, therefore using the service url mentioned in the carbon.conf
-		//lg.info("we are here 0");
+		log.info("we are here 0");
 		var carbon = require('carbon');
-		//lg.info("we are here 1");
+		log.info("we are here 1");
 		var serverConfigService = carbon.server.osgiService('org.wso2.carbon.base.api.ServerConfigurationService');
 		var configContextService = carbon.server.osgiService('org.wso2.carbon.utils.ConfigurationContextService');
 		
@@ -81,16 +83,17 @@ function setServerURL(){
 		var mgtHostName = serverConfigService.getFirstProperty("MgtHostName");
 		
 		
-	  // var httpsPort = CarbonUtils.getTransportPort(configContext, mgtTransport) + "";		
+	   var httpsPort =
+	                CarbonUtils.getTransportPort(configContext, mgtTransport) + "";		
 	                
 		application.put("mgtHostName", mgtHostName);		
 		application.put("mgtTransport", mgtTransport);
 		
 	   application.put("httpsPort", httpsPort);
 		
-	//	if(server.indexOf("local:/") == 0){
+		if(server.indexOf("local:/") == 0){
 			server = mgtTransport + "://"+ hostName +":" + carbonMgtParam + carbonContext + "/services"
-	//	}
+		}
 
 	    var serverUrl = server;
 		 if (serverUrl.indexOf(carbonMgtParam) != -1) {
@@ -108,9 +111,9 @@ function setServerURL(){
 	    if(serverUrl.lastIndexOf('/') === (serverUrl.length - 1)){
 	    	serverUrl = serverUrl.substring(0, serverUrl.length - 1);
 	    }
-		application.put(SERVER_URL, serverUrl);
-		lg.info("connecting to " + serverUrl);
-
+	    
+		application.put("serverUrl", serverUrl);
+		log.info("MMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMM"+serverUrl);
 	}
 		
 }

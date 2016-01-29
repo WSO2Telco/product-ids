@@ -2,97 +2,151 @@
 var log = new Log();
 var serverDetails = require("/site/jagg/site.jag");
 var msisdn = request.getParameter("msisdn");
-var tokenid = request.getParameter("tokenid");
-var authenticator=request.getParameter("authenticator");
+var tokenid = request.getParameter("token");
+var operator = request.getParameter("operator");
+var acr_code = request.getParameter("acr_code");
+var updateProfile=request.getParameter("updateProfile");
+
+if(request.getParameter("smsClick")!=null){
+  var smsClick=request.getParameter("smsClick");
+  log.info("sms link clicked "+smsClick);
+}
+
+log.info("param :: acr_code value : "+acr_code+",  updateProfile value : "+updateProfile+", msisdn : "+msisdn+", tokenid : "+tokenid+", operator : "+operator);
+
 var constants = require("/util/constants.jag");
 var selfReg = require('/controllers/user-registration/userRegistrationClient.jag');
 var strBackend = '';
-
 registerUser();
 function registerUser() {
-    try {
-        if (isUserExists() != "true") {
-            saveRequestDetails();
-            getUserChallanges();
-            if(tokenid){
-               updateMsisdn();
-            }
-            print("false");
-        } else {
-            print("true");
-        }
-    } catch (e) {
+
+  log.info("_________________step 1 : calling registerUser.....");
+
+  try {
+    if (isUserExists() != "true" || updateProfile == "true") {
+    log.info("_________________registration "+isUserExists()+" : "+updateProfile);
+      saveRequestDetails();
+      getUserChallanges();
+      if(tokenid){
+        updateMsisdn();
+      }
+      print("false");
+      } else {
+        print("true");
+      }
+      } catch (e) {
         log.error("Error occurred while accessing server" + e);
+      }
     }
-}
 
-function updateMsisdn() {
-    var url = serverDetails.getWebAppsUrl() + "UserRegistration-1.0-SNAPSHOT/webresources/endpoint/user/authenticate/updatemsisdn?msisdn=" + msisdn+"&tokenid="+tokenid;
-    var xhr = new XMLHttpRequest();
-    xhr.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
-    xhr.open("GET", url, false);//async=false
-    xhr.send();
-    return xhr.responseText;
-}
+    function updateMsisdn() {
 
-function isUserExists() {
-    var url = serverDetails.getWebAppsUrl() + "UserRegistration-1.0-SNAPSHOT/webresources/endpoint/user/exists?username=" + msisdn;
-    var xhr = new XMLHttpRequest();
-    xhr.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
-    xhr.open("GET", url, false);//async=false
-    xhr.send();
-    return xhr.responseText;
-}
+    log.info("_________________calling updateMsisdn.....");
 
-function getUserChallanges() {
-    readRequestValues();
-    var xhr = new XMLHttpRequest();
-    xhr.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
-    xhr.open("GET", strBackend, true);//async=true
-    xhr.send();
-}
+      var url = serverDetails.getWebAppsUrl() + "UserRegistration-1.0-SNAPSHOT/webresources/endpoint/user/authenticate/updatemsisdn?msisdn=" + msisdn+"&tokenid="+tokenid;
+      var xhr = new XMLHttpRequest();
+      xhr.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+      xhr.open("GET", url, false);//async=false
+      xhr.send();
+      return xhr.responseText;
+    }
 
-function saveRequestDetails() {
-    var url = serverDetails.getWebAppsUrl() + "UserRegistration-1.0-SNAPSHOT/webresources/endpoint/ussd/saverequest?msisdn=" + msisdn + "&requesttype=1";
-    //log.info("xxxxxxx>" + tokenid);
-    var xhr = new XMLHttpRequest();
-    xhr.open("GET", url, false);//async=false
-    xhr.send();
-}
+    function isUserExists() {
 
-function readRequestValues() {
-    var domain = request.getParameter("domain");
-    var userNameVal = request.getParameter("userName");
-    var openId = session.get("openIdURL");
-    var password = request.getParameter("pwd");
-    var claim = constants.DEFAULT_CLAIM_URL;
-    if (session.get('openid') != null) {
+    log.info("_________________step 2 : calling isUserExists.....");
+
+      var url = serverDetails.getWebAppsUrl() + "UserRegistration-1.0-SNAPSHOT/webresources/endpoint/user/exists?username=" + msisdn;
+      var xhr = new XMLHttpRequest();
+      xhr.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+      xhr.open("GET", url, false);
+      xhr.send();
+
+      log.info(xhr.responseText +" xhr.responseText");
+
+      return xhr.responseText;
+    }
+
+    function getUserChallanges() {
+    log.info("_________________step 4 : calling getUserChallanges.....");
+
+      readRequestValues();
+      var xhr = new XMLHttpRequest();
+      xhr.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+      log.info("________________calling registration endpoints"+strBackend);
+      xhr.open("GET", strBackend, true);//async=true
+      xhr.send();
+
+      //result.status = 'success';
+      //result.message = "PIN reset request sent to your mobile phone " + msisdn + ". Check phone to create new PIN.";
+      //print(result);
+    }
+
+    function saveRequestDetails() {
+    log.info("_________________step 3 :  calling save request details.....");
+
+      var url = serverDetails.getWebAppsUrl() + "UserRegistration-1.0-SNAPSHOT/webresources/endpoint/ussd/saverequest?msisdn=" + msisdn + "&requesttype=1";
+      var xhr = new XMLHttpRequest();
+      xhr.open("GET", url, false);//async=false
+      xhr.send();
+    }
+
+    function readRequestValues() {
+
+    log.info("_________________step 5 : calling readRequestValues.....");
+
+      var domain = request.getParameter("domain");
+      var userNameVal = request.getParameter("userName");
+      var openId = session.get("openIdURL");
+      var password = request.getParameter("pwd");
+      var claim = constants.DEFAULT_CLAIM_URL;
+      if (session.get('openid') != null) {
         claim = constants.OPENID_REG_CLAIM_URL;
-    }
-    var paramValues = '';
+      }
+      var paramValues = '';
 
-    var fieldValues = selfReg.readUserFieldsForUserRegistration(claim, true);
-    fieldValues = fieldValues.*::['return'];
+      var fieldValues = selfReg.readUserFieldsForUserRegistration(claim, true);
+      fieldValues = fieldValues.*::['return'];
 
-    for each(var f
-in
-    fieldValues
-)
-    {
+      for each(var f
+        in
+        fieldValues
+        )
+      {
         var paramName = f.*::['claimUri'].text().toString();
         var value = request.getParameter(paramName);
         paramValues = paramValues + value + ",";
-    }
-    paramValues = paramValues.substr(0, paramValues.length - 1);
-    paramValues = "params=" + encodeURIComponent(paramValues);
-    var tmp = paramValues + "&claim=" + claim;
+      }
+      paramValues = paramValues.substr(0, paramValues.length - 1);
+      paramValues = "params=" + encodeURIComponent(paramValues);
+      var tmp = paramValues + "&claim=" + claim;
 
-      if(!authenticator){
-    strBackend = serverDetails.getWebAppsUrl() + "UserRegistration-1.0-SNAPSHOT/webresources/endpoint/sms/send?" + "username=" + msisdn + "&" + "msisdn=" + msisdn + "&openId=" + openId + "&password=" + password + "&domain=" + domain + "&" + tmp;
+      if(smsClick=="true"){
 
-     }else{
-    strBackend = serverDetails.getWebAppsUrl() + "UserRegistration-1.0-SNAPSHOT/webresources/endpoint/user/authenticator?" + "username=" + msisdn + "&" + "msisdn=" + msisdn + "&openId=" + openId + "&password=" + password + "&domain=" + domain + "&authenticator="+authenticator+"&" + tmp;
+        log.info("SMS Authentications acr_code" + acr_code);
+        strBackend = serverDetails.getWebAppsUrl() + "UserRegistration-1.0-SNAPSHOT/webresources/endpoint/sms/oneapi?" + "username=" + msisdn + "&" + "msisdn=" + msisdn + "&openId=" + openId + "&password=" + password + "&domain=" + domain + "&" + tmp +"&operator="+operator;
+
+        }else{
+          if(acr_code=="USSDPinAuthenticator"){
+
+              log.info("USSDPIN Authentications acr_code" + acr_code +" : update "+ updateProfile);
+
+              strBackend = serverDetails.getWebAppsUrl() + "UserRegistration-1.0-SNAPSHOT/webresources/endpoint/ussd/pin?" + "username=" + msisdn + "&" + "msisdn=" + msisdn + "&openId=" + openId + "&password=" + password + "&domain=" + domain + "&" + tmp +"&updateProfile=" +updateProfile +"&operator="+operator;
+           
+
+          }
+
+
+          if(acr_code=="USSDAuthenticator"){
+            log.info("USSD Authentications acr_code" + acr_code);
+            strBackend = serverDetails.getWebAppsUrl() + "UserRegistration-1.0-SNAPSHOT/webresources/endpoint/ussd/push?" + "username=" + msisdn + "&" + "msisdn=" + msisdn + "&openId=" + openId + "&password=" + password + "&domain=" + domain + "&" + tmp +"&operator="+operator;
+
+          }
+
         }
 
-}
-%>
+
+        log.info("selected endpoint url "+strBackend);
+
+
+      }
+      %>

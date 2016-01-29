@@ -6,7 +6,6 @@ var samlConfig = application.get(SAML_PROPERTIES);
 var sso = require("sso");
 var sessionId = session.getId();
 var encodedSAMLRequest;
-var postUrl;
 var postUrl = samlConfig['SAML.IdPUrl'];
 var issuer = samlConfig['SAML.IssuerID'];
 
@@ -37,7 +36,7 @@ if(request.getParameter("login") === 'true'){
 </head>
 <body>
 <a class="brand" href="/dashboard/landing.html?" onclick="jagg.sessionAwareJS({redirect:'/dashboard/landing.html?',e:event})">
-        <img alt="API Store" src="/authenticationendpoint/images/logo.png">
+        <img alt="API Store" src="img/logo.png">
     </a>
 <hr/>
 <div style="margin-left:1%;">

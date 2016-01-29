@@ -1,4 +1,4 @@
-<%@ page import="org.wso2.carbon.identity.application.authentication.endpoint.util.CharacterEncoder"%>
+<%@ page import="com.wso2telco.identity.application.authentication.endpoint.util.CharacterEncoder"%>
 <div id="loginTable1" class="identity-box">
     <%
         loginFailed = request.getParameter("loginFailed");

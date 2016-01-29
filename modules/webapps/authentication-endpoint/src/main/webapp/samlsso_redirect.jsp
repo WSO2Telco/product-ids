@@ -17,7 +17,7 @@
  ~ under the License.
  -->
 <%@page import="java.net.URLDecoder" %>
-<%@ page import="org.wso2.carbon.identity.application.authentication.endpoint.Constants" %>
+<%@ page import="com.wso2telco.identity.application.authentication.endpoint.Constants" %>
 <html>
 <head></head>
 <body>

@@ -15,8 +15,8 @@
  ~ specific language governing permissions and limitations
  ~ under the License.
  -->
-<%@ page import="org.wso2.carbon.identity.application.authentication.endpoint.Constants" %>
-<%@ page import="org.wso2.carbon.identity.application.authentication.endpoint.util.CharacterEncoder"%>
+<%@ page import="com.wso2telco.identity.application.authentication.endpoint.Constants" %>
+<%@ page import="com.wso2telco.identity.application.authentication.endpoint.util.CharacterEncoder"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 
 <%
@@ -39,7 +39,7 @@ padding:10px;
 }
 </style>
 
-<fmt:bundle basename="org.wso2.carbon.identity.application.authentication.endpoint.i18n.Resources">
+<fmt:bundle basename="com.wso2telco.identity.application.authentication.endpoint.i18n.Resources">
     <div id="middle">
         <h2><fmt:message key='saml.sso'/></h2>
 

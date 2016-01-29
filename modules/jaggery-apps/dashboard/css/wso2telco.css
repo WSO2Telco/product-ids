@@ -1,0 +1,147 @@
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed, 
+figure, figcaption, footer, header, hgroup, 
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+	margin: 0;
+	padding: 0;
+	border: 0;
+	font-size: 100%;
+	font: inherit;
+	vertical-align: baseline;
+}
+
+body { font-family: 'Open Sans', sans-serif, Arial, Verdana, Helvetica, sans-serif; font-size: 14px; line-height: 20px; background-color: #ffffff; color: #777777; width: auto;}
+
+a { color: #00728F; text-decoration: none; }
+
+a:hover { color: #cc9900; }
+
+div.clear { clear: both; }
+
+div#TelcoMain { position: absolute; width: 100%; margin: auto;}
+
+div#TelcoMain div.TelcoAll {margin: auto; display: block; width: 100%; background-color: #ffffff; padding: 40px 0px 0px 0px; }
+
+div#TelcoMain div.TelcoAll div.TelcoFix div.LogoHeader{ max-width: 960px;  margin: auto; background-image: url(wso2telco-logo.png); background-repeat: no-repeat; }
+
+div#TelcoMain div.TelcoAll div.TelcoFix div.LogoHeader div.TelcoMenu {  width: 100%; display: inline-block; margin: 40px 0px 0px 0px; }
+
+div#TelcoMain div.TelcoAll div.TelcoFix div.LogoHeader div.TelcoMenu  a { float: right; font-size: 130%; color: #000000; line-height: 130%; text-decoration: none; padding: 10px 15px 10px 15px;   font-weight: 300; height: 30px;}
+
+div#TelcoMain div.TelcoAll div.TelcoFix div.LogoHeader div.TelcoMenu  a:hover { color: #f37b20; }  
+
+div#TelcoMain div.TelcoAll div.TelcoFix1 { max-width: 960px;  margin: auto;  background-color: #ffffff; padding: 35px 0px 25px 0px;}
+
+div#TelcoMain div.TelcoAll div.TelcoSliderOut { width: 100%; margin: auto; background-color: #f37b20; }
+
+div#TelcoMain div.TelcoAll div.TelcoSliderOut div.TelcoSlider{ max-width: 960px;  margin: auto; display: block;}
+
+div#TelcoMain div.TelcoAll div.TelcoIntro div.TintroText{ max-width: 960px;  margin: auto;  background-color: #ffffff; display: block; }
+
+div#TelcoMain div.TelcoAll div.TelcoIntro div.TintroText h2{ color: #1d4677; line-height: 160%; padding: 35px 0% 0px 0%; font-size: 170%; }
+
+div#TelcoMain div.TelcoAll div.TelcoIntro div.TintroText p{ line-height: 140%; padding: 10px 0% 40px 0%; }
+
+div#TelcoMain div.TelcoAll div.TelcoProduct { width: 100%; margin: auto; background-color: #193661; padding: 0% 0% 45px 0%;}
+
+div#TelcoMain div.TelcoAll div.TelcoProduct div.TelcoProductText{ max-width: 960px;  margin: auto;  background-color: #193661; }
+
+div#TelcoMain div.TelcoAll div.TelcoProduct div.TelcoProductText h2 { color: #ffffff; line-height: 150%; padding: 2% 0% 0% 0%; font-size: 190%;}
+
+div#TelcoMain div.TelcoAll div.TelcoProduct div.TelcoProductText p { line-height: 140%; padding: 10px 0% 40px 0%; color: #d1d3d4; }
+
+div#TelcoMain div.TelcoAll div.TelcoProduct div.TelcoProductText div.TelcoProductHub { width: 48%; background-color: #ffffff; margin: 0%; padding: 0; float: left; height: 238px;}
+
+div#TelcoMain div.TelcoAll div.TelcoProduct div.TelcoProductText div.TelcoProductHub div.TelcoHub { float: left; display: inline-block; }
+
+div#TelcoMain div.TelcoAll div.TelcoProduct div.TelcoProductText div.TelcoProductHub div.THubText{ padding: 12px; margin: 0px 20px 0px 80px; }
+
+div#TelcoMain div.TelcoAll div.TelcoProduct div.TelcoProductText div.TelcoProductHub div.THubText h2 { color: #1d4677; font-size: 160%; line-height: 140%; }
+
+div#TelcoMain div.TelcoAll div.TelcoProduct div.TelcoProductText div.TelcoHubText { background-color: #ffffff; padding: 20px 25px 20px 75px;}
+
+div#TelcoMain div.TelcoAll div.TelcoProduct div.TelcoProductText div.TelcoProductHub div.THubText p { line-height: 140%; color: #777777; margin: 0px;}
+
+div#TelcoMain div.TelcoAll div.TelcoProduct div.TelcoProductText div.TelcoProductHub div.TelcoHub img { width: 77px; float: left; }
+
+div#TelcoMain div.TelcoAll div.TelcoBrochure { width: 100%; margin: auto; background-color: #ffffff; padding: 0% 0% 30px 0%; }
+
+div#TelcoMain div.TelcoAll div.TelcoBrochure div.TelcoBrochureText { max-width: 960px;  margin: auto;  background-color: #ffffff; }
+
+div#TelcoMain div.TelcoAll div.TelcoBrochure div.TelcoBrochureText h2 { color: #1d4677; line-height: 150%; padding: 40px 0% 0% 0%; font-size: 170%; }
+
+div#TelcoMain div.TelcoAll div.TelcoBrochure div.TelcoBrochureText p { line-height: 140%; padding: 10px 0% 20px 0%; font-size: 110%; color: #777777; }
+
+div#TelcoMain div.TelcoAll div.TelcoBrochure div.TelcoBrochureText a{ color: #ffffff; border-radius: 10px; background-color: #414042; text-decoration: none; text-align: center; padding: 13px 30px 13px 30px; font-weight: lighter; width: 220px;  font-size: 210%; display: block; line-height: 160%; }
+
+div#TelcoMain div.TelcoAll div.TelcoBrochure div.TelcoBrochureText a:hover{ background-color: #f37b20; }
+
+div#TelcoMain div.TelcoAll div.TelcoExpertContact { width: 100%; margin: auto; background-color: #ffffff; padding: 30px 0% 60px 0%; }
+
+div#TelcoMain div.TelcoAll div.TelcoExpertContact div.TelcoExpert { max-width: 960px;  margin: auto;  background-color: #ffffff; }
+
+div#TelcoMain div.TelcoAll div.TelcoExpertContact div.TelcoExpert h2{ color: #f37b20; line-height: 150%; padding: 30px 0% 20px 0%; font-size: 220%; }
+
+div#TelcoMain div.TelcoAll div.TelcoExpertContact div.TelcoExpert a{ color: #ffffff; border-radius: 10px; padding: 0% 0% 30px 0%; background-color: #60ba09; text-decoration: none; text-align: center; padding: 13px 30px 13px 30px; font-weight: lighter; width: 220px;  font-size: 210%; display: block; line-height: 160%; }
+
+div#TelcoMain div.TelcoAll div.TelcoExpertContact div.TelcoExpert a:hover { background-color: #75d60f;}
+
+div#TelcoMain div.ContactAll { max-width: 960px;  margin: auto; } 
+
+div#TelcoMain div.ContactAll div.TelcoTopContact { margin-top: -70px; position: absolute; margin-left: 670px; }
+
+div#TelcoMain div.ContactAll div.TelcoTopContact div.TelcoContact a{ border: solid 1px #ffffff; color: #ffffff; border-radius: 10px; padding: 0% 0% 30px 0%; background-color: #60ba09; text-decoration: none; text-align: center; padding: 13px 30px 13px 30px; font-weight: lighter; width: 220px;  font-size: 210%; display: block; line-height: 160%; }
+
+div#TelcoMain div.ContactAll div.TelcoTopContact div.TelcoContact a:hover { background-color: #75d60f;}
+
+div#TelcoMain div.TelcoAll div.TelcoNews div.TelcoNewsIn { max-width: 960px;  margin: auto; }
+
+div#TelcoMain div.TelcoAll div.TelcoNews { width: 100%; margin: auto; background-color: #e6e7e8; padding: 0% 0% 40px 0%; }
+
+div#TelcoMain div.TelcoAll div.TelcoNews div.TelcoNewsIn { max-width: 960px;  margin: auto;  background-color: #e6e7e8; }
+
+div#TelcoMain div.TelcoAll div.TelcoNews div.TelcoNewsIn h2 { color: #333333; line-height: 150%; padding: 30px 0% 30px 0%; font-size: 190%; }
+
+div#TelcoMain div.TelcoAll div.TelcoNews div.TelcoNewsIn p a { text-decoration: none; color: #0a159e;  padding: 0 0 40px 0; font-size: 130%; line-height: 130%;}
+
+div#TelcoMain div.TelcoAll div.TelcoNews div.TelcoNewsIn p a:hover { color: #f37b20;}
+
+div#TelcoMain div.TelcoAll div.TelcoBottom { width: 100%; margin: auto; background-color: #193661; padding: 0% 0% 20px 0%; }
+
+div#TelcoMain div.TelcoAll div.TelcoBottom div.TelcoBottomSocial { max-width: 960px;  margin: auto;  background-color: #193661;}
+
+div#TelcoMain div.TelcoAll div.TelcoBottom div.TelcoBottomSocial div.SocialButton { float: left;}
+
+div#TelcoMain div.TelcoAll div.TelcoBottom div.TelcoBottomSocial div.SocialButton img{ max-width: 45px; width: 100%; padding: 30px 8px 15px 8px; }
+
+div#TelcoMain div.TelcoAll div.TelcoBottom div.TelcoBottomSocial div.TelcoCopyrights { width: 50%; border-top: solid 1px #999999; padding: 7px 0 25px 0;}
+
+div#TelcoMain div.TelcoAll div.TelcoBottom div.TelcoBottomSocial div.TelcoCopyrights p{ font-size: 90%; color: #ffffff; text-align: center;}
+
+
+@media screen and (max-width: 960px){
+
+div#TelcoMain div.TelcoAll div.TelcoProduct div.TelcoProductText div.TelcoProductHub div.TelcoHub img{ display: none; }
+div#TelcoMain div.TelcoAll div.TelcoIntro div.TintroText { padding: 0px 15px 0px 15px }
+div#TelcoMain div.TelcoAll div.TelcoLogo { padding: 20px 15px 0px 15px }
+div#TelcoMain div.TelcoAll div.TelcoProduct div.TelcoProductText { padding: 0px 15px 0px 15px }
+div#TelcoMain div.TelcoAll div.TelcoBrochure div.TelcoBrochureText { padding: 0px 15px 0px 15px }
+div#TelcoMain div.TelcoAll div.TelcoExpertContact div.TelcoExpert { padding: 0px 15px 0px 15px }
+div#TelcoMain div.TelcoAll div.TelcoNews div.TelcoNewsIn { padding: 0px 15px 0px 15px }
+div#TelcoMain div.TelcoAll div.TelcoBottom div.TelcoBottomSocial { padding: 0px 15px 0px 15px }
+div#TelcoMain div.TelcoAll div.TelcoProduct div.TelcoProductText div.TelcoProductHub { height: auto; display: block; float: none; width: 100%; }
+div#TelcoMain div.TelcoAll div.TelcoProduct div.TelcoProductText div.TelcoProductHub div.THubText { margin: 0px 10px 0px 10px }
+div#TelcoMain div.ContactAll div.TelcoTopContact { margin-left: 20px; margin-top: -30px;}
+div#TelcoMain div.TelcoAll div.TelcoIntro div.TintroText h2 { padding-top: 70px; }
+div#TelcoMain div.TelcoAll div.TelcoFix div.TelcoLogo { float: none; }
+
+}
