@@ -122,6 +122,49 @@
                                 <featureArtifactDef>org.jaggeryjs.modules:i18n.feature:${i18n.module.version}
                                 </featureArtifactDef>
 
+  								<!--WSO2 TELCO jaggeryapps features -->
+                                  <featureArtifactDef>
+                                    com.wso2telco.ids:com.wso2telco.ids.dashboard.ui.feature:${com.wso2telco.ids.version}
+                                </featureArtifactDef>
+                                  <featureArtifactDef>
+                                    com.wso2telco.ids:com.wso2telco.ids.portal.ui.feature:${com.wso2telco.ids.version}
+                                </featureArtifactDef>
+                                <featureArtifactDef>
+                                    com.wso2telco.ids:com.wso2telco.ids.sign.ui.feature:${com.wso2telco.ids.version}
+                                </featureArtifactDef>
+                                
+                                <!--WSO2 TELCO ui webapps features -->
+                                <featureArtifactDef>
+                                    com.wso2telco.ids:com.wso2telco.ids.authenticationendpoint.ui.feature:${com.wso2telco.ids.version}
+                                </featureArtifactDef>
+                                   <featureArtifactDef>
+                                    com.wso2telco.ids:com.wso2telco.ids.sessionupdater.ui.feature:${com.wso2telco.ids.version}
+                                </featureArtifactDef>
+                                <featureArtifactDef>
+                                    com.wso2telco.ids:com.wso2telco.ids.userregistration.ui.feature:${com.wso2telco.ids.version}
+                                </featureArtifactDef>
+                                
+                                <!--WSO2 TELCO componnet-id features -->
+                                 <featureArtifactDef>
+                                    com.wso2telco.ids:com.wso2telco.ids.authenticateselector.feature:${com.wso2telco.ids.version}
+                                </featureArtifactDef>
+                                 <featureArtifactDef>
+                                    com.wso2telco.ids:com.wso2telco.ids.gsmaauthenticator.feature:${com.wso2telco.ids.version}
+                                </featureArtifactDef>
+                                <featureArtifactDef>
+                                    com.wso2telco.ids:com.wso2telco.ids.userclaimretriever.feature:${com.wso2telco.ids.version}
+                                </featureArtifactDef>
+                                  <featureArtifactDef>
+                                    com.wso2telco.ids:com.wso2telco.ids:openidtokenbuilder.feature:${com.wso2telco.ids.version}
+                                </featureArtifactDef>
+                                
+                                   <!--WSO2 TELCO core -util features -->
+                               
+                                 <featureArtifactDef>
+                                    com.wso2telco.core: com.wso2telco.core.coreparent.feature:${com.wso2telco.core.version}
+                                </featureArtifactDef>
+                                
+                                
                                 <!--Carbon features-->
                                 <featureArtifactDef>
                                     org.wso2.carbon.deployment:org.wso2.carbon.as.runtimes.cxf.feature:${carbon.deployment.version}
@@ -380,6 +423,8 @@
                                 <featureArtifactDef>
                                     org.wso2.carbon.metrics:org.wso2.carbon.metrics.feature:${carbon.metrics.version}
                                 </featureArtifactDef>
+                                
+                                
                             </featureArtifacts>
                         </configuration>
                     </execution>
