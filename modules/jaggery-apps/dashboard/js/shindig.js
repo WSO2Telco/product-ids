@@ -1,5 +1,18 @@
-window.___jsl=window.___jsl||{};
-(window.___jsl.ci=window.___jsl.ci||[]).push({opensocial:{invalidatePath:"http://%host%//rpc",path:"http://%host%//rpc",domain:"shindig",supportedFields:{person:["id",{name:["familyName","givenName","unstructured"]},"thumbnailUrl","profileUrl"],mediaItem:"album_id created description duration file_size id language last_updated location mime_type num_comments num_views num_votes rating start_time tagged_people tags thumbnail_url title type url".split(" "),album:"id thumbnailUrl title description location ownerId".split(" "),group:["id",
+/*******************************************************************************
+ * Copyright  (c) 2015-2016, WSO2.Telco Inc. (http://www.wso2telco.com) All Rights Reserved.
+ * 
+ * WSO2.Telco Inc. licences this file to you under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ * 
+ *   http://www.apache.org/licenses/LICENSE-2.0
+ * 
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ ******************************************************************************/(window.___jsl.ci=window.___jsl.ci||[]).push({opensocial:{invalidatePath:"http://%host%//rpc",path:"http://%host%//rpc",domain:"shindig",supportedFields:{person:["id",{name:["familyName","givenName","unstructured"]},"thumbnailUrl","profileUrl"],mediaItem:"album_id created description duration file_size id language last_updated location mime_type num_comments num_views num_votes rating start_time tagged_people tags thumbnail_url title type url".split(" "),album:"id thumbnailUrl title description location ownerId".split(" "),group:["id",
 "title","description"],activity:"appId body bodyId externalId id mediaItems postedTime priority streamFaviconUrl streamSourceUrl streamTitle streamUrl templateParams title url userId".split(" "),activityEntry:"actor content generator icon id object published provider target title updated url verb openSocial extensions".split(" ")},enableCaja:!1},rpc:{commSwf:"/xpc.swf",passReferrer:"c2p:query",parentRelayUrl:"/container/rpc_relay.html",useLegacyProtocol:!1},"shindig.auth":{authToken:"-1:-1:*:*:*:0:default"},
 views:{"default":{isOnlyVisible:!1,urlTemplate:"http://localhost//gadgets/default?{var}",aliases:["home","profile","canvas"]},canvas:{isOnlyVisible:!0,urlTemplate:"http://localhost//gadgets/canvas?{var}",aliases:["FULL_PAGE"]},profile:{isOnlyVisible:!1,urlTemplate:"http://localhost//gadgets/profile?{var}",aliases:["DASHBOARD","default"]}},container:{jsPath:"//gadgets/js",relayPath:"//gadgets/files/container/rpc_relay.html",enableRpcArbitration:!1},osapi:{endPoints:["//%host%//rpc"]},"osapi.services":{"gadgets.rpc":["container.listMethods"],
 "//%host%//rpc":"samplecontainer.update activities.supportedFields gadgets.metadata albums.supportedFields gadgets.proxySupportedFields albums.get mediaItems.create http.put system.listMethods gadgets.proxy gadgets.cajole http.head messages.create albums.delete mediaItems.update messages.delete appdata.update gadgets.js http.post gadgets.tokenSupportedFields samplecontainer.create http.get appdata.delete appdata.create gadgets.supportedFields mediaItems.get activities.update activities.delete albums.update activities.get messages.modify activitystreams.create appdata.get messages.get cache.invalidate samplecontainer.get people.supportedFields groups.get http.delete gadgets.jsSupportedFields people.get activitystreams.get mediaItems.supportedFields mediaItems.delete activitystreams.update gadgets.cajaSupportedFields activities.create albums.create people.update gadgets.token activitystreams.delete activitystreams.supportedFields".split(" ")},

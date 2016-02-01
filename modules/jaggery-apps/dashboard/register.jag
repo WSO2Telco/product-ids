@@ -1,3 +1,18 @@
+/*******************************************************************************
+ * Copyright  (c) 2015-2016, WSO2.Telco Inc. (http://www.wso2telco.com) All Rights Reserved.
+ * 
+ * WSO2.Telco Inc. licences this file to you under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ * 
+ *   http://www.apache.org/licenses/LICENSE-2.0
+ * 
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ ******************************************************************************/ 
 <!DOCTYPE html>
 
 <html lang="en">
@@ -251,35 +266,7 @@
           </div>
 
           <script type="text/javascript">
-          /*
-          * geting acr code from acr value and make the register page template according to acr *code
-          *USSDAuthenticator ==>
-          * Display Slider
-          * Display message for new account
-          * Display term and condition
-          * Display button validate-btn1
-          * Yes = call flow then register
-          *USSDPinAuthenticator ==>
-          * Display Slider
-          * Hide term and condition
-          * Display message for new account
-          * Display button validate-btn1
-          * Yes = call flow
-          *   Hide slider 
-          *   Hide message for new account
-          *   Hide button validate-btn1
-          *   Display Header ussdpin_header
-          *   Display chllenge queqtion form
-          *   Display button validate-btn2
-          *   Yes = call registration
-          *
-          * if updateProfile = true
-          *   Hide Header ussdpin_header
-          *   Display Header ussdpin_header_update
-          *   Display chllenge queqtion form
-          *   Display button validate-btn2
-          *   Yes = call registration
-          */
+           
 
           var auth;
           var acr_code=getAcrValue();
@@ -293,19 +280,13 @@
           var btn1 = document.getElementById("validate-btn1");
           var btn2 = document.getElementById("validate-btn2");
 
-          /*
-          * USSD Pin Registration page 1
-          * hide terms
-          */
+           
           if(acr_code=="USSDPinAuthenticator"){
             term.style.display = 'none';
             auth="LoA3";
           }
 
-          /*
-          * USSD Registration page 1
-          * display terms
-          */
+           
           if(acr_code=="USSDAuthenticator"){
             term.style.display = 'block';
 
@@ -318,16 +299,10 @@
             header_update.style.display='block';
           }
 
-          /*
-          * USSD Registration or USSD Pin Registration page 1
-          * click on YES button
-          */
+           
           function flow(){
 
-          /*
-          * USSD Registration or USSD Pin Registration page 1
-          * click on YES button
-          */
+           
           if(auth=="LoA3"){
             header.style.display='block';
             term.style.display = 'block';

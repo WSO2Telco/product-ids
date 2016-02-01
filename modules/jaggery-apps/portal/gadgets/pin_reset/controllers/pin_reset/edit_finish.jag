@@ -1,4 +1,18 @@
-<%
+/*******************************************************************************
+ * Copyright  (c) 2015-2016, WSO2.Telco Inc. (http://www.wso2telco.com) All Rights Reserved.
+ * 
+ * WSO2.Telco Inc. licences this file to you under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ * 
+ *   http://www.apache.org/licenses/LICENSE-2.0
+ * 
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ ******************************************************************************/<%
 var serverDetails = require("/site/jagg/site.jag");
 var log = new Log();
 var userName = session.get("user");
@@ -42,7 +56,7 @@ function edit(){
 
 			if(validateAnswer(hashedPreviousAns1, ans1)) {//answer1 correct
 // 				log.info("5555555enteredAns2>answer1 correct");
-				if(validateAnswer(hashedPreviousAns2, ans2)/* verifyAns2.verified == "true" */) {//answer2 correct
+				if(validateAnswer(hashedPreviousAns2, ans2) ) {//answer2 correct
 // 				log.info("6666666enteredAns2>answer2 correct");
 					var msisdn = userProfileMgtClient.getMSISDN(userName);
 					//format of msisdn should be 94xxxxxxxxx
@@ -51,7 +65,7 @@ function edit(){
 // 						var url1 = "http://localhost:9764/mavenproject1-1.0-SNAPSHOT/webresources/endpoint/ussd/pin?" + "username=" + userName + "&msisdn=" + msisdn;
 						var statusSaved = saveRequestDetails(msisdn);
 						if(statusSaved != 1) {
-							log.warn("Couldn't save to 'pendingussd' table. Phones that can’t do NI USSD will not support.");
+							log.warn("Couldn't save to 'pendingussd' table. Phones that canâ€™t do NI USSD will not support.");
 						}
 						
 						
