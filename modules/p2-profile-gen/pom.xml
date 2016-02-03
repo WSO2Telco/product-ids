@@ -155,7 +155,7 @@
                                     com.wso2telco.ids:com.wso2telco.ids.userclaimretriever.feature:${com.wso2telco.ids.version}
                                 </featureArtifactDef>
                                   <featureArtifactDef>
-                                    com.wso2telco.ids:com.wso2telco.ids:openidtokenbuilder.feature:${com.wso2telco.ids.version}
+                                    com.wso2telco.ids:com.wso2telco.ids.openidtokenbuilder.feature:${com.wso2telco.ids.version}
                                 </featureArtifactDef>
                                 
                                    <!--WSO2 TELCO core -util features -->
