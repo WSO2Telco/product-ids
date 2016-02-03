@@ -160,9 +160,9 @@
                                 
                                    <!--WSO2 TELCO core -util features -->
                                
-                                 <featureArtifactDef>
+                                 <!--featureArtifactDef>
                                     com.wso2telco.core: com.wso2telco.core.coreparent.feature:${com.wso2telco.core.version}
-                                </featureArtifactDef>
+                                </featureArtifactDef-->
                                 
                                 
                                 <!--Carbon features-->

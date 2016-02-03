@@ -67,7 +67,7 @@
             </includes>
         </fileSet>
 
-        <fileSet>
+        <!--fileSet>
             <directory>../jaggery-apps/user-dashboard/dashboard</directory>
             <outputDirectory>${pom.artifactId}-${pom.version}/repository/deployment/server/jaggeryapps/dashboard
             </outputDirectory>
@@ -83,7 +83,7 @@
             <includes>
                 <include>**/**</include>
             </includes>
-        </fileSet>
+        </fileSet-->
 
         <fileSet>
             <directory>target/wso2carbon-core-${carbon.kernel.version}/dbscripts</directory>
