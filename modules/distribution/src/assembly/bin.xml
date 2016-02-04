@@ -659,6 +659,12 @@
             <outputDirectory>${pom.artifactId}-${pom.version}/repository/database/</outputDirectory>
             <fileMode>644</fileMode>
         </file>
-
+	<file>
+            <source>
+                ../idsconfig/LOA.xml
+            </source>
+            <outputDirectory>wso2telcoids-${pom.version}/repository/conf</outputDirectory>
+	    <fileMode>644</fileMode>
+        </file>
     </files>
 </assembly>
