@@ -1,7 +1,0 @@
-a.brand{
-    background:transparent url(../../images/branding/idea_logo.jpg) no-repeat left top;
-    display: block;
-    width: 76px;
-    height: 46px;
-    margin-bottom:6px;
-}

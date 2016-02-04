@@ -1,7 +1,0 @@
-a.brand{
-    background:transparent url(../../images/branding/vodafone_logo.gif) no-repeat left top;
-    display: block;
-    width: 96px;
-    height: 96px;
-    margin-bottom:6px;
-}

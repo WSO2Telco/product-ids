@@ -1,7 +1,0 @@
-a.brand{
-    background:transparent url(../../images/branding/dialog_logo.png) no-repeat left top;
-    display: block;
-    width: 118px;
-    height: 70px;
-    margin-bottom:6px;
-}
