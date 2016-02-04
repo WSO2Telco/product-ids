@@ -25,12 +25,12 @@
     <fileSets>
         <fileSet>
             <directory>target/site</directory>
-            <outputDirectory>wso2is-${pom.version}-docs</outputDirectory>
+            <outputDirectory>wso2telcoids-${pom.version}-docs</outputDirectory>
             <fileMode>755</fileMode>
         </fileSet>
         <fileSet>
             <directory>../../modules/documentation/src/site/xdoc/user-core</directory>
-            <outputDirectory>wso2is-${pom.version}-docs/user-core</outputDirectory>
+            <outputDirectory>wso2telcoids-${pom.version}-docs/user-core</outputDirectory>
             <fileMode>755</fileMode>
             <includes>
                 <include>user-mgt-actdir.xml</include>
