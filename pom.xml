@@ -1073,7 +1073,7 @@
 
 <dependency>
                   <groupId>com.wso2telco.ids</groupId>
-                <artifactId>com.wso2telco.ids:openidtokenbuilder.feature</artifactId>
+                <artifactId>om.wso2telco.ids.openidtokenbuilder.feature</artifactId>
                 <version>${com.wso2telco.ids.version}</version>
             </dependency>
 
