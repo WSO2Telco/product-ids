@@ -71,15 +71,15 @@
             <scope>test</scope>
         </dependency>
         <dependency>
-            <groupId>com.wso2telco.ids</groupId>
+            <groupId>org.wso2.is</groupId>
             <artifactId>org.wso2.identity.integration.common.clients</artifactId>
         </dependency>
         <dependency>
-            <groupId>com.wso2telco.ids</groupId>
+            <groupId>org.wso2.is</groupId>
             <artifactId>org.wso2.identity.integration.common.utils</artifactId>
         </dependency>
         <dependency>
-            <groupId>com.wso2telco.ids</groupId>
+            <groupId>org.wso2.is</groupId>
             <artifactId>org.wso2.identity.integration.ui.pages</artifactId>
             <version>${project.version}</version>
         </dependency>

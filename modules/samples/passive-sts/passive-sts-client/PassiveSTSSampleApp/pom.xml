@@ -39,7 +39,7 @@
             <artifactId>commons-lang</artifactId>
         </dependency>
         <dependency>
-            <groupId>com.wso2telco.ids</groupId>
+            <groupId>org.wso2.is</groupId>
             <artifactId>org.wso2.identity.passivests.filter</artifactId>
         </dependency>
 		<dependency>

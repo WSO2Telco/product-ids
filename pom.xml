@@ -25,7 +25,7 @@
         <module>modules/distribution</module>
         <module>modules/styles</module>
         <module>modules/samples</module>
-        <module>modules/integration</module>
+        <!--module>modules/integration</module-->
     </modules>
 
     <licenses>
@@ -913,13 +913,13 @@
                 <version>${carbon.automationutils.version}</version>
             </dependency>
             <dependency>
-                <groupId>com.wso2.is</groupId>
+                <groupId>org.wso2.is</groupId>
                 <artifactId>org.wso2.identity.integration.common.clients</artifactId>
                 <version>${product.identity.version}</version>
                 <scope>compile</scope>
             </dependency>
             <dependency>
-                <groupId>com.wso2.is</groupId>
+                <groupId>org.wso2.is</groupId>
                 <artifactId>org.wso2.identity.integration.common.utils</artifactId>
                 <version>${product.identity.version}</version>
                 <scope>compile</scope>
