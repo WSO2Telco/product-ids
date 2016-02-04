@@ -1,18 +1,4 @@
-/*******************************************************************************
- * Copyright  (c) 2015-2016, WSO2.Telco Inc. (http://www.wso2telco.com) All Rights Reserved.
- * 
- * WSO2.Telco Inc. licences this file to you under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- * 
- *   http://www.apache.org/licenses/LICENSE-2.0
- * 
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
- ******************************************************************************/<%
+<%
 include("../util/constants.jag");
 
 var getUserProfile = "<mgt:getUserProfile xmlns:mgt=\"http://mgt.profile.user.identity.carbon.wso2.org\">\n" +
@@ -68,6 +54,23 @@ var login =       "<aut:login xmlns:aut=\"http://authentication.services.core.ca
 
 var getUserInfo = "<log:getUserInfo xmlns:log=\"http://loggeduserinfo.services.core.carbon.wso2.org\"/>"
 
+var startRegistration = "<xsd:startRegistration xmlns:xsd=\"http://service.fido.authenticator.application.identity.carbon.wso2.org\">\n"+  
+                    "<xsd:appID>{1}</xsd:appID>\n"+
+                    "</xsd:startRegistration>";
+
+var finishRegistration = "<xsd:finishRegistration xmlns:xsd=\"http://service.fido.authenticator.application.identity.carbon.wso2.org\">\n"+
+                    "<xsd:response>{0}</xsd:response>\n"+
+                    "</xsd:finishRegistration>";
+var removeRegistration = "<xsd:removeAllRegistrations xmlns:xsd=\"http://service.fido.authenticator.application.identity.carbon.wso2.org\">\n"+
+                    "</xsd:removeAllRegistrations>";
+var isDeviceRegistered = "<xsd:isDeviceRegistered xmlns:xsd=\"http://service.fido.authenticator.application.identity.carbon.wso2.org\">\n"+
+                    "</xsd:isDeviceRegistered>";
+var getDeviceMetadataList = "<xsd:getDeviceMetadataList xmlns:xsd=\"http://service.fido.authenticator.application.identity.carbon.wso2.org\">\n"+
+                    "</xsd:getDeviceMetadataList>";
+var removeRegistration = "<xsd:removeRegistration xmlns:xsd=\"http://service.fido.authenticator.application.identity.carbon.wso2.org\">\n"+
+                    "<xsd:deviceRemarks>{0}</xsd:deviceRemarks>\n"+
+                    "</xsd:removeRegistration>";
+
 
 application.put("urn:getUserProfile", getUserProfile);
 application.put("urn:getProfileFieldsForInternalStore", getProfileFieldsForInternalStore);
@@ -86,7 +89,12 @@ if(!application.get(SAML_ENABLED)){
 	application.put("urn:login", login);
 }
 application.put("urn:getUserInfo", getUserInfo);
-
+application.put("urn:startRegistration", startRegistration);
+application.put("urn:finishRegistration", finishRegistration);
+application.put("urn:removeAllRegistrations", removeRegistration);
+application.put("urn:isDeviceRegistered", isDeviceRegistered);
+application.put("urn:getDeviceMetadataList", getDeviceMetadataList);
+application.put("urn:removeRegistration", removeRegistration);
 
 
 function getPayload(method, param){

@@ -16,9 +16,9 @@
   -->
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <parent>
-        <groupId>com.wso2telco.ids</groupId>
+        <groupId>org.wso2.is</groupId>
         <artifactId>identity-integration-tests</artifactId>
-        <version>2.0.0-SNAPSHOT</version>
+        <version>5.2.0-SNAPSHOT</version>
         <relativePath>../../pom.xml</relativePath>
     </parent>
 
@@ -123,7 +123,7 @@
                         <configuration>
                             <artifactItems>
                                 <artifactItem>
-                                    <groupId>org.wso2telco.ids</groupId>
+                                    <groupId>org.wso2.is</groupId>
                                     <artifactId>wso2is</artifactId>
                                     <version>${project.version}</version>
                                     <type>zip</type>
@@ -184,7 +184,7 @@
                         <configuration>
                             <artifactItems>
                                 <artifactItem>
-                                    <groupId>org.wso2telco.ids</groupId>
+                                    <groupId>org.wso2.is</groupId>
                                     <artifactId>org.wso2.sample.is.sso.agent</artifactId>
                                     <type>war</type>
                                     <overWrite>false</overWrite>
@@ -204,7 +204,7 @@
                         <configuration>
                             <artifactItems>
                                 <artifactItem>
-                                    <groupId>org.wso2telco.ids</groupId>
+                                    <groupId>org.wso2.is</groupId>
                                     <artifactId>playground2</artifactId>
                                     <type>war</type>
                                     <overWrite>false</overWrite>
@@ -224,7 +224,7 @@
                         <configuration>
                             <artifactItems>
                                 <artifactItem>
-                                    <groupId>org.wso2telco.ids</groupId>
+                                    <groupId>org.wso2.is</groupId>
                                     <artifactId>PassiveSTSSampleApp</artifactId>
                                     <type>war</type>
                                     <overWrite>false</overWrite>
@@ -412,11 +412,11 @@
             </exclusions>
         </dependency>
         <dependency>
-            <groupId>org.wso2.identity</groupId>
+            <groupId>org.wso2.is</groupId>
             <artifactId>org.wso2.identity.integration.common.clients</artifactId>
         </dependency>
         <dependency>
-            <groupId>org.wso2.identity</groupId>
+            <groupId>org.wso2.is</groupId>
             <artifactId>org.wso2.identity.integration.common.utils</artifactId>
         </dependency>
         <dependency>
@@ -548,7 +548,7 @@
         <dependency>
             <groupId>org.wso2.is</groupId>
             <artifactId>org.wso2.sample.is.sso.agent</artifactId>
-            <version>${product.identity.version}</version>
+            <version>${project.version}</version>
             <type>war</type>
         </dependency>
         <dependency>
@@ -560,7 +560,7 @@
         <dependency>
             <groupId>org.wso2.is</groupId>
             <artifactId>PassiveSTSSampleApp</artifactId>
-            <version>${product.identity.version}</version>
+            <version>${project.version}</version>
             <type>war</type>
         </dependency>
         <dependency>

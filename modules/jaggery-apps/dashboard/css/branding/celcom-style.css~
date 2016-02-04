@@ -1,7 +1,0 @@
-a.brand{
-    background:transparent url(../../images/branding/celcom_logo.jpeg) no-repeat left top;
-    display: block;
-    width: 153px;
-    height: 101px;
-    margin-bottom:6px;
-}

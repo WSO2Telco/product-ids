@@ -1,7 +1,0 @@
-{
-        "server" : {
-                "carbon_url" : "Identity server URL",  //identity.example.com:9443
-                "webapps_url" : "Identity server URL",   //identity.example.com:9763
-                "am_url" : "API Manager URL/",    // apimanager.example.com:9443
-        }
-}

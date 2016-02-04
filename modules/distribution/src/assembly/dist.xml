@@ -27,7 +27,7 @@
 			<directory>
 				../p2-profile-gen/target/wso2carbon-core-${carbon.kernel.version}/repository/components
 			</directory>
-			<outputDirectory>wso2telcoids-${pom.version}/repository/components
+			<outputDirectory>wso2is-${pom.version}/repository/components
 			</outputDirectory>
 			<excludes>
 				<exclude>**/eclipse.ini</exclude>
@@ -40,7 +40,7 @@
 	<dependencySets>
 		<dependencySet>
 			<outputDirectory>
-				wso2telcoids-${pom.version}/repository/deployment/client/modules
+				wso2is-${pom.version}/repository/deployment/client/modules
 			</outputDirectory>
 			<includes>
 				<include>org.apache.rampart:rampart:mar
