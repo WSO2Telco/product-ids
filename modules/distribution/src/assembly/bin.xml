@@ -659,6 +659,42 @@
             <outputDirectory>${pom.artifactId}-${pom.version}/repository/database/</outputDirectory>
             <fileMode>644</fileMode>
         </file>
+	<file>
+            <source>
+                ../idsconfig/LOA.xml
+            </source>
+            <outputDirectory>wso2telcoids-${pom.version}/repository/conf</outputDirectory>
+	    <fileMode>644</fileMode>
+        </file>
+	<file>
+            <source>
+                ../idsconfig/mobile-connect.xml
+            </source>
+            <outputDirectory>wso2telcoids-${pom.version}/repository/conf</outputDirectory>
+	    <fileMode>644</fileMode>
+        </file>
 
+	<file>
+            <source>
+              ../idsconfig/MobileCountryConfig.xml
+            </source>
+            <outputDirectory>wso2telcoids-${pom.version}/repository/conf</outputDirectory>
+	    <fileMode>644</fileMode>
+        </file>
+	<file>
+            <source>
+                ../idsconfig/operators.xml
+            </source>
+            <outputDirectory>wso2telcoids-${pom.version}/repository/conf</outputDirectory>
+	    <fileMode>644</fileMode>
+        </file>
+
+	<file>
+            <source>
+                ../idsconfig/scope-config.xml
+            </source>
+            <outputDirectory>wso2telcoids-${pom.version}/repository/conf</outputDirectory>
+	    <fileMode>644</fileMode>
+        </file>	
     </files>
 </assembly>
