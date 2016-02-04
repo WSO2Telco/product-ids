@@ -442,10 +442,6 @@
 							<deleteOldProfileFiles>true</deleteOldProfileFiles>
 							<features>
 								<feature>
-									<id>com.wso2telco.core.dbutils.feature</id>
-									<version>${com.wso2telco.core.version}</version>
-								</feature>
-								<feature>
 									<id>org.jaggeryjs.server.feature.group</id>
 									<version>${jaggeryjs.version}</version>
 								</feature>
