@@ -627,7 +627,7 @@
                 <version>${version.commons.logging}</version>
             </dependency>
             <dependency>
-                <groupId>com.wso2telco.ids</groupId>
+                <groupId>org.wso2.is</groupId>
                 <artifactId>org.wso2.identity.passivests.filter</artifactId>
                 <version>${product.identity.version}</version>
             </dependency>
@@ -747,7 +747,7 @@
                 <version>${commons.httpclient.version}</version>
             </dependency>
             <dependency>
-                <groupId>com.wso2telco.ids</groupId>
+                <groupId>org.wso2.is</groupId>
                 <artifactId>org.wso2.identity.styles</artifactId>
                 <version>${product.identity.version}</version>
             </dependency>
@@ -913,13 +913,13 @@
                 <version>${carbon.automationutils.version}</version>
             </dependency>
             <dependency>
-                <groupId>com.wso2telco.ids</groupId>
+                <groupId>com.wso2.is</groupId>
                 <artifactId>org.wso2.identity.integration.common.clients</artifactId>
                 <version>${product.identity.version}</version>
                 <scope>compile</scope>
             </dependency>
             <dependency>
-                <groupId>com.wso2telco.ids</groupId>
+                <groupId>com.wso2.is</groupId>
                 <artifactId>org.wso2.identity.integration.common.utils</artifactId>
                 <version>${product.identity.version}</version>
                 <scope>compile</scope>
