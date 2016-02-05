@@ -21,3 +21,5 @@ target
 *.iws
 *.ipr
 .idea
+
+modules/distribution/src/site*

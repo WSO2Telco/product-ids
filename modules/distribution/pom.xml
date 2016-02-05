@@ -24,7 +24,7 @@
     </parent>
 
     <modelVersion>4.0.0</modelVersion>
-    <artifactId>wso2is</artifactId>
+    <artifactId>wso2telcoids</artifactId>
     <packaging>jar</packaging>
     <name>Identity Server</name>
     <url />
@@ -119,11 +119,11 @@
                                 <mkdir dir="${tempdir}" />
                                 <unzip dest="${tempdir}">
                                     <fileset dir="target">
-                                        <include name="wso2is-${project.version}.zip" />
+                                        <include name="wso2telcoids-${project.version}.zip" />
                                     </fileset>
                                 </unzip>
 
-                                <!--unzip src="wso2is-${project.version}.zip" dest="${tempdir}">
+                                <!--unzip src="wso2telcoids-${project.version}.zip" dest="${tempdir}">
                                 </unzip-->
                                 <replace file="target/wso2carbon-core-${carbon.kernel.version}/repository/conf/carbon.xml" token="${product.name}" value="WSO2 Identity Server" />
                                 <replace file="../p2-profile-gen/target/wso2carbon-core-${carbon.kernel.version}/repository/conf/tomcat/context.xml" token="&lt;Context crossContext=&quot;true&quot;&gt;" value="&lt;Context crossContext=&quot;true&quot; useHttpOnly=&quot;true&quot;&gt;" />
@@ -194,11 +194,11 @@
                                 <!-- Enable KDC for IS -->
 
                                 <copy todir="target/wso2carbon-core-${carbon.kernel.version}/repository/components/" overwrite="false">
-                                    <fileset dir="${tempdir}/wso2is-${project.version}/repository/components/">
+                                    <fileset dir="${tempdir}/wso2telcoids-${project.version}/repository/components/">
                                     </fileset>
                                 </copy>
                                 <copy todir="target/wso2carbon-core-${carbon.kernel.version}/repository/deployment/client/modules" overwrite="false">
-                                    <fileset dir="${tempdir}/wso2is-${project.version}/repository/deployment/client/modules">
+                                    <fileset dir="${tempdir}/wso2telcoids-${project.version}/repository/deployment/client/modules">
                                     </fileset>
                                 </copy>
                                 <copy todir="target/wso2carbon-core-${carbon.kernel.version}/dbscripts/identity" overwrite="false">
@@ -218,7 +218,7 @@
                                 </sql>
                                 <echo message="##################### END ########################" />
 
-                                <delete file="target/wso2is-${project.version}.zip" />
+                                <delete file="target/wso2telcoids-${project.version}.zip" />
                                 <delete dir="${tempdir}" />
                                 <mkdir dir="${tempdir}" />
                                 <unzip dest="${tempdir}">
@@ -289,7 +289,7 @@
                                 <delete dir="target/dependency-maven-plugin-markers" />
                                 <delete dir="target/maven-archiver" />
                                 <delete dir="target/wso2carbon-core-${carbon.kernel.version}" />
-                                <delete file="target/wso2is-${project.version}.jar" />
+                                <delete file="target/wso2telcoids-${project.version}.jar" />
                                 <delete dir="target/sources" />
                                 <delete dir="target/site" />
                                 <delete dir="src/site" />
