@@ -28,14 +28,14 @@
     <fileSets>
         <fileSet>
             <directory>target/sources</directory>
-            <outputDirectory>wso2is-${pom.version}-src</outputDirectory>
+            <outputDirectory>wso2telcoids-${pom.version}-src</outputDirectory>
             <includes>
                 <include>**/*</include>
             </includes>
         </fileSet>
         <fileSet>
             <directory>../..</directory>
-            <outputDirectory>wso2is-${pom.version}-src</outputDirectory>
+            <outputDirectory>wso2telcoids-${pom.version}-src</outputDirectory>
             <includes>
                 <include>modules/**/*</include>
             </includes>
