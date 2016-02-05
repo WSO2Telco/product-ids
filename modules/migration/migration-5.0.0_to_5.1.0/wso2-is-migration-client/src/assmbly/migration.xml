@@ -27,7 +27,7 @@
             <directory>
                 ../scripts/identity
             </directory>
-            <outputDirectory>wso2is-${pom.version}-migration/dbscripts/identity/migration-5.0.0SP1_to_5.1.0</outputDirectory>
+            <outputDirectory>wso2telcoids-${pom.version}-migration/dbscripts/identity/migration-5.0.0SP1_to_5.1.0</outputDirectory>
             <includes>
                 <include>h2.sql</include>
                 <include>mysql.sql</include>
@@ -40,7 +40,7 @@
             <directory>
                 ../scripts/identity/tosp1
             </directory>
-            <outputDirectory>wso2is-${pom.version}-migration/dbscripts/identity/migration-5.0.0_to_5.0.0SP1</outputDirectory>
+            <outputDirectory>wso2telcoids-${pom.version}-migration/dbscripts/identity/migration-5.0.0_to_5.0.0SP1</outputDirectory>
             <includes>
                 <include>h2.sql</include>
                 <include>mysql.sql</include>
@@ -53,7 +53,7 @@
             <directory>
                 ../scripts/um
             </directory>
-            <outputDirectory>wso2is-${pom.version}-migration/dbscripts/migration-5.0.0_to_5.1.0</outputDirectory>
+            <outputDirectory>wso2telcoids-${pom.version}-migration/dbscripts/migration-5.0.0_to_5.1.0</outputDirectory>
             <includes>
                 <include>h2.sql</include>
                 <include>mysql.sql</include>
@@ -68,7 +68,7 @@
             <source>
                 target/org.wso2.carbon.is.migrate.client-${pom.version}.jar
             </source>
-            <outputDirectory>wso2is-${pom.version}-migration/dropins/</outputDirectory>
+            <outputDirectory>wso2telcoids-${pom.version}-migration/dropins/</outputDirectory>
         </file>
     </files>
 </assembly>
