@@ -919,6 +919,75 @@
                             </destination>
                             <deleteOldProfileFiles>true</deleteOldProfileFiles>
                             <features>
+
+<feature>
+                                    <id>com.wso2telco.core.dbutils.feature.group</id>
+                                    <version>${com.wso2telco.core.version}</version>
+                                </feature>
+
+
+				<feature>
+                                    <id>com.wso2telco.core.mncresolver.feature.group</id>
+                                    <version>${com.wso2telco.core.version}</version>
+                                </feature>
+				<feature>
+                                    <id>com.wso2telco.ids.sign.ui.feature.group</id>
+                                    <version>${com.wso2telco.ids.version}</version>
+                                </feature>	
+
+
+				<feature>
+                                    <id>com.wso2telco.ids.portal.ui.feature.group</id>
+                                    <version>${com.wso2telco.ids.version}</version>
+                                </feature>	
+				<feature>
+                                    <id>com.wso2telco.ids.dashboard.ui.feature.group</id>
+                                    <version>${com.wso2telco.ids.version}</version>
+                                </feature>
+
+				<feature>
+                                    <id>com.wso2telco.ids.authenticateselector.feature.group</id>
+                                    <version>${com.wso2telco.ids.version}</version>
+                                </feature>
+
+				<feature>
+                                    <id>com.wso2telco.ids.authenticationendpoint.ui.feature.group</id>
+                                    <version>${com.wso2telco.ids.version}</version>
+                                </feature>
+
+				<feature>
+                                    <id>com.wso2telco.ids.gsmaauthenticator.feature.group</id>
+                                    <version>${com.wso2telco.ids.version}</version>
+                                </feature>
+
+				<feature>
+                                    <id>com.wso2telco.ids.openidtokenbuilder.feature.group</id>
+                                    <version>${com.wso2telco.ids.version}</version>
+                                </feature>
+
+				<feature>
+                                    <id>com.wso2telco.ids.operatorproxyservice.ui.feature.group</id>
+                                    <version>${com.wso2telco.ids.version}</version>
+                                </feature>
+
+				<feature>
+                                    <id>com.wso2telco.ids.sessionupdater.ui.feature.group</id>
+                                    <version>${com.wso2telco.ids.version}</version>
+                                </feature>
+				<feature>
+                                    <id>com.wso2telco.ids.urlshorten.feature.group</id>
+                                    <version>${com.wso2telco.ids.version}</version>
+                                </feature>
+
+				<feature>
+                                    <id>com.wso2telco.ids.userclaimretriever.feature.group</id>
+                                    <version>${com.wso2telco.ids.version}</version>
+                                </feature>
+				<feature>
+                                    <id>com.wso2telco.ids.userregistration.ui.feature.group</id>
+                                    <version>${com.wso2telco.ids.version}</version>
+                                </feature>
+
 				<feature>
                                     <id>org.jaggeryjs.server.feature.group</id>
                                     <version>${jaggeryjs.version}</version>
@@ -1303,7 +1372,73 @@
                             </destination>
                             <deleteOldProfileFiles>true</deleteOldProfileFiles>
                             <features>
+<feature>
+                                    <id>com.wso2telco.core.dbutils.feature.group</id>
+                                    <version>${com.wso2telco.core.version}</version>
+                                </feature>
 
+
+				<feature>
+                                    <id>com.wso2telco.core.mncresolver.feature.group</id>
+                                    <version>${com.wso2telco.core.version}</version>
+                                </feature>
+				<feature>
+                                    <id>com.wso2telco.ids.sign.ui.feature.group</id>
+                                    <version>${com.wso2telco.ids.version}</version>
+                                </feature>	
+
+
+				<feature>
+                                    <id>com.wso2telco.ids.portal.ui.feature.group</id>
+                                    <version>${com.wso2telco.ids.version}</version>
+                                </feature>	
+				<feature>
+                                    <id>com.wso2telco.ids.dashboard.ui.feature.group</id>
+                                    <version>${com.wso2telco.ids.version}</version>
+                                </feature>
+
+				<feature>
+                                    <id>com.wso2telco.ids.authenticateselector.feature.group</id>
+                                    <version>${com.wso2telco.ids.version}</version>
+                                </feature>
+
+				<feature>
+                                    <id>com.wso2telco.ids.authenticationendpoint.ui.feature.group</id>
+                                    <version>${com.wso2telco.ids.version}</version>
+                                </feature>
+
+				<feature>
+                                    <id>com.wso2telco.ids.gsmaauthenticator.feature.group</id>
+                                    <version>${com.wso2telco.ids.version}</version>
+                                </feature>
+
+				<feature>
+                                    <id>com.wso2telco.ids.openidtokenbuilder.feature.group</id>
+                                    <version>${com.wso2telco.ids.version}</version>
+                                </feature>
+
+				<feature>
+                                    <id>com.wso2telco.ids.operatorproxyservice.ui.feature.group</id>
+                                    <version>${com.wso2telco.ids.version}</version>
+                                </feature>
+
+				<feature>
+                                    <id>com.wso2telco.ids.sessionupdater.ui.feature.group</id>
+                                    <version>${com.wso2telco.ids.version}</version>
+                                </feature>
+				<feature>
+                                    <id>com.wso2telco.ids.urlshorten.feature.group</id>
+                                    <version>${com.wso2telco.ids.version}</version>
+                                </feature>
+
+				<feature>
+                                    <id>com.wso2telco.ids.userclaimretriever.feature.group</id>
+                                    <version>${com.wso2telco.ids.version}</version>
+                                </feature>
+				<feature>
+                                    <id>com.wso2telco.ids.userregistration.ui.feature.group</id>
+                                    <version>${com.wso2telco.ids.version}</version>
+                                </feature>
                                 <feature>
                                     <id>org.jaggeryjs.server.feature.group</id>
                                     <version>${jaggeryjs.version}</version>
@@ -1676,7 +1811,73 @@
                             </destination>
                             <deleteOldProfileFiles>true</deleteOldProfileFiles>
                             <features>
+<feature>
+                                    <id>com.wso2telco.core.dbutils.feature.group</id>
+                                    <version>${com.wso2telco.core.version}</version>
+                                </feature>
 
+
+				<feature>
+                                    <id>com.wso2telco.core.mncresolver.feature.group</id>
+                                    <version>${com.wso2telco.core.version}</version>
+                                </feature>
+				<feature>
+                                    <id>com.wso2telco.ids.sign.ui.feature.group</id>
+                                    <version>${com.wso2telco.ids.version}</version>
+                                </feature>	
+
+
+				<feature>
+                                    <id>com.wso2telco.ids.portal.ui.feature.group</id>
+                                    <version>${com.wso2telco.ids.version}</version>
+                                </feature>	
+				<feature>
+                                    <id>com.wso2telco.ids.dashboard.ui.feature.group</id>
+                                    <version>${com.wso2telco.ids.version}</version>
+                                </feature>
+
+				<feature>
+                                    <id>com.wso2telco.ids.authenticateselector.feature.group</id>
+                                    <version>${com.wso2telco.ids.version}</version>
+                                </feature>
+
+				<feature>
+                                    <id>com.wso2telco.ids.authenticationendpoint.ui.feature.group</id>
+                                    <version>${com.wso2telco.ids.version}</version>
+                                </feature>
+
+				<feature>
+                                    <id>com.wso2telco.ids.gsmaauthenticator.feature.group</id>
+                                    <version>${com.wso2telco.ids.version}</version>
+                                </feature>
+
+				<feature>
+                                    <id>com.wso2telco.ids.openidtokenbuilder.feature.group</id>
+                                    <version>${com.wso2telco.ids.version}</version>
+                                </feature>
+
+				<feature>
+                                    <id>com.wso2telco.ids.operatorproxyservice.ui.feature.group</id>
+                                    <version>${com.wso2telco.ids.version}</version>
+                                </feature>
+
+				<feature>
+                                    <id>com.wso2telco.ids.sessionupdater.ui.feature.group</id>
+                                    <version>${com.wso2telco.ids.version}</version>
+                                </feature>
+				<feature>
+                                    <id>com.wso2telco.ids.urlshorten.feature.group</id>
+                                    <version>${com.wso2telco.ids.version}</version>
+                                </feature>
+
+				<feature>
+                                    <id>com.wso2telco.ids.userclaimretriever.feature.group</id>
+                                    <version>${com.wso2telco.ids.version}</version>
+                                </feature>
+				<feature>
+                                    <id>com.wso2telco.ids.userregistration.ui.feature.group</id>
+                                    <version>${com.wso2telco.ids.version}</version>
+                                </feature>
                                 <!-- 1 Carbon Kernel -->
                                 <feature>
                                     <id>org.wso2.carbon.core.common.feature.group</id>
