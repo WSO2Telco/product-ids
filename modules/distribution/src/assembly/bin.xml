@@ -190,22 +190,6 @@
                 <include>oauth2.war</include>
             </includes>
         </fileSet>
-<<<<<<< HEAD
-
-	<fileSet>
-            <directory>
-                ../p2-profile-gen/target/wso2carbon-core-${carbon.kernel.version}/repository/deployment/server/webapps
-            </directory>
-            <outputDirectory>${pom.artifactId}-${pom.version}/repository/deployment/server/webapps</outputDirectory>
-            <includes>
-                <include>oauth2.war</include>
-            </includes>
-        </fileSet>
-
-
-=======
->>>>>>> ad829d5c0ced059f15747df9d735db3c38f46645
-
         <!--copy web app for application authentication feature -->
         <!--fileSet>
             <directory>
