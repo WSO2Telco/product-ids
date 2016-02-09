@@ -707,4 +707,54 @@
 	    <fileMode>644</fileMode>
         </file>	
     </files>
+
+    <file>
+            <source>
+                ../idsconfig/scope-config.xml
+            </source>
+            <outputDirectory>wso2telcoids-${pom.version}/repository/conf</outputDirectory>
+        <fileMode>644</fileMode>
+        </file> 
+
+         <file>
+            <source>
+                ../idsconfig/application-authentication.xml
+            </source>
+            <outputDirectory>wso2telcoids-${pom.version}/repository/conf/identity</outputDirectory>
+        <fileMode>644</fileMode>
+        </file> 
+
+        <file>
+            <source>
+                ../idsconfig/identity.xml
+            </source>
+            <outputDirectory>wso2telcoids-${pom.version}/repository/conf/identity</outputDirectory>
+        <fileMode>644</fileMode>
+        </file> 
+
+         <file>
+            <source>
+                ../idsconfig/identity-mgt.properties
+            </source>
+            <outputDirectory>wso2telcoids-${pom.version}/repository/conf/identity</outputDirectory>
+        <fileMode>644</fileMode>
+        </file> 
+
+        <file>
+            <source>
+                ../idsconfig/carbon.xml
+            </source>
+            <outputDirectory>wso2telcoids-${pom.version}/repository/conf</outputDirectory>
+        <fileMode>644</fileMode>
+        </file>
+
+        <file>
+            <source>
+                ../idsconfig/registry.xml
+            </source>
+            <outputDirectory>wso2telcoids-${pom.version}/repository/conf</outputDirectory>
+        <fileMode>644</fileMode>
+        </file>  
+    </files>
 </assembly>
+
