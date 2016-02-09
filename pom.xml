@@ -29,12 +29,11 @@
     <packaging>pom</packaging>
     <description>WSO2 Identity Server</description>
     <version>5.2.0-SNAPSHOT</version>
-    <name>WSO2 Identity Server</name>
+    <name>WSO2Telco Identity Server</name>
     <url>http://wso2.org/projects/identity</url>
 
     <modules>
         <module>modules/migration/migration-5.0.0_to_5.1.0/wso2-is-migration-client</module>
-        <module>modules/features</module>
         <module>modules/p2-profile-gen</module>
         <module>modules/distribution</module>
         <module>modules/styles</module>
@@ -1167,8 +1166,8 @@
     </profiles>
 
     <properties>
-       <com.wso2telco.ids.version>2.0.16-SNAPSHOT</com.wso2telco.ids.version>
-	<com.wso2telco.core.version>2.0.9-SNAPSHOT</com.wso2telco.core.version>
+       <com.wso2telco.ids.version>2.0.18-SNAPSHOT</com.wso2telco.ids.version>
+	<com.wso2telco.core.version>2.0.11-SNAPSHOT</com.wso2telco.core.version>
         <carbon.identity.version>5.0.5</carbon.identity.version>
         <carbon.identity.jar.version>5.0.5</carbon.identity.jar.version>
         <product.identity.version>5.1.0</product.identity.version>
