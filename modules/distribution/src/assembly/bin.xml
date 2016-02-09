@@ -564,13 +564,6 @@
             <outputDirectory>wso2telcoids-${pom.version}/repository/conf</outputDirectory>
         </file>
         <file>
-            <source>../jaggery-apps/user-dashboard/sp_dashboard.xml</source>
-            <outputDirectory>${pom.artifactId}-${pom.version}/repository/conf/identity/service-providers/
-            </outputDirectory>
-            <filtered>true</filtered>
-            <fileMode>644</fileMode>
-        </file>
-        <file>
             <source>
                 ../p2-profile-gen/target/wso2carbon-core-${carbon.kernel.version}/repository/conf/identity/thrift-authentication.xml
             </source>
