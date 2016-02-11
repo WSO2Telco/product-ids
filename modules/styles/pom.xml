@@ -18,17 +18,17 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
 
     <parent>
-    	<groupId>org.wso2.is</groupId>
+    	<groupId>com.wso2telco.product.ids</groupId>
     	<artifactId>identity-server-parent</artifactId>
-    	<version>5.2.0-SNAPSHOT</version>
+    	<version>2.0.0-SNAPSHOT</version>
         <relativePath>../../pom.xml</relativePath>
     </parent>
 
     <modelVersion>4.0.0</modelVersion>
     <artifactId>identity-server-styles-parent</artifactId>
     <packaging>pom</packaging>
-    <description>WSO2 Identity Server Styles Parent</description>
-    <name>WSO2 Identity Server Styles Parent</name>
+    <description>WSO2Telco Identity Server Styles Parent</description>
+    <name>WSO2Telco Identity Server- Styles Parent</name>
     <url>http://wso2.org/projects/identity</url>
 
     <licenses>
