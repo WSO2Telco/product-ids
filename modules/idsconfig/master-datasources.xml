@@ -26,7 +26,8 @@
     </datasource>
 
     <!-- enter the user and the password for the respective databases -->
-    <!--datasource>
+    <!-- remove the commented section and enter the database names and mysql host -->
+    <datasource>
       <name>WSO2AM_DB</name>
       <description>The datasource used for API Manager database</description>
       <jndiConfig>
@@ -34,9 +35,9 @@
       </jndiConfig>
       <definition type="RDBMS">
         <configuration>
-          <url>jdbc:mysql://<dbhost>:3306/<apimgrdb>?autoReconnect=true&amp;relaxAutoCommit=true&amp;</url>
-          <username>{user}</username>
-          <password>{passwd}</password>
+          <url>jdbc:mysql://<!--dbhost-->:3306/<!--apimgtdb-->?autoReconnect=true&amp;relaxAutoCommit=true&amp;</url>  <!-- enter the dbhost and apimgt db name -->
+          <username>{user}</username>        <!-- User name -->
+          <password>{passwd}</password>      <!-- Password -->
           <driverClassName>com.mysql.jdbc.Driver</driverClassName>
           <maxActive>50</maxActive>
           <maxWait>60000</maxWait>
@@ -54,9 +55,9 @@
       </jndiConfig>
       <definition type="RDBMS">
         <configuration>
-          <url>jdbc:mysql://<dbhost>t:3306/gsma_registry?autoReconnect=true&amp;relaxAutoCommit=true&amp;</url>
-          <username>root</username>
-          <password>{passwd}</password>
+          <url>jdbc:mysql://<!--dbhost-->:3306/<!--gsma_registry-->?autoReconnect=true&amp;relaxAutoCommit=true&amp;</url>    <!-- enter the dbhost and gsma_registry db name -->
+          <username>{user}</username>      <!-- User name -->
+          <password>{passwd}</password>   <!-- Password -->
           <driverClassName>com.mysql.jdbc.Driver</driverClassName>
           <maxActive>50</maxActive>
           <maxWait>60000</maxWait>
@@ -74,9 +75,9 @@
       </jndiConfig>
       <definition type="RDBMS">
         <configuration>
-          <url>jdbc:mysql://<dbhost>:3306/gsma_userstore?autoReconnect=true&amp;relaxAutoCommit=true&amp;</url>
-          <username>root</username>
-          <password>{passwd}</password>
+          <url>jdbc:mysql://<!--dbhost-->:3306/<!--gsma_userstore-->?autoReconnect=true&amp;relaxAutoCommit=true&amp;</url>     <!-- enter the dbhost and gsma_userstore db name -->
+         <username>{user}</username>       <!-- User name -->
+          <password>{passwd}</password>    <!-- Password -->
           <driverClassName>com.mysql.jdbc.Driver</driverClassName>
           <maxActive>50</maxActive>
           <maxWait>60000</maxWait>
@@ -94,9 +95,9 @@
       </jndiConfig>
       <definition type="RDBMS">
         <configuration>
-          <url>jdbc:mysql://<dbhost>:3306/isam_usersession?autoReconnect=true&amp;relaxAutoCommit=true&amp;</url>
-          <username>root</username>
-          <password>{passwd}</password>
+          <url>jdbc:mysql://<!--dbhost-->:3306/<!--connectdb-->?autoReconnect=true&amp;relaxAutoCommit=true&amp;</url>   <!-- enter the dbhost and connect db name -->
+          <username>{user}</username>      <!-- User name -->
+          <password>{passwd}</password>   <!-- Password -->
           <driverClassName>com.mysql.jdbc.Driver</driverClassName>
           <maxActive>50</maxActive>
           <maxWait>60000</maxWait>
@@ -114,9 +115,9 @@
       </jndiConfig>
       <definition type="RDBMS">
         <configuration>
-          <url>jdbc:mysql://<dbhost>:3306/axiatadb</url>
-          <username>root</username>
-          <password>{passwd}</password>
+          <url>jdbc:mysql://<!--dbhost-->:3306/<!--axiatadb-->?autoReconnect=true&amp;relaxAutoCommit=true</url>     <!-- enter the dbhost and axiata db name -->
+          <username>{user}</username>     <!-- User name -->
+          <password>{passwd}</password>   <!-- Password -->
           <driverClassName>com.mysql.jdbc.Driver</driverClassName>
           <maxActive>50</maxActive>
           <maxWait>60000</maxWait>
