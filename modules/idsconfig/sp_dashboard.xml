@@ -1,0 +1,50 @@
+<ServiceProvider>
+	<ApplicationID>2</ApplicationID>
+	<ApplicationName>wso2_sp_dashboard</ApplicationName>
+	<Description>Default Service Provider</Description>
+	<InboundAuthenticationConfig>
+		<InboundAuthenticationRequestConfigs>
+			<InboundAuthenticationRequestConfig>
+				<InboundAuthKey>wso2.my.dashboard</InboundAuthKey>
+				<InboundAuthType>samlsso</InboundAuthType>
+				<Properties></Properties>
+			</InboundAuthenticationRequestConfig>
+		</InboundAuthenticationRequestConfigs>
+	</InboundAuthenticationConfig>
+		<LocalAndOutBoundAuthenticationConfig>
+			<AuthenticationSteps>
+					<AuthenticationStep>
+							<StepOrder>1</StepOrder>
+							<LocalAuthenticatorConfigs>
+									<LocalAuthenticatorConfig>
+											<Name>MSISDNAuthenticator</Name>
+											<DisplayName>msisdn</DisplayName>
+											<IsEnabled>true</IsEnabled>
+									</LocalAuthenticatorConfig>
+							</LocalAuthenticatorConfigs>
+							<SubjectStep>true</SubjectStep>
+							<AttributeStep>true</AttributeStep>
+					</AuthenticationStep>
+					<AuthenticationStep>
+							<StepOrder>2</StepOrder>
+							<LocalAuthenticatorConfigs>
+									<LocalAuthenticatorConfig>
+											<Name>USSDAuthenticator</Name>
+											<DisplayName>ussd</DisplayName>
+											<IsEnabled>true</IsEnabled>
+									</LocalAuthenticatorConfig>
+							</LocalAuthenticatorConfigs>
+							<SubjectStep>false</SubjectStep>
+							<AttributeStep>false</AttributeStep>
+					</AuthenticationStep>
+			</AuthenticationSteps>
+		</LocalAndOutBoundAuthenticationConfig>
+​
+       <RequestPathAuthenticatorConfigs></RequestPathAuthenticatorConfigs>
+       <InboundProvisioningConfig></InboundProvisioningConfig>
+	<OutboundProvisioningConfig></OutboundProvisioningConfig>
+	<ClaimConfig>
+          <AlwaysSendMappedLocalSubjectId>true</AlwaysSendMappedLocalSubjectId>
+       </ClaimConfig>
+	<PermissionAndRoleConfig></PermissionAndRoleConfig>
+</ServiceProvider>
