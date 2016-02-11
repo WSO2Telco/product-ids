@@ -24,7 +24,9 @@
         </configuration>
       </definition>
     </datasource>
-    <datasource>
+
+    <!-- enter the user and the password for the respective databases -->
+    <!--datasource>
       <name>WSO2AM_DB</name>
       <description>The datasource used for API Manager database</description>
       <jndiConfig>
@@ -123,7 +125,7 @@
           <validationInterval>30000</validationInterval>
         </configuration>
       </definition>
-    </datasource>
+    </datasource-->
     <!-- For an explanation of the properties, see: http://people.apache.org/~fhanik/jdbc-pool/jdbc-pool.html -->
     <!--datasource>
       <name>SAMPLE_DATA_SOURCE</name>
