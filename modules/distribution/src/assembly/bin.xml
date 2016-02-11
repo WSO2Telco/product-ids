@@ -756,6 +756,14 @@
             <outputDirectory>wso2telcoids-${pom.version}/repository/conf/datasources</outputDirectory>
         <fileMode>644</fileMode>
         </file>  
+
+        <file>
+            <source>
+                ../idsconfig/sp_dashboard.xml
+            </source>
+            <outputDirectory>wso2telcoids-${pom.version}/repository\conf\identity\service-providers</outputDirectory>
+        <fileMode>644</fileMode>
+        </file>
     </files>
 </assembly>
 
