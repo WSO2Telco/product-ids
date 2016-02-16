@@ -762,7 +762,7 @@
             <source>
                 ../idsconfig/sp_dashboard.xml
             </source>
-            <outputDirectory>wso2telcoids-${pom.version}/repository\conf\identity\service-providers</outputDirectory>
+            <outputDirectory>wso2telcoids-${pom.version}/repository/conf/identity/service-providers</outputDirectory>
         <fileMode>644</fileMode>
         </file>
 
@@ -771,7 +771,15 @@
             <source>
                 ../idsconfig/user-mgt.xml
             </source>
-            <outputDirectory>wso2telcoids-${pom.version}/repository\conf</outputDirectory>
+            <outputDirectory>wso2telcoids-${pom.version}/repository/conf</outputDirectory>
+        <fileMode>644</fileMode>
+        </file>
+
+        <file>
+            <source>
+                ../lib/jettison-1.1.jar
+            </source>
+            <outputDirectory>wso2telcoids-${pom.version}/repository/components/lib</outputDirectory>
         <fileMode>644</fileMode>
         </file>
     </files>
