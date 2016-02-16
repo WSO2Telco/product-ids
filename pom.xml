@@ -1368,9 +1368,9 @@
 
 
 	<scm>
-		<url>https://github.com/WSO2Telco/core-util.git</url>
-		<developerConnection>scm:git:https://github.com/WSO2Telco/core-util.git</developerConnection>
-		<connection>scm:git:https://github.com/WSO2Telco/core-util.git</connection>
+		<url>https://github.com/WSO2Telco/product-ids.git</url>
+		<developerConnection>scm:git:https://github.com/WSO2Telco/product-ids.git</developerConnection>
+		<connection>scm:git:https://github.com/WSO2Telco/product-ids.git</connection>
 		<tag>HEAD</tag>
 	</scm>
 
