@@ -1165,7 +1165,7 @@
     </profiles>
 
     <properties>
-       <com.wso2telco.ids.version>2.0.09</com.wso2telco.ids.version>
+       <com.wso2telco.ids.version>2.0.24-SNAPSHOT</com.wso2telco.ids.version>
 	<com.wso2telco.core.version>2.0.01</com.wso2telco.core.version>
         <carbon.identity.version>5.0.7</carbon.identity.version>
         <carbon.identity.jar.version>5.0.7</carbon.identity.jar.version>
