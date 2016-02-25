@@ -28,7 +28,7 @@
     <!-- enter the user and the password for the respective databases -->
     <!-- remove the commented section and enter the database names and mysql host -->
     <datasource>
-      <name>WSO2AM_DB</name>
+      <name>AM_DB</name>
       <description>The datasource used for API Manager database</description>
       <jndiConfig>
         <name>jdbc/WSO2AM_DB</name>
@@ -48,7 +48,7 @@
       </definition>
     </datasource>
     <datasource>
-      <name>WSO2REG_DB</name>
+      <name>REG_DB</name>
       <description>The datasource used for registry and user manager</description>
       <jndiConfig>
         <name>jdbc/WSO2REG_DB</name>
@@ -68,7 +68,7 @@
       </definition>
     </datasource>
     <datasource>
-      <name>WSO2UM_DB</name>
+      <name>USER_DB</name>
       <description>The datasource used for registry and user manager</description>
       <jndiConfig>
         <name>jdbc/WSO2UM_DB</name>
@@ -108,7 +108,7 @@
       </definition>
     </datasource>
     <datasource>
-      <name>AXIATA_MIFE_DB</name>
+      <name>OPERATORS_DB</name>
       <description>The custom datasource used for MIFE</description>
       <jndiConfig>
         <name>jdbc/AXIATA_MIFE_DB</name>
