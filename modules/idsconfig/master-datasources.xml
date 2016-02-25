@@ -36,9 +36,9 @@
       <definition type="RDBMS">
         <configuration>
           <url>jdbc:mysql://localhost:3306/ids_apimgt?autoReconnect=true&amp;relaxAutoCommit=true&amp;</url>  <!-- enter the dbhost and apimgt db name -->
-          <username>root</username>        <!-- User name -->
-          <password>root</password>      <!-- Password -->
-          <driverClassName>com.mysql.jdbc.Driver</driverClassName>
+          <username>{username}</username>        <!-- User name -->
+          <password>{password}</password>
+	  <driverClassName>com.mysql.jdbc.Driver</driverClassName>
           <maxActive>50</maxActive>
           <maxWait>60000</maxWait>
           <testOnBorrow>true</testOnBorrow>
@@ -56,8 +56,8 @@
       <definition type="RDBMS">
         <configuration>
           <url>jdbc:mysql://localhost:3306/ids_regdb?autoReconnect=true&amp;relaxAutoCommit=true&amp;</url>    <!-- enter the dbhost and gsma_registry db name -->
-          <username>root</username>      <!-- User name -->
-          <password>root</password>   <!-- Password -->
+          <username>{username}</username>      <!-- User name -->
+	  <password>{password}</password>
           <driverClassName>com.mysql.jdbc.Driver</driverClassName>
           <maxActive>50</maxActive>
           <maxWait>60000</maxWait>
@@ -76,8 +76,8 @@
       <definition type="RDBMS">
         <configuration>
           <url>jdbc:mysql://localhost:3306/ids_userdb?autoReconnect=true&amp;relaxAutoCommit=true&amp;</url>     <!-- enter the dbhost and gsma_userstore db name -->
-         <username>root</username>       <!-- User name -->
-          <password>root</password>    <!-- Password -->
+         <username>{username}</username>       <!-- User name -->
+          <password>{password}</password>    <!-- Password -->
           <driverClassName>com.mysql.jdbc.Driver</driverClassName>
           <maxActive>50</maxActive>
           <maxWait>60000</maxWait>
@@ -96,8 +96,8 @@
       <definition type="RDBMS">
         <configuration>
           <url>jdbc:mysql://localhost:3306/ids_connectdb?autoReconnect=true&amp;relaxAutoCommit=true&amp;</url>   <!-- enter the dbhost and connect db name -->
-          <username>root</username>      <!-- User name -->
-          <password>root</password>   <!-- Password -->
+          <username>{username}</username>      <!-- User name -->
+          <password>{password}</password>   <!-- Password -->
           <driverClassName>com.mysql.jdbc.Driver</driverClassName>
           <maxActive>50</maxActive>
           <maxWait>60000</maxWait>
@@ -116,8 +116,8 @@
       <definition type="RDBMS">
         <configuration>
           <url>jdbc:mysql://localhost:3306/ids_operatorsdb?autoReconnect=true&amp;relaxAutoCommit=true</url>     <!-- enter the dbhost and axiata db name -->
-          <username>root</username>     <!-- User name -->
-          <password>root</password>   <!-- Password -->
+          <username>{username}</username>     <!-- User name -->
+          <password>{password}</password>   <!-- Password -->
           <driverClassName>com.mysql.jdbc.Driver</driverClassName>
           <maxActive>50</maxActive>
           <maxWait>60000</maxWait>
