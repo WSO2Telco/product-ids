@@ -3,9 +3,12 @@ git config --global credential.helper cache
 git config --global credential.helper 'cache --timeout=300'
 
 git clone https://github.com/WSO2Telco/uitest-framework
-git clone https://github.com/WSO2Telco/mobile-connect-pageobjects
+#change the below virsion if changes are done to mobile-connect-pageobjects
+git clone -b ids_2.0.0 https://github.com/WSO2Telco/mobile-connect-pageobjects
+#change the below virsion if changes are done to identity-server-pageobjects
+git clone -b ids_2.0.0 https://github.com/WSO2Telco/identity-server-pageobjects
 git clone https://github.com/WSO2Telco/mobile-connect-tests
-git clone https://github.com/WSO2Telco/identity-server-pageobjects
+
 
 cd ./uitest-framework
 echo "$PWD"
