@@ -18,6 +18,8 @@
 --
 -- Table structure for table `endpointapps`
 --
+CREATE DATABASE ids_operatorsdb;
+USE ids_operatorsdb;
 
 DROP TABLE IF EXISTS `endpointapps`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
