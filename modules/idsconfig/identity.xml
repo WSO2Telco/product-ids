@@ -83,7 +83,7 @@
         <OpenIDLoginUrl>${carbon.protocol}://${carbon.host}:${carbon.management.port}/authenticationendpoint/openid_login.do</OpenIDLoginUrl>
 
         <!-- If the users must be prompted for approval -->
-        <OpenIDSkipUserConsent>false</OpenIDSkipUserConsent>
+        <OpenIDSkipUserConsent>true</OpenIDSkipUserConsent>
         <!-- Expiry time of the OpenID RememberMe token in minutes -->
         <OpenIDRememberMeExpiry>7200</OpenIDRememberMeExpiry>
         <!-- To enable or disable openid dumb mode -->
@@ -271,7 +271,7 @@
             <!--UserInfoEndpointResponseBuilder>org.wso2.carbon.identity.oauth.endpoint.user.impl.UserInfoJSONResponseBuilder</UserInfoEndpointResponseBuilder-->
              <UserInfoEndpointResponseBuilder>com.wso2telco.user.impl.ClaimInfoMultipleScopeResponseBuilder</UserInfoEndpointResponseBuilder> 
 
-            <SkipUserConsent>false</SkipUserConsent>
+            <SkipUserConsent>true</SkipUserConsent>
         </OpenIDConnect>
     </OAuth>
 
