@@ -18,6 +18,8 @@
 --
 -- Table structure for table `REG_ASSOCIATION`
 --
+CREATE DATABASE ids_regdb;
+USE ids_regdb;
 
 DROP TABLE IF EXISTS `REG_ASSOCIATION`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;

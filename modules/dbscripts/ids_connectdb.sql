@@ -18,6 +18,8 @@
 --
 -- Table structure for table `clientstatus`
 --
+CREATE DATABASE ids_connectdb;
+USE ids_connectdb;
 
 DROP TABLE IF EXISTS `clientstatus`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
