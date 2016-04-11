@@ -1211,31 +1211,3 @@ No warranty or representation is given by WSO2.Telco in respect of the informati
 
 
 This document is neither a contract nor an offer of a contract. Any terms and conditions proposed or to be proposed by the recipient will be reviewed in due course by WSO2.Telco, this document also includes WSO2.Telco’s relevant standard terms and conditions. WSO2.Telco submits this document on the basis that all and any conditions warranties and representations and other terms applicable to the licensing and supply by WSO2.Telco of any technology or the provision by WSO2.Telco of any services are to be negotiated and incorporated in an appropriate signed contract.
-
-
-
-  []: mdimage/image1.png{width="6.6930555555555555in" height="1.5986111111111112in"}
-
-  [1]: mdimage/image2.jpeg{width="6.6930555555555555in" height="3.3465277777777778in"}
-
-  [*https://docs.wso2.com/display/CLUSTER420/Production+Deployment+Guidelines*]: https://docs.wso2.com/display/CLUSTER420/Production+Deployment+Guidelines
-
-  [2]: mdimage/image3.png{width="3.375in" height="5.0in"}
-
-  []: https://localhost:9444
-
-  [http://wso2.org/claims ]: https://localhost:9443/carbon/claim-mgt/claim-view.jsp?store=Internal&dialect=http%3A%2F%2Fwso2.org%2Fclaims
-
-  [3]: mdimage/image4.png{width="5.0in" height="1.6041666666666667in"}
-
-  [Management Console]: https://docs.wso2.org/display/IS500/Working+with+the+Management+Console
-
-  [System Statistics]: https://docs.wso2.com/display/IS500/System+Statistics
-
-  [System Logs]: https://docs.wso2.com/display/IS500/System+Logs
-
-  [SOAP Tracer]: https://docs.wso2.com/display/IS500/SOAP+Tracer
-
-  [~~AXIATAMIFEDEV-38~~]: https://support.wso2.com/jira/browse/AXIATAMIFEDEV-38
-
-  [wso2 guide]: https://docs.wso2.com/display/IS510/OAuth+2.0+with+WSO2+Playgroundi
