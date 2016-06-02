@@ -21,6 +21,7 @@
 CREATE DATABASE ids_connectdb;
 USE ids_connectdb;
 
+
 --
 -- Table structure for table `authenticated_login`
 --
@@ -28,7 +29,6 @@ USE ids_connectdb;
 DROP TABLE IF EXISTS `authenticated_login`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
-
 CREATE TABLE `authenticated_login` (
   `tokenID` varchar(255) NOT NULL,
   `client_id` varchar(255) DEFAULT NULL,
@@ -50,7 +50,8 @@ DROP TABLE IF EXISTS `clientstatus`;
 CREATE TABLE `clientstatus` (
   `SessionID` varchar(255) DEFAULT NULL,
   `Status` varchar(255) DEFAULT NULL,
-  `pin` varchar(10) DEFAULT '0'
+  `pin` varchar(10) DEFAULT '0',
+  `ussdsessionid` varchar(256) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -158,6 +159,7 @@ CREATE TABLE `multiplepasswords` (
   `username` varchar(255) NOT NULL,
   `pin` int(11) DEFAULT NULL,
   `attempts` int(11) NOT NULL,
+  `ussdsessionid` varchar(256) DEFAULT NULL,
   PRIMARY KEY (`username`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
