@@ -18,6 +18,7 @@
 --
 -- Table structure for table `clientstatus`
 --
+DROP DATABASE  IF EXISTS  ids_connectdb;
 CREATE DATABASE ids_connectdb;
 USE ids_connectdb;
 
