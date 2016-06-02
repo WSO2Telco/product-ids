@@ -251,7 +251,8 @@ DROP TABLE IF EXISTS `regstatus`;
 CREATE TABLE `regstatus` (
   `username` varchar(255) DEFAULT NULL,
   `status` varchar(255) DEFAULT NULL,
-  `pin` varchar(10) DEFAULT '0'
+  `pin` varchar(10) DEFAULT '0',
+  `uuid` varchar(255) DEFAULT '0'
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
