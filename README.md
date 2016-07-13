@@ -832,7 +832,7 @@ Go to Home-&gt;claims -&gt;Add
 
 
 
--   Login to IS carbon console&gt;configure&gt;Claim Management&gt;Claim View.
+-   Login to IS carbon console&gt;Home&gt;Claims&gt;Add&gt;Add New Claim
 
 
 
