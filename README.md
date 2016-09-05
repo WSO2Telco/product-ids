@@ -14,9 +14,7 @@
 
         -   [2.2.3 IDS Configurations]
 
-        -   [2.2.3 Define Service providers in IS management console.\
-
-            ]
+        -   [2.2.3 Define Service providers in IS management console]
 
     -   [Performance tuning]
 
@@ -34,15 +32,15 @@
 
 
 
-NOTE: Please see section Terms of Proposal at the end of this\
+NOTE: Please see section Terms of Proposal at the end of this
 
 document for conditions on which this proposal is offered.
 
 
 
-Tel: +1 408 754 7388\
+Tel: +1 408 754 7388
 
-Fax: +1 408 689 4328\
+Fax: +1 408 689 4328
 
 Email: <info@wso2telco.com>
 
@@ -108,7 +106,6 @@ Email: <info@wso2telco.com>
 
 
 
-\
 
 Introduction to WSO2.Telco
 
@@ -234,11 +231,7 @@ Features
 
   Physical          -   3 GHz Dual-core Xeon/Opteron (or latest)
 
-                    
-
                     -   4 GB RAM (2 GB for JVM and 2 GB for the operating system)
-
-                    
 
                     -   10 GB free disk space
 
@@ -250,15 +243,9 @@ Features
 
   Virtual Machine   -   2 compute units minimum (each unit having 1.0-1.2 GHz Opteron/Xeon processor)
 
-                    
-
-                    -   4 GB RAM
-
-                    
+                    -   4 GB RAM                    
 
                     -   10 GB free disk space
-
-                    
 
                     -   One CPU unit for the operating system and one for JVM.
 
@@ -810,7 +797,7 @@ Add following claim
 
 
 
-Pin\
+Pin
 
 Then go to Pin-&gt;edit and put Display order as 0 and select/check 'Supported by Default' and 'Required' checkboxes.
 
@@ -966,9 +953,9 @@ Performance tuning
 
 
 
-To optimize network and OS performance, you can edit following files in linux systems. \
+To optimize network and OS performance, you can edit following files in linux systems. 
 
-/etc/sysctl.conf\
+/etc/sysctl.conf
 
 /etc/security/limits.conf
 
@@ -990,13 +977,11 @@ You can use the operation 'registerOAuthApplicationData' in 'OAuthAdminService' 
 
 
 
-To do this, use the attributes oauthConsumerKey and oauthConsumerSecret in OAuthConsumerAppDTO.\
+To do this, use the attributes oauthConsumerKey and oauthConsumerSecret in OAuthConsumerAppDTO.
 
-\
 
-However, please note that \*before\* invoking 'OAuthAdminService', you need to have registered a Service Provider. To register a Service Provider, the service to use is 'IdentityApplicationManagementService'.\
 
-\
+However, please note that \*before\* invoking 'OAuthAdminService', you need to have registered a Service Provider. To register a Service Provider, the service to use is 'IdentityApplicationManagementService'.
 
 You may refer to the sample client attached herewith (sample\_client.zip), which shows how to set ConsumerKey and ConsumerSecret using the above admin service.\
 
@@ -1092,20 +1077,16 @@ For more information visit [wso2 guide]
 
 
 
--   Go to <https://localhost:9443/pl>*ayground*
-
+-   Go to <https://localhost:9443/playground>
 
 
 -   Provide the required details and continue.
 
 
-
 -   Then you will be redirected to Mobile connect portal
 
 
-
 -   Provide the mobile number to login or to get registered
-
 
 
 1.  Releases
@@ -1120,7 +1101,7 @@ For more information visit [wso2 guide]
 
 
 
-        1.  ### What's new in this release
+        1.  What's new in this release
 
 
 
