@@ -966,9 +966,9 @@ Performance tuning
 
 
 
-To optimize network and OS performance, you can edit following files in linux systems. \
+To optimize network and OS performance, you can edit following files in linux systems. 
 
-/etc/sysctl.conf\
+/etc/sysctl.conf
 
 /etc/security/limits.conf
 
@@ -990,13 +990,11 @@ You can use the operation 'registerOAuthApplicationData' in 'OAuthAdminService' 
 
 
 
-To do this, use the attributes oauthConsumerKey and oauthConsumerSecret in OAuthConsumerAppDTO.\
+To do this, use the attributes oauthConsumerKey and oauthConsumerSecret in OAuthConsumerAppDTO.
 
-\
 
-However, please note that \*before\* invoking 'OAuthAdminService', you need to have registered a Service Provider. To register a Service Provider, the service to use is 'IdentityApplicationManagementService'.\
 
-\
+However, please note that \*before\* invoking 'OAuthAdminService', you need to have registered a Service Provider. To register a Service Provider, the service to use is 'IdentityApplicationManagementService'.
 
 You may refer to the sample client attached herewith (sample\_client.zip), which shows how to set ConsumerKey and ConsumerSecret using the above admin service.\
 
@@ -1092,20 +1090,16 @@ For more information visit [wso2 guide]
 
 
 
--   Go to <https://localhost:9443/pl>*ayground*
-
+-   Go to <https://localhost:9443/playground>
 
 
 -   Provide the required details and continue.
 
 
-
 -   Then you will be redirected to Mobile connect portal
 
 
-
 -   Provide the mobile number to login or to get registered
-
 
 
 1.  Releases
@@ -1120,7 +1114,7 @@ For more information visit [wso2 guide]
 
 
 
-        1.  ### What's new in this release
+        1.  What's new in this release
 
 
 
