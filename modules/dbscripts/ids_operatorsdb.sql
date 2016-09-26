@@ -204,6 +204,16 @@ CREATE TABLE `operators` (
 -- Dumping data for table `operators`
 --
 
+DROP TABLE IF EXISTS operators_properties;
+
+CREATE TABLE operators_properties (
+  operatorId int(20) NOT NULL,
+  propertyKey VARCHAR(256),
+  propertyValue VARCHAR(512),
+  PRIMARY KEY (operatorId, propertyKey),
+  FOREIGN KEY (operatorId) REFERENCES operators(ID) ON DELETE CASCADE
+)ENGINE INNODB;
+
 LOCK TABLES `operators` WRITE;
 /*!40000 ALTER TABLE `operators` DISABLE KEYS */;
 INSERT INTO `operators` VALUES (1,'DIALOG','Dialog Opearator','axatauser',NULL,'axatauser',NULL,'gGgvUANAGhRUzWTyXwYoGuk3WzQa',157680000,1395135145139,'4fb164d70def9f37b2f8e2f1daf467','http://localhost:8281/token','Basic U1JObDQzXzRTVks5MjZaVnNteXExOU1JNVFRYTpEV1Flb2NDeUVyN0lHYk8zRHJxRDc5SmtzVFVh'),(2,'CELCOM','Celcom Opearator','axatauser',NULL,'axatauser',NULL,'gGgvUANAGhRUzWTyXwYoGuk3WzQa',157680000,1395135145139,'4fb164d70def9f37b2f8e2f1daf467','http://localhost:8281/token','Basic U1JObDQzXzRTVks5MjZaVnNteXExOU1JNVFRYTpEV1Flb2NDeUVyN0lHYk8zRHJxRDc5SmtzVFVh'),(3,'ROBI','Robi Opearator','axatauser',NULL,'axatauser',NULL,'gGgvUANAGhRUzWTyXwYoGuk3WzQa',157680000,1395135145139,'4fb164d70def9f37b2f8e2f1daf467','http://localhost:8281/token','Basic U1JObDQzXzRTVks5MjZaVnNteXExOU1JNVFRYTpEV1Flb2NDeUVyN0lHYk8zRHJxRDc5SmtzVFVh');
