@@ -106,7 +106,7 @@
 				<featureArtifactDef>com.wso2telco.ids:com.wso2telco.ids.authenticationendpoint.ui.feature:${com.wso2telco.ids.version}</featureArtifactDef>
 				<featureArtifactDef>com.wso2telco.ids:com.wso2telco.ids.gsmaauthenticator.feature:${com.wso2telco.ids.version}</featureArtifactDef>
 				<featureArtifactDef>com.wso2telco.ids:com.wso2telco.ids.openidtokenbuilder.feature:${com.wso2telco.ids.version}</featureArtifactDef>
-				<featureArtifactDef>com.wso2telco.ids:com.wso2telco.ids.operatorproxyservice.ui.feature:${com.wso2telco.ids.version}</featureArtifactDef>
+				<featureArtifactDef>com.wso2telco.ids:com.wso2telco.ids.authproxyservice.ui.feature:${com.wso2telco.ids.version}</featureArtifactDef>
 				<featureArtifactDef>com.wso2telco.ids:com.wso2telco.ids.sessionupdater.ui.feature:${com.wso2telco.ids.version}</featureArtifactDef>
 				<featureArtifactDef>com.wso2telco.ids:com.wso2telco.ids.urlshorten.feature:${com.wso2telco.ids.version}</featureArtifactDef>
 				<featureArtifactDef>com.wso2telco.ids:com.wso2telco.ids.userclaimretriever.feature:${com.wso2telco.ids.version}</featureArtifactDef>
@@ -840,7 +840,7 @@
                                 </feature>
 
 				<feature>
-                                    <id>com.wso2telco.ids.operatorproxyservice.ui.feature.group</id>
+                                    <id>com.wso2telco.ids.authproxyservice.ui.feature.group</id>
                                     <version>${com.wso2telco.ids.version}</version>
                                 </feature>
 
@@ -966,7 +966,7 @@
                                 </feature>
 
 				<feature>
-                                    <id>com.wso2telco.ids.operatorproxyservice.ui.feature.group</id>
+                                    <id>com.wso2telco.ids.authproxyservice.ui.feature.group</id>
                                     <version>${com.wso2telco.ids.version}</version>
                                 </feature>
 
@@ -1418,7 +1418,7 @@
                                 </feature>
 
 				<feature>
-                                    <id>com.wso2telco.ids.operatorproxyservice.ui.feature.group</id>
+                                    <id>com.wso2telco.ids.authproxyservice.ui.feature.group</id>
                                     <version>${com.wso2telco.ids.version}</version>
                                 </feature>
 
@@ -1857,7 +1857,7 @@
                                 </feature>
 
 				<feature>
-                                    <id>com.wso2telco.ids.operatorproxyservice.ui.feature.group</id>
+                                    <id>com.wso2telco.ids.authproxyservice.ui.feature.group</id>
                                     <version>${com.wso2telco.ids.version}</version>
                                 </feature>
 
