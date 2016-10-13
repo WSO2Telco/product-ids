@@ -29,6 +29,9 @@ import org.apache.http.client.methods.HttpGet;
 import org.apache.http.client.methods.HttpPost;
 import org.apache.http.message.BasicNameValuePair;
 import org.wso2.carbon.automation.engine.context.TestUserMode;
+import org.wso2.carbon.identity.application.common.model.xsd.ClaimConfig;
+import org.wso2.carbon.identity.application.common.model.xsd.Claim;
+import org.wso2.carbon.identity.application.common.model.xsd.ClaimMapping;
 import org.wso2.carbon.identity.application.common.model.xsd.InboundAuthenticationRequestConfig;
 import org.wso2.carbon.identity.application.common.model.xsd.OutboundProvisioningConfig;
 import org.wso2.carbon.identity.application.common.model.xsd.Property;
@@ -36,6 +39,7 @@ import org.wso2.carbon.identity.application.common.model.xsd.ServiceProvider;
 import org.wso2.carbon.identity.oauth.stub.dto.OAuthConsumerAppDTO;
 import org.wso2.identity.integration.common.clients.application.mgt.ApplicationManagementServiceClient;
 import org.wso2.identity.integration.common.clients.oauth.OauthAdminClient;
+import org.wso2.identity.integration.common.clients.usermgt.remote.RemoteUserStoreManagerServiceClient;
 import org.wso2.identity.integration.common.utils.ISIntegrationTest;
 import org.wso2.identity.integration.test.utils.OAuth2Constant;
 
@@ -52,10 +56,13 @@ public class OAuth2ServiceAbstractIntegrationTest extends ISIntegrationTest {
 
 	private final static String SERVICE_PROVIDER_NAME = "PlaygroundServiceProver";
 	private final static String SERVICE_PROVIDER_DESC = "Playground Service Prover";
+	private static final String EMAIL_CLAIM_URI = "http://wso2.org/claims/emailaddress";
 	private final static int TOMCAT_PORT = 8490;
 
 	protected ApplicationManagementServiceClient appMgtclient;
 	protected OauthAdminClient adminClient;
+	protected RemoteUserStoreManagerServiceClient remoteUSMServiceClient;
+
 
 	/**
 	 * Initialize
@@ -68,23 +75,33 @@ public class OAuth2ServiceAbstractIntegrationTest extends ISIntegrationTest {
 		super.init(userMode);
 		appMgtclient = new ApplicationManagementServiceClient(sessionCookie, backendURL, null);
 		adminClient = new OauthAdminClient(backendURL, sessionCookie);
+		remoteUSMServiceClient = new RemoteUserStoreManagerServiceClient(backendURL, sessionCookie);
 	}
 
 	/**
-	 * Create Application
+	 * Create Application with the given app configurations
 	 *
 	 * @return OAuthConsumerAppDTO
 	 * @throws Exception
 	 */
 	public OAuthConsumerAppDTO createApplication() throws Exception {
-		OAuthConsumerAppDTO appDtoResult = null;
-
 		OAuthConsumerAppDTO appDTO = new OAuthConsumerAppDTO();
 		appDTO.setApplicationName(org.wso2.identity.integration.test.utils.OAuth2Constant.OAUTH_APPLICATION_NAME);
 		appDTO.setCallbackUrl(OAuth2Constant.CALLBACK_URL);
 		appDTO.setOAuthVersion(OAuth2Constant.OAUTH_VERSION_2);
-		appDTO.setGrantTypes("authorization_code implicit password client_credentials refresh_token " +
-		                     "urn:ietf:params:oauth:grant-type:saml2-bearer iwa:ntlm");
+		appDTO.setGrantTypes("authorization_code implicit password client_credentials refresh_token "
+				+ "urn:ietf:params:oauth:grant-type:saml2-bearer iwa:ntlm");
+		return createApplication(appDTO);
+	}
+
+	/**
+	 * Create Application with a given appDTO
+	 *
+	 * @return OAuthConsumerAppDTO
+	 * @throws Exception
+	 */
+	public OAuthConsumerAppDTO createApplication(OAuthConsumerAppDTO appDTO) throws Exception {
+		OAuthConsumerAppDTO appDtoResult = null;
 
 		adminClient.registerOAuthApplicationData(appDTO);
 		OAuthConsumerAppDTO[] appDtos = adminClient.getAllOAuthApplicationData();
@@ -102,6 +119,17 @@ public class OAuth2ServiceAbstractIntegrationTest extends ISIntegrationTest {
 		appMgtclient.createApplication(serviceProvider);
 
 		serviceProvider = appMgtclient.getApplication(SERVICE_PROVIDER_NAME);
+		ClaimConfig claimConfig = new ClaimConfig();
+		Claim emailClaim = new Claim();
+		emailClaim.setClaimUri(EMAIL_CLAIM_URI);
+		ClaimMapping emailClaimMapping = new ClaimMapping();
+		emailClaimMapping.setRequested(true);
+		emailClaimMapping.setLocalClaim(emailClaim);
+		emailClaimMapping.setRemoteClaim(emailClaim);
+		claimConfig.setClaimMappings(new org.wso2.carbon.identity.application.common.model.xsd
+				.ClaimMapping[]{emailClaimMapping});
+
+		serviceProvider.setClaimConfig(claimConfig);
 		serviceProvider.setOutboundProvisioningConfig(new OutboundProvisioningConfig());
 		List<InboundAuthenticationRequestConfig> authRequestList =
 		                                                           new ArrayList<InboundAuthenticationRequestConfig>();
