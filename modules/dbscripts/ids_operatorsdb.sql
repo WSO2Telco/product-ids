@@ -181,22 +181,24 @@ UNLOCK TABLES;
 DROP TABLE IF EXISTS `operators`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
-CREATE TABLE `operators` (
-  `ID` int(20) NOT NULL AUTO_INCREMENT,
-  `operatorname` varchar(45) DEFAULT NULL,
-  `description` varchar(255) DEFAULT NULL,
-  `created` varchar(25) DEFAULT NULL,
-  `created_date` timestamp NULL DEFAULT NULL,
-  `lastupdated` varchar(25) DEFAULT NULL,
-  `lastupdated_date` timestamp NULL DEFAULT NULL,
-  `refreshtoken` varchar(255) DEFAULT NULL,
-  `tokenvalidity` double DEFAULT NULL,
-  `tokentime` double DEFAULT NULL,
-  `token` varchar(255) DEFAULT NULL,
-  `tokenurl` varchar(255) DEFAULT NULL,
-  `tokenauth` varchar(255) DEFAULT NULL,
-  PRIMARY KEY (`ID`),
-  UNIQUE KEY `operatorname` (`operatorname`)
+CREATE TABLE operators (
+  ID int(20) NOT NULL AUTO_INCREMENT,
+  operatorname varchar(45) DEFAULT NULL,
+  description varchar(255) DEFAULT NULL,
+  created varchar(25) DEFAULT NULL,
+  created_date timestamp NULL DEFAULT NULL,
+  lastupdated varchar(25) DEFAULT NULL,
+  lastupdated_date timestamp NULL DEFAULT NULL,
+  refreshtoken varchar(255) DEFAULT NULL,
+  tokenvalidity double DEFAULT NULL,
+  tokentime double DEFAULT NULL,
+  token varchar(255) DEFAULT NULL,
+  tokenurl varchar(255) DEFAULT NULL,
+  tokenauth varchar(255) DEFAULT NULL,
+  requiredIPValidation char(1) NOT NULL DEFAULT '0',
+  ipHeader varchar(255) DEFAULT NULL,
+  PRIMARY KEY (ID),
+  UNIQUE KEY operatorname (operatorname)
 ) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -206,7 +208,16 @@ CREATE TABLE `operators` (
 
 LOCK TABLES `operators` WRITE;
 /*!40000 ALTER TABLE `operators` DISABLE KEYS */;
-INSERT INTO `operators` VALUES (1,'DIALOG','Dialog Opearator','axatauser',NULL,'axatauser',NULL,'gGgvUANAGhRUzWTyXwYoGuk3WzQa',157680000,1395135145139,'4fb164d70def9f37b2f8e2f1daf467','http://localhost:8281/token','Basic U1JObDQzXzRTVks5MjZaVnNteXExOU1JNVFRYTpEV1Flb2NDeUVyN0lHYk8zRHJxRDc5SmtzVFVh'),(2,'CELCOM','Celcom Opearator','axatauser',NULL,'axatauser',NULL,'gGgvUANAGhRUzWTyXwYoGuk3WzQa',157680000,1395135145139,'4fb164d70def9f37b2f8e2f1daf467','http://localhost:8281/token','Basic U1JObDQzXzRTVks5MjZaVnNteXExOU1JNVFRYTpEV1Flb2NDeUVyN0lHYk8zRHJxRDc5SmtzVFVh'),(3,'ROBI','Robi Opearator','axatauser',NULL,'axatauser',NULL,'gGgvUANAGhRUzWTyXwYoGuk3WzQa',157680000,1395135145139,'4fb164d70def9f37b2f8e2f1daf467','http://localhost:8281/token','Basic U1JObDQzXzRTVks5MjZaVnNteXExOU1JNVFRYTpEV1Flb2NDeUVyN0lHYk8zRHJxRDc5SmtzVFVh');
+INSERT INTO `operators` VALUES (1,'DIALOG','Dialog Opearator','axatauser',NULL,'axatauser',NULL,
+'gGgvUANAGhRUzWTyXwYoGuk3WzQa',157680000,1395135145139,'4fb164d70def9f37b2f8e2f1daf467',
+'http://localhost:8281/token','Basic U1JObDQzXzRTVks5MjZaVnNteXExOU1JNVFRYTpEV1Flb2NDeUVyN0lHYk8zRHJxRDc5SmtzVFVh',0,
+ NULL),
+(2,'CELCOM','Celcom Opearator','axatauser',NULL,'axatauser',NULL,'gGgvUANAGhRUzWTyXwYoGuk3WzQa',157680000,
+1395135145139,'4fb164d70def9f37b2f8e2f1daf467','http://localhost:8281/token','Basic
+U1JObDQzXzRTVks5MjZaVnNteXExOU1JNVFRYTpEV1Flb2NDeUVyN0lHYk8zRHJxRDc5SmtzVFVh', 0, NULL ),(3,'ROBI','Robi Opearator',
+'axatauser',NULL,'axatauser',NULL,'gGgvUANAGhRUzWTyXwYoGuk3WzQa',157680000,1395135145139,
+'4fb164d70def9f37b2f8e2f1daf467','http://localhost:8281/token','Basic
+U1JObDQzXzRTVks5MjZaVnNteXExOU1JNVFRYTpEV1Flb2NDeUVyN0lHYk8zRHJxRDc5SmtzVFVh', 0, NULL);
 /*!40000 ALTER TABLE `operators` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -229,6 +240,42 @@ CREATE TABLE `operatorsubs` (
   PRIMARY KEY (`ID`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
+
+DROP TABLE IF EXISTS operators_msisdn_headers;
+
+CREATE TABLE operators_msisdn_headers_properties (
+  operatorId int(20) NOT NULL,
+  msisdnHeaderName VARCHAR(256) NOT NULL,
+  isHeaderEncrypted char(1) NOT NULL DEFAULT '0',
+  encryptionImplementation VARCHAR(256),
+  encryptionKey varchar(512),
+  priority int(3),
+  PRIMARY KEY (operatorId, headerName),
+  FOREIGN KEY (operatorId) REFERENCES operators(ID) ON DELETE CASCADE
+)ENGINE INNODB;
+
+DROP TABLE IF EXISTS operators_login_hint_properties;
+
+CREATE TABLE operators_login_hint_properties (
+  operatorId int(20) NOT NULL,
+  loginHintFormatRegex VARCHAR(512),
+  isEncrypted char(1) NOT NULL DEFAULT '0',
+  encryptionImplementation VARCHAR(256),
+  encryptionKey varchar(512),
+  PRIMARY KEY operatorId,
+  FOREIGN KEY (operatorId) REFERENCES operators(ID) ON DELETE CASCADE
+)ENGINE INNODB;
+
+DROP TABLE IF EXISTS operators_properties;
+
+CREATE TABLE operators_properties (
+  operatorId int(20) NOT NULL,
+  propertyKey VARCHAR(256),
+  propertyValue VARCHAR(512),
+  PRIMARY KEY (operatorId, propertyKey),
+  FOREIGN KEY (operatorId) REFERENCES operators(ID) ON DELETE CASCADE
+)ENGINE INNODB;
+
 
 --
 -- Dumping data for table `operatorsubs`
