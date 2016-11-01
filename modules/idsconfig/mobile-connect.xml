@@ -44,8 +44,16 @@
     Identity Server. By default the port would be 9763+[offset] -->
     <ListenerWebappHost>URL of Identity server</ListenerWebappHost>
 
+    <MSISDN>
+        <EncryptionKey>MSISDN ENCRYPTION KEY</EncryptionKey>
+    </MSISDN>
+
+    <AuthProxy>
+        <DataSourceName>Operator data source</DataSourceName>
+        <AuthorizeURL>authorize url</AuthorizeURL>
+    </AuthProxy>
+
     <HEADERENRICH>
-	<key>Headerenrich key</key>
 	<Endpoint>http://ussdhost/request</Endpoint>
 	<Enrichflg>true</Enrichflg> 
 	<Operator>
