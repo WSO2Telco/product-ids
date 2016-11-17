@@ -254,6 +254,8 @@ CREATE TABLE operators_msisdn_headers_properties (
   FOREIGN KEY (operatorId) REFERENCES operators(ID) ON DELETE CASCADE
 )ENGINE INNODB;
 
+INSERT INTO operators_msisdn_headers_properties VALUES (1,'msisdn','0','','',1),(1,'msisdn_header_1','1','DecryptMsisdn','wdTDoh8YxYcd3p',2);
+
 DROP TABLE IF EXISTS operators_login_hint_properties;
 
 CREATE TABLE operators_login_hint_properties (
