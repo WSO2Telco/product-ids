@@ -111,6 +111,7 @@
 				<featureArtifactDef>com.wso2telco.ids:com.wso2telco.ids.urlshorten.feature:${com.wso2telco.ids.version}</featureArtifactDef>
 				<featureArtifactDef>com.wso2telco.ids:com.wso2telco.ids.userclaimretriever.feature:${com.wso2telco.ids.version}</featureArtifactDef>
 				<featureArtifactDef>com.wso2telco.ids:com.wso2telco.ids.userregistration.ui.feature:${com.wso2telco.ids.version}</featureArtifactDef>
+				<featureArtifactDef>com.wso2telco.ids:com.wso2telco.ids.datapublisher.feature:${com.wso2telco.ids.version}</featureArtifactDef>
 
 
                                 <!--jaggery features-->
@@ -861,6 +862,10 @@
                                     <id>com.wso2telco.ids.userregistration.ui.feature.group</id>
                                     <version>${com.wso2telco.ids.version}</version>
                                 </feature>
+                                <feature>
+                                    <id>com.wso2telco.ids.datapublisher.feature.group</id>
+                                    <version>${com.wso2telco.ids.version}</version>
+                                </feature>
                             </features>
                         </configuration>
                     </execution>
@@ -985,6 +990,10 @@
                                 </feature>
 				<feature>
                                     <id>com.wso2telco.ids.userregistration.ui.feature.group</id>
+                                    <version>${com.wso2telco.ids.version}</version>
+                                </feature>
+                                <feature>
+                                    <id>com.wso2telco.ids.datapublisher.feature.group</id>
                                     <version>${com.wso2telco.ids.version}</version>
                                 </feature>
 
@@ -1440,6 +1449,10 @@
                                     <version>${com.wso2telco.ids.version}</version>
                                 </feature>
                                 <feature>
+                                    <id>com.wso2telco.ids.datapublisher.feature.group</id>
+                                    <version>${com.wso2telco.ids.version}</version>
+                                </feature>
+                                <feature>
                                     <id>org.jaggeryjs.server.feature.group</id>
                                     <version>${jaggeryjs.version}</version>
                                 </feature>
@@ -1876,6 +1889,10 @@
                                 </feature>
 				<feature>
                                     <id>com.wso2telco.ids.userregistration.ui.feature.group</id>
+                                    <version>${com.wso2telco.ids.version}</version>
+                                </feature>
+                                <feature>
+                                    <id>com.wso2telco.ids.datapublisher.feature.group</id>
                                     <version>${com.wso2telco.ids.version}</version>
                                 </feature>
                                 <!-- 1 Carbon Kernel -->
