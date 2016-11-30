@@ -894,5 +894,21 @@
             <outputDirectory>wso2telcoids-${pom.version}/repository/components/lib</outputDirectory>
         <fileMode>644</fileMode>
         </file>
+
+        <file>
+            <source>
+                ../lib/httpasyncclient-4.0.jar
+            </source>
+            <outputDirectory>wso2telcoids-${pom.version}/repository/components/lib</outputDirectory>
+            <fileMode>644</fileMode>
+        </file>
+        <file>
+            <source>
+                ../lib/httpcore-nio-4.3.jar
+            </source>
+            <outputDirectory>wso2telcoids-${pom.version}/repository/components/lib</outputDirectory>
+            <fileMode>644</fileMode>
+        </file>
+
     </files>
 </assembly>
