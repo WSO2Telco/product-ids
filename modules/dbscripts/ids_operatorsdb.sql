@@ -241,7 +241,7 @@ CREATE TABLE `operatorsubs` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
-DROP TABLE IF EXISTS operators_msisdn_headers;
+DROP TABLE IF EXISTS operators_msisdn_headers_properties;
 
 CREATE TABLE operators_msisdn_headers_properties (
   operatorId int(20) NOT NULL,
@@ -250,34 +250,11 @@ CREATE TABLE operators_msisdn_headers_properties (
   encryptionImplementation VARCHAR(256),
   encryptionKey varchar(512),
   priority int(3),
-  PRIMARY KEY (operatorId, headerName),
+  PRIMARY KEY (operatorId, msisdnHeaderName),
   FOREIGN KEY (operatorId) REFERENCES operators(ID) ON DELETE CASCADE
 )ENGINE INNODB;
 
 INSERT INTO operators_msisdn_headers_properties VALUES (1,'msisdn','0','','',1),(1,'msisdn_header_1','1','DecryptMsisdn','wdTDoh8YxYcd3p',2);
-
-DROP TABLE IF EXISTS operators_login_hint_properties;
-
-CREATE TABLE operators_login_hint_properties (
-  operatorId int(20) NOT NULL,
-  loginHintFormatRegex VARCHAR(512),
-  isEncrypted char(1) NOT NULL DEFAULT '0',
-  encryptionImplementation VARCHAR(256),
-  encryptionKey varchar(512),
-  PRIMARY KEY operatorId,
-  FOREIGN KEY (operatorId) REFERENCES operators(ID) ON DELETE CASCADE
-)ENGINE INNODB;
-
-DROP TABLE IF EXISTS operators_properties;
-
-CREATE TABLE operators_properties (
-  operatorId int(20) NOT NULL,
-  propertyKey VARCHAR(256),
-  propertyValue VARCHAR(512),
-  PRIMARY KEY (operatorId, propertyKey),
-  FOREIGN KEY (operatorId) REFERENCES operators(ID) ON DELETE CASCADE
-)ENGINE INNODB;
-
 
 --
 -- Dumping data for table `operatorsubs`
