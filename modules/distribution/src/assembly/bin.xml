@@ -911,4 +911,30 @@
         </file>
 
     </files>
+
+    <dependencySets>
+        <dependencySet>
+            <outputDirectory>wso2telcoids-${pom.version}/lib/runtimes/ext</outputDirectory>
+            <includes>
+                <include>com.google.gdata.wso2:gdata-core:jar</include>
+                <include>commons-fileupload.wso2:commons-fileupload:jar</include>
+                <include>com.sun.jersey:jersey-server:jar</include>
+                <include>com.sun.jersey:jersey-core:jar</include>
+                <include>com.sun.jersey:jersey-servlet:jar</include>
+                <include>commons-logging:commons-logging:jar</include>
+                <include>javax.servlet:jstl:jar</include>
+                <include>com.google.code.gson:gson:jar</include>
+                <include>org.json.wso2:json:jar</include>
+                <include>com.atlassian.httpclient:atlassian-httpclient-plugin:jar</include>
+                <include>org.apache.httpcomponents:httpclient:jar</include>
+                <include>com.ibm.icu:icu4j:jar</include>
+                <include>com.sun.jersey:jersey-json:jar</include>
+                <include>com.sun.jersey:jersey-client:jar</include>
+                <include>dom4j:dom4j:jar</include>
+                <include>log4j:log4j:jar</include>
+            </includes>
+            <useTransitiveFiltering>true</useTransitiveFiltering>
+            <useTransitiveDependencies>true</useTransitiveDependencies>
+        </dependencySet>
+    </dependencySets>
 </assembly>

@@ -1186,6 +1186,76 @@
                 <version>${com.wso2telco.ids.version}</version>
             </dependency>
 
+            <!--custom webapps' runtime environment dependencies -->
+            <dependency>
+                <groupId>dom4j</groupId>
+                <artifactId>dom4j</artifactId>
+                <version>${dom4j.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>commons-logging</groupId>
+                <artifactId>commons-logging</artifactId>
+                <version>${commons-logging.version.1.2}</version>
+            </dependency>
+            <dependency>
+                <groupId>javax.servlet</groupId>
+                <artifactId>jstl</artifactId>
+                <version>${javax.servelet.jstl.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.google.code.gson</groupId>
+                <artifactId>gson</artifactId>
+                <type>jar</type>
+                <version>${com.google.code.gson.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.atlassian.httpclient</groupId>
+                <artifactId>atlassian-httpclient-plugin</artifactId>
+                <type>jar</type>
+                <version>${com.atlassian.httpclient.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.apache.httpcomponents</groupId>
+                <artifactId>httpclient</artifactId>
+                <type>jar</type>
+                <version>${httpclient.version.4.3.1}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.ibm.icu</groupId>
+                <artifactId>icu4j</artifactId>
+                <version>${com.ibm.icu.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.sun.jersey</groupId>
+                <artifactId>jersey-json</artifactId>
+                <version>${com.sun.jersey.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.sun.jersey</groupId>
+                <artifactId>jersey-client</artifactId>
+                <version>${com.sun.jersey.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.sun.jersey</groupId>
+                <artifactId>jersey-server</artifactId>
+                <version>${com.sun.jersey.server.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.sun.jersey</groupId>
+                <artifactId>jersey-core</artifactId>
+                <version>${com.sun.jersey.server.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.sun.jersey</groupId>
+                <artifactId>jersey-servlet</artifactId>
+                <version>${com.sun.jersey.server.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>log4j</groupId>
+                <artifactId>log4j</artifactId>
+                <version>${log4j.version}</version>
+            </dependency>
+
         </dependencies>
     </dependencyManagement>
 
@@ -1406,6 +1476,18 @@
         <commons.codec.version>1.8</commons.codec.version>
         <XmlSchema.version>1.4.7.wso2v3</XmlSchema.version>
         <wsdl4j.version>1.6.2.wso2v2</wsdl4j.version>
+
+        <!--webapps runtime dependency versions-->
+        <com.google.code.gson.version>2.5</com.google.code.gson.version>
+        <com.atlassian.httpclient.version>0.17.3</com.atlassian.httpclient.version>
+        <httpclient.version.4.3.1>4.3.1</httpclient.version.4.3.1>
+        <com.ibm.icu.version>2.6.1</com.ibm.icu.version>
+        <com.sun.jersey.version>1.8</com.sun.jersey.version>
+        <com.sun.jersey.server.version>1.17.1</com.sun.jersey.server.version>
+        <commons-logging.version.1.2>1.2</commons-logging.version.1.2>
+        <javax.servelet.jstl.version>1.2</javax.servelet.jstl.version>
+        <dom4j.version>1.6.1</dom4j.version>
+        <log4j.version>1.2.13</log4j.version>
     </properties>
 
     <repositories>
