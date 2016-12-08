@@ -887,32 +887,17 @@
         <fileMode>644</fileMode>
         </file>
 
-        <file>
-            <source>
-                ../lib/jettison-1.1.jar
-            </source>
-            <outputDirectory>wso2telcoids-${pom.version}/repository/components/lib</outputDirectory>
-        <fileMode>644</fileMode>
-        </file>
-
-        <file>
-            <source>
-                ../lib/httpasyncclient-4.0.jar
-            </source>
-            <outputDirectory>wso2telcoids-${pom.version}/repository/components/lib</outputDirectory>
-            <fileMode>644</fileMode>
-        </file>
-        <file>
-            <source>
-                ../lib/httpcore-nio-4.3.jar
-            </source>
-            <outputDirectory>wso2telcoids-${pom.version}/repository/components/lib</outputDirectory>
-            <fileMode>644</fileMode>
-        </file>
-
     </files>
 
     <dependencySets>
+        <dependencySet>
+            <outputDirectory>wso2telcoids-${pom.version}/repository/components/lib</outputDirectory>
+            <includes>
+                <include>org.codehaus.jettison:jettison:jar</include>
+                <include>org.apache.httpcomponents:httpclient:jar</include>
+                <include>org.apache.httpcomponents:httpcore-nio:jar</include>
+            </includes>
+        </dependencySet>
         <dependencySet>
             <outputDirectory>wso2telcoids-${pom.version}/lib/runtimes/ext</outputDirectory>
             <includes>
