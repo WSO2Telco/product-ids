@@ -84,7 +84,7 @@
 		<Level>31</Level>
 		<Authentication>
 			<Authenticators>
-				<Authenicator onfail="break" supportiveFlow="any">MSISDNAuthenticator</Authenicator>
+				<Authenicator onfail="break" supportiveFlow="offnet">MSISDNAuthenticator</Authenicator>
 				<Authenicator onfail="break" supportiveFlow="any">USSDPinAuthenticator</Authenicator>
 				<!-- If onFail attribute values is 'break', and that authentactor fails,whole LOA should fail -->
 			</Authenticators>
@@ -104,8 +104,8 @@
 		<Level>21</Level>
 		<Authentication>
 			<Authenticators>
-				<Authenicator onfail="break" supportiveFlow="any">MSISDNAuthenticator</Authenicator>
-				<Authenicator onfail="break" supportiveFlow="any">USSDAuthenticator</Authenicator>
+				<Authenicator onfail="break" supportiveFlow="offnet">MSISDNAuthenticator</Authenicator>
+				<Authenicator onfail="break" supportiveFlow="offnet">USSDAuthenticator</Authenicator>
 				<!-- If onFail attribute values is 'break', and that authentactor fails,whole LOA should fail -->
 			</Authenticators>
 		</Authentication>
