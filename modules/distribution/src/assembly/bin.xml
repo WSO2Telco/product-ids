@@ -894,7 +894,7 @@
             <outputDirectory>wso2telcoids-${pom.version}/repository/components/lib</outputDirectory>
             <includes>
                 <include>org.codehaus.jettison:jettison:jar</include>
-                <include>org.apache.httpcomponents:httpclient:jar</include>
+                <include>org.apache.httpcomponents:httpasyncclient:jar</include>
                 <include>org.apache.httpcomponents:httpcore-nio:jar</include>
             </includes>
         </dependencySet>
