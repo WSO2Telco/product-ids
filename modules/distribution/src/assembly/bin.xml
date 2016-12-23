@@ -916,7 +916,6 @@
                 <include>com.sun.jersey:jersey-json:jar</include>
                 <include>com.sun.jersey:jersey-client:jar</include>
                 <include>dom4j:dom4j:jar</include>
-                <include>log4j:log4j:jar</include>
             </includes>
             <useTransitiveFiltering>true</useTransitiveFiltering>
             <useTransitiveDependencies>true</useTransitiveDependencies>
