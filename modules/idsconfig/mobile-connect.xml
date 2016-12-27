@@ -1,6 +1,12 @@
 <MobileConnectConfig>
     <DataSourceName>jdbc/CONNECT_DB</DataSourceName>
     <EncryptAppend>TheServingOperatorthencanrecognizetheyhavereceivedanencryptedMSISDNanddecryptthestringusingitsprivatekeywichisnotknowntotheOneAPI</EncryptAppend>
+    <AuthenticationEndpoint>/authenticationendpoint</AuthenticationEndpoint>
+    <DefaultClaimUrl>http://wso2.org/claims</DefaultClaimUrl>
+    <OpenIdRegClaimUrl>http://schema.openid.net/2007/05/claims</OpenIdRegClaimUrl>
+    <AdminUrl>https://localhost:9443</AdminUrl>
+    <AdminUsername>admin</AdminUsername>
+    <AdminPassword>admin</AdminPassword>
     <GSMAExchangeConfig>
         <SOHost>integration-axiatagroup.apiexchange.org</SOHost>
         <Organization>axiaD:\1.6-RC2\log\mobile-connect.xmltagroup</Organization>
@@ -37,7 +43,11 @@
         <Pinauth>true</Pinauth>
     <DashBoard>Mobile connect</DashBoard>
     <USSDContextEndpoint>Callback URL for USSD authentication</USSDContextEndpoint>
+    <LoginNotifyUrl>http://localhost:9763/sessionupdater/tnspoints/endpoint/ussd/receive</LoginNotifyUrl>
+    <RegistrationNotifyUrl>http://localhost:9763/sessionupdater/tnspoints/endpoint/registration/ussd</RegistrationNotifyUrl>
     <USSDPinContextEndpoint>Callback URL for USSD pin authentication</USSDPinContextEndpoint>
+    <RegistrationMessage>Message content for USSD registration</RegistrationMessage>
+    <LoginMessage>Message content for USSD login</LoginMessage>
  </USSD>
 
     <!-- Hostname/IP and port of the SMS Listener web-app. This should be set to publicly accessible hostname/IP of
