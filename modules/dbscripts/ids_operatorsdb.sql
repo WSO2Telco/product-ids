@@ -248,7 +248,7 @@ CREATE TABLE operators_msisdn_headers_properties (
   msisdnHeaderName VARCHAR(256) NOT NULL,
   isHeaderEncrypted char(1) NOT NULL DEFAULT '0',
   encryptionImplementation VARCHAR(256),
-  encryptionKey varchar(512),
+  msisdnEncryptionKey varchar(512),
   priority int(3),
   PRIMARY KEY (operatorId, msisdnHeaderName),
   FOREIGN KEY (operatorId) REFERENCES operators(ID) ON DELETE CASCADE
