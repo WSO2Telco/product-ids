@@ -83,8 +83,8 @@
             <type>jar</type>
         </dependency>
         <dependency>
-            <groupId>com.atlassian.httpclient</groupId>
-            <artifactId>atlassian-httpclient-plugin</artifactId>
+            <groupId>org.apache.httpcomponents</groupId>
+            <artifactId>httpasyncclient</artifactId>
             <type>jar</type>
         </dependency>
         <dependency>
