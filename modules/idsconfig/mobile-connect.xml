@@ -19,7 +19,7 @@
 <SMS>
        <Endpoint>End point of the SMS API</Endpoint>   <!--https://URL to APIM:8243/smsmessaging/v1/outbound/8899/requests -->
        <AuthToken>Authorization token to access the SMS API</AuthToken>
-      
+
         <MessageContentFirst>To login to </MessageContentFirst>    <!-- The message content for sms authentication -->
         <MessageContent>, follow this link</MessageContent>  <!-- The message content for sms authentication -->
         <MessageContentLast> Do not share as it is unique to you.</MessageContentLast>   <!-- The message content for sms authentication -->
@@ -32,12 +32,12 @@
     </SMS>
 <USSD>
 	<Endpoint>Endpoint to send the USSD request</Endpoint>    <!--https://URL to APIM:8243/ussd/v1/outbound -->
-	       
+
 	<AuthToken>Authorization token to access the USSD API</AuthToken>
-       
+
         <MessageContent>Message content for USSD authentication</MessageContent>
         <MessageContentPin>Message content for USSD pin authentication</MessageContentPin>
-        
+
         <ShortCode>1721</ShortCode>
         <Keyword>123</Keyword>
         <Pinauth>true</Pinauth>
@@ -45,8 +45,21 @@
     <USSDContextEndpoint>Callback URL for USSD authentication</USSDContextEndpoint>
     <LoginNotifyUrl>http://localhost:9763/sessionupdater/tnspoints/endpoint/ussd/receive</LoginNotifyUrl>
     <RegistrationNotifyUrl>http://localhost:9763/sessionupdater/tnspoints/endpoint/registration/ussd</RegistrationNotifyUrl>
+    <PinLoginNotifyUrl></PinLoginNotifyUrl>
+    <PinRegistrationNotifyUrl></PinRegistrationNotifyUrl>
+    <PinLoginMessage>Login message for ussd pin</PinLoginMessage>
+    <PinRegistrationMessage>Registration message for ussd pin</PinRegistrationMessage>
+    <PinConfirmMessage>Re-enter your PIN</PinConfirmMessage>
+    <PinInvalidFormatMessage>Invalid format. Please re-enter your pin</PinInvalidFormatMessage>
+    <PinMismatchMessage>Pin mismatch. Please re-enter your pin</PinMismatchMessage>
+    <PinRegistrationSuccessMessage>Registration Success</PinRegistrationSuccessMessage>
+    <PinInvalidFormatAttemptsExceedMessage>Access Denied. You have exceeded maximum number of retry attempts</PinInvalidFormatAttemptsExceedMessage>
+    <PinMismatchAttemptsExceedMessage>Access Denied. You have exceeded maximum number of confirmation attempts</PinMismatchAttemptsExceedMessage>
     <USSDPinContextEndpoint>Callback URL for USSD pin authentication</USSDPinContextEndpoint>
     <RegistrationMessage>Message content for USSD registration</RegistrationMessage>
+    <PinMaxLength>4</PinMaxLength>
+    <InvalidFormatPinAttempts>3</InvalidFormatPinAttempts>
+    <PinMismatchAttempts>3</PinMismatchAttempts>
     <LoginMessage>Message content for USSD login</LoginMessage>
  </USSD>
 
@@ -65,7 +78,7 @@
 
     <HEADERENRICH>
 	<Endpoint>http://ussdhost/request</Endpoint>
-	<Enrichflg>true</Enrichflg> 
+	<Enrichflg>true</Enrichflg>
 	<Operator>
 	    	<operatorName>operator 1 name</operatorName>
 		    <ipValidation>false</ipValidation>
@@ -74,18 +87,18 @@
 	    		<IPRange>XX.XX.XX.XX:XX.XX.XX.XX</IPRange>
 	    		<IPRange>XX.XX.XX.XX:XX.XX.XX.XX</IPRange>
 				<IPRange>XX.XX.XX.XX:XX.XX.XX.XX</IPRange>
-			</MobileIPRanges>  
-	</Operator> 
-	
+			</MobileIPRanges>
+	</Operator>
+
 	<Operator>
 	    <operatorName>operator 2 name</operatorName>
 	<ipValidation>false</ipValidation>
 		<MobileIPRanges>  <!-- The IP range the operator accepting the msisdn from the header -->
 			<IPRange>XX.XX.XX.XX:XX.XX.XX.XX</IPRange>
 			<IPRange>XX.XX.XX.XX:XX.XX.XX.XX</IPRange>
-		</MobileIPRanges>  
+		</MobileIPRanges>
 	</Operator>
-	
+
     </HEADERENRICH>
 
 </MobileConnectConfig>

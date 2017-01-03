@@ -160,8 +160,8 @@ CREATE TABLE `multiplepasswords` (
   `username` varchar(255) NOT NULL,
   `pin` int(11) DEFAULT NULL,
   `attempts` int(11) NOT NULL,
-  `ussdsessionid` varchar(256) DEFAULT NULL,
-  PRIMARY KEY (`username`)
+  `ussdsessionid` varchar(256) NOT NULL,
+  PRIMARY KEY (`ussdsessionid`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
