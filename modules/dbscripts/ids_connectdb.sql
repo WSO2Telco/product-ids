@@ -291,6 +291,22 @@ CREATE TABLE `sp_login_history` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
+
+
+
+DROP TABLE IF EXISTS `scope_parameter`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `scope_parameter` (
+  `is_login_hint_mandatory` TINYINT DEFAULT 0,
+  `login_hint_format` varchar(255),
+  `is_tnc_visible` TINYINT DEFAULT 0,
+  `msisdn_mismatch_result` varchar(255),
+  `is_user_info_mandatory` TINYINT DEFAULT 0
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+
 --
 -- Dumping data for table `sp_login_history`
 --
