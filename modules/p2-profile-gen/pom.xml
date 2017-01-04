@@ -103,7 +103,9 @@
                                 <featureArtifactDef>
                                     com.wso2telco.core:com.wso2telco.core.mncresolver.feature:${com.wso2telco.core.version}
                                 </featureArtifactDef>
-
+                                <featureArtifactDef>
+                                    com.wso2telco.core:com.wso2telco.core.config.feature:${com.wso2telco.core.version}
+                                </featureArtifactDef>
                                 <featureArtifactDef>
                                     com.wso2telco.ids:com.wso2telco.ids.sign.ui.feature:${com.wso2telco.ids.version}
                                 </featureArtifactDef>
@@ -859,6 +861,10 @@
                                     <version>${com.wso2telco.core.version}</version>
                                 </feature>
 
+                                <feature>
+                                    <id>com.wso2telco.core.config.feature.group</id>
+                                    <version>${com.wso2telco.core.version}</version>
+                                </feature>
 
                                 <feature>
                                     <id>com.wso2telco.core.mncresolver.feature.group</id>
@@ -981,7 +987,10 @@
                                     <id>com.wso2telco.core.dbutils.feature.group</id>
                                     <version>${com.wso2telco.core.version}</version>
                                 </feature>
-
+                                <feature>
+                                    <id>com.wso2telco.core.config.feature.group</id>
+                                    <version>${com.wso2telco.core.version}</version>
+                                </feature>
 
                                 <feature>
                                     <id>com.wso2telco.core.mncresolver.feature.group</id>
@@ -1440,7 +1449,10 @@
                                     <id>com.wso2telco.core.dbutils.feature.group</id>
                                     <version>${com.wso2telco.core.version}</version>
                                 </feature>
-
+                                <feature>
+                                    <id>com.wso2telco.core.config.feature.group</id>
+                                    <version>${com.wso2telco.core.version}</version>
+                                </feature>
 
                                 <feature>
                                     <id>com.wso2telco.core.mncresolver.feature.group</id>
@@ -1883,7 +1895,10 @@
                                     <id>com.wso2telco.core.dbutils.feature.group</id>
                                     <version>${com.wso2telco.core.version}</version>
                                 </feature>
-
+                                <feature>
+                                    <id>com.wso2telco.core.config.feature.group</id>
+                                    <version>${com.wso2telco.core.version}</version>
+                                </feature>
 
                                 <feature>
                                     <id>com.wso2telco.core.mncresolver.feature.group</id>

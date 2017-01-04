@@ -1122,6 +1122,11 @@
             </dependency>
             <dependency>
                 <groupId>com.wso2telco.core</groupId>
+                <artifactId>com.wso2telco.core.config.feature</artifactId>
+                <version>${com.wso2telco.core.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.wso2telco.core</groupId>
                 <artifactId>com.wso2telco.core.mncresolver.feature</artifactId>
                 <version>${com.wso2telco.core.version}</version>
             </dependency>
