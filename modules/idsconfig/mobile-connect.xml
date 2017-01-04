@@ -63,6 +63,16 @@
     <LoginMessage>Message content for USSD login</LoginMessage>
  </USSD>
 
+    <MIFEOpenIDTokenBuilderConfig>
+        <acrHostUri>https://localhost:9443/acrengine/</acrHostUri>
+        <retrieveService>ACRRetrieveService/V1</retrieveService>
+        <createService>ACRCreateService/V1</createService>
+        <appProvService>AppProvisionService/V1</appProvService>
+        <serviceProvider>CON001</serviceProvider>
+        <serviceKey>con123</serviceKey>
+        <acrAccessToken>678934ac02914dd7edddeb4de947f2a</acrAccessToken>
+    </MIFEOpenIDTokenBuilderConfig>
+
     <!-- Hostname/IP and port of the SMS Listener web-app. This should be set to publicly accessible hostname/IP of
     Identity Server. By default the port would be 9763+[offset] -->
     <ListenerWebappHost>URL of Identity server</ListenerWebappHost>
