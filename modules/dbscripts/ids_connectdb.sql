@@ -298,13 +298,44 @@ DROP TABLE IF EXISTS `scope_parameter`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `scope_parameter` (
+  `param_id` int(20) NOT NULL AUTO_INCREMENT,
+  `scope` varchar(255),
   `is_login_hint_mandatory` TINYINT DEFAULT 0,
   `login_hint_format` varchar(255),
   `is_tnc_visible` TINYINT DEFAULT 0,
   `msisdn_mismatch_result` varchar(255),
-  `is_user_info_mandatory` TINYINT DEFAULT 0
+  PRIMARY KEY (`param_id`),
+  UNIQUE(`scope`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
+
+
+DROP TABLE IF EXISTS `login_hint_format`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `login_hint_format` (
+  `format_id` int(20) NOT NULL AUTO_INCREMENT,
+  `type` varchar(255),
+  `is_encrypted` TINYINT DEFAULT 0,
+  `decrypt_algorithm` varchar(255),
+  PRIMARY KEY (`format_id`),
+  UNIQUE(`type`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+
+DROP TABLE IF EXISTS `scope_supp_login_hint_format`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `scope_supp_login_hint_format` (
+  `param_id` int(20) NOT NULL,
+  `format_id` int(20) NOT NULL,
+   PRIMARY KEY (`param_id`,`format_id`),
+   FOREIGN KEY (`param_id`) REFERENCES `scope_parameter`(`param_id`),
+   FOREIGN KEY (`format_id`) REFERENCES `login_hint_format`(`format_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
 
 
 --
