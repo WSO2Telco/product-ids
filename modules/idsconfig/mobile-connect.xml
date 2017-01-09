@@ -56,6 +56,7 @@
 
     <MSISDN>
         <EncryptionKey>MSISDN ENCRYPTION KEY</EncryptionKey>
+        <ValidationRegex>[0-9]+</ValidationRegex>
     </MSISDN>
 
     <AuthProxy>
