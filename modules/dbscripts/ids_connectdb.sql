@@ -306,6 +306,15 @@ CREATE TABLE `scope_parameter` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
+DROP TABLE IF EXISTS `sp_configuration`
+
+CREATE TABLE `sp_configuration` (
+  `client_id` varchar(100) NOT NULL DEFAULT '',
+  `config_key` varchar(100) NOT NULL DEFAULT '',
+  `config_value` varchar(255) NOT NULL DEFAULT '',
+  PRIMARY KEY (`client_id`,`config_key`,`config_value`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1
+
 DROP TABLE IF EXISTS `allowed_authenticators_sp`;
 
 CREATE TABLE `allowed_authenticators_sp` (
