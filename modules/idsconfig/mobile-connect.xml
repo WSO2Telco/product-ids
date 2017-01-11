@@ -73,6 +73,11 @@
         <acrAccessToken>678934ac02914dd7edddeb4de947f2a</acrAccessToken>
     </MIFEOpenIDTokenBuilderConfig>
 
+    <AuthenticatorSelectionConfig>
+        <ServiceProviderBasedSelectionEnabled>false</ServiceProviderBasedSelectionEnabled>
+        <MobileNetworkOperatorBasedSelectionEnabled>false</MobileNetworkOperatorBasedSelectionEnabled>
+    </AuthenticatorSelectionConfig>
+
     <!-- Hostname/IP and port of the SMS Listener web-app. This should be set to publicly accessible hostname/IP of
     Identity Server. By default the port would be 9763+[offset] -->
     <ListenerWebappHost>URL of Identity server</ListenerWebappHost>
