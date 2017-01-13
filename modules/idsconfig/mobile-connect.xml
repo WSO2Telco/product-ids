@@ -7,6 +7,8 @@
     <AdminUrl>https://localhost:9443</AdminUrl>
     <AdminUsername>admin</AdminUsername>
     <AdminPassword>admin</AdminPassword>
+    <Keyfile>dialogprivate.key</Keyfile>
+
     <GSMAExchangeConfig>
         <SOHost>integration-axiatagroup.apiexchange.org</SOHost>
         <Organization>axiaD:\1.6-RC2\log\mobile-connect.xmltagroup</Organization>
@@ -96,6 +98,7 @@
     <ListenerWebappHost>URL of Identity server</ListenerWebappHost>
     <MSISDN>
         <EncryptionKey>MSISDN ENCRYPTION KEY</EncryptionKey>
+        <ValidationRegex>[0-9]+</ValidationRegex>
     </MSISDN>
     <AuthProxy>
         <DataSourceName>Operator data source</DataSourceName>

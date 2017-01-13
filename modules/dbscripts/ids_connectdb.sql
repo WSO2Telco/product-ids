@@ -292,8 +292,6 @@ CREATE TABLE `sp_login_history` (
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 
-
-
 DROP TABLE IF EXISTS `scope_parameter`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
@@ -334,6 +332,7 @@ CREATE TABLE `allowed_authenticators_mno` (
   `allowed_authenticator` varchar(255) DEFAULT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1
+
 --
 -- Dumping data for table `sp_login_history`
 --
