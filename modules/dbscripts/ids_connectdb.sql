@@ -306,7 +306,34 @@ CREATE TABLE `scope_parameter` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
+DROP TABLE IF EXISTS `sp_configuration`
 
+CREATE TABLE `sp_configuration` (
+  `client_id` varchar(100) NOT NULL DEFAULT '',
+  `config_key` varchar(100) NOT NULL DEFAULT '',
+  `config_value` varchar(255) NOT NULL DEFAULT '',
+  PRIMARY KEY (`client_id`,`config_key`,`config_value`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1
+
+DROP TABLE IF EXISTS `allowed_authenticators_sp`;
+
+CREATE TABLE `allowed_authenticators_sp` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `client_id` varchar(100) DEFAULT NULL,
+  `allowed_authenticator` varchar(255) DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  KEY `client_id` (`client_id`),
+  CONSTRAINT `allowed_authenticators_sp_ibfk_1` FOREIGN KEY (`client_id`) REFERENCES `sp_configuration` (`client_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1
+
+DROP TABLE IF EXISTS `allowed_authenticators_mno`;
+
+CREATE TABLE `allowed_authenticators_mno` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `mobile_network_operator` varchar(255) DEFAULT NULL,
+  `allowed_authenticator` varchar(255) DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1
 --
 -- Dumping data for table `sp_login_history`
 --
