@@ -539,8 +539,8 @@ DROP TABLE IF EXISTS `scope_parameter`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `scope_parameter` (
-  `param_id` int(20) NOT NULL AUTO_INCREMENT,
-  `scope` varchar(255),
+  `param_id` int(20) NOT NULL,
+  `scope` varchar(255) NOT NULL,
   `is_login_hint_mandatory` TINYINT DEFAULT 0,
   `is_tnc_visible` TINYINT DEFAULT 0,
   `msisdn_mismatch_result` varchar(255),
@@ -549,19 +549,38 @@ CREATE TABLE `scope_parameter` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
+INSERT INTO scope_parameter(param_id,scope,is_login_hint_mandatory,is_tnc_visible,msisdn_mismatch_result)
+VALUES(1,'openid',0,0,'ERROR_RETURN');
+
+INSERT INTO scope_parameter(param_id,scope,is_login_hint_mandatory,is_tnc_visible,msisdn_mismatch_result)
+VALUES(2,'mnv',1,0,'ERROR_RETURN');
+
+INSERT INTO scope_parameter(param_id,scope,is_login_hint_mandatory,is_tnc_visible,msisdn_mismatch_result)
+VALUES(3,'mc_mnv_validate',1,0,'OFFNET_FALLBACK');
+
+INSERT INTO scope_parameter(param_id,scope,is_login_hint_mandatory,is_tnc_visible,msisdn_mismatch_result)
+VALUES(4,'mc_mnv_validate_plus',1,0,'ERROR_RETURN');
+
+INSERT INTO scope_parameter(param_id,scope,is_login_hint_mandatory,is_tnc_visible,msisdn_mismatch_result)
+VALUES(5,'mc_india_tc',1,1,'ERROR_RETURN');
+
 
 DROP TABLE IF EXISTS `login_hint_format`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `login_hint_format` (
-  `format_id` int(20) NOT NULL AUTO_INCREMENT,
-  `type` varchar(255),
+  `format_id` int(20) NOT NULL,
+  `type` varchar(255) NOT NULL,
   `is_encrypted` TINYINT DEFAULT 0,
   `decrypt_algorithm` varchar(255),
   PRIMARY KEY (`format_id`),
   UNIQUE(`type`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
+
+INSERT INTO login_hint_format(format_id,type,is_encrypted,decrypt_algorithm) VALUES(1,'PLAINTEXT',0,NULL);
+INSERT INTO login_hint_format(format_id,type,is_encrypted,decrypt_algorithm) VALUES(2,'ENCRYPTED',1,'RSA');
+INSERT INTO login_hint_format(format_id,type,is_encrypted,decrypt_algorithm) VALUES(3,'MSISDN',0,NULL);
 
 
 DROP TABLE IF EXISTS `scope_supp_login_hint_format`;
@@ -576,6 +595,11 @@ CREATE TABLE `scope_supp_login_hint_format` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
+INSERT INTO `scope_supp_login_hint_format`(param_id,format_id) VALUES(1,1);
+INSERT INTO `scope_supp_login_hint_format`(param_id,format_id) VALUES(2,1);
+INSERT INTO `scope_supp_login_hint_format`(param_id,format_id) VALUES(3,1);
+INSERT INTO `scope_supp_login_hint_format`(param_id,format_id) VALUES(4,1);
+INSERT INTO `scope_supp_login_hint_format`(param_id,format_id) VALUES(5,1);
 
 
 --
