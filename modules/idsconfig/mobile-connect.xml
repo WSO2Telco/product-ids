@@ -64,7 +64,7 @@
         <RegistrationMessage>Message content for USSD registration</RegistrationMessage>
         <PinMaxLength>4</PinMaxLength>
         <InvalidFormatPinAttempts>3</InvalidFormatPinAttempts>
-        <PinMismatchAttempts>3</PinMismatchAttempts>
+        <PinMismatchAttempts>2</PinMismatchAttempts>
         <LoginMessage>Message content for USSD login</LoginMessage>
     </USSD>
 
