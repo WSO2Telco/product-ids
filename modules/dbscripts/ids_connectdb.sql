@@ -292,6 +292,47 @@ CREATE TABLE `sp_login_history` (
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 
+DROP TABLE IF EXISTS `scope_parameter`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `scope_parameter` (
+  `is_login_hint_mandatory` TINYINT DEFAULT 0,
+  `login_hint_format` varchar(255),
+  `is_tnc_visible` TINYINT DEFAULT 0,
+  `msisdn_mismatch_result` varchar(255),
+  `is_user_info_mandatory` TINYINT DEFAULT 0
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+DROP TABLE IF EXISTS `sp_configuration`
+
+CREATE TABLE `sp_configuration` (
+  `client_id` varchar(100) NOT NULL DEFAULT '',
+  `config_key` varchar(100) NOT NULL DEFAULT '',
+  `config_value` varchar(255) NOT NULL DEFAULT '',
+  PRIMARY KEY (`client_id`,`config_key`,`config_value`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1
+
+DROP TABLE IF EXISTS `allowed_authenticators_sp`;
+
+CREATE TABLE `allowed_authenticators_sp` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `client_id` varchar(100) DEFAULT NULL,
+  `allowed_authenticator` varchar(255) DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  KEY `client_id` (`client_id`),
+  CONSTRAINT `allowed_authenticators_sp_ibfk_1` FOREIGN KEY (`client_id`) REFERENCES `sp_configuration` (`client_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1
+
+DROP TABLE IF EXISTS `allowed_authenticators_mno`;
+
+CREATE TABLE `allowed_authenticators_mno` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `mobile_network_operator` varchar(255) DEFAULT NULL,
+  `allowed_authenticator` varchar(255) DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1
+
 --
 -- Dumping data for table `sp_login_history`
 --
