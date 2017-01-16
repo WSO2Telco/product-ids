@@ -53,11 +53,24 @@
         <PinInvalidFormatAttemptsExceedMessage>Access Denied. You have exceeded maximum number of retry attempts</PinInvalidFormatAttemptsExceedMessage>
         <PinMismatchAttemptsExceedMessage>Access Denied. You have exceeded maximum number of confirmation attempts</PinMismatchAttemptsExceedMessage>
         <USSDPinContextEndpoint>Callback URL for USSD pin authentication</USSDPinContextEndpoint>
-        <RegistrationMessage>Message content for USSD registration</RegistrationMessage>
+        <RegistrationMessage>Message content for USSD registration ${application}&#xA;1. Yes&#xA;2. No
+        </RegistrationMessage>
         <PinMaxLength>4</PinMaxLength>
         <InvalidFormatPinAttempts>3</InvalidFormatPinAttempts>
         <PinMismatchAttempts>3</PinMismatchAttempts>
-        <LoginMessage>Message content for USSD login</LoginMessage>
+        <LoginMessage>Message content for USSD login ${application}&#xA;1. Yes&#xA;2. No</LoginMessage>
+        <AcceptUserInputs>1,yes,ok,y</AcceptUserInputs>
+        <RejectUserInputs>2,no,n</RejectUserInputs>
+        <OperatorSpecificMessages>
+            <OperatorSpecificMessage operator="airtel">
+                <RegistrationMessage>AIRTEL Message content for USSD registration ${application}&#xA;1. Yes&#xA;2. No</RegistrationMessage>
+                <LoginMessage>AIRTEL Message content for USSD login ${application}&#xA;1. Yes&#xA;2. No</LoginMessage>
+            </OperatorSpecificMessage>
+            <OperatorSpecificMessage operator="dialog">
+                <RegistrationMessage>DIALOG Message content for USSD registration ${application}&#xA;1. Yes&#xA;2. No</RegistrationMessage>
+                <LoginMessage>DIALOG Message content for USSD login ${application}&#xA;1. Yes&#xA;2. No</LoginMessage>
+            </OperatorSpecificMessage>
+        </OperatorSpecificMessages>
     </USSD>
     <MIFEOpenIDTokenBuilderConfig>
         <acrHostUri>https://localhost:9443/acrengine/</acrHostUri>
