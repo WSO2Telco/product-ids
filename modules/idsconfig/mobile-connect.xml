@@ -37,7 +37,7 @@
         <SenderAddres>The sender no for sms authentication</SenderAddres>
     </SMS>
     <USSD>
-        <Endpoint>Endpoint to send the USSD request</Endpoint>    <!--https://URL to APIM:8243/ussd/v1/outbound -->
+        <Endpoint>http://localhost:9763/ussdstub/v1/outbound</Endpoint>    <!--https://URL to APIM:8243/ussd/v1/outbound -->
         <AuthToken>Authorization token to access the USSD API</AuthToken>
         <MessageContent>Message content for USSD authentication</MessageContent>
         <MessageContentPin>Message content for USSD pin authentication</MessageContentPin>
@@ -46,12 +46,10 @@
         <Pinauth>true</Pinauth>
         <DashBoard>Mobile connect</DashBoard>
         <USSDContextEndpoint>Callback URL for USSD authentication</USSDContextEndpoint>
-        <LoginNotifyUrl>http://localhost:9763/sessionupdater/tnspoints/endpoint/ussd/receive</LoginNotifyUrl>
-        <RegistrationNotifyUrl>http://localhost:9763/sessionupdater/tnspoints/endpoint/registration/ussd
-        </RegistrationNotifyUrl>
-        <PinLoginNotifyUrl></PinLoginNotifyUrl>
-        <PinRegistrationNotifyUrl>http://localhost:9763/sessionupdater/tnspoints/endpoint/registration/pin/ussd
-        </PinRegistrationNotifyUrl>
+        <LoginNotifyUrl>http://localhost:9763/sessionupdater/tnspoints/endpoint/login/ussd</LoginNotifyUrl>
+        <RegistrationNotifyUrl>http://localhost:9763/sessionupdater/tnspoints/endpoint/registration/ussd</RegistrationNotifyUrl>
+        <PinLoginNotifyUrl>http://localhost:9763/sessionupdater/tnspoints/endpoint/pin/login/ussd</PinLoginNotifyUrl>
+        <PinRegistrationNotifyUrl>http://localhost:9763/sessionupdater/tnspoints/endpoint/pin/registration/ussd</PinRegistrationNotifyUrl>
         <PinLoginMessage>Login message for ussd pin</PinLoginMessage>
         <PinRegistrationMessage>Registration message for ussd pin</PinRegistrationMessage>
         <PinConfirmMessage>Re-enter your PIN</PinConfirmMessage>
