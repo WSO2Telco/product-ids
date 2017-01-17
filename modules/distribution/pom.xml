@@ -230,6 +230,23 @@
 
                                 <replace file="target/wso2carbon-core-${carbon.kernel.version}/repository/conf/log4j.properties" token="log4j.appender.CARBON_MEMORY.layout.ConversionPattern=[%d] %5p {%c} - %x %m %n" value="log4j.appender.CARBON_MEMORY.layout.ConversionPattern=TID: [%T] [%S] [%d] %P%5p {%c} - %x %m {%c}%n${line.separator}log4j.appender.CARBON_MEMORY.layout.TenantPattern=%U%@%D [%T] [%S]${line.separator}log4j.appender.CARBON_MEMORY.columnList=%T,%S,%A,%d,%c,%p,%m,%H,%I,%Stacktrace" />
 
+                                <!--Update log4j.properties with IDS appenders -->
+                                <echo file="target/wso2carbon-core-${carbon.kernel.version}/repository/conf/log4j.properties" append="true">${line.separator}#IDS specific loggers and appenders</echo>
+
+                                <echo file="target/wso2carbon-core-${carbon.kernel.version}/repository/conf/log4j.properties" append="true">${line.separator}log4j.logger.com.wso2telco=INFO,IDS_LOGFILE</echo>
+
+                                <echo file="target/wso2carbon-core-${carbon.kernel.version}/repository/conf/log4j.properties" append="true">${line.separator}log4j.appender.IDS_LOGFILE = org.wso2.carbon.utils.logging.appenders.CarbonDailyRollingFileAppender</echo>
+
+                                <echo file="target/wso2carbon-core-${carbon.kernel.version}/repository/conf/log4j.properties" append="true">${line.separator}log4j.appender.IDS_LOGFILE.File = ${carbon.home}/repository/logs/ids.log</echo>
+
+                                <echo file="target/wso2carbon-core-${carbon.kernel.version}/repository/conf/log4j.properties" append="true">${line.separator}log4j.appender.IDS_LOGFILE.Append=true</echo>
+
+                                <echo file="target/wso2carbon-core-${carbon.kernel.version}/repository/conf/log4j.properties" append="true">${line.separator}log4j.appender.IDS_LOGFILE.layout=org.wso2.carbon.utils.logging.TenantAwarePatternLayout</echo>
+
+                                <echo file="target/wso2carbon-core-${carbon.kernel.version}/repository/conf/log4j.properties" append="true">${line.separator}log4j.appender.IDS_LOGFILE.layout.ConversionPattern=TID: [%T] [%S] [%d] %P%5p {%c} - %x %m %n</echo>
+
+                                <echo file="target/wso2carbon-core-${carbon.kernel.version}/repository/conf/log4j.properties" append="true">${line.separator}log4j.appender.IDS_LOGFILE.layout.TenantPattern=%U%@%D [%T] [%S]</echo>
+
                                 <!-- Update carbon webapps web.xml file for HttpHeaderSecurityFilter to skip /oidc/* path from antiClickJacking  -->
                                 <replaceregexp file="target/wso2carbon-core-${carbon.kernel.version}/repository/conf/tomcat/carbon/WEB-INF/web.xml" match="(?s)&lt;filter&gt;\s+&lt;filter-name&gt;HttpHeaderSecurityFilter&lt;/filter-name&gt;.*&lt;/filter&gt;" replace="${security-header-filter-is-token}" />
 
