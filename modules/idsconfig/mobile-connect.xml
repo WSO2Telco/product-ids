@@ -52,6 +52,16 @@
         <PinRegistrationNotifyUrl>http://localhost:9763/sessionupdater/tnspoints/endpoint/pin/registration/ussd</PinRegistrationNotifyUrl>
         <PinLoginMessage>Login message for ussd pin</PinLoginMessage>
         <PinRegistrationMessage>Registration message for ussd pin</PinRegistrationMessage>
+        <OperatorSpecificPinMessages>
+            <OperatorSpecificMessage operator="airtel">
+                <RegistrationMessage>AIRTEL Registration message for ussd pin ${application}&#xA;1. Yes&#xA;2. No</RegistrationMessage>
+                <LoginMessage>AIRTEL Login message for ussd pin ${application}&#xA;1. Yes&#xA;2. No</LoginMessage>
+            </OperatorSpecificMessage>
+            <OperatorSpecificMessage operator="dialog">
+                <RegistrationMessage>DIALOG Registration message for ussd pin ${application}&#xA;1. Yes&#xA;2. No</RegistrationMessage>
+                <LoginMessage>DIALOG Login message for ussd pin ${application}&#xA;1. Yes&#xA;2. No</LoginMessage>
+            </OperatorSpecificMessage>
+        </OperatorSpecificPinMessages>
         <PinConfirmMessage>Re-enter your PIN</PinConfirmMessage>
         <PinInvalidFormatMessage>Invalid format. Please re-enter your pin</PinInvalidFormatMessage>
         <PinMismatchMessage>Pin mismatch. Please re-enter your pin</PinMismatchMessage>
