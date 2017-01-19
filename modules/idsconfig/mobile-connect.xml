@@ -75,9 +75,8 @@
         </RegistrationMessage>
         <PinMaxLength>4</PinMaxLength>
         <InvalidFormatPinAttempts>3</InvalidFormatPinAttempts>
-        <PinMismatchAttempts>2</PinMismatchAttempts>
-        <LoginMessage>Message content for USSD login</LoginMessage>
         <PinMismatchAttempts>3</PinMismatchAttempts>
+        <LoginMessage>Message content for USSD login</LoginMessage>
         <LoginMessage>Message content for USSD login ${application}&#xA;1. Yes&#xA;2. No</LoginMessage>
         <AcceptUserInputs>1,yes,ok,y</AcceptUserInputs>
         <RejectUserInputs>2,no,n</RejectUserInputs>
@@ -129,7 +128,7 @@
     Identity Server. By default the port would be 9763+[offset] -->
     <ListenerWebappHost>URL of Identity server</ListenerWebappHost>
     <MSISDN>
-        <EncryptionKey>MSISDN ENCRYPTION KEY</EncryptionKey>
+        <EncryptionKey>wso2encryptdecyt</EncryptionKey>
         <ValidationRegex>[0-9]+</ValidationRegex>
     </MSISDN>
     <AuthProxy>
