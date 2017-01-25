@@ -564,6 +564,8 @@ VALUES(4,'mc_mnv_validate_plus',1,0,'ERROR_RETURN');
 INSERT INTO scope_parameter(param_id,scope,is_login_hint_mandatory,is_tnc_visible,msisdn_mismatch_result)
 VALUES(5,'mc_india_tc',1,1,'ERROR_RETURN');
 
+INSERT INTO scope_parameter(param_id,scope,is_login_hint_mandatory,is_tnc_visible,msisdn_mismatch_result)
+VALUES(6,'openid+mc_identity_phonenumber_hashed',0,0,'ERROR_RETURN');
 
 DROP TABLE IF EXISTS `login_hint_format`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;

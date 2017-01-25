@@ -39,5 +39,11 @@
 				<ClaimValue>address</ClaimValue>	
 			</Claims>
 	 	</Scope>
+        <Scope>
+            <Name>mc_identity_phonenumber_hashed</Name>
+            <Claims>
+                <ClaimValue>phone_number</ClaimValue>
+            </Claims>
+        </Scope>
 	</Scopes> 
  </ScopeConfigs>
