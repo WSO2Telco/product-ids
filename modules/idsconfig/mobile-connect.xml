@@ -46,48 +46,48 @@
         <Pinauth>true</Pinauth>
         <DashBoard>Mobile connect</DashBoard>
         <USSDContextEndpoint>Callback URL for USSD authentication</USSDContextEndpoint>
-        <LoginNotifyUrl>http://localhost:9763/sessionupdater/tnspoints/endpoint/login/ussd</LoginNotifyUrl>
-        <RegistrationNotifyUrl>http://localhost:9763/sessionupdater/tnspoints/endpoint/registration/ussd</RegistrationNotifyUrl>
-        <PinLoginNotifyUrl>http://localhost:9763/sessionupdater/tnspoints/endpoint/pin/login/ussd</PinLoginNotifyUrl>
-        <PinRegistrationNotifyUrl>http://localhost:9763/sessionupdater/tnspoints/endpoint/pin/registration/ussd</PinRegistrationNotifyUrl>
-        <PinLoginMessage>Login message for ussd pin</PinLoginMessage>
-        <PinRegistrationMessage>Registration message for ussd pin</PinRegistrationMessage>
-        <OperatorSpecificPinMessages>
-            <OperatorSpecificMessage operator="airtel">
-                <RegistrationMessage>AIRTEL Registration message for ussd pin ${application}&#xA;1. Yes&#xA;2. No</RegistrationMessage>
-                <LoginMessage>AIRTEL Login message for ussd pin ${application}&#xA;1. Yes&#xA;2. No</LoginMessage>
+        <LoginNotifyUrl>http://localhost:9763/sessionupdater/tnspoints/endpoint/login/ussd</LoginNotifyUrl> <!-- USSD inbound : login call response endpoint -->
+        <RegistrationNotifyUrl>http://localhost:9763/sessionupdater/tnspoints/endpoint/registration/ussd</RegistrationNotifyUrl> <!-- USSD inbound : registration call response endpoint -->
+        <PinLoginNotifyUrl>http://localhost:9763/sessionupdater/tnspoints/endpoint/pin/login/ussd</PinLoginNotifyUrl> <!-- USSD inbound : PIN login call response endpoint -->
+        <PinRegistrationNotifyUrl>http://localhost:9763/sessionupdater/tnspoints/endpoint/pin/registration/ussd</PinRegistrationNotifyUrl> <!-- USSD inbound : PIN registration call response endpoint -->
+        <PinLoginMessage>Login message for ussd pin ${application}&#xA;1. Yes&#xA;2. No</PinLoginMessage> <!-- Common USSD message for PIN login -->
+        <PinRegistrationMessage>Registration message for ussd pin ${application}&#xA;1. Yes&#xA;2. No</PinRegistrationMessage> <!-- Common USSD message for PIN registration -->
+        <OperatorSpecificPinMessages> <!-- Contains operator specific ussd PIN messages -->
+            <OperatorSpecificMessage operator="op1">
+                <!-- ${application} is replaced with the application name -->
+                <RegistrationMessage>op1 Registration message for ussd pin ${application}&#xA;1. Yes&#xA;2. No</RegistrationMessage>
+                <LoginMessage>op1 Login message for ussd pin ${application}&#xA;1. Yes&#xA;2. No</LoginMessage>
             </OperatorSpecificMessage>
-            <OperatorSpecificMessage operator="dialog">
-                <RegistrationMessage>DIALOG Registration message for ussd pin ${application}&#xA;1. Yes&#xA;2. No</RegistrationMessage>
-                <LoginMessage>DIALOG Login message for ussd pin ${application}&#xA;1. Yes&#xA;2. No</LoginMessage>
+            <OperatorSpecificMessage operator="op2">
+                <!-- ${application} is replaced with the application name -->
+                <RegistrationMessage>op2 Registration message for ussd pin ${application}&#xA;1. Yes&#xA;2. No</RegistrationMessage>
+                <LoginMessage>op2 Login message for ussd pin ${application}&#xA;1. Yes&#xA;2. No</LoginMessage>
             </OperatorSpecificMessage>
         </OperatorSpecificPinMessages>
-        <PinConfirmMessage>Re-enter your PIN</PinConfirmMessage>
-        <PinInvalidFormatMessage>Invalid format. Please re-enter your pin</PinInvalidFormatMessage>
-        <PinMismatchMessage>Pin mismatch. Please re-enter your pin</PinMismatchMessage>
-        <PinRegistrationSuccessMessage>Registration Success</PinRegistrationSuccessMessage>
-        <PinInvalidFormatAttemptsExceedMessage>Access Denied. You have exceeded maximum number of retry attempts
-        </PinInvalidFormatAttemptsExceedMessage>
-        <PinMismatchAttemptsExceedMessage>Access Denied. You have exceeded maximum number of confirmation attempts
-        </PinMismatchAttemptsExceedMessage>
+        <PinConfirmMessage>Re-enter your PIN</PinConfirmMessage> <!-- PIN confirmation ussd message -->
+        <PinInvalidFormatMessage>Invalid format. Please re-enter your pin</PinInvalidFormatMessage> <!-- PIN invalid format error ussd message -->
+        <PinMismatchMessage>Pin mismatch. Please re-enter your pin</PinMismatchMessage> <!-- PIN mismatch error ussd message -->
+        <PinRegistrationSuccessMessage>Registration Success</PinRegistrationSuccessMessage> <!-- PIN registration success ussd message -->
+        <PinInvalidFormatAttemptsExceedMessage>Access Denied. You have exceeded maximum number of retry attempts</PinInvalidFormatAttemptsExceedMessage> <!-- Maximum attempts exceeded for PIN format error ussd message -->
+        <PinMismatchAttemptsExceedMessage>Access Denied. You have exceeded maximum number of confirmation attempts</PinMismatchAttemptsExceedMessage> <!-- Maximum attempts exceeded for PIN mismatch error ussd message -->
         <USSDPinContextEndpoint>Callback URL for USSD pin authentication</USSDPinContextEndpoint>
-        <RegistrationMessage>Message content for USSD registration ${application}&#xA;1. Yes&#xA;2. No
-        </RegistrationMessage>
-        <PinMaxLength>4</PinMaxLength>
-        <InvalidFormatPinAttempts>3</InvalidFormatPinAttempts>
-        <PinMismatchAttempts>3</PinMismatchAttempts>
-        <LoginMessage>Message content for USSD login</LoginMessage>
-        <LoginMessage>Message content for USSD login ${application}&#xA;1. Yes&#xA;2. No</LoginMessage>
-        <AcceptUserInputs>1,yes,ok,y</AcceptUserInputs>
-        <RejectUserInputs>2,no,n</RejectUserInputs>
-        <OperatorSpecificMessages>
-            <OperatorSpecificMessage operator="airtel">
-                <RegistrationMessage>AIRTEL Message content for USSD registration ${application}&#xA;1. Yes&#xA;2. No</RegistrationMessage>
-                <LoginMessage>AIRTEL Message content for USSD login ${application}&#xA;1. Yes&#xA;2. No</LoginMessage>
+        <RegistrationMessage>Message content for USSD registration ${application}&#xA;1. Yes&#xA;2. No</RegistrationMessage> <!-- Common USSD registration message -->
+        <PinMaxLength>4</PinMaxLength> <!-- PIN maximum length -->
+        <InvalidFormatPinAttempts>3</InvalidFormatPinAttempts> <!-- Maximum allowed PIN invalid format attempt count -->
+        <PinMismatchAttempts>3</PinMismatchAttempts> <!-- Maximum allowed PIN mismatch attempt count -->
+        <LoginMessage>Message content for USSD login ${application}&#xA;1. Yes&#xA;2. No</LoginMessage> <!-- Common USSD login message -->
+        <AcceptUserInputs>1,yes,ok,y</AcceptUserInputs> <!-- comma separated list of USSD user accept input responses -->
+        <RejectUserInputs>2,no,n</RejectUserInputs> <!-- comma separated list of USSD user reject input responses -->
+        <OperatorSpecificMessages> <!-- Contains operator specific ussd messages -->
+            <OperatorSpecificMessage operator="op1">
+                <!-- ${application} is replaced with the application name -->
+                <RegistrationMessage>op1 Message content for USSD registration ${application}&#xA;1. Yes&#xA;2. No</RegistrationMessage>
+                <LoginMessage>op1 Message content for USSD login ${application}&#xA;1. Yes&#xA;2. No</LoginMessage>
             </OperatorSpecificMessage>
-            <OperatorSpecificMessage operator="dialog">
-                <RegistrationMessage>DIALOG Message content for USSD registration ${application}&#xA;1. Yes&#xA;2. No</RegistrationMessage>
-                <LoginMessage>DIALOG Message content for USSD login ${application}&#xA;1. Yes&#xA;2. No</LoginMessage>
+            <OperatorSpecificMessage operator="op2">
+                <!-- ${application} is replaced with the application name -->
+                <RegistrationMessage>op2 Message content for USSD registration ${application}&#xA;1. Yes&#xA;2. No</RegistrationMessage>
+                <LoginMessage>op2 Message content for USSD login ${application}&#xA;1. Yes&#xA;2. No</LoginMessage>
             </OperatorSpecificMessage>
         </OperatorSpecificMessages>
     </USSD>
@@ -128,19 +128,19 @@
     Identity Server. By default the port would be 9763+[offset] -->
     <ListenerWebappHost>URL of Identity server</ListenerWebappHost>
     <MSISDN>
-        <EncryptionKey>wso2encryptdecyt</EncryptionKey>
-        <ValidationRegex>[0-9]+</ValidationRegex>
+        <EncryptionKey>wso2encryptdecyt</EncryptionKey> <!-- AES encryption key for MSISDN header encryption -->
+        <ValidationRegex>[0-9]+</ValidationRegex> <!-- MSISDN format validation regex -->
     </MSISDN>
     <AuthProxy>
-        <DataSourceName>jdbc/AXIATA_MIFE_DB</DataSourceName>
-        <AuthorizeURL>/oauth2/authorize?</AuthorizeURL>
+        <DataSourceName>jdbc/AXIATA_MIFE_DB</DataSourceName> <!-- m connect data source for -->
+        <AuthorizeURL>/oauth2/authorize?</AuthorizeURL> <!-- authorize redirect url -->
     </AuthProxy>
     <HEADERENRICH>
-        <Endpoint>http://ussdhost/request</Endpoint>
-        <Enrichflg>true</Enrichflg>
+        <!--<Endpoint>http://ussdhost/request</Endpoint>-->
+        <!--<Enrichflg>true</Enrichflg>-->
         <Operator>
             <operatorName>operator 1 name</operatorName>
-            <ipValidation>false</ipValidation>
+            <ipValidation>false</ipValidation> <!-- to decide ip validation should be enabled for the operator -->
             <MobileIPRanges>     <!-- The IP range the operator accepting the msisdn from the header -->
                 <IPRange>FROM IP:TO IP</IPRange>
                 <IPRange>XX.XX.XX.XX:XX.XX.XX.XX</IPRange>
@@ -148,10 +148,9 @@
                 <IPRange>XX.XX.XX.XX:XX.XX.XX.XX</IPRange>
             </MobileIPRanges>
         </Operator>
-
         <Operator>
             <operatorName>operator 2 name</operatorName>
-            <ipValidation>false</ipValidation>
+            <ipValidation>false</ipValidation> <!-- to decide ip validation should be enabled for the operator -->
             <MobileIPRanges>  <!-- The IP range the operator accepting the msisdn from the header -->
                 <IPRange>XX.XX.XX.XX:XX.XX.XX.XX</IPRange>
                 <IPRange>XX.XX.XX.XX:XX.XX.XX.XX</IPRange>
