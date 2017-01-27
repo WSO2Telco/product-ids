@@ -470,6 +470,12 @@ INSERT INTO `scope_supp_login_hint_format`(param_id,format_id) VALUES(3,1);
 INSERT INTO `scope_supp_login_hint_format`(param_id,format_id) VALUES(4,1);
 INSERT INTO `scope_supp_login_hint_format`(param_id,format_id) VALUES(5,1);
 
+DROP TABLE IF EXISTS `sms_hashkey_contextid_mapping`;
+CREATE TABLE `sms_hashkey_contextid_mapping` (
+  `hashkey` varchar(255) DEFAULT NULL,
+  `contextid` varchar(255) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 
 /*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
