@@ -18,8 +18,8 @@
 --
 -- Table structure for table `REG_ASSOCIATION`
 --
-CREATE DATABASE ids_regdb;
-USE ids_regdb;
+CREATE DATABASE mig_regdb;
+USE mig_regdb;
 
 CREATE TABLE IF NOT EXISTS REG_CLUSTER_LOCK (
              REG_LOCK_NAME VARCHAR (20),
