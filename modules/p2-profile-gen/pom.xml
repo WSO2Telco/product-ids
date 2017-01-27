@@ -128,6 +128,9 @@
                                     com.wso2telco.ids:com.wso2telco.ids.gsmaauthenticator.feature:${com.wso2telco.ids.version}
                                 </featureArtifactDef>
                                 <featureArtifactDef>
+                                    com.wso2telco.ids:com.wso2telco.ids.datapublisher.feature:${com.wso2telco.ids.version}
+                                </featureArtifactDef>
+                                <featureArtifactDef>
                                     com.wso2telco.ids:com.wso2telco.ids.openidtokenbuilder.feature:${com.wso2telco.ids.version}
                                 </featureArtifactDef>
                                 <featureArtifactDef>
@@ -910,6 +913,11 @@
                                 </feature>
 
                                 <feature>
+                                    <id>com.wso2telco.ids.datapublisher.feature.group</id>
+                                    <version>${com.wso2telco.ids.version}</version>
+                                </feature>
+
+                                <feature>
                                     <id>com.wso2telco.ids.openidtokenbuilder.feature.group</id>
                                     <version>${com.wso2telco.ids.version}</version>
                                 </feature>
@@ -1040,6 +1048,11 @@
 
                                 <feature>
                                     <id>com.wso2telco.ids.gsmaauthenticator.feature.group</id>
+                                    <version>${com.wso2telco.ids.version}</version>
+                                </feature>
+
+                                <feature>
+                                    <id>com.wso2telco.ids.datapublisher.feature.group</id>
                                     <version>${com.wso2telco.ids.version}</version>
                                 </feature>
 
@@ -1514,6 +1527,11 @@
                                 </feature>
 
                                 <feature>
+                                    <id>com.wso2telco.ids.datapublisher.feature.group</id>
+                                    <version>${com.wso2telco.ids.version}</version>
+                                </feature>
+
+                                <feature>
                                     <id>com.wso2telco.ids.openidtokenbuilder.feature.group</id>
                                     <version>${com.wso2telco.ids.version}</version>
                                 </feature>
@@ -1963,6 +1981,11 @@
 
                                 <feature>
                                     <id>com.wso2telco.ids.gsmaauthenticator.feature.group</id>
+                                    <version>${com.wso2telco.ids.version}</version>
+                                </feature>
+
+                                <feature>
+                                    <id>com.wso2telco.ids.datapublisher.feature.group</id>
                                     <version>${com.wso2telco.ids.version}</version>
                                 </feature>
 
