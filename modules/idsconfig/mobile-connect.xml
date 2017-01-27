@@ -36,6 +36,11 @@
         <AccessToken>Access token to access bitly service</AccessToken>
         <SenderAddres>The sender no for sms authentication</SenderAddres>
     </SMS>
+    <TimeoutConfig>
+        <SocketTimeout>60</SocketTimeout>
+        <ConnectTimeout>60</ConnectTimeout>
+        <ConnectionRequestTimeout>30</ConnectionRequestTimeout>
+    </TimeoutConfig>
     <USSD>
         <Endpoint>http://localhost:9763/ussdstub/v1/outbound</Endpoint>    <!--https://URL to APIM:8243/ussd/v1/outbound -->
         <AuthToken>Authorization token to access the USSD API</AuthToken>
@@ -158,4 +163,12 @@
             </MobileIPRanges>
         </Operator>
     </HEADERENRICH>
+
+    <DataPublisher>
+        <Enabled>true</Enabled>
+        <UserName>admin</UserName>
+        <Password>admin</Password>
+        <DASUrl>tcp://localhost:7612</DASUrl>
+        <DASSecureUrl>ssl://localhost:7712</DASSecureUrl>
+    </DataPublisher>
 </MobileConnectConfig>
