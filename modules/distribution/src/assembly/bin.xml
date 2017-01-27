@@ -847,14 +847,6 @@
 
 	<file>
             <source>
-                ../dbscripts/ids_operatorsdb.sql
-            </source>
-            <outputDirectory>wso2telcoids-${pom.version}/dbscripts/ids</outputDirectory>
-        <fileMode>644</fileMode>
-        </file>
-
-	<file>
-            <source>
                 ../dbscripts/ids_regdb.sql
             </source>
             <outputDirectory>wso2telcoids-${pom.version}/dbscripts/ids</outputDirectory>
@@ -896,6 +888,7 @@
                 <include>org.codehaus.jettison:jettison:jar</include>
                 <include>org.apache.httpcomponents:httpasyncclient:jar</include>
                 <include>org.apache.httpcomponents:httpcore-nio:jar</include>
+                <include>org.hashids:hashids:jar</include>
             </includes>
         </dependencySet>
         <dependencySet>
