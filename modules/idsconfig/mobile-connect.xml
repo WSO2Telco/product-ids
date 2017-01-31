@@ -42,10 +42,10 @@
         <ConnectionRequestTimeout>30</ConnectionRequestTimeout>
     </TimeoutConfig>
     <USSD>
-        <Endpoint>http://localhost:9763/ussdstub/v1/outbound</Endpoint>    <!--https://URL to APIM:8243/ussd/v1/outbound -->
+        <Endpoint>http://localhost:9763/ussdstub/v1/outbound</Endpoint>    <!-- url of the ussd stub -->
         <AuthToken>Authorization token to access the USSD API</AuthToken>
-        <MessageContent>Message content for USSD authentication</MessageContent>
-        <MessageContentPin>Message content for USSD pin authentication</MessageContentPin>
+        <MessageContent>Message content for USSD authentication</MessageContent> <!--Message that sends to authenticate user with ussd prompt-->
+        <MessageContentPin>Message content for USSD pin authentication</MessageContentPin> <!--Message that sends to authenticate user with ussd prompt with pin-->
         <ShortCode>1721</ShortCode>
         <Keyword>123</Keyword>
         <Pinauth>true</Pinauth>
@@ -95,7 +95,7 @@
                 <LoginMessage>op2 Message content for USSD login ${application}&#xA;1. Yes&#xA;2. No</LoginMessage>
             </OperatorSpecificMessage>
         </OperatorSpecificMessages>
-        <TimeoutConfig>
+        <TimeoutConfig> <!--Timeout for sending ussd request-->
             <SocketTimeout>0</SocketTimeout>
             <ConnectTimeout>0</ConnectTimeout>
             <ConnectionRequestTimeout>0</ConnectionRequestTimeout>
