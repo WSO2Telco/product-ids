@@ -177,7 +177,6 @@
 		  <include>authenticationendpoint.war</include>
 		  <include>authproxy.war</include>
 		  <include>sessionupdater.war</include>
-		  <include>user-registration.war</include>
 
             </includes>
         </fileSet>
@@ -831,7 +830,7 @@
 
 	<file>
             <source>
-                ../dbscripts/ids_apimgt.sql
+                ../dbscripts/mig_apimgt.sql
             </source>
             <outputDirectory>wso2telcoids-${pom.version}/dbscripts/ids</outputDirectory>
         <fileMode>644</fileMode>
@@ -839,7 +838,7 @@
 
 	<file>
             <source>
-                ../dbscripts/ids_connectdb.sql
+                ../dbscripts/mig_connectdb.sql
             </source>
             <outputDirectory>wso2telcoids-${pom.version}/dbscripts/ids</outputDirectory>
         <fileMode>644</fileMode>
@@ -847,7 +846,7 @@
 
 	<file>
             <source>
-                ../dbscripts/ids_regdb.sql
+                ../dbscripts/mig_regdb.sql
             </source>
             <outputDirectory>wso2telcoids-${pom.version}/dbscripts/ids</outputDirectory>
         <fileMode>644</fileMode>
@@ -855,7 +854,7 @@
 
 	<file>
             <source>
-                ../dbscripts/ids_userdb.sql
+                ../dbscripts/mig_userdb.sql
             </source>
             <outputDirectory>wso2telcoids-${pom.version}/dbscripts/ids</outputDirectory>
         <fileMode>644</fileMode>

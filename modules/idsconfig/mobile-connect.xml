@@ -34,7 +34,7 @@
         <ShortUrlClass>com.gsma.shorten.BitlyUrlShorten</ShortUrlClass>
         <ShortUrlService>https://api-ssl.bitly.com/v3/shorten</ShortUrlService>
         <AccessToken>Access token to access bitly service</AccessToken>
-        <SenderAddres>The sender no for sms authentication</SenderAddres>
+        <SenderAddress>The sender no for sms authentication</SenderAddress>
     </SMS>
     <TimeoutConfig>
         <SocketTimeout>60</SocketTimeout>
@@ -42,10 +42,10 @@
         <ConnectionRequestTimeout>30</ConnectionRequestTimeout>
     </TimeoutConfig>
     <USSD>
-        <Endpoint>http://localhost:9763/ussdstub/v1/outbound</Endpoint>    <!--https://URL to APIM:8243/ussd/v1/outbound -->
+        <Endpoint>http://localhost:9763/ussdstub/v1/outbound</Endpoint>    <!-- url of the ussd stub -->
         <AuthToken>Authorization token to access the USSD API</AuthToken>
-        <MessageContent>Message content for USSD authentication</MessageContent>
-        <MessageContentPin>Message content for USSD pin authentication</MessageContentPin>
+        <MessageContent>Message content for USSD authentication</MessageContent> <!--Message that sends to authenticate user with ussd prompt-->
+        <MessageContentPin>Message content for USSD pin authentication</MessageContentPin> <!--Message that sends to authenticate user with ussd prompt with pin-->
         <ShortCode>1721</ShortCode>
         <Keyword>123</Keyword>
         <Pinauth>true</Pinauth>
@@ -95,8 +95,17 @@
                 <LoginMessage>op2 Message content for USSD login ${application}&#xA;1. Yes&#xA;2. No</LoginMessage>
             </OperatorSpecificMessage>
         </OperatorSpecificMessages>
+        <TimeoutConfig> <!--Timeout for sending ussd request-->
+            <SocketTimeout>0</SocketTimeout>
+            <ConnectTimeout>0</ConnectTimeout>
+            <ConnectionRequestTimeout>0</ConnectionRequestTimeout>
+        </TimeoutConfig>
     </USSD>
 
+    <SAA>
+        <AuthenticationEndpoint>https://localhost:9443/saa-server/services/serverAPI/api/v1/clients/{msisdn}/authenticate</AuthenticationEndpoint>
+        <RegistrationEndpoint>https://localhost:9443/saa-server/services/serverAPI/api/v1/clients/{msisdn}/is_registered</RegistrationEndpoint>
+    </SAA>
     <MIFEOpenIDTokenBuilderConfig>
         <acrHostUri>https://localhost:9443/acrengine/</acrHostUri>
         <retrieveService>ACRRetrieveService/V1</retrieveService>

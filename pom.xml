@@ -1197,11 +1197,6 @@
             </dependency>
             <dependency>
                 <groupId>com.wso2telco.ids</groupId>
-                <artifactId>com.wso2telco.ids.userregistration.ui.feature</artifactId>
-                <version>${com.wso2telco.ids.version}</version>
-            </dependency>
-            <dependency>
-                <groupId>com.wso2telco.ids</groupId>
                 <artifactId>om.wso2telco.ids.datapublisher.feature</artifactId>
                 <version>${com.wso2telco.ids.version}</version>
             </dependency>

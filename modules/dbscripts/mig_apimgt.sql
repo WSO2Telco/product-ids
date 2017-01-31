@@ -19,8 +19,8 @@
 -- Table structure for table `AM_API`
 --
 
-CREATE DATABASE ids_apimgt;
-USE ids_apimgt;
+CREATE DATABASE mig_apimgt;
+USE mig_apimgt;
 
 DROP TABLE IF EXISTS `AM_API`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
