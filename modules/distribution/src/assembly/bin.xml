@@ -850,7 +850,7 @@
             </source>
             <outputDirectory>wso2telcoids-${pom.version}/dbscripts/ids</outputDirectory>
         <fileMode>644</fileMode>
-        </file>	
+        </file>
 
 	<file>
             <source>

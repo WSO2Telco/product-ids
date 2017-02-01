@@ -431,25 +431,26 @@ CREATE TABLE `scope_parameter` (
   `is_login_hint_mandatory` TINYINT DEFAULT 0,
   `is_tnc_visible` TINYINT DEFAULT 0,
   `msisdn_mismatch_result` varchar(255),
+  `he_failure_result` varchar(255),
   PRIMARY KEY (`param_id`),
   UNIQUE(`scope`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
-INSERT INTO scope_parameter(param_id,scope,is_login_hint_mandatory,is_tnc_visible,msisdn_mismatch_result)
-VALUES(1,'openid',0,0,'ERROR_RETURN');
+INSERT INTO scope_parameter(param_id,scope,is_login_hint_mandatory,is_tnc_visible,msisdn_mismatch_result,he_failure_result)
+VALUES(1,'openid',0,0,'ERROR_RETURN','BREAK');
 
-INSERT INTO scope_parameter(param_id,scope,is_login_hint_mandatory,is_tnc_visible,msisdn_mismatch_result)
-VALUES(2,'mnv',1,0,'ERROR_RETURN');
+INSERT INTO scope_parameter(param_id,scope,is_login_hint_mandatory,is_tnc_visible,msisdn_mismatch_result,he_failure_result)
+VALUES(2,'mnv',1,0,'ERROR_RETURN','TRUST_MSISDN');
 
-INSERT INTO scope_parameter(param_id,scope,is_login_hint_mandatory,is_tnc_visible,msisdn_mismatch_result)
-VALUES(3,'mc_mnv_validate',1,0,'OFFNET_FALLBACK');
+INSERT INTO scope_parameter(param_id,scope,is_login_hint_mandatory,is_tnc_visible,msisdn_mismatch_result,he_failure_result)
+VALUES(3,'mc_mnv_validate',1,0,'OFFNET_FALLBACK','TRUST_LOGINHINT_MSISDN');
 
-INSERT INTO scope_parameter(param_id,scope,is_login_hint_mandatory,is_tnc_visible,msisdn_mismatch_result)
-VALUES(4,'mc_mnv_validate_plus',1,0,'ERROR_RETURN');
+INSERT INTO scope_parameter(param_id,scope,is_login_hint_mandatory,is_tnc_visible,msisdn_mismatch_result,he_failure_result)
+VALUES(4,'mc_mnv_validate_plus',1,0,'ERROR_RETURN','BREAK');
 
-INSERT INTO scope_parameter(param_id,scope,is_login_hint_mandatory,is_tnc_visible,msisdn_mismatch_result)
-VALUES(5,'mc_india_tc',1,1,'ERROR_RETURN');
+INSERT INTO scope_parameter(param_id,scope,is_login_hint_mandatory,is_tnc_visible,msisdn_mismatch_result,he_failure_result)
+VALUES(5,'mc_india_tc',1,1,'ERROR_RETURN','TRUST_MSISDN');
 
 
 --
