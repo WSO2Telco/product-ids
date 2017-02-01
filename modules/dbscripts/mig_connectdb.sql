@@ -320,32 +320,6 @@ CREATE TABLE `allowed_authenticators_mno` (
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
-
-
-DROP TABLE IF EXISTS `USER_STATUS`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
-CREATE TABLE `USER_STATUS` (
-  `Id` int(11) NOT NULL AUTO_INCREMENT,
-  `Time` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
-  `Status` varchar(45) NOT NULL,
-  `Msisdn` varchar(255) DEFAULT NULL,
-  `State` varchar(100) DEFAULT NULL,
-  `Nonce` varchar(100) DEFAULT NULL,
-  `Scope` varchar(25) DEFAULT NULL,
-  `AcrValue` varchar(10) DEFAULT NULL,
-  `SessionId` varchar(45) DEFAULT NULL,
-  `IsMsisdnHeader` int(1) DEFAULT NULL,
-  `IpHeader` varchar(45) DEFAULT NULL,
-  `IsNewUser` int(1) DEFAULT NULL,
-  `LoginHint` varchar(255) DEFAULT NULL,
-  `Operator` varchar(25) DEFAULT NULL,
-  `UserAgent` varchar(255) DEFAULT NULL,
-  `Comment` varchar(255) DEFAULT NULL,
-  `ConsumerKey` varchar(255) DEFAULT NULL,
-  PRIMARY KEY (`Id`)
-) ENGINE=InnoDB AUTO_INCREMENT=6634 DEFAULT CHARSET=latin1;
-/*!40101 SET character_set_client = @saved_cs_client */;
 --
 -- Dumping data for table `sp_login_history`
 --
