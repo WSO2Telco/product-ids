@@ -105,9 +105,9 @@
 		<Authentication>
 			<LevelToFallback>10</LevelToFallback>
 			<Authenticators>
-				<Authenicator onfail="break" supportiveFlow="offnet">MSISDNAuthenticator</Authenicator>
-                <Authenicator onfail="continue" supportiveFlow="any">SmartPhoneAppAuthenticator</Authenicator>
-				<Authenicator onfail="break" supportiveFlow="offnet">USSDAuthenticator</Authenicator>
+				<Authenicator onfail="break" supportiveFlow="any">MSISDNAuthenticator</Authenicator>
+				<Authenicator onfail="continue" supportiveFlow="any">SmartPhoneAppAuthenticator</Authenicator>
+				<Authenicator onfail="break" supportiveFlow="any">USSDAuthenticator</Authenicator>
 				<!-- If onFail attribute values is 'break', and that authenticator fails,whole LOA should fail -->
 			</Authenticators>
 		</Authentication>
