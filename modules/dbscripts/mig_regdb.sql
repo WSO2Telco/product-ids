@@ -18,6 +18,7 @@
 --
 -- Table structure for table `REG_ASSOCIATION`
 --
+DROP DATABASE  IF EXISTS mig_regdb;
 CREATE DATABASE mig_regdb;
 USE mig_regdb;
 

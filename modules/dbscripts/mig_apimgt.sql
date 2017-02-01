@@ -18,7 +18,7 @@
 --
 -- Table structure for table `AM_API`
 --
-
+DROP DATABASE  IF EXISTS  mig_apimgt;
 CREATE DATABASE mig_apimgt;
 USE mig_apimgt;
 
