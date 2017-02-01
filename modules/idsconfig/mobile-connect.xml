@@ -10,7 +10,7 @@
     <AdminUsername>admin</AdminUsername>
     <AdminPassword>admin</AdminPassword>
     <Keyfile>dialogprivate.key</Keyfile>
-
+    <IsSpValidationDisabled>true</IsSpValidationDisabled>
     <GSMAExchangeConfig>
         <SOHost>integration-axiatagroup.apiexchange.org</SOHost>
         <Organization>axiaD:\1.6-RC2\log\mobile-connect.xmltagroup</Organization>
