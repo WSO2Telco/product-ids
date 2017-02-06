@@ -836,6 +836,13 @@
         <fileMode>644</fileMode>
         </file>
 
+        <file>
+            <source>
+                ../dbscripts/mig_identity_mysql-5.7.sql
+            </source>
+            <outputDirectory>wso2telcoids-${pom.version}/dbscripts/ids</outputDirectory>
+            <fileMode>644</fileMode>
+        </file>
 	<file>
             <source>
                 ../dbscripts/mig_connectdb.sql
