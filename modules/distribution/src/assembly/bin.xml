@@ -830,7 +830,7 @@
 
 	<file>
             <source>
-                ../dbscripts/mig_apimgt.sql
+                ../dbscripts/mig_identity.sql
             </source>
             <outputDirectory>wso2telcoids-${pom.version}/dbscripts/ids</outputDirectory>
         <fileMode>644</fileMode>
