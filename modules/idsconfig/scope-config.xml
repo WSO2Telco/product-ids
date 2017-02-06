@@ -45,5 +45,11 @@
                 <ClaimValue>phone_number</ClaimValue>
             </Claims>
         </Scope>
+        <Scope>
+            <Name>openid</Name>
+            <Claims>
+                <ClaimValue>phone_number</ClaimValue>
+            </Claims>
+        </Scope>
 	</Scopes> 
  </ScopeConfigs>
