@@ -445,7 +445,7 @@ INSERT INTO scope_parameter(param_id,scope,is_login_hint_mandatory,is_header_msi
 VALUES(2,'mnv',1,0,0,'OFFNET_FALLBACK','TRUST_LOGINHINT_MSISDN');
 
 INSERT INTO scope_parameter(param_id,scope,is_login_hint_mandatory,is_header_msisdn_mandatory,is_tnc_visible,msisdn_mismatch_result,he_failure_result)
-VALUES(3,'mc_mnv_validate',1,0,0,'OFFNET_FALLBACK','TRUST_LOGINHINT_MSISDN');
+VALUES(3,'mc_mnv_validate',1,0,0,'OFFNET_FALLBACK_TRUST_LOGINHINT','TRUST_LOGINHINT_MSISDN');
 
 INSERT INTO scope_parameter(param_id,scope,is_login_hint_mandatory,is_header_msisdn_mandatory,is_tnc_visible,msisdn_mismatch_result,he_failure_result)
 VALUES(4,'mc_mnv_validate_plus',1,1,0,'ERROR_RETURN','BREAK');
