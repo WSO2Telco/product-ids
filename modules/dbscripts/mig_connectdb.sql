@@ -504,6 +504,28 @@ CREATE TABLE `sms_hashkey_contextid_mapping` (
   `contextid` varchar(255) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
+DROP TABLE IF EXISTS clients;
+CREATE TABLE clients (
+  client_device_id VARCHAR(500) PRIMARY KEY,
+  platform         VARCHAR(10),
+  push_token       VARCHAR(500),
+  date_time        DATETIME,
+  msisdn           VARCHAR(20)
+);
+
+DROP TABLE IF EXISTS messages;
+CREATE TABLE messages (
+  id               INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
+  ref_id           VARCHAR(200),
+  client_device_id VARCHAR(500),
+  message          VARCHAR(1000),
+  req_date_time    DATETIME,
+  res_date_time    DATETIME,
+  status           CHAR,
+  FOREIGN KEY (client_device_id) REFERENCES clients (client_device_id)
+    ON DELETE CASCADE
+);
+
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 
 /*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
