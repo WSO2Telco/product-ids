@@ -177,6 +177,7 @@
 		  <include>authenticationendpoint.war</include>
 		  <include>authproxy.war</include>
 		  <include>sessionupdater.war</include>
+		  <include>saaserver.war</include>
 
             </includes>
         </fileSet>

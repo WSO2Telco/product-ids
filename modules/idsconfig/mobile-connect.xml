@@ -103,8 +103,9 @@
     </USSD>
 
     <SAA>
-        <AuthenticationEndpoint>https://localhost:9443/saa-server/services/serverAPI/api/v1/clients/{msisdn}/authenticate</AuthenticationEndpoint>
-        <RegistrationEndpoint>https://localhost:9443/saa-server/services/serverAPI/api/v1/clients/{msisdn}/is_registered</RegistrationEndpoint>
+        <AuthenticationEndpoint>http://localhost:9763/saaserver/services/serverAPI/api/v1/clients/{msisdn}/authenticate</AuthenticationEndpoint>
+        <RegistrationEndpoint>http://localhost:9763/saaserver/services/serverAPI/api/v1/clients/{msisdn}/is_registered</RegistrationEndpoint>
+        <PushServiceEndpoint>http://localhost:9763/saaserver/services/pushServiceAPI/client/{msisdn}/send</PushServiceEndpoint>
     </SAA>
     <MIFEOpenIDTokenBuilderConfig>
         <acrHostUri>https://localhost:9443/acrengine/</acrHostUri>
