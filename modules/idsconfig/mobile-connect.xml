@@ -35,6 +35,11 @@
         <ShortUrlService>https://api-ssl.bitly.com/v3/shorten</ShortUrlService>
         <AccessToken>Access token to access bitly service</AccessToken>
         <SenderAddress>The sender no for sms authentication</SenderAddress>
+        <TimeoutConfig>
+            <SocketTimeout>60</SocketTimeout>
+            <ConnectTimeout>60</ConnectTimeout>
+            <ConnectionRequestTimeout>30</ConnectionRequestTimeout>
+        </TimeoutConfig>
     </SMS>
     <TimeoutConfig>
         <SocketTimeout>60</SocketTimeout>
