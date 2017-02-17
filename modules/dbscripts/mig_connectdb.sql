@@ -376,8 +376,6 @@ CREATE TABLE operators (
   token varchar(255) DEFAULT NULL,
   tokenurl varchar(255) DEFAULT NULL,
   tokenauth varchar(255) DEFAULT NULL,
-  requiredIPValidation char(1) NOT NULL DEFAULT '0',
-  ipHeader varchar(255) DEFAULT NULL,
   PRIMARY KEY (ID),
   UNIQUE KEY operatorname (operatorname)
 ) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=latin1;
@@ -391,8 +389,7 @@ LOCK TABLES `operators` WRITE;
 /*!40000 ALTER TABLE `operators` DISABLE KEYS */;
 INSERT INTO `operators` VALUES (1,'spark','Spark Opearator','user',NULL,'user',NULL,
                                   'gGgvUANAGhRUzWTyXwYoGuk3WzQa',157680000,1395135145139,'4fb164d70def9f37b2f8e2f1daf467',
-                                'http://localhost:8281/token','Basic U1JObDQzXzRTVks5MjZaVnNteXExOU1JNVFRYTpEV1Flb2NDeUVyN0lHYk8zRHJxRDc5SmtzVFVh',0,
-                                NULL);
+                                'http://localhost:8281/token','Basic U1JObDQzXzRTVks5MjZaVnNteXExOU1JNVFRYTpEV1Flb2NDeUVyN0lHYk8zRHJxRDc5SmtzVFVh');
 /*!40000 ALTER TABLE `operators` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -439,7 +436,7 @@ CREATE TABLE `scope_parameter` (
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 INSERT INTO scope_parameter(param_id,scope,is_login_hint_mandatory,is_header_msisdn_mandatory,is_tnc_visible,msisdn_mismatch_result,he_failure_result)
-VALUES(1,'openid',0,0,1,'ERROR_RETURN','BREAK');
+VALUES(1,'openid',0,0,1,'ERROR_RETURN','UNTRUST_MSISDN');
 
 INSERT INTO scope_parameter(param_id,scope,is_login_hint_mandatory,is_header_msisdn_mandatory,is_tnc_visible,msisdn_mismatch_result,he_failure_result)
 VALUES(2,'mnv',1,0,0,'ERROR_RETURN','TRUST_LOGINHINT_MSISDN');
