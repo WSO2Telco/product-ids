@@ -536,4 +536,17 @@ CREATE TABLE messages (
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
+--
+-- Table structure for table `scope_log`
+--
 
+DROP TABLE IF EXISTS `scope_log`;
+
+ CREATE TABLE `scope_log` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `access_token` varchar(125) DEFAULT NULL,
+  `created_time` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  `sub` varchar(200) DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  KEY `accessToken` (`access_token`)
+) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=latin1
