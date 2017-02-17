@@ -150,8 +150,7 @@
         <AuthorizeURL>/oauth2/authorize?</AuthorizeURL> <!-- authorize redirect url -->
     </AuthProxy>
     <HEADERENRICH>
-        <!--<Endpoint>http://ussdhost/request</Endpoint>-->
-        <!--<Enrichflg>true</Enrichflg>-->
+        <ipHeaderName>ipAddress</ipHeaderName>
         <Operator>
             <operatorName>operator 1 name</operatorName>
             <ipValidation>false</ipValidation> <!-- to decide ip validation should be enabled for the operator -->
