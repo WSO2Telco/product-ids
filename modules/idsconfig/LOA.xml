@@ -75,7 +75,7 @@
 			<Authenticators>
 				<!--<Authenicator onfail="fallback">HeaderEnrichmentAuthenticator</Authenicator>-->
 				<Authenicator onfail="fallback" supportiveFlow="onnet">HeaderEnrichmentAuthenticator</Authenicator>
-				<Authenicator onfail="break" supportiveFlow="any">USSDPinAuthenticator</Authenicator>
+				<Authenicator onfail="break" supportiveFlow="onnet">USSDPinAuthenticator</Authenicator>
 				<!-- If onFail attribute values is 'break', and that authenticator fails,whole LOA should fail -->
 			</Authenticators>
 		</Authentication>
