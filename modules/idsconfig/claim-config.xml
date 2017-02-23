@@ -1059,6 +1059,14 @@
 				<Description>End-User's preferred telephone number. For example, +1 (425) 555-1212 or +56 (2) 687 2400., +1 (604) 555-1234;ext=5678.</Description>
 			</Claim>
 			<Claim>
+				<ClaimURI>msisdn</ClaimURI>
+				<DisplayName>MSISDN</DisplayName>
+				<AttributeID>mobile</AttributeID>
+				<SupportedByDefault />
+				<Required />
+				<Description>End-User's preferred telephone number. For example, +1 (425) 555-1212 or +56 (2) 687 2400., +1 (604) 555-1234;ext=5678.</Description>
+			</Claim>
+			<Claim>
 				<ClaimURI>phone_number_verified</ClaimURI>
 				<DisplayName>Phone Number Verified</DisplayName>
 				<AttributeID>phoneVerififed</AttributeID>
