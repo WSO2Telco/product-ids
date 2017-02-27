@@ -410,7 +410,7 @@ CREATE TABLE `scope_parameter` (
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 INSERT INTO scope_parameter(param_id,scope,is_login_hint_mandatory,is_header_msisdn_mandatory,is_tnc_visible,msisdn_mismatch_result,he_failure_result)
-VALUES(1,'openid',0,0,1,'CONTINUE','TRUST_LOGINHINT_MSISDN');
+VALUES(1,'openid',0,0,1,'CONTINUE_WITH_HEADER','TRUST_LOGINHINT_MSISDN');
 
 INSERT INTO scope_parameter(param_id,scope,is_login_hint_mandatory,is_header_msisdn_mandatory,is_tnc_visible,msisdn_mismatch_result,he_failure_result)
 VALUES(2,'mnv',1,0,0,'ERROR_RETURN','BREAK');
