@@ -576,6 +576,12 @@
             <filtered>true</filtered>
         </file>
         <file>
+            <source>src/repository/resources/security/wso2carbon.jks</source>
+            <outputDirectory>wso2telcoids-${pom.version}/repository/resources/security</outputDirectory>
+            <destName>wso2carbon.jks</destName>
+            <filtered>true</filtered>
+        </file>
+        <file>
             <source>
                 ../p2-profile-gen/target/wso2carbon-core-${carbon.kernel.version}/repository/data/is-default-schema.zip
             </source>
