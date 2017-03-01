@@ -21,10 +21,9 @@
         </ServingOperator>
     </GSMAExchangeConfig>
     <SMS>
-        <Endpoint>End point of the SMS API
-        </Endpoint>   <!--https://URL to APIM:8243/smsmessaging/v1/outbound/8899/requests -->
-        <AuthToken>Authorization token to access the SMS API</AuthToken>
-
+        <Endpoint>http://localhost:9763/ussdstub/v1/outbound</Endpoint>   <!--https://URL to APIM:8243/smsmessaging/v1/outbound/8899/requests -->
+        <AuthToken>4442137174b27a9837e745c711f4e31</AuthToken>
+        <AuthUrl>http://localhost:9763/authenticationendpoint/sms</AuthUrl>
         <MessageContentFirst>To login to</MessageContentFirst>    <!-- The message content for sms authentication -->
         <MessageContent>, follow this link</MessageContent>  <!-- The message content for sms authentication -->
         <MessageContentLast>Do not share as it is unique to you.
@@ -33,7 +32,7 @@
         <IsShortUrl>true</IsShortUrl>   <!-- ENABLE DISABLE external url shortening service usage-->
         <ShortUrlClass>com.wso2telco.gsma.shorten.BitlyUrlShorten</ShortUrlClass>
         <ShortUrlService>https://api-ssl.bitly.com/v3/shorten</ShortUrlService>
-        <AccessToken>Access token to access bitly service</AccessToken>
+        <AccessToken>fae2517b1a95b740f33058e28a1796faa80643a4</AccessToken>
         <SenderAddress>The sender no for sms authentication</SenderAddress>
         <TimeoutConfig>
             <SocketTimeout>60</SocketTimeout>
@@ -146,7 +145,7 @@
 
     <!-- Hostname/IP and port of the SMS Listener web-app. This should be set to publicly accessible hostname/IP of
     Identity Server. By default the port would be 9763+[offset] -->
-    <ListenerWebappHost>URL of Identity server</ListenerWebappHost>
+    <ListenerWebappHost>http://localhost:9763</ListenerWebappHost>
     <MSISDN>
         <EncryptionKey>wso2encryptdecyt</EncryptionKey> <!-- AES encryption key for MSISDN header encryption -->
         <ValidationRegex>^[0-9]{12}$</ValidationRegex> <!-- MSISDN format validation regex -->
