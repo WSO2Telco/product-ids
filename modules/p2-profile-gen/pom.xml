@@ -96,7 +96,9 @@
                             <publishArtifacts>true</publishArtifacts>
                             <publishArtifactRepository>true</publishArtifactRepository>
                             <featureArtifacts>
-
+                                <featureArtifactDef>
+                                    com.wso2telco.core:com.wso2telco.core.pcrservice.feature:${com.wso2telco.core.version}
+                                </featureArtifactDef>
                                 <featureArtifactDef>
                                     com.wso2telco.core:com.wso2telco.core.dbutils.feature:${com.wso2telco.core.version}
                                 </featureArtifactDef>

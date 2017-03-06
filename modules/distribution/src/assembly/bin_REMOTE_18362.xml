@@ -677,6 +677,13 @@
         </file>
         <file>
             <source>
+                ../idsconfig/config.yml
+            </source>
+            <outputDirectory>wso2telcoids-${pom.version}/repository/conf</outputDirectory>
+            <fileMode>644</fileMode>
+        </file>
+        <file>
+            <source>
                 ../idsconfig/claim-config.xml
             </source>
             <outputDirectory>wso2telcoids-${pom.version}/repository/conf</outputDirectory>
