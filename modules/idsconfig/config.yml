@@ -1,0 +1,13 @@
+redis:
+  port: 6379
+  host: localhost
+  password: admin
+  timeout: 2000
+  poolsize: 200
+
+admin:
+  hostUrl: https://localhost:9443/services/OAuthAdminService
+  username: admin
+  password: admin
+  maximumTotalHttpConnection: 100
+  maximumHttpConnectionPerHost: 2
