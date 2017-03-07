@@ -32,19 +32,19 @@ public class KMarketAccessControl {
 
     private static WSO2IdentityAgent agent;
 
-    private static Map<String,String> priceMap = new HashMap<String, String>();
+    private static Map<String, String> priceMap = new HashMap<String, String>();
 
-    private static Map<String,String> idMap = new HashMap<String, String>();
+    private static Map<String, String> idMap = new HashMap<String, String>();
 
     private static String products = "[1] Food ($20.00)\t[2] Drink ($5.00)\t[3] Fruit ($15.00)\t[4] " +
             "Liquor ($80.00)\t [5] Medicine ($50.00)\n";
 
-    public static void main(String[] args){
+    public static void main(String[] args) {
 
         // create agent instances
         agent = new WSO2IdentityAgent(Utils.loadConfigProperties());
 
-        if(args != null && args.length == 1 && "setup".equals(args[0])){
+        if (args != null && args.length == 1 && "setup".equals(args[0])) {
             System.out.println("\nStarting the K-Market sample setup\n");
             Utils.setup(agent);
             System.out.println("\nFinishing the K-Market sample setup\n");
@@ -65,25 +65,24 @@ public class KMarketAccessControl {
         initData();
 
 
-
         System.out.println("\nPlease login to K-market trading system\n");
 
-        if ((console = System.console()) != null){
+        if ((console = System.console()) != null) {
             userName = console.readLine("Enter User name : ");
-            if(userName == null || userName.trim().length() < 1 ){
+            if (userName == null || userName.trim().length() < 1) {
                 System.err.println("\nUser name can not be empty\n");
                 System.exit(0);
             }
 
             char[] passwordData;
-            if((passwordData = console.readPassword("%s", "Enter User Password :")) != null){
+            if ((passwordData = console.readPassword("%s", "Enter User Password :")) != null) {
                 password = String.valueOf(passwordData);
             } else {
                 System.err.println("\nPassword can not be empty\n");
                 System.exit(0);
             }
 
-            if(agent.authenticate(userName, password)){
+            if (agent.authenticate(userName, password)) {
                 System.out.println("\nUser is authenticated Successfully\n");
             } else {
                 System.err.println("\nUser is NOT authenticated\n");
@@ -93,24 +92,24 @@ public class KMarketAccessControl {
 
         System.out.println("\nYou can select one of following items for your shopping chart : \n");
 
-        System.out.println(products);    
+        System.out.println(products);
 
-        if ((console = System.console()) != null){
+        if ((console = System.console()) != null) {
 
             String productId = console.readLine("Enter Product Id : ");
-            if(productId == null || productId.trim().length() < 1 ){
+            if (productId == null || productId.trim().length() < 1) {
                 System.err.println("\nProduct Id can not be empty\n");
                 System.exit(0);
             } else {
                 productName = idMap.get(productId);
-                if(productName == null){
+                if (productName == null) {
                     System.err.println("\nEnter valid product Id\n");
                     System.exit(0);
                 }
             }
 
             String productAmount = console.readLine("Enter No of Products : ");
-            if(productAmount == null || productAmount.trim().length() < 1 ){
+            if (productAmount == null || productAmount.trim().length() < 1) {
                 numberOfProducts = 1;
             } else {
                 numberOfProducts = Integer.parseInt(productAmount);
@@ -127,7 +126,7 @@ public class KMarketAccessControl {
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
-        
+
         String request = Utils.createXACMLRequest(userName, productName, numberOfProducts, totalAmount);
 
         System.out.println("\n======================== XACML Request ====================");
@@ -140,33 +139,33 @@ public class KMarketAccessControl {
         System.out.println(response);
         System.out.println("===========================================================");
 
-        if(response != null){
+        if (response != null) {
             OMElement advice = null;
             String simpleDecision = null;
             String reason = null;
-            try{
+            try {
                 OMElement decisionElement = AXIOMUtil.stringToOM(response);
-                if(decisionElement != null){
+                if (decisionElement != null) {
                     OMElement result = decisionElement.getFirstChildWithName(new QName("Result"));
-                    if(result != null){
+                    if (result != null) {
                         simpleDecision = result.getFirstChildWithName(new QName("Decision")).getText();
                         advice = result.getFirstChildWithName(new QName("AssociatedAdvice"));
                     }
                 }
 
-                if("Permit".equals(simpleDecision)){
+                if ("Permit".equals(simpleDecision)) {
                     System.out.println("\nTransaction was completed successfully\n");
                     System.exit(0);
                 }
 
-                if("Deny".equals(simpleDecision)){
-                    if(advice != null){
-                        Iterator iterator =  advice.getChildElements();
+                if ("Deny".equals(simpleDecision)) {
+                    if (advice != null) {
+                        Iterator iterator = advice.getChildElements();
                         // only takes 1st advice and attribute assignment.
-                        if(iterator.hasNext()){
+                        if (iterator.hasNext()) {
                             OMElement element = (OMElement) iterator.next();
                             Iterator attributeIterator = element.getChildElements();
-                            if(attributeIterator.hasNext()){
+                            if (attributeIterator.hasNext()) {
                                 OMElement attribute = (OMElement) attributeIterator.next();
                                 reason = attribute.getText();
                             }
@@ -174,12 +173,12 @@ public class KMarketAccessControl {
                         }
                     }
                 }
-            } catch (Exception e){
+            } catch (Exception e) {
                 e.printStackTrace();
             }
             System.err.println("\nYou are NOT authorized to perform this transaction\n");
-            if(reason != null){
-                System.err.println("Due to " + reason + "\n");     
+            if (reason != null) {
+                System.err.println("Due to " + reason + "\n");
             }
         } else {
             System.err.println("\nInvalid authorization response\n");
@@ -187,30 +186,30 @@ public class KMarketAccessControl {
         System.exit(0);
     }
 
-    private static void initData(){
+    private static void initData() {
 
-        idMap.put("1" , "Food");
-        idMap.put("2" , "Drink");
-        idMap.put("3" , "Fruit");
-        idMap.put("4" , "Liquor");
-        idMap.put("5" , "Medicine");
+        idMap.put("1", "Food");
+        idMap.put("2", "Drink");
+        idMap.put("3", "Fruit");
+        idMap.put("4", "Liquor");
+        idMap.put("5", "Medicine");
 
-        priceMap.put("Food" , "20");
-        priceMap.put("Drink" , "5");
-        priceMap.put("Fruit" , "15");
-        priceMap.put("Liquor" , "80");
-        priceMap.put("Medicine" , "50");
+        priceMap.put("Food", "20");
+        priceMap.put("Drink", "5");
+        priceMap.put("Fruit", "15");
+        priceMap.put("Liquor", "80");
+        priceMap.put("Medicine", "50");
     }
 
 
-    public static int calculateTotal(String productName, int amount){
+    public static int calculateTotal(String productName, int amount) {
 
         String priceString = priceMap.get(productName);
-        return Integer.parseInt(priceString)*amount;
+        return Integer.parseInt(priceString) * amount;
 
     }
 
-    public static void printDescription(){
+    public static void printDescription() {
 
         System.out.println("\nK-Market is on-line trading company. They have implemented some access " +
                 "control over the on-line trading using XACML policies. K-Market has separated their " +

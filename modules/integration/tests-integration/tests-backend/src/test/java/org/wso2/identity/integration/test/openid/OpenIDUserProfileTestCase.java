@@ -31,7 +31,7 @@ public class OpenIDUserProfileTestCase extends ISIntegrationTest {
 
     String userName = "suresh";
     String password = "Wso2@123";
-    String[] roles = { "admin" };
+    String[] roles = {"admin"};
     String profileName = "default";
 
     // claims
@@ -55,7 +55,7 @@ public class OpenIDUserProfileTestCase extends ISIntegrationTest {
         openidServiceClient = new OpenIDProviderServiceClient(backendURL, sessionCookie);
         createUser();
     }
-    
+
     @AfterClass(alwaysRun = true)
     public void atEnd() throws Exception {
         super.init();
@@ -84,7 +84,7 @@ public class OpenIDUserProfileTestCase extends ISIntegrationTest {
         // we expect 4 claims : email, firstname, lastname and country
         Assert.assertEquals(userProfiles[0].getClaimSet().length, 4);
 
-        for (OpenIDClaimDTO claimDTO: userProfiles[0].getClaimSet()){
+        for (OpenIDClaimDTO claimDTO : userProfiles[0].getClaimSet()) {
             if (emailClaimURI.equals(claimDTO.getClaimUri())) {
                 Assert.assertTrue(claimDTO.getClaimValue().contains(emailClaimValue));
             } else if (firstNameClaimURI.equals(claimDTO.getClaimUri())) {
@@ -123,7 +123,7 @@ public class OpenIDUserProfileTestCase extends ISIntegrationTest {
         Assert.assertTrue(isAuthenticated);
     }
 
-    @Test(alwaysRun = true, description = "Test reading claims", dependsOnMethods = { "testOpenIDAuthentication" })
+    @Test(alwaysRun = true, description = "Test reading claims", dependsOnMethods = {"testOpenIDAuthentication"})
     public void testClaims() {
 
         String openId = Util.getDefaultOpenIDIdentifier(userName);

@@ -88,16 +88,19 @@ public abstract class UserManagementServiceAbstractTest extends ISIntegrationTes
     @SetEnvironment(executionEnvironments = {ExecutionEnvironment.STANDALONE})
     @Test(groups = "wso2.is", description = "Check role addition", dependsOnMethods = "testGetAllRoleNames")
     public void testAddRole() throws Exception {
-        Assert.assertFalse(nameExists(userMgtClient.getAllRolesNames(newUserRole, 100), newUserRole), "User Role already exist");
+        Assert.assertFalse(nameExists(userMgtClient.getAllRolesNames(newUserRole, 100), newUserRole), "User Role " +
+                "already exist");
         userMgtClient.addRole(newUserRole, null, new String[]{"login"}, false);
-        Assert.assertTrue(nameExists(userMgtClient.getAllRolesNames(newUserRole, 100), newUserRole), "Added user role name not found");
+        Assert.assertTrue(nameExists(userMgtClient.getAllRolesNames(newUserRole, 100), newUserRole), "Added user role" +
+                " name not found");
     }
 
     @SetEnvironment(executionEnvironments = {ExecutionEnvironment.STANDALONE})
     @Test(groups = "wso2.is", description = "Check delete role", dependsOnMethods = "testAddRole")
     public void testDeleteRole() throws Exception {
         userMgtClient.deleteRole(newUserRole);
-        Assert.assertFalse(nameExists(userMgtClient.getAllRolesNames(newUserRole, 100), newUserRole), "User Role still exist");
+        Assert.assertFalse(nameExists(userMgtClient.getAllRolesNames(newUserRole, 100), newUserRole), "User Role " +
+                "still exist");
 
     }
 
@@ -109,7 +112,8 @@ public abstract class UserManagementServiceAbstractTest extends ISIntegrationTes
         Assert.assertTrue(userMgtClient.roleNameExists(newUserRole), "Role name doesn't exists");
         Assert.assertTrue(userMgtClient.userNameExists(newUserRole, newUserName), "User name doesn't exists");
 
-        String sessionCookie = authenticatorClient.login(newUserName, newUserPassword, isServer.getInstance().getHosts().get("default"));
+        String sessionCookie = authenticatorClient.login(newUserName, newUserPassword, isServer.getInstance()
+                .getHosts().get("default"));
         Assert.assertTrue(sessionCookie.contains("JSESSIONID"), "Session Cookie not found. Login failed");
         authenticatorClient.logOut();
 
@@ -145,14 +149,16 @@ public abstract class UserManagementServiceAbstractTest extends ISIntegrationTes
 
         userMgtClient.deleteRole("Internal/" + internalRoleName1);
         allRoles = userMgtClient.getAllRolesNames(internalRoleName1, 0);
-        Assert.assertFalse(nameExists(allRoles, "Internal/manager"), "The internal role without user deletion has failed. Role name still exist");
+        Assert.assertFalse(nameExists(allRoles, "Internal/manager"), "The internal role without user deletion has " +
+                "failed. Role name still exist");
 
         String[] userList = new String[]{newUserName};
 //    	Test add internal role with user
         userMgtClient.addInternalRole(internalRoleName2, userList, permissionList);
         allRoles = userMgtClient.getAllRolesNames(internalRoleName2, 0);
 
-        Assert.assertTrue(nameExists(allRoles, "Internal/" + internalRoleName2), "The internal role addition has failed");
+        Assert.assertTrue(nameExists(allRoles, "Internal/" + internalRoleName2), "The internal role addition has " +
+                "failed");
 
         userMgtClient.deleteRole("Internal/sales");
         allRoles = userMgtClient.getAllRolesNames(internalRoleName2, 0);
@@ -160,7 +166,8 @@ public abstract class UserManagementServiceAbstractTest extends ISIntegrationTes
     }
 
     @SetEnvironment(executionEnvironments = {ExecutionEnvironment.STANDALONE})
-    @Test(groups = "wso2.is", description = "Check add remove users of role ", dependsOnMethods = "testAddDeleteInternalRoleOperations")
+    @Test(groups = "wso2.is", description = "Check add remove users of role ", dependsOnMethods =
+            "testAddDeleteInternalRoleOperations")
     public void testAddRemoveUsersOfRole() throws Exception {
         String newUserTmp = newUserName + "tmp123";
         userRoleTmp = newUserRole + "tmp";
@@ -170,22 +177,27 @@ public abstract class UserManagementServiceAbstractTest extends ISIntegrationTes
 
         userMgtClient.addRole(userRoleTmp, null, new String[]{"login"}, false);
         userMgtClient.addUser(newUserTmp, newUserPassword, new String[]{userRoleTmp}, null);
-        Assert.assertTrue(nameExists(userMgtClient.getRolesOfUser(newUserTmp, userRoleTmp, 0), userRoleTmp), "Adding user has failed");
+        Assert.assertTrue(nameExists(userMgtClient.getRolesOfUser(newUserTmp, userRoleTmp, 0), userRoleTmp), "Adding " +
+                "user has failed");
 
         userMgtClient.addRemoveUsersOfRole(userRoleTmp, newUsers, deletedUsers);
 
-        Assert.assertTrue(nameExists(userMgtClient.getUsersOfRole(userRoleTmp, newUserName, 0), newUserName), "user does not assigned to user role");
-        Assert.assertFalse(nameExists(userMgtClient.getUsersOfRole(userRoleTmp, newUserTmp, 0), newUserTmp), "User does not delete from user role");
+        Assert.assertTrue(nameExists(userMgtClient.getUsersOfRole(userRoleTmp, newUserName, 0), newUserName), "user " +
+                "does not assigned to user role");
+        Assert.assertFalse(nameExists(userMgtClient.getUsersOfRole(userRoleTmp, newUserTmp, 0), newUserTmp), "User " +
+                "does not delete from user role");
 
 //    	Clean up the modified users of role and test it.
         userMgtClient.addRemoveUsersOfRole(userRoleTmp, null, newUsers);
-        Assert.assertFalse(nameExists(userMgtClient.getUsersOfRole(userRoleTmp, newUserName, 0), newUserName), "User still exists in the assigned role");
+        Assert.assertFalse(nameExists(userMgtClient.getUsersOfRole(userRoleTmp, newUserName, 0), newUserName), "User " +
+                "still exists in the assigned role");
         userMgtClient.deleteUser(newUserTmp);
         Assert.assertFalse(nameExists(userMgtClient.listAllUsers(newUserTmp, 10), newUserTmp), "User Deletion failed");
     }
 
     @SetEnvironment(executionEnvironments = {ExecutionEnvironment.STANDALONE})
-    @Test(groups = "wso2.is", description = "Check add remove roles of user", dependsOnMethods = "testAddRemoveUsersOfRole")
+    @Test(groups = "wso2.is", description = "Check add remove roles of user", dependsOnMethods =
+            "testAddRemoveUsersOfRole")
     public void testAddRemoveRolesOfUser() throws Exception {
 
         String[] newRoles = new String[]{userRoleTmp};
@@ -193,12 +205,15 @@ public abstract class UserManagementServiceAbstractTest extends ISIntegrationTes
 
         userMgtClient.addRemoveRolesOfUser(newUserName, newRoles, deletedRoles);
 
-        Assert.assertTrue(nameExists(userMgtClient.getRolesOfUser(newUserName, newRoles[0], 0), newRoles[0]), "Adding role to user has failed");
-        Assert.assertFalse(nameExists(userMgtClient.getRolesOfUser(newUserName, deletedRoles[0], 0), deletedRoles[0]), "Role still exists in the user roles");
+        Assert.assertTrue(nameExists(userMgtClient.getRolesOfUser(newUserName, newRoles[0], 0), newRoles[0]), "Adding" +
+                " role to user has failed");
+        Assert.assertFalse(nameExists(userMgtClient.getRolesOfUser(newUserName, deletedRoles[0], 0), deletedRoles[0])
+                , "Role still exists in the user roles");
 
 //    	Clean up the modified roles of user and test it.
         userMgtClient.addRemoveRolesOfUser(newUserName, null, newRoles);
-        Assert.assertFalse(nameExists(userMgtClient.getRolesOfUser(newUserName, newUserRole, 0), newUserRole), "Role still exists in the user roles");
+        Assert.assertFalse(nameExists(userMgtClient.getRolesOfUser(newUserName, newUserRole, 0), newUserRole), "Role " +
+                "still exists in the user roles");
     }
 
     @SetEnvironment(executionEnvironments = {ExecutionEnvironment.STANDALONE})
@@ -216,7 +231,8 @@ public abstract class UserManagementServiceAbstractTest extends ISIntegrationTes
         }
 
         userMgtClient.updateUsersOfRole(newUserRole, userFlagList);
-        Assert.assertTrue(nameExists(userMgtClient.getUsersOfRole(newUserRole, newUserName, 0), newUserName), "Adding user to role has failed");
+        Assert.assertTrue(nameExists(userMgtClient.getUsersOfRole(newUserRole, newUserName, 0), newUserName), "Adding" +
+                " user to role has failed");
 
 //    	Calling with same user list should delete the users.
         for (int i = 0; i < userFlagList.length; i++) {
@@ -224,8 +240,10 @@ public abstract class UserManagementServiceAbstractTest extends ISIntegrationTes
         }
 
         userMgtClient.updateUsersOfRole(userRoleTmp, userFlagList);
-        Assert.assertFalse(nameExists(userMgtClient.getUsersOfRole(userRoleTmp, newUserName, 0), newUserName), "Deleting user from role has failed");
-//        Assert.assertFalse(nameExists(userMgtClient.getUsersOfRole("umRole1", "user2", 0), "user2"), "Deleting user2 from role has failed");
+        Assert.assertFalse(nameExists(userMgtClient.getUsersOfRole(userRoleTmp, newUserName, 0), newUserName),
+                "Deleting user from role has failed");
+//        Assert.assertFalse(nameExists(userMgtClient.getUsersOfRole("umRole1", "user2", 0), "user2"), "Deleting
+// user2 from role has failed");
     }
 
     @SetEnvironment(executionEnvironments = {ExecutionEnvironment.STANDALONE})
@@ -234,8 +252,10 @@ public abstract class UserManagementServiceAbstractTest extends ISIntegrationTes
 
         userMgtClient.updateRoleName(userRoleTmp, userRoleTmp + "updated");
 
-        Assert.assertFalse(nameExists(userMgtClient.getAllRolesNames(userRoleTmp, 10), userRoleTmp), "Role update failed.");
-        Assert.assertTrue(nameExists(userMgtClient.getAllRolesNames(userRoleTmp + "updated", 10), userRoleTmp + "updated"), "Updating role has failed. Role not updated");
+        Assert.assertFalse(nameExists(userMgtClient.getAllRolesNames(userRoleTmp, 10), userRoleTmp), "Role update " +
+                "failed.");
+        Assert.assertTrue(nameExists(userMgtClient.getAllRolesNames(userRoleTmp + "updated", 10), userRoleTmp +
+                "updated"), "Updating role has failed. Role not updated");
         userRoleTmp = userRoleTmp + "updated";
 
     }
@@ -252,7 +272,8 @@ public abstract class UserManagementServiceAbstractTest extends ISIntegrationTes
 
         Assert.assertTrue(nameExists(userMgtClient.getUsersOfRole(userRoleTmp, newUserName, 0), newUserName)
                 , "UserRole updating failed. User Does not belongs to " + userRoleTmp);
-        Assert.assertTrue(nameExists(userMgtClient.getUsersOfRole(newUserRole, newUserName, 0), newUserName), "User Role updating failed. Previous role deleted");
+        Assert.assertTrue(nameExists(userMgtClient.getUsersOfRole(newUserRole, newUserName, 0), newUserName), "User " +
+                "Role updating failed. Previous role deleted");
 
 
     }
@@ -269,26 +290,32 @@ public abstract class UserManagementServiceAbstractTest extends ISIntegrationTes
         userMgtClient.changePassword(newUserName, "passwordS1@");
         newUserPassword = "passwordS1@";
 
-        String value = authenticatorClient.login(newUserName, newUserPassword, isServer.getInstance().getHosts().get("default"));
+        String value = authenticatorClient.login(newUserName, newUserPassword, isServer.getInstance().getHosts().get
+                ("default"));
 
-        Assert.assertTrue((value.indexOf("JSESSIONID") != -1), "User password change failed. login not return session cookie");
+        Assert.assertTrue((value.indexOf("JSESSIONID") != -1), "User password change failed. login not return session" +
+                " cookie");
         authenticatorClient.logOut();
 
     }
 
     @SetEnvironment(executionEnvironments = {ExecutionEnvironment.STANDALONE})
-    @Test(groups = "wso2.is", description = "Check get shared of current user", dependsOnMethods = "testChangePasswordOfUser")
+    @Test(groups = "wso2.is", description = "Check get shared of current user", dependsOnMethods =
+            "testChangePasswordOfUser")
     public void testGetRolesOfCurrentUser() throws Exception {
 
-        String session = authenticatorClient.login(newUserName, newUserPassword, isServer.getInstance().getHosts().get("default"));
+        String session = authenticatorClient.login(newUserName, newUserPassword, isServer.getInstance().getHosts()
+                .get("default"));
         UserManagementClient client = new UserManagementClient(backendURL, session);
-        Assert.assertTrue(nameExists(client.getRolesOfCurrentUser(), newUserRole), "Getting current user roles has failed.");
+        Assert.assertTrue(nameExists(client.getRolesOfCurrentUser(), newUserRole), "Getting current user roles has " +
+                "failed.");
 
         authenticatorClient.logOut();
     }
 
     @SetEnvironment(executionEnvironments = {ExecutionEnvironment.STANDALONE})
-    @Test(groups = "wso2.is", description = "Check list users by claim value", dependsOnMethods = "testGetRolesOfCurrentUser")
+    @Test(groups = "wso2.is", description = "Check list users by claim value", dependsOnMethods =
+            "testGetRolesOfCurrentUser")
     public void testListUserByClaim() throws Exception {
         UserProfileMgtServiceClient userProfileMgtServiceClient
                 = new UserProfileMgtServiceClient(backendURL, getSessionCookie());
@@ -335,7 +362,8 @@ public abstract class UserManagementServiceAbstractTest extends ISIntegrationTes
     }
 
     @SetEnvironment(executionEnvironments = {ExecutionEnvironment.STANDALONE})
-    @Test(groups = "wso2.is", description = "Check set role UI permissions to resource", dependsOnMethods = "testListUserByClaim")
+    @Test(groups = "wso2.is", description = "Check set role UI permissions to resource", dependsOnMethods =
+            "testListUserByClaim")
     public void testSetRoleUIPermission() throws Exception {
 
         String resourceName = "/permission/testlogin";
@@ -348,7 +376,8 @@ public abstract class UserManagementServiceAbstractTest extends ISIntegrationTes
     }
 
     @SetEnvironment(executionEnvironments = {ExecutionEnvironment.STANDALONE})
-    @Test(groups = "wso2.is", description = "Check getting user realm info", dependsOnMethods = "testSetRoleUIPermission")
+    @Test(groups = "wso2.is", description = "Check getting user realm info", dependsOnMethods =
+            "testSetRoleUIPermission")
     public void testGetUserRealmInfo() throws Exception {
 
         UserRealmInfo realmInfo = userMgtClient.getUserRealmInfo();
@@ -366,7 +395,8 @@ public abstract class UserManagementServiceAbstractTest extends ISIntegrationTes
     }
 
     @SetEnvironment(executionEnvironments = {ExecutionEnvironment.STANDALONE})
-    @Test(groups = "wso2.is", description = "Check getting permissions for role", dependsOnMethods = "testIsSharedRolesEnabled")
+    @Test(groups = "wso2.is", description = "Check getting permissions for role", dependsOnMethods =
+            "testIsSharedRolesEnabled")
     public void testGetRolePermissions() throws Exception {
 
         UIPermissionNode permission = userMgtClient.getRolePermissions(newUserRole);
@@ -381,7 +411,7 @@ public abstract class UserManagementServiceAbstractTest extends ISIntegrationTes
         //ToDo:get userStoreDomain properly
         String userStoreDomain = "PRIMARY";
         File bulkUserFile = new File(getISResourceLocation() + File.separator + "userMgt"
-                                     + File.separator + "bulkUserImport.csv");
+                + File.separator + "bulkUserImport.csv");
 
         DataHandler handler = new DataHandler(new FileDataSource(bulkUserFile));
         userMgtClient.bulkImportUsers(userStoreDomain, "bulkUserImport.csv", handler, "PassWord1@");

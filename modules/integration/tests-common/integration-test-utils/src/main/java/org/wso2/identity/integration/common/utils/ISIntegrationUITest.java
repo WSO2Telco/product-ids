@@ -19,6 +19,7 @@
 package org.wso2.identity.integration.common.utils;
 
 import org.wso2.carbon.automation.engine.configurations.UrlGenerationUtil;
+
 import javax.xml.xpath.XPathExpressionException;
 
 public class ISIntegrationUITest extends ISIntegrationTest {

@@ -38,7 +38,8 @@ public class UserIdentityManagementAdminServiceClient {
         AuthenticateStub.authenticateStub(sessionCookie, userIdentityManagementAdminServicestub);
     }
 
-    public UserChallengesDTO[] getChallengeQuestionsOfUser(String userName) throws UserIdentityManagementAdminServiceIdentityMgtServiceExceptionException, RemoteException {
+    public UserChallengesDTO[] getChallengeQuestionsOfUser(String userName) throws
+            UserIdentityManagementAdminServiceIdentityMgtServiceExceptionException, RemoteException {
         return userIdentityManagementAdminServicestub.getChallengeQuestionsOfUser(userName);
     }
 

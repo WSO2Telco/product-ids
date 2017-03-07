@@ -50,10 +50,10 @@ public class SPCreateHandler extends AbstractWorkflowRequestHandler {
     public void onWorkflowCompletion(String status, Map<String, Object> requestParams, Map<String, Object>
             responseAdditionalParams, int tenantId) throws WorkflowException {
 
-        String applicationName = (String)requestParams.get("Application Name");
-        String applicationDescription = (String)requestParams.get("Application Description");
-        String tenantDoamin = (String)requestParams.get("Tenant Domain");
-        String username = (String)requestParams.get("Username");
+        String applicationName = (String) requestParams.get("Application Name");
+        String applicationDescription = (String) requestParams.get("Application Description");
+        String tenantDoamin = (String) requestParams.get("Tenant Domain");
+        String username = (String) requestParams.get("Username");
 
         if (WorkflowRequestStatus.APPROVED.toString().equals(status) ||
                 WorkflowRequestStatus.SKIPPED.toString().equals(status)) {
@@ -74,7 +74,7 @@ public class SPCreateHandler extends AbstractWorkflowRequestHandler {
             }
             if (log.isDebugEnabled()) {
                 log.debug("Adding user is aborted for SP '" + applicationName + "', Reason: Workflow response was " +
-                                status);
+                        status);
             }
         }
     }
@@ -104,15 +104,15 @@ public class SPCreateHandler extends AbstractWorkflowRequestHandler {
         return "SP Operations";
     }
 
-    public boolean startSPCreateWorkflow (ServiceProvider serviceProvider, String tenantDomain, String userName)
-            throws WorkflowException{
+    public boolean startSPCreateWorkflow(ServiceProvider serviceProvider, String tenantDomain, String userName)
+            throws WorkflowException {
         Map<String, Object> wfParams = new HashMap<>();
         Map<String, Object> nonWfParams = new HashMap<>();
-        wfParams.put("Application ID",serviceProvider.getApplicationID());
-        wfParams.put("Application Name",serviceProvider.getApplicationName());
-        wfParams.put("Application Description",serviceProvider.getDescription());
-        wfParams.put("Tenant Domain",tenantDomain);
-        wfParams.put("Username",userName);
+        wfParams.put("Application ID", serviceProvider.getApplicationID());
+        wfParams.put("Application Name", serviceProvider.getApplicationName());
+        wfParams.put("Application Description", serviceProvider.getDescription());
+        wfParams.put("Tenant Domain", tenantDomain);
+        wfParams.put("Username", userName);
         String uuid = UUID.randomUUID().toString();
         Entity[] entities = new Entity[1];
         entities[0] = new Entity(serviceProvider.getApplicationName(), "SP", -1234);

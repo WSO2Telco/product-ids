@@ -48,7 +48,8 @@ public class EntitlementNotificationTestCase extends ISIntegrationTest {
     private static final String POLICY_1_ID = "urn:sample:xacml:2.0:custompolicy";
     private static final String POLICY_1 = "<Policy xmlns='urn:oasis:names:tc:xacml:2.0:policy:schema:os' "
             + "xmlns:xsi='http://www.w3.org/2001/XMLSchema-instance' "
-            + "xsi:schemaLocation='urn:oasis:names:tc:xacml:2.0:policy:schema:os   access_control-xacml-2.0-policy-schema-os.xsd' "
+            + "xsi:schemaLocation='urn:oasis:names:tc:xacml:2.0:policy:schema:os   " +
+            "access_control-xacml-2.0-policy-schema-os.xsd' "
             + "PolicyId='" + POLICY_1_ID + "' "
             + "RuleCombiningAlgId='urn:oasis:names:tc:xacml:1.0:rule-combining-algorithm:deny-overrides'> "
             + "<Description>   Custom policy </Description> "
@@ -60,7 +61,8 @@ public class EntitlementNotificationTestCase extends ISIntegrationTest {
             + "<SubjectAttributeDesignator AttributeId='urn:oasis:names:tc:xacml:1.0:subject:subject-id' "
             + "DataType='http://www.w3.org/2001/XMLSchema#string'/>   </SubjectMatch> </Subject> </Subjects> "
             + "<Resources> <Resource>   <ResourceMatch   MatchId='urn:oasis:names:tc:xacml:1.0:function:string-equal'> "
-            + "<AttributeValue DataType='http://www.w3.org/2001/XMLSchema#string'>http://localhost:8280/services/echo</AttributeValue> "
+            + "<AttributeValue DataType='http://www" +
+            ".w3.org/2001/XMLSchema#string'>http://localhost:8280/services/echo</AttributeValue> "
             + "<ResourceAttributeDesignator AttributeId='urn:oasis:names:tc:xacml:1.0:resource:resource-id' "
             + "DataType='http://www.w3.org/2001/XMLSchema#string'/>   </ResourceMatch> </Resource> </Resources> "
             + "<Actions> <Action>   <ActionMatch   MatchId='urn:oasis:names:tc:xacml:1.0:function:string-equal'> "
@@ -213,7 +215,8 @@ public class EntitlementNotificationTestCase extends ISIntegrationTest {
                 + File.separator + "entitlement" + File.separator + "config" + File.separator
                 + "entitlement_default.properties");
 
-        serverConfigurationManager.applyConfigurationWithoutRestart(defaultEntitlementProperties, entitlementProperties, true);
+        serverConfigurationManager.applyConfigurationWithoutRestart(defaultEntitlementProperties,
+                entitlementProperties, true);
     }
 
     private void resetMsgMgtProperties() throws Exception {
@@ -223,7 +226,8 @@ public class EntitlementNotificationTestCase extends ISIntegrationTest {
                 + File.separator + "notification-mgt" + File.separator + "config" + File.separator
                 + "msg-mgt-default.properties");
 
-        serverConfigurationManager.applyConfigurationWithoutRestart(defaultMsgMgtPropertiesFile, notificationMgtProperties, true);
+        serverConfigurationManager.applyConfigurationWithoutRestart(defaultMsgMgtPropertiesFile,
+                notificationMgtProperties, true);
 
     }
 

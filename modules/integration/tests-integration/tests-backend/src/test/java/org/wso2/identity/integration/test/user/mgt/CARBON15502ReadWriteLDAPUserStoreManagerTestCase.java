@@ -43,17 +43,17 @@ public class CARBON15502ReadWriteLDAPUserStoreManagerTestCase extends ISIntegrat
     private final static String USERNAME = "gayan";
     private final static String ROLE_NAME = "aliya";
 
-    @SetEnvironment(executionEnvironments = { ExecutionEnvironment.ALL })
+    @SetEnvironment(executionEnvironments = {ExecutionEnvironment.ALL})
     @BeforeClass(alwaysRun = true)
     public void testInit() throws Exception {
 
         start();
         String carbonHome = CarbonUtils.getCarbonHome();
         userMgtServerFile = new File(carbonHome + File.separator + "repository" + File.separator
-                                     + "conf" + File.separator + "user-mgt.xml");
+                + "conf" + File.separator + "user-mgt.xml");
 
         File userMgtConfigFile = new File(getISResourceLocation() + File.separator + "userMgt"
-                                          + File.separator + "readWriteLdapUserMgtConfigWildCard.xml");
+                + File.separator + "readWriteLdapUserMgtConfigWildCard.xml");
 
         scm = new ServerConfigurationManager(isServer);
         scm.applyConfigurationWithoutRestart(userMgtConfigFile, userMgtServerFile, true);
@@ -61,13 +61,13 @@ public class CARBON15502ReadWriteLDAPUserStoreManagerTestCase extends ISIntegrat
 
         start();
         remoteUserStoreManagerClient.addUser(USERNAME, "password", null, null, null, false);
-        remoteUserStoreManagerClient.addRole(ROLE_NAME, new String[] { USERNAME }, null);
+        remoteUserStoreManagerClient.addRole(ROLE_NAME, new String[]{USERNAME}, null);
     }
 
     @Test(description = "Test user existence in newly created role")
     public void getRolesOfUser() throws Exception {
         Assert.assertTrue(isRoleExist(remoteUserStoreManagerClient.getRoleListOfUser(USERNAME), ROLE_NAME),
-                          "User :" + USERNAME + " does not contain the Role :" + ROLE_NAME);
+                "User :" + USERNAME + " does not contain the Role :" + ROLE_NAME);
     }
 
     @AfterClass(alwaysRun = true)
@@ -78,7 +78,7 @@ public class CARBON15502ReadWriteLDAPUserStoreManagerTestCase extends ISIntegrat
 
         // Reset the user-mgt.xml configuration.
         File userMgtDefaultFile = new File(getISResourceLocation() + File.separator + "userMgt"
-                                           + File.separator + "default-user-mgt.xml");
+                + File.separator + "default-user-mgt.xml");
         scm.applyConfigurationWithoutRestart(userMgtDefaultFile, userMgtServerFile, true);
         scm.restartGracefully();
 

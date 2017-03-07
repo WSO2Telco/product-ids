@@ -158,7 +158,7 @@ public class MigrateFrom5to510 implements MigrationClient {
         }
     }
 
-    private void initUMDataSource(){
+    private void initUMDataSource() {
         umDataSource = DatabaseUtil.getRealmDataSource(ISMigrationServiceDataHolder.getRealmService()
                 .getBootstrapRealmConfiguration());
     }
@@ -233,7 +233,7 @@ public class MigrateFrom5to510 implements MigrationClient {
         }
     }
 
-    public void migrateIdentityDB() throws Exception{
+    public void migrateIdentityDB() throws Exception {
 
         if (!ResourceUtil.isSchemaMigrated(dataSource)) {
             MigrationDatabaseCreator migrationDatabaseCreator = new MigrationDatabaseCreator(dataSource, umDataSource);
@@ -251,7 +251,7 @@ public class MigrateFrom5to510 implements MigrationClient {
     /**
      * migrate data in the identity database and finalize the database table restructuring
      */
-    public void migrateIdentityData(){
+    public void migrateIdentityData() {
 
         Connection identityConnection = null;
         PreparedStatement selectFromAccessTokenPS = null;
@@ -278,7 +278,7 @@ public class MigrateFrom5to510 implements MigrationClient {
             updateConsumerAppsPS = identityConnection.prepareStatement(SQLQueries.UPDATE_CONSUMER_APPS);
 
             selectConsumerAppsRS = selectConsumerAppsPS.executeQuery();
-            while (selectConsumerAppsRS.next()){
+            while (selectConsumerAppsRS.next()) {
                 int id = selectConsumerAppsRS.getInt("ID");
                 String username = selectConsumerAppsRS.getString("USERNAME");
                 String userDomainFromDB = selectConsumerAppsRS.getString("USER_DOMAIN");
@@ -311,7 +311,7 @@ public class MigrateFrom5to510 implements MigrationClient {
             updateUserNamePS = identityConnection.prepareStatement(updateUserName);
 
             accessTokenRS = selectFromAccessTokenPS.executeQuery();
-            while (accessTokenRS.next()){
+            while (accessTokenRS.next()) {
                 String accessToken = null;
                 try {
                     accessToken = accessTokenRS.getString("ACCESS_TOKEN");
@@ -364,7 +364,7 @@ public class MigrateFrom5to510 implements MigrationClient {
             updateUserNameAuthorizationCodePS = identityConnection.prepareStatement(updateUserNameAuthorizationCode);
 
             authzCodeRS = selectFromAuthorizationCodePS.executeQuery();
-            while (authzCodeRS.next()){
+            while (authzCodeRS.next()) {
                 String authorizationCode = null;
                 try {
                     authorizationCode = authzCodeRS.getString("AUTHORIZATION_CODE");
@@ -422,7 +422,7 @@ public class MigrateFrom5to510 implements MigrationClient {
             IdentityDatabaseUtil.rollBack(identityConnection);
             log.error("Error while migrating identity data", e);
         } catch (Exception e) {
-            log.error("Error while migrating identity data",e);
+            log.error("Error while migrating identity data", e);
         } finally {
             IdentityDatabaseUtil.closeResultSet(accessTokenRS);
             IdentityDatabaseUtil.closeResultSet(authzCodeRS);
@@ -445,7 +445,7 @@ public class MigrateFrom5to510 implements MigrationClient {
         }
     }
 
-    public void migrateIdentityDBFinalize(){
+    public void migrateIdentityDBFinalize() {
         Connection identityConnection = null;
         PreparedStatement primaryKeyPS = null;
         PreparedStatement authorizationCodePrimaryKeyPS = null;
@@ -528,7 +528,7 @@ public class MigrateFrom5to510 implements MigrationClient {
             identityConnection.commit();
         } catch (Exception e) {
             log.error("Error while finalizing the identity database migration", e);
-        }finally {
+        } finally {
             IdentityDatabaseUtil.closeStatement(primaryKeyPS);
             IdentityDatabaseUtil.closeStatement(authorizationCodePrimaryKeyPS);
             IdentityDatabaseUtil.closeStatement(foreignKeyPS);
@@ -586,7 +586,7 @@ public class MigrateFrom5to510 implements MigrationClient {
         }
     }
 
-    public void migrateRegistryData() throws Exception{
+    public void migrateRegistryData() throws Exception {
 
         //migrating super tenant configurations
         try {
@@ -648,11 +648,11 @@ public class MigrateFrom5to510 implements MigrationClient {
                                     resource.setProperty(IdentityRegistryResources.PROP_SAML_SSO_ASSERTION_CONS_URLS,
                                             acsUrls);
                                     resource.setProperty(IdentityRegistryResources
-                                                    .PROP_DEFAULT_SAML_SSO_ASSERTION_CONS_URL, defaultAcsUrl);
+                                            .PROP_DEFAULT_SAML_SSO_ASSERTION_CONS_URL, defaultAcsUrl);
                                 }
-                            }else if (acsUrls.size() == 1){
+                            } else if (acsUrls.size() == 1) {
                                 resource.setProperty(IdentityRegistryResources
-                                                .PROP_DEFAULT_SAML_SSO_ASSERTION_CONS_URL, acsUrls.get(0));
+                                        .PROP_DEFAULT_SAML_SSO_ASSERTION_CONS_URL, acsUrls.get(0));
                             }
                         } else if (resource.getProperty(SAMLSSO_ASSERTION_CONSUMER_URL) != null) {
                             String samlssoAssertionConsumerURL = resource.getProperty(SAMLSSO_ASSERTION_CONSUMER_URL);

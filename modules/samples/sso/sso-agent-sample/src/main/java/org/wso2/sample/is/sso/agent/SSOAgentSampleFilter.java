@@ -40,7 +40,7 @@ public class SSOAgentSampleFilter extends SSOAgentFilter {
     private static Properties properties;
     protected FilterConfig filterConfig = null;
 
-    static{
+    static {
         properties = SampleContextEventListener.getProperties();
     }
 
@@ -55,8 +55,8 @@ public class SSOAgentSampleFilter extends SSOAgentFilter {
 
         String httpBinding = servletRequest.getParameter(
                 SSOAgentConstants.SSOAgentConfig.SAML2.HTTP_BINDING);
-        if(httpBinding != null && !httpBinding.isEmpty()){
-            if("HTTP-POST".equals(httpBinding)){
+        if (httpBinding != null && !httpBinding.isEmpty()) {
+            if ("HTTP-POST".equals(httpBinding)) {
                 httpBinding = "urn:oasis:names:tc:SAML:2.0:bindings:HTTP-POST";
             } else if ("HTTP-Redirect".equals(httpBinding)) {
                 httpBinding = "urn:oasis:names:tc:SAML:2.0:bindings:HTTP-Redirect";
@@ -68,7 +68,7 @@ public class SSOAgentSampleFilter extends SSOAgentFilter {
             LOGGER.log(Level.INFO, "SAML2 HTTP Binding not found in request. Defaulting to HTTP-POST");
             httpBinding = "urn:oasis:names:tc:SAML:2.0:bindings:HTTP-POST";
         }
-        SSOAgentConfig config = (SSOAgentConfig)filterConfig.getServletContext().
+        SSOAgentConfig config = (SSOAgentConfig) filterConfig.getServletContext().
                 getAttribute(SSOAgentConstants.CONFIG_BEAN_NAME);
         config.getSAML2().setHttpBinding(httpBinding);
         config.getOpenId().setClaimedId(servletRequest.getParameter(
@@ -86,7 +86,7 @@ public class SSOAgentSampleFilter extends SSOAgentFilter {
                     "<body>\n" +
                     "<p>You are now redirected back to " + properties.getProperty("SAML2.IdPURL") + " \n" +
                     "If the redirection fails, please click the post button.</p>\n" +
-                    "<form method='post' action='" +  properties.getProperty("SAML2.IdPURL") + "'>\n" +
+                    "<form method='post' action='" + properties.getProperty("SAML2.IdPURL") + "'>\n" +
                     "<input type='hidden' name='sectoken' value='" + authorization + "'/>\n" +
                     "<p>\n" +
                     "<!--$saml_params-->\n" +
@@ -103,7 +103,7 @@ public class SSOAgentSampleFilter extends SSOAgentFilter {
             // Reset previously sent HTML payload
             config.getSAML2().setPostBindingRequestHTMLPayload(null);
         }
-        servletRequest.setAttribute(SSOAgentConstants.CONFIG_BEAN_NAME,config);
+        servletRequest.setAttribute(SSOAgentConstants.CONFIG_BEAN_NAME, config);
         super.doFilter(servletRequest, servletResponse, filterChain);
     }
 

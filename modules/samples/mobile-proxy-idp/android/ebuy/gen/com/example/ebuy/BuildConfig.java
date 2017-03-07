@@ -1,4 +1,6 @@
-/** Automatically generated file. DO NOT MODIFY */
+/**
+ * Automatically generated file. DO NOT MODIFY
+ */
 package com.example.ebuy;
 
 public final class BuildConfig {

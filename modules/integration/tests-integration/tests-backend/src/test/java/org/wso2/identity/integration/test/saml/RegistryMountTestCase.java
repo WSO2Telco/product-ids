@@ -126,7 +126,7 @@ public class RegistryMountTestCase extends ISIntegrationTest {
                 registryXml, true);
         serverConfigurationManager.restartGracefully();
         super.init();
-        tenantServiceClient = new TenantManagementServiceClient( isServer.getContextUrls().getBackEndUrl(),
+        tenantServiceClient = new TenantManagementServiceClient(isServer.getContextUrls().getBackEndUrl(),
                 sessionCookie);
         tenantServiceClient.addTenant(TENANT_DOMAIN, TENANT_ADMIN_TENANT_AWARE_USERNAME, TENANT_ADMIN_PASSWORD,
                 TENANT_ADMIN_USERNAME, "Registry", "Mount");
@@ -159,8 +159,9 @@ public class RegistryMountTestCase extends ISIntegrationTest {
     }
 
     @AfterClass(alwaysRun = true)
-    public void testClear() throws Exception{
-        sessionCookie = this.logManger.login(TENANT_ADMIN_USERNAME, TENANT_ADMIN_PASSWORD, isServer.getInstance().getHosts().get
+    public void testClear() throws Exception {
+        sessionCookie = this.logManger.login(TENANT_ADMIN_USERNAME, TENANT_ADMIN_PASSWORD, isServer.getInstance()
+                .getHosts().get
                 (profileName));
         applicationManagementServiceClient =
                 new ApplicationManagementServiceClient(sessionCookie, backendURL, configContext);
@@ -298,7 +299,7 @@ public class RegistryMountTestCase extends ISIntegrationTest {
     }
 
 
-    private void createApplication() throws Exception{
+    private void createApplication() throws Exception {
         ServiceProvider serviceProvider = new ServiceProvider();
         serviceProvider.setApplicationName(APPLICATION_NAME);
         serviceProvider.setDescription("This is a test Service Provider");
@@ -325,14 +326,14 @@ public class RegistryMountTestCase extends ISIntegrationTest {
         applicationManagementServiceClient.updateApplicationData(serviceProvider);
     }
 
-    private void deleteApplication() throws Exception{
+    private void deleteApplication() throws Exception {
         applicationManagementServiceClient.deleteApplication(APPLICATION_NAME);
     }
 
     private SAMLSSOServiceProviderDTO createSsoServiceProviderDTO() {
         SAMLSSOServiceProviderDTO samlssoServiceProviderDTO = new SAMLSSOServiceProviderDTO();
         samlssoServiceProviderDTO.setIssuer(artifact);
-        samlssoServiceProviderDTO.setAssertionConsumerUrls(new String[] {String.format(ACS_URL,
+        samlssoServiceProviderDTO.setAssertionConsumerUrls(new String[]{String.format(ACS_URL,
                 artifact)});
         samlssoServiceProviderDTO.setDefaultAssertionConsumerUrl(String.format(ACS_URL, artifact));
         samlssoServiceProviderDTO.setAttributeConsumingServiceIndex(ATTRIBUTE_CS_INDEX_VALUE);
@@ -345,7 +346,7 @@ public class RegistryMountTestCase extends ISIntegrationTest {
         return samlssoServiceProviderDTO;
     }
 
-    private ClaimMapping[] getClaimMappings(){
+    private ClaimMapping[] getClaimMappings() {
         List<ClaimMapping> claimMappingList = new ArrayList<>();
 
         Claim firstNameClaim = new Claim();

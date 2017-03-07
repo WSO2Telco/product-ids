@@ -26,7 +26,7 @@ public class Util {
 
     /**
      * Return the OpenID Identifier of the username
-     * 
+     *
      * @param username
      * @return
      */
@@ -37,7 +37,7 @@ public class Util {
     /**
      * Returns a dummy request with four claims requests : firstname, lastname,
      * country and email.
-     * 
+     *
      * @return
      */
     public static OpenIDParameterDTO[] getDummyOpenIDParameterDTOArray() {

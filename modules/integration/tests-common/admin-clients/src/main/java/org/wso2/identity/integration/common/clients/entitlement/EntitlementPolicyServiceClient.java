@@ -89,7 +89,8 @@ public class EntitlementPolicyServiceClient {
         entitlementPolicyAdminServiceStub.removePolicy(policyId, dePromote);
     }
 
-    public void updatePolicy(PolicyDTO policyDTO) throws RemoteException, EntitlementPolicyAdminServiceEntitlementException {
+    public void updatePolicy(PolicyDTO policyDTO) throws RemoteException,
+            EntitlementPolicyAdminServiceEntitlementException {
         entitlementPolicyAdminServiceStub.updatePolicy(policyDTO);
     }
 
@@ -101,11 +102,13 @@ public class EntitlementPolicyServiceClient {
         }
     }
 
-    public String[] getAllPolicyIds(String searchString) throws RemoteException, EntitlementPolicyAdminServiceEntitlementException {
+    public String[] getAllPolicyIds(String searchString) throws RemoteException,
+            EntitlementPolicyAdminServiceEntitlementException {
         return entitlementPolicyAdminServiceStub.getAllPolicyIds(searchString);
     }
 
-    public void addPolicy(PolicyDTO policyDTO) throws RemoteException, EntitlementPolicyAdminServiceEntitlementException {
+    public void addPolicy(PolicyDTO policyDTO) throws RemoteException,
+            EntitlementPolicyAdminServiceEntitlementException {
         entitlementPolicyAdminServiceStub.addPolicy(policyDTO);
     }
 
@@ -117,24 +120,30 @@ public class EntitlementPolicyServiceClient {
         }
     }
 
-    public PolicyDTO getPolicy(String policyId, boolean isPDPPolicy) throws RemoteException, EntitlementPolicyAdminServiceEntitlementException {
+    public PolicyDTO getPolicy(String policyId, boolean isPDPPolicy) throws RemoteException,
+            EntitlementPolicyAdminServiceEntitlementException {
         return entitlementPolicyAdminServiceStub.getPolicy(policyId, isPDPPolicy);
     }
 
-    public String[] getPolicyVersions(String policyId) throws RemoteException, EntitlementPolicyAdminServiceEntitlementException {
+    public String[] getPolicyVersions(String policyId) throws RemoteException,
+            EntitlementPolicyAdminServiceEntitlementException {
         return entitlementPolicyAdminServiceStub.getPolicyVersions(policyId);
     }
 
     public PaginatedPolicySetDTO getAllPolicies(String policyTypeFilter, String policySearchString,
-                                                int pageNumber, boolean isPDPPolicy) throws RemoteException, EntitlementPolicyAdminServiceEntitlementException {
-        return entitlementPolicyAdminServiceStub.getAllPolicies(policyTypeFilter, policySearchString, pageNumber, isPDPPolicy);
+                                                int pageNumber, boolean isPDPPolicy) throws RemoteException,
+            EntitlementPolicyAdminServiceEntitlementException {
+        return entitlementPolicyAdminServiceStub.getAllPolicies(policyTypeFilter, policySearchString, pageNumber,
+                isPDPPolicy);
     }
 
-    public PolicyDTO getPolicyByVersion(String policyId, String version) throws RemoteException, EntitlementPolicyAdminServiceEntitlementException {
+    public PolicyDTO getPolicyByVersion(String policyId, String version) throws RemoteException,
+            EntitlementPolicyAdminServiceEntitlementException {
         return entitlementPolicyAdminServiceStub.getPolicyByVersion(policyId, version);
     }
 
-    public void importPolicyFromRegistry(String policyRegistryPath) throws RemoteException, EntitlementPolicyAdminServiceEntitlementException {
+    public void importPolicyFromRegistry(String policyRegistryPath) throws RemoteException,
+            EntitlementPolicyAdminServiceEntitlementException {
         entitlementPolicyAdminServiceStub.importPolicyFromRegistry(policyRegistryPath);
     }
 
@@ -210,7 +219,8 @@ public class EntitlementPolicyServiceClient {
         }
     }
 
-    public void publishToPDP(String[] policies, String action, boolean enabled, String version, int order) throws RemoteException {
+    public void publishToPDP(String[] policies, String action, boolean enabled, String version, int order) throws
+            RemoteException {
         try {
             entitlementPolicyAdminServiceStub.publishToPDP(policies, action, version, enabled, order);
         } catch (EntitlementPolicyAdminServiceEntitlementException e) {
@@ -218,7 +228,8 @@ public class EntitlementPolicyServiceClient {
         }
     }
 
-    public void publishPolicies(String[] policies, String[] subscriberIds, String action, boolean enabled, String version, int order) throws RemoteException {
+    public void publishPolicies(String[] policies, String[] subscriberIds, String action, boolean enabled, String
+            version, int order) throws RemoteException {
         try {
             entitlementPolicyAdminServiceStub.publishPolicies(policies, subscriberIds, action, version, enabled, order);
         } catch (EntitlementPolicyAdminServiceEntitlementException e) {

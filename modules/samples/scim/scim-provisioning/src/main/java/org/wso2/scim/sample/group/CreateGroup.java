@@ -37,7 +37,7 @@ import java.util.List;
 public class CreateGroup {
     //user details
     private static String userName = "HasiniG";
-    
+
 
     public static void main(String[] args) {
 

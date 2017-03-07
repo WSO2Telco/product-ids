@@ -128,7 +128,7 @@ public class TenantDropDownTestCase extends ISLoginTestCase {
 
         driver = BrowserManager.getWebDriver();
 
-        tenantServiceClient = new TenantManagementServiceClient( isServer.getContextUrls().getBackEndUrl(),
+        tenantServiceClient = new TenantManagementServiceClient(isServer.getContextUrls().getBackEndUrl(),
                 sessionCookie);
         tenantServiceClient.addTenant(TENANT_DOMAIN, "admin", "password", "admin@dropdown.com", "Dropdown", "User");
 
@@ -137,7 +137,7 @@ public class TenantDropDownTestCase extends ISLoginTestCase {
                 new ApplicationManagementServiceClient(sessionCookie, backendURL, configContext);
         ssoConfigServiceClient.addServiceProvider(createSsoServiceProviderDTO());
         createApplication();
-        driver.get(isServer.getContextUrls().getWebAppURLHttps()+"/samlsso?spEntityID=" + SAML_ISSUER);
+        driver.get(isServer.getContextUrls().getWebAppURLHttps() + "/samlsso?spEntityID=" + SAML_ISSUER);
     }
 
     @Test(groups = "wso2.identity", description = "verify login to IS Server")
@@ -233,7 +233,7 @@ public class TenantDropDownTestCase extends ISLoginTestCase {
     private SAMLSSOServiceProviderDTO createSsoServiceProviderDTO() {
         SAMLSSOServiceProviderDTO samlssoServiceProviderDTO = new SAMLSSOServiceProviderDTO();
         samlssoServiceProviderDTO.setIssuer(SAML_ISSUER);
-        samlssoServiceProviderDTO.setAssertionConsumerUrls(new String[] {String.format(ACS_URL,
+        samlssoServiceProviderDTO.setAssertionConsumerUrls(new String[]{String.format(ACS_URL,
                 SAML_ISSUER)});
         samlssoServiceProviderDTO.setDefaultAssertionConsumerUrl(String.format(ACS_URL, SAML_ISSUER));
         samlssoServiceProviderDTO.setAttributeConsumingServiceIndex(ATTRIBUTE_CS_INDEX_VALUE);
@@ -247,7 +247,7 @@ public class TenantDropDownTestCase extends ISLoginTestCase {
         return samlssoServiceProviderDTO;
     }
 
-    private void createApplication() throws Exception{
+    private void createApplication() throws Exception {
         ServiceProvider serviceProvider = new ServiceProvider();
         serviceProvider.setApplicationName(APPLICATION_NAME);
         serviceProvider.setDescription("This is a test Service Provider");

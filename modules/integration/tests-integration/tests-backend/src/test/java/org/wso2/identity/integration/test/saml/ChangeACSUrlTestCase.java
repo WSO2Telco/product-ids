@@ -115,8 +115,10 @@ public class ChangeACSUrlTestCase extends AbstractIdentityFederationTestCase {
 
 
         super.createServiceClients(PORT_OFFSET_0, sessionCookie, new IdentityConstants
-                .ServiceClientType[]{IdentityConstants.ServiceClientType.APPLICATION_MANAGEMENT, IdentityConstants.ServiceClientType.IDENTITY_PROVIDER_MGT, IdentityConstants.ServiceClientType.SAML_SSO_CONFIG});
-        super.createServiceClients(PORT_OFFSET_1, null, new IdentityConstants.ServiceClientType[]{IdentityConstants.ServiceClientType.APPLICATION_MANAGEMENT, IdentityConstants.ServiceClientType.SAML_SSO_CONFIG});
+                .ServiceClientType[]{IdentityConstants.ServiceClientType.APPLICATION_MANAGEMENT, IdentityConstants
+                .ServiceClientType.IDENTITY_PROVIDER_MGT, IdentityConstants.ServiceClientType.SAML_SSO_CONFIG});
+        super.createServiceClients(PORT_OFFSET_1, null, new IdentityConstants.ServiceClientType[]{IdentityConstants
+                .ServiceClientType.APPLICATION_MANAGEMENT, IdentityConstants.ServiceClientType.SAML_SSO_CONFIG});
 
         //create identity provider in primary IS
         IdentityProvider identityProvider = new IdentityProvider();
@@ -137,13 +139,17 @@ public class ChangeACSUrlTestCase extends AbstractIdentityFederationTestCase {
 
         ServiceProvider serviceProvider = getServiceProvider(PORT_OFFSET_0, PRIMARY_IS_SERVICE_PROVIDER_NAME);
 
-        updateServiceProviderWithSAMLConfigs(PORT_OFFSET_0, PRIMARY_IS_SAML_ISSUER_NAME, PRIMARY_IS_SAML_ACS_URL, serviceProvider);
+        updateServiceProviderWithSAMLConfigs(PORT_OFFSET_0, PRIMARY_IS_SAML_ISSUER_NAME, PRIMARY_IS_SAML_ACS_URL,
+                serviceProvider);
 
         AuthenticationStep authStep = new AuthenticationStep();
-        org.wso2.carbon.identity.application.common.model.xsd.IdentityProvider idP = new org.wso2.carbon.identity.application.common.model.xsd.IdentityProvider();
+        org.wso2.carbon.identity.application.common.model.xsd.IdentityProvider idP = new org.wso2.carbon.identity
+                .application.common.model.xsd.IdentityProvider();
         idP.setIdentityProviderName(IDENTITY_PROVIDER_NAME);
-        authStep.setFederatedIdentityProviders(new org.wso2.carbon.identity.application.common.model.xsd.IdentityProvider[]{idP});
-        serviceProvider.getLocalAndOutBoundAuthenticationConfig().setAuthenticationSteps(new AuthenticationStep[]{authStep});
+        authStep.setFederatedIdentityProviders(new org.wso2.carbon.identity.application.common.model.xsd
+                .IdentityProvider[]{idP});
+        serviceProvider.getLocalAndOutBoundAuthenticationConfig().setAuthenticationSteps(new
+                AuthenticationStep[]{authStep});
         serviceProvider.getLocalAndOutBoundAuthenticationConfig().setAuthenticationType(AUTHENTICATION_TYPE);
 
         updateServiceProvider(PORT_OFFSET_0, serviceProvider);
@@ -294,18 +300,23 @@ public class ChangeACSUrlTestCase extends AbstractIdentityFederationTestCase {
                                                       ServiceProvider serviceProvider)
             throws Exception {
 
-        String attributeConsumingServiceIndex = super.createSAML2WebSSOConfiguration(portOffset, getSAMLSSOServiceProviderDTO(issuerName, acsUrl));
-        Assert.assertNotNull(attributeConsumingServiceIndex, "Failed to create SAML2 Web SSO configuration for issuer '" + issuerName + "'");
+        String attributeConsumingServiceIndex = super.createSAML2WebSSOConfiguration(portOffset,
+                getSAMLSSOServiceProviderDTO(issuerName, acsUrl));
+        Assert.assertNotNull(attributeConsumingServiceIndex, "Failed to create SAML2 Web SSO configuration for issuer" +
+                " '" + issuerName + "'");
 
         InboundAuthenticationRequestConfig samlAuthenticationRequestConfig = new InboundAuthenticationRequestConfig();
         samlAuthenticationRequestConfig.setInboundAuthKey(issuerName);
         samlAuthenticationRequestConfig.setInboundAuthType(INBOUND_AUTH_TYPE);
-        org.wso2.carbon.identity.application.common.model.xsd.Property property = new org.wso2.carbon.identity.application.common.model.xsd.Property();
+        org.wso2.carbon.identity.application.common.model.xsd.Property property = new org.wso2.carbon.identity
+                .application.common.model.xsd.Property();
         property.setName("attrConsumServiceIndex");
         property.setValue(attributeConsumingServiceIndex);
-        samlAuthenticationRequestConfig.setProperties(new org.wso2.carbon.identity.application.common.model.xsd.Property[]{property});
+        samlAuthenticationRequestConfig.setProperties(new org.wso2.carbon.identity.application.common.model.xsd
+                .Property[]{property});
 
-        serviceProvider.getInboundAuthenticationConfig().setInboundAuthenticationRequestConfigs(new InboundAuthenticationRequestConfig[]{samlAuthenticationRequestConfig});
+        serviceProvider.getInboundAuthenticationConfig().setInboundAuthenticationRequestConfigs(new
+                InboundAuthenticationRequestConfig[]{samlAuthenticationRequestConfig});
     }
 
     private SAMLSSOServiceProviderDTO getSAMLSSOServiceProviderDTO(String issuerName,

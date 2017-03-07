@@ -104,14 +104,14 @@ public class EntitlementPIPAttributeCacheTestCase extends ISIntegrationTest {
 
     @Test(groups = "wso2.is", description = "Check get decision")
     public void testGetPermitDecision() throws EntitlementServiceException, RemoteException,
-                                               EntitlementPolicyAdminServiceEntitlementException {
+            EntitlementPolicyAdminServiceEntitlementException {
         String decision = entitlementServiceClient.getDecision(buildRequest("admin@wso2.com"));
         Assert.assertTrue(decision.contains("Permit"), "Entitlement service get decision failed.");
     }
 
     @Test(groups = "wso2.is", dependsOnMethods = {"testGetPermitDecision"}, description = "Check get decision")
     public void testGetNotPermitDecision() throws EntitlementServiceException, RemoteException,
-                                                  EntitlementPolicyAdminServiceEntitlementException {
+            EntitlementPolicyAdminServiceEntitlementException {
         String decision = entitlementServiceClient.getDecision(buildRequest("non.existing.email@wso2.com"));
         Assert.assertTrue(!decision.contains("Permit"), "Entitlement service get decision failed.");
     }
@@ -124,9 +124,9 @@ public class EntitlementPIPAttributeCacheTestCase extends ISIntegrationTest {
         entitlementPolicyClient.removePolicy(POLICY_ID);
         //Copy default config file
         File srcConfigFile = new File(getISResourceLocation()
-                                              + File.separator + "entitlement" + File.separator
-                                               + "config" + File.separator
-                                              + "entitlement_default.properties");
+                + File.separator + "entitlement" + File.separator
+                + "config" + File.separator
+                + "entitlement_default.properties");
         File targetConfigFile = new File(
                 System.getProperty(ServerConstants.CARBON_HOME) + File.separator + "repository"
                         + File.separator + "conf" + File.separator + "identity" + File.separator +
@@ -146,22 +146,22 @@ public class EntitlementPIPAttributeCacheTestCase extends ISIntegrationTest {
         policy.setPolicyId(POLICY_ID);
         entitlementPolicyClient.addPolicy(policy);
         entitlementPolicyClient.publishPolicies(new String[]{POLICY_ID}, new String[]{"PDP Subscriber"}, "CREATE",
-                                                true, null, 1);
+                true, null, 1);
     }
 
     private void addCustomAttributeFinder() throws Exception {
         File jarFile = new File(
                 getISResourceLocation() + File.separator + ".." + File.separator + ".." + File.separator + ".." +
-                        File.separator + ".." +                         File.separator + ".."+ File.separator + ".." +
+                        File.separator + ".." + File.separator + ".." + File.separator + ".." +
                         File.separator + ".." + File.separator + "tests-common" + File.separator + "extensions" +
                         File.separator + "target" + File.separator + "org.wso2.carbon.identity.custom.pip-4.2.2.jar");
         scm.copyToComponentLib(jarFile);
 
         //Copy entitlement.properties
         File srcConfigFile = new File(getISResourceLocation()
-                                              + File.separator + "entitlement" + File.separator
-                                              +  "config" +  File.separator +
-                                              "entitlement_custom_attribute_finder.properties");
+                + File.separator + "entitlement" + File.separator
+                + "config" + File.separator +
+                "entitlement_custom_attribute_finder.properties");
         File targetConfigFile = new File(
                 System.getProperty(ServerConstants.CARBON_HOME) + File.separator + "repository"
                         + File.separator + "conf" + File.separator + "identity" + File.separator +

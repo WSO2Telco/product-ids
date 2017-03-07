@@ -72,8 +72,8 @@ public class ISIntegrationTest {
         backendURL = isServer.getContextUrls().getBackEndUrl();
     }
 
-    protected String login() throws Exception{
-        return  new AuthenticatorClient(backendURL).login(isServer.getSuperTenant().getTenantAdmin().getUserName(),
+    protected String login() throws Exception {
+        return new AuthenticatorClient(backendURL).login(isServer.getSuperTenant().getTenantAdmin().getUserName(),
                 isServer.getSuperTenant().getTenantAdmin().getPassword(),
                 isServer.getInstance().getHosts().get("default"));
     }
@@ -103,8 +103,6 @@ public class ISIntegrationTest {
     protected String getTestArtifactLocation() {
         return FrameworkPathUtil.getSystemResourceLocation();
     }
-
-
 
 
 //

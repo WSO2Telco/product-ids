@@ -36,7 +36,7 @@ public class ISIntegrationUiBaseTest {
         this.driver = BrowserManager.getWebDriver();
     }
 
-    protected String getLoginURL() throws Exception{
+    protected String getLoginURL() throws Exception {
         return UrlGenerationUtil.getLoginURL(isServer.getInstance());
     }
 

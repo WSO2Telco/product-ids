@@ -106,7 +106,7 @@ public class OIDCAuthCodeSessionTestCase extends OIDCAbstractUIIntegrationTest {
 
         sendAuthenticationRequest(driver, applications.get(playground2AppName));
         Assert.assertTrue(driver.getCurrentUrl().contains(OIDCUITestConstants.AuthEndpointPaths.loginPagePath),
-                          "Authentication request failed. Was expecting a redirection to the login page");
+                "Authentication request failed. Was expecting a redirection to the login page");
     }
 
     @Test(groups = "wso2.identity", description = "Authenticate end user to playground2",
@@ -115,17 +115,17 @@ public class OIDCAuthCodeSessionTestCase extends OIDCAbstractUIIntegrationTest {
 
         // Set username
         driver.findElement(By.id(OIDCUITestConstants.AuthEndpointElementIdentifiers.usernameElement))
-              .sendKeys(user.getUsername());
+                .sendKeys(user.getUsername());
 
         // Set password
         driver.findElement(By.id(OIDCUITestConstants.AuthEndpointElementIdentifiers.passwordElement))
-              .sendKeys(user.getPassword());
+                .sendKeys(user.getPassword());
 
         // Perform form submit
         driver.findElement(By.xpath(OIDCUITestConstants.AuthEndpointElementIdentifiers.signInButtonElement)).click();
 
         Assert.assertTrue(driver.getCurrentUrl().contains(OIDCUITestConstants.AuthEndpointPaths.loginConsentPagePath),
-                          "User authentication failed. Was expecting a redirection to the login consent page");
+                "User authentication failed. Was expecting a redirection to the login consent page");
     }
 
     @Test(groups = "wso2.identity", description = "Authorize end user to playground2",
@@ -143,10 +143,10 @@ public class OIDCAuthCodeSessionTestCase extends OIDCAbstractUIIntegrationTest {
 
         Assert.assertTrue(
                 !driver.findElement(By.id(OIDCUITestConstants.PlaygroundAppElementIdentifiers.accessTokenElement))
-                       .getAttribute("value").isEmpty(), "Access Token not received");
+                        .getAttribute("value").isEmpty(), "Access Token not received");
         Assert.assertTrue(
                 driver.findElement(By.id(OIDCUITestConstants.PlaygroundAppElementIdentifiers.loggedUserElement))
-                      .getText().contains(user.getUsername()), "Id Token not received");
+                        .getText().contains(user.getUsername()), "Id Token not received");
     }
 
     @Test(groups = "wso2.identity", description = "Initiate authentication request from playground3",
@@ -158,7 +158,7 @@ public class OIDCAuthCodeSessionTestCase extends OIDCAbstractUIIntegrationTest {
         sendAuthenticationRequest(driver, applications.get(playground3AppName));
 
         Assert.assertTrue(driver.getCurrentUrl().contains(OIDCUITestConstants.AuthEndpointPaths.loginConsentPagePath),
-                          "User authentication failed. Was expecting a redirection to the login consent page");
+                "User authentication failed. Was expecting a redirection to the login consent page");
     }
 
     @Test(groups = "wso2.identity", description = "Authorize end user to playground3",
@@ -200,10 +200,10 @@ public class OIDCAuthCodeSessionTestCase extends OIDCAbstractUIIntegrationTest {
 
         Assert.assertTrue(
                 !driver.findElement(By.id(OIDCUITestConstants.PlaygroundAppElementIdentifiers.accessTokenElement))
-                       .getAttribute("value").isEmpty(), "Access Token not received");
+                        .getAttribute("value").isEmpty(), "Access Token not received");
         Assert.assertTrue(
                 driver.findElement(By.id(OIDCUITestConstants.PlaygroundAppElementIdentifiers.loggedUserElement))
-                      .getText().contains(user.getUsername()), "Id Token not received");
+                        .getText().contains(user.getUsername()), "Id Token not received");
     }
 
     @Test(groups = "wso2.identity", description = "Send logout request from playground3",
@@ -213,7 +213,7 @@ public class OIDCAuthCodeSessionTestCase extends OIDCAbstractUIIntegrationTest {
         driver.findElement(By.xpath(OIDCUITestConstants.PlaygroundAppElementIdentifiers.logoutButtonElement)).click();
 
         Assert.assertTrue(driver.getCurrentUrl().contains(OIDCUITestConstants.AuthEndpointPaths.logoutConsentPagePath),
-                          "User logout failed. Was expecting a redirection to the logout consent page");
+                "User logout failed. Was expecting a redirection to the logout consent page");
     }
 
     @Test(groups = "wso2.identity", description = "Approve logout request from playground3",
@@ -221,9 +221,9 @@ public class OIDCAuthCodeSessionTestCase extends OIDCAbstractUIIntegrationTest {
     public void testApproveLogoutConsentForRP2() {
 
         driver.findElement(By.id(OIDCUITestConstants.AuthEndpointElementIdentifiers.logoutApproveButtonElement))
-              .click();
+                .click();
         Assert.assertTrue(driver.getPageSource().contains("You have successfully logged out."),
-                          "User logout has failed");
+                "User logout has failed");
     }
 
     @Test(groups = "wso2.identity", description = "Send passive request and logout from playground2",
@@ -261,7 +261,7 @@ public class OIDCAuthCodeSessionTestCase extends OIDCAbstractUIIntegrationTest {
     private void createApplications() throws Exception {
 
         OIDCApplication playgroundApp = new OIDCApplication(playground2AppName, playground2AppContext,
-                                                            playground2AppCallBackUri);
+                playground2AppCallBackUri);
         playgroundApp.addRequiredClaim(emailClaimUri);
         playgroundApp.addRequiredClaim(firstNameClaimUri);
         playgroundApp.addRequiredClaim(lastNameClaimUri);
@@ -323,7 +323,7 @@ public class OIDCAuthCodeSessionTestCase extends OIDCAbstractUIIntegrationTest {
     private void sendAuthenticationRequest(WebDriver driver, OIDCApplication application) {
 
         driver.get(String.format(targetApplicationUrl, application.getApplicationContext() +
-                                                       OIDCUITestConstants.PlaygroundAppPaths.appResetPath));
+                OIDCUITestConstants.PlaygroundAppPaths.appResetPath));
 
         // Select 'code' response type
         Select grantTypeSelect = new Select(
@@ -332,18 +332,18 @@ public class OIDCAuthCodeSessionTestCase extends OIDCAbstractUIIntegrationTest {
 
         // Set client id
         driver.findElement(By.id(OIDCUITestConstants.PlaygroundAppElementIdentifiers.clientIdElement))
-              .sendKeys(application.getClientId());
+                .sendKeys(application.getClientId());
 
         // Set openid scope
         driver.findElement(By.id(OIDCUITestConstants.PlaygroundAppElementIdentifiers.scopeElement)).sendKeys("openid");
 
         // Set callback url
         driver.findElement(By.id(OIDCUITestConstants.PlaygroundAppElementIdentifiers.callBackURLElement))
-              .sendKeys(application.getCallBackURL());
+                .sendKeys(application.getCallBackURL());
 
         // Set OP authorization endpoint
         driver.findElement(By.id(OIDCUITestConstants.PlaygroundAppElementIdentifiers.authorizeEndpointElement))
-              .sendKeys(OIDCUITestConstants.OPEndpoints.authorizeEndpoint);
+                .sendKeys(OIDCUITestConstants.OPEndpoints.authorizeEndpoint);
 
         /**
          * In debug mode where the browser is not an active window 'onchange' events are not fired.
@@ -352,12 +352,12 @@ public class OIDCAuthCodeSessionTestCase extends OIDCAbstractUIIntegrationTest {
 
         // Set OP logout endpoint
         driver.findElement(By.id(OIDCUITestConstants.PlaygroundAppElementIdentifiers.logoutEndpointElement))
-              .sendKeys(OIDCUITestConstants.OPEndpoints.logoutEndpoint);
+                .sendKeys(OIDCUITestConstants.OPEndpoints.logoutEndpoint);
 
         // Set OP check session iframe endpoint
         driver.findElement(By.id(OIDCUITestConstants.PlaygroundAppElementIdentifiers.sessionIFrameEndpointElement))
-              .sendKeys(String.format(OIDCUITestConstants.OPEndpoints.checkSessionIframeEndpoint,
-                                      application.getClientId()));
+                .sendKeys(String.format(OIDCUITestConstants.OPEndpoints.checkSessionIframeEndpoint,
+                        application.getClientId()));
         // Perform form submit
         driver.findElement(By.name(OIDCUITestConstants.PlaygroundAppElementIdentifiers.authorizeButtonElement)).click();
     }
@@ -384,15 +384,15 @@ public class OIDCAuthCodeSessionTestCase extends OIDCAbstractUIIntegrationTest {
     private void sendTokenRequest(WebDriver driver, OIDCApplication application) {
         // Set callback url
         driver.findElement(By.id(OIDCUITestConstants.PlaygroundAppElementIdentifiers.callBackURLElement))
-              .sendKeys(application.getCallBackURL());
+                .sendKeys(application.getCallBackURL());
 
         // Set OP token endpoint
         driver.findElement(By.id(OIDCUITestConstants.PlaygroundAppElementIdentifiers.accessTokenEndpointElement))
-              .sendKeys(OIDCUITestConstants.OPEndpoints.tokenEndpoint);
+                .sendKeys(OIDCUITestConstants.OPEndpoints.tokenEndpoint);
 
         // Set client secret
         driver.findElement(By.id(OIDCUITestConstants.PlaygroundAppElementIdentifiers.clientSecretElement))
-              .sendKeys(application.getClientSecret());
+                .sendKeys(application.getClientSecret());
 
         // Perform form submit
         driver.findElement(By.name(OIDCUITestConstants.PlaygroundAppElementIdentifiers.authorizeButtonElement)).click();

@@ -32,60 +32,60 @@ import org.wso2.identity.integration.test.utils.CommonConstants;
 
 public class XmlParserTestUtils {
 
-	private static final Log log = LogFactory.getLog(XmlParserTestUtils.class);
+    private static final Log log = LogFactory.getLog(XmlParserTestUtils.class);
 
-	private AuthenticationAdminStub authenticationAdminStub;
-	private ServerAdminStub serverAdminStub;
-	private final String SERVER_ADMIN_URL = CommonConstants.DEFAULT_SERVICE_URL +  "ServerAdmin";
-	private final String AUTHENTICATION_ADMIN_URL = CommonConstants.DEFAULT_SERVICE_URL +  "AuthenticationAdmin";
+    private AuthenticationAdminStub authenticationAdminStub;
+    private ServerAdminStub serverAdminStub;
+    private final String SERVER_ADMIN_URL = CommonConstants.DEFAULT_SERVICE_URL + "ServerAdmin";
+    private final String AUTHENTICATION_ADMIN_URL = CommonConstants.DEFAULT_SERVICE_URL + "AuthenticationAdmin";
 
-	public void initAuthenticatorClient() throws AxisFault {
-		if (log.isDebugEnabled()) {
-			log.debug("EndPoint" + AUTHENTICATION_ADMIN_URL);
-		}
-		try {
-			authenticationAdminStub = new AuthenticationAdminStub(
-					AUTHENTICATION_ADMIN_URL);
-		} catch (AxisFault axisFault) {
-			log.info("authenticationAdminStub initialization fails");
-			throw new AxisFault("authenticationAdminStub initialization fails");
-		}
-	}
+    public void initAuthenticatorClient() throws AxisFault {
+        if (log.isDebugEnabled()) {
+            log.debug("EndPoint" + AUTHENTICATION_ADMIN_URL);
+        }
+        try {
+            authenticationAdminStub = new AuthenticationAdminStub(
+                    AUTHENTICATION_ADMIN_URL);
+        } catch (AxisFault axisFault) {
+            log.info("authenticationAdminStub initialization fails");
+            throw new AxisFault("authenticationAdminStub initialization fails");
+        }
+    }
 
-	public void initServerAdminClient(String sessionCookie) throws AxisFault {
-		serverAdminStub = new ServerAdminStub(SERVER_ADMIN_URL);
-		authenticationAdminStub = new AuthenticationAdminStub(AUTHENTICATION_ADMIN_URL);
-	}
+    public void initServerAdminClient(String sessionCookie) throws AxisFault {
+        serverAdminStub = new ServerAdminStub(SERVER_ADMIN_URL);
+        authenticationAdminStub = new AuthenticationAdminStub(AUTHENTICATION_ADMIN_URL);
+    }
 
-	public String login(String userName, String password, String host)
-			throws LoginAuthenticationExceptionException, RemoteException {
-		Boolean loginStatus;
-		ServiceContext serviceContext;
-		String sessionCookie;
+    public String login(String userName, String password, String host)
+            throws LoginAuthenticationExceptionException, RemoteException {
+        Boolean loginStatus;
+        ServiceContext serviceContext;
+        String sessionCookie;
 
-		loginStatus = authenticationAdminStub.login(userName, password, host);
+        loginStatus = authenticationAdminStub.login(userName, password, host);
 
-		if (!loginStatus) {
-			throw new LoginAuthenticationExceptionException(
-					"Login Unsuccessful. Return false as a login status by Server");
-		}
-		log.info("Login Successful");
-		serviceContext = authenticationAdminStub._getServiceClient()
-				.getLastOperationContext().getServiceContext();
-		sessionCookie = (String) serviceContext
-				.getProperty(HTTPConstants.COOKIE_STRING);
-		if (log.isDebugEnabled()) {
-			log.debug("SessionCookie :" + sessionCookie);
-		}
-		return sessionCookie;
-	}
+        if (!loginStatus) {
+            throw new LoginAuthenticationExceptionException(
+                    "Login Unsuccessful. Return false as a login status by Server");
+        }
+        log.info("Login Successful");
+        serviceContext = authenticationAdminStub._getServiceClient()
+                .getLastOperationContext().getServiceContext();
+        sessionCookie = (String) serviceContext
+                .getProperty(HTTPConstants.COOKIE_STRING);
+        if (log.isDebugEnabled()) {
+            log.debug("SessionCookie :" + sessionCookie);
+        }
+        return sessionCookie;
+    }
 
-	public void restartGracefully() throws Exception, RemoteException {
-		serverAdminStub.restartGracefully();
-	}
+    public void restartGracefully() throws Exception, RemoteException {
+        serverAdminStub.restartGracefully();
+    }
 
-	public void shutdownGracefully() throws Exception, RemoteException {
-		serverAdminStub.shutdownGracefully();
-	}
+    public void shutdownGracefully() throws Exception, RemoteException {
+        serverAdminStub.shutdownGracefully();
+    }
 
 }

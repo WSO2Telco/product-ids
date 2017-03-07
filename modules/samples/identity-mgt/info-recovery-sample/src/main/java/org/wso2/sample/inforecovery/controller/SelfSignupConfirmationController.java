@@ -68,7 +68,7 @@ public class SelfSignupConfirmationController extends HttpServlet {
 
         HttpSession session = req.getSession();
         session.setAttribute(SelfSignupConfirmationController.CONFIRMATION,
-                                                    req.getParameter(SelfSignupConfirmationController.CONFIRMATION));
+                req.getParameter(SelfSignupConfirmationController.CONFIRMATION));
         String userstoredomain = req.getParameter(SelfSignupConfirmationController.USER_STORE_DOMAIN);
         String username = req.getParameter(SelfSignupConfirmationController.USER_NAME.toLowerCase());
         if (!("PRIMARY".equalsIgnoreCase(userstoredomain)) && userstoredomain != null) {

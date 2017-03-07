@@ -80,12 +80,12 @@ public class SCIMServiceProviderUserTestCase {
     }
 
     @Test(alwaysRun = true, description = "Add SCIM user")
-    @SetEnvironment(executionEnvironments = { ExecutionEnvironment.ALL})
+    @SetEnvironment(executionEnvironments = {ExecutionEnvironment.ALL})
     public void createUser() throws Exception {
         //create SCIM client
         String encodedUser = SCIMUtils.getEncodedSCIMUser(scimClient, USERNAME, "test",
-                             new String[] { "scimuser1@gmail.com", "scimuser1@wso2.com" }, "SCIMUser1", PASSWORD,
-                             "sinhala", "0772202595");
+                new String[]{"scimuser1@gmail.com", "scimuser1@wso2.com"}, "SCIMUser1", PASSWORD,
+                "sinhala", "0772202595");
         //create a apache wink ClientHandler to intercept and identify response messages
         Resource userResource = SCIMUtils.getUserResource(scimClient, scim_url);
         BasicAuthInfo encodedBasicAuthInfo = SCIMUtils.getBasicAuthInfo(provider_userInfo);
@@ -94,14 +94,14 @@ public class SCIMServiceProviderUserTestCase {
                 contentType(SCIMConstants.APPLICATION_JSON).accept(SCIMConstants.APPLICATION_JSON).
                 post(String.class, encodedUser);
         log.info(response);
-        Object obj= JSONValue.parse(response);
-        scimUserId = ((JSONObject)obj).get("id").toString();
+        Object obj = JSONValue.parse(response);
+        scimUserId = ((JSONObject) obj).get("id").toString();
         userMgtClient.listUsers(USERNAME, 100);
         Assert.assertTrue(isUserExists());
         Assert.assertNotNull(scimUserId);
     }
 
-    @Test(alwaysRun = true, description = "Get SCIM user", dependsOnMethods = { "createUser" })
+    @Test(alwaysRun = true, description = "Get SCIM user", dependsOnMethods = {"createUser"})
     @SetEnvironment(executionEnvironments = {ExecutionEnvironment.ALL})
     public void getUser() {
         //create a apache wink ClientHandler to intercept and identify response messages
@@ -125,7 +125,7 @@ public class SCIMServiceProviderUserTestCase {
         Assert.assertTrue(response.contains(""));
     }
 
-    @Test(alwaysRun = true, description = "Get logged in SCIM user", dependsOnMethods = { "getUser" })
+    @Test(alwaysRun = true, description = "Get logged in SCIM user", dependsOnMethods = {"getUser"})
     @SetEnvironment(executionEnvironments = {ExecutionEnvironment.ALL})
     public void getUserMe() {
         //create a apache wink ClientHandler to intercept and identify response messages
@@ -158,7 +158,7 @@ public class SCIMServiceProviderUserTestCase {
         }
     }
 
-    @Test(alwaysRun = true, description = "list all SCIM users", dependsOnMethods = { "getUserMe" })
+    @Test(alwaysRun = true, description = "list all SCIM users", dependsOnMethods = {"getUserMe"})
     @SetEnvironment(executionEnvironments = {ExecutionEnvironment.ALL})
     public void listUser() throws Exception {
         //create SCIM client
@@ -182,7 +182,7 @@ public class SCIMServiceProviderUserTestCase {
         Assert.assertTrue(isAllUsersExists(response));
     }
 
-    @Test(alwaysRun = true, description = "filter all SCIM users", dependsOnMethods = { "listUser" })
+    @Test(alwaysRun = true, description = "filter all SCIM users", dependsOnMethods = {"listUser"})
     @SetEnvironment(executionEnvironments = {ExecutionEnvironment.ALL})
     public void filterUser() throws Exception {
         //create SCIM client
@@ -206,7 +206,7 @@ public class SCIMServiceProviderUserTestCase {
         Assert.assertTrue(response.contains("\"userName\":\"" + USERNAME + "\""));
     }
 
-    @Test(alwaysRun = true, description = "Update SCIM user", dependsOnMethods = { "filterUser" })
+    @Test(alwaysRun = true, description = "Update SCIM user", dependsOnMethods = {"filterUser"})
     @SetEnvironment(executionEnvironments = {ExecutionEnvironment.ALL})
     public void UpdateUser() throws Exception {
         String updatedMiddleName = "testChange11";
@@ -224,8 +224,8 @@ public class SCIMServiceProviderUserTestCase {
         Resource userResource = restClient.resource(scim_url + "Users/" + scimUserId);
         org.wso2.charon.core.objects.User decodedUser = SCIMUtils
                 .getSCIMUser(scimClient, USERNAME, "test",
-                             new String[] { "scimuser1@gmail.com", "scimuser1@wso2.com" }, "SCIMUser1", PASSWORD,
-                             "sinhala", "0772202595");
+                        new String[]{"scimuser1@gmail.com", "scimuser1@wso2.com"}, "SCIMUser1", PASSWORD,
+                        "sinhala", "0772202595");
         decodedUser.setDisplayName(updatedMiddleName);
         decodedUser.setWorkEmail(updatedEmail, true);
 
@@ -248,7 +248,7 @@ public class SCIMServiceProviderUserTestCase {
         Assert.assertTrue(response.contains(updatedMiddleName));
     }
 
-    @Test(alwaysRun = true, description = "Delete SCIM user", dependsOnMethods = { "UpdateUser" })
+    @Test(alwaysRun = true, description = "Delete SCIM user", dependsOnMethods = {"UpdateUser"})
     @SetEnvironment(executionEnvironments = {ExecutionEnvironment.ALL})
     public void DeleteUser() throws Exception {
         ClientConfig clientConfig = new ClientConfig();

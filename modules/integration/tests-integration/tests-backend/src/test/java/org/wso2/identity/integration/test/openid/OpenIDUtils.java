@@ -21,7 +21,7 @@ package org.wso2.identity.integration.test.openid;
 public class OpenIDUtils {
 
     public enum User {
-        ADMIN("openidadmin","openidadmin", "openidadmin@wso2.com", "admin"),
+        ADMIN("openidadmin", "openidadmin", "openidadmin@wso2.com", "admin"),
         USER1("openiduser1", "openiduser1", "openiduser1@wso2.com", "internal/everyone"),
         USER2("openiduser2", "openiduser2", "openiduser2@wso2.com", "internal/everyone");
 
@@ -52,15 +52,19 @@ public class OpenIDUtils {
         public String getRole() {
             return role;
         }
-    };
+    }
 
-    public enum UserConsent{
+    ;
+
+    public enum UserConsent {
         APPROVE,
         APPROVE_ALWAYS,
         SKIP
-    };
+    }
 
-    public enum AppType{
+    ;
+
+    public enum AppType {
         SMART_WITH_CLAIMS("travelocity.com-openid-smartconsumerwithclaims"),
         SMART_WITHOUT_CLAIMS("travelocity.com-openid-smartconsumerwithoutclaims"),
         DUMB_WITH_CLAIMS("travelocity.com-openid-dumbconsumerwithclaims"),

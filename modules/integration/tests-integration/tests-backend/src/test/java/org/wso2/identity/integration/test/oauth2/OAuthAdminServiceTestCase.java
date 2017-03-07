@@ -36,7 +36,7 @@ public class OAuthAdminServiceTestCase extends ISIntegrationTest {
         // create a user with capital letters in user name
         userMgtClient.addUser(userName, password, null, "default");
 
-        String[] userList = new String[] {userName};
+        String[] userList = new String[]{userName};
         FlaggedName[] userFlagList = new FlaggedName[userList.length];
 
         for (int i = 0; i < userFlagList.length; i++) {

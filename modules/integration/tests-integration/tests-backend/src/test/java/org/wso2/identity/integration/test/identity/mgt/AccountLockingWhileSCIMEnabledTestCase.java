@@ -110,7 +110,8 @@ public class AccountLockingWhileSCIMEnabledTestCase extends ISIntegrationTest {
         remoteUSMServiceClient = new RemoteUserStoreManagerServiceClient(backendURL, sessionCookie);
         remoteUSMServiceClient.addUser(TEST_USER_USERNAME, TEST_USER_PASSWORD, null,
                 claimValues, PROFILE_NAME, false);
-        userMgtClient.addRole(TEST_ROLE, new String[]{TEST_USER_USERNAME}, new String[]{"/permission/admin/login"}, false);
+        userMgtClient.addRole(TEST_ROLE, new String[]{TEST_USER_USERNAME}, new String[]{"/permission/admin/login"},
+                false);
 
     }
 
@@ -124,7 +125,8 @@ public class AccountLockingWhileSCIMEnabledTestCase extends ISIntegrationTest {
 
     @SetEnvironment(executionEnvironments = {ExecutionEnvironment.ALL})
     @Test(groups = "wso2.is", description = "Check whether the user cannot login when account is disabled",
-    dependsOnMethods = "testSuccessfulLoginInitially", expectedExceptions = LoginAuthenticationExceptionException.class)
+            dependsOnMethods = "testSuccessfulLoginInitially", expectedExceptions =
+            LoginAuthenticationExceptionException.class)
     public void testUnsuccessfulLoginWithAccountDisabled() throws Exception {
         remoteUSMServiceClient.setUserClaimValue(TEST_USER_USERNAME, DISABLED_CLAIM, "true", null);
         loginManger.login(TEST_USER_USERNAME, TEST_USER_PASSWORD, isServer.getInstance().getHosts().get("default"));
@@ -133,7 +135,8 @@ public class AccountLockingWhileSCIMEnabledTestCase extends ISIntegrationTest {
 
     @SetEnvironment(executionEnvironments = {ExecutionEnvironment.ALL})
     @Test(groups = "wso2.is", description = "Check whether the user can login when account is enabled again",
-            dependsOnMethods = "testUnsuccessfulLoginWithAccountDisabled", expectedExceptions = LoginAuthenticationExceptionException.class)
+            dependsOnMethods = "testUnsuccessfulLoginWithAccountDisabled", expectedExceptions =
+            LoginAuthenticationExceptionException.class)
     public void testSuccessfulLoginWithAccountEnabled() throws Exception {
         remoteUSMServiceClient.setUserClaimValue(TEST_USER_USERNAME, DISABLED_CLAIM, "false", null);
         loginManger.login(TEST_USER_USERNAME, TEST_USER_PASSWORD, isServer.getInstance().getHosts().get("default"));
@@ -142,7 +145,8 @@ public class AccountLockingWhileSCIMEnabledTestCase extends ISIntegrationTest {
 
     @SetEnvironment(executionEnvironments = {ExecutionEnvironment.ALL})
     @Test(groups = "wso2.is", description = "Check user account verification",
-            dependsOnMethods = "testSuccessfulLoginWithAccountEnabled", expectedExceptions = LoginAuthenticationExceptionException.class)
+            dependsOnMethods = "testSuccessfulLoginWithAccountEnabled", expectedExceptions =
+            LoginAuthenticationExceptionException.class)
     public void testUnsuccessfulFirstLogin() throws Exception {
         loginManger.login(TEST_USER_USERNAME, WRONG_PASSWORD, isServer.getInstance().getHosts().get("default"));
         loginManger.logOut();
@@ -150,7 +154,8 @@ public class AccountLockingWhileSCIMEnabledTestCase extends ISIntegrationTest {
 
     @SetEnvironment(executionEnvironments = {ExecutionEnvironment.ALL})
     @Test(groups = "wso2.is", description = "Check user account verification",
-            dependsOnMethods = "testUnsuccessfulFirstLogin", expectedExceptions = LoginAuthenticationExceptionException.class)
+            dependsOnMethods = "testUnsuccessfulFirstLogin", expectedExceptions =
+            LoginAuthenticationExceptionException.class)
     public void testUnsuccessfulSecondLogin() throws Exception {
         loginManger.login(TEST_USER_USERNAME, WRONG_PASSWORD, isServer.getInstance().getHosts().get("default"));
         loginManger.logOut();
@@ -158,7 +163,8 @@ public class AccountLockingWhileSCIMEnabledTestCase extends ISIntegrationTest {
 
     @SetEnvironment(executionEnvironments = {ExecutionEnvironment.ALL})
     @Test(groups = "wso2.is", description = "Check user account verification",
-            dependsOnMethods = "testUnsuccessfulSecondLogin", expectedExceptions = LoginAuthenticationExceptionException.class)
+            dependsOnMethods = "testUnsuccessfulSecondLogin", expectedExceptions =
+            LoginAuthenticationExceptionException.class)
     public void testAccountLock() throws Exception {
         loginManger.login(TEST_USER_USERNAME, TEST_USER_PASSWORD, isServer.getInstance().getHosts().get("default"));
         loginManger.logOut();
@@ -170,13 +176,12 @@ public class AccountLockingWhileSCIMEnabledTestCase extends ISIntegrationTest {
 
         loginManger.logOut();
         loginManger.logOut();
-        if(nameExists(userMgtClient.listAllUsers(TEST_USER_USERNAME, 100), TEST_USER_USERNAME)) {
+        if (nameExists(userMgtClient.listAllUsers(TEST_USER_USERNAME, 100), TEST_USER_USERNAME)) {
             userMgtClient.deleteUser(TEST_USER_USERNAME);
         }
-        if(nameExists(userMgtClient.listRoles(TEST_ROLE, 100), "TEST_ROLE")){
+        if (nameExists(userMgtClient.listRoles(TEST_ROLE, 100), "TEST_ROLE")) {
             userMgtClient.deleteRole("TEST_ROLE");
         }
-
 
 
         File identityMgtDefaultFile = new File(getISResourceLocation()
