@@ -436,6 +436,13 @@ CREATE TABLE `prompt_configuration` (
   PRIMARY KEY (scope, prompt_value, is_login_hint_exists)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
+
+INSERT INTO prompt_configuration VALUES ('openid', 'login', 1, 'OFFNET_TRUST_LOGIN_HINT'),('mnv', 'login', 1,
+'ONNET'),('mc_mnv_validate', 'login', 1, 'ONNET'),('mc_mnv_validate_plus', 'login', 1, 'ONNET'), ('mc_india_tc',
+'login', 1, 'ONNET'),('openid', 'noseam', 1, 'ONNET'),('mnv', 'noseam', 1, 'OFFNET'),('mc_mnv_validate', 'noseam', 1,
+ 'OFFNET'),('mc_india_tc', 'noseam', 1, 'OFFNET'),('mc_mnv_validate_plus',
+ 'noseam', 1, 'OFFNET'),
+('openid', 'login', 0, 'ONNET'),('openid', 'noseam', 0, 'OFFNET');
 --
 -- Table structure for table `login_hint_format`
 --
