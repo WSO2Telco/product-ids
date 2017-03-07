@@ -429,12 +429,11 @@ DROP TABLE IF EXISTS `prompt_configuration`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `prompt_configuration` (
-  `scope_id` int(20) NOT NULL,
+  `scope` varchar(255) NOT NULL,
   `prompt_value` varchar(255) NOT NULL,
   `is_login_hint_exists` TINYINT DEFAULT 0,
   `behaviour` varchar(255),
-  PRIMARY KEY (prompt_id, prompt_value),
-  FOREIGN KEY (scope_id) REFERENCES scope_parameter(param_id)
+  PRIMARY KEY (scope, prompt_value)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 --
