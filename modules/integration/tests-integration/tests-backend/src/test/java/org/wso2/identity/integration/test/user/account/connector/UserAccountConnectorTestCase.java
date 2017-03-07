@@ -56,7 +56,7 @@ public class UserAccountConnectorTestCase extends ISIntegrationTest {
     }
 
     @Test(alwaysRun = true, description = "Test create user account associations",
-            dependsOnMethods = { "testAssociateTwoAccountsAsAdmin" })
+            dependsOnMethods = {"testAssociateTwoAccountsAsAdmin"})
     public void testConnectUserAccount() throws Exception {
 
         // Create associations
@@ -67,11 +67,11 @@ public class UserAccountConnectorTestCase extends ISIntegrationTest {
         UserAccountAssociationDTO[] associations = serviceClient.getAccountAssociationsOfUser();
 
         Assert.assertTrue(associations != null && associations.length > 0, "Unable to create user account association" +
-                                                                           " for user" );
+                " for user");
         Assert.assertTrue(isAssociationAvailable(associations, USER_1), "Unable to create user association with a " +
-                                                                        "super tenant user");
+                "super tenant user");
         Assert.assertTrue(isAssociationAvailable(associations, USER_2), "Unable to create user association with a " +
-                                                                        "tenant user");
+                "tenant user");
 
     }
 
@@ -113,15 +113,15 @@ public class UserAccountConnectorTestCase extends ISIntegrationTest {
     }
 
     @Test(alwaysRun = true, description = "Test switch user logged in account ",
-          dependsOnMethods = { "testConnectUserAccount" })
+            dependsOnMethods = {"testConnectUserAccount"})
     public void switchLoggedInUser() throws Exception {
 
         serviceClient.switchLoggedInUser(USER_1);
 
-        UserAccountAssociationDTO [] associations = serviceClient.getAccountAssociationsOfUser();
+        UserAccountAssociationDTO[] associations = serviceClient.getAccountAssociationsOfUser();
 
         Assert.assertTrue(isAccountSwitched(associations, USER_1), "Unable to switch user to a super tenant " +
-                                                                         "user");
+                "user");
 
         serviceClient.switchLoggedInUser(USER_2);
 
@@ -133,36 +133,36 @@ public class UserAccountConnectorTestCase extends ISIntegrationTest {
     }
 
     @Test(alwaysRun = true, description = "Test delete user account association",
-          dependsOnMethods = { "switchLoggedInUser" })
+            dependsOnMethods = {"switchLoggedInUser"})
     public void testDeleteUserAccountConnection() throws Exception {
 
         serviceClient.deleteUserAccountAssociation(USER_1);
 
-        UserAccountAssociationDTO [] associations = serviceClient.getAccountAssociationsOfUser();
+        UserAccountAssociationDTO[] associations = serviceClient.getAccountAssociationsOfUser();
 
         Assert.assertFalse(isAssociationAvailable(associations, USER_1), "Unable to delete user association of a " +
-                                                                         "super tenant user");
+                "super tenant user");
 
         serviceClient.deleteUserAccountAssociation(USER_2);
 
         associations = serviceClient.getAccountAssociationsOfUser();
 
-        Assert.assertFalse(isAssociationAvailable(associations, USER_2),  "Unable to delete user association of a " +
-                                                                          "tenant user");
+        Assert.assertFalse(isAssociationAvailable(associations, USER_2), "Unable to delete user association of a " +
+                "tenant user");
 
     }
 
-    private boolean isAssociationAvailable(UserAccountAssociationDTO [] associations, String userName){
-        if(associations != null){
-            for(UserAccountAssociationDTO association : associations){
+    private boolean isAssociationAvailable(UserAccountAssociationDTO[] associations, String userName) {
+        if (associations != null) {
+            for (UserAccountAssociationDTO association : associations) {
                 String connectedUserName = association.getUsername();
-                if(!"PRIMARY".equals(association.getDomain())) {
+                if (!"PRIMARY".equals(association.getDomain())) {
                     connectedUserName = association.getDomain() + "/" + connectedUserName;
                 }
-                if(!"carbon.super".equals(association.getTenantDomain())) {
+                if (!"carbon.super".equals(association.getTenantDomain())) {
                     connectedUserName = connectedUserName + "@" + association.getTenantDomain();
                 }
-                if(userName.equals(connectedUserName)){
+                if (userName.equals(connectedUserName)) {
                     return true;
                 }
             }
@@ -170,17 +170,17 @@ public class UserAccountConnectorTestCase extends ISIntegrationTest {
         return false;
     }
 
-    private boolean isAccountSwitched(UserAccountAssociationDTO [] associations, String userName){
-        if(associations != null && associations.length > 0){
-            for(UserAccountAssociationDTO association : associations){
+    private boolean isAccountSwitched(UserAccountAssociationDTO[] associations, String userName) {
+        if (associations != null && associations.length > 0) {
+            for (UserAccountAssociationDTO association : associations) {
                 String connectedUserName = association.getUsername();
-                if(!"PRIMARY".equals(association.getDomain())) {
+                if (!"PRIMARY".equals(association.getDomain())) {
                     connectedUserName = association.getDomain() + "/" + connectedUserName;
                 }
-                if(!"carbon.super".equals(association.getTenantDomain())) {
+                if (!"carbon.super".equals(association.getTenantDomain())) {
                     connectedUserName = connectedUserName + "@" + association.getTenantDomain();
                 }
-                if(userName.equals(connectedUserName)){
+                if (userName.equals(connectedUserName)) {
                     return false;
                 }
             }

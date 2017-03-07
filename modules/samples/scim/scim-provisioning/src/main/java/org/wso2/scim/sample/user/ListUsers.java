@@ -46,11 +46,11 @@ public class ListUsers {
             System.out.println("/******SCIM: list users response status: " + responseCode);
             System.out.println("SCIM: list users response data: " + response + "******/");
             System.out.println("");
-            
+
         } catch (HttpException e) {
             e.printStackTrace();
         } catch (IOException e) {
-            e.printStackTrace();  
+            e.printStackTrace();
         }
     }
 }

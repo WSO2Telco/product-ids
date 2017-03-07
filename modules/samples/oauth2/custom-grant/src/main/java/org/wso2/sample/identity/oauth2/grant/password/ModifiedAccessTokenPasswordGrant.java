@@ -41,7 +41,7 @@ public class ModifiedAccessTokenPasswordGrant extends PasswordGrantHandler {
     public OAuth2AccessTokenRespDTO issue(OAuthTokenReqMessageContext tokReqMsgCtx) throws IdentityOAuth2Exception {
 
         // calling super
-        OAuth2AccessTokenRespDTO tokenRespDTO =  super.issue(tokReqMsgCtx);
+        OAuth2AccessTokenRespDTO tokenRespDTO = super.issue(tokReqMsgCtx);
 
         // set modified access token
         tokenRespDTO.setAccessToken(generateAccessToken(tokReqMsgCtx.getAuthorizedUser().toString()));
@@ -57,7 +57,7 @@ public class ModifiedAccessTokenPasswordGrant extends PasswordGrantHandler {
      * @param userName
      * @return
      */
-    private String generateAccessToken(String userName){
+    private String generateAccessToken(String userName) {
 
         String token = UUID.randomUUID().toString();
 
@@ -72,7 +72,7 @@ public class ModifiedAccessTokenPasswordGrant extends PasswordGrantHandler {
             log.error(e);
         }
 
-        if(email != null){
+        if (email != null) {
             token = token + ":" + email;
         }
 

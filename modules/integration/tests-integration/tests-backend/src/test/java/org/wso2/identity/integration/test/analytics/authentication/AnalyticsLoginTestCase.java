@@ -117,9 +117,11 @@ public class AnalyticsLoginTestCase extends ISIntegrationTest {
     }
 
     private enum User {
-        SUPER_TENANT_USER("samlAnalyticsuser1", "samlAnalyticsuser1", "carbon.super", "samlAnalyticsuser1", "samlAnalyticsuser1@abc.com",
+        SUPER_TENANT_USER("samlAnalyticsuser1", "samlAnalyticsuser1", "carbon.super", "samlAnalyticsuser1",
+                "samlAnalyticsuser1@abc.com",
                 "samlnickuser1"),
-        TENANT_USER("samlAnalyticsuser2@wso2.com", "samlAnalyticsuser2", "wso2.com", "samlAnalyticsuser2", "samlAnalyticsuser2@abc.com",
+        TENANT_USER("samlAnalyticsuser2@wso2.com", "samlAnalyticsuser2", "wso2.com", "samlAnalyticsuser2",
+                "samlAnalyticsuser2@abc.com",
                 "samlnickuser2");
 
         private String username;
@@ -252,8 +254,10 @@ public class AnalyticsLoginTestCase extends ISIntegrationTest {
         thriftServer = new ThriftServer("Wso2EventTestCase", 8021, true);
         thriftServer.start(8021);
         log.info("Thrift Server is Started on port 8462");
-        ConfigurationContext configContext = ConfigurationContextFactory.createConfigurationContextFromFileSystem(null, null);
-        applicationManagementServiceClient = new ApplicationManagementServiceClient(sessionCookie, backendURL, configContext);
+        ConfigurationContext configContext = ConfigurationContextFactory.createConfigurationContextFromFileSystem
+                (null, null);
+        applicationManagementServiceClient = new ApplicationManagementServiceClient(sessionCookie, backendURL,
+                configContext);
         ssoConfigServiceClient = new SAMLSSOConfigServiceClient(backendURL, sessionCookie);
         remoteUSMServiceClient = new RemoteUserStoreManagerServiceClient(backendURL, sessionCookie);
         createUser();
@@ -297,7 +301,8 @@ public class AnalyticsLoginTestCase extends ISIntegrationTest {
                 "Adding a service provider has failed for " + config);
     }
 
-    @Test(alwaysRun = true, description = "Testing SAML SSO login", groups = "wso2.is", dependsOnMethods = {"testAddSP"})
+    @Test(alwaysRun = true, description = "Testing SAML SSO login", groups = "wso2.is", dependsOnMethods =
+            {"testAddSP"})
     public void testSAMLSSOIsPassiveLogin() {
         try {
             HttpClient httpClient = sharedHttpClient;
@@ -335,7 +340,8 @@ public class AnalyticsLoginTestCase extends ISIntegrationTest {
                     .getArtifact(), config.getUser().getUsername(), config.getUser().getPassword(), httpClient);
             EntityUtils.consume(response.getEntity());
 
-            response = Utils.sendRedirectRequest(response, USER_AGENT, ACS_URL, config.getApp().getArtifact(), httpClient);
+            response = Utils.sendRedirectRequest(response, USER_AGENT, ACS_URL, config.getApp().getArtifact(),
+                    httpClient);
             String samlResponse = Utils.extractDataFromResponse(response, CommonConstants.SAML_RESPONSE_PARAM, 5);
             response = sendSAMLMessage(String.format(ACS_URL, config.getApp().getArtifact()), CommonConstants
                     .SAML_RESPONSE_PARAM, samlResponse);
@@ -455,7 +461,8 @@ public class AnalyticsLoginTestCase extends ISIntegrationTest {
                     .getArtifact(), "dummy", config.getUser().getPassword(), httpClient);
             EntityUtils.consume(response.getEntity());
 
-            response = Utils.sendRedirectRequest(response, USER_AGENT, ACS_URL, config.getApp().getArtifact(), httpClient);
+            response = Utils.sendRedirectRequest(response, USER_AGENT, ACS_URL, config.getApp().getArtifact(),
+                    httpClient);
             String samlResponse = Utils.extractDataFromResponse(response, CommonConstants.SAML_RESPONSE_PARAM, 5);
             response = sendSAMLMessage(String.format(ACS_URL, config.getApp().getArtifact()), CommonConstants
                     .SAML_RESPONSE_PARAM, samlResponse);
@@ -620,7 +627,8 @@ public class AnalyticsLoginTestCase extends ISIntegrationTest {
         String analyticsEnabledIdentityXml = getISResourceLocation() + File.separator + "analytics" + File.separator
                 + "config" + File.separator + "identit_analytics_enabled.xml";
         File defaultIdentityXml = new File(carbonHome + File.separator
-                + "repository" + File.separator + "conf" + File.separator + "identity" + File.separator + "identity.xml");
+                + "repository" + File.separator + "conf" + File.separator + "identity" + File.separator + "identity" +
+                ".xml");
         try {
             serverConfigurationManager = new ServerConfigurationManager(isServer);
             File configuredNotificationProperties = new File(analyticsEnabledIdentityXml);
@@ -685,7 +693,8 @@ public class AnalyticsLoginTestCase extends ISIntegrationTest {
         String defaultIdentityXml = getISResourceLocation() + File.separator + "analytics" + File.separator
                 + "config" + File.separator + "identit_original.xml";
         File defaultIdentityXmlLocation = new File(carbonHome + File.separator
-                + "repository" + File.separator + "conf" + File.separator + "identity" + File.separator + "identity.xml");
+                + "repository" + File.separator + "conf" + File.separator + "identity" + File.separator + "identity" +
+                ".xml");
         try {
             serverConfigurationManager = new ServerConfigurationManager(isServer);
             File configuredNotificationProperties = new File(defaultIdentityXml);

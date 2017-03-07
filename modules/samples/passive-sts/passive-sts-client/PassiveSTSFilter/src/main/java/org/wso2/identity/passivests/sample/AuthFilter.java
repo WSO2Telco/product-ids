@@ -33,7 +33,7 @@ import org.apache.ws.secpolicy.Constants;
  * Servlet Filter implementation class AuthFilter
  */
 public class AuthFilter implements Filter {
-    
+
     private String idpUrl;
     private String loginAction; //wa
     private String logoutAction; //wa
@@ -41,15 +41,15 @@ public class AuthFilter implements Filter {
     private String realm; //wtrealm
     private String displayFullResponse;
     private String additionalRequestParams;
-    
-	public void destroy() {
-	}
-	
-	public void doFilter(ServletRequest req, ServletResponse res,
-			FilterChain chain) throws IOException, ServletException {
-		
-	    HttpServletRequest request = (HttpServletRequest) req;
-		HttpServletResponse response = (HttpServletResponse) res;
+
+    public void destroy() {
+    }
+
+    public void doFilter(ServletRequest req, ServletResponse res,
+                         FilterChain chain) throws IOException, ServletException {
+
+        HttpServletRequest request = (HttpServletRequest) req;
+        HttpServletResponse response = (HttpServletResponse) res;
         String samlReqEmpty = "";
         String wreq = null;
         String samlVersion = request.getParameter("samlv");
@@ -83,38 +83,38 @@ public class AuthFilter implements Filter {
             }
         }
 
-        if(request.getParameter("wresult") == null || request.getParameter("wresult").isEmpty()){
-          String redirectUrl =  idpUrl + "?wa=" + loginAction + "&wreply=" + replyUrl + "&wtrealm=" + realm
-                  + ((wreq != null) ? "&wreq=" + wreq : "");
-          response.sendRedirect(redirectUrl + "&" + additionalRequestParams);
-          return;
+        if (request.getParameter("wresult") == null || request.getParameter("wresult").isEmpty()) {
+            String redirectUrl = idpUrl + "?wa=" + loginAction + "&wreply=" + replyUrl + "&wtrealm=" + realm
+                    + ((wreq != null) ? "&wreq=" + wreq : "");
+            response.sendRedirect(redirectUrl + "&" + additionalRequestParams);
+            return;
         }
-        
+
         String newLineRemovedStr = request.getParameter("wresult").replaceAll("(\\r|\\n)", "");
         handleResponse(request, newLineRemovedStr);
-        
-        if("true".equals(displayFullResponse)){
-            String htmlSafeStr = escapeHtml(Utils.prettyFormat(newLineRemovedStr,2));
+
+        if ("true".equals(displayFullResponse)) {
+            String htmlSafeStr = escapeHtml(Utils.prettyFormat(newLineRemovedStr, 2));
             request.getSession().setAttribute("RSTR", htmlSafeStr);
             request.getSession().setAttribute("displayFullResponse", "true");
         } else {
             request.getSession().setAttribute("displayFullResponse", "false");
         }
-        
-		chain.doFilter(request, response);
-	}
-	
-	private void handleResponse(HttpServletRequest request, String response){
-	    OMElement element = null;
+
+        chain.doFilter(request, response);
+    }
+
+    private void handleResponse(HttpServletRequest request, String response) {
+        OMElement element = null;
         String username = null;
         Map<String, String> claimMap = new HashMap<String, String>();
-        
+
         try {
             element = AXIOMUtil.stringToOM(response);
         } catch (XMLStreamException e) {
             e.printStackTrace();
         }
-        
+
         element = element.getFirstChildWithName(
                 new QName("http://docs.oasis-open.org/ws-sx/ws-trust/200512", "RequestSecurityTokenResponse"));
         OMElement tokenT = element
@@ -177,18 +177,18 @@ public class AuthFilter implements Filter {
             }
         }
 
-        String logoutUrl =  idpUrl + "?wa=" + logoutAction + "&wreply=" + replyUrl + "&wtrealm=" + realm;
+        String logoutUrl = idpUrl + "?wa=" + logoutAction + "&wreply=" + replyUrl + "&wtrealm=" + realm;
         request.getSession().setAttribute("logouturl", logoutUrl + "&" + additionalRequestParams);
-	}
+    }
 
-	public void init(FilterConfig fConfig) throws ServletException {
-		//Initialize the configurations
-	    idpUrl = fConfig.getInitParameter("idpUrl");
-	    loginAction = fConfig.getInitParameter("loginaction");
+    public void init(FilterConfig fConfig) throws ServletException {
+        //Initialize the configurations
+        idpUrl = fConfig.getInitParameter("idpUrl");
+        loginAction = fConfig.getInitParameter("loginaction");
         logoutAction = fConfig.getInitParameter("logoutaction");
-	    replyUrl = fConfig.getInitParameter("replyUrl");
-	    realm = fConfig.getInitParameter("realm");
-	    displayFullResponse = fConfig.getInitParameter("displayFullResponse");
-	    additionalRequestParams = fConfig.getInitParameter("requestParams");
-	}
+        replyUrl = fConfig.getInitParameter("replyUrl");
+        realm = fConfig.getInitParameter("realm");
+        displayFullResponse = fConfig.getInitParameter("displayFullResponse");
+        additionalRequestParams = fConfig.getInitParameter("requestParams");
+    }
 }

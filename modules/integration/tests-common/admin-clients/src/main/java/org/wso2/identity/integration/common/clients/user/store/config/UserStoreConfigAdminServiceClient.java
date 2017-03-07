@@ -49,7 +49,8 @@ public class UserStoreConfigAdminServiceClient {
      * @param userName         - user name
      * @param backendServerURL - backend server URL
      */
-    public UserStoreConfigAdminServiceClient(String backendServerURL, String userName, String password) throws AxisFault {
+    public UserStoreConfigAdminServiceClient(String backendServerURL, String userName, String password) throws
+            AxisFault {
         String serviceURL = backendServerURL + "UserStoreConfigAdminService";
         stub = new UserStoreConfigAdminServiceStub(serviceURL);
         AuthenticateStubUtil.authenticateStub(userName, password, stub);
@@ -140,7 +141,8 @@ public class UserStoreConfigAdminServiceClient {
      * @throws Exception
      */
     public void updateUserStoreWithDomainName(String previousDomain, UserStoreDTO userStoreDTO) throws Exception {
-        if (previousDomain != null && !"".equals(previousDomain) && !previousDomain.equalsIgnoreCase(userStoreDTO.getDomainId())) {
+        if (previousDomain != null && !"".equals(previousDomain) && !previousDomain.equalsIgnoreCase(userStoreDTO
+                .getDomainId())) {
             stub.editUserStoreWithDomainName(previousDomain, userStoreDTO);
         } else {
             this.updateUserStore(userStoreDTO);

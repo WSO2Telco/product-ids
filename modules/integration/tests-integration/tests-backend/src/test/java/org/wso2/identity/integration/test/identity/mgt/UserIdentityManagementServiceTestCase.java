@@ -63,7 +63,8 @@ public class UserIdentityManagementServiceTestCase extends ISIntegrationTest {
         timeBeforeUserLogin = System.currentTimeMillis();
         loginManger = new AuthenticatorClient(backendURL);
         userMgtClient = new UserManagementClient(backendURL, sessionCookie);
-        userIdentityManagementAdminServiceClient = new UserIdentityManagementAdminServiceClient(backendURL, sessionCookie);
+        userIdentityManagementAdminServiceClient = new UserIdentityManagementAdminServiceClient(backendURL,
+                sessionCookie);
         Thread.sleep(5000);
         loginManger.login(isServer.getSuperTenant().getTenantAdmin().getUserName(),
                 isServer.getSuperTenant().getTenantAdmin().getPassword(),
@@ -72,23 +73,24 @@ public class UserIdentityManagementServiceTestCase extends ISIntegrationTest {
         remoteUSMServiceClient = new RemoteUserStoreManagerServiceClient(backendURL, sessionCookie);
         remoteUSMServiceClient.addUser(TEST_USER_USERNAME, TEST_USER_PASSWORD, null,
                 null, PROFILE_NAME, false);
-        userMgtClient.addRole(TEST_ROLE, new String[]{TEST_USER_USERNAME}, new String[]{"/permission/admin/login"}, false);
+        userMgtClient.addRole(TEST_ROLE, new String[]{TEST_USER_USERNAME}, new String[]{"/permission/admin/login"},
+                false);
     }
 
-    @SetEnvironment(executionEnvironments = { ExecutionEnvironment.ALL })
+    @SetEnvironment(executionEnvironments = {ExecutionEnvironment.ALL})
     @AfterClass(alwaysRun = true)
     public void atEnd() throws Exception {
 
         loginManger.logOut();
-        if(nameExists(userMgtClient.listAllUsers(TEST_USER_USERNAME, 100), TEST_USER_USERNAME)) {
+        if (nameExists(userMgtClient.listAllUsers(TEST_USER_USERNAME, 100), TEST_USER_USERNAME)) {
             userMgtClient.deleteUser(TEST_USER_USERNAME);
         }
-        if(nameExists(userMgtClient.listRoles(TEST_ROLE, 100), "TEST_ROLE")){
+        if (nameExists(userMgtClient.listRoles(TEST_ROLE, 100), "TEST_ROLE")) {
             userMgtClient.deleteRole("TEST_ROLE");
         }
     }
 
-    @SetEnvironment(executionEnvironments = { ExecutionEnvironment.ALL})
+    @SetEnvironment(executionEnvironments = {ExecutionEnvironment.ALL})
     @Test(groups = "wso2.is", description = "Getting challenge questions of a user")
     public void testGetChallengeQuestionsOfUser() throws Exception {
         UserChallengesDTO userChallengesDTO = new UserChallengesDTO();

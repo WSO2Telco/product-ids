@@ -42,9 +42,8 @@ public class IdentityProviderMgtServiceClient {
     private UserAdminStub userAdminStub;
 
     /**
-     *
-     * @param userName User name
-     * @param password Password
+     * @param userName   User name
+     * @param password   Password
      * @param backEndUrl Backend Carbon server URL
      * @throws org.apache.axis2.AxisFault
      */
@@ -60,9 +59,8 @@ public class IdentityProviderMgtServiceClient {
     }
 
     /**
-     *
      * @param sessionCookie HttpSession cookie
-     * @param backEndUrl Backend Carbon server URL
+     * @param backEndUrl    Backend Carbon server URL
      * @throws org.apache.axis2.AxisFault
      */
     public IdentityProviderMgtServiceClient(String sessionCookie, String backEndUrl)
@@ -78,9 +76,9 @@ public class IdentityProviderMgtServiceClient {
     }
 
     /**
-     * @param cookie HttpSession cookie
+     * @param cookie           HttpSession cookie
      * @param backendServerURL Backend Carbon server URL
-     * @param configCtx Axis2 Configuration Context
+     * @param configCtx        Axis2 Configuration Context
      */
     public IdentityProviderMgtServiceClient(String cookie, String backendServerURL,
                                             ConfigurationContext configCtx) {
@@ -111,7 +109,7 @@ public class IdentityProviderMgtServiceClient {
 
     /**
      * Retrieves Resident Identity provider for a given tenant
-     * 
+     *
      * @return <code>FederatedIdentityProvider</code>
      * @throws Exception Error when getting Resident Identity Providers
      */
@@ -126,7 +124,7 @@ public class IdentityProviderMgtServiceClient {
 
     /**
      * Updated Resident Identity provider for a given tenant
-     * 
+     *
      * @return <code>FederatedIdentityProvider</code>
      * @throws Exception Error when getting Resident Identity Providers
      */
@@ -141,9 +139,9 @@ public class IdentityProviderMgtServiceClient {
 
     /**
      * Retrieves registered Identity providers for a given tenant
-     * 
+     *
      * @return List of <code>FederatedIdentityProvider</code>. IdP names, primary IdP and home realm
-     *         identifiers of each IdP
+     * identifiers of each IdP
      * @throws Exception Error when getting list of Identity Providers
      */
     public List<IdentityProvider> getIdPs() throws Exception {
@@ -162,9 +160,9 @@ public class IdentityProviderMgtServiceClient {
 
     /**
      * Retrieves Enabled registered Identity providers for a given tenant
-     * 
+     *
      * @return List of <code>FederatedIdentityProvider</code>. IdP names, primary IdP and home realm
-     *         identifiers of each IdP
+     * identifiers of each IdP
      * @throws Exception Error when getting list of Identity Providers
      */
     public List<IdentityProvider> getEnabledIdPs() throws Exception {
@@ -184,7 +182,7 @@ public class IdentityProviderMgtServiceClient {
 
     /**
      * Retrieves Identity provider information about a given tenant by Identity Provider name
-     * 
+     *
      * @param idPName Unique name of the Identity provider of whose information is requested
      * @return <code>FederatedIdentityProvider</code> Identity Provider information
      * @throws Exception Error when getting Identity Provider information by IdP name
@@ -200,9 +198,9 @@ public class IdentityProviderMgtServiceClient {
 
     /**
      * Adds an Identity Provider to the given tenant
-     * 
+     *
      * @param identityProvider <code><FederatedIdentityProvider/code></code> federated Identity
-     *        Provider information
+     *                         Provider information
      * @throws Exception Error when adding Identity Provider information
      */
     public void addIdP(IdentityProvider identityProvider) throws Exception {
@@ -218,7 +216,7 @@ public class IdentityProviderMgtServiceClient {
 
     /**
      * Deletes an Identity Provider from a given tenant
-     * 
+     *
      * @param idPName Name of the IdP to be deleted
      * @throws Exception Error when deleting Identity Provider information
      */
@@ -232,8 +230,8 @@ public class IdentityProviderMgtServiceClient {
 
     /**
      * Updates a given Identity Provider information
-     * 
-     * @param oldIdPName existing IdP name
+     *
+     * @param oldIdPName       existing IdP name
      * @param identityProvider <code>FederatedIdentityProvider</code> new IdP information
      * @throws Exception Error when updating Identity Provider information
      */
@@ -248,6 +246,7 @@ public class IdentityProviderMgtServiceClient {
 
     /**
      * Get all available custom federated authenticators
+     *
      * @return
      * @throws Exception
      */
@@ -281,6 +280,7 @@ public class IdentityProviderMgtServiceClient {
 
     /**
      * Get all available federated authenticators
+     *
      * @return all available federated authenticators
      * @throws Exception
      */
@@ -306,12 +306,12 @@ public class IdentityProviderMgtServiceClient {
     }
 
     /**
-     * 
      * @return
      * @throws Exception
      */
     public Map<String, ProvisioningConnectorConfig> getCustomProvisioningConnectors() throws Exception {
-        Map<String, ProvisioningConnectorConfig> provisioningConnectors = new HashMap<String, ProvisioningConnectorConfig>();
+        Map<String, ProvisioningConnectorConfig> provisioningConnectors = new HashMap<String,
+                ProvisioningConnectorConfig>();
         try {
             ProvisioningConnectorConfig[] provisioningConnectorConfigs = idPMgtStub
                     .getAllProvisioningConnectors();
@@ -334,18 +334,20 @@ public class IdentityProviderMgtServiceClient {
 
     /**
      * Function to retrieve all provisioning connectors
+     *
      * @return all provisioning connectors
      * @throws Exception
      */
     public Map<String, ProvisioningConnectorConfig> getAllProvisioningConnectors() throws Exception {
-        Map<String, ProvisioningConnectorConfig> provisioningConnectors = new HashMap<String, ProvisioningConnectorConfig>();
+        Map<String, ProvisioningConnectorConfig> provisioningConnectors = new HashMap<String,
+                ProvisioningConnectorConfig>();
         try {
             ProvisioningConnectorConfig[] provisioningConnectorConfigs = idPMgtStub
                     .getAllProvisioningConnectors();
             if (provisioningConnectorConfigs != null && provisioningConnectorConfigs.length > 0
-                && provisioningConnectorConfigs[0] != null) {
+                    && provisioningConnectorConfigs[0] != null) {
                 for (ProvisioningConnectorConfig config : provisioningConnectorConfigs) {
-                        provisioningConnectors.put(config.getName(), config);
+                    provisioningConnectors.put(config.getName(), config);
                 }
             }
         } catch (Exception e) {
@@ -356,7 +358,6 @@ public class IdentityProviderMgtServiceClient {
     }
 
     /**
-     * 
      * @return
      * @throws Exception
      */
@@ -371,7 +372,6 @@ public class IdentityProviderMgtServiceClient {
     }
 
     /**
-     * 
      * @return
      * @throws Exception
      */
@@ -389,7 +389,8 @@ public class IdentityProviderMgtServiceClient {
         } catch (Exception e) {
             log.error(e.getMessage(), e);
             throw new Exception(
-                    "Error occurred while retrieving Read-Write User Store Domain IDs for logged-in user's tenant realm");
+                    "Error occurred while retrieving Read-Write User Store Domain IDs for logged-in user's tenant " +
+                            "realm");
         }
     }
 

@@ -3,10 +3,10 @@ package org.wso2.carbon.identity.samples.sts;
 import java.io.File;
 
 public abstract class ClientConstants {
-    
+
     public static final String RESOURCE_PATH = System.getProperty("user.dir") + File.separator + "/src/main/resources/";
-    public static final String PROPERTIES_FILE_PATH =  RESOURCE_PATH + "client.properties";
-    
+    public static final String PROPERTIES_FILE_PATH = RESOURCE_PATH + "client.properties";
+
     //property file keys
     public static final String SAML_TOKEN_TYPE = "saml.token.type";
     public static final String ENABLE_RELYING_PARTY = "enable.relyingParty";

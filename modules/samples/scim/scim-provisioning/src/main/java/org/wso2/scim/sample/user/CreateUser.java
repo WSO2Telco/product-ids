@@ -64,7 +64,7 @@ public class CreateUser {
             //scimUser.setPreferredLanguage(language);
             scimUser.setPhoneNumber(phone_number, "work", false);
             scimUser.setFamilyName("Gunasinghe");
-            
+
             //adding a non-ready-made attribute
             Map<String, Object> subs = new HashMap<String, Object>();
             subs.put("display", "ABC User");
@@ -74,7 +74,7 @@ public class CreateUser {
             entAttr = (MultiValuedAttribute) DefaultAttributeFactory.createAttribute(
                     SCIMSchemaDefinitions.ENTITLEMENTS, entAttr);
             scimUser.setAttribute(entAttr);
-            
+
             //encode the user in JSON format
             String encodedUser = scimClient.encodeSCIMObject(scimUser, SCIMConstants.JSON);
 

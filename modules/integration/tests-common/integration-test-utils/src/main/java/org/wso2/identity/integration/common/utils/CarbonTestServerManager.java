@@ -33,7 +33,7 @@ public class CarbonTestServerManager extends TestServerManager {
     }
 
     public CarbonTestServerManager(AutomationContext context, String carbonZip,
-                                      Map<String, String> commandMap) {
+                                   Map<String, String> commandMap) {
         super(context, carbonZip, commandMap);
     }
 

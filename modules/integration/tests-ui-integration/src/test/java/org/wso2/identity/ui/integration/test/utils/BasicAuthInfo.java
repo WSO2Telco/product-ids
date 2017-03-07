@@ -52,6 +52,7 @@ public class BasicAuthInfo implements AuthenticationInfo {
 
     /**
      * This is not implemented for BasicAuth.
+     *
      * @return
      */
     @Override

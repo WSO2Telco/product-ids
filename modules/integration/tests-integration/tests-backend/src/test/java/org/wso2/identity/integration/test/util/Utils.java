@@ -47,7 +47,7 @@ public class Utils {
 
     private static String RESIDENT_CARBON_HOME;
 
-    public static  boolean nameExists(FlaggedName[] allNames, String inputName) {
+    public static boolean nameExists(FlaggedName[] allNames, String inputName) {
         boolean exists = false;
 
         for (FlaggedName flaggedName : allNames) {
@@ -65,8 +65,9 @@ public class Utils {
     }
 
     public static String getResidentCarbonHome() {
-        if(StringUtils.isEmpty(RESIDENT_CARBON_HOME)){
-            RESIDENT_CARBON_HOME = System.getProperty("carbon.home");;
+        if (StringUtils.isEmpty(RESIDENT_CARBON_HOME)) {
+            RESIDENT_CARBON_HOME = System.getProperty("carbon.home");
+            ;
         }
         return RESIDENT_CARBON_HOME;
     }
@@ -149,14 +150,16 @@ public class Utils {
         return httpClient.execute(request);
     }
 
-    public static HttpResponse sendSAMLMessage(String url, Map<String, String> parameters, String userAgent, TestUserMode userMode, String tenantDomainParam, String tenantDomain, HttpClient httpClient) throws IOException {
+    public static HttpResponse sendSAMLMessage(String url, Map<String, String> parameters, String userAgent,
+                                               TestUserMode userMode, String tenantDomainParam, String tenantDomain,
+                                               HttpClient httpClient) throws IOException {
         List<NameValuePair> urlParameters = new ArrayList<NameValuePair>();
         HttpPost post = new HttpPost(url);
         post.setHeader("User-Agent", userAgent);
-        for (Map.Entry<String,String> entry : parameters.entrySet()) {
+        for (Map.Entry<String, String> entry : parameters.entrySet()) {
             urlParameters.add(new BasicNameValuePair(entry.getKey(), entry.getValue()));
         }
-        if (userMode == TestUserMode.TENANT_ADMIN || userMode == TestUserMode.TENANT_USER){
+        if (userMode == TestUserMode.TENANT_ADMIN || userMode == TestUserMode.TENANT_USER) {
             urlParameters.add(new BasicNameValuePair(tenantDomainParam, tenantDomain));
         }
         post.setEntity(new UrlEncodedFormEntity(urlParameters));

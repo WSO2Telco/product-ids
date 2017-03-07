@@ -142,7 +142,7 @@ public class OIDCAbstractUIIntegrationTest extends ISIntegrationUITest {
 
         // creating the user
         remoteUserStoreManagerServiceClient.addUser(user.getUsername(), user.getPassword(), roles, claims,
-                                                    user.getProfile(), true);
+                user.getProfile(), true);
     }
 
     /**
@@ -172,7 +172,7 @@ public class OIDCAbstractUIIntegrationTest extends ISIntegrationUITest {
         appDTO.setCallbackUrl(application.getCallBackURL());
         appDTO.setOAuthVersion(OIDCUITestConstants.OAUTH_VERSION_2);
         appDTO.setGrantTypes("authorization_code implicit password client_credentials refresh_token " +
-                             "urn:ietf:params:oauth:grant-type:saml2-bearer iwa:ntlm");
+                "urn:ietf:params:oauth:grant-type:saml2-bearer iwa:ntlm");
 
         oauthAdminClient.registerOAuthApplicationData(appDTO);
         OAuthConsumerAppDTO[] appDtos = oauthAdminClient.getAllOAuthApplicationData();
@@ -218,7 +218,7 @@ public class OIDCAbstractUIIntegrationTest extends ISIntegrationUITest {
                 Property property = new Property();
                 property.setName(OIDCUITestConstants.OAUTH_CONSUMER_SECRET);
                 property.setValue(application.getClientSecret());
-                Property[] properties = { property };
+                Property[] properties = {property};
                 inboundAuthenticationRequestConfig.setProperties(properties);
             }
             authRequestList.add(inboundAuthenticationRequestConfig);

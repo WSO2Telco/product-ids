@@ -55,7 +55,8 @@ public class HomePage {
         this.driver = driver;
         this.isCloudEnvironment = isCloudEnvironment;
         if (isCloudEnvironment) {
-            if (!driver.findElement(By.className("dashboard-title")).getText().toLowerCase().contains("quick start dashboard")) {
+            if (!driver.findElement(By.className("dashboard-title")).getText().toLowerCase().contains("quick start " +
+                    "dashboard")) {
                 throw new IllegalStateException("This is not the cloud home page");
             }
         } else {
@@ -81,7 +82,7 @@ public class HomePage {
         return new LoginPage(driver, isCloudEnvironment);
     }
 
-    private int findMenuItem(int startIndex, String name, List<WebElement> menuItems){
+    private int findMenuItem(int startIndex, String name, List<WebElement> menuItems) {
         for (int i = startIndex; i < menuItems.size(); i++) {
             WebElement item = menuItems.get(i);
             if (name.equals(item.getText())) {

@@ -20,7 +20,7 @@ package org.wso2.identity.integration.test.certificateauthority;
 
 import org.wso2.identity.integration.common.utils.ISIntegrationTest;
 
-public class CaCertRevokeServicesTestCase extends ISIntegrationTest{
+public class CaCertRevokeServicesTestCase extends ISIntegrationTest {
 
     /*
     * Pre conditions : Should have passed CaCertSignServicesTestCase
@@ -86,7 +86,8 @@ Commented out till the feature is fully complete
 //    public void testRevokeByClient() throws Exception{
 //        clientServiceClient.revokeCertificate(serialNo2,CaResources.RevokeReason.REVOCATION_REASON_KEYCOMPROMISE_VAL);
 //        CertificateDTO certificate2 = clientServiceClient.getCertificate(serialNo2);
-//        Assert.assertEquals(CaResources.CertificateStatus.REVOKED,certificate2.getCertificateMetaInfo().getStatus(),"Certificate is not revoked");
+//        Assert.assertEquals(CaResources.CertificateStatus.REVOKED,certificate2.getCertificateMetaInfo().getStatus()
+// ,"Certificate is not revoked");
 //    }
 //
 //    @Test(groups = "wso2.is", description = "Test revoking certificate by other client",
@@ -100,8 +101,6 @@ Commented out till the feature is fully complete
 //        clientServiceClient2.revokeCertificate(serialNo1,CaResources.RevokeReason
 //                .REVOCATION_REASON_KEYCOMPROMISE_VAL);
 //    }
-
-
 
 
 }

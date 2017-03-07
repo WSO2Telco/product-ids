@@ -2,12 +2,14 @@ package org.wso2.carbon.is.migration.util;
 
 public class SQLQueries {
 
-    public static final String SELECT_FROM_CONSUMER_APPS = "SELECT ID, USERNAME, USER_DOMAIN FROM IDN_OAUTH_CONSUMER_APPS";
+    public static final String SELECT_FROM_CONSUMER_APPS = "SELECT ID, USERNAME, USER_DOMAIN FROM " +
+            "IDN_OAUTH_CONSUMER_APPS";
 
     public static final String UPDATE_CONSUMER_APPS = "UPDATE IDN_OAUTH_CONSUMER_APPS SET USERNAME=?, USER_DOMAIN=? " +
             "WHERE ID=?";
 
-    public static final String SELECT_FROM_ACCESS_TOKEN = "SELECT ACCESS_TOKEN, TOKEN_SCOPE, AUTHZ_USER, TOKEN_ID FROM " +
+    public static final String SELECT_FROM_ACCESS_TOKEN = "SELECT ACCESS_TOKEN, TOKEN_SCOPE, AUTHZ_USER, TOKEN_ID " +
+            "FROM " +
             "IDN_OAUTH2_ACCESS_TOKEN";
 
     public static final String INSERT_SCOPE_ASSOCIATION = "INSERT INTO IDN_OAUTH2_ACCESS_TOKEN_SCOPE (TOKEN_ID, " +
@@ -47,7 +49,8 @@ public class SQLQueries {
     public static final String ALTER_TOKEN_ID_NOT_NULL_DB2 = "ALTER TABLE IDN_OAUTH2_ACCESS_TOKEN ALTER COLUMN " +
             "TOKEN_ID SET NOT NULL";
 
-    public static final String SELECT_FROM_AUTHORIZATION_CODE = "SELECT AUTHORIZATION_CODE, AUTHZ_USER, USER_DOMAIN FROM " +
+    public static final String SELECT_FROM_AUTHORIZATION_CODE = "SELECT AUTHORIZATION_CODE, AUTHZ_USER, USER_DOMAIN " +
+            "FROM " +
             "IDN_OAUTH2_AUTHORIZATION_CODE";
 
     public static final String UPDATE_USER_NAME_AUTHORIZATION_CODE = "UPDATE IDN_OAUTH2_AUTHORIZATION_CODE SET " +

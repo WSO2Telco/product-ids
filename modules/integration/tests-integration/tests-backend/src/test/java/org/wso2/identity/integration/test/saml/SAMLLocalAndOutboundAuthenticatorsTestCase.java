@@ -84,7 +84,7 @@ public class SAMLLocalAndOutboundAuthenticatorsTestCase extends ISIntegrationTes
     private static final String COMMON_AUTH_URL = "https://localhost:" + CommonConstants.IS_DEFAULT_HTTPS_PORT +
             "/commonauth";
     private static final String ACCOUNT_LOCK_CLAIM_URI = "http://wso2.org/claims/identity/accountLocked";
-    private static  final String GOOGLE_AUTHENTICATOR = "GoogleOIDCAuthenticator";
+    private static final String GOOGLE_AUTHENTICATOR = "GoogleOIDCAuthenticator";
 
     private ServerConfigurationManager serverConfigurationManager;
     private SPConfig config;
@@ -308,7 +308,7 @@ public class SAMLLocalAndOutboundAuthenticatorsTestCase extends ISIntegrationTes
             response = sendPostMessage(sessionKey);
             EntityUtils.consume(response.getEntity());
             redirectUrl = Utils.getRedirectUrl(response);
-            Assert.assertTrue(StringUtils.contains(redirectUrl,config.getUser().getExpectedErrorcode()));
+            Assert.assertTrue(StringUtils.contains(redirectUrl, config.getUser().getExpectedErrorcode()));
         } catch (Exception e) {
             Assert.fail("SAML SSO Logout test failed for " + config, e);
         }
@@ -356,10 +356,11 @@ public class SAMLLocalAndOutboundAuthenticatorsTestCase extends ISIntegrationTes
 
         try {
             // creating the user
-            if(!remoteUSMServiceClient.isExistingUser(config.getUser().getTenantAwareUsername())) {
+            if (!remoteUSMServiceClient.isExistingUser(config.getUser().getTenantAwareUsername())) {
                 switch (config.getUser()) {
                     case SUPER_TENANT_USER:
-                        remoteUSMServiceClient.addUser(config.getUser().getTenantAwareUsername(), config.getUser().getPassword(), null, null, profileName, true);
+                        remoteUSMServiceClient.addUser(config.getUser().getTenantAwareUsername(), config.getUser()
+                                .getPassword(), null, null, profileName, true);
                         break;
                     case SUPER_TENANT_LOCKED_USER:
                         ClaimValue[] claimValues = new ClaimValue[1];
@@ -368,7 +369,8 @@ public class SAMLLocalAndOutboundAuthenticatorsTestCase extends ISIntegrationTes
                         accountLockClaim.setClaimURI(ACCOUNT_LOCK_CLAIM_URI);
                         accountLockClaim.setValue(Boolean.TRUE.toString());
                         claimValues[0] = accountLockClaim;
-                        remoteUSMServiceClient.addUser(config.getUser().getTenantAwareUsername(), config.getUser().getPassword(), null, claimValues, profileName, true);
+                        remoteUSMServiceClient.addUser(config.getUser().getTenantAwareUsername(), config.getUser()
+                                .getPassword(), null, claimValues, profileName, true);
                         break;
                     case SUPER_TENANT_WRONG_CREDENTIAL_USER:
                         //user is already created. Will be tried out with wrong password.
@@ -508,8 +510,8 @@ public class SAMLLocalAndOutboundAuthenticatorsTestCase extends ISIntegrationTes
 
     }
 
-    private HttpResponse sendPostMessage(String sessionKey) throws Exception{
-        switch (config.getUser()){
+    private HttpResponse sendPostMessage(String sessionKey) throws Exception {
+        switch (config.getUser()) {
             case SUPER_TENANT_USER:
                 return Utils.sendPOSTMessage(sessionKey, COMMON_AUTH_URL, USER_AGENT, ACS_URL, config.getApplication()
                         .getArtifact(), config.getUser().getUsername(), config.getUser().getPassword(), httpClient);
@@ -536,6 +538,7 @@ public class SAMLLocalAndOutboundAuthenticatorsTestCase extends ISIntegrationTes
     /**
      * Create the AdvancedAuthenticator with Multi options.
      * Use any attributes needed if needed to do multiple tests with different advanced authenticators.
+     *
      * @throws Exception
      */
     private void createAdvanceAuthenticatorWithMultiOptions() throws Exception {
@@ -569,6 +572,7 @@ public class SAMLLocalAndOutboundAuthenticatorsTestCase extends ISIntegrationTes
     private void createLocalAuthenticator() {
         // This method needed to be implemented as expected for the testcase
     }
+
     private Property[] getGoogleIDPConfigurationProperties() {
 
         Property[] configProperties = new Property[4];

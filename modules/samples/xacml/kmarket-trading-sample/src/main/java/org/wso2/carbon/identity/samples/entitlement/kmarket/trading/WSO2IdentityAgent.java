@@ -76,8 +76,8 @@ public class WSO2IdentityAgent {
     public WSO2IdentityAgent(Properties properties) {
 
         String unProcessedServerUrl = properties.getProperty(Constants.AgentConstants.SERVER_URL);
-        if(unProcessedServerUrl != null){
-            if(unProcessedServerUrl.endsWith("/")){
+        if (unProcessedServerUrl != null) {
+            if (unProcessedServerUrl.endsWith("/")) {
                 serverUrl = unProcessedServerUrl;
             } else {
                 serverUrl = unProcessedServerUrl + "/";
@@ -85,28 +85,28 @@ public class WSO2IdentityAgent {
         }
 
         String password = properties.getProperty(Constants.AgentConstants.SERVER_PASSWORD);
-        if(password != null && password.trim().length() > 0){
+        if (password != null && password.trim().length() > 0) {
             serverPassword = password;
         }
 
-        String userName  = properties.getProperty(Constants.AgentConstants.SERVER_USER_NAME);
-        if(userName != null && userName.trim().length() > 0){
+        String userName = properties.getProperty(Constants.AgentConstants.SERVER_USER_NAME);
+        if (userName != null && userName.trim().length() > 0) {
             serverUserName = userName;
         }
 
         String trustStore = properties.getProperty(Constants.AgentConstants.TRUST_STORE_FILE);
-        if(trustStore == null || trustStore.trim().length() == 0){
-            try{
-                trustStore =  (new File(".")).getCanonicalPath() + File.separator +
-                                                 "src" + File.separator + "main" + File.separator +
-                                                 "resources" + File.separator + "wso2carbon.jks";
+        if (trustStore == null || trustStore.trim().length() == 0) {
+            try {
+                trustStore = (new File(".")).getCanonicalPath() + File.separator +
+                        "src" + File.separator + "main" + File.separator +
+                        "resources" + File.separator + "wso2carbon.jks";
             } catch (IOException e) {
-                e.printStackTrace(); 
+                e.printStackTrace();
             }
         }
 
         String trustStorePassword = properties.getProperty(Constants.AgentConstants.TRUST_STORE_PASSWORD);
-        if(trustStorePassword == null || trustStorePassword.trim().length() == 0){
+        if (trustStorePassword == null || trustStorePassword.trim().length() == 0) {
             trustStorePassword = "wso2carbon";
         }
 
@@ -116,7 +116,7 @@ public class WSO2IdentityAgent {
          * trust store.
          * Following code sets what trust-store to look for and its JKs password.
          */
-        System.setProperty("javax.net.ssl.trustStore",  trustStore );
+        System.setProperty("javax.net.ssl.trustStore", trustStore);
 
         System.setProperty("javax.net.ssl.trustStorePassword", trustStorePassword);
 
@@ -132,7 +132,7 @@ public class WSO2IdentityAgent {
              * Create a configuration context. A configuration context contains information for
              * axis2 environment. This is needed to create an axis2 service client
              */
-            configContext = ConfigurationContextFactory.createConfigurationContextFromFileSystem( null, null);
+            configContext = ConfigurationContextFactory.createConfigurationContextFromFileSystem(null, null);
 
             /**
              * Setting basic auth headers for authentication for carbon server
@@ -180,18 +180,18 @@ public class WSO2IdentityAgent {
     }
 
 
-    public boolean authenticate(String userName, String password){
+    public boolean authenticate(String userName, String password) {
 
         try {
 
-             /**
+            /**
              * Setting a authenticated cookie that is received from Carbon server.
              * If you have authenticated with Carbon server earlier, you can use that cookie, if
              * it has not been expired
              */
             adminStub._getServiceClient().getOptions().setProperty(HTTPConstants.COOKIE_STRING, authCookie);
             return adminStub.authenticate(userName, password);
-            
+
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -200,11 +200,11 @@ public class WSO2IdentityAgent {
 
     }
 
-    public String authorize(String xacmlRequest){
+    public String authorize(String xacmlRequest) {
 
         try {
 
-             /**
+            /**
              * Setting a authenticated cookie that is received from Carbon server.
              * If you have authenticated with Carbon server earlier, you can use that cookie, if
              * it has not been expired
@@ -220,19 +220,20 @@ public class WSO2IdentityAgent {
 
     }
 
-    public String uploadPolicy(String policyId, String policy){
+    public String uploadPolicy(String policyId, String policy) {
 
         try {
 
-             /**
+            /**
              * Setting a authenticated cookie that is received from Carbon server.
              * If you have authenticated with Carbon server earlier, you can use that cookie, if
              * it has not been expired
              */
-            entitlementPolicyServiceStub._getServiceClient().getOptions().setProperty(HTTPConstants.COOKIE_STRING, authCookie);
+            entitlementPolicyServiceStub._getServiceClient().getOptions().setProperty(HTTPConstants.COOKIE_STRING,
+                    authCookie);
 
             PolicyDTO policyDTO = entitlementPolicyServiceStub.getPolicy(policyId);
-            if(policyDTO != null){
+            if (policyDTO != null) {
                 System.out.println("Policy is already exist in the PDP : " + policyId);
             } else {
                 policyDTO = new PolicyDTO();
@@ -250,32 +251,33 @@ public class WSO2IdentityAgent {
         return null;
     }
 
-    public String setUpUserAndRoles(){
+    public String setUpUserAndRoles() {
 
         try {
 
-             /**
+            /**
              * Setting a authenticated cookie that is received from Carbon server.
              * If you have authenticated with Carbon server earlier, you can use that cookie, if
              * it has not been expired
              */
             adminStub._getServiceClient().getOptions().setProperty(HTTPConstants.COOKIE_STRING, authCookie);
-            String[] users = new String[] {"bob", "alice", "peter"};
-            for(String user : users){
-                if(adminStub.isExistingUser(user)){
+            String[] users = new String[]{"bob", "alice", "peter"};
+            for (String user : users) {
+                if (adminStub.isExistingUser(user)) {
                     System.out.println("User is already exist in the primary user store : " + user);
                 } else {
-                    adminStub.addUser(user, "wso2123@IS", null, null,null, false);
-                    System.out.println("User " + user + " is added in to primary user store with password : wso2123@IS");
+                    adminStub.addUser(user, "wso2123@IS", null, null, null, false);
+                    System.out.println("User " + user + " is added in to primary user store with password : " +
+                            "wso2123@IS");
                 }
             }
 
-            String[] roles = new String[] {"gold", "sliver", "blue"};
-            for(int i = 0; i < roles.length; i ++){
-                if(adminStub.isExistingRole(roles[i])){
+            String[] roles = new String[]{"gold", "sliver", "blue"};
+            for (int i = 0; i < roles.length; i++) {
+                if (adminStub.isExistingRole(roles[i])) {
                     System.out.println("Role is already exist in the primary user store : " + roles[i]);
                 } else {
-                    adminStub.addRole(roles[i], new String[] {users[i]}, null);
+                    adminStub.addRole(roles[i], new String[]{users[i]}, null);
                     System.out.println("Role " + roles[i] + " is added in to primary user store." +
                             " And " + users[i] + " is assigned");
                 }

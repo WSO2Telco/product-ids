@@ -35,48 +35,48 @@ public class UserProfileAdminTestCase extends ISIntegrationTest {
     private UserManagementClient userMgtClient;
     private AuthenticatorClient logManger;
     private String userId1 = "UserProfileAdminTestUser1";
-    
+
     @BeforeClass(alwaysRun = true)
     public void testInit() throws Exception {
         super.init();
         logManger = new AuthenticatorClient(backendURL);
-        
+
         userProfileMgtClient = new UserProfileMgtServiceClient(backendURL, sessionCookie);
         userMgtClient = new UserManagementClient(backendURL, sessionCookie);
-        
+
         userMgtClient.addUser(userId1, "passWord1@", new String[]{"admin"}, "default");
     }
-    
+
     @AfterClass(alwaysRun = true)
     public void atEnd() throws Exception {
         userMgtClient.deleteUser(userId1);
         logManger = null;
 
     }
-    
+
     @Test(priority = 1, groups = "wso2.is", description = "Check get user profiles")
     public void testGetUserProfiles() throws Exception {
         UserProfileDTO[] profiles = userProfileMgtClient.getUserProfiles(userId1);
         String profile = null;
-        
+
         for (UserProfileDTO userProfileDTO : profiles) {
-			profile = userProfileDTO.getProfileName();
-		}
+            profile = userProfileDTO.getProfileName();
+        }
         Assert.assertEquals(profile, "default", "Getting user profiles has failed.");
     }
-    
+
     @Test(priority = 2, groups = "wso2.is", description = "Check get user profile")
     public void testGetUserProfile() throws Exception {
         UserProfileDTO profile = userProfileMgtClient.getUserProfile(userId1, "default");
-        UserFieldDTO[] fields = profile.getFieldValues(); 
+        UserFieldDTO[] fields = profile.getFieldValues();
         String displayValue = null;
-        
+
         for (UserFieldDTO field : fields) {
-        	if("Last Name".equals(field.getDisplayName())){
-        		displayValue = field.getFieldValue();
-        		break;
-        	}
-		}
+            if ("Last Name".equals(field.getDisplayName())) {
+                displayValue = field.getFieldValue();
+                break;
+            }
+        }
         Assert.assertTrue(userId1.equals(displayValue), "Getting user profile has failed.");
     }
 
@@ -89,8 +89,8 @@ public class UserProfileAdminTestCase extends ISIntegrationTest {
     @Test(priority = 3, groups = "wso2.is", description = "Check set user profiles")
     public void testSetUserProfile() throws Exception {
         logManger.login(isServer.getSuperTenant().getTenantAdmin().getUserName(),
-                        isServer.getSuperTenant().getTenantAdmin().getPassword(),
-                        isServer.getInstance().getHosts().get("default"));
+                isServer.getSuperTenant().getTenantAdmin().getPassword(),
+                isServer.getInstance().getHosts().get("default"));
         UserProfileDTO profile = new UserProfileDTO();
         profile.setProfileName("default");
 

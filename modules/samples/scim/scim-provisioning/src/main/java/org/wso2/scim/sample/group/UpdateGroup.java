@@ -36,7 +36,7 @@ import java.io.UnsupportedEncodingException;
 import java.util.List;
 
 public class UpdateGroup {
-    
+
     public static void main(String[] args) {
 
         try {

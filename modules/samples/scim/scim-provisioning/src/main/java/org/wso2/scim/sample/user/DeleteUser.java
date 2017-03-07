@@ -37,7 +37,7 @@ import java.io.UnsupportedEncodingException;
 import java.util.List;
 
 public class DeleteUser {
-    
+
     public static void main(String[] args) {
 
         try {
@@ -54,7 +54,7 @@ public class DeleteUser {
             //add authorization header
             String authHeader = SCIMSamplesUtils.getAuthorizationHeader();
             deleteMethod.addRequestHeader(SCIMConstants.AUTHORIZATION_HEADER, authHeader);
-            
+
             HttpClient httpDeleteClient = new HttpClient();
             int deleteResponseStatus = httpDeleteClient.executeMethod(deleteMethod);
             String deleteResponse = deleteMethod.getResponseBodyAsString();

@@ -61,7 +61,8 @@ public class IdentityProviderMgtServiceTestCase extends ISIntegrationTest {
     @BeforeClass(alwaysRun = true)
     public void testInit() throws Exception {
         super.init();
-        ConfigurationContext configContext = ConfigurationContextFactory.createConfigurationContextFromFileSystem(null, null);
+        ConfigurationContext configContext = ConfigurationContextFactory.createConfigurationContextFromFileSystem
+                (null, null);
         idpMgtServiceClient = new IdentityProviderMgtServiceClient(sessionCookie, backendURL, configContext);
     }
 
@@ -120,10 +121,12 @@ public class IdentityProviderMgtServiceTestCase extends ISIntegrationTest {
         log.info("Provisioning configs : " + provisioningConfigs.length);
 
         //check default identity provider name
-        Assert.assertEquals(idProvider.getIdentityProviderName(), "LOCAL", "Default resident identity provider name changed");
+        Assert.assertEquals(idProvider.getIdentityProviderName(), "LOCAL", "Default resident identity provider name " +
+                "changed");
 
         //check Default number of authentication configurations
-        Map<String, FederatedAuthenticatorConfig> fedAuthConfigMap = new HashMap<String, FederatedAuthenticatorConfig>();
+        Map<String, FederatedAuthenticatorConfig> fedAuthConfigMap = new HashMap<String,
+                FederatedAuthenticatorConfig>();
         for (FederatedAuthenticatorConfig config : authConfigs) {
             fedAuthConfigMap.put(config.getName(), config);
         }
@@ -134,7 +137,8 @@ public class IdentityProviderMgtServiceTestCase extends ISIntegrationTest {
         Assert.assertEquals(fedAuthConfigMap.containsKey("passivests"), true, "Default auth config not found");
 
         //check Default number of provisioning configurations
-        Map<String, ProvisioningConnectorConfig> provisioningConfigMap = new HashMap<String, ProvisioningConnectorConfig>();
+        Map<String, ProvisioningConnectorConfig> provisioningConfigMap = new HashMap<String,
+                ProvisioningConnectorConfig>();
         for (ProvisioningConnectorConfig config : provisioningConfigs) {
             provisioningConfigMap.put(config.getName(), config);
         }
@@ -262,7 +266,8 @@ public class IdentityProviderMgtServiceTestCase extends ISIntegrationTest {
         //idp auto enabled
         Assert.assertEquals(addedIdp.getEnable(), true, "addIdP : idp enable failed");
 
-        Assert.assertEquals(addedIdp.getIdentityProviderDescription(), testIdpDescription, "addIdP : setting description failed");
+        Assert.assertEquals(addedIdp.getIdentityProviderDescription(), testIdpDescription, "addIdP : setting " +
+                "description failed");
         Assert.assertEquals(addedIdp.getFederationHub(), false, "addIdP : setting federation hub status failed");
         Assert.assertEquals(addedIdp.getPrimary(), false, "addIdP : setting primary status failed");
 
@@ -270,13 +275,16 @@ public class IdentityProviderMgtServiceTestCase extends ISIntegrationTest {
         FederatedAuthenticatorConfig[] addedFedAuth = addedIdp.getFederatedAuthenticatorConfigs();
 
         Assert.assertNotNull(addedFedAuth, "federated authenticator not found");
-        Assert.assertEquals(addedFedAuth.length, 1, "addIdP : deviation from expected number of federated authenticators");
-        Assert.assertEquals(addedFedAuth[0].getName(), testFedAuthName, "addIdP : federated authenticator name setting failed");
+        Assert.assertEquals(addedFedAuth.length, 1, "addIdP : deviation from expected number of federated " +
+                "authenticators");
+        Assert.assertEquals(addedFedAuth[0].getName(), testFedAuthName, "addIdP : federated authenticator name " +
+                "setting failed");
 
         Property[] fedAuthProps = addedFedAuth[0].getProperties();
 
         Assert.assertNotNull(fedAuthProps, "addIdP : federated authenticator properties not found");
-        Assert.assertEquals(fedAuthProps.length, 3, "addIdP : Deviation of expected number of authenticator properties");
+        Assert.assertEquals(fedAuthProps.length, 3, "addIdP : Deviation of expected number of authenticator " +
+                "properties");
 
         Map<String, Property> propertyMap = new HashMap<String, Property>();
 
@@ -285,26 +293,27 @@ public class IdentityProviderMgtServiceTestCase extends ISIntegrationTest {
         }
 
         Assert.assertEquals(propertyMap.containsKey(testFedAuthPropName), true,
-                            "addIdP : federated authenticator property not found");
+                "addIdP : federated authenticator property not found");
         Assert.assertEquals(propertyMap.get(testFedAuthPropName).getValue(), testFedAuthPropValue,
-                            "Deviation of federated authenticator property value");
+                "Deviation of federated authenticator property value");
         Assert.assertEquals(propertyMap.containsKey(testFedAuthPropName2), true,
-                            "addIdP : federated authenticator property not found");
+                "addIdP : federated authenticator property not found");
         Assert.assertEquals(propertyMap.get(testFedAuthPropName2).getValue(), testFedAuthPropValue2,
-                            "Deviation of federated authenticator property value");
+                "Deviation of federated authenticator property value");
         Assert.assertEquals(propertyMap.containsKey(testFedAuthPropName3), true,
-                            "addIdP : federated authenticator property not found");
+                "addIdP : federated authenticator property not found");
         Assert.assertEquals(propertyMap.get(testFedAuthPropName3).getValue(), testFedAuthPropValue3,
-                            "Deviation of federated authenticator property value");
+                "Deviation of federated authenticator property value");
         propertyMap.clear();
 
         //check provisioning connector configs
         ProvisioningConnectorConfig[] provisioningConfigs = addedIdp.getProvisioningConnectorConfigs();
 
         Assert.assertNotNull(provisioningConfigs, "addIdP : provisioning connector not found");
-        Assert.assertEquals(provisioningConfigs.length, 1, "addIdP : Provisioning configuration property adding failed");
+        Assert.assertEquals(provisioningConfigs.length, 1, "addIdP : Provisioning configuration property adding " +
+                "failed");
         Assert.assertEquals(provisioningConfigs[0].getName(), testProvisionConfName,
-                            "addIdP : Provisioning configuration name setting failed");
+                "addIdP : Provisioning configuration name setting failed");
 
         Property[] provisioningProps = provisioningConfigs[0].getProvisioningProperties();
 
@@ -316,20 +325,21 @@ public class IdentityProviderMgtServiceTestCase extends ISIntegrationTest {
         }
 
         Assert.assertEquals(propertyMap.containsKey(testProvisionPropName), true,
-                            "addIdP : Provisioning configuration property not found : " + testProvisionPropName);
+                "addIdP : Provisioning configuration property not found : " + testProvisionPropName);
         Assert.assertEquals(propertyMap.get(testProvisionPropName).getValue(), testProvisionPropValue,
-                            "addIdP : Provisioning configuration property value failed : " + testProvisionPropName);
+                "addIdP : Provisioning configuration property value failed : " + testProvisionPropName);
         Assert.assertEquals(propertyMap.containsKey(testProvisionPropName2), true,
-                            "addIdP : Provisioning configuration property not found : " + testProvisionPropName2);
+                "addIdP : Provisioning configuration property not found : " + testProvisionPropName2);
         Assert.assertEquals(propertyMap.get(testProvisionPropName2).getValue(), testProvisionPropValue2,
-                            "addIdP : Provisioning configuration property value failed : " + testProvisionPropName2);
+                "addIdP : Provisioning configuration property value failed : " + testProvisionPropName2);
         Assert.assertEquals(propertyMap.containsKey(testProvisionPropName3), true,
-                            "addIdP : Provisioning configuration property not found : " + testProvisionPropName3);
+                "addIdP : Provisioning configuration property not found : " + testProvisionPropName3);
         Assert.assertTrue(propertyMap.get(testProvisionPropName3).getValue().contains(RANDOM_PASSWORD_GENERATED),
-                            "addIdP : Provisioning configuration property value failed : " + testProvisionPropName3);
+                "addIdP : Provisioning configuration property value failed : " + testProvisionPropName3);
 
         //check jit
-        Assert.assertEquals(addedIdp.getJustInTimeProvisioningConfig().getProvisioningEnabled(), true, "addIdP : JIT enabling failed");
+        Assert.assertEquals(addedIdp.getJustInTimeProvisioningConfig().getProvisioningEnabled(), true, "addIdP : JIT " +
+                "enabling failed");
 
     }
 
@@ -402,15 +412,21 @@ public class IdentityProviderMgtServiceTestCase extends ISIntegrationTest {
         IdentityProvider updatedProvider = idpMgtServiceClient.getIdPByName(updatedTestIdpName);
 
         Assert.assertNotNull(updatedProvider, "Idp update failed");
-        Assert.assertEquals(updatedProvider.getIdentityProviderDescription(), updatedTestIdpDescription, "IDP description update failed");
+        Assert.assertEquals(updatedProvider.getIdentityProviderDescription(), updatedTestIdpDescription, "IDP " +
+                "description update failed");
         Assert.assertEquals(updatedProvider.getIdentityProviderName(), updatedTestIdpName, "IDP name update failed");
         Assert.assertEquals(updatedProvider.getEnable(), false, "idp disabling failed");
 
-        Assert.assertNotNull(updatedProvider.getFederatedAuthenticatorConfigs(), "Federated authenticator retrieval failed");
-        Assert.assertEquals(updatedProvider.getFederatedAuthenticatorConfigs().length, 1, "Deviation of expected number of federated authenticators");
-        Assert.assertEquals(updatedProvider.getFederatedAuthenticatorConfigs()[0].getName(), testFedAuthName, "Incorrect federated authenticated received");
-        Assert.assertEquals(updatedProvider.getFederatedAuthenticatorConfigs()[0].getEnabled(), false, "federated authenticator enabling failed");
-        Assert.assertEquals(updatedProvider.getFederatedAuthenticatorConfigs()[0].getValid(), true, "Set validate status failed");
+        Assert.assertNotNull(updatedProvider.getFederatedAuthenticatorConfigs(), "Federated authenticator retrieval " +
+                "failed");
+        Assert.assertEquals(updatedProvider.getFederatedAuthenticatorConfigs().length, 1, "Deviation of expected " +
+                "number of federated authenticators");
+        Assert.assertEquals(updatedProvider.getFederatedAuthenticatorConfigs()[0].getName(), testFedAuthName,
+                "Incorrect federated authenticated received");
+        Assert.assertEquals(updatedProvider.getFederatedAuthenticatorConfigs()[0].getEnabled(), false, "federated " +
+                "authenticator enabling failed");
+        Assert.assertEquals(updatedProvider.getFederatedAuthenticatorConfigs()[0].getValid(), true, "Set validate " +
+                "status failed");
 
     }
 
@@ -425,35 +441,40 @@ public class IdentityProviderMgtServiceTestCase extends ISIntegrationTest {
             Assert.fail("Default provisioning connectors not available");
         }
         //check current default provisioning connectors
-        Assert.assertEquals(provisioningCons.containsKey("googleapps"), true, "Default provisioning connector googleapps not found");
-        Assert.assertEquals(provisioningCons.containsKey("salesforce"), true, "Default provisioning connector salesforce not found");
-        Assert.assertEquals(provisioningCons.containsKey("scim"), true, "Default provisioning connector scim not found");
-        Assert.assertEquals(provisioningCons.containsKey("spml"), true, "Default provisioning connector spml not found");
+        Assert.assertEquals(provisioningCons.containsKey("googleapps"), true, "Default provisioning connector " +
+                "googleapps not found");
+        Assert.assertEquals(provisioningCons.containsKey("salesforce"), true, "Default provisioning connector " +
+                "salesforce not found");
+        Assert.assertEquals(provisioningCons.containsKey("scim"), true, "Default provisioning connector scim not " +
+                "found");
+        Assert.assertEquals(provisioningCons.containsKey("spml"), true, "Default provisioning connector spml not " +
+                "found");
     }
 
 
     @Test(priority = 7, groups = "wso2.is", description = "test getAllFederatedAuthenticators operation")
     public void testGetAllFederatedAuthenticators() throws Exception {
-        Map<String, FederatedAuthenticatorConfig> allFedAuthenticators = idpMgtServiceClient.getAllAvailableFederatedAuthenticators();
+        Map<String, FederatedAuthenticatorConfig> allFedAuthenticators = idpMgtServiceClient
+                .getAllAvailableFederatedAuthenticators();
         Assert.assertNotNull(allFedAuthenticators, "getAllFederatedAuthenticators retrieval failed");
 
         log.info("Available federated authenticators : " + allFedAuthenticators.size());
 
         //check current default federated authenticators
         Assert.assertEquals(allFedAuthenticators.containsKey("FacebookAuthenticator"), true,
-                            "Default federated authenticator FacebookAuthenticator not found");
+                "Default federated authenticator FacebookAuthenticator not found");
         Assert.assertEquals(allFedAuthenticators.containsKey("OpenIDConnectAuthenticator"), true,
-                            "Default federated authenticator OpenIDConnectAuthenticator not found");
+                "Default federated authenticator OpenIDConnectAuthenticator not found");
         Assert.assertEquals(allFedAuthenticators.containsKey("MicrosoftWindowsLiveAuthenticator"), true,
-                            "Default federated authenticator MicrosoftWindowsLiveAuthenticator not found");
+                "Default federated authenticator MicrosoftWindowsLiveAuthenticator not found");
         Assert.assertEquals(allFedAuthenticators.containsKey("OpenIDAuthenticator"), true,
-                            "Default federated authenticator OpenIDAuthenticator not found");
+                "Default federated authenticator OpenIDAuthenticator not found");
         Assert.assertEquals(allFedAuthenticators.containsKey("YahooOAuth2Authenticator"), true,
-                            "Default federated authenticator YahooOAuth2Authenticator not found");
+                "Default federated authenticator YahooOAuth2Authenticator not found");
         Assert.assertEquals(allFedAuthenticators.containsKey("SAMLSSOAuthenticator"), true,
-                            "Default federated authenticator SAMLSSOAuthenticator not found");
+                "Default federated authenticator SAMLSSOAuthenticator not found");
         Assert.assertEquals(allFedAuthenticators.containsKey("GoogleOIDCAuthenticator"), true,
-                            "Default federated authenticator GoogleOIDCAuthenticator     not found");
+                "Default federated authenticator GoogleOIDCAuthenticator     not found");
     }
 
     @Test(priority = 7, groups = "wso2.is", description = "test getAllLocalClaimUris operation")
@@ -518,7 +539,8 @@ public class IdentityProviderMgtServiceTestCase extends ISIntegrationTest {
                 for (Property prop : fedConfig.getProperties()) {
                     if (prop.getName().equals(SAML2SSO_IDP_ENTITY_ID)) {
                         found = true;
-                        Assert.assertEquals(prop.getValue(), samlEntityId, "Updating federated authenticator property failed");
+                        Assert.assertEquals(prop.getValue(), samlEntityId, "Updating federated authenticator property" +
+                                " failed");
                         break;
                     }
                 }

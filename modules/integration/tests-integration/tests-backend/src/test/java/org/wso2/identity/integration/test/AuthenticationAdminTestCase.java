@@ -45,11 +45,11 @@ public class AuthenticationAdminTestCase {
 
     @BeforeClass(groups = {"wso2.is"})
     public void setUp() {
-        ClientConnectionUtil.waitForPort(CommonConstants.IS_DEFAULT_HTTPS_PORT,"localhost");
+        ClientConnectionUtil.waitForPort(CommonConstants.IS_DEFAULT_HTTPS_PORT, "localhost");
     }
 
-    @Test (groups = "wso2.is")
-    public void testAdminLogin() throws Exception{
+    @Test(groups = "wso2.is")
+    public void testAdminLogin() throws Exception {
 
         boolean b = login("admin", "admin");
         Assert.assertTrue(b, "Admin should be able to login.");
@@ -72,10 +72,11 @@ public class AuthenticationAdminTestCase {
 
     /**
      * Relevant Carbon Jira - https://wso2.org/jira/browse/CARBON-11225
+     *
      * @throws Exception If an error occurred while creating AuthenticationAdmin stub.
      */
-    @Test (groups = "wso2.is")
-    public void testWildCardAdminLogin() throws Exception{
+    @Test(groups = "wso2.is")
+    public void testWildCardAdminLogin() throws Exception {
 
         boolean b = login("admin*", "admin");
         Assert.assertFalse(b, "Admin* should not be able to login.");

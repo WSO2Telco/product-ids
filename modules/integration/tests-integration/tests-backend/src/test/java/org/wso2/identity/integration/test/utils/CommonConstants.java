@@ -29,7 +29,7 @@ public class CommonConstants {
     public static final String USER_DOES_NOT_EXIST = "17001";
     public static final String INVALID_CREDENTIAL = "17002";
     public static final String USER_IS_LOCKED = "17003";
-    public static final String BASIC_AUTHENTICATOR="BasicAuthenticator";
+    public static final String BASIC_AUTHENTICATOR = "BasicAuthenticator";
     public static final String USER_AGENT_HEADER = "User-Agent";
 
     public enum AdminClients {
@@ -37,7 +37,6 @@ public class CommonConstants {
         APPLICATION_MANAGEMENT_SERVICE_CLIENT,
         USER_MANAGEMENT_CLIENT
     }
-
 
 
 }

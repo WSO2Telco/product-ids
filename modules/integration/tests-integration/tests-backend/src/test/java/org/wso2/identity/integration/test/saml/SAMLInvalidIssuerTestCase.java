@@ -117,14 +117,14 @@ public class SAMLInvalidIssuerTestCase extends ISIntegrationTest {
                     // got a redirect resp, but no location header
                     throw new ProtocolException(
                             "Received redirect resp " + response.getStatusLine()
-                            + " but no location header");
+                                    + " but no location header");
                 }
 
                 URL url = null;
                 try {
                     url = new URL(locationHeader.getValue());
                     if (SAML_ERROR_NOTIFICATION_PATH.equals(url.getPath()) &&
-                        url.getQuery().contains("SAMLResponse")) {
+                            url.getQuery().contains("SAMLResponse")) {
                         isSAMLReturned = true;
                     }
                 } catch (MalformedURLException e) {
@@ -164,7 +164,7 @@ public class SAMLInvalidIssuerTestCase extends ISIntegrationTest {
     }
 
     @Test(alwaysRun = true, description = "Testing SAML SSO login", groups = "wso2.is",
-          priority = 1)
+            priority = 1)
     public void testSAMLSSOLogin() {
         try {
             HttpResponse response;
@@ -178,7 +178,7 @@ public class SAMLInvalidIssuerTestCase extends ISIntegrationTest {
             sendRedirectRequest(response);
 
             Assert.assertTrue(isSAMLReturned,
-                              "Sending SAML response to the samlsso_notification page failed");
+                    "Sending SAML response to the samlsso_notification page failed");
 
         } catch (Exception e) {
             Assert.fail("SAML SSO Login test failed.", e);
@@ -211,10 +211,10 @@ public class SAMLInvalidIssuerTestCase extends ISIntegrationTest {
 
     private void setSystemProperties() {
         URL resourceUrl = getClass().getResource(File.separator + "keystores" + File.separator
-                                                 + "products" + File.separator + "wso2carbon.jks");
+                + "products" + File.separator + "wso2carbon.jks");
         System.setProperty("javax.net.ssl.trustStore", resourceUrl.getPath());
         System.setProperty("javax.net.ssl.trustStorePassword",
-                           "wso2carbon");
+                "wso2carbon");
         System.setProperty("javax.net.ssl.trustStoreType", "JKS");
     }
 
@@ -303,8 +303,8 @@ public class SAMLInvalidIssuerTestCase extends ISIntegrationTest {
         try {
             // creating the user
             remoteUSMServiceClient.addUser(USERNAME, PASSWORD,
-                                           null, getUserClaims(),
-                                           profileName, true);
+                    null, getUserClaims(),
+                    profileName, true);
         } catch (Exception e) {
             Assert.fail("Error while creating the user", e);
         }

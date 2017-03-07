@@ -54,7 +54,7 @@ public class CaResources {
             "FIHfm62Gq5FGxYdUsqpNT4CMtzfOLRVns7+tJXmmVRcIfi+Qye0ywsN0JS/9Y+ay\n" +
             "NdaQZY8p+S3a0XOADgLF7Hw+ZAzO\n" +
             "-----END CERTIFICATE REQUEST-----";
-    public static final String csr3 ="-----BEGIN CERTIFICATE REQUEST-----\n" +
+    public static final String csr3 = "-----BEGIN CERTIFICATE REQUEST-----\n" +
             "MIICqjCCAZICADBmMQswCQYDVQQGEwJVUzESMBAGA1UEAxMJdGVzdC5pbmZvMQsw\n" +
             "CQYDVQQHEwJTQTESMBAGA1UEChMJdGVzdC5pbmZvMQswCQYDVQQIEwJUWDEVMBMG\n" +
             "A1UECxMMdGVzdC5pbmZvLk9VMIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKC\n" +
@@ -72,7 +72,7 @@ public class CaResources {
             "b+6fxfyMEKwIziZJGb4=\n" +
             "-----END CERTIFICATE REQUEST-----";
 
-    public static class RevokeReason{
+    public static class RevokeReason {
         public static final int REVOCATION_REASON_UNSPECIFIED_VAL = 0;
         public static final int REVOCATION_REASON_KEYCOMPROMISE_VAL = 1;
         public static final int REVOCATION_REASON_CACOMPROMISE_VAL = 2;
@@ -86,13 +86,13 @@ public class CaResources {
         public static final int REVOCATION_REASON_AACOMPROMISE_VAL = 10;
     }
 
-    public static class CsrStatus{
+    public static class CsrStatus {
         public static final String PENDING = "PENDING";
         public static final String SIGNED = "SIGNED";
         public static final String REJECTED = "REJECTED";
     }
 
-    public static class CertificateStatus{
+    public static class CertificateStatus {
         public static final String ACTIVE = "ACTIVE";
         public static final String REVOKED = "REVOKED";
     }

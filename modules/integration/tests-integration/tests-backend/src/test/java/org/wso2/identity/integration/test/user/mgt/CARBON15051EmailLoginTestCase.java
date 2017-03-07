@@ -55,9 +55,11 @@ public class CARBON15051EmailLoginTestCase extends ISIntegrationTest {
     public void testInit() throws Exception {
 
         super.init(TestUserMode.SUPER_TENANT_ADMIN);
-        String pathToCarbonXML = FrameworkPathUtil.getSystemResourceLocation() + "artifacts" + File.separator + "IS" + File.separator +
-                                 "userMgt" + File.separator + "carbon15051" + File.separator + "carbon.xml";
-        String targetCarbonXML = CarbonUtils.getCarbonHome() + "repository" + File.separator + "conf" + File.separator + "carbon.xml";
+        String pathToCarbonXML = FrameworkPathUtil.getSystemResourceLocation() + "artifacts" + File.separator + "IS"
+                + File.separator +
+                "userMgt" + File.separator + "carbon15051" + File.separator + "carbon.xml";
+        String targetCarbonXML = CarbonUtils.getCarbonHome() + "repository" + File.separator + "conf" + File
+                .separator + "carbon.xml";
         serverConfigurationManager = new ServerConfigurationManager(isServer);
         serverConfigurationManager.applyConfiguration(new File(pathToCarbonXML), new File(targetCarbonXML));
 
@@ -65,7 +67,8 @@ public class CARBON15051EmailLoginTestCase extends ISIntegrationTest {
         String pathToUserMgtXML = FrameworkPathUtil.getSystemResourceLocation() + "artifacts" + File.separator + "IS" +
                 File.separator +
                 "userMgt" + File.separator + "carbon15051" + File.separator + "user-mgt.xml";
-        String targetUserMgtXML = CarbonUtils.getCarbonHome() + "repository" + File.separator + "conf" + File.separator + "user-mgt.xml";
+        String targetUserMgtXML = CarbonUtils.getCarbonHome() + "repository" + File.separator + "conf" + File
+                .separator + "user-mgt.xml";
         serverConfigurationManager.applyConfiguration(new File(pathToUserMgtXML), new File(targetUserMgtXML));
 
         super.init(TestUserMode.SUPER_TENANT_ADMIN);
@@ -88,7 +91,7 @@ public class CARBON15051EmailLoginTestCase extends ISIntegrationTest {
     public void testLoginWithEmail() throws Exception {
         this.loginLogoutClient.login();
         String backendURL = isServer.getContextUrls().getBackEndUrl();
-        login("admin", "admin",  backendURL);
+        login("admin", "admin", backendURL);
         login("admin@carbon.super", "admin", backendURL);
         login("user1@test.com", "passWord1@", backendURL);
         login("user1@test.com@carbon.super", "passWord1@", backendURL);
@@ -100,8 +103,9 @@ public class CARBON15051EmailLoginTestCase extends ISIntegrationTest {
      *
      * @return The session cookie on successful login
      */
-    private String login(String username, String password, String backendUrl) throws LoginAuthenticationExceptionException, IOException, XMLStreamException,
-                                                                                     URISyntaxException, SAXException, XPathExpressionException {
+    private String login(String username, String password, String backendUrl) throws
+            LoginAuthenticationExceptionException, IOException, XMLStreamException,
+            URISyntaxException, SAXException, XPathExpressionException {
         AuthenticatorClient authenticatorClient = new AuthenticatorClient(backendUrl);
         return authenticatorClient.login(username, password, new URL(backendUrl).getHost());
     }

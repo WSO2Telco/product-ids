@@ -34,72 +34,74 @@ import org.wso2.carbon.utils.CarbonUtils;
 
 public class ReadOnlyLdapBasedUserMgtTestCase extends UserMgtServiceAbstractTestCase {
 
-	private static final Log log = LogFactory.getLog(ReadOnlyLdapBasedUserMgtTestCase.class);
-	private ServerConfigurationManager scm;
-	private File userMgtServerFile;
+    private static final Log log = LogFactory.getLog(ReadOnlyLdapBasedUserMgtTestCase.class);
+    private ServerConfigurationManager scm;
+    private File userMgtServerFile;
 
-	@SetEnvironment(executionEnvironments = { ExecutionEnvironment.STANDALONE})
-	@BeforeClass(alwaysRun = true)
-	public void testInit() throws Exception {
-		super.testInit();
-
-		String carbonHome = CarbonUtils.getCarbonHome();
-		userMgtServerFile = new File(carbonHome + File.separator + "repository" + File.separator
-				+ "conf" + File.separator + "user-mgt.xml");
-		File userMgtConfigFile = new File(getISResourceLocation() + File.separator + "userMgt"
-				+ File.separator + "readOnlyLdapUserMgtConfig.xml");
-
-		scm = new ServerConfigurationManager(isServer);
-		scm.applyConfigurationWithoutRestart(userMgtConfigFile, userMgtServerFile, true);
-		scm.restartGracefully();
-		super.testInit();
-
-		userMgtClient.addUser("user1", "passWord1@", null, "default");
-		userMgtClient.addRole("umRole1", null, new String[] { "/permission/admin/login" }, false);
-	}
-
-	@AfterClass(alwaysRun = true)
-	public void atEnd() throws Exception {
-
-		if (userNameExists(userMgtClient.listUsers("user1", 100), "user1")) {
-			userMgtClient.deleteUser("user1");
-		}
-
-		if (nameExists(userMgtClient.getAllRolesNames("umRole1", 100), "umRole1")) {
-			userMgtClient.deleteRole("umRole1");
-		}
-		if (nameExists(userMgtClient.getAllRolesNames("umRole2", 100), "umRole2")) {
-			userMgtClient.deleteRole("umRole2");
-		}
-
-		// Reset the user-mgt.xml configuration.
-		File userMgtDefaultFile = new File(getISResourceLocation() + File.separator + "userMgt"
-				+ File.separator + "default-user-mgt.xml");
-		scm.applyConfigurationWithoutRestart(userMgtDefaultFile, userMgtServerFile, true);
-		scm.restartGracefully();
-
-	}
-	
     @SetEnvironment(executionEnvironments = {ExecutionEnvironment.STANDALONE})
-	@Test(groups = "wso2.is", description = "Get all the role names")
-    public void testGetAllRoleNames() throws Exception {	
+    @BeforeClass(alwaysRun = true)
+    public void testInit() throws Exception {
+        super.testInit();
+
+        String carbonHome = CarbonUtils.getCarbonHome();
+        userMgtServerFile = new File(carbonHome + File.separator + "repository" + File.separator
+                + "conf" + File.separator + "user-mgt.xml");
+        File userMgtConfigFile = new File(getISResourceLocation() + File.separator + "userMgt"
+                + File.separator + "readOnlyLdapUserMgtConfig.xml");
+
+        scm = new ServerConfigurationManager(isServer);
+        scm.applyConfigurationWithoutRestart(userMgtConfigFile, userMgtServerFile, true);
+        scm.restartGracefully();
+        super.testInit();
+
+        userMgtClient.addUser("user1", "passWord1@", null, "default");
+        userMgtClient.addRole("umRole1", null, new String[]{"/permission/admin/login"}, false);
+    }
+
+    @AfterClass(alwaysRun = true)
+    public void atEnd() throws Exception {
+
+        if (userNameExists(userMgtClient.listUsers("user1", 100), "user1")) {
+            userMgtClient.deleteUser("user1");
+        }
+
+        if (nameExists(userMgtClient.getAllRolesNames("umRole1", 100), "umRole1")) {
+            userMgtClient.deleteRole("umRole1");
+        }
+        if (nameExists(userMgtClient.getAllRolesNames("umRole2", 100), "umRole2")) {
+            userMgtClient.deleteRole("umRole2");
+        }
+
+        // Reset the user-mgt.xml configuration.
+        File userMgtDefaultFile = new File(getISResourceLocation() + File.separator + "userMgt"
+                + File.separator + "default-user-mgt.xml");
+        scm.applyConfigurationWithoutRestart(userMgtDefaultFile, userMgtServerFile, true);
+        scm.restartGracefully();
+
+    }
+
+    @SetEnvironment(executionEnvironments = {ExecutionEnvironment.STANDALONE})
+    @Test(groups = "wso2.is", description = "Get all the role names")
+    public void testGetAllRoleNames() throws Exception {
 //		TODO - Why read only admin role non-exists?
-		Assert.assertTrue(nameExists(userMgtClient.getAllRolesNames("admin", 100), "admin"), "Getting all user role names has failed.");
+        Assert.assertTrue(nameExists(userMgtClient.getAllRolesNames("admin", 100), "admin"), "Getting all user role " +
+                "names has failed.");
     }
-	
+
     @SetEnvironment(executionEnvironments = {ExecutionEnvironment.STANDALONE})
-    @Test(groups = "wso2.is", description = "Check role addition", dependsOnMethods="testGetAllRoleNames")
-    public void testAddRole() throws Exception{
-    	userMgtClient.addRole("umRole2", null, new String[]{"login"}, false);
-    	Assert.assertFalse(nameExists(userMgtClient.listRoles("umRole2", 100), "umRole2"), "User should not be added when " +
-				"user store is read only");
+    @Test(groups = "wso2.is", description = "Check role addition", dependsOnMethods = "testGetAllRoleNames")
+    public void testAddRole() throws Exception {
+        userMgtClient.addRole("umRole2", null, new String[]{"login"}, false);
+        Assert.assertFalse(nameExists(userMgtClient.listRoles("umRole2", 100), "umRole2"), "User should not be added " +
+                "when " +
+                "user store is read only");
     }
-    
+
     @SetEnvironment(executionEnvironments = {ExecutionEnvironment.STANDALONE})
-    @Test(groups = "wso2.is", description = "Check delete role", dependsOnMethods="testAddRole")
-	public void testDeleteRole() throws Exception {
-    	userMgtClient.deleteRole("admin");
+    @Test(groups = "wso2.is", description = "Check delete role", dependsOnMethods = "testAddRole")
+    public void testDeleteRole() throws Exception {
+        userMgtClient.deleteRole("admin");
 //    	TODO - Assert for an existing user role when getAllRoleNames passes above.
-    	Assert.assertFalse(nameExists(userMgtClient.getAllRolesNames("admin", 100), "admin"), "Deleting the added user role has failed");
-	}
+        Assert.assertFalse(nameExists(userMgtClient.getAllRolesNames("admin", 100), "admin"), "Deleting the added user role has failed");
+    }
 }

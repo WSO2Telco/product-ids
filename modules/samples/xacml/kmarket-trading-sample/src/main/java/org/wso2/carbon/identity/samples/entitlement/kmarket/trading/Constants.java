@@ -18,7 +18,7 @@
 package org.wso2.carbon.identity.samples.entitlement.kmarket.trading;
 
 /**
- * 
+ *
  */
 public class Constants {
 

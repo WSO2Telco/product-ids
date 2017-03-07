@@ -92,7 +92,7 @@ public class OIDCUser {
 
     public void addRole(String role) {
         List<String> roles = getRoles();
-        if (!roles.contains(role)){
+        if (!roles.contains(role)) {
             roles.add(role);
         }
     }

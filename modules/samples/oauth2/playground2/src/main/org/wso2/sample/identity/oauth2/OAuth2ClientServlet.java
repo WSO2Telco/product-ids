@@ -35,79 +35,79 @@ import javax.servlet.http.HttpServletResponse;
 
 // This is the servlet which handles OAuth callbacks.
 public class OAuth2ClientServlet extends HttpServlet {
-	/**
-	 * 
-	 */
-	private static final long serialVersionUID = -5587487420597790757L;
-	
-	static String userName;
-	static String password;
-	static String serverUrl;
-	
+    /**
+     *
+     */
+    private static final long serialVersionUID = -5587487420597790757L;
 
-	@Override
-	public void init(ServletConfig config) throws ServletException {
+    static String userName;
+    static String password;
+    static String serverUrl;
 
-		// All the code below is to overcome host name verification failure we get in certificate
-		// validation due to self-signed certificate. This code should not be used in a production
-		// setup.
 
-		try {
+    @Override
+    public void init(ServletConfig config) throws ServletException {
 
-			SSLContext sc;
+        // All the code below is to overcome host name verification failure we get in certificate
+        // validation due to self-signed certificate. This code should not be used in a production
+        // setup.
 
-			// Get SSL context
-			sc = SSLContext.getInstance("SSL");
+        try {
 
-			// Create empty HostnameVerifier
-			HostnameVerifier hv = new HostnameVerifier() {
-				public boolean verify(String urlHostName, SSLSession session) {
-					return true;
-				}
-			};
+            SSLContext sc;
 
-			// Create a trust manager that does not validate certificate chains
-			TrustManager[] trustAllCerts = new TrustManager[] { new X509TrustManager() {
-				public java.security.cert.X509Certificate[] getAcceptedIssuers() {
-					return null;
-				}
+            // Get SSL context
+            sc = SSLContext.getInstance("SSL");
 
-				public void checkClientTrusted(java.security.cert.X509Certificate[] certs,
-						String authType) {
-				}
+            // Create empty HostnameVerifier
+            HostnameVerifier hv = new HostnameVerifier() {
+                public boolean verify(String urlHostName, SSLSession session) {
+                    return true;
+                }
+            };
 
-				public void checkServerTrusted(java.security.cert.X509Certificate[] certs,
-						String authType) {
-				}
-			} };
+            // Create a trust manager that does not validate certificate chains
+            TrustManager[] trustAllCerts = new TrustManager[]{new X509TrustManager() {
+                public java.security.cert.X509Certificate[] getAcceptedIssuers() {
+                    return null;
+                }
 
-			sc.init(null, trustAllCerts, new java.security.SecureRandom());
-			//SSLSocketFactory sslSocketFactory = sc.getSocketFactory();
+                public void checkClientTrusted(java.security.cert.X509Certificate[] certs,
+                                               String authType) {
+                }
 
-			//HttpsURLConnection.setDefaultSSLSocketFactory(sslSocketFactory);
+                public void checkServerTrusted(java.security.cert.X509Certificate[] certs,
+                                               String authType) {
+                }
+            }};
+
+            sc.init(null, trustAllCerts, new java.security.SecureRandom());
+            //SSLSocketFactory sslSocketFactory = sc.getSocketFactory();
+
+            //HttpsURLConnection.setDefaultSSLSocketFactory(sslSocketFactory);
             SSLContext.setDefault(sc);
-			HttpsURLConnection.setDefaultHostnameVerifier(hv);
-			
-			// Load init parameters.			
-			userName = config.getInitParameter("userName");
-			password = config.getInitParameter("password");
-			serverUrl = config.getInitParameter("serverUrl");
+            HttpsURLConnection.setDefaultHostnameVerifier(hv);
 
-		} catch (Exception e) {
-			throw new ServletException(e);
-		}
-	}
+            // Load init parameters.
+            userName = config.getInitParameter("userName");
+            password = config.getInitParameter("password");
+            serverUrl = config.getInitParameter("serverUrl");
 
-	@Override
-	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException,
-			IOException {
-		RequestDispatcher dispatcher = req.getRequestDispatcher("oauth2.jsp");
-		dispatcher.forward(req, resp);
-	}
+        } catch (Exception e) {
+            throw new ServletException(e);
+        }
+    }
 
-	@Override
-	protected void doPost(HttpServletRequest req, HttpServletResponse resp)
-			throws ServletException, IOException {
-		doGet(req, resp);
-	}
+    @Override
+    protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException,
+            IOException {
+        RequestDispatcher dispatcher = req.getRequestDispatcher("oauth2.jsp");
+        dispatcher.forward(req, resp);
+    }
+
+    @Override
+    protected void doPost(HttpServletRequest req, HttpServletResponse resp)
+            throws ServletException, IOException {
+        doGet(req, resp);
+    }
 }
