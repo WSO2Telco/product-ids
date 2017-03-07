@@ -433,7 +433,7 @@ CREATE TABLE `prompt_configuration` (
   `prompt_value` varchar(255) NOT NULL,
   `is_login_hint_exists` TINYINT DEFAULT 0,
   `behaviour` varchar(255),
-  PRIMARY KEY (scope, prompt_value)
+  PRIMARY KEY (scope, prompt_value, is_login_hint_exists)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 --
