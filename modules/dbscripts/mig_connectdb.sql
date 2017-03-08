@@ -488,6 +488,18 @@ INSERT INTO `scope_supp_login_hint_format`(param_id,format_id) VALUES(3,1);
 INSERT INTO `scope_supp_login_hint_format`(param_id,format_id) VALUES(4,1);
 INSERT INTO `scope_supp_login_hint_format`(param_id,format_id) VALUES(5,1);
 
+INSERT INTO `scope_supp_login_hint_format`(param_id,format_id) VALUES(1,2);
+INSERT INTO `scope_supp_login_hint_format`(param_id,format_id) VALUES(2,2);
+INSERT INTO `scope_supp_login_hint_format`(param_id,format_id) VALUES(3,2);
+INSERT INTO `scope_supp_login_hint_format`(param_id,format_id) VALUES(4,2);
+INSERT INTO `scope_supp_login_hint_format`(param_id,format_id) VALUES(5,2);
+
+INSERT INTO `scope_supp_login_hint_format`(param_id,format_id) VALUES(1,3);
+INSERT INTO `scope_supp_login_hint_format`(param_id,format_id) VALUES(2,3);
+INSERT INTO `scope_supp_login_hint_format`(param_id,format_id) VALUES(3,3);
+INSERT INTO `scope_supp_login_hint_format`(param_id,format_id) VALUES(4,3);
+INSERT INTO `scope_supp_login_hint_format`(param_id,format_id) VALUES(5,3);
+
 DROP TABLE IF EXISTS `sms_hashkey_contextid_mapping`;
 CREATE TABLE `sms_hashkey_contextid_mapping` (
   `hashkey` varchar(255) DEFAULT NULL,
