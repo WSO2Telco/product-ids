@@ -438,12 +438,12 @@ CREATE TABLE `prompt_configuration` (
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 INSERT INTO prompt_configuration VALUES ('openid', 'login', 1, 'OFFNET_TRUST_LOGIN_HINT'),
-('openid', 'noseam', 1, 'OFFNET_TRUST_LOGIN_HINT'),
-('mnv', 'noseam', 1, 'OFFNET'),
-('mc_mnv_validate', 'noseam', 1, 'OFFNET'),
-('mc_india_tc', 'noseam', 1, 'OFFNET'),
-('mc_mnv_validate_plus', 'noseam', 1, 'OFFNET'),
-('openid', 'noseam', 0, 'OFFNET');
+('openid', 'no_seam', 1, 'OFFNET_TRUST_LOGIN_HINT'),
+('mnv', 'no_seam', 1, 'OFFNET'),
+('mc_mnv_validate', 'no_seam', 1, 'OFFNET'),
+('mc_india_tc', 'no_seam', 1, 'OFFNET'),
+('mc_mnv_validate_plus', 'no_seam', 1, 'OFFNET'),
+('openid', 'no_seam', 0, 'OFFNET');
 --
 -- Table structure for table `login_hint_format`
 --
