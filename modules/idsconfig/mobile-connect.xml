@@ -40,6 +40,25 @@
             <ConnectTimeout>60</ConnectTimeout>
             <ConnectionRequestTimeout>30</ConnectionRequestTimeout>
         </TimeoutConfig>
+        <WelcomeMessageDisabled>true</WelcomeMessageDisabled>
+        <DefaultWelcomeMessage>Welcome to Mobile Connect - a simple and safer way to login which is always free. Please visit
+            http://mobileconnect.in to know more.</DefaultWelcomeMessage>
+        <OperatorWelcomeMessage>
+            <Operator>
+                <Name>tatadocomo</Name>
+                <Message>TataDocomo welcomes you on Mobile Connect - a simple and safer way to login which is always free. Please
+                    visit http://mobileconnect.in to know more.
+                </Message>
+                <Disabled>false</Disabled>
+            </Operator>
+            <Operator>
+                <Name>spark</Name>
+                <Message>Spark welcomes you on Mobile Connect - a simple and safer way to login which is always free. Please visit
+                    http://mobileconnect.in to know more.
+                </Message>
+                <Disabled>true</Disabled>
+            </Operator>
+        </OperatorWelcomeMessage>
     </SMS>
     <TimeoutConfig>
         <SocketTimeout>60</SocketTimeout>
