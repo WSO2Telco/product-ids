@@ -136,7 +136,7 @@ INSERT INTO scope_parameter(param_id,scope,is_login_hint_mandatory,is_header_msi
 VALUES(4,'mc_mnv_validate_plus',1,1,0,'ERROR_RETURN','BREAK');
 
 INSERT INTO scope_parameter(param_id,scope,is_login_hint_mandatory,is_header_msisdn_mandatory,is_tnc_visible,msisdn_mismatch_result,he_failure_result)
-VALUES(5,'mc_india_tc',1,0,1,'OFFNET_FALLBACK_TRUST_LOGINHINT','TRUST_LOGINHINT_MSISDN');
+VALUES(5,'mnv_tc',1,0,1,'OFFNET_FALLBACK_TRUST_LOGINHINT','TRUST_LOGINHINT_MSISDN');
 
 --
 -- Table structure for table `login_hint_format`
