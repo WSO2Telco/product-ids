@@ -423,7 +423,7 @@ INSERT INTO scope_parameter(param_id,scope,is_login_hint_mandatory,is_header_msi
 VALUES(4,'mc_mnv_validate_plus',1,1,0,'ERROR_RETURN','BREAK');
 
 INSERT INTO scope_parameter(param_id,scope,is_login_hint_mandatory,is_header_msisdn_mandatory,is_tnc_visible,msisdn_mismatch_result,he_failure_result)
-VALUES(5,'mc_india_tc',1,0,1,'OFFNET_FALLBACK_TRUST_LOGINHINT','TRUST_LOGINHINT_MSISDN');
+VALUES(5,'mnv_tc',1,0,1,'OFFNET_FALLBACK_TRUST_LOGINHINT','TRUST_LOGINHINT_MSISDN');
 
 
 DROP TABLE IF EXISTS `prompt_configuration`;
@@ -442,7 +442,7 @@ INSERT INTO prompt_configuration VALUES ('openid', 'login', 1, 'OFFNET_TRUST_LOG
 ('openid', 'no_seam', 1, 'OFFNET_TRUST_LOGIN_HINT'),
 ('mnv', 'no_seam', 1, 'OFFNET'),
 ('mc_mnv_validate', 'no_seam', 1, 'OFFNET'),
-('mc_india_tc', 'no_seam', 1, 'OFFNET'),
+('mnv_tc', 'no_seam', 1, 'OFFNET'),
 ('mc_mnv_validate_plus', 'no_seam', 1, 'OFFNET'),
 ('openid', 'no_seam', 0, 'OFFNET');
 --
