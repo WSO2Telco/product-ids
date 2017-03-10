@@ -294,11 +294,12 @@ CREATE TABLE `sp_login_history` (
 DROP TABLE IF EXISTS `sp_configuration`;
 
 CREATE TABLE `sp_configuration` (
-  `client_id` varchar(100) NOT NULL DEFAULT '',
-  `config_key` varchar(100) NOT NULL DEFAULT '',
-  `config_value` varchar(255) NOT NULL DEFAULT '',
-  PRIMARY KEY (`client_id`,`config_key`,`config_value`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+ `client_id` varchar(100) NOT NULL,
+ `config_key` varchar(100) NOT NULL,
+ `config_value` varchar(255) NOT NULL,
+ `operator` varchar(100) NOT NULL DEFAULT 'ALL',
+ PRIMARY KEY (`client_id`,`config_key`,`config_value`,`operator`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 |
 
 DROP TABLE IF EXISTS `allowed_authenticators_sp`;
 
