@@ -25,10 +25,23 @@
         <Endpoint>http://localhost:9763/ussdstub/v1/outbound</Endpoint>   <!--https://URL to APIM:8243/smsmessaging/v1/outbound/8899/requests -->
         <AuthToken>4442137174b27a9837e745c711f4e31</AuthToken>
         <AuthUrl>http://localhost:9763/authenticationendpoint/sms</AuthUrl>
-        <MessageContentFirst>To login to</MessageContentFirst>    <!-- The message content for sms authentication -->
-        <MessageContent>, follow this link</MessageContent>  <!-- The message content for sms authentication -->
-        <MessageContentLast>Do not share as it is unique to you.
-        </MessageContentLast>   <!-- The message content for sms authentication -->
+
+        <LoginMessage>To login to ${application}, follow this link &#xA; Do not share as it is unique to you. &#xA; ${link}</LoginMessage>
+        <RegistrationMessage>To registration to ${application}, follow this link &#xA; Do not share as it is unique to you. &#xA; ${link}</RegistrationMessage>
+        <OperatorSpecificMessages> <!-- Contains operator specific ussd messages -->
+            <OperatorSpecificMessage operator="op1">
+                <!-- ${application} is replaced with the application name -->
+                <!-- ${link} is replaced with the login url -->
+                <LoginMessage>op1 To login to ${application}, follow this link &#xA; Do not share as it is unique to you. &#xA; ${link}</LoginMessage>
+                <RegistrationMessage>op1 To register to ${application}, follow this link &#xA; Do not share as it is unique to you. &#xA; ${link}</RegistrationMessage>
+            </OperatorSpecificMessage>
+            <OperatorSpecificMessage operator="op2">
+                <!-- ${application} is replaced with the application name -->
+                <!-- ${link} is replaced with the login url -->
+                <LoginMessage>op1 To login to ${application}, follow this link &#xA; Do not share as it is unique to you. &#xA; ${link}</LoginMessage>
+            </OperatorSpecificMessage>
+        </OperatorSpecificMessages>
+
         <AesKey>wso2encryptdecyt</AesKey>
         <IsShortUrl>true</IsShortUrl>   <!-- ENABLE DISABLE external url shortening service usage-->
         <ShortUrlClass>com.wso2telco.gsma.shorten.BitlyUrlShorten</ShortUrlClass>
