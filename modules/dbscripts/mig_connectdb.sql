@@ -404,6 +404,7 @@ CREATE TABLE `scope_parameter` (
   `is_tnc_visible` TINYINT DEFAULT 0,
   `msisdn_mismatch_result` varchar(255),
   `he_failure_result` varchar(255),
+  `is_multiscope` TINYINT DEFAULT 0,
   PRIMARY KEY (`param_id`),
   UNIQUE(`scope`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
