@@ -441,11 +441,11 @@ CREATE TABLE `prompt_configuration` (
 
 INSERT INTO prompt_configuration VALUES ('openid', 'login', 1, 'OFFNET_TRUST_LOGIN_HINT'),
 ('openid', 'no_seam', 1, 'OFFNET_TRUST_LOGIN_HINT'),
-('mnv', 'no_seam', 1, 'OFFNET'),
-('mc_mnv_validate', 'no_seam', 1, 'OFFNET'),
-('mnv_tc', 'no_seam', 1, 'OFFNET'),
-('mc_mnv_validate_plus', 'no_seam', 1, 'OFFNET'),
-('openid', 'no_seam', 0, 'OFFNET');
+('mnv', 'no_seam', 1, 'OFFNET_TRUST_LOGIN_HINT'),
+('mc_mnv_validate', 'no_seam', 1, 'OFFNET_TRUST_LOGIN_HINT'),
+('mnv_tc', 'no_seam', 1, 'OFFNET_TRUST_LOGIN_HINT'),
+('mc_mnv_validate_plus', 'no_seam', 1, 'OFFNET_TRUST_LOGIN_HINT'),
+('openid', 'no_seam', 0, 'OFFNET_TRUST_LOGIN_HINT');
 --
 -- Table structure for table `login_hint_format`
 --
