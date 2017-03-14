@@ -299,7 +299,7 @@ CREATE TABLE `sp_configuration` (
  `config_value` varchar(255) NOT NULL,
  `operator` varchar(100) NOT NULL DEFAULT 'ALL',
  PRIMARY KEY (`client_id`,`config_key`,`config_value`,`operator`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1 |
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 DROP TABLE IF EXISTS `allowed_authenticators_sp`;
 
