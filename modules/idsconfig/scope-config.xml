@@ -23,14 +23,12 @@
 			<Name>phone</Name>
 			<Claims>
 				<ClaimValue>phone_number</ClaimValue>	
-				<ClaimValue>phone_number_verified</ClaimValue>
 			</Claims>
 	 	</Scope>
 		<Scope>
 			<Name>email</Name>
 			<Claims>
 				<ClaimValue>email</ClaimValue>	
-				<ClaimValue>email_verified</ClaimValue>
 			</Claims>
 	 	</Scope>
 		<Scope>
@@ -48,7 +46,7 @@
         <Scope>
             <Name>openid</Name>
             <Claims>
-                <ClaimValue>phone_number</ClaimValue>
+                <ClaimValue>msisdn</ClaimValue>
             </Claims>
         </Scope>
 	</Scopes> 
