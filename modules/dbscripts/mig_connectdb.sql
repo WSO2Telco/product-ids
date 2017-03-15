@@ -439,7 +439,7 @@ INSERT INTO scope_parameter(param_id,scope,is_multiscope)
 VALUES(9,'address',1);
 
 INSERT INTO scope_parameter(param_id,scope,is_multiscope)
-VALUES(9,'mc_identity_phonenumber_hashed',1);
+VALUES(10,'mc_identity_phonenumber_hashed',1);
 
 
 DROP TABLE IF EXISTS `prompt_configuration`;
