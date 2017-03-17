@@ -1,6 +1,5 @@
-===============================
-Welcome to WSO2 Identity Server
-===============================
+
+# Welcome to WSO2Telco Mobile Identity Gateway
 
 ---
 
@@ -18,54 +17,40 @@ supported through SCIM and SPML.
 
 This is based on the revolutionary WSO2 Carbon framework. All the major features have been developed as pluggable Carbon components.
 
-New Features
-============
+## New Features
 
-*   Workflow support for Identity Server
+### Dynamic Authenticator Selection with MNO and SP Level Configuration
 
-        Engage workflows for any user/role operations carried out using WSO2 IS Management Console.
-        For example, when a new user gets registered with WSO2 IS, a workflow will automatically be triggered and
-        s/he will be assigned to a particular user role.
+* LOA based authenticator configuration capability which was available with MIG release 2.0.1 has been further expanded
+in this release  where it is possible to restrict globally applicable LOA based authenticator configurations on MNO or SP basis,
+by configuring  a subset of LOA based authenticators as per the requirement.
 
-*   FIDO compliance
+### Enhanced Security with IP Validation for Header Enrichment Authenticator
 
-    Fast Identity Online (FIDO) is a specification developed to reduce the reliance on password for user
-    authentication. The standard will enable any Web/cloud application to interface with a variety of FIDO-enabled
-    security devices.
+* To mitigate the risk of Man-In-The-Middle attack, in spoofing Header Enrichment,  MNO level source IP validation 
+functionality has been introduced. This feature introduces the capability of off net fallback in instances of validation failure.
 
-*   Link multiple user accounts
+### Custom Scope Configuration Support
 
-    In cases where users will have multiple entries in their respective user stores, to avoid requiring multiple
-    logins to an application to obtain a fully privileged view for a single user's details, we now support merging
-    of multiple user profiles.
+* This new feature allows MNOs to define custom authentication flows based on a set of defined parameters. 
+Triggering of the custom flow can be done by specifying respective custom scope’s name as the value of the scope parameter of the authentication request. 
 
-*   PATCH operation support for SCIM 1.1
+    * Scope Name
+    * Login Hint Mandatory or Optional
+    * Header MSISDN Mandatory or Optional
+    * Terms and Conditions - whether consent is required or not for a new registration
+    * Action at Header MSISDN and Login Hint Mismatch (Eg. Fallback to Off-Net/Break)
+    * Action at IP validation failure for Header Enrichment Authentication (Eg. Fallback to off-net/break)
+    * Example of custom flows
+        
+        |  Scope Name | login_hint mandatory | Header msisdn mandatory | T & C Required | At login_hint and header mismatch   | At IP Validation Failure
+        | :---------- |:-------------------- | :---------------------- | :------------- | :--------------------------------   | :-----------------------------------------------
+        | mnv         | Yes                  | No                      | No             | Break                               | Fallback offnet trusting login_hint
+        | mnv_tc      | Yes                  | No                      | Yes            | Fallback offnet trusting login_hint | Fallback offnet trusting login_hint
+        | mnv_plus    | Yes                  | Yes                     | No             | Break                               | Fallback offnet trusting login_hint
+        |  openid     | No                   | No                      | Yes            | N/A                                 | Fallback offnet untrusting header or login_hint
 
-    PUT supports the replace operation but not the update operation. Since group is a heavy resource, the
-    operation that alters without replacement (PATCH) needs to be implemented. If not each time a new user is
-    added to the group, all the users should be sent in the PUT request.</p>
-
-*   SAML 2.0 Bearer Token Renewal
-
-    In IS 5.0.0, STS feature supports renewing Bearer type SAML 1.1 tokens only;
-    attempts to renew Bearer type SAML 2.0 Tokens get failed. With IS 5.2.0 product will
-    facilitate renewing expired Bearer type SAML 2.0 Tokens.
-
-*   OpenID Connect Core 1.0 Compliance
-
-    The IS 5.0.0 had OpenID Support, however there were many points in the spec that were being violated.
-    Now that the specification is finalized we have made IS OpenID Connect support specification
-    compliant. A major improvement this area is support for IDToken response type from the
-    OpenID Connect authorization endpoint.
-
-*   Ability to notify external endpoints when changes are made to Identities</li>
-
-    @product.name@ is now able to send invalidation notifications to external endpoints when there is a change in user
-    roles, permissions or attributes as well as clear the internal cache when user roles, permissions or attributes
-    been updated
-
-Other Key Features
-=============
+### Other Key Features
 
 *  Dynamically discovered federation
 *  Identity Bridge - translation between heterogeneous Identity authentication protocols
@@ -125,7 +110,7 @@ Project Resources
 
 * Home page          : http://wso2.com/products/identity-server
 * Library            : http://wso2.org/library/identity
-* Wiki               : http://docs.wso2.org/wiki/display/IS510/WSO2+Identity+Server+Documentation
+* Wiki               : http://docs.wso2telco.com/display/MIG210/
 * JIRA-Issue Tracker : https://wso2.org/jira/browse/IDENTITY      
 * Forums             : http://stackoverflow.com/questions/tagged/wso2/
 * WSO2 Developer List: dev@wso2.org
@@ -141,7 +126,7 @@ Installation and Running
 5. For more information, see the Installation Guide
 
 
-WSO2 Identity Server Distribution Directory Structure
+WSO2 Telco Mobile Identity Gateway Distribution Directory Structure
 ==============================================
 
             CARBON_HOME
