@@ -1,92 +1,48 @@
 
 # Welcome to WSO2Telco Mobile Identity Gateway
 
----
+The WSO2.Telco Mobile Identity Gateway is a standalone solution capable of being the backbone of a fully integrated ID Strategy including SSO, federated 
+ID services and more. The ID Gateway is currently the only fully featured open source GSMA certified ID solution. MNO’s can freely download this component
+and deploy Mobile Connect or build a PoC by carrying out integrations to their network elements. Further SPs and enterprises can use this solution to implement 
+a federated ID solution for their own use.
 
-|  Branch | Build Status |
-| :------------ |:-------------
-| master      | [![Build Status](https://wso2.org/jenkins/job/product-is/badge/icon)](https://wso2.org/jenkins/job/product-is) |
-
-
----
-
-WSO2 Identity Server is an open source Identity and Entitlement management server. It supports a wide array of authentication 
-protocols such as SAML 2.0 Web SSO, OpenID, OAuth 2.0/1.0a, OpenID Connect and WS-Federation Passive. 
-It supports role based authorization and fined grained authorization with XACML 2.0/3.0 while inbound/outbound provisioning is 
-supported through SCIM and SPML.
+For Mobile Connect the WSO2.Telco Identity solution consists of authenticators for Levels of Assurance 2 and 3 (LOA2, LOA3) including Header enrichment, SMS,
+ USSD and Smartphone applications. The solution also works with third party SIM applets and is GSMA Mobile Connect, GSMA OneAPI V3 and ETSI 102.204 compliant.
 
 This is based on the revolutionary WSO2 Carbon framework. All the major features have been developed as pluggable Carbon components.
 
 ## New Features
 
-### Dynamic Authenticator Selection with MNO and SP Level Configuration
+* Dynamic Authenticator Selection with MNO and SP Level Configuration
 
-* LOA based authenticator configuration capability which was available with MIG release 2.0.1 has been further expanded
-in this release  where it is possible to restrict globally applicable LOA based authenticator configurations on MNO or SP basis,
-by configuring  a subset of LOA based authenticators as per the requirement.
+* Enhanced Security with IP Validation for Header Enrichment Authenticator
 
-### Enhanced Security with IP Validation for Header Enrichment Authenticator
+* Custom Scope Configuration Support
 
-* To mitigate the risk of Man-In-The-Middle attack, in spoofing Header Enrichment,  MNO level source IP validation 
-functionality has been introduced. This feature introduces the capability of off net fallback in instances of validation failure.
+* Scope Validation at SP Level
 
-### Custom Scope Configuration Support
+* Enhanced Configurability for USSD/SMS Messages
 
-* This new feature allows MNOs to define custom authentication flows based on a set of defined parameters. 
-Triggering of the custom flow can be done by specifying respective custom scope’s name as the value of the scope parameter of the authentication request. 
+* Configurable User Inputs for USSD Authenticator
 
-    * Scope Name
-    * Login Hint Mandatory or Optional
-    * Header MSISDN Mandatory or Optional
-    * Terms and Conditions - whether consent is required or not for a new registration
-    * Action at Header MSISDN and Login Hint Mismatch (Eg. Fallback to Off-Net/Break)
-    * Action at IP validation failure for Header Enrichment Authentication (Eg. Fallback to off-net/break)
-    * Example of custom flows
-        
-        |  Scope Name | login_hint mandatory | Header msisdn mandatory | T & C Required | At login_hint and header mismatch   | At IP Validation Failure
-        | :---------- |:-------------------- | :---------------------- | :------------- | :--------------------------------   | :-----------------------------------------------
-        | mnv         | Yes                  | No                      | No             | Break                               | Fallback offnet trusting login_hint
-        | mnv_tc      | Yes                  | No                      | Yes            | Fallback offnet trusting login_hint | Fallback offnet trusting login_hint
-        | mnv_plus    | Yes                  | Yes                     | No             | Break                               | Fallback offnet trusting login_hint
-        |  openid     | No                   | No                      | Yes            | N/A                                 | Fallback offnet untrusting header or login_hint
+* GSMA Standardized UUID Based PCR Support [Mobile Connect R2 feature]
+
+* Enhanced Compatibility to Support WSO2.Telco Smart Phone Authenticator App
+
+* WSO2 Data Analytics Server powered analytics
+
 
 ### Other Key Features
 
-*  Dynamically discovered federation
-*  Identity Bridge - translation between heterogeneous Identity authentication protocols
-*  SP Initiated and IDP Initiated SAML 2.0 Web Browser SSO provider</li>
-*  SAML2 Single Logout profile support
-*  OpenID 2.0 Provider
-*  OpenID Connect Authorization Server
-*  Social login with Facebook, Google, Yahoo and Windows Live
-*  XACML 3.0/2.0 based Entitlement Engine with WS-XACML support
-*  OAuth 2.0/1.0a Authorization Server with OAuth 2.0/1.0a support
-*  Inbound and Outbound Identity Provisioning with SCIM 1.1</li>
-*  Outbound Identiy Provisioning with SPML 2.0, Salesforce and GoogleApps
-*  Integrated Windows Authentication and webSEAL authentication
-*  Multi-option and multi-step (multi-factor) authentication
-*  Claim based Security Token Service(STS) with SAML 2.0/1.1 support.
-*  Support for various types of User Stores such as JDBC, Cassandra, LDAP, Active Directory in Read/Write mode.
-*  Claim Management
-*  User Profiles and Profile Management
-*  Separable front-end and back-end - a single front-end server can be used to administer several back-endservers
-*  Identity Bridge
-*  Multi-option and multi-step authentication
-*  Request Path Authenticators.
-*  Social Login with Facebook / Google / Microsoft Windows Live.
-*  Ability to plug-in custom developed authenticators.
-*  Provisioning Bridge.
-*  Just-in-time provisioning.</li>
-*  Ability to plug-in custom developed provisioning connectors.
-*  User Dashboard.
-*  SAML2 Web SSO profile Request / Response validator.
-*  Remote User Store Management.
-*  Custom permissions.
-*  Encrypted SAML2 Assertions.
-*  NTLM grant type for OAuth 2.0
-*  Workflows for user management operations
-*  2 factor authentication with FIDO
-*  Linking 2 or more local/federated user accounts
+* 100% open source
+
+* Fully GSMA MCX R1 compliant
+
+* Supported authenticators
+ 	- 	SMS OTP & Click OK URL
+	-	USSD Click OK and Enter PIN
+	-	Smartphone application or SDK
+	-	Supports third-party SIM applets via implementation of ETSI TS 102 204
 
 System Requirements
 ===================
@@ -99,21 +55,19 @@ System Requirements
 
 4. The Management Console requires full Javascript enablement of the Web browser.
 
-5. To build WSO2 Identity Server from the Source distribution, it is also necessary that you have Maven 3 or later.
+5. To build WSO2Telco Mobile Identity Gateway from the Source distribution, it is also necessary that you have Maven 3 or later.
 
 For more details see
-   http://docs.wso2.com/display/IS520/Installation+Prerequisites
+   http://docs.wso2telco.com/display/MIG210/Developer+Guide
 
 
 Project Resources
 =================
 
-* Home page          : http://wso2.com/products/identity-server
-* Library            : http://wso2.org/library/identity
-* Wiki               : http://docs.wso2telco.com/display/MIG210/
-* JIRA-Issue Tracker : https://wso2.org/jira/browse/IDENTITY      
-* Forums             : http://stackoverflow.com/questions/tagged/wso2/
-* WSO2 Developer List: dev@wso2.org
+* Home page          		: http://wso2telco.com/gateways/identity-gateway
+* Wiki               		: http://docs.wso2telco.com/display/MIG210/
+* JIRA-Issue Tracker 		: https://jira.wso2telco.com/jira/projects/IDSDEV      
+* WSO2.Telco  Developer List: dev@wso2telco.org
 
     
 Installation and Running
@@ -122,12 +76,11 @@ Installation and Running
 1. Extract the downloaded zip file
 2. Run the wso2server.sh or wso2server.bat file in the /bin directory
 3. Once the server starts, point your Web browser to https://localhost:9443/carbon/
-4. User dashboard is available at https://localhost:9443/dashboard
-5. For more information, see the Installation Guide
+4. For more information, see the Installation Guide
 
 
 WSO2 Telco Mobile Identity Gateway Distribution Directory Structure
-==============================================
+====================================================================
 
             CARBON_HOME
             ├── bin
@@ -211,58 +164,13 @@ WSO2 Telco Mobile Identity Gateway Distribution Directory Structure
     - release-notes.html
       Release information for WSO2 Carbon ${carbon.product.version}.
 
-Secure sensitive information in carbon configuration files
-----------------------------------------------------------
 
-There are sensitive information such as passwords in the carbon configuration. 
-You can secure them by using secure vault. Please go through following steps to 
-secure them with default mode. 
-
-1. Configure secure vault with default configurations by running ciphertool 
-	script from bin directory.  
-
-> ciphertool.sh -Dconfigure   (in UNIX)  
-
-This script would do following configurations that you need to do by manually 
-
-(i) Replaces sensitive elements in configuration files,  that have been defined in
-		 cipher-tool.properties, with alias token values.  
-(ii) Encrypts plain text password which is defined in cipher-text.properties file.
-(iii) Updates secret-conf.properties file with default keystore and callback class. 
-
-cipher-tool.properties, cipher-text.properties and secret-conf.properties files 
-			can be found at repository/conf/security directory. 
-
-2. Start server by running wso2server script from bin directory
-
-> wso2server.sh   (in UNIX)
-
-By default mode, it would ask you to enter the master password 
-(By default, master password is the password of carbon keystore and private key) 
-
-3. Change any password by running ciphertool script from bin directory.  
-
-> ciphertool -Dchange  (in UNIX)
-
-For more details see
-http://docs.wso2.org/wiki/display/Carbon420/WSO2+Carbon+Secure+Vault
 
 Support
 =======
-We are committed to ensuring that your enterprise middleware deployment is completely supported from
-evaluation to production. Our unique approach ensures that all support leverages our open development
-methodology and is provided by the very same engineers who build the technology.
+We are committed to ensuring that your enterprise middleware deployment is completely supported from evaluation to production. Our unique approach ensures that all support leverages our open development methodology and is provided by the very same engineers who build the technology.
 
-For more details and to take advantage of this unique opportunity, visit http://wso2.com/support/.
-
-
-For more information on WSO2 Carbon, visit the WSO2 Oxygen Tank (http://wso2.org)
-
-For more information about WSO2 Identity Server please see http://wso2.org/projects/identity or visit the
-WSO2 Oxygen Tank developer portal for addition resources.
-
-For further details, see the WSO2 Carbon documentation at
-http://docs.wso2.org/wiki/display/Carbon420/WSO2+Carbon+Documentation
+For more details and to take advantage of this unique opportunity please visit http://wso2telco.com/services.
 
 ---------------------------------------------------------------------------
-(c) Copyright 2016 WSO2 Inc.
+(c) Copyright 2017 WSO2Telco

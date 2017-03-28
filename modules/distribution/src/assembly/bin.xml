@@ -177,8 +177,8 @@
                 <include>authenticationendpoint.war</include>
                 <include>authproxy.war</include>
                 <include>sessionupdater.war</include>
-
-            </includes>
+                <include>saaserver.war</include>
+			</includes>
         </fileSet>
 
         <!--copy jaxrs web app for OAuth feature-->
