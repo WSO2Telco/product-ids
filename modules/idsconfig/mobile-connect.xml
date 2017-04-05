@@ -138,6 +138,17 @@
         <RegistrationEndpoint>http://localhost:9763/saaserver/services/serverAPI/api/v1/clients/{msisdn}/is_registered</RegistrationEndpoint>
         <PushServiceEndpoint>http://localhost:9763/saaserver/services/pushServiceAPI/client/{msisdn}/send</PushServiceEndpoint>
     </SAA>
+    <MePin>
+        <UserEnrollmentEndpoint></UserEnrollmentEndpoint>
+        <StatusCheckEndpoint></StatusCheckEndpoint>
+        <AuthEndpoint>https://api.mepin.com/4.0/s/endpoint</AuthEndpoint>
+        <Username>436d6d0ded33fb490838c56f200346bab14f594269a4747e2d645dc19a582824</Username>
+        <Password>0afaafe78234518b114241f5632ec26bb1b8786bee02db6e89e7bd6d3640dc1e6193e85dda6e32de647eed94909edc79e2f809ee9a5c10a08fff0aadbea0d3ff</Password>
+        <AccessToken>accesstoken</AccessToken>
+        <CreateTransactionEndpoint>https://api.mepin.com/transactions/create</CreateTransactionEndpoint>
+        <ClientId>815ed87f78f81f4e108650f0cbb98f46</ClientId>
+        <TestMsisdn></TestMsisdn> <!-- todo : remove this after the demo -->
+    </MePin>
     <MIFEOpenIDTokenBuilderConfig>
         <acrHostUri>https://localhost:9443/acrengine/</acrHostUri>
         <retrieveService>ACRRetrieveService/V1</retrieveService>
