@@ -147,7 +147,38 @@
         <AccessToken>accesstoken</AccessToken>
         <CreateTransactionEndpoint>https://api.mepin.com/transactions/create</CreateTransactionEndpoint>
         <ClientId>815ed87f78f81f4e108650f0cbb98f46</ClientId>
-        <TestMsisdn></TestMsisdn> <!-- todo : remove this after the demo -->
+        <TestMsisdns>
+            <TestMsisdn operator="m1">
+                <Msisdn>659684377</Msisdn>
+            </TestMsisdn>
+            <TestMsisdn operator="m1">
+                <Msisdn>6596830908</Msisdn>
+            </TestMsisdn>
+            <TestMsisdn operator="m1">
+                <Msisdn>6597620150</Msisdn>
+            </TestMsisdn>
+
+
+            <TestMsisdn operator="singtel">
+                <Msisdn>6590044697</Msisdn>
+            </TestMsisdn>
+            <TestMsisdn operator="singtel">
+                <Msisdn>6597809209</Msisdn>
+            </TestMsisdn>
+
+            <TestMsisdn operator="starhub">
+                <Msisdn>6591083698</Msisdn>
+            </TestMsisdn>
+            <TestMsisdn operator="starhub">
+                <Msisdn>6568255548</Msisdn>
+            </TestMsisdn>
+            <TestMsisdn operator="starhub">
+                <Msisdn>6598590345</Msisdn>
+            </TestMsisdn>
+            <TestMsisdn operator="starhub">
+                <Msisdn>6598590123</Msisdn>
+            </TestMsisdn>
+        </TestMsisdns>
     </MePin>
     <MIFEOpenIDTokenBuilderConfig>
         <acrHostUri>https://localhost:9443/acrengine/</acrHostUri>
