@@ -1,7 +1,7 @@
 
-DROP DATABASE  IF EXISTS  mig_connectdb_test;
-CREATE DATABASE mig_connectdb_test;
-USE mig_connectdb_test;
+DROP DATABASE  IF EXISTS  mig_connectdb;
+CREATE DATABASE mig_connectdb;
+USE mig_connectdb;
 
 
 
