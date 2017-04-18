@@ -1131,6 +1131,11 @@
                 <version>${com.wso2telco.core.version}</version>
             </dependency>
             <dependency>
+				<groupId>com.wso2telco.core</groupId>
+				<artifactId>com.wso2telco.core.spprovisionservice.feature</artifactId>
+				<version>${com.wso2telco.core.version}</version>
+			</dependency>
+            <dependency>
                 <groupId>com.wso2telco.core</groupId>
                 <artifactId>com.wso2telco.core.mncresolver.feature</artifactId>
                 <version>${com.wso2telco.core.version}</version>
@@ -1170,6 +1175,11 @@
                 <artifactId>com.wso2telco.ids.datapublisher.feature</artifactId>
                 <version>${com.wso2telco.ids.version}</version>
             </dependency>
+            <dependency>
+				<groupId>com.wso2telco.ids</groupId>
+				<artifactId>com.wso2telco.ids.spseamlessprovision.feature</artifactId>
+				<version>${com.wso2telco.ids.version}</version>
+			</dependency>
             <dependency>
                 <groupId>com.wso2telco.ids</groupId>
                 <artifactId>com.wso2telco.ids.openidtokenbuilder.feature</artifactId>
@@ -1362,8 +1372,8 @@
     <properties>
 
         <!-- Telco dependency's version-->
-        <com.wso2telco.ids.version>2.1.0</com.wso2telco.ids.version>
-        <com.wso2telco.core.version>2.0.21</com.wso2telco.core.version>
+        <com.wso2telco.ids.version>2.2.0-SNAPSHOT</com.wso2telco.ids.version>
+        <com.wso2telco.core.version>2.0.22-SNAPSHOT</com.wso2telco.core.version>
 
         <!--Carbon Identity Framework Version-->
         <carbon.identity.framework.version>5.2.2</carbon.identity.framework.version>
