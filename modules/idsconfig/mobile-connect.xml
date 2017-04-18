@@ -211,6 +211,61 @@
         <DASSecureUrl>ssl://localhost:7712</DASSecureUrl>
     </DataPublisher>
 
+    <SeamlessProvisioningEnabled>true</SeamlessProvisioningEnabled>
+	<DiscoveryConfigs>
+		<DiscoveryCrConfig>
+			<CrdServiceUrl>https://india.discover.mobileconnect.io/rv/v1/exchange/organizations/gsma/validate</CrdServiceUrl>
+		</DiscoveryCrConfig>
+		<DiscoveryEksConfig>
+			<EksServiceUrl>https://india.discover.mobileconnect.io/gsma/v2/discovery/</EksServiceUrl>
+			<EksRedirectUrl>http://jenkins.wso2telco.com:9763/playground2/oauth2.jsp</EksRedirectUrl>
+			<Msisdn>919958713388</Msisdn>
+		</DiscoveryEksConfig>
+	</DiscoveryConfigs>
+
+    <SpProvisionConfig>
+        <AdminServiceHostUrl>https://localhost:9443/services/OAuthAdminService</AdminServiceHostUrl>
+        <ApplicationManagementHostUrl>https://localhost:9443/services/IdentityApplicationManagementService</ApplicationManagementHostUrl>
+        <UserName>admin</UserName>
+        <Password>admin</Password>
+        <MaximumTotalHttpConections>100</MaximumTotalHttpConections>
+        <MaximumHttpConnectionsPerHost>2</MaximumHttpConnectionsPerHost>
+        <config>
+            <AlwaysSendMappedLocalSubjectId>false</AlwaysSendMappedLocalSubjectId>
+            <LocalClaimDialect>true</LocalClaimDialect>
+            <InboundAuthType>oauth2</InboundAuthType>
+            <Confidential>false</Confidential>
+            <DefaultValue>null</DefaultValue>
+            <PropertyName>oauthConsumerSecret</PropertyName>
+            <PropertyRequired>false</PropertyRequired>
+            <ProvisioningEnabled>false</ProvisioningEnabled>
+            <ProvisioningUserStore>PRIMARY</ProvisioningUserStore>
+            <SaasApp>true</SaasApp>
+            <LocalAuthenticatorConfigsDisplayName>LOA</LocalAuthenticatorConfigsDisplayName>
+            <LocalAuthenticatorConfigsEnabled>false</LocalAuthenticatorConfigsEnabled>
+            <LocalAuthenticatorConfigsName>LOACompositeAuthenticator</LocalAuthenticatorConfigsName>
+            <LocalAuthenticatorConfigsValid>true</LocalAuthenticatorConfigsValid>
+            <LocalAuthenticatorConfigsAuthenticationType>local</LocalAuthenticatorConfigsAuthenticationType>
+            <UserName>admin</UserName>
+            <Password>admin</Password>
+            <OauthVersion>OAuth-2.0</OauthVersion>
+            <GrantTypes>authorization_code implicit password client_credentials refresh_token urn:ietf:params:oauth:grant-type:saml2-bearer iwa:ntlm</GrantTypes>
+            <PkceMandatory>false</PkceMandatory>
+            <PkceSupportPlain>false</PkceSupportPlain>
+        </config>
+    </SpProvisionConfig>
+
+    <OpenIDAdminServices>
+        <UserName>admin</UserName>
+        <Password>admin</Password>
+    </OpenIDAdminServices>
+
+    <ServiceProviderHeaders>
+        <UserName>admin</UserName>
+        <Password>admin</Password>
+    </ServiceProviderHeaders>
+
+
     <OperatorDiscoveryNamesMapping>
         <entry>
             <key>airtel</key>
@@ -254,4 +309,5 @@
         <DiscoveryAPIToken></DiscoveryAPIToken>
         <MsisdnClaim>msisdn</MsisdnClaim> <!-- MSISDN claim on user info call -->
     </SelfServicePortal>
+
 </MobileConnectConfig>
