@@ -164,7 +164,10 @@
         <TokenPersistenceProcessor>org.wso2.carbon.identity.oauth.tokenprocessor.PlainTextPersistenceProcessor</TokenPersistenceProcessor>
         <!-- Supported Client Authentication Methods -->
         <ClientAuthHandlers>
-            <ClientAuthHandler Class="org.wso2.carbon.identity.oauth2.token.handlers.clientauth.BasicAuthClientAuthHandler">
+          <!--   <ClientAuthHandler Class="org.wso2.carbon.identity.oauth2.token.handlers.clientauth.BasicAuthClientAuthHandler">
+                <Property Name="StrictClientCredentialValidation">false</Property>
+            </ClientAuthHandler> -->
+            <ClientAuthHandler Class="com.wso2telco.carbon.identity.oauth2.token.handlers.clientauth.SeamlessProvisionClientAuthHandler">
                 <Property Name="StrictClientCredentialValidation">false</Property>
             </ClientAuthHandler>
         </ClientAuthHandlers>

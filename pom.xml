@@ -1132,6 +1132,11 @@
                 <version>${com.wso2telco.core.version}</version>
             </dependency>
             <dependency>
+				<groupId>com.wso2telco.core</groupId>
+				<artifactId>com.wso2telco.core.spprovisionservice.feature</artifactId>
+				<version>${com.wso2telco.core.version}</version>
+			</dependency>
+            <dependency>
                 <groupId>com.wso2telco.core</groupId>
                 <artifactId>com.wso2telco.core.mncresolver.feature</artifactId>
                 <version>${com.wso2telco.core.version}</version>
@@ -1171,6 +1176,11 @@
                 <artifactId>com.wso2telco.ids.datapublisher.feature</artifactId>
                 <version>${com.wso2telco.ids.version}</version>
             </dependency>
+            <dependency>
+				<groupId>com.wso2telco.ids</groupId>
+				<artifactId>com.wso2telco.ids.spseamlessprovision.feature</artifactId>
+				<version>${com.wso2telco.ids.version}</version>
+			</dependency>
             <dependency>
                 <groupId>com.wso2telco.ids</groupId>
                 <artifactId>com.wso2telco.ids.openidtokenbuilder.feature</artifactId>
