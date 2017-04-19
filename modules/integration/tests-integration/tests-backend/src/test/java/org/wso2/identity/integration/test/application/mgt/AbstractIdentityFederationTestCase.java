@@ -81,7 +81,7 @@ public abstract class AbstractIdentityFederationTestCase extends ISIntegrationTe
 
         automationContextMap.put(portOffset, context);
         CarbonTestServerManager server = new CarbonTestServerManager(context, System.getProperty("carbon.zip"),
-                                                                      startupParameters);
+                startupParameters);
         manager.startServers(server);
     }
 
@@ -106,18 +106,19 @@ public abstract class AbstractIdentityFederationTestCase extends ISIntegrationTe
         }
 
         String serviceUrl = getSecureServiceUrl(portOffset,
-                                                automationContextMap.get(portOffset).getContextUrls()
-                                                        .getSecureServiceUrl());
+                automationContextMap.get(portOffset).getContextUrls()
+                        .getSecureServiceUrl());
 
         if (sessionCookie == null) {
             AuthenticatorClient authenticatorClient = new AuthenticatorClient(serviceUrl);
 
-            sessionCookie = authenticatorClient.login(automationContextMap.get(portOffset).getSuperTenant().getTenantAdmin()
-                                                              .getUserName(),
-                                                      automationContextMap.get(portOffset).getSuperTenant()
-                                                              .getTenantAdmin().getPassword(),
-                                                      automationContextMap.get(portOffset).getDefaultInstance()
-                                                              .getHosts().get("default"));
+            sessionCookie = authenticatorClient.login(automationContextMap.get(portOffset).getSuperTenant()
+                            .getTenantAdmin()
+                            .getUserName(),
+                    automationContextMap.get(portOffset).getSuperTenant()
+                            .getTenantAdmin().getPassword(),
+                    automationContextMap.get(portOffset).getDefaultInstance()
+                            .getHosts().get("default"));
         }
 
         if (sessionCookie != null) {
@@ -128,10 +129,12 @@ public abstract class AbstractIdentityFederationTestCase extends ISIntegrationTe
                     applicationManagementServiceClients.put(portOffset, new ApplicationManagementServiceClient
                             (sessionCookie, serviceUrl, configContext));
                 } else if (IdentityConstants.ServiceClientType.IDENTITY_PROVIDER_MGT.equals(clientType)) {
-                    identityProviderMgtServiceClients.put(portOffset, new IdentityProviderMgtServiceClient(sessionCookie,
-                                                                                                           serviceUrl));
+                    identityProviderMgtServiceClients.put(portOffset, new IdentityProviderMgtServiceClient
+                            (sessionCookie,
+                            serviceUrl));
                 } else if (IdentityConstants.ServiceClientType.SAML_SSO_CONFIG.equals(clientType)) {
-                    samlSSOConfigServiceClients.put(portOffset, new SAMLSSOConfigServiceClient(serviceUrl, sessionCookie));
+                    samlSSOConfigServiceClients.put(portOffset, new SAMLSSOConfigServiceClient(serviceUrl,
+                            sessionCookie));
                 }
             }
         }
@@ -180,7 +183,8 @@ public abstract class AbstractIdentityFederationTestCase extends ISIntegrationTe
                                                  SAMLSSOServiceProviderDTO samlssoServiceProviderDTO)
             throws Exception {
         samlSSOConfigServiceClients.get(portOffset).addServiceProvider(samlssoServiceProviderDTO);
-        SAMLSSOServiceProviderInfoDTO serviceProviders = samlSSOConfigServiceClients.get(portOffset).getServiceProviders();
+        SAMLSSOServiceProviderInfoDTO serviceProviders = samlSSOConfigServiceClients.get(portOffset)
+                .getServiceProviders();
         if (serviceProviders != null && serviceProviders.getServiceProviders() != null) {
             for (SAMLSSOServiceProviderDTO serviceProvider : serviceProviders.getServiceProviders()) {
                 if (samlssoServiceProviderDTO.getIssuer().equals(serviceProvider.getIssuer())) {
@@ -291,7 +295,8 @@ public abstract class AbstractIdentityFederationTestCase extends ISIntegrationTe
     }
 
     private void setSystemProperties() {
-        URL resourceUrl = getClass().getResource(File.separator + "keystores" + File.separator + "products" + File.separator + "wso2carbon.jks");
+        URL resourceUrl = getClass().getResource(File.separator + "keystores" + File.separator + "products" + File
+                .separator + "wso2carbon.jks");
         System.setProperty("javax.net.ssl.trustStore", resourceUrl.getPath());
         System.setProperty("javax.net.ssl.trustStorePassword", "wso2carbon");
         System.setProperty("javax.net.ssl.trustStoreType", "JKS");

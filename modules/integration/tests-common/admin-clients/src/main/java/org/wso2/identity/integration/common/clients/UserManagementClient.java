@@ -107,6 +107,7 @@ public class UserManagementClient {
             assert false : "Role: " + roleName + " was not added properly.";
         }
     }
+
     public void updateUserListOfRole(String roleName, String[] addingUsers,
                                      String[] deletingUsers)
             throws UserAdminUserAdminException, RemoteException {
@@ -188,6 +189,7 @@ public class UserManagementClient {
             UserAdminUserAdminException {
         return userAdminStub.listUserByClaim(value, filter, limit);
     }
+
     public boolean userNameExists(String roleName, String userName)
             throws RemoteException, UserAdminUserAdminException {
 

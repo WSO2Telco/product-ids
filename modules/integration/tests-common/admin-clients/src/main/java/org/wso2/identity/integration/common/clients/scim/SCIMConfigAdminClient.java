@@ -56,7 +56,6 @@ public class SCIMConfigAdminClient {
      * @param userEPUrl
      * @param groupEPUrl
      * @throws org.wso2.carbon.identity.scim.common.stub.SCIMConfigAdminServiceIdentitySCIMExceptionException
-     *
      * @throws java.rmi.RemoteException
      */
     public void addUserProvider(String consumerId, String providerId, String userName, String
@@ -81,7 +80,6 @@ public class SCIMConfigAdminClient {
      * @param userEPUrl
      * @param groupEPUrl
      * @throws org.wso2.carbon.identity.scim.common.stub.SCIMConfigAdminServiceIdentitySCIMExceptionException
-     *
      * @throws java.rmi.RemoteException
      */
     public void addGlobalProvider(String consumerId, String providerId, String userName, String
@@ -102,7 +100,6 @@ public class SCIMConfigAdminClient {
      * @param consumerId
      * @param providerId
      * @throws org.wso2.carbon.identity.scim.common.stub.SCIMConfigAdminServiceIdentitySCIMExceptionException
-     *
      * @throws java.rmi.RemoteException
      */
     public void deleteUserProvider(String consumerId, String providerId)
@@ -116,7 +113,6 @@ public class SCIMConfigAdminClient {
      * @param consumerId
      * @param providerId
      * @throws org.wso2.carbon.identity.scim.common.stub.SCIMConfigAdminServiceIdentitySCIMExceptionException
-     *
      * @throws java.rmi.RemoteException
      */
     public void deleteGlobalProvider(String consumerId, String providerId)
@@ -131,7 +127,6 @@ public class SCIMConfigAdminClient {
      * @param providerId
      * @return
      * @throws org.wso2.carbon.identity.scim.common.stub.SCIMConfigAdminServiceIdentitySCIMExceptionException
-     *
      * @throws java.rmi.RemoteException
      */
     public SCIMProviderDTO[] listUserProviders(String consumerId, String providerId)
@@ -146,7 +141,6 @@ public class SCIMConfigAdminClient {
      * @param providerId
      * @return
      * @throws org.wso2.carbon.identity.scim.common.stub.SCIMConfigAdminServiceIdentitySCIMExceptionException
-     *
      * @throws java.rmi.RemoteException
      */
     public SCIMProviderDTO[] listGlobalProviders(String consumerId, String providerId)

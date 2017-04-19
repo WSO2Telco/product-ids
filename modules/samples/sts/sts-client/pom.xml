@@ -3,8 +3,8 @@
 
     <parent>
         <groupId>org.wso2.is</groupId>
-        <artifactId>wso2telcoids-identity-samples-sts</artifactId>
-        <version>5.2.0-SNAPSHOT</version>
+        <artifactId>wso2is-identity-samples-sts</artifactId>
+        <version>5.2.0</version>
         <relativePath>../pom.xml</relativePath>
     </parent>
 
@@ -31,12 +31,16 @@
             <artifactId>axis2</artifactId>
         </dependency>
         <dependency>
-            <groupId>org.apache.neethi.wso2</groupId>
+            <groupId>org.wso2.orbit.org.apache.neethi</groupId>
             <artifactId>neethi</artifactId>
         </dependency>
         <dependency>
-            <groupId>opensaml.wso2</groupId>
-            <artifactId>opensaml2</artifactId>
+            <groupId>org.wso2.orbit.org.opensaml</groupId>
+            <artifactId>opensaml</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.wso2.orbit.joda-time</groupId>
+            <artifactId>joda-time</artifactId>
         </dependency>
         <dependency>
             <groupId>org.wso2.carbon</groupId>
@@ -51,7 +55,7 @@
             <artifactId>rampart-policy</artifactId>
         </dependency>
         <dependency>
-            <groupId>org.apache.rampart</groupId>
+            <groupId>org.apache.rampart.wso2</groupId>
             <artifactId>rampart-trust</artifactId>
         </dependency>
         <dependency>

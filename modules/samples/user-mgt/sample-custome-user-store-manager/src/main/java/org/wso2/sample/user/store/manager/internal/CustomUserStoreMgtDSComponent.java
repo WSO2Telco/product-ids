@@ -32,7 +32,7 @@ public class CustomUserStoreMgtDSComponent {
     }
 
     protected void setRealmService(RealmService rlmService) {
-          realmService = rlmService;
+        realmService = rlmService;
     }
 
     protected void unsetRealmService(RealmService realmService) {

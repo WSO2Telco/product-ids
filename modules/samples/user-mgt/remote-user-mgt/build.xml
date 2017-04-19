@@ -1,7 +1,7 @@
 <project name="RemoteUM_Client" default="main">
-    <property name="wso2telcoids.home" value="../../"/>
-    <property name="wso2telcoids.plugins" value="${wso2telcoids.home}/repository/components/plugins"/>
-    <property name="wso2telcoids.lib.api" value="${wso2telcoids.home}/lib/api"/>
+    <property name="wso2is.home" value="../../"/>
+    <property name="wso2is.plugins" value="${wso2is.home}/repository/components/plugins"/>
+    <property name="wso2is.lib.api" value="${wso2is.home}/lib/api"/>
     <property name="build.dir" value="build"/>
     <property name="classes.dir" value="${build.dir}/classes"/>
     <property name="src.dir" value="src"/>
@@ -10,7 +10,7 @@
     <property name="main-class" value="org.wso2.remoteum.sample.RemoteUMClient"/>
 
     <path  id="classpath">
-        <fileset dir="${wso2telcoids.plugins}" includes="**/*.jar"/>
+        <fileset dir="${wso2is.plugins}" includes="**/*.jar"/>
     </path>
 
     <target name="init" depends="clean">

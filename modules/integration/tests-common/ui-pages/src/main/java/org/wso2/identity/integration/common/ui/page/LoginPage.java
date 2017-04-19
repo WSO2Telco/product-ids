@@ -67,8 +67,10 @@ public class LoginPage {
     public HomePage loginAs(String userName, String password, boolean isTenant)
             throws IOException {
         log.info("login as " + userName + ":Tenant");
-        WebElement userNameField = driver.findElement(By.name(UIElementMapper.getInstance().getElement("login.username.name")));
-        WebElement passwordField = driver.findElement(By.name(UIElementMapper.getInstance().getElement("login.password")));
+        WebElement userNameField = driver.findElement(By.name(UIElementMapper.getInstance().getElement("login" +
+                ".username.name")));
+        WebElement passwordField = driver.findElement(By.name(UIElementMapper.getInstance().getElement("login" +
+                ".password")));
 
         userNameField.sendKeys(userName);
         passwordField.sendKeys(password);
@@ -87,8 +89,10 @@ public class LoginPage {
 
     public HomePage loginAs(String userName, String password) throws IOException {
         log.info("login as " + userName);
-        WebElement userNameField = driver.findElement(By.name(UIElementMapper.getInstance().getElement("login.username.name")));
-        WebElement passwordField = driver.findElement(By.name(UIElementMapper.getInstance().getElement("login.password")));
+        WebElement userNameField = driver.findElement(By.name(UIElementMapper.getInstance().getElement("login" +
+                ".username.name")));
+        WebElement passwordField = driver.findElement(By.name(UIElementMapper.getInstance().getElement("login" +
+                ".password")));
 
         userNameField.sendKeys(userName);
         passwordField.sendKeys(password);

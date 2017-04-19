@@ -50,7 +50,8 @@ public class SCIMResponseHandler implements ClientHandler {
                 try {
                     if (cr.getHeaders().getFirst(SCIMConstants.CONTENT_TYPE_HEADER) != null) {
 
-                        String format = SCIMConstants.identifyFormat(cr.getHeaders().getFirst(SCIMConstants.CONTENT_TYPE_HEADER));
+                        String format = SCIMConstants.identifyFormat(cr.getHeaders().getFirst(SCIMConstants
+                                .CONTENT_TYPE_HEADER));
                         if (format != null) {
                             charonException = scimClient.decodeSCIMException(cr.getEntity(String.class), format);
                         } else {

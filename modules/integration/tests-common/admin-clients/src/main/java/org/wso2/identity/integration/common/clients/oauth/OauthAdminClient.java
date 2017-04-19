@@ -27,36 +27,37 @@ import org.wso2.identity.integration.common.clients.AuthenticateStub;
 
 public class OauthAdminClient {
 
-	OAuthAdminServiceStub oauthAdminStub;
-	private final String serviceName = "OAuthAdminService";
-	
-	public OauthAdminClient(String backendURL, String sessionCookie) throws AxisFault {
+    OAuthAdminServiceStub oauthAdminStub;
+    private final String serviceName = "OAuthAdminService";
+
+    public OauthAdminClient(String backendURL, String sessionCookie) throws AxisFault {
 
         String endPoint = backendURL + serviceName;
         oauthAdminStub = new OAuthAdminServiceStub(endPoint);
         AuthenticateStub.authenticateStub(sessionCookie, oauthAdminStub);
-	}
-	
+    }
+
     public OauthAdminClient(String backendURL, String userName, String password)
             throws AxisFault {
 
         String endPoint = backendURL + serviceName;
         oauthAdminStub = new OAuthAdminServiceStub(endPoint);
-        AuthenticateStub.authenticateStub(userName, password, oauthAdminStub);        
+        AuthenticateStub.authenticateStub(userName, password, oauthAdminStub);
     }
-    
-    public void registerOAuthApplicationData(OAuthConsumerAppDTO application) throws RemoteException, OAuthAdminServiceException {
-    	oauthAdminStub.registerOAuthApplicationData(application);
+
+    public void registerOAuthApplicationData(OAuthConsumerAppDTO application) throws RemoteException,
+            OAuthAdminServiceException {
+        oauthAdminStub.registerOAuthApplicationData(application);
     }
-    
+
     public OAuthConsumerAppDTO[] getAllOAuthApplicationData() throws RemoteException, OAuthAdminServiceException {
-    	
-    	OAuthConsumerAppDTO[] appDtos = null;
-    	appDtos = oauthAdminStub.getAllOAuthApplicationData();
-    	return appDtos;
+
+        OAuthConsumerAppDTO[] appDtos = null;
+        appDtos = oauthAdminStub.getAllOAuthApplicationData();
+        return appDtos;
     }
-    
-    public void removeOAuthApplicationData(String consumerKey) throws RemoteException, OAuthAdminServiceException{
-    	oauthAdminStub.removeOAuthApplicationData(consumerKey);
+
+    public void removeOAuthApplicationData(String consumerKey) throws RemoteException, OAuthAdminServiceException {
+        oauthAdminStub.removeOAuthApplicationData(consumerKey);
     }
 }

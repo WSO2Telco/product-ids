@@ -61,7 +61,8 @@ public class UserStoreConfigAdminTestCase extends ISIntegrationTest {
 
     }
 
-    @Test(groups = "wso2.is", description = "Check add user store via DTO", dependsOnMethods = "testAvailableUserStoreClasses")
+    @Test(groups = "wso2.is", description = "Check add user store via DTO", dependsOnMethods =
+            "testAvailableUserStoreClasses")
     public void testAddUserStore() throws Exception {
 
         Property[] properties = (new JDBCUserStoreManager()).getDefaultUserStoreProperties().getMandatoryProperties();
@@ -72,14 +73,16 @@ public class UserStoreConfigAdminTestCase extends ISIntegrationTest {
             propertyDTO.setValue(properties[i].getValue());
             propertyDTOs[i] = propertyDTO;
         }
-        UserStoreDTO userStoreDTO = userStoreConfigurationClient.createUserStoreDTO(jdbcClass, "lanka.com", propertyDTOs);
+        UserStoreDTO userStoreDTO = userStoreConfigurationClient.createUserStoreDTO(jdbcClass, "lanka.com",
+                propertyDTOs);
         userStoreConfigurationClient.addUserStore(userStoreDTO);
         Assert.assertTrue("Domain addition via DTO has failed.", userStoreConfigUtils.waitForUserStoreDeployment
                 (userStoreConfigurationClient, "lanka.com"));
 
     }
 
-    @Test(expectedExceptions = AxisFault.class, groups = "wso2.is", description = "Check add user store via DTO", dependsOnMethods = "testAddUserStore")
+    @Test(expectedExceptions = AxisFault.class, groups = "wso2.is", description = "Check add user store via DTO",
+            dependsOnMethods = "testAddUserStore")
     public void testAddDuplicateUserStore() throws Exception {
 
         Property[] properties = (new JDBCUserStoreManager()).getDefaultUserStoreProperties().getMandatoryProperties();
@@ -90,7 +93,8 @@ public class UserStoreConfigAdminTestCase extends ISIntegrationTest {
             propertyDTO.setValue(properties[i].getValue());
             propertyDTOs[i] = propertyDTO;
         }
-        UserStoreDTO userStoreDTO = userStoreConfigurationClient.createUserStoreDTO(jdbcClass, "lanka.com", propertyDTOs);
+        UserStoreDTO userStoreDTO = userStoreConfigurationClient.createUserStoreDTO(jdbcClass, "lanka.com",
+                propertyDTOs);
         userStoreConfigurationClient.addUserStore(userStoreDTO);
 
     }

@@ -47,7 +47,7 @@ public class ISMigrationServiceComponent {
         try {
             ISMigrationServiceDataHolder.setIdentityOracleUser(System.getProperty("identityOracleUser"));
             ISMigrationServiceDataHolder.setUmOracleUser(System.getProperty("umOracleUser"));
-            if(log.isDebugEnabled()) {
+            if (log.isDebugEnabled()) {
                 log.debug("WSO2 IS migration bundle is activated");
             }
         } catch (Throwable e) {
@@ -62,7 +62,7 @@ public class ISMigrationServiceComponent {
      * @param context OSGi component context.
      */
     protected void deactivate(ComponentContext context) {
-        if(log.isDebugEnabled()) {
+        if (log.isDebugEnabled()) {
             log.debug("WSO2 IS migration bundle is deactivated");
         }
     }
@@ -74,7 +74,7 @@ public class ISMigrationServiceComponent {
      * @param realmService service to get tenant data.
      */
     protected void setRealmService(RealmService realmService) {
-        if(log.isDebugEnabled()) {
+        if (log.isDebugEnabled()) {
             log.debug("Setting RealmService to WSO2 IS Migration component");
         }
         ISMigrationServiceDataHolder.setRealmService(realmService);

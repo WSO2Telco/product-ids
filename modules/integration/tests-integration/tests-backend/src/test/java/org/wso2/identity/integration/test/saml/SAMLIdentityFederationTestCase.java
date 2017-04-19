@@ -71,13 +71,14 @@ public class SAMLIdentityFederationTestCase extends AbstractIdentityFederationTe
     private static final String SECONDARY_IS_SAML_ISSUER_NAME = "samlFedSP";
     private static final String SAML_NAME_ID_FORMAT = "urn:oasis:names:tc:SAML:1.1:nameid-format:emailAddress";
     private static final String SAML_SSO_URL = "http://localhost:8490/travelocity.com/samlsso?SAML2" +
-                                               ".HTTPBinding=HTTP-Redirect";
+            ".HTTPBinding=HTTP-Redirect";
     private static final String USER_AGENT = "Apache-HttpClient/4.2.5 (java 1.5)";
     private static final String AUTHENTICATION_TYPE = "federated";
     private static final String INBOUND_AUTH_TYPE = "samlsso";
     private static final int TOMCAT_8490 = 8490;
     private static final int PORT_OFFSET_0 = 0;
     private static final int PORT_OFFSET_1 = 1;
+    private static final String SAMLSSOAUTHENTICATOR = "SAMLSSOAuthenticator";
     private String COMMON_AUTH_URL = "https://localhost:%s/commonauth";
 
     private String usrName = "testFederatedUser";
@@ -105,15 +106,18 @@ public class SAMLIdentityFederationTestCase extends AbstractIdentityFederationTe
 //TODO: Need to fix tomcat issue
         super.startTomcat(TOMCAT_8490);
 //        super.addWebAppToTomcat(TOMCAT_8490, "/travelocity.com", getClass().getResource(File.separator + "samples" +
-//                                                                                        File.separator + "org.wso2.sample.is.sso.agent.war").getPath());
+//                                                                                        File.separator + "org
+// .wso2.sample.is.sso.agent.war").getPath());
 
         URL resourceUrl = getClass().getResource(File.separator + "samples" + File.separator + "travelocity.com.war");
         super.addWebAppToTomcat(TOMCAT_8490, "/travelocity.com", resourceUrl.getPath());
 
 
         super.createServiceClients(PORT_OFFSET_0, sessionCookie, new IdentityConstants
-                .ServiceClientType[]{IdentityConstants.ServiceClientType.APPLICATION_MANAGEMENT, IdentityConstants.ServiceClientType.IDENTITY_PROVIDER_MGT, IdentityConstants.ServiceClientType.SAML_SSO_CONFIG});
-        super.createServiceClients(PORT_OFFSET_1, null, new IdentityConstants.ServiceClientType[]{IdentityConstants.ServiceClientType.APPLICATION_MANAGEMENT, IdentityConstants.ServiceClientType.SAML_SSO_CONFIG});
+                .ServiceClientType[]{IdentityConstants.ServiceClientType.APPLICATION_MANAGEMENT, IdentityConstants
+                .ServiceClientType.IDENTITY_PROVIDER_MGT, IdentityConstants.ServiceClientType.SAML_SSO_CONFIG});
+        super.createServiceClients(PORT_OFFSET_1, null, new IdentityConstants.ServiceClientType[]{IdentityConstants
+                .ServiceClientType.APPLICATION_MANAGEMENT, IdentityConstants.ServiceClientType.SAML_SSO_CONFIG});
         //add new test user to secondary IS
         boolean userCreated = addUserToSecondaryIS();
         Assert.assertTrue(userCreated, "User creation failed");
@@ -146,7 +150,7 @@ public class SAMLIdentityFederationTestCase extends AbstractIdentityFederationTe
         identityProvider.setIdentityProviderName(IDENTITY_PROVIDER_NAME);
 
         FederatedAuthenticatorConfig saml2SSOAuthnConfig = new FederatedAuthenticatorConfig();
-        saml2SSOAuthnConfig.setName("SAMLSSOAuthenticator");
+        saml2SSOAuthnConfig.setName(SAMLSSOAUTHENTICATOR);
         saml2SSOAuthnConfig.setDisplayName("samlsso");
         saml2SSOAuthnConfig.setEnabled(true);
         saml2SSOAuthnConfig.setProperties(getSAML2SSOAuthnConfigProperties());
@@ -160,7 +164,8 @@ public class SAMLIdentityFederationTestCase extends AbstractIdentityFederationTe
 
         super.addIdentityProvider(PORT_OFFSET_0, identityProvider);
 
-        Assert.assertNotNull(getIdentityProvider(PORT_OFFSET_0, IDENTITY_PROVIDER_NAME), "Failed to create Identity Provider 'trustedIdP' in primary IS");
+        Assert.assertNotNull(getIdentityProvider(PORT_OFFSET_0, IDENTITY_PROVIDER_NAME), "Failed to create Identity " +
+                "Provider 'trustedIdP' in primary IS");
     }
 
     @Test(priority = 2, groups = "wso2.is", description = "Check create service provider in primary IS")
@@ -171,23 +176,29 @@ public class SAMLIdentityFederationTestCase extends AbstractIdentityFederationTe
         ServiceProvider serviceProvider = getServiceProvider(PORT_OFFSET_0, PRIMARY_IS_SERVICE_PROVIDER_NAME);
         Assert.assertNotNull(serviceProvider, "Failed to create service provider 'travelocity' in primary IS");
 
-        updateServiceProviderWithSAMLConfigs(PORT_OFFSET_0, PRIMARY_IS_SAML_ISSUER_NAME, PRIMARY_IS_SAML_ACS_URL, serviceProvider);
+        updateServiceProviderWithSAMLConfigs(PORT_OFFSET_0, PRIMARY_IS_SAML_ISSUER_NAME, PRIMARY_IS_SAML_ACS_URL,
+                serviceProvider);
 
         AuthenticationStep authStep = new AuthenticationStep();
-        org.wso2.carbon.identity.application.common.model.xsd.IdentityProvider idP = new org.wso2.carbon.identity.application.common.model.xsd.IdentityProvider();
+        org.wso2.carbon.identity.application.common.model.xsd.IdentityProvider idP = new org.wso2.carbon.identity
+                .application.common.model.xsd.IdentityProvider();
         idP.setIdentityProviderName(IDENTITY_PROVIDER_NAME);
-        authStep.setFederatedIdentityProviders(new org.wso2.carbon.identity.application.common.model.xsd.IdentityProvider[]{idP});
-        serviceProvider.getLocalAndOutBoundAuthenticationConfig().setAuthenticationSteps(new AuthenticationStep[]{authStep});
+        authStep.setFederatedIdentityProviders(new org.wso2.carbon.identity.application.common.model.xsd
+                .IdentityProvider[]{idP});
+        serviceProvider.getLocalAndOutBoundAuthenticationConfig().setAuthenticationSteps(new
+                AuthenticationStep[]{authStep});
         serviceProvider.getLocalAndOutBoundAuthenticationConfig().setAuthenticationType(AUTHENTICATION_TYPE);
 
         updateServiceProvider(PORT_OFFSET_0, serviceProvider);
         serviceProvider = getServiceProvider(PORT_OFFSET_0, PRIMARY_IS_SERVICE_PROVIDER_NAME);
 
-        InboundAuthenticationRequestConfig[] configs = serviceProvider.getInboundAuthenticationConfig().getInboundAuthenticationRequestConfigs();
+        InboundAuthenticationRequestConfig[] configs = serviceProvider.getInboundAuthenticationConfig()
+                .getInboundAuthenticationRequestConfigs();
         boolean success = false;
         if (configs != null) {
             for (InboundAuthenticationRequestConfig config : configs) {
-                if (PRIMARY_IS_SAML_ISSUER_NAME.equals(config.getInboundAuthKey()) && INBOUND_AUTH_TYPE.equals(config.getInboundAuthType())) {
+                if (PRIMARY_IS_SAML_ISSUER_NAME.equals(config.getInboundAuthKey()) && INBOUND_AUTH_TYPE.equals(config
+                        .getInboundAuthType())) {
                     success = true;
                     break;
                 }
@@ -195,7 +206,8 @@ public class SAMLIdentityFederationTestCase extends AbstractIdentityFederationTe
         }
 
         Assert.assertTrue(success, "Failed to update service provider with inbound SAML2 configs in primary IS");
-        Assert.assertTrue(AUTHENTICATION_TYPE.equals(serviceProvider.getLocalAndOutBoundAuthenticationConfig().getAuthenticationType()), "Failed to update local and out bound configs in primary IS");
+        Assert.assertTrue(AUTHENTICATION_TYPE.equals(serviceProvider.getLocalAndOutBoundAuthenticationConfig()
+                .getAuthenticationType()), "Failed to update local and out bound configs in primary IS");
     }
 
     @Test(priority = 3, groups = "wso2.is", description = "Check create service provider in secondary IS")
@@ -206,16 +218,19 @@ public class SAMLIdentityFederationTestCase extends AbstractIdentityFederationTe
         ServiceProvider serviceProvider = getServiceProvider(PORT_OFFSET_1, SECONDARY_IS_SERVICE_PROVIDER_NAME);
         Assert.assertNotNull(serviceProvider, "Failed to create service provider 'secondarySP' in secondary IS");
 
-        updateServiceProviderWithSAMLConfigs(PORT_OFFSET_1, SECONDARY_IS_SAML_ISSUER_NAME, String.format(COMMON_AUTH_URL, DEFAULT_PORT + PORT_OFFSET_0), serviceProvider);
+        updateServiceProviderWithSAMLConfigs(PORT_OFFSET_1, SECONDARY_IS_SAML_ISSUER_NAME, String.format
+                (COMMON_AUTH_URL, DEFAULT_PORT + PORT_OFFSET_0), serviceProvider);
 
         updateServiceProvider(PORT_OFFSET_1, serviceProvider);
         serviceProvider = getServiceProvider(PORT_OFFSET_1, SECONDARY_IS_SERVICE_PROVIDER_NAME);
 
-        InboundAuthenticationRequestConfig[] configs = serviceProvider.getInboundAuthenticationConfig().getInboundAuthenticationRequestConfigs();
+        InboundAuthenticationRequestConfig[] configs = serviceProvider.getInboundAuthenticationConfig()
+                .getInboundAuthenticationRequestConfigs();
         boolean success = false;
         if (configs != null) {
             for (InboundAuthenticationRequestConfig config : configs) {
-                if (SECONDARY_IS_SAML_ISSUER_NAME.equals(config.getInboundAuthKey()) && INBOUND_AUTH_TYPE.equals(config.getInboundAuthType())) {
+                if (SECONDARY_IS_SAML_ISSUER_NAME.equals(config.getInboundAuthKey()) && INBOUND_AUTH_TYPE.equals
+                        (config.getInboundAuthType())) {
                     success = true;
                     break;
                 }
@@ -230,22 +245,22 @@ public class SAMLIdentityFederationTestCase extends AbstractIdentityFederationTe
 
         ServiceProvider serviceProvider = getServiceProvider(PORT_OFFSET_1, SECONDARY_IS_SERVICE_PROVIDER_NAME);
         serviceProvider.getClaimConfig().setClaimMappings(getClaimMappings());
-        updateServiceProvider(PORT_OFFSET_1,serviceProvider);
+        updateServiceProvider(PORT_OFFSET_1, serviceProvider);
 
         InboundAuthenticationRequestConfig requestConfigs[] = serviceProvider.getInboundAuthenticationConfig()
                 .getInboundAuthenticationRequestConfigs();
 
         String attributeConsumerServiceIndex = null;
 
-        if(!ArrayUtils.isEmpty(requestConfigs)) {
+        if (!ArrayUtils.isEmpty(requestConfigs)) {
             org.wso2.carbon.identity.application.common.model.xsd.Property[] properties = requestConfigs[0]
                     .getProperties();
-            for (int i = 0; i < properties.length ; i++) {
-                if(ATTRIBUTE_CS_INDEX_NAME_SP.equals(properties[0].getName())){
+            for (int i = 0; i < properties.length; i++) {
+                if (ATTRIBUTE_CS_INDEX_NAME_SP.equals(properties[0].getName())) {
                     attributeConsumerServiceIndex = properties[0].getValue();
                     break;
                 }
-                if (i == properties.length -1 ) {
+                if (i == properties.length - 1) {
                     Assert.fail();
                 }
             }
@@ -258,7 +273,7 @@ public class SAMLIdentityFederationTestCase extends AbstractIdentityFederationTe
                 .getFederatedAuthenticatorConfigs();
         FederatedAuthenticatorConfig SAMLAuthenticatorConfig = null;
         for (int i = 0; i < federatedAuthenticatorConfigs.length; i++) {
-            if (federatedAuthenticatorConfigs[i].getName().equals("SAMLSSOAuthenticator")) {
+            if (SAMLSSOAUTHENTICATOR.equals(federatedAuthenticatorConfigs[i].getName())) {
                 SAMLAuthenticatorConfig = federatedAuthenticatorConfigs[i];
                 break;
             }
@@ -266,7 +281,7 @@ public class SAMLIdentityFederationTestCase extends AbstractIdentityFederationTe
 
         Property[] properties = SAMLAuthenticatorConfig.getProperties();
         for (int i = 0; i < properties.length; i++) {
-            if (ATTRIBUTE_CS_INDEX_NAME_IDP.equals(properties[i].getName())){
+            if (ATTRIBUTE_CS_INDEX_NAME_IDP.equals(properties[i].getName())) {
                 properties[i].setValue(attributeConsumerServiceIndex);
             }
         }
@@ -300,7 +315,7 @@ public class SAMLIdentityFederationTestCase extends AbstractIdentityFederationTe
     }
 
 
-    private ClaimMapping[] getClaimMappings(){
+    private ClaimMapping[] getClaimMappings() {
         List<ClaimMapping> claimMappingList = new ArrayList<ClaimMapping>();
 
         Claim lastNameClaim = new Claim();
@@ -395,6 +410,7 @@ public class SAMLIdentityFederationTestCase extends AbstractIdentityFederationTe
 
     /**
      * Function to retrieve service URI of secondary IS
+     *
      * @return service uri
      */
     protected String getSecondaryISURI() {
@@ -435,18 +451,23 @@ public class SAMLIdentityFederationTestCase extends AbstractIdentityFederationTe
                                                       ServiceProvider serviceProvider)
             throws Exception {
 
-        String attributeConsumingServiceIndex = super.createSAML2WebSSOConfiguration(portOffset, getSAMLSSOServiceProviderDTO(issuerName, acsUrl));
-        Assert.assertNotNull(attributeConsumingServiceIndex, "Failed to create SAML2 Web SSO configuration for issuer '" + issuerName + "'");
+        String attributeConsumingServiceIndex = super.createSAML2WebSSOConfiguration(portOffset,
+                getSAMLSSOServiceProviderDTO(issuerName, acsUrl));
+        Assert.assertNotNull(attributeConsumingServiceIndex, "Failed to create SAML2 Web SSO configuration for issuer" +
+                " '" + issuerName + "'");
 
         InboundAuthenticationRequestConfig samlAuthenticationRequestConfig = new InboundAuthenticationRequestConfig();
         samlAuthenticationRequestConfig.setInboundAuthKey(issuerName);
         samlAuthenticationRequestConfig.setInboundAuthType(INBOUND_AUTH_TYPE);
-        org.wso2.carbon.identity.application.common.model.xsd.Property property = new org.wso2.carbon.identity.application.common.model.xsd.Property();
+        org.wso2.carbon.identity.application.common.model.xsd.Property property = new org.wso2.carbon.identity
+                .application.common.model.xsd.Property();
         property.setName("attrConsumServiceIndex");
         property.setValue(attributeConsumingServiceIndex);
-        samlAuthenticationRequestConfig.setProperties(new org.wso2.carbon.identity.application.common.model.xsd.Property[]{property});
+        samlAuthenticationRequestConfig.setProperties(new org.wso2.carbon.identity.application.common.model.xsd
+                .Property[]{property});
 
-        serviceProvider.getInboundAuthenticationConfig().setInboundAuthenticationRequestConfigs(new InboundAuthenticationRequestConfig[]{samlAuthenticationRequestConfig});
+        serviceProvider.getInboundAuthenticationConfig().setInboundAuthenticationRequestConfigs(new
+                InboundAuthenticationRequestConfig[]{samlAuthenticationRequestConfig});
     }
 
     private SAMLSSOServiceProviderDTO getSAMLSSOServiceProviderDTO(String issuerName,
@@ -533,25 +554,25 @@ public class SAMLIdentityFederationTestCase extends AbstractIdentityFederationTe
         return properties;
     }
 
-    private void assertLocalClaims(String resultPage){
+    private void assertLocalClaims(String resultPage) {
         String claimString = resultPage.substring(resultPage.lastIndexOf("<table>"));
         Map<String, String> attributeMap = extractClaims(claimString);
         Assert.assertTrue(attributeMap.containsKey(lastNameClaimURI), "Claim lastname is expected");
-        Assert.assertEquals(attributeMap.get(lastNameClaimURI),usrName,
+        Assert.assertEquals(attributeMap.get(lastNameClaimURI), usrName,
                 "Expected claim value for lastname is " + usrName);
     }
 
-    private Map<String,String> extractClaims(String claimString){
+    private Map<String, String> extractClaims(String claimString) {
         String[] dataArray = StringUtils.substringsBetween(claimString, "<td>", "</td>");
-        Map<String,String> attributeMap = new HashMap<String, String>();
+        Map<String, String> attributeMap = new HashMap<String, String>();
         String key = null;
         String value;
-        for (int i = 0; i< dataArray.length; i++){
-            if((i%2) == 0){
+        for (int i = 0; i < dataArray.length; i++) {
+            if ((i % 2) == 0) {
                 key = dataArray[i];
-            }else{
+            } else {
                 value = dataArray[i].trim();
-                attributeMap.put(key,value);
+                attributeMap.put(key, value);
             }
         }
 

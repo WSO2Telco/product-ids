@@ -1,5 +1,5 @@
 <!--
- ~ Copyright  (c) 2015-2016, WSO2.Telco Inc. (http://www.wso2telco.com) All Rights Reserved.
+ ~ Copyright (c) 2005-2010, WSO2 Inc. (http://www.wso2.org) All Rights Reserved.
  ~
  ~ WSO2 Inc. licenses this file to you under the Apache License,
  ~ Version 2.0 (the "License"); you may not use this file except
@@ -18,17 +18,17 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
 
     <parent>
-    	<groupId>com.wso2telco.product.ids</groupId>
-    	<artifactId>identity-server-parent</artifactId>
-    	<version>2.0.2-SNAPSHOT</version>
+        <groupId>com.wso2telco.product.ids</groupId>
+        <artifactId>identity-server-parent</artifactId>
+        <version>2.2.0-SNAPSHOT</version>
         <relativePath>../../pom.xml</relativePath>
     </parent>
 
     <modelVersion>4.0.0</modelVersion>
     <artifactId>identity-server-styles-parent</artifactId>
     <packaging>pom</packaging>
-    <description>WSO2Telco Identity Server Styles Parent</description>
-    <name>WSO2Telco Identity Server- Styles Parent</name>
+    <description>WSO2 Identity Server Styles Parent</description>
+    <name>WSO2 Identity Server Styles Parent</name>
     <url>http://wso2.org/projects/identity</url>
 
     <licenses>

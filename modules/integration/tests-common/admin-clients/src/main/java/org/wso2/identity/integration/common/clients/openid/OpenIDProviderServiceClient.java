@@ -54,45 +54,45 @@ public class OpenIDProviderServiceClient {
     public OpenIDProviderInfoDTO getOpenIDProviderInfo(String userName, String openid) throws Exception {
         return openidProviderServiceStub.getOpenIDProviderInfo(userName, openid);
     }
-    
+
     public boolean isOpenIDUserApprovalBypassEnabled() throws RemoteException {
         return openidProviderServiceStub.isOpenIDUserApprovalBypassEnabled();
     }
-    
+
     public int getOpenIDSessionTimeout() throws RemoteException {
         return openidProviderServiceStub.getOpenIDSessionTimeout();
     }
-    
+
     public boolean authenticateWithOpenID(String openID, String password) throws Exception {
         return openidProviderServiceStub.authenticateWithOpenID(openID, password);
     }
-    
+
     public OpenIDUserRPDTO getOpenIDUserRPInfo(String openID, String rpUrl) throws Exception {
         return openidProviderServiceStub.getOpenIDUserRPInfo(openID, rpUrl);
     }
 
     public OpenIDRememberMeDTO authenticateWithOpenIDRememberMe(String openID, String password,
-            String ipaddress, String cookie) throws Exception {
+                                                                String ipaddress, String cookie) throws Exception {
         return openidProviderServiceStub.authenticateWithOpenIDRememberMe(openID, password, ipaddress, cookie);
     }
-    
+
     public void updateOpenIDUserRPInfo(OpenIDUserRPDTO rpdto) throws Exception {
         openidProviderServiceStub.updateOpenIDUserRPInfo(rpdto);
     }
-    
+
     public OpenIDUserRPDTO[] getOpenIDUserRPs(String openID) throws Exception {
         return openidProviderServiceStub.getOpenIDUserRPs(openID);
     }
-    
+
     public String getOpenIDAssociationResponse(OpenIDParameterDTO[] params) throws Exception {
         return openidProviderServiceStub.getOpenIDAssociationResponse(params);
     }
-    
+
     public OpenIDAuthResponseDTO getOpenIDAuthResponse(OpenIDAuthRequestDTO request)
             throws Exception {
         return openidProviderServiceStub.getOpenIDAuthResponse(request);
     }
-    
+
     public String verify(OpenIDParameterDTO[] params) throws Exception {
         return openidProviderServiceStub.verify(params);
     }

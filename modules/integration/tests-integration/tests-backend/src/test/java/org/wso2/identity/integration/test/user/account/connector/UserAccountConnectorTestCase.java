@@ -25,24 +25,29 @@ import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
 import org.wso2.carbon.identity.user.account.association.stub.UserAccountAssociationServiceStub;
 import org.wso2.carbon.identity.user.account.association.stub.types.UserAccountAssociationDTO;
+import org.wso2.identity.integration.common.clients.UserManagementClient;
 import org.wso2.identity.integration.common.clients.user.account.connector.UserAccountConnectorServiceClient;
 import org.wso2.identity.integration.common.utils.ISIntegrationTest;
 
 public class UserAccountConnectorTestCase extends ISIntegrationTest {
 
+    private static final String PERMISSION_ADMIN_LOGIN = "/permission/admin/login";
     private UserAccountConnectorServiceClient serviceClient;
     private final static String ADMIN_USER = "admin";
     private final static String USER_1 = "testuser11";
     private final static String USER_PASSWORD_1 = "testuser11";
     private final static String USER_2 = "testuser11@wso2.com";
     private final static String USER_PASSWORD_2 = "testuser11";
+    private ConfigurationContext configContext;
+    private UserManagementClient userMgtClient;
 
     @BeforeClass(alwaysRun = true)
     public void testInit() throws Exception {
         super.init();
-        ConfigurationContext configContext = ConfigurationContextFactory.createConfigurationContextFromFileSystem
+        configContext = ConfigurationContextFactory.createConfigurationContextFromFileSystem
                 (null, null);
         serviceClient = new UserAccountConnectorServiceClient(sessionCookie, backendURL, configContext);
+        userMgtClient = new UserManagementClient(backendURL, sessionCookie);
     }
 
     @AfterClass(alwaysRun = true)
@@ -50,7 +55,8 @@ public class UserAccountConnectorTestCase extends ISIntegrationTest {
         serviceClient = null;
     }
 
-    @Test(alwaysRun = true, description = "Test create user account associations")
+    @Test(alwaysRun = true, description = "Test create user account associations",
+            dependsOnMethods = {"testAssociateTwoAccountsAsAdmin"})
     public void testConnectUserAccount() throws Exception {
 
         // Create associations
@@ -61,24 +67,61 @@ public class UserAccountConnectorTestCase extends ISIntegrationTest {
         UserAccountAssociationDTO[] associations = serviceClient.getAccountAssociationsOfUser();
 
         Assert.assertTrue(associations != null && associations.length > 0, "Unable to create user account association" +
-                                                                           " for user" );
+                " for user");
         Assert.assertTrue(isAssociationAvailable(associations, USER_1), "Unable to create user association with a " +
-                                                                        "super tenant user");
+                "super tenant user");
         Assert.assertTrue(isAssociationAvailable(associations, USER_2), "Unable to create user association with a " +
-                                                                        "tenant user");
+                "tenant user");
+
+    }
+
+    @Test(alwaysRun = true, description = "Test create user account associations as admin")
+    public void testAssociateTwoAccountsAsAdmin() throws Exception {
+
+        String loginRole = "loginRole";
+        String testAssociationUser1 = "testAssociationUser1";
+        String testPassword1 = "testPassword1";
+        String testAssociationUser2 = "testAssociationUser2";
+        String testPassword2 = "testPassword2";
+        String testAssociationUser3 = "testAssociationUser3";
+        String testPassword3 = "testPassword3";
+
+
+        userMgtClient.addRole(loginRole, new String[0], new String[]{PERMISSION_ADMIN_LOGIN});
+        userMgtClient.addUser(testAssociationUser1, testPassword1, new String[]{loginRole}, null);
+        userMgtClient.addUser(testAssociationUser2, testPassword2, new String[]{loginRole}, null);
+        userMgtClient.addUser(testAssociationUser3, testPassword3, new String[]{loginRole}, null);
+        UserAccountConnectorServiceClient loginClient = new UserAccountConnectorServiceClient(testAssociationUser1,
+                testPassword1, backendURL, configContext);
+        try {
+            loginClient.associateTwoAccounts(testAssociationUser2, testAssociationUser3);
+            Assert.fail("User without admin permission can't associate two other users.");
+        } catch (Exception e) {
+
+        }
+        UserAccountAssociationDTO[] associationDTOs = serviceClient.getAccountAssociations(testAssociationUser2);
+        Assert.assertTrue(associationDTOs == null || associationDTOs.length == 0, "Accounts has been associated by a" +
+                " user without proper permissions.");
+        serviceClient.associateTwoAccounts(testAssociationUser2, testAssociationUser3);
+        associationDTOs = serviceClient.getAccountAssociations(testAssociationUser2);
+        Assert.assertTrue(associationDTOs.length > 0, "Error while associating two accounts as admin user.");
+        userMgtClient.deleteUser(testAssociationUser1);
+        userMgtClient.deleteUser(testAssociationUser2);
+        userMgtClient.deleteUser(testAssociationUser3);
+        userMgtClient.deleteRole(loginRole);
 
     }
 
     @Test(alwaysRun = true, description = "Test switch user logged in account ",
-          dependsOnMethods = { "testConnectUserAccount" })
+            dependsOnMethods = {"testConnectUserAccount"})
     public void switchLoggedInUser() throws Exception {
 
         serviceClient.switchLoggedInUser(USER_1);
 
-        UserAccountAssociationDTO [] associations = serviceClient.getAccountAssociationsOfUser();
+        UserAccountAssociationDTO[] associations = serviceClient.getAccountAssociationsOfUser();
 
         Assert.assertTrue(isAccountSwitched(associations, USER_1), "Unable to switch user to a super tenant " +
-                                                                         "user");
+                "user");
 
         serviceClient.switchLoggedInUser(USER_2);
 
@@ -90,36 +133,36 @@ public class UserAccountConnectorTestCase extends ISIntegrationTest {
     }
 
     @Test(alwaysRun = true, description = "Test delete user account association",
-          dependsOnMethods = { "switchLoggedInUser" })
+            dependsOnMethods = {"switchLoggedInUser"})
     public void testDeleteUserAccountConnection() throws Exception {
 
         serviceClient.deleteUserAccountAssociation(USER_1);
 
-        UserAccountAssociationDTO [] associations = serviceClient.getAccountAssociationsOfUser();
+        UserAccountAssociationDTO[] associations = serviceClient.getAccountAssociationsOfUser();
 
         Assert.assertFalse(isAssociationAvailable(associations, USER_1), "Unable to delete user association of a " +
-                                                                         "super tenant user");
+                "super tenant user");
 
         serviceClient.deleteUserAccountAssociation(USER_2);
 
         associations = serviceClient.getAccountAssociationsOfUser();
 
-        Assert.assertFalse(isAssociationAvailable(associations, USER_2),  "Unable to delete user association of a " +
-                                                                          "tenant user");
+        Assert.assertFalse(isAssociationAvailable(associations, USER_2), "Unable to delete user association of a " +
+                "tenant user");
 
     }
 
-    private boolean isAssociationAvailable(UserAccountAssociationDTO [] associations, String userName){
-        if(associations != null){
-            for(UserAccountAssociationDTO association : associations){
+    private boolean isAssociationAvailable(UserAccountAssociationDTO[] associations, String userName) {
+        if (associations != null) {
+            for (UserAccountAssociationDTO association : associations) {
                 String connectedUserName = association.getUsername();
-                if(!"PRIMARY".equals(association.getDomain())) {
+                if (!"PRIMARY".equals(association.getDomain())) {
                     connectedUserName = association.getDomain() + "/" + connectedUserName;
                 }
-                if(!"carbon.super".equals(association.getTenantDomain())) {
+                if (!"carbon.super".equals(association.getTenantDomain())) {
                     connectedUserName = connectedUserName + "@" + association.getTenantDomain();
                 }
-                if(userName.equals(connectedUserName)){
+                if (userName.equals(connectedUserName)) {
                     return true;
                 }
             }
@@ -127,17 +170,17 @@ public class UserAccountConnectorTestCase extends ISIntegrationTest {
         return false;
     }
 
-    private boolean isAccountSwitched(UserAccountAssociationDTO [] associations, String userName){
-        if(associations != null && associations.length > 0){
-            for(UserAccountAssociationDTO association : associations){
+    private boolean isAccountSwitched(UserAccountAssociationDTO[] associations, String userName) {
+        if (associations != null && associations.length > 0) {
+            for (UserAccountAssociationDTO association : associations) {
                 String connectedUserName = association.getUsername();
-                if(!"PRIMARY".equals(association.getDomain())) {
+                if (!"PRIMARY".equals(association.getDomain())) {
                     connectedUserName = association.getDomain() + "/" + connectedUserName;
                 }
-                if(!"carbon.super".equals(association.getTenantDomain())) {
+                if (!"carbon.super".equals(association.getTenantDomain())) {
                     connectedUserName = connectedUserName + "@" + association.getTenantDomain();
                 }
-                if(userName.equals(connectedUserName)){
+                if (userName.equals(connectedUserName)) {
                     return false;
                 }
             }

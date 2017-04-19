@@ -22,6 +22,7 @@ import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.wso2.carbon.identity.application.authentication.framework.model.AuthenticatedUser;
 import org.wso2.carbon.identity.oauth2.IdentityOAuth2Exception;
+import org.wso2.carbon.identity.oauth2.ResponseHeader;
 import org.wso2.carbon.identity.oauth2.model.RequestParameter;
 import org.wso2.carbon.identity.oauth2.token.OAuthTokenReqMessageContext;
 import org.wso2.carbon.identity.oauth2.token.handlers.grant.AbstractAuthorizationGrantHandler;
@@ -29,7 +30,7 @@ import org.wso2.carbon.identity.oauth2.token.handlers.grant.AbstractAuthorizatio
 /**
  * New grant type for Identity Server
  */
-public class MobileGrant extends AbstractAuthorizationGrantHandler  {
+public class MobileGrant extends AbstractAuthorizationGrantHandler {
 
     private static Log log = LogFactory.getLog(MobileGrant.class);
 
@@ -37,7 +38,8 @@ public class MobileGrant extends AbstractAuthorizationGrantHandler  {
     public static final String MOBILE_GRANT_PARAM = "mobileNumber";
 
     @Override
-    public boolean validateGrant(OAuthTokenReqMessageContext oAuthTokenReqMessageContext)  throws IdentityOAuth2Exception {
+    public boolean validateGrant(OAuthTokenReqMessageContext oAuthTokenReqMessageContext) throws
+            IdentityOAuth2Exception {
 
         log.info("Mobile Grant handler is hit");
 
@@ -49,25 +51,32 @@ public class MobileGrant extends AbstractAuthorizationGrantHandler  {
         String mobileNumber = null;
 
         // find out mobile number
-        for(RequestParameter parameter : parameters){
-            if(MOBILE_GRANT_PARAM.equals(parameter.getKey())){
-                if(parameter.getValue() != null && parameter.getValue().length > 0){
+        for (RequestParameter parameter : parameters) {
+            if (MOBILE_GRANT_PARAM.equals(parameter.getKey())) {
+                if (parameter.getValue() != null && parameter.getValue().length > 0) {
                     mobileNumber = parameter.getValue()[0];
                 }
             }
         }
 
-        if(mobileNumber != null) {
+        if (mobileNumber != null) {
             //validate mobile number
-            authStatus =  isValidMobileNumber(mobileNumber);
+            authStatus = isValidMobileNumber(mobileNumber);
 
-            if(authStatus) {
+            if (authStatus) {
                 // if valid set authorized mobile number as grant user
                 AuthenticatedUser mobileUser = new AuthenticatedUser();
                 mobileUser.setUserName(mobileNumber);
                 oAuthTokenReqMessageContext.setAuthorizedUser(mobileUser);
-                oAuthTokenReqMessageContext.setScope(oAuthTokenReqMessageContext.getOauth2AccessTokenReqDTO().getScope());
+                oAuthTokenReqMessageContext.setScope(oAuthTokenReqMessageContext.getOauth2AccessTokenReqDTO()
+                        .getScope());
+            } else {
+                ResponseHeader responseHeader = new ResponseHeader();
+                responseHeader.setKey("SampleHeader-999");
+                responseHeader.setValue("Provided Mobile Number is Invalid.");
+                oAuthTokenReqMessageContext.addProperty("RESPONSE_HEADERS", new ResponseHeader[]{responseHeader});
             }
+
         }
 
         return authStatus;
@@ -117,7 +126,8 @@ public class MobileGrant extends AbstractAuthorizationGrantHandler  {
 //                tokReqMsgCtx.getOauth2AccessTokenReqDTO().getClientId(),
 //                OAuthCallback.OAuthCallbackType.SCOPE_VALIDATION_TOKEN);
 //        scopeValidationCallback.setRequestedScope(tokReqMsgCtx.getScope());
-//        scopeValidationCallback.setCarbonGrantType(org.wso2.carbon.identity.oauth.common.GrantType.valueOf(tokReqMsgCtx.
+//        scopeValidationCallback.setCarbonGrantType(org.wso2.carbon.identity.oauth.common.GrantType.valueOf
+// (tokReqMsgCtx.
 //                                                            getOauth2AccessTokenReqDTO().getGrantType()));
 //
 //        callbackManager.handleCallback(scopeValidationCallback);
@@ -127,20 +137,19 @@ public class MobileGrant extends AbstractAuthorizationGrantHandler  {
     }
 
 
-
     /**
      * TODO
-     *
+     * <p>
      * You need to implement how to validate the mobile number
      *
      * @param mobileNumber
      * @return
      */
-    private boolean isValidMobileNumber(String mobileNumber){
+    private boolean isValidMobileNumber(String mobileNumber) {
 
         // just demo validation
 
-        if(mobileNumber.startsWith("033")){
+        if (mobileNumber.startsWith("033")) {
             return true;
         }
 

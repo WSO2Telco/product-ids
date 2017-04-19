@@ -4,6 +4,7 @@ import org.apache.catalina.LifecycleException;
 import org.apache.catalina.core.StandardHost;
 import org.apache.catalina.startup.Tomcat;
 import org.apache.http.Header;
+import org.apache.http.HttpEntity;
 import org.apache.http.HttpResponse;
 import org.apache.http.NameValuePair;
 import org.apache.http.client.entity.UrlEncodedFormEntity;
@@ -16,9 +17,9 @@ import org.testng.Assert;
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
+import org.wso2.carbon.identity.application.common.model.xsd.*;
 import org.wso2.carbon.integration.common.admin.client.AuthenticatorClient;
 import org.wso2.identity.integration.common.clients.application.mgt.ApplicationManagementServiceClient;
-import org.wso2.carbon.identity.application.common.model.xsd.*;
 import org.wso2.identity.integration.common.utils.ISIntegrationTest;
 import org.wso2.identity.integration.test.utils.DataExtractUtil;
 
@@ -48,7 +49,9 @@ public class TestPassiveSTS extends ISIntegrationTest {
     private String adminPassword;
     private String sessionDataKey;
     private String resultPage;
+    private Header locationHeader;
     private Tomcat tomcat;
+    private String passiveStsURL;
 
     private AuthenticatorClient logManger;
     private ApplicationManagementServiceClient appMgtclient;
@@ -69,13 +72,15 @@ public class TestPassiveSTS extends ISIntegrationTest {
         appMgtclient = new ApplicationManagementServiceClient(sessionCookie, backendURL, null);
 
         client = new DefaultHttpClient();
+        String isURL = backendURL.substring(0, backendURL.indexOf("services/"));
+        this.passiveStsURL = isURL + "passivests";
 
         setSystemProperties();
     }
 
     @AfterClass(alwaysRun = true)
     public void atEnd() throws Exception {
-        if(tomcat != null){
+        if (tomcat != null) {
             tomcat.stop();
             tomcat.destroy();
             Thread.sleep(10000);
@@ -108,7 +113,7 @@ public class TestPassiveSTS extends ISIntegrationTest {
     }
 
     @Test(alwaysRun = true, description = "Update service provider with passiveSTS configs",
-            dependsOnMethods = { "testAddSP" })
+            dependsOnMethods = {"testAddSP"})
     public void testUpdateSP() throws Exception {
 
         serviceProvider.setOutboundProvisioningConfig(new OutboundProvisioningConfig());
@@ -129,13 +134,13 @@ public class TestPassiveSTS extends ISIntegrationTest {
         }
         appMgtclient.updateApplicationData(serviceProvider);
         Assert.assertNotEquals(appMgtclient.getApplication(SERVICE_PROVIDER_NAME)
-                .getInboundAuthenticationConfig()
-                .getInboundAuthenticationRequestConfigs().length,
+                        .getInboundAuthenticationConfig()
+                        .getInboundAuthenticationRequestConfigs().length,
                 0, "Fail to update service provider with passiveSTS configs");
     }
 
     @Test(alwaysRun = true, description = "Update service provider with claim configurations",
-            dependsOnMethods = { "testUpdateSP" })
+            dependsOnMethods = {"testUpdateSP"})
     public void testAddClaimConfiguration() throws Exception {
 
         serviceProvider.getClaimConfig().setClaimMappings(getClaimMappings());
@@ -144,15 +149,16 @@ public class TestPassiveSTS extends ISIntegrationTest {
         ClaimConfig updatedClaimConfig = updatedServiceProvider.getClaimConfig();
 
         Assert.assertEquals(updatedClaimConfig.getClaimMappings()[0].getLocalClaim().getClaimUri(),
-                            GIVEN_NAME_CLAIM_URI, "Failed update given name claim uri");
+                GIVEN_NAME_CLAIM_URI, "Failed update given name claim uri");
 
         Assert.assertEquals(updatedClaimConfig.getClaimMappings()[1].getLocalClaim().getClaimUri(),
-                            EMAIL_CLAIM_URI, "Failed update email claim uri");
+                EMAIL_CLAIM_URI, "Failed update email claim uri");
     }
 
     @Test(alwaysRun = true, description = "Invoke PassiveSTSSampleApp",
             dependsOnMethods = {"testDeployPassiveSTSSampleApp", "testAddClaimConfiguration"})
-    public void testInvokePassiveSTSSampleApp() throws IOException {
+    public void testInvokePassiveSTSSampleApp() throws IOException, LifecycleException, InterruptedException {
+
         HttpGet request = new HttpGet(PASSIVE_STS_SAMPLE_APP_URL);
         HttpResponse response = client.execute(request);
         Assert.assertNotNull(response, "PassiveSTSSampleApp invoke response is null");
@@ -170,7 +176,7 @@ public class TestPassiveSTS extends ISIntegrationTest {
     }
 
     @Test(alwaysRun = true, description = "Send login post request", dependsOnMethods =
-            { "testInvokePassiveSTSSampleApp" })
+            {"testInvokePassiveSTSSampleApp"})
     public void testSendLoginRequestPost() throws Exception {
 
         HttpPost request = new HttpPost(COMMON_AUTH_URL);
@@ -184,7 +190,7 @@ public class TestPassiveSTS extends ISIntegrationTest {
         Assert.assertNotNull(response, "Login response is null.");
         Assert.assertEquals(response.getStatusLine().getStatusCode(), 302, "Invalid Response");
 
-        Header locationHeader = response.getFirstHeader(HTTP_RESPONSE_HEADER_LOCATION);
+        locationHeader = response.getFirstHeader(HTTP_RESPONSE_HEADER_LOCATION);
         Assert.assertNotNull(locationHeader, "Login response header is null");
 
         HttpGet getRequest = new HttpGet(locationHeader.getValue());
@@ -192,9 +198,39 @@ public class TestPassiveSTS extends ISIntegrationTest {
         response = client.execute(getRequest);
         resultPage = DataExtractUtil.getContentData(response);
         EntityUtils.consume(response.getEntity());
-
     }
 
+    @Test(alwaysRun = true, description = "Test PassiveSTS SAML2 Assertion", dependsOnMethods = {
+            "testSendLoginRequestPost"})
+    public void testPassiveSAML2Assertion() throws Exception {
+        String passiveParams = "?wa=wsignin1.0&wreply=" + PASSIVE_STS_SAMPLE_APP_URL + "&wtrealm=PassiveSTSSampleApp";
+        String wreqParam = "&wreq=%3Cwst%3ARequestSecurityToken+xmlns%3Awst%3D%22http%3A%2F%2Fdocs.oasis-open.org"
+                + "%2Fws-sx%2Fws-trust%2F200512%22%3E%3Cwst%3ATokenType%3Ehttp%3A%2F%2Fdocs.oasis-open.org"
+                + "%2Fwss%2Foasis-wss-saml-token-profile-1.1%23SAMLV2.0%3C%2Fwst%3ATokenType%3E%3C%2Fwst"
+                + "%3ARequestSecurityToken%3E";
+
+        HttpGet request = new HttpGet(this.passiveStsURL + passiveParams + wreqParam);
+        HttpResponse response = client.execute(request);
+
+        Assert.assertNotNull(response, "PassiveSTSSampleApp invoke response is null.");
+        int responseCode = response.getStatusLine().getStatusCode();
+        Assert.assertEquals(responseCode, 200, "Invalid Response.");
+
+        HttpEntity entity = response.getEntity();
+        String responseString = EntityUtils.toString(entity, "UTF-8");
+
+        Assert.assertTrue(responseString.contains("urn:oasis:names:tc:SAML:2.0:assertion"),
+                "No SAML2 Assertion found for the SAML2 request.");
+    }
+
+    @Test(alwaysRun = true, description = "Test Session Hijacking", dependsOnMethods = {"testPassiveSAML2Assertion"})
+    public void testSessionHijacking() throws Exception {
+        HttpGet getRequest = new HttpGet(locationHeader.getValue());
+        HttpResponse response = client.execute(getRequest);
+        String resultPage2 = DataExtractUtil.getContentData(response);
+        Assert.assertTrue(resultPage2.contains("Authentication Error !"), "Session hijacking is possible.");
+        EntityUtils.consume(response.getEntity());
+    }
 //    @Test(alwaysRun = true, description = "Test PassiveSTS Claims",
 //            dependsOnMethods = { "testSendLoginRequestPost" })
 //    public void testPassiveSTSClaims() {

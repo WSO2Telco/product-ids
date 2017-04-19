@@ -53,14 +53,12 @@ public class WorkflowManagementTestCase extends ISIntegrationTest {
     private WorkflowAdminClient client;
     private RemoteUserStoreManagerServiceClient usmClient;
     public MultipleServersManager manager = new MultipleServersManager();
-
     private String addUserWorkflowName = "TestWorkflowAddUser1";
     private String workflowId = null;
     private String associationId = null;
     private String[] rolesToAdd = {"wfRole1", "wfRole2", "wfRole3"};
     private String sessionCookie2;
     private String servicesUrl = "https://localhost:9844/services/";
-
     private String templateId = "MultiStepApprovalTemplate";
     private String workflowImplId = "ApprovalWorkflow";
 
@@ -119,7 +117,7 @@ public class WorkflowManagementTestCase extends ISIntegrationTest {
         String user = "admin";
         String userPassword = "admin";
         String[] passwordAsArray = new String[userPassword.length()];
-        for (int i=0;i<userPassword.length();i++) {
+        for (int i = 0; i < userPassword.length(); i++) {
             passwordAsArray[i] = userPassword.charAt(i) + "";
         }
         try {
@@ -143,7 +141,7 @@ public class WorkflowManagementTestCase extends ISIntegrationTest {
             }
             Assert.assertTrue(added, "Failed to add profile");
         } catch (Exception e) {
-            Assert.fail("Error while adding the BPS profile", e);
+            Assert.fail("Error while adding the BPS profile.", e);
         }
     }
 
@@ -156,7 +154,7 @@ public class WorkflowManagementTestCase extends ISIntegrationTest {
         String user = "testUser";
         String userPassword = "testPassword";
         String[] passwordAsArray = new String[userPassword.length()];
-        for (int i=0;i<userPassword.length();i++) {
+        for (int i = 0; i < userPassword.length(); i++) {
             passwordAsArray[i] = userPassword.charAt(i) + "";
         }
         BPSProfile bpsProfileDTO = new BPSProfile();
@@ -193,7 +191,7 @@ public class WorkflowManagementTestCase extends ISIntegrationTest {
             }
             Assert.assertTrue(added, "Failed to add workflow");
         } catch (Exception e) {
-            Assert.fail("Error while adding the workflow", e);
+            Assert.fail("Error while adding the workflow.", e);
         }
     }
 
@@ -223,7 +221,7 @@ public class WorkflowManagementTestCase extends ISIntegrationTest {
             }
             Assert.assertTrue(added, "Failed to add association");
         } catch (Exception e) {
-            Assert.fail("Error while adding the association", e);
+            Assert.fail("Error while adding the association.", e);
         }
     }
 
@@ -253,7 +251,7 @@ public class WorkflowManagementTestCase extends ISIntegrationTest {
                     usmClient.deleteUser(userName2);
                 }
             } catch (Exception e) {
-                log.error("Error while removing added test users");
+                log.error("Error while removing added test users.", e);
             }
         }
     }
@@ -296,7 +294,7 @@ public class WorkflowManagementTestCase extends ISIntegrationTest {
                     usmClient.deleteUser(userName5);
                 }
             } catch (Exception e) {
-                log.error("Error while removing added test users");
+                log.error("Error while removing added test users.", e);
             }
         }
     }
@@ -360,15 +358,15 @@ public class WorkflowManagementTestCase extends ISIntegrationTest {
                     break;
                 }
             }
-        }catch (Exception e) {
-            log.error("Error while deleting deleteRole association at testAddUserOperation.");
+        } catch (Exception e) {
+            log.error("Error while deleting deleteRole association at testAddUserOperation.", e);
         }
         try {
             usmClient.deleteRole(roleName1);
             Assert.assertFalse(usmClient.isExistingRole(roleName1), "Role should have deleted since association is " +
                     "removed");
         } catch (Exception e) {
-            Assert.fail ("Error while deleting role where no associations of DELETE_ROLE exist.");
+            Assert.fail("Error while deleting role where no associations of DELETE_ROLE exist.");
         }
 
     }
@@ -441,7 +439,7 @@ public class WorkflowManagementTestCase extends ISIntegrationTest {
                 }
             }
         } catch (Exception e) {
-            log.error("Error while deleting addRole association at testAddUserOperation.");
+            log.error("Error while deleting addRole association at testAddUserOperation.", e);
         }
 
         try {
@@ -479,7 +477,7 @@ public class WorkflowManagementTestCase extends ISIntegrationTest {
                 }
             }
         } catch (Exception e) {
-            log.error("Error while deleting updateUserListOfRole association at testAddUserOperation.");
+            log.error("Error while deleting updateUserListOfRole association at testAddUserOperation.", e);
         }
 
         try {
@@ -511,7 +509,7 @@ public class WorkflowManagementTestCase extends ISIntegrationTest {
                 }
             }
         } catch (Exception e) {
-            log.error("Error while deleting updateRoleListOfUser association at testAddUserOperation.");
+            log.error("Error while deleting updateRoleListOfUser association at testAddUserOperation.", e);
         }
 
         try {
@@ -550,7 +548,7 @@ public class WorkflowManagementTestCase extends ISIntegrationTest {
             usmClient.deleteUser(userName4);
             usmClient.deleteUser(userName5);
         } catch (Exception e) {
-            log.error("Error while clean up testDeleteUserOperation");
+            log.error("Error while clean up testDeleteUserOperation.", e);
         }
 
     }
@@ -601,7 +599,7 @@ public class WorkflowManagementTestCase extends ISIntegrationTest {
         try {
             usmClient.updateRoleName(roleName2, roleName3);
         } catch (Exception e) {
-            log.error("Error occured while renaming the role.");
+            log.error("Error occured while renaming the role.", e);
         }
         try {
             usmClient.addRole(roleName3, new String[]{}, new PermissionDTO[]{});
@@ -619,7 +617,7 @@ public class WorkflowManagementTestCase extends ISIntegrationTest {
                 }
             }
         } catch (Exception e) {
-            log.error("Error while clean up testDeleteUserOperation");
+            log.error("Error while clean up testDeleteUserOperation.", e);
         }
 
         try {
@@ -649,7 +647,7 @@ public class WorkflowManagementTestCase extends ISIntegrationTest {
                 }
             }
         } catch (Exception e) {
-            log.error("Error while clean up testDeleteUserOperation");
+            log.error("Error while clean up testDeleteUserOperation.", e);
         }
 
         try {
@@ -663,7 +661,7 @@ public class WorkflowManagementTestCase extends ISIntegrationTest {
             }
             usmClient.deleteUser(userName1);
         } catch (Exception e) {
-            log.error("Error while clean up testDeleteUserOperation");
+            log.error("Error while clean up testDeleteUserOperation.", e);
         }
     }
 
@@ -737,7 +735,7 @@ public class WorkflowManagementTestCase extends ISIntegrationTest {
                 }
             }
         } catch (Exception e) {
-            log.error("Error while clean up testDeleteUserOperation");
+            log.error("Error while clean up testDeleteUserOperation.", e);
         }
 
         try {
@@ -767,7 +765,7 @@ public class WorkflowManagementTestCase extends ISIntegrationTest {
                 }
             }
         } catch (Exception e) {
-            log.error("Error while clean up testDeleteUserOperation");
+            log.error("Error while clean up testDeleteUserOperation.", e);
         }
 
         try {
@@ -797,7 +795,7 @@ public class WorkflowManagementTestCase extends ISIntegrationTest {
                 }
             }
         } catch (Exception e) {
-            log.error("Error while clean up testDeleteUserOperation");
+            log.error("Error while clean up testDeleteUserOperation.", e);
         }
 
         try {
@@ -816,7 +814,7 @@ public class WorkflowManagementTestCase extends ISIntegrationTest {
             usmClient.deleteRole(roleName3);
             usmClient.deleteRole(roleName4);
         } catch (Exception e) {
-            log.error("Error while clean up testDeleteUserOperation");
+            log.error("Error while clean up testDeleteUserOperation.", e);
         }
     }
 
@@ -868,7 +866,7 @@ public class WorkflowManagementTestCase extends ISIntegrationTest {
                 }
             }
         } catch (Exception e) {
-            log.error("Error while clean up testDeleteUserOperation");
+            log.error("Error while clean up testDeleteUserOperation.", e);
         }
 
         try {
@@ -894,7 +892,7 @@ public class WorkflowManagementTestCase extends ISIntegrationTest {
                 }
             }
         } catch (Exception e) {
-            log.error("Error while clean up testDeleteRoleOperation");
+            log.error("Error while clean up testDeleteRoleOperation.", e);
         }
 
         try {
@@ -920,7 +918,7 @@ public class WorkflowManagementTestCase extends ISIntegrationTest {
                 }
             }
         } catch (Exception e) {
-            log.error("Error while clean up testRenameRoleOperation");
+            log.error("Error while clean up testRenameRoleOperation.WorkflowManagementTestCase", e);
         }
 
         try {
@@ -935,7 +933,7 @@ public class WorkflowManagementTestCase extends ISIntegrationTest {
             usmClient.deleteRole(roleName1);
             usmClient.deleteUser(userName1);
         } catch (Exception e) {
-            log.error("Error while clean up testUpdateUserListOfRole");
+            log.error("Error while clean up testUpdateUserListOfRole.", e);
         }
     }
 
@@ -987,7 +985,7 @@ public class WorkflowManagementTestCase extends ISIntegrationTest {
                 }
             }
         } catch (Exception e) {
-            log.error("Error while clean up testDeleteUserOperation");
+            log.error("Error while clean up testDeleteUserOperation.", e);
         }
 
         try {
@@ -1013,7 +1011,7 @@ public class WorkflowManagementTestCase extends ISIntegrationTest {
                 }
             }
         } catch (Exception e) {
-            log.error("Error while clean up testDeleteUserOperation");
+            log.error("Error while clean up testDeleteUserOperation.", e);
         }
 
         try {
@@ -1039,7 +1037,7 @@ public class WorkflowManagementTestCase extends ISIntegrationTest {
                 }
             }
         } catch (Exception e) {
-            log.error("Error while clean up testRenameRoleOperation");
+            log.error("Error while clean up testRenameRoleOperation.", e);
         }
 
         try {
@@ -1054,7 +1052,7 @@ public class WorkflowManagementTestCase extends ISIntegrationTest {
             usmClient.deleteRole(roleName1);
             usmClient.deleteUser(userName1);
         } catch (Exception e) {
-            log.error("Error while clean up testUpdateRoleListOfUser");
+            log.error("Error while clean up testUpdateRoleListOfUser.", e);
         }
     }
 
@@ -1092,7 +1090,7 @@ public class WorkflowManagementTestCase extends ISIntegrationTest {
             Assert.fail("failed to add updateRoleName workflow.");
         }
         try {
-            usmClient.updateRoleName(roleName1,roleName2);
+            usmClient.updateRoleName(roleName1, roleName2);
             Assert.fail("Should throw an exception since there is a pending workflow for adding a user with rolename1");
         } catch (Exception e) {
             //test pass
@@ -1108,7 +1106,7 @@ public class WorkflowManagementTestCase extends ISIntegrationTest {
                 }
             }
         } catch (Exception e) {
-            log.error("Error while clean up testUpdateRoleListOfUser");
+            log.error("Error while clean up testUpdateRoleListOfUser.", e);
         }
 
         try {
@@ -1119,7 +1117,7 @@ public class WorkflowManagementTestCase extends ISIntegrationTest {
             Assert.fail("failed to add updateRoleName workflow.");
         }
         try {
-            usmClient.updateRoleName(roleName3,roleName2);
+            usmClient.updateRoleName(roleName3, roleName2);
             Assert.fail("Should throw an exception since there is a pending workflow for adding a user with rolename1");
         } catch (Exception e) {
             //test pass
@@ -1135,18 +1133,18 @@ public class WorkflowManagementTestCase extends ISIntegrationTest {
                 }
             }
         } catch (Exception e) {
-            log.error("Error while clean up testUpdateRoleListOfUser");
+            log.error("Error while clean up testUpdateRoleListOfUser.", e);
         }
 
         try {
             client.addAssociation(workflowId, "TestUpdateUserListAssociationForRename", WorkflowConstants
                     .UPDATE_ROLE_USERS_EVENT, "boolean(1)");
-            usmClient.updateUserListOfRole(roleName4,new String[0], new String[]{userName2});
+            usmClient.updateUserListOfRole(roleName4, new String[0], new String[]{userName2});
         } catch (Exception e) {
             Assert.fail("failed to add updateRoleName workflow.");
         }
         try {
-            usmClient.updateRoleName(roleName4,roleName2);
+            usmClient.updateRoleName(roleName4, roleName2);
             Assert.fail("Should throw an exception since there is a pending workflow for adding a user with rolename1");
         } catch (Exception e) {
             //test pass
@@ -1162,7 +1160,7 @@ public class WorkflowManagementTestCase extends ISIntegrationTest {
                 }
             }
         } catch (Exception e) {
-            log.error("Error while clean up testUpdateRoleListOfUser");
+            log.error("Error while clean up testUpdateRoleListOfUser.", e);
         }
 
         try {
@@ -1173,7 +1171,7 @@ public class WorkflowManagementTestCase extends ISIntegrationTest {
             Assert.fail("failed to add updateRoleName workflow.");
         }
         try {
-            usmClient.updateRoleName(roleName5,roleName2);
+            usmClient.updateRoleName(roleName5, roleName2);
             Assert.fail("Should throw an exception since there is a pending workflow for adding a user with rolename1");
         } catch (Exception e) {
             //test pass
@@ -1189,7 +1187,7 @@ public class WorkflowManagementTestCase extends ISIntegrationTest {
                 }
             }
         } catch (Exception e) {
-            log.error("Error while clean up testUpdateRoleListOfUser");
+            log.error("Error while clean up testUpdateRoleListOfUser.", e);
         }
 
         try {
@@ -1198,7 +1196,7 @@ public class WorkflowManagementTestCase extends ISIntegrationTest {
             Assert.fail("failed to add updateRoleName workflow.");
         }
         try {
-            usmClient.updateRoleName(roleName6,roleName7);
+            usmClient.updateRoleName(roleName6, roleName7);
             Assert.fail("Should throw an exception since there is a pending workflow for adding a user with rolename1");
         } catch (Exception e) {
             //test pass
@@ -1220,7 +1218,7 @@ public class WorkflowManagementTestCase extends ISIntegrationTest {
             usmClient.deleteRole(roleName6);
             usmClient.deleteUser(userName2);
         } catch (Exception e) {
-            log.error("Error while clean up testUpdateRoleName");
+            log.error("Error while clean up testUpdateRoleName.", e);
         }
     }
 
@@ -1245,7 +1243,7 @@ public class WorkflowManagementTestCase extends ISIntegrationTest {
             Assert.fail("failed to add updateRoleName workflow.");
         }
         try {
-            usmClient.deleteUserClaimValue(userName1,"wso2.org/testClaim",null);
+            usmClient.deleteUserClaimValue(userName1, "wso2.org/testClaim", null);
             Assert.fail("Should throw an exception since there is a pending workflow for deleting user.");
         } catch (Exception e) {
             //test pass
@@ -1261,7 +1259,7 @@ public class WorkflowManagementTestCase extends ISIntegrationTest {
                 }
             }
         } catch (Exception e) {
-            log.error("Error while clean up testUpdateRoleListOfUser");
+            log.error("Error while clean up testUpdateRoleListOfUser.", e);
         }
         try {
             Association[] associations = client.listAssociationsForWorkflow(workflowId);
@@ -1274,10 +1272,9 @@ public class WorkflowManagementTestCase extends ISIntegrationTest {
             }
             usmClient.deleteUser(userName1);
         } catch (Exception e) {
-            log.error("Error while clean up testUpdateUserClaimOperation");
+            log.error("Error while clean up testUpdateUserClaimOperation.", e);
         }
     }
-
 
 
     @Test(alwaysRun = true, description = "Testing removing an association", dependsOnMethods =
@@ -1299,7 +1296,7 @@ public class WorkflowManagementTestCase extends ISIntegrationTest {
                 }
             }
         } catch (Exception e) {
-            Assert.fail("Error while deleting the association", e);
+            Assert.fail("Error while deleting the association.", e);
         }
     }
 
@@ -1330,12 +1327,12 @@ public class WorkflowManagementTestCase extends ISIntegrationTest {
                         + ServiceDeploymentUtil.SERVICE_DEPLOYMENT_DELAY + " mills ");
             }
         } catch (Exception e) {
-            Assert.fail("Error while deleting the workflow", e);
+            Assert.fail("Error while deleting the workflow.", e);
         }
     }
 
     @Test(alwaysRun = true, description = "Testing deleting a BPS Profile", dependsOnMethods =
-            {"testAddDuplicateBPSProfile","testRemoveWorkflow"})
+            {"testAddDuplicateBPSProfile", "testRemoveWorkflow"})
     public void testRemoveBPSProfile() {
 
         String profileName = "TestBPSProfile";
@@ -1351,7 +1348,7 @@ public class WorkflowManagementTestCase extends ISIntegrationTest {
                 }
             }
         } catch (Exception e) {
-            Assert.fail("Error while deleting the BPS profile", e);
+            Assert.fail("Error while deleting the BPS profile.", e);
         }
     }
 
@@ -1368,7 +1365,7 @@ public class WorkflowManagementTestCase extends ISIntegrationTest {
         WorkflowImpl workflowImpl = client.getWorkflowImpl(templateId, workflowImplId);
         workflowDTO.setWorkflowImpl(workflowImpl);
 
-        Parameter[] parametersImpl =new Parameter[2];
+        Parameter[] parametersImpl = new Parameter[2];
 
         Parameter parameter = new Parameter();
         parameter.setParamName("BPSProfile");
@@ -1376,7 +1373,7 @@ public class WorkflowManagementTestCase extends ISIntegrationTest {
         parameter.setHolder("WorkflowImpl");
         parameter.setQName("BPSProfile");
 
-        parametersImpl[0] = parameter ;
+        parametersImpl[0] = parameter;
 
         parameter = new Parameter();
         parameter.setParamName("HTSubject");
@@ -1384,9 +1381,9 @@ public class WorkflowManagementTestCase extends ISIntegrationTest {
         parameter.setHolder("WorkflowImpl");
         parameter.setQName("HTSubject");
 
-        parametersImpl[1] = parameter ;
+        parametersImpl[1] = parameter;
 
-        Parameter[] parametersTmp =new Parameter[1];
+        Parameter[] parametersTmp = new Parameter[1];
 
         parameter = new Parameter();
         parameter.setParamName("UserAndRole");
@@ -1394,14 +1391,13 @@ public class WorkflowManagementTestCase extends ISIntegrationTest {
         parameter.setHolder("Template");
         parameter.setQName("UserAndRole-step-1-roles");
 
-        parametersTmp[0] = parameter ;
+        parametersTmp[0] = parameter;
 
         workflowDTO.setTemplateParameters(parametersTmp);
         workflowDTO.setWorkflowImplParameters(parametersImpl);
 
         return workflowDTO;
     }
-
 
 
 }

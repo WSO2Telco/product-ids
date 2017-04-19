@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!--
-  ~ Copyright  (c) 2015-2016, WSO2.Telco Inc. (http://www.wso2telco.com) All Rights Reserved.
+  ~ Copyright (c) 2015, WSO2 Inc. (http://www.wso2.org) All Rights Reserved.
   ~
   ~ WSO2 Inc. licenses this file to you under the Apache License,
   ~ Version 2.0 (the "License"); you may not use this file except
@@ -27,39 +27,42 @@
             <directory>
                 ../scripts/identity
             </directory>
-            <outputDirectory>wso2telcoids-${pom.version}-migration/dbscripts/identity/migration-5.0.0SP1_to_5.1.0</outputDirectory>
+            <outputDirectory>wso2is-${pom.version}-migration/dbscripts/identity/migration-5.0.0SP1_to_5.1.0</outputDirectory>
             <includes>
                 <include>h2.sql</include>
                 <include>mysql.sql</include>
                 <include>oracle.sql</include>
                 <include>mssql.sql</include>
                 <include>postgresql.sql</include>
+                <include>db2.sql</include>
             </includes>
         </fileSet>
         <fileSet>
             <directory>
                 ../scripts/identity/tosp1
             </directory>
-            <outputDirectory>wso2telcoids-${pom.version}-migration/dbscripts/identity/migration-5.0.0_to_5.0.0SP1</outputDirectory>
+            <outputDirectory>wso2is-${pom.version}-migration/dbscripts/identity/migration-5.0.0_to_5.0.0SP1</outputDirectory>
             <includes>
                 <include>h2.sql</include>
                 <include>mysql.sql</include>
                 <include>oracle.sql</include>
                 <include>mssql.sql</include>
                 <include>postgresql.sql</include>
+                <include>db2.sql</include>
             </includes>
         </fileSet>
         <fileSet>
             <directory>
                 ../scripts/um
             </directory>
-            <outputDirectory>wso2telcoids-${pom.version}-migration/dbscripts/migration-5.0.0_to_5.1.0</outputDirectory>
+            <outputDirectory>wso2is-${pom.version}-migration/dbscripts/migration-5.0.0_to_5.1.0</outputDirectory>
             <includes>
                 <include>h2.sql</include>
                 <include>mysql.sql</include>
                 <include>oracle.sql</include>
                 <include>mssql.sql</include>
                 <include>postgresql.sql</include>
+                <include>db2.sql</include>
             </includes>
         </fileSet>
     </fileSets>
@@ -68,7 +71,7 @@
             <source>
                 target/org.wso2.carbon.is.migrate.client-${pom.version}.jar
             </source>
-            <outputDirectory>wso2telcoids-${pom.version}-migration/dropins/</outputDirectory>
+            <outputDirectory>wso2is-${pom.version}-migration/dropins/</outputDirectory>
         </file>
     </files>
 </assembly>
