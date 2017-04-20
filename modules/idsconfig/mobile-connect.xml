@@ -210,4 +210,14 @@
         <DASUrl>tcp://localhost:7612</DASUrl>
         <DASSecureUrl>ssl://localhost:7712</DASSecureUrl>
     </DataPublisher>
+
+    <SelfServicePortal>
+        <SPOAuthClientKey>bVU60zFM1SlMufyxGyj6LbPSIcMa</SPOAuthClientKey>
+        <SPOAuthClientSecret>zyrYXaMRkAFUkTrr3GJoDnT2rPYa</SPOAuthClientSecret>
+        <UILoginUrl>http://localhost:3000/login</UILoginUrl>
+        <TokenEndpoint>https://localhost:9443/oauth2/token</TokenEndpoint>
+        <CallbackUrl>https://localhost:9443/selfserviceportal/api/v1/auth/callback</CallbackUrl>
+        <UserInfoCall>https://localhost:9443/oauth2/userinfo?schema=openid</UserInfoCall>
+        <AuthorizeCall>https://localhost:9443/authproxy/oauth2/authorize/operator/${operator}</AuthorizeCall>
+    </SelfServicePortal>
 </MobileConnectConfig>
