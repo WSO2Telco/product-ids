@@ -228,6 +228,7 @@ CREATE TABLE `scope_parameter` (
     `msisdn_mismatch_result` VARCHAR(255),
     `he_failure_result` VARCHAR(255),
     `is_multiscope` TINYINT DEFAULT 0,
+    `is_consent_page` TINYINT NOT NULL DEFAULT 0,
     PRIMARY KEY (`param_id`),
     UNIQUE (`scope`)
 )  ENGINE=INNODB DEFAULT CHARSET=LATIN1;
@@ -262,6 +263,31 @@ VALUES(9,'address',1);
 
 INSERT INTO scope_parameter(param_id,scope,is_multiscope)
 VALUES(10,'mc_identity_phonenumber_hashed',1);
+
+
+DROP TABLE IF EXISTS `consent`;
+
+CREATE TABLE `consent` (
+    `consent_id` INT(20) NOT NULL,
+    `client_id` VARCHAR(100) NOT NULL,
+    `scope_id` INT(20) NOT NULL,
+    `operator` VARCHAR(45) DEFAULT NULL,
+    `approve_status` VARCHAR(45),
+    PRIMARY KEY (`consent_id`),
+    FOREIGN KEY (`scope_id`) REFERENCES `scope_parameter`(`param_id`)
+)  ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+
+DROP TABLE IF EXISTS `user_consent`;
+
+CREATE TABLE `user_consent` (
+    `msisdn` VARCHAR(255) DEFAULT NULL,
+    `client_id` VARCHAR(100) NOT NULL,
+    `scope_id` INT(20) NOT NULL,
+    `operator` VARCHAR(45) DEFAULT NULL,
+    `approve` TINYINT DEFAULT 0,
+    FOREIGN KEY (`scope_id`) REFERENCES `scope_parameter`(`param_id`)
+)  ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 
 DROP TABLE IF EXISTS `prompt_configuration`;
