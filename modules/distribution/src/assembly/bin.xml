@@ -178,6 +178,7 @@
                 <include>authproxy.war</include>
                 <include>sessionupdater.war</include>
                 <include>saaserver.war</include>
+                <include>selfserviceportal.war</include>
 			</includes>
         </fileSet>
 
