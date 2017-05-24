@@ -144,6 +144,9 @@
                                     com.wso2telco.ids:com.wso2telco.ids.saaserver.feature:${com.wso2telco.ids.version}
                                 </featureArtifactDef>
                                 <featureArtifactDef>
+                                    com.wso2telco.ids:com.wso2telco.ids.selfserviceportal.feature:${com.wso2telco.ids.version}
+                                </featureArtifactDef>
+                                <featureArtifactDef>
                                     com.wso2telco.ids:com.wso2telco.ids.samplerequest.feature:${com.wso2telco.ids.version}
                                 </featureArtifactDef>
                                 <featureArtifactDef>
@@ -945,6 +948,11 @@
                                 </feature>
 
                                 <feature>
+                                    <id>com.wso2telco.ids.selfserviceportal.feature.group</id>
+                                    <version>${com.wso2telco.ids.version}</version>
+                                </feature>
+
+                                <feature>
                                     <id>com.wso2telco.ids.sessionupdater.ui.feature.group</id>
                                     <version>${com.wso2telco.ids.version}</version>
                                 </feature>
@@ -1087,9 +1095,12 @@
                                     <id>com.wso2telco.ids.saaserver.feature.group</id>
                                     <version>${com.wso2telco.ids.version}</version>
                                 </feature>
-
                                 <feature>
                                     <id>com.wso2telco.ids.samplerequest.feature.group</id>
+                                    <version>${com.wso2telco.ids.version}</version>
+                                </feature>
+                                <feature>
+                                    <id>com.wso2telco.ids.selfserviceportal.feature.group</id>
                                     <version>${com.wso2telco.ids.version}</version>
                                 </feature>
 
@@ -1579,6 +1590,11 @@
                                 </feature>
 
                                 <feature>
+                                    <id>com.wso2telco.ids.selfserviceportal.feature.group</id>
+                                    <version>${com.wso2telco.ids.version}</version>
+                                </feature>
+
+                                <feature>
                                     <id>com.wso2telco.ids.sessionupdater.ui.feature.group</id>
                                     <version>${com.wso2telco.ids.version}</version>
                                 </feature>
@@ -2042,6 +2058,11 @@
                                 </feature>
                                 <feature>
                                     <id>com.wso2telco.ids.samplerequest.feature.group</id>
+                                    <version>${com.wso2telco.ids.version}</version>
+                                </feature>
+
+                                <feature>
+                                    <id>com.wso2telco.ids.selfserviceportal.feature.group</id>
                                     <version>${com.wso2telco.ids.version}</version>
                                 </feature>
 
