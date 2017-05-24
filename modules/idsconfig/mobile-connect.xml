@@ -265,8 +265,8 @@
     </OperatorDiscoveryNamesMapping>
 
     <SelfServicePortal>
-        <SPOAuthClientKey>bVU60zFM1SlMufyxGyj6LbPSIcMa</SPOAuthClientKey>
-        <SPOAuthClientSecret>zyrYXaMRkAFUkTrr3GJoDnT2rPYa</SPOAuthClientSecret>
+        <SPOAuthClientKey></SPOAuthClientKey>
+        <SPOAuthClientSecret></SPOAuthClientSecret>
         <UILoginUrl>https://localhost:9443/selfserviceportal/#/login</UILoginUrl>
         <TokenEndpoint>https://localhost:9443/oauth2/token</TokenEndpoint>
         <CallbackUrl>https://localhost:9443/selfserviceportal/api/v1/auth/callback</CallbackUrl>
