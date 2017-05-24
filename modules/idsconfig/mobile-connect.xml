@@ -272,8 +272,8 @@
         <CallbackUrl>https://localhost:9443/selfserviceportal/api/v1/auth/callback</CallbackUrl>
         <UserInfoCall>https://localhost:9443/oauth2/userinfo?schema=openid</UserInfoCall>
         <AuthorizeCall>https://localhost:9443/authproxy/oauth2/authorize/operator/${operator}</AuthorizeCall>
-        <DiscoveryAPICall>  https://india.discover.mobileconnect.io/gsma/v2/discovery/?Redirect_URL=https://www.goibibo.com/api/auth/v1.0/mobileconnect/callback</DiscoveryAPICall>
-        <DiscoveryAPIToken>OTc3YjMyOGUtZTVlZi00NWY1LTgxYTktOTg5MDA5MWI2NDA3OmUzNTRjMzNjLTdjYTAtNDdjMy04MGUwLWZhZGMxMzIxNDY0Zg==</DiscoveryAPIToken>
+        <DiscoveryAPICall></DiscoveryAPICall>
+        <DiscoveryAPIToken></DiscoveryAPIToken>
         <MsisdnClaim>msisdn</MsisdnClaim> <!-- MSISDN claim on user info call -->
     </SelfServicePortal>
 </MobileConnectConfig>
