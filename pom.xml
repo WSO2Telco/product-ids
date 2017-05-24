@@ -1205,6 +1205,11 @@
                 <artifactId>com.wso2telco.ids.saaserver.feature</artifactId>
                 <version>${com.wso2telco.ids.version}</version>
             </dependency>
+            <dependency>
+                <groupId>com.wso2telco.ids</groupId>
+                <artifactId>com.wso2telco.ids.selfserviceportal.feature</artifactId>
+                <version>${com.wso2telco.ids.version}</version>
+            </dependency>
 
             <!--custom webapps' runtime environment dependencies -->
             <dependency>
@@ -1362,7 +1367,7 @@
     <properties>
 
         <!-- Telco dependency's version-->
-        <com.wso2telco.ids.version>2.1.0</com.wso2telco.ids.version>
+        <com.wso2telco.ids.version>2.2.0-SNAPSHOT</com.wso2telco.ids.version>
         <com.wso2telco.core.version>2.0.22-SNAPSHOT</com.wso2telco.core.version>
 
         <!--Carbon Identity Framework Version-->
