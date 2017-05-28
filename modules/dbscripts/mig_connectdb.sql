@@ -229,6 +229,7 @@ CREATE TABLE `scope_parameter` (
     `he_failure_result` VARCHAR(255),
     `is_multiscope` TINYINT DEFAULT 0,
     `is_consent_page` TINYINT NOT NULL DEFAULT 0,
+    `description` VARCHAR(255),
     PRIMARY KEY (`param_id`),
     UNIQUE (`scope`)
 )  ENGINE=INNODB DEFAULT CHARSET=LATIN1;
@@ -264,6 +265,18 @@ VALUES(9,'address',1);
 INSERT INTO scope_parameter(param_id,scope,is_multiscope)
 VALUES(10,'mc_identity_phonenumber_hashed',1);
 
+INSERT INTO scope_parameter(param_id,scope,is_login_hint_mandatory,is_header_msisdn_mandatory,is_tnc_visible,msisdn_mismatch_result,he_failure_result,is_multiscope,is_consent_page)
+VALUES(11,'api',0,0,0,'CONTINUE_WITH_HEADER','TRUST_LOGINHINT_MSISDN',0,1);
+
+INSERT INTO scope_parameter(param_id,scope,is_multiscope,is_consent_page,description)
+VALUES(12,'sms',1,1,'SMS is Charged 5 per sms');
+
+INSERT INTO scope_parameter(param_id,scope,is_multiscope,is_consent_page,description)
+VALUES(13,'charge',1,1,'Charge API will be charged per transaction');
+
+INSERT INTO scope_parameter(param_id,scope,is_multiscope,is_consent_page,description)
+VALUES(14,'payment',1,1,'A convenient fee of 1% charged');
+
 
 DROP TABLE IF EXISTS `consent`;
 
@@ -271,7 +284,7 @@ CREATE TABLE `consent` (
     `consent_id` INT(20) NOT NULL,
     `client_id` VARCHAR(100) NOT NULL,
     `scope_id` INT(20) NOT NULL,
-    `operator` VARCHAR(45) DEFAULT NULL,
+    `operator_id` INT(20) NOT NULL,
     `approve_status` VARCHAR(45),
     PRIMARY KEY (`consent_id`),
     FOREIGN KEY (`scope_id`) REFERENCES `scope_parameter`(`param_id`)
@@ -284,11 +297,24 @@ CREATE TABLE `user_consent` (
     `msisdn` VARCHAR(255) DEFAULT NULL,
     `client_id` VARCHAR(100) NOT NULL,
     `scope_id` INT(20) NOT NULL,
-    `operator` VARCHAR(45) DEFAULT NULL,
+    `operator_id` INT(20) NOT NULL,
     `approve` TINYINT DEFAULT 0,
     FOREIGN KEY (`scope_id`) REFERENCES `scope_parameter`(`param_id`)
 )  ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
+DROP TABLE IF EXISTS `consent_history`;
+
+CREATE TABLE `consent_history` (
+    `id` INT(20) NOT NULL AUTO_INCREMENT,
+    `msisdn` VARCHAR(255) DEFAULT NULL,
+    `client_id` VARCHAR(100) NOT NULL,
+    `scope_id` INT(20) NOT NULL,
+    `operator_id` INT(20) NOT NULL,
+    `approve_status` VARCHAR(45),
+    `consent_date` TIMESTAMP NULL DEFAULT NULL,
+    PRIMARY KEY (`id`),
+    FOREIGN KEY (`scope_id`) REFERENCES `scope_parameter`(`param_id`)
+)  ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 DROP TABLE IF EXISTS `prompt_configuration`;
 
