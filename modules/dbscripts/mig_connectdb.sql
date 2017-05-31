@@ -305,17 +305,6 @@ CREATE TABLE `user_consent` (
     UNIQUE (`msisdn`,`client_id`,`scope_id`,`operator_id`,`approve`)
 )  ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
-DROP TABLE IF EXISTS `user_consent_deny`;
-
-CREATE TABLE `user_consent_deny` (
-    `msisdn` VARCHAR(255) DEFAULT NULL,
-    `client_id` VARCHAR(100) NOT NULL,
-    `scope_id` INT(20) NOT NULL,
-    `operator_id` INT(20) NOT NULL,
-    `deny` TINYINT DEFAULT 0,
-    FOREIGN KEY (`scope_id`) REFERENCES `scope_parameter`(`param_id`)
-)  ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
 DROP TABLE IF EXISTS `consent_history`;
 
 CREATE TABLE `consent_history` (
