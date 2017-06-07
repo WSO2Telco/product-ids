@@ -204,7 +204,7 @@
     </HEADERENRICH>
 
     <DataPublisher>
-        <Enabled>true</Enabled>
+        <Enabled>false</Enabled>
         <UserName>admin</UserName>
         <Password>admin</Password>
         <DASUrl>tcp://localhost:7612</DASUrl>
@@ -213,8 +213,10 @@
 
     <SeamlessProvisioningEnabled>true</SeamlessProvisioningEnabled>
 	<DiscoveryConfigs>
+		<Auth_clientId>J2lAGcsgEILuhiSyPwsljG4OoxzyIiaX</Auth_clientId>
+		<Auth_clientSecret>EBmKGJmSsOsniAXY</Auth_clientSecret>
 		<DiscoveryCrConfig>
-			<CrdServiceUrl>https://india.discover.mobileconnect.io/rv/v1/exchange/organizations/gsma/validate</CrdServiceUrl>
+			<CrdServiceUrl>https://integration.mobileconnect.io/rv/v1/exchange/organizations/dialog_srilanka/validate</CrdServiceUrl>
 		</DiscoveryCrConfig>
 		<DiscoveryEksConfig>
 			<EksServiceUrl>https://india.discover.mobileconnect.io/gsma/v2/discovery/</EksServiceUrl>
