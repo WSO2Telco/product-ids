@@ -179,7 +179,25 @@
                 <Msisdn>6598590123</Msisdn>
             </TestMsisdn>
         </TestMsisdns>
+	<IsHub>false</IsHub><!-- Set to true when MIG deployed in multi-opertor scenario-->
+	<DefaultImageUrl>http://localhost:9763/default</DefaultImageUrl>
+ 	<!-- Contains operator specific image references-->
+	<OperatorsList>
+            <OperatorDescription name="operator1">
+                <!-- ${ImageUrl} is replaced with the operator endpoint's image url -->
+                <ImageUrl>http://localhost:9763/operator1</ImageUrl>
+            </OperatorDescription>
+            <OperatorDescription name="operator2">
+                <!-- ${ImageUrl} is replaced with the operator endpoint's image url -->
+                <ImageUrl>http://localhost:9763/operator2</ImageUrl>
+            </OperatorDescription>
+	</OperatorsList>
     </MePin>
+
+    <!-- Provide the operator DiscoveryAPI endpoint URL with relevant access credential which will be referred for HUB scenario-->
+    <DiscoveryURL>https://india.discover.mobileconnect.io/gsma/v2/discovery/?Redirect_URL=http://jenkins.wso2telco.com:9763/playground2/oauth2.jsp</DiscoveryURL>
+    <DiscoveryAuthCode>Authorization: Basic OTc3YjMyOGUtZTVlZi00NWY1LTgxYTktOTg5MDA5MWI2NDA3OmUzNTRjMzNjLTdjYTAtNDdjMy04MGUwLWZhZGMxMzIxNDY0Zg==</DiscoveryAuthCode>
+
     <MIFEOpenIDTokenBuilderConfig>
         <acrHostUri>https://localhost:9443/acrengine/</acrHostUri>
         <retrieveService>ACRRetrieveService/V1</retrieveService>
