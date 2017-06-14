@@ -75,6 +75,7 @@
 			<Authenticators>
 				<!--<Authenicator onfail="fallback">HeaderEnrichmentAuthenticator</Authenicator>-->
 				<Authenicator onfail="fallback" supportiveFlow="onnet">HeaderEnrichmentAuthenticator</Authenicator>
+                <Authenicator onfail="break" supportiveFlow="onnet">ConsentAuthenticator</Authenicator>
 				<Authenicator onfail="break" supportiveFlow="onnet">USSDPinAuthenticator</Authenicator>
 				<!-- If onFail attribute values is 'break', and that authenticator fails,whole LOA should fail -->
 			</Authenticators>
@@ -85,6 +86,7 @@
 		<Authentication>
 			<Authenticators>
 				<Authenicator onfail="break" supportiveFlow="any">MSISDNAuthenticator</Authenicator>
+                <Authenicator onfail="break" supportiveFlow="any">ConsentAuthenticator</Authenicator>
 				<Authenicator onfail="break" supportiveFlow="any">USSDPinAuthenticator</Authenicator>
 				<!-- If onFail attribute values is 'break', and that authenticator fails,whole LOA should fail -->
 			</Authenticators>
