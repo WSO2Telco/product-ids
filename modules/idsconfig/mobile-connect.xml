@@ -147,6 +147,7 @@
         <AccessToken>accesstoken</AccessToken>
         <CreateTransactionEndpoint>https://api.mepin.com/transactions/create</CreateTransactionEndpoint>
         <ClientId>815ed87f78f81f4e108650f0cbb98f46</ClientId>
+        <CallbackUrl>http://13.56.46.192:9763/sessionupdater/tnspoints/endpoint/mepin/response</CallbackUrl>
         <TestMsisdns>
             <TestMsisdn operator="m1">
                 <Msisdn>659684377</Msisdn>
@@ -181,17 +182,31 @@
         </TestMsisdns>
 	<IsHub>false</IsHub><!-- Set to true when MIG deployed in multi-opertor scenario-->
 	<DefaultImageUrl>http://localhost:9763/default</DefaultImageUrl>
+    <DefaultBackgroundUrl>http://res.cloudinary.com/dyftvc4kh/image/upload/v1496904227/spark_bg2_ij3wid.jpg</DefaultBackgroundUrl>
  	<!-- Contains operator specific image references-->
 	<OperatorsList>
+        <OperatorDescription name="default">
+            <!-- ${ImageUrl} is replaced with the operator endpoint's image url -->
+            <ImageUrl>http://res.cloudinary.com/dyftvc4kh/image/upload/v1496904154/spark_dwcush.png</ImageUrl>
+            <BackgroundUrl>http://res.cloudinary.com/dyftvc4kh/image/upload/v1496904227/spark_bg2_ij3wid.jpg</BackgroundUrl>
+        </OperatorDescription>
             <OperatorDescription name="operator1">
                 <!-- ${ImageUrl} is replaced with the operator endpoint's image url -->
-                <ImageUrl>http://localhost:9763/operator1</ImageUrl>
+                <ImageUrl>http://res.cloudinary.com/dyftvc4kh/image/upload/v1496904154/spark_dwcush.png</ImageUrl>
+                <BackgroundUrl>http://res.cloudinary.com/dyftvc4kh/image/upload/v1496904227/spark_bg2_ij3wid.jpg</BackgroundUrl>
             </OperatorDescription>
             <OperatorDescription name="operator2">
                 <!-- ${ImageUrl} is replaced with the operator endpoint's image url -->
-                <ImageUrl>http://localhost:9763/operator2</ImageUrl>
+                <ImageUrl>http://res.cloudinary.com/dyftvc4kh/image/upload/v1496904154/spark_dwcush.png</ImageUrl>
+                <BackgroundUrl>http://res.cloudinary.com/dyftvc4kh/image/upload/v1496904227/spark_bg2_ij3wid.jpg</BackgroundUrl>
             </OperatorDescription>
 	</OperatorsList>
+        <!--sets the confirmation policy for LOA2-->
+    <BasicConfirmationPolicies>mepin_swipe</BasicConfirmationPolicies>
+    <BasicConfirmationPolicyMessage>Please swipe to authenticate</BasicConfirmationPolicyMessage>
+        <!--sets the confirmation policy for LOA3. When multiple policies are configured, each will fallback as the precedence-->
+    <AdvancedConfirmationPolicies>mepin_fp, mepin_face, mepin_pin</AdvancedConfirmationPolicies>
+    <AdvancedConfirmationPolicyMessage>Please provide your biometric signature to authenticate</AdvancedConfirmationPolicyMessage>
     </MePin>
 
     <!-- Provide the operator DiscoveryAPI endpoint URL with relevant access credential which will be referred for HUB scenario-->
