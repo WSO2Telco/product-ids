@@ -215,4 +215,10 @@
         <RecoveryOptionURL>https://url</RecoveryOptionURL>
         <RecoveryOptionAuthCode>oauthCode</RecoveryOptionAuthCode>
     </OperatorRecovery>
+    <UserRegistrationAPI>
+        <MaxMSISDNLimit>100</MaxMSISDNLimit>
+    </UserRegistrationAPI>
+    <UserUnRegistrationAPI>
+        <MaxMSISDNLimit>100</MaxMSISDNLimit>
+    </UserUnRegistrationAPI>
 </MobileConnectConfig>
