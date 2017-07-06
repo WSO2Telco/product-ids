@@ -210,4 +210,48 @@
         <DASUrl>tcp://localhost:7612</DASUrl>
         <DASSecureUrl>ssl://localhost:7712</DASSecureUrl>
     </DataPublisher>
+
+    <OperatorDiscoveryNamesMapping>
+        <entry>
+            <key>airtel</key>
+            <value>airtel</value>
+        </entry>
+        <entry>
+            <key>tata</key>
+            <value>tatadocomo</value>
+        </entry>
+        <entry>
+            <key>vodafone_india</key>
+            <value>vodafone</value>
+        </entry>
+        <entry>
+            <key>idea</key>
+            <value>idea</value>
+        </entry>
+        <entry>
+            <key>uninor</key>
+            <value>telenor</value>
+        </entry>
+        <entry>
+            <key>aircel</key>
+            <value>aircel</value>
+        </entry>
+        <entry>
+            <key>spark</key>
+            <value>spark</value>
+        </entry>
+    </OperatorDiscoveryNamesMapping>
+
+    <SelfServicePortal>
+        <SPOAuthClientKey></SPOAuthClientKey>
+        <SPOAuthClientSecret></SPOAuthClientSecret>
+        <UILoginUrl>https://localhost:9443/selfserviceportal/#/login</UILoginUrl>
+        <TokenEndpoint>https://localhost:9443/oauth2/token</TokenEndpoint>
+        <CallbackUrl>https://localhost:9443/selfserviceportal/api/v1/auth/callback</CallbackUrl>
+        <UserInfoCall>https://localhost:9443/oauth2/userinfo?schema=openid</UserInfoCall>
+        <AuthorizeCall>https://localhost:9443/authproxy/oauth2/authorize/operator/${operator}</AuthorizeCall>
+        <DiscoveryAPICall></DiscoveryAPICall>
+        <DiscoveryAPIToken></DiscoveryAPIToken>
+        <MsisdnClaim>msisdn</MsisdnClaim> <!-- MSISDN claim on user info call -->
+    </SelfServicePortal>
 </MobileConnectConfig>
