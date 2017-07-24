@@ -26,6 +26,20 @@
 				<SupportedByDefault />
 			</Claim>
 			<Claim>
+				<ClaimURI>http://wso2.org/claims/operator</ClaimURI>
+				<DisplayName>Operator</DisplayName>
+				<AttributeID>operator</AttributeID>
+				<Description>Operator</Description>
+				<SupportedByDefault />
+			</Claim>
+			<Claim>
+				<ClaimURI>http://wso2.org/claims/status</ClaimURI>
+				<DisplayName>Status</DisplayName>
+				<AttributeID>status</AttributeID>
+				<Description>Status</Description>
+				<SupportedByDefault />
+			</Claim>
+			<Claim>
 				<ClaimURI>http://wso2.org/claims/challengeQuestion1</ClaimURI>
 				<DisplayName>Challenge Question1</DisplayName>
 				<AttributeID>cq1</AttributeID>
