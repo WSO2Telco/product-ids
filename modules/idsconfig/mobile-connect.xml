@@ -190,7 +190,7 @@
                 <IPRange>FROM IP:TO IP</IPRange>
                 <IPRange>XX.XX.XX.XX:XX.XX.XX.XX</IPRange>
                 <IPRange>XX.XX.XX.XX:XX.XX.XX.XX</IPRange>
-                <IPRange>XX.XX.XX.XX:XX.XX.XX.XX</IPRange>
+                <IPRSMSEndpointange>XX.XX.XX.XX:XX.XX.XX.XX</IPRSMSEndpointange>
             </MobileIPRanges>
         </Operator>
         <Operator>
@@ -312,4 +312,15 @@
         <MsisdnClaim>msisdn</MsisdnClaim> <!-- MSISDN claim on user info call -->
     </SelfServicePortal>
 
+<OperatorRecovery>
+        <RecoveryOption>discovery</RecoveryOption>
+        <RecoveryOptionURL>https://url</RecoveryOptionURL>
+        <RecoveryOptionAuthCode>oauthCode</RecoveryOptionAuthCode>
+    </OperatorRecovery>
+    <UserRegistrationAPI>
+        <MaxMSISDNLimit>100</MaxMSISDNLimit>
+    </UserRegistrationAPI>
+    <UserUnRegistrationAPI>
+        <MaxMSISDNLimit>100</MaxMSISDNLimit>
+    </UserUnRegistrationAPI>
 </MobileConnectConfig>
