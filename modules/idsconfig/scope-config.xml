@@ -265,8 +265,10 @@
                 <ClaimValue>roaming_country</ClaimValue>
             </Claims>
             <Request>
-                <Optional>sub</Optional>
-                <Optional>phone_number</Optional>
+                <RequestDetails>
+                    <Optional>sub</Optional>
+                    <Optional>phone_number</Optional>
+                </RequestDetails>
             </Request>
         </Scope>
         <Scope>
@@ -286,16 +288,18 @@
                 <ClaimValue>phone_number</ClaimValue>
             </Claims>
             <Request>
-                <Optional>sub</Optional>
-                <Optional>phone_number</Optional>
-                <Optional>birthdate</Optional>
-                <Optional>gender</Optional>
-                <Mandotory>given_name</Mandotory>
-                <Mandotory>family_name</Mandotory>
-                <Mandatory>street_address</Mandatory>
-                <Mandatory>postal_address</Mandatory>
-                <Mandatory>postal_code</Mandatory>
-                <Mandatory>country</Mandatory>
+                <RequestDetails>
+                    <Optional>sub</Optional>
+                    <Optional>phone_number</Optional>
+                    <Optional>birthdate</Optional>
+                    <Optional>gender</Optional>
+                    <Mandotory>given_name</Mandotory>
+                    <Mandotory>family_name</Mandotory>
+                    <Mandatory>street_address</Mandatory>
+                    <Mandatory>postal_address</Mandatory>
+                    <Mandatory>postal_code</Mandatory>
+                    <Mandatory>country</Mandatory>
+                </RequestDetails>
             </Request>
         </Scope>
         <Scope>
@@ -308,9 +312,11 @@
                 <ClaimValue>location_country</ClaimValue>
             </Claims>
             <Request>
-                <Optional>sub</Optional>
-                <Optional>phone_number</Optional>
-                <Mandatory>location_country</Mandatory>
+                <RequestDetails>
+                    <Optional>sub</Optional>
+                    <Optional>phone_number</Optional>
+                    <Mandatory>location_country</Mandatory>
+                </RequestDetails>
             </Request>
         </Scope>
         <Scope>
@@ -329,8 +335,10 @@
                 <ClaimValue>device_change</ClaimValue>
             </Claims>
             <Request>
-                <Optional>sub</Optional>
-                <Optional>phone_number</Optional>
+                <RequestDetails>
+                    <Optional>sub</Optional>
+                    <Optional>phone_number</Optional>
+                </RequestDetails>
             </Request>
         </Scope>
     </Scopes>
