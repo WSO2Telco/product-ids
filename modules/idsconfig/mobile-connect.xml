@@ -28,6 +28,7 @@
 
         <LoginMessage>To login to ${application}, follow this link &#xA; Do not share as it is unique to you. &#xA; ${link}</LoginMessage>
         <RegistrationMessage>To registration to ${application}, follow this link &#xA; Do not share as it is unique to you. &#xA; ${link}</RegistrationMessage>
+        <SMSOTPMessage>, or enter One Time Password ${smsotp} on the login page.</SMSOTPMessage>
         <OperatorSpecificMessages> <!-- Contains operator specific ussd messages -->
             <OperatorSpecificMessage operator="op1">
                 <!-- ${application} is replaced with the application name -->
@@ -43,7 +44,7 @@
         </OperatorSpecificMessages>
 
         <AesKey>wso2encryptdecyt</AesKey>
-        <IsShortUrl>true</IsShortUrl>   <!-- ENABLE DISABLE external url shortening service usage-->
+        <IsShortUrl>false</IsShortUrl>   <!-- ENABLE DISABLE external url shortening service usage-->
         <ShortUrlClass>com.wso2telco.gsma.shorten.BitlyUrlShorten</ShortUrlClass>
         <ShortUrlService>https://api-ssl.bitly.com/v3/shorten</ShortUrlService>
         <AccessToken>fae2517b1a95b740f33058e28a1796faa80643a4</AccessToken>
@@ -66,6 +67,7 @@
                 <Disabled>true</Disabled>
             </Operator>
         </OperatorWelcomeMessage>
+        <OTPLength>4</OTPLength>
     </SMS>
     <TimeoutConfig>
         <SocketTimeout>60</SocketTimeout>
@@ -204,7 +206,7 @@
     </HEADERENRICH>
 
     <DataPublisher>
-        <Enabled>true</Enabled>
+        <Enabled>false</Enabled>
         <UserName>admin</UserName>
         <Password>admin</Password>
         <DASUrl>tcp://localhost:7612</DASUrl>
