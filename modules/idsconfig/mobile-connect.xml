@@ -318,6 +318,10 @@
             <key>operator2</key>
             <value>operator2</value>
         </entry>
+        <entry>
+            <key>spark</key>
+            <value>spark</value>
+        </entry>
     </OperatorDiscoveryNamesMapping>
 
     <SelfServicePortal>
