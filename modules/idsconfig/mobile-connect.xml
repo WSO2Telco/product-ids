@@ -22,23 +22,34 @@
     </GSMAExchangeConfig>
     <IsPcrServiceEnabled>false</IsPcrServiceEnabled>
     <SMS>
-        <Endpoint>http://localhost:9763/ussdstub/v1/outbound</Endpoint>   <!--https://URL to APIM:8243/smsmessaging/v1/outbound/8899/requests -->
+        <Endpoint>http://localhost:9763/ussdstub/v1/outbound
+        </Endpoint>   <!--https://URL to APIM:8243/smsmessaging/v1/outbound/8899/requests -->
         <AuthToken>4442137174b27a9837e745c711f4e31</AuthToken>
         <AuthUrl>http://localhost:9763/authenticationendpoint/sms</AuthUrl>
 
-        <LoginMessage>To login to ${application}, follow this link &#xA; Do not share as it is unique to you. &#xA; ${link}</LoginMessage>
-        <RegistrationMessage>To registration to ${application}, follow this link &#xA; Do not share as it is unique to you. &#xA; ${link}</RegistrationMessage>
+        <LoginMessage>To login to ${application}, follow this link &#xA; Do not share as it is unique to you. &#xA;
+            ${link}
+        </LoginMessage>
+        <RegistrationMessage>To registration to ${application}, follow this link &#xA; Do not share as it is unique to
+            you. &#xA; ${link}
+        </RegistrationMessage>
         <OperatorSpecificMessages> <!-- Contains operator specific ussd messages -->
             <OperatorSpecificMessage operator="op1">
                 <!-- ${application} is replaced with the application name -->
                 <!-- ${link} is replaced with the login url -->
-                <LoginMessage>op1 To login to ${application}, follow this link &#xA; Do not share as it is unique to you. &#xA; ${link}</LoginMessage>
-                <RegistrationMessage>op1 To register to ${application}, follow this link &#xA; Do not share as it is unique to you. &#xA; ${link}</RegistrationMessage>
+                <LoginMessage>op1 To login to ${application}, follow this link &#xA; Do not share as it is unique to
+                    you. &#xA; ${link}
+                </LoginMessage>
+                <RegistrationMessage>op1 To register to ${application}, follow this link &#xA; Do not share as it is
+                    unique to you. &#xA; ${link}
+                </RegistrationMessage>
             </OperatorSpecificMessage>
             <OperatorSpecificMessage operator="op2">
                 <!-- ${application} is replaced with the application name -->
                 <!-- ${link} is replaced with the login url -->
-                <LoginMessage>op1 To login to ${application}, follow this link &#xA; Do not share as it is unique to you. &#xA; ${link}</LoginMessage>
+                <LoginMessage>op1 To login to ${application}, follow this link &#xA; Do not share as it is unique to
+                    you. &#xA; ${link}
+                </LoginMessage>
             </OperatorSpecificMessage>
         </OperatorSpecificMessages>
 
@@ -54,13 +65,16 @@
             <ConnectionRequestTimeout>30</ConnectionRequestTimeout>
         </TimeoutConfig>
         <WelcomeMessageDisabled>true</WelcomeMessageDisabled>
-        <DefaultWelcomeMessage>Welcome to Mobile Connect - a simple and safer way to login which is always free. Please visit
-            http://mobileconnect.in to know more.</DefaultWelcomeMessage>
+        <DefaultWelcomeMessage>Welcome to Mobile Connect - a simple and safer way to login which is always free. Please
+            visit
+            http://mobileconnect.in to know more.
+        </DefaultWelcomeMessage>
         <OperatorWelcomeMessage>
             <!--Multiple operators can be configured here-->
             <Operator>
                 <Name>spark</Name>
-                <Message>Spark welcomes you on Mobile Connect - a simple and safer way to login which is always free. Please visit
+                <Message>Spark welcomes you on Mobile Connect - a simple and safer way to login which is always free.
+                    Please visit
                     http://mobileconnect.in to know more.
                 </Message>
                 <Disabled>true</Disabled>
@@ -75,54 +89,74 @@
     <USSD>
         <Endpoint>http://localhost:9763/ussdstub/v1/outbound</Endpoint>    <!-- url of the ussd stub -->
         <AuthToken>Authorization token to access the USSD API</AuthToken>
-        <MessageContent>Message content for USSD authentication</MessageContent> <!--Message that sends to authenticate user with ussd prompt-->
-        <MessageContentPin>Message content for USSD pin authentication</MessageContentPin> <!--Message that sends to authenticate user with ussd prompt with pin-->
+        <MessageContent>Message content for USSD authentication
+        </MessageContent> <!--Message that sends to authenticate user with ussd prompt-->
+        <MessageContentPin>Message content for USSD pin authentication
+        </MessageContentPin> <!--Message that sends to authenticate user with ussd prompt with pin-->
         <ShortCode>1721</ShortCode>
         <Keyword>123</Keyword>
         <Pinauth>true</Pinauth>
         <DashBoard>Mobile connect</DashBoard>
         <USSDContextEndpoint>Callback URL for USSD authentication</USSDContextEndpoint>
-        <LoginNotifyUrl>http://localhost:9763/sessionupdater/tnspoints/endpoint/login/ussd</LoginNotifyUrl> <!-- USSD inbound : login call response endpoint -->
-        <RegistrationNotifyUrl>http://localhost:9763/sessionupdater/tnspoints/endpoint/registration/ussd</RegistrationNotifyUrl> <!-- USSD inbound : registration call response endpoint -->
-        <PinLoginNotifyUrl>http://localhost:9763/sessionupdater/tnspoints/endpoint/pin/login/ussd</PinLoginNotifyUrl> <!-- USSD inbound : PIN login call response endpoint -->
-        <PinRegistrationNotifyUrl>http://localhost:9763/sessionupdater/tnspoints/endpoint/pin/registration/ussd</PinRegistrationNotifyUrl> <!-- USSD inbound : PIN registration call response endpoint -->
-        <PinLoginMessage>Login message for ussd pin ${application}&#xA;1. Yes&#xA;2. No</PinLoginMessage> <!-- Common USSD message for PIN login -->
-        <PinRegistrationMessage>Registration message for ussd pin ${application}&#xA;1. Yes&#xA;2. No</PinRegistrationMessage> <!-- Common USSD message for PIN registration -->
+        <LoginNotifyUrl>http://localhost:9763/sessionupdater/tnspoints/endpoint/login/ussd
+        </LoginNotifyUrl> <!-- USSD inbound : login call response endpoint -->
+        <RegistrationNotifyUrl>http://localhost:9763/sessionupdater/tnspoints/endpoint/registration/ussd
+        </RegistrationNotifyUrl> <!-- USSD inbound : registration call response endpoint -->
+        <PinLoginNotifyUrl>http://localhost:9763/sessionupdater/tnspoints/endpoint/pin/login/ussd
+        </PinLoginNotifyUrl> <!-- USSD inbound : PIN login call response endpoint -->
+        <PinRegistrationNotifyUrl>http://localhost:9763/sessionupdater/tnspoints/endpoint/pin/registration/ussd
+        </PinRegistrationNotifyUrl> <!-- USSD inbound : PIN registration call response endpoint -->
+        <PinLoginMessage>Login message for ussd pin ${application}&#xA;1. Yes&#xA;2. No
+        </PinLoginMessage> <!-- Common USSD message for PIN login -->
+        <PinRegistrationMessage>Registration message for ussd pin ${application}&#xA;1. Yes&#xA;2. No
+        </PinRegistrationMessage> <!-- Common USSD message for PIN registration -->
         <OperatorSpecificPinMessages> <!-- Contains operator specific ussd PIN messages -->
             <OperatorSpecificMessage operator="op1">
                 <!-- ${application} is replaced with the application name -->
-                <RegistrationMessage>op1 Registration message for ussd pin ${application}&#xA;1. Yes&#xA;2. No</RegistrationMessage>
+                <RegistrationMessage>op1 Registration message for ussd pin ${application}&#xA;1. Yes&#xA;2. No
+                </RegistrationMessage>
                 <LoginMessage>op1 Login message for ussd pin ${application}&#xA;1. Yes&#xA;2. No</LoginMessage>
             </OperatorSpecificMessage>
             <OperatorSpecificMessage operator="op2">
                 <!-- ${application} is replaced with the application name -->
-                <RegistrationMessage>op2 Registration message for ussd pin ${application}&#xA;1. Yes&#xA;2. No</RegistrationMessage>
+                <RegistrationMessage>op2 Registration message for ussd pin ${application}&#xA;1. Yes&#xA;2. No
+                </RegistrationMessage>
                 <LoginMessage>op2 Login message for ussd pin ${application}&#xA;1. Yes&#xA;2. No</LoginMessage>
             </OperatorSpecificMessage>
         </OperatorSpecificPinMessages>
         <PinConfirmMessage>Re-enter your PIN</PinConfirmMessage> <!-- PIN confirmation ussd message -->
-        <PinInvalidFormatMessage>Invalid format. Please re-enter your pin</PinInvalidFormatMessage> <!-- PIN invalid format error ussd message -->
-        <PinMismatchMessage>Pin mismatch. Please re-enter your pin</PinMismatchMessage> <!-- PIN mismatch error ussd message -->
-        <PinRegistrationSuccessMessage>Registration Success</PinRegistrationSuccessMessage> <!-- PIN registration success ussd message -->
-        <PinInvalidFormatAttemptsExceedMessage>Access Denied. You have exceeded maximum number of retry attempts</PinInvalidFormatAttemptsExceedMessage> <!-- Maximum attempts exceeded for PIN format error ussd message -->
-        <PinMismatchAttemptsExceedMessage>Access Denied. You have exceeded maximum number of confirmation attempts</PinMismatchAttemptsExceedMessage> <!-- Maximum attempts exceeded for PIN mismatch error ussd message -->
+        <PinInvalidFormatMessage>Invalid format. Please re-enter your pin
+        </PinInvalidFormatMessage> <!-- PIN invalid format error ussd message -->
+        <PinMismatchMessage>Pin mismatch. Please re-enter your pin
+        </PinMismatchMessage> <!-- PIN mismatch error ussd message -->
+        <PinRegistrationSuccessMessage>Registration Success
+        </PinRegistrationSuccessMessage> <!-- PIN registration success ussd message -->
+        <PinInvalidFormatAttemptsExceedMessage>Access Denied. You have exceeded maximum number of retry attempts
+        </PinInvalidFormatAttemptsExceedMessage> <!-- Maximum attempts exceeded for PIN format error ussd message -->
+        <PinMismatchAttemptsExceedMessage>Access Denied. You have exceeded maximum number of confirmation attempts
+        </PinMismatchAttemptsExceedMessage> <!-- Maximum attempts exceeded for PIN mismatch error ussd message -->
         <USSDPinContextEndpoint>Callback URL for USSD pin authentication</USSDPinContextEndpoint>
-        <RegistrationMessage>Message content for USSD registration ${application}&#xA;1. Yes&#xA;2. No</RegistrationMessage> <!-- Common USSD registration message -->
+        <RegistrationMessage>Message content for USSD registration ${application}&#xA;1. Yes&#xA;2. No
+        </RegistrationMessage> <!-- Common USSD registration message -->
         <PinMaxLength>4</PinMaxLength> <!-- PIN maximum length -->
         <InvalidFormatPinAttempts>3</InvalidFormatPinAttempts> <!-- Maximum allowed PIN invalid format attempt count -->
         <PinMismatchAttempts>3</PinMismatchAttempts> <!-- Maximum allowed PIN mismatch attempt count -->
-        <LoginMessage>Message content for USSD login ${application}&#xA;1. Yes&#xA;2. No</LoginMessage> <!-- Common USSD login message -->
-        <AcceptUserInputs>1,yes,ok,y</AcceptUserInputs> <!-- comma separated list of USSD user accept input responses -->
+        <LoginMessage>Message content for USSD login ${application}&#xA;1. Yes&#xA;2. No
+        </LoginMessage> <!-- Common USSD login message -->
+        <AcceptUserInputs>1,yes,ok,y
+        </AcceptUserInputs> <!-- comma separated list of USSD user accept input responses -->
         <RejectUserInputs>2,no,n</RejectUserInputs> <!-- comma separated list of USSD user reject input responses -->
         <OperatorSpecificMessages> <!-- Contains operator specific ussd messages -->
             <OperatorSpecificMessage operator="op1">
                 <!-- ${application} is replaced with the application name -->
-                <RegistrationMessage>op1 Message content for USSD registration ${application}&#xA;1. Yes&#xA;2. No</RegistrationMessage>
+                <RegistrationMessage>op1 Message content for USSD registration ${application}&#xA;1. Yes&#xA;2. No
+                </RegistrationMessage>
                 <LoginMessage>op1 Message content for USSD login ${application}&#xA;1. Yes&#xA;2. No</LoginMessage>
             </OperatorSpecificMessage>
             <OperatorSpecificMessage operator="op2">
                 <!-- ${application} is replaced with the application name -->
-                <RegistrationMessage>op2 Message content for USSD registration ${application}&#xA;1. Yes&#xA;2. No</RegistrationMessage>
+                <RegistrationMessage>op2 Message content for USSD registration ${application}&#xA;1. Yes&#xA;2. No
+                </RegistrationMessage>
                 <LoginMessage>op2 Message content for USSD login ${application}&#xA;1. Yes&#xA;2. No</LoginMessage>
             </OperatorSpecificMessage>
         </OperatorSpecificMessages>
@@ -134,9 +168,13 @@
     </USSD>
 
     <SAA>
-        <AuthenticationEndpoint>http://localhost:9763/saaserver/services/serverAPI/api/v1/clients/{msisdn}/authenticate</AuthenticationEndpoint>
-        <RegistrationEndpoint>http://localhost:9763/saaserver/services/serverAPI/api/v1/clients/{msisdn}/is_registered</RegistrationEndpoint>
-        <PushServiceEndpoint>http://localhost:9763/saaserver/services/pushServiceAPI/client/{msisdn}/send</PushServiceEndpoint>
+        <AuthenticationEndpoint>
+            http://localhost:9763/saaserver/services/serverAPI/api/v1/clients/{msisdn}/authenticate
+        </AuthenticationEndpoint>
+        <RegistrationEndpoint>http://localhost:9763/saaserver/services/serverAPI/api/v1/clients/{msisdn}/is_registered
+        </RegistrationEndpoint>
+        <PushServiceEndpoint>http://localhost:9763/saaserver/services/pushServiceAPI/client/{msisdn}/send
+        </PushServiceEndpoint>
     </SAA>
     <MIFEOpenIDTokenBuilderConfig>
         <acrHostUri>https://localhost:9443/acrengine/</acrHostUri>
@@ -212,22 +250,24 @@
     </DataPublisher>
 
     <SeamlessProvisioningEnabled>true</SeamlessProvisioningEnabled>
-	<DiscoveryConfigs>
-		<Auth_clientId>J2lAGcsgEILuhiSyPwsljG4OoxzyIiaX</Auth_clientId>
-		<Auth_clientSecret>EBmKGJmSsOsniAXY</Auth_clientSecret>
-		<DiscoveryCrConfig>
-			<CrdServiceUrl>https://integration.mobileconnect.io/rv/v1/exchange/organizations/dialog_srilanka/validate</CrdServiceUrl>
-		</DiscoveryCrConfig>
-		<DiscoveryEksConfig>
-			<EksServiceUrl>https://india.discover.mobileconnect.io/gsma/v2/discovery/</EksServiceUrl>
-			<EksRedirectUrl>http://jenkins.wso2telco.com:9763/playground2/oauth2.jsp</EksRedirectUrl>
-			<Msisdn>919958713388</Msisdn>
-		</DiscoveryEksConfig>
-	</DiscoveryConfigs>
+    <DiscoveryConfigs>
+        <Auth_clientId>J2lAGcsgEILuhiSyPwsljG4OoxzyIiaX</Auth_clientId>
+        <Auth_clientSecret>EBmKGJmSsOsniAXY</Auth_clientSecret>
+        <DiscoveryCrConfig>
+            <CrdServiceUrl>https://integration.mobileconnect.io/rv/v1/exchange/organizations/dialog_srilanka/validate
+            </CrdServiceUrl>
+        </DiscoveryCrConfig>
+        <DiscoveryEksConfig>
+            <EksServiceUrl>https://india.discover.mobileconnect.io/gsma/v2/discovery/</EksServiceUrl>
+            <EksRedirectUrl>http://jenkins.wso2telco.com:9763/playground2/oauth2.jsp</EksRedirectUrl>
+            <Msisdn>919958713388</Msisdn>
+        </DiscoveryEksConfig>
+    </DiscoveryConfigs>
 
     <SpProvisionConfig>
         <AdminServiceHostUrl>https://localhost:9443/services/OAuthAdminService</AdminServiceHostUrl>
-        <ApplicationManagementHostUrl>https://localhost:9443/services/IdentityApplicationManagementService</ApplicationManagementHostUrl>
+        <ApplicationManagementHostUrl>https://localhost:9443/services/IdentityApplicationManagementService
+        </ApplicationManagementHostUrl>
         <UserName>admin</UserName>
         <Password>admin</Password>
         <MaximumTotalHttpConections>100</MaximumTotalHttpConections>
@@ -251,7 +291,9 @@
             <UserName>admin</UserName>
             <Password>admin</Password>
             <OauthVersion>OAuth-2.0</OauthVersion>
-            <GrantTypes>authorization_code implicit password client_credentials refresh_token urn:ietf:params:oauth:grant-type:saml2-bearer iwa:ntlm</GrantTypes>
+            <GrantTypes>authorization_code implicit password client_credentials refresh_token
+                urn:ietf:params:oauth:grant-type:saml2-bearer iwa:ntlm
+            </GrantTypes>
             <PkceMandatory>false</PkceMandatory>
             <PkceSupportPlain>false</PkceSupportPlain>
         </config>
@@ -267,35 +309,14 @@
         <Password>admin</Password>
     </ServiceProviderHeaders>
 
-
     <OperatorDiscoveryNamesMapping>
         <entry>
-            <key>airtel</key>
-            <value>airtel</value>
+            <key>operator1</key>
+            <value>operator1</value>
         </entry>
         <entry>
-            <key>tata</key>
-            <value>tatadocomo</value>
-        </entry>
-        <entry>
-            <key>vodafone_india</key>
-            <value>vodafone</value>
-        </entry>
-        <entry>
-            <key>idea</key>
-            <value>idea</value>
-        </entry>
-        <entry>
-            <key>uninor</key>
-            <value>telenor</value>
-        </entry>
-        <entry>
-            <key>aircel</key>
-            <value>aircel</value>
-        </entry>
-        <entry>
-            <key>spark</key>
-            <value>spark</value>
+            <key>operator2</key>
+            <value>operator2</value>
         </entry>
     </OperatorDiscoveryNamesMapping>
 
@@ -312,7 +333,7 @@
         <MsisdnClaim>msisdn</MsisdnClaim> <!-- MSISDN claim on user info call -->
     </SelfServicePortal>
 
-<OperatorRecovery>
+    <OperatorRecovery>
         <RecoveryOption>discovery</RecoveryOption>
         <RecoveryOptionURL>https://url</RecoveryOptionURL>
         <RecoveryOptionAuthCode>oauthCode</RecoveryOptionAuthCode>
