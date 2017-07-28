@@ -319,6 +319,10 @@
             <key>spark</key>
             <value>spark</value>
         </entry>
+        <entry>
+            <key>spark</key>
+            <value>spark</value>
+        </entry>
     </OperatorDiscoveryNamesMapping>
 
     <SelfServicePortal>
