@@ -40,6 +40,13 @@
 				<SupportedByDefault />
 			</Claim>
 			<Claim>
+				<ClaimURI>http://wso2.org/claims/regMode</ClaimURI>
+				<DisplayName>Registration Mode</DisplayName>
+				<AttributeID>regMode</AttributeID>
+				<Description>RegMode</Description>
+				<SupportedByDefault />
+			</Claim>
+			<Claim>
 				<ClaimURI>http://wso2.org/claims/challengeQuestion1</ClaimURI>
 				<DisplayName>Challenge Question1</DisplayName>
 				<AttributeID>cq1</AttributeID>
