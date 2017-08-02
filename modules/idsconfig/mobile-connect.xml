@@ -28,7 +28,7 @@
 
         <LoginMessage>To login to ${application}, follow this link &#xA; Do not share as it is unique to you. &#xA; ${link}</LoginMessage>
         <RegistrationMessage>To registration to ${application}, follow this link &#xA; Do not share as it is unique to you. &#xA; ${link}</RegistrationMessage>
-        <SMSOTPMessage>, or enter One Time Password ${smsotp} on the login page.</SMSOTPMessage>
+        <SMSOTPMessage> or enter One Time Password ${smsotp} on the login page.</SMSOTPMessage>
         <OperatorSpecificMessages> <!-- Contains operator specific ussd messages -->
             <OperatorSpecificMessage operator="op1">
                 <!-- ${application} is replaced with the application name -->
