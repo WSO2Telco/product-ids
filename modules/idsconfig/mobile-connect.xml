@@ -187,6 +187,7 @@
             <operatorName>operator 1 name</operatorName>
             <ipValidation>false</ipValidation> <!-- to decide ip validation should be enabled for the operator -->
                <!-- The IP range the operator accepting the msisdn from the header -->
+            <MobileIPRanges>
                 <IPRange>FROM IP:TO IP</IPRange>
                 <IPRange>XX.XX.XX.XX:XX.XX.XX.XX</IPRange>
                 <IPRange>XX.XX.XX.XX:XX.XX.XX.XX</IPRange>
