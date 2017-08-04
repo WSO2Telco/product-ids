@@ -21,6 +21,7 @@
         </ServingOperator>
     </GSMAExchangeConfig>
     <IsPcrServiceEnabled>false</IsPcrServiceEnabled>
+    <Locale>en-US</Locale> <!-- "pt-BR" for Portuguese -->
     <SMS>
         <Endpoint>http://localhost:9763/ussdstub/v1/outbound</Endpoint>   <!--https://URL to APIM:8243/smsmessaging/v1/outbound/8899/requests -->
         <AuthToken>4442137174b27a9837e745c711f4e31</AuthToken>
