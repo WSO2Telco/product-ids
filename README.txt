@@ -14,33 +14,21 @@ This is based on the revolutionary WSO2 Carbon framework. All the major features
 New Features
 ============
 
-*  OpenID Connect Session Management
+*  Internationalization
 
-     OpenID Connect is an emerging authentication protocol defined on top of OAuth 2.0 protocol. OpenID Connect Session
-     Management specification, defines a way for a Relying Party (RP), to monitor the login status of an end user with an
-     OpenID Connect Provider (OP) minimizing the network traffic. This will be supported with WSO2 IS ${product.version}.
+     This feature allows to change the preview language according to the pre configurations. 
+     Currently system facilitates to switch language between English and Portuguese.
+     
+*  SMS/OTP Authenticator
 
-* Last SAML based login timestamp and Last password modified Timestamp
+     SMS/OTP Authenticator is a brand new Authenticator introduced to WSO2.Telco authenticator family.
+     Further SMS/OTP Authenticator is an extension to the SMS Authenticator where SMS is enriched with One Time 
+     Password (OTP) in Level Of Assurance (LOA) Level 2. This enables end users to click the sms to authenticated or use the OTP. 
+     
+     
+     
 
-     WSO2 IS ${product.version} is now able to know the last login time and last password updated time of a user.
-     You should be able to see the corresponding values listed through the user's profile.
 
-*  API to get the number (count) of users
-
-     One of the new functionalities introduced with WSO2 IS ${product.version} is the service to count the number of users
-     based on user names patterns and claims and also to count the number of roles matching a role name pattern in user store.
-     By default this supports JDBC user store implementations only and provides freedom to extend the functionality to
-     LDAP user stores or any other type as well.
-
-*  Support for Microsoft Office 365 – WS Trust
-
-     With WSO2 IS ${product.version}, you will be able to successfully configure the WS-Trust protocol for
-     Microsoft Office 365 to provide active clients with SSO to many of Office 365 features such as the phone’s Mail app,
-     external mail apps, Lync.
-
-*  SAML2.0 support for WS-Federation Passive
-
-     WSO2 IS ${product.version} is now able to support SAML2.0 tokens with Passive STS.
 
 Other Key Features
 =============
