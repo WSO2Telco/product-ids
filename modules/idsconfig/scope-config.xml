@@ -290,8 +290,8 @@
                 <Optional>phone_number</Optional>
                 <Optional>birthdate</Optional>
                 <Optional>gender</Optional>
-                <Mandotory>given_name</Mandotory>
-                <Mandotory>family_name</Mandotory>
+                <Mandatory>given_name</Mandatory>
+                <Mandatory>family_name</Mandatory>
                 <Mandatory>street_address</Mandatory>
                 <Mandatory>postal_address</Mandatory>
                 <Mandatory>postal_code</Mandatory>
