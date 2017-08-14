@@ -70,7 +70,7 @@
         </OperatorWelcomeMessage>
         <OTPLength>4</OTPLength>
         <OperatorMappings>
-            <!--ultiple operators can be configured here-->
+            <!--multiple operators can be configured here-->
             <OperatorMapping operator="spark">
                 <senderAddress>22222</senderAddress>
                 <operatorCode>0120</operatorCode>
