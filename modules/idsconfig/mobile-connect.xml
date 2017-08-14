@@ -183,6 +183,7 @@
     </AuthProxy>
     <HEADERENRICH>
         <ipHeaderName>ipAddress</ipHeaderName>
+        <OverrideIpheader>true</OverrideIpheader>
         <Operator>
             <operatorName>operator 1 name</operatorName>
             <ipValidation>false</ipValidation> <!-- to decide ip validation should be enabled for the operator -->
