@@ -69,6 +69,15 @@
             </Operator>
         </OperatorWelcomeMessage>
         <OTPLength>4</OTPLength>
+        <OperatorMappings>
+            <!--ultiple operators can be configured here-->
+            <OperatorMapping operator="spark">
+                <senderAddress>22222</senderAddress>
+                <operatorCode>0120</operatorCode>
+                <senderName>sparkApp</senderName>
+            </OperatorMapping>
+        </OperatorMappings>
+        <SMSMessageVersion>V2</SMSMessageVersion><!-- V1 or V2 , V1 as default -->
     </SMS>
     <TimeoutConfig>
         <SocketTimeout>60</SocketTimeout>
