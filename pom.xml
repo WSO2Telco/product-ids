@@ -1362,8 +1362,13 @@
     <properties>
 
         <!-- Telco dependency's version-->
+<<<<<<< Updated upstream
         <com.wso2telco.ids.version>2.2.0</com.wso2telco.ids.version>
         <com.wso2telco.core.version>2.0.23</com.wso2telco.core.version>
+=======
+        <com.wso2telco.ids.version>2.2.0-SNAPSHOT</com.wso2telco.ids.version>
+        <com.wso2telco.core.version>2.2.0-SNAPSHOT</com.wso2telco.core.version>
+>>>>>>> Stashed changes
 
         <!--Carbon Identity Framework Version-->
         <carbon.identity.framework.version>5.2.2</carbon.identity.framework.version>
