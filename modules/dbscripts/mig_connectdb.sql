@@ -383,3 +383,18 @@ CREATE TABLE `sms_otp` (
     `status` VARCHAR(15) DEFAULT NULL,
   PRIMARY KEY (`session_id`)
 )  ENGINE=INNODB DEFAULT CHARSET=LATIN1;
+
+DROP TABLE IF EXISTS `federated_idp_mappings`;
+
+CREATE TABLE `federated_idp_mappings` (
+  `ID` int(11) NOT NULL AUTO_INCREMENT,
+  `operator` varchar(45) DEFAULT NULL,
+  `authcode` varchar(255) DEFAULT NULL,
+  `federated_authcode` varchar(255) DEFAULT NULL,
+  `accesstoken` varchar(255) DEFAULT NULL,
+  `federated_accesstoken` varchar(255) DEFAULT NULL,
+  `updated_time` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  PRIMARY KEY (`ID`),
+  KEY `idx_authcode` (`authcode`),
+  KEY `idx_accesstoken` (`accesstoken`)
+) ENGINE=InnoDB;
