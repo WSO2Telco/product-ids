@@ -191,7 +191,8 @@
         <SupportedGrantTypes>
             <SupportedGrantType>
                 <GrantTypeName>authorization_code</GrantTypeName>
-                <GrantTypeHandlerImplClass>org.wso2.carbon.identity.oauth2.token.handlers.grant.AuthorizationCodeGrantHandler</GrantTypeHandlerImplClass>
+                <!--GrantTypeHandlerImplClass>org.wso2.carbon.identity.oauth2.token.handlers.grant.AuthorizationCodeGrantHandler</GrantTypeHandlerImplClass-->
+    		<GrantTypeHandlerImplClass>com.wso2telco.grantHandler.CustomAuthCodeGrant</GrantTypeHandlerImplClass>
             </SupportedGrantType>
             <SupportedGrantType>
                 <GrantTypeName>password</GrantTypeName>
