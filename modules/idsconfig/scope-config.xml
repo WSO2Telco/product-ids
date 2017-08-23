@@ -49,109 +49,158 @@
                 <ClaimValue>msisdn</ClaimValue>
             </Claims>
         </Scope>
-
-
         <Scope>
             <Name>sub</Name>
             <Claims>
                 <ClaimValue>sub</ClaimValue>
             </Claims>
+            <AttributeToDisplay>
+                <Attribute>Your ID</Attribute>
+            </AttributeToDisplay>
         </Scope>
         <Scope>
             <Name>updated_at</Name>
             <Claims>
                 <ClaimValue>updated_at</ClaimValue>
             </Claims>
+            <AttributeToDisplay>
+                <Attribute>Your information updated time</Attribute>
+            </AttributeToDisplay>
         </Scope>
         <Scope>
             <Name>title</Name>
             <Claims>
                 <ClaimValue>title</ClaimValue>
             </Claims>
+            <AttributeToDisplay>
+                <Attribute>Your title</Attribute>
+            </AttributeToDisplay>
         </Scope>
         <Scope>
             <Name>given_name</Name>
             <Claims>
                 <ClaimValue>given_name</ClaimValue>
             </Claims>
+            <AttributeToDisplay>
+                <Attribute>Your provided name/given name</Attribute>
+            </AttributeToDisplay>
         </Scope>
         <Scope>
             <Name>family_name</Name>
             <Claims>
                 <ClaimValue>family_name</ClaimValue>
             </Claims>
+            <AttributeToDisplay>
+                <Attribute>Your family name</Attribute>
+            </AttributeToDisplay>
         </Scope>
         <Scope>
             <Name>middle_name</Name>
             <Claims>
                 <ClaimValue>middle_name</ClaimValue>
             </Claims>
+            <AttributeToDisplay>
+                <Attribute>Your middle name</Attribute>
+            </AttributeToDisplay>
         </Scope>
         <Scope>
             <Name>gender</Name>
             <Claims>
                 <ClaimValue>gender</ClaimValue>
             </Claims>
+            <AttributeToDisplay>
+                <Attribute>Your gender</Attribute>
+            </AttributeToDisplay>
         </Scope>
         <Scope>
             <Name>birthdate</Name>
             <Claims>
                 <ClaimValue>birthdate</ClaimValue>
             </Claims>
+            <AttributeToDisplay>
+                <Attribute>Your birth date</Attribute>
+            </AttributeToDisplay>
         </Scope>
         <Scope>
             <Name>AgeVerificationStatus</Name>
             <Claims>
                 <ClaimValue>AgeVerificationStatus</ClaimValue>
             </Claims>
+            <AttributeToDisplay>
+                <Attribute>Your age verification status</Attribute>
+            </AttributeToDisplay>
         </Scope>
         <Scope>
             <Name>street_address</Name>
             <Claims>
                 <ClaimValue>street_address</ClaimValue>
             </Claims>
+            <AttributeToDisplay>
+                <Attribute>Your street address</Attribute>
+            </AttributeToDisplay>
         </Scope>
         <Scope>
             <Name>postal_address</Name>
             <Claims>
                 <ClaimValue>postal_address</ClaimValue>
             </Claims>
+            <AttributeToDisplay>
+                <Attribute>Your postal address</Attribute>
+            </AttributeToDisplay>
         </Scope>
         <Scope>
             <Name>postal_code</Name>
             <Claims>
                 <ClaimValue>postal_code</ClaimValue>
             </Claims>
+            <AttributeToDisplay>
+                <Attribute>Your postal code</Attribute>
+            </AttributeToDisplay>
         </Scope>
         <Scope>
             <Name>country</Name>
             <Claims>
                 <ClaimValue>country</ClaimValue>
             </Claims>
+            <AttributeToDisplay>
+                <Attribute>Your country</Attribute>
+            </AttributeToDisplay>
         </Scope>
         <Scope>
             <Name>locale</Name>
             <Claims>
                 <ClaimValue>locale</ClaimValue>
             </Claims>
+            <AttributeToDisplay>
+                <Attribute>Your locale</Attribute>
+            </AttributeToDisplay>
         </Scope>
         <Scope>
             <Name>phone_number_alternate</Name>
             <Claims>
                 <ClaimValue>phone_number_alternate</ClaimValue>
             </Claims>
+            <AttributeToDisplay>
+                <Attribute>Your alternative phone number</Attribute>
+            </AttributeToDisplay>
         </Scope>
         <Scope>
             <Name>email</Name>
             <Claims>
                 <ClaimValue>email</ClaimValue>
             </Claims>
+            <AttributeToDisplay>
+                <Attribute>Your email address</Attribute>
+            </AttributeToDisplay>
         </Scope>
         <Scope>
             <Name>email_verified</Name>
             <Claims>
                 <ClaimValue>email_verified</ClaimValue>
             </Claims>
+            <AttributeToDisplay>
+                <Attribute>Your verified email address</Attribute>
+            </AttributeToDisplay>
         </Scope>
         <Scope>
             <Name>phone_number</Name>
@@ -264,6 +313,18 @@
                 <ClaimValue>is_roaming</ClaimValue>
                 <ClaimValue>roaming_country</ClaimValue>
             </Claims>
+            <AttributeToDisplay>
+                <Attribute>Your title</Attribute>
+                <Attribute>Your given Name</Attribute>
+                <Attribute>Your family Name</Attribute>
+                <Attribute>Your Birth day</Attribute>
+                <Attribute>Your Gender</Attribute>
+                <Attribute>Your address including street address,postal address,postal code and the country</Attribute>
+                <Attribute>Your alternative phone number</Attribute>
+                <Attribute>Your current phone number</Attribute>
+                <Attribute>Your email address</Attribute>
+                <Attribute>Your roaming details including roaming country</Attribute>
+            </AttributeToDisplay>
             <Request>
                 <Optional>sub</Optional>
                 <Optional>phone_number</Optional>
@@ -285,6 +346,15 @@
                 <ClaimValue>phone_number_alternate</ClaimValue>
                 <ClaimValue>phone_number</ClaimValue>
             </Claims>
+            <AttributeToDisplay>
+                <Attribute>Your given Name</Attribute>
+                <Attribute>Your family Name</Attribute>
+                <Attribute>Your Birth day</Attribute>
+                <Attribute>Your Gender</Attribute>
+                <Attribute>Your address including street address,postal address,postal code and the country</Attribute>
+                <Attribute>Your alternative phone number</Attribute>
+                <Attribute>Your current phone number</Attribute>
+            </AttributeToDisplay>
             <Request>
                 <Optional>sub</Optional>
                 <Optional>phone_number</Optional>
