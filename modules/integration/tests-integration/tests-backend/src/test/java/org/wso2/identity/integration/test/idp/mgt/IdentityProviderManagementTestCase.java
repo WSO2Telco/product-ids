@@ -41,7 +41,8 @@ public class IdentityProviderManagementTestCase extends ISIntegrationTest {
         ConfigurationContext configContext = ConfigurationContextFactory
                 .createConfigurationContextFromFileSystem(null
                         , null);
-        identityProviderMgtServiceClient = new IdentityProviderMgtServiceClient(sessionCookie, backendURL, configContext);
+        identityProviderMgtServiceClient = new IdentityProviderMgtServiceClient(sessionCookie, backendURL,
+                configContext);
 
         userStoreConfigurationClient = new UserStoreConfigAdminServiceClient(backendURL, sessionCookie);
         Property[] properties = (new JDBCUserStoreManager()).getDefaultUserStoreProperties().getMandatoryProperties();
@@ -52,7 +53,8 @@ public class IdentityProviderManagementTestCase extends ISIntegrationTest {
             propertyDTO.setValue(properties[i].getValue());
             propertyDTOs[i] = propertyDTO;
         }
-        UserStoreDTO userStoreDTO = userStoreConfigurationClient.createUserStoreDTO(jdbcClass, "indu.com", propertyDTOs);
+        UserStoreDTO userStoreDTO = userStoreConfigurationClient.createUserStoreDTO(jdbcClass, "indu.com",
+                propertyDTOs);
         userStoreConfigurationClient.addUserStore(userStoreDTO);
 
 
@@ -81,7 +83,8 @@ public class IdentityProviderManagementTestCase extends ISIntegrationTest {
         }
     }
 
-    @Test(alwaysRun = true, description = "Testing update Identity Provider", dependsOnMethods = {"createIdpTest", "testCreateIdpWithRoleMappings"})
+    @Test(alwaysRun = true, description = "Testing update Identity Provider", dependsOnMethods = {"createIdpTest",
+            "testCreateIdpWithRoleMappings"})
     public void updateIdpTest() {
         String oldIdpName = "TestIdentityProvider1";
         String newIdpName = "TestIdentityProvider1_new";

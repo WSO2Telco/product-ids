@@ -20,7 +20,7 @@ package org.wso2.identity.integration.test.utils;
 
 public class WorkflowConstants {
 
-    private WorkflowConstants(){
+    private WorkflowConstants() {
     }
 
     public static final String IMMEDIATE_DENY_TEMPLATE_IMPL_NAME = "Default";

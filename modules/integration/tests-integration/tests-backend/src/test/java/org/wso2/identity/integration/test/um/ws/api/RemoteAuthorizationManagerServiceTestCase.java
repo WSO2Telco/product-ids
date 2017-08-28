@@ -41,7 +41,8 @@ public class RemoteAuthorizationManagerServiceTestCase extends ISIntegrationTest
         super.init();
 
         userMgtClient = new UserManagementClient(backendURL, sessionCookie);
-        remoteAuthorizationManagerServiceClient = new RemoteAuthorizationManagerServiceClient(backendURL, sessionCookie);
+        remoteAuthorizationManagerServiceClient = new RemoteAuthorizationManagerServiceClient(backendURL,
+                sessionCookie);
 
         // Create users
         userMgtClient.addUser("user1", "passWord1@", null, "default");
@@ -87,8 +88,8 @@ public class RemoteAuthorizationManagerServiceTestCase extends ISIntegrationTest
                 ("/permission/admin/login", UI_PERMISSION_ACTION);
 
         boolean isAuthorized = false;
-        for (String role: allowedRolesForResource){
-            if (role.equalsIgnoreCase("role1")){
+        for (String role : allowedRolesForResource) {
+            if (role.equalsIgnoreCase("role1")) {
                 isAuthorized = true;
             }
         }
@@ -104,8 +105,8 @@ public class RemoteAuthorizationManagerServiceTestCase extends ISIntegrationTest
                 ("user1", null);
 
         boolean isAuthorized = false;
-        for (String resource: allowedResourcesForUser){
-            if (resource.equalsIgnoreCase("/permission/admin/login")){
+        for (String resource : allowedResourcesForUser) {
+            if (resource.equalsIgnoreCase("/permission/admin/login")) {
                 isAuthorized = true;
             }
         }
@@ -115,20 +116,20 @@ public class RemoteAuthorizationManagerServiceTestCase extends ISIntegrationTest
 
     @Test(groups = "wso2.is", description = "Check whether role is authorized",
             dependsOnMethods = "testAuthorizeRole")
-    public void testIsRoleAuthorized() throws Exception{
+    public void testIsRoleAuthorized() throws Exception {
         Assert.assertTrue(remoteAuthorizationManagerServiceClient.isRoleAuthorized("role1",
                 "/permission/admin/login", UI_PERMISSION_ACTION), "Authorized role check failed for role1");
     }
 
     @Test(groups = "wso2.is", description = "Check whether user is authorized",
             dependsOnMethods = "testAuthorizeUser")
-    public void testIsUserAuthorized() throws Exception{
+    public void testIsUserAuthorized() throws Exception {
         Assert.assertTrue(remoteAuthorizationManagerServiceClient.isUserAuthorized("user1",
                 "/permission/admin/login", UI_PERMISSION_ACTION), "Authorized user check failed for user1");
     }
 
     @Test(groups = "wso2.is", description = "Clear resource authorizations", dependsOnMethods = "testAuthorizeRole")
-    public void testClearResourceAuthorizations() throws Exception{
+    public void testClearResourceAuthorizations() throws Exception {
         remoteAuthorizationManagerServiceClient.authorizeRole("role2", "/testpermission/login", UI_PERMISSION_ACTION);
 
         remoteAuthorizationManagerServiceClient.clearResourceAuthorizations("/testpermission/login");
@@ -141,7 +142,7 @@ public class RemoteAuthorizationManagerServiceTestCase extends ISIntegrationTest
 
     @Test(groups = "wso2.is", description = "Clear role action on all resources of a role",
             dependsOnMethods = "testAuthorizeRole")
-    public void testClearRoleActionOnAllResources() throws Exception{
+    public void testClearRoleActionOnAllResources() throws Exception {
         remoteAuthorizationManagerServiceClient.authorizeRole("role3", "/testpermission/manage", UI_PERMISSION_ACTION);
 
         remoteAuthorizationManagerServiceClient.clearRoleActionOnAllResources("role3", UI_PERMISSION_ACTION);
@@ -150,9 +151,9 @@ public class RemoteAuthorizationManagerServiceTestCase extends ISIntegrationTest
                 ("/testpermission/manage", UI_PERMISSION_ACTION);
 
         boolean isRoleAuthorized = false;
-        if (allowedRolesForResource != null){
-            for (String role: allowedRolesForResource){
-                if (role.equalsIgnoreCase("role3")){
+        if (allowedRolesForResource != null) {
+            for (String role : allowedRolesForResource) {
+                if (role.equalsIgnoreCase("role3")) {
                     isRoleAuthorized = true;
                 }
             }
@@ -163,7 +164,7 @@ public class RemoteAuthorizationManagerServiceTestCase extends ISIntegrationTest
 
     @Test(groups = "wso2.is", description = "Clear a resource authorization of a role",
             dependsOnMethods = "testAuthorizeRole")
-    public void testClearRoleAuthorization() throws Exception{
+    public void testClearRoleAuthorization() throws Exception {
         remoteAuthorizationManagerServiceClient.authorizeRole("role4", "/testpermission/monitor", UI_PERMISSION_ACTION);
 
         remoteAuthorizationManagerServiceClient.clearRoleAuthorization("role4", "/testpermission/monitor",
@@ -172,20 +173,21 @@ public class RemoteAuthorizationManagerServiceTestCase extends ISIntegrationTest
                 ("/testpermission/monitor", UI_PERMISSION_ACTION);
 
         boolean isRoleAuthorized = false;
-        if (allowedRolesForResource != null){
-            for (String role: allowedRolesForResource){
-                if (role.equalsIgnoreCase("role4")){
+        if (allowedRolesForResource != null) {
+            for (String role : allowedRolesForResource) {
+                if (role.equalsIgnoreCase("role4")) {
                     isRoleAuthorized = true;
                 }
             }
         }
 
-        Assert.assertFalse(isRoleAuthorized, "Failed to clear resource /testpermission/monitor authorization for role4");
+        Assert.assertFalse(isRoleAuthorized, "Failed to clear resource /testpermission/monitor authorization for " +
+                "role4");
     }
 
     @Test(groups = "wso2.is", description = "Clear all resource authorizations of a role",
             dependsOnMethods = "testAuthorizeRole")
-    public void testClearAllRoleAuthorization() throws Exception{
+    public void testClearAllRoleAuthorization() throws Exception {
         remoteAuthorizationManagerServiceClient.authorizeRole("role5", "/testpermission/manage", UI_PERMISSION_ACTION);
         remoteAuthorizationManagerServiceClient.authorizeRole("role5", "/testpermission/monitor", UI_PERMISSION_ACTION);
 
@@ -196,9 +198,9 @@ public class RemoteAuthorizationManagerServiceTestCase extends ISIntegrationTest
         boolean isRoleAuthorizedToManage = false;
         boolean isRoleAuthorizedToMonitor = false;
 
-        if (allowedRolesForResource != null){
-            for (String role: allowedRolesForResource){
-                if (role.equalsIgnoreCase("role5")){
+        if (allowedRolesForResource != null) {
+            for (String role : allowedRolesForResource) {
+                if (role.equalsIgnoreCase("role5")) {
                     isRoleAuthorizedToManage = true;
                 }
             }
@@ -206,9 +208,9 @@ public class RemoteAuthorizationManagerServiceTestCase extends ISIntegrationTest
 
         allowedRolesForResource = remoteAuthorizationManagerServiceClient.getAllowedRolesForResource
                 ("/testpermission/monitor", UI_PERMISSION_ACTION);
-        if (allowedRolesForResource != null){
-            for (String role: allowedRolesForResource){
-                if (role.equalsIgnoreCase("role5")){
+        if (allowedRolesForResource != null) {
+            for (String role : allowedRolesForResource) {
+                if (role.equalsIgnoreCase("role5")) {
                     isRoleAuthorizedToMonitor = true;
                 }
             }
@@ -220,8 +222,8 @@ public class RemoteAuthorizationManagerServiceTestCase extends ISIntegrationTest
 
     @Test(groups = "wso2.is", description = "Clear a resource authorization of a user",
             dependsOnMethods = "testAuthorizeUser")
-    public void testClearUserAuthorization() throws Exception{
-        remoteAuthorizationManagerServiceClient.authorizeUser("user2","/permission/admin/login", UI_PERMISSION_ACTION);
+    public void testClearUserAuthorization() throws Exception {
+        remoteAuthorizationManagerServiceClient.authorizeUser("user2", "/permission/admin/login", UI_PERMISSION_ACTION);
 
         remoteAuthorizationManagerServiceClient.clearUserAuthorization("user2", "/permission/admin/login",
                 UI_PERMISSION_ACTION);
@@ -229,20 +231,21 @@ public class RemoteAuthorizationManagerServiceTestCase extends ISIntegrationTest
                 ("user2", null);
 
         boolean isUserAuthorized = false;
-        if (allowedResourcesForUser != null){
-            for (String resource: allowedResourcesForUser){
-                if (resource.equalsIgnoreCase("/permission/admin/login")){
+        if (allowedResourcesForUser != null) {
+            for (String resource : allowedResourcesForUser) {
+                if (resource.equalsIgnoreCase("/permission/admin/login")) {
                     isUserAuthorized = true;
                 }
             }
         }
 
-        Assert.assertFalse(isUserAuthorized, "Failed to clear resource /permission/admin/login authorization for user2");
+        Assert.assertFalse(isUserAuthorized, "Failed to clear resource /permission/admin/login authorization for " +
+                "user2");
     }
 
     @Test(groups = "wso2.is", description = "Clear all resource authorizations of a user",
             dependsOnMethods = "testAuthorizeUser")
-    public void testClearAllUserAuthorization() throws Exception{
+    public void testClearAllUserAuthorization() throws Exception {
         remoteAuthorizationManagerServiceClient.authorizeUser("user3", "/permission/admin/login", UI_PERMISSION_ACTION);
 
         remoteAuthorizationManagerServiceClient.clearAllUserAuthorization("user3");
@@ -255,7 +258,7 @@ public class RemoteAuthorizationManagerServiceTestCase extends ISIntegrationTest
 
     @Test(groups = "wso2.is", description = "Deny a resource authorization of a role",
             dependsOnMethods = "testAuthorizeRole")
-    public void testDenyRole() throws Exception{
+    public void testDenyRole() throws Exception {
         remoteAuthorizationManagerServiceClient.authorizeRole("role6", "/permission/admin/login", UI_PERMISSION_ACTION);
 
         remoteAuthorizationManagerServiceClient.denyRole("role6", "/permission/admin/login", UI_PERMISSION_ACTION);
@@ -264,9 +267,9 @@ public class RemoteAuthorizationManagerServiceTestCase extends ISIntegrationTest
                 ("/permission/admin/login", UI_PERMISSION_ACTION);
 
         boolean isRoleDenied = false;
-        if (deniedRolesForResource != null){
-            for (String role: deniedRolesForResource){
-                if (role.equalsIgnoreCase("role6")){
+        if (deniedRolesForResource != null) {
+            for (String role : deniedRolesForResource) {
+                if (role.equalsIgnoreCase("role6")) {
                     isRoleDenied = true;
                 }
             }
@@ -277,7 +280,7 @@ public class RemoteAuthorizationManagerServiceTestCase extends ISIntegrationTest
 
     @Test(groups = "wso2.is", description = "Deny a resource authorization for a user",
             dependsOnMethods = "testAuthorizeUser")
-    public void testDenyUser() throws Exception{
+    public void testDenyUser() throws Exception {
         remoteAuthorizationManagerServiceClient.authorizeUser("user4", "/permission/admin/login", UI_PERMISSION_ACTION);
 
         remoteAuthorizationManagerServiceClient.denyUser("user4", "/permission/admin/login", UI_PERMISSION_ACTION);
@@ -286,9 +289,9 @@ public class RemoteAuthorizationManagerServiceTestCase extends ISIntegrationTest
                 ("/permission/admin/login", UI_PERMISSION_ACTION);
 
         boolean isUserDenied = false;
-        if (deniedUsersForResource != null){
-            for (String user: deniedUsersForResource){
-                if (user.equalsIgnoreCase("user4")){
+        if (deniedUsersForResource != null) {
+            for (String user : deniedUsersForResource) {
+                if (user.equalsIgnoreCase("user4")) {
                     isUserDenied = true;
                 }
             }
@@ -299,7 +302,7 @@ public class RemoteAuthorizationManagerServiceTestCase extends ISIntegrationTest
 
     @Test(groups = "wso2.is", description = "Get allowed roles for a resource",
             dependsOnMethods = "testAuthorizeRole")
-    public void testGetAllowedRolesForResource() throws Exception{
+    public void testGetAllowedRolesForResource() throws Exception {
         remoteAuthorizationManagerServiceClient.authorizeRole("role1", "/testpermission/login", UI_PERMISSION_ACTION);
         remoteAuthorizationManagerServiceClient.authorizeRole("role2", "/testpermission/login", UI_PERMISSION_ACTION);
         remoteAuthorizationManagerServiceClient.authorizeRole("role3", "/testpermission/login", UI_PERMISSION_ACTION);
@@ -307,7 +310,7 @@ public class RemoteAuthorizationManagerServiceTestCase extends ISIntegrationTest
         String[] allowedRolesForResource = remoteAuthorizationManagerServiceClient.getAllowedRolesForResource
                 ("/testpermission/login", UI_PERMISSION_ACTION);
 
-        if (allowedRolesForResource != null && allowedRolesForResource.length == 3){
+        if (allowedRolesForResource != null && allowedRolesForResource.length == 3) {
             List<String> allowedRolesList = Arrays.asList(allowedRolesForResource);
             Assert.assertTrue(allowedRolesList.contains("role1"), "Failed to get role1 authorized for resource " +
                     "/testpermission/login");
@@ -315,7 +318,7 @@ public class RemoteAuthorizationManagerServiceTestCase extends ISIntegrationTest
                     "/testpermission/login");
             Assert.assertTrue(allowedRolesList.contains("role3"), "Failed to get role3 authorized for resource " +
                     "/testpermission/login");
-        }else{
+        } else {
             Assert.fail("Failed to get authorized roles for resource /testpermission/login");
         }
 
@@ -323,7 +326,7 @@ public class RemoteAuthorizationManagerServiceTestCase extends ISIntegrationTest
 
     @Test(groups = "wso2.is", description = "Get allowed roles for a resource",
             dependsOnMethods = "testGetAllowedRolesForResource")
-    public void testGetDeniedRolesForResource() throws Exception{
+    public void testGetDeniedRolesForResource() throws Exception {
         remoteAuthorizationManagerServiceClient.denyRole("role1", "/testpermission/login", UI_PERMISSION_ACTION);
         remoteAuthorizationManagerServiceClient.denyRole("role2", "/testpermission/login", UI_PERMISSION_ACTION);
         remoteAuthorizationManagerServiceClient.denyRole("role3", "/testpermission/login", UI_PERMISSION_ACTION);
@@ -331,22 +334,22 @@ public class RemoteAuthorizationManagerServiceTestCase extends ISIntegrationTest
         String[] deniedRolesForResource = remoteAuthorizationManagerServiceClient.getDeniedRolesForResource
                 ("/testpermission/login", UI_PERMISSION_ACTION);
 
-        if (deniedRolesForResource != null && deniedRolesForResource.length == 3){
+        if (deniedRolesForResource != null && deniedRolesForResource.length == 3) {
             List<String> deniedRoleList = Arrays.asList(deniedRolesForResource);
-            Assert.assertTrue( deniedRoleList.contains("role1"), "Failed to get role1 denied for resource " +
+            Assert.assertTrue(deniedRoleList.contains("role1"), "Failed to get role1 denied for resource " +
                     "/testpermission/login");
-            Assert.assertTrue( deniedRoleList.contains("role2"), "Failed to get role2 denied for resource " +
+            Assert.assertTrue(deniedRoleList.contains("role2"), "Failed to get role2 denied for resource " +
                     "/testpermission/login");
-            Assert.assertTrue( deniedRoleList.contains("role3"), "Failed to get role3 denied for resource " +
+            Assert.assertTrue(deniedRoleList.contains("role3"), "Failed to get role3 denied for resource " +
                     "/testpermission/login");
-        }else{
+        } else {
             Assert.fail("Failed to get denied roles for resource /testpermission/login");
         }
     }
 
     @Test(groups = "wso2.is", description = "Get allowed users for a resource",
             dependsOnMethods = "testAuthorizeUser")
-    public void testGetExplicitlyAllowedUsersForResource() throws Exception{
+    public void testGetExplicitlyAllowedUsersForResource() throws Exception {
         remoteAuthorizationManagerServiceClient.authorizeUser("user1", "/testpermission/login", UI_PERMISSION_ACTION);
         remoteAuthorizationManagerServiceClient.authorizeUser("user2", "/testpermission/login", UI_PERMISSION_ACTION);
         remoteAuthorizationManagerServiceClient.authorizeUser("user3", "/testpermission/login", UI_PERMISSION_ACTION);
@@ -354,7 +357,7 @@ public class RemoteAuthorizationManagerServiceTestCase extends ISIntegrationTest
         String[] allowedUsersForResource = remoteAuthorizationManagerServiceClient.getExplicitlyAllowedUsersForResource
                 ("/testpermission/login", UI_PERMISSION_ACTION);
 
-        if (allowedUsersForResource != null && allowedUsersForResource.length == 3){
+        if (allowedUsersForResource != null && allowedUsersForResource.length == 3) {
             List<String> allowedUsersList = Arrays.asList(allowedUsersForResource);
             Assert.assertTrue(allowedUsersList.contains("user1"), "Failed to get user1 authorized for resource " +
                     "/testpermission/login");
@@ -362,14 +365,14 @@ public class RemoteAuthorizationManagerServiceTestCase extends ISIntegrationTest
                     "/testpermission/login");
             Assert.assertTrue(allowedUsersList.contains("user3"), "Failed to get user3 authorized for resource " +
                     "/testpermission/login");
-        }else{
+        } else {
             Assert.fail("Failed to get authorized users for resource /testpermission/login");
         }
     }
 
     @Test(groups = "wso2.is", description = "Get allowed users for a resource",
             dependsOnMethods = "testGetExplicitlyAllowedUsersForResource")
-    public void testGetExplicitlyDeniedUsersForResource() throws Exception{
+    public void testGetExplicitlyDeniedUsersForResource() throws Exception {
         remoteAuthorizationManagerServiceClient.denyUser("user1", "/testpermission/login", UI_PERMISSION_ACTION);
         remoteAuthorizationManagerServiceClient.denyUser("user2", "/testpermission/login", UI_PERMISSION_ACTION);
         remoteAuthorizationManagerServiceClient.denyUser("user3", "/testpermission/login", UI_PERMISSION_ACTION);
@@ -377,43 +380,44 @@ public class RemoteAuthorizationManagerServiceTestCase extends ISIntegrationTest
         String[] deniedUsersForResource = remoteAuthorizationManagerServiceClient.getExplicitlyDeniedUsersForResource
                 ("/testpermission/login", UI_PERMISSION_ACTION);
 
-        if (deniedUsersForResource != null && deniedUsersForResource.length == 3){
+        if (deniedUsersForResource != null && deniedUsersForResource.length == 3) {
             List<String> deniedUserList = Arrays.asList(deniedUsersForResource);
-            Assert.assertTrue( deniedUserList.contains("user1"), "Failed to get user1 denied for resource " +
+            Assert.assertTrue(deniedUserList.contains("user1"), "Failed to get user1 denied for resource " +
                     "/testpermission/login");
-            Assert.assertTrue( deniedUserList.contains("user2"), "Failed to get user2 denied for resource " +
+            Assert.assertTrue(deniedUserList.contains("user2"), "Failed to get user2 denied for resource " +
                     "/testpermission/login");
-            Assert.assertTrue( deniedUserList.contains("user3"), "Failed to get user3 denied for resource " +
+            Assert.assertTrue(deniedUserList.contains("user3"), "Failed to get user3 denied for resource " +
                     "/testpermission/login");
-        }else{
+        } else {
             Assert.fail("Failed to get denied roles for resource /testpermission/login");
         }
     }
 
     @Test(groups = "wso2.is", description = "Get allowed resources for user")
-    public void testGetAllowedUIResourcesForUser() throws Exception{
-        remoteAuthorizationManagerServiceClient.authorizeUser("user1","/permission/admin/login", UI_PERMISSION_ACTION);
-        remoteAuthorizationManagerServiceClient.authorizeUser("user1","/permission/admin/manage", UI_PERMISSION_ACTION);
-        remoteAuthorizationManagerServiceClient.authorizeUser("user1","/permission/admin/monitor",
+    public void testGetAllowedUIResourcesForUser() throws Exception {
+        remoteAuthorizationManagerServiceClient.authorizeUser("user1", "/permission/admin/login", UI_PERMISSION_ACTION);
+        remoteAuthorizationManagerServiceClient.authorizeUser("user1", "/permission/admin/manage",
+                UI_PERMISSION_ACTION);
+        remoteAuthorizationManagerServiceClient.authorizeUser("user1", "/permission/admin/monitor",
                 UI_PERMISSION_ACTION);
 
         String[] allowedResourcesForUser = remoteAuthorizationManagerServiceClient.getAllowedUIResourcesForUser
                 ("user1", null);
-        if (allowedResourcesForUser != null && allowedResourcesForUser.length == 3){
+        if (allowedResourcesForUser != null && allowedResourcesForUser.length == 3) {
             List<String> allowedResourceList = Arrays.asList(allowedResourcesForUser);
-            Assert.assertTrue( allowedResourceList.contains("/permission/admin/login"),
+            Assert.assertTrue(allowedResourceList.contains("/permission/admin/login"),
                     "Failed to get /permission/admin/login allowed for user1");
-            Assert.assertTrue( allowedResourceList.contains("/permission/admin/manage"),
+            Assert.assertTrue(allowedResourceList.contains("/permission/admin/manage"),
                     "Failed to get /permission/admin/manage allowed for user1");
-            Assert.assertTrue( allowedResourceList.contains("/permission/admin/monitor"),
+            Assert.assertTrue(allowedResourceList.contains("/permission/admin/monitor"),
                     "Failed to get /permission/admin/monitor allowed for user1");
-        }else{
+        } else {
             Assert.fail("Failed to get allowed resources for user1");
         }
     }
 
     @Test(groups = "wso2.is", description = "Reset permission")
-    public void testResetPermissionOnUpdateRole() throws Exception{
+    public void testResetPermissionOnUpdateRole() throws Exception {
         remoteAuthorizationManagerServiceClient.authorizeRole("role2", "/permission/admin/login",
                 UI_PERMISSION_ACTION);
         remoteAuthorizationManagerServiceClient.authorizeRole("role2", "/permission/admin/manage",
@@ -425,11 +429,11 @@ public class RemoteAuthorizationManagerServiceTestCase extends ISIntegrationTest
 
         String[] rolesForResource = remoteAuthorizationManagerServiceClient.getAllowedRolesForResource
                 ("/permission/admin/login", UI_PERMISSION_ACTION);
-        if (rolesForResource != null){
+        if (rolesForResource != null) {
             List<String> rolesList = Arrays.asList(rolesForResource);
             Assert.assertTrue(rolesList.contains("role3") && !rolesList.contains("role2"),
                     "Failed to reset permission /permission/admin/login for role2");
-        }else{
+        } else {
             Assert.fail("Failed to reset permissions of role2");
         }
     }

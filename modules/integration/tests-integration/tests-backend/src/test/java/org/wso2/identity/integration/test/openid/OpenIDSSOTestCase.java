@@ -59,7 +59,7 @@ public class OpenIDSSOTestCase extends ISIntegrationTest {
     private static final String OPEN_ID_PROFILE_URL = "https://localhost:9853/authenticationendpoint/openid_profile.do";
     private static final String APPROVAL_URL = "https://localhost:9853/openidserver";
     private static final String OPEN_ID_URL = "http://localhost:8490/%s/openid?OpenId" +
-                                              ".ClaimedId=https://localhost:9853/openid/";
+            ".ClaimedId=https://localhost:9853/openid/";
     //Claim Uris
     private static final String firstNameClaimURI = "http://axschema.org/namePerson/first";
     private static final String emailClaimURI = "http://axschema.org/contact/email";
@@ -74,7 +74,7 @@ public class OpenIDSSOTestCase extends ISIntegrationTest {
 
     @Factory(dataProvider = "openIdConfigBeanProvider")
     public OpenIDSSOTestCase(OpenIDUtils.OpenIDConfig configBean) {
-        if (log.isDebugEnabled()){
+        if (log.isDebugEnabled()) {
             log.info("OpenId Test initialized for " + configBean);
         }
 
@@ -85,7 +85,7 @@ public class OpenIDSSOTestCase extends ISIntegrationTest {
     public void init() throws Exception {
         super.init();
 
-        if (config.getUserConsent() == OpenIDUtils.UserConsent.SKIP){
+        if (config.getUserConsent() == OpenIDUtils.UserConsent.SKIP) {
             changeISConfiguration();
             super.init();
         }
@@ -95,8 +95,8 @@ public class OpenIDSSOTestCase extends ISIntegrationTest {
     }
 
     @AfterClass(alwaysRun = true)
-    public void clear() throws Exception{
-        if (config.getUserConsent() == OpenIDUtils.UserConsent.SKIP){
+    public void clear() throws Exception {
+        if (config.getUserConsent() == OpenIDUtils.UserConsent.SKIP) {
             resetISConfiguration();
         }
 
@@ -105,7 +105,7 @@ public class OpenIDSSOTestCase extends ISIntegrationTest {
     }
 
     @BeforeMethod
-    public void createUser(){
+    public void createUser() {
         OpenIDUtils.User user = config.getUser();
 
         log.info("Creating User " + user.getUsername());
@@ -134,7 +134,7 @@ public class OpenIDSSOTestCase extends ISIntegrationTest {
     }
 
     @AfterMethod
-    public void deleteUser(){
+    public void deleteUser() {
         log.info("Deleting User " + config.getUser().getUsername());
         try {
             remoteUSMServiceClient.deleteUser(config.getUser().getUsername());
@@ -145,7 +145,7 @@ public class OpenIDSSOTestCase extends ISIntegrationTest {
 
     @Test(alwaysRun = true, groups = "wso2.is", description = "Testing OpenId sample parameterized test")
     public void testOpenId() throws IOException {
-        if (log.isDebugEnabled()){
+        if (log.isDebugEnabled()) {
             log.debug("Executing Test Case for " + config);
         }
 
@@ -165,11 +165,11 @@ public class OpenIDSSOTestCase extends ISIntegrationTest {
         assertLogin(results);
 
         if (config.getAppType() == OpenIDUtils.AppType.SMART_WITH_CLAIMS ||
-                config.getAppType() == OpenIDUtils.AppType.DUMB_WITH_CLAIMS){
+                config.getAppType() == OpenIDUtils.AppType.DUMB_WITH_CLAIMS) {
             assertAttributes(results);
         }
 
-        if (config.getUserConsent() == OpenIDUtils.UserConsent.APPROVE_ALWAYS){
+        if (config.getUserConsent() == OpenIDUtils.UserConsent.APPROVE_ALWAYS) {
             client = new DefaultHttpClient();
 
             response = executePhaseBeforeApproval();
@@ -184,7 +184,7 @@ public class OpenIDSSOTestCase extends ISIntegrationTest {
         tomcatServer = getTomcat();
         URL resourceURL =
                 getClass().getResource(File.separator + "samples" + File.separator + config.getAppType().getArtifact()
-                                       + ".war");
+                        + ".war");
         tomcatServer.addWebapp(tomcatServer.getHost(), "/" + config.getAppType().getArtifact(), resourceURL.getPath());
         tomcatServer.start();
     }
@@ -222,7 +222,7 @@ public class OpenIDSSOTestCase extends ISIntegrationTest {
         keyPositionMap.put("claimTag", 5);
         keyPositionMap.put("claimValue", 5);
 
-        keyValues = extractDataFromResponse(response,keyPositionMap);
+        keyValues = extractDataFromResponse(response, keyPositionMap);
         assertClaims(keyValues);
 
         response = sendOpenIdProfilePost(keyValues);
@@ -235,7 +235,7 @@ public class OpenIDSSOTestCase extends ISIntegrationTest {
     }
 
     @DataProvider(name = "openIdConfigBeanProvider")
-    public static OpenIDUtils.OpenIDConfig[][] openIdConfigBeanProvider(){
+    public static OpenIDUtils.OpenIDConfig[][] openIdConfigBeanProvider() {
         return new OpenIDUtils.OpenIDConfig[][]{
                 {new OpenIDUtils.OpenIDConfig(OpenIDUtils.User.ADMIN,
                         OpenIDUtils.UserConsent.APPROVE, OpenIDUtils.AppType.SMART_WITH_CLAIMS)},
@@ -306,7 +306,7 @@ public class OpenIDSSOTestCase extends ISIntegrationTest {
                 new InputStreamReader(response.getEntity().getContent()));
         String line;
         while ((line = rd.readLine()) != null) {
-            for (String key: keyPositionMap.keySet()){
+            for (String key : keyPositionMap.keySet()) {
                 if (line.contains(key)) {
                     String[] tokens = line.split("'");
                     KeyValue keyValue = new KeyValue(key, tokens[keyPositionMap.get(key)]);
@@ -373,7 +373,7 @@ public class OpenIDSSOTestCase extends ISIntegrationTest {
 
         List<NameValuePair> urlParameters = new ArrayList<NameValuePair>();
 
-        for (KeyValue keyValue:keyValues){
+        for (KeyValue keyValue : keyValues) {
             urlParameters.add(new BasicNameValuePair(keyValue.getKey(), keyValue.getValue()));
         }
 
@@ -396,15 +396,15 @@ public class OpenIDSSOTestCase extends ISIntegrationTest {
         return client.execute(request);
     }
 
-    private void assertClaims(List<KeyValue> keyValues){
+    private void assertClaims(List<KeyValue> keyValues) {
         StringBuilder sb = new StringBuilder();
-        for (KeyValue keyValue:keyValues){
-            if (keyValue.key.equals("claimTag")){
+        for (KeyValue keyValue : keyValues) {
+            if (keyValue.key.equals("claimTag")) {
                 sb.append(keyValue.getValue());
                 sb.append(",");
             }
 
-            if (keyValue.key.equals("claimValue")){
+            if (keyValue.key.equals("claimValue")) {
                 sb.append(keyValue.getValue());
                 sb.append(",");
             }
@@ -417,25 +417,25 @@ public class OpenIDSSOTestCase extends ISIntegrationTest {
         Assert.assertTrue(claims.contains(config.getUser().getEmail()));
     }
 
-    private void assertLogin(String results){
+    private void assertLogin(String results) {
         Assert.assertTrue(results.contains("You are logged in as " +
                         "https://localhost:9853/openid/" + config.getUser().getUsername()),
                 "OpenId sso login has failed for " + config);
     }
 
-    private void assertAttributes(String results){
+    private void assertAttributes(String results) {
         String str = results.substring(results.lastIndexOf("<table>"));
 
         String[] dataArray = StringUtils.substringsBetween(str, "<td>", "</td>");
-        Map<String,String> attributeMap = new HashMap<String, String>();
+        Map<String, String> attributeMap = new HashMap<String, String>();
         String key = null;
         String value;
-        for (int i = 0; i< dataArray.length; i++){
-            if((i%2) == 0){
+        for (int i = 0; i < dataArray.length; i++) {
+            if ((i % 2) == 0) {
                 key = dataArray[i];
-            }else{
+            } else {
                 value = dataArray[i].trim();
-                attributeMap.put(key,value);
+                attributeMap.put(key, value);
             }
         }
 
@@ -457,7 +457,8 @@ public class OpenIDSSOTestCase extends ISIntegrationTest {
 
         String carbonHome = CarbonUtils.getCarbonHome();
         identityXML = new File(carbonHome + File.separator
-                + "repository" + File.separator + "conf" + File.separator + "identity" +File.separator + "identity.xml");
+                + "repository" + File.separator + "conf" + File.separator + "identity" + File.separator + "identity" +
+                ".xml");
         File configuredIdentityXML = new File(getISResourceLocation()
                 + File.separator + "openId" + File.separator
                 + "identity-skipuserconsent.xml");
@@ -467,7 +468,7 @@ public class OpenIDSSOTestCase extends ISIntegrationTest {
         serverConfigurationManager.restartGracefully();
     }
 
-    private void resetISConfiguration() throws Exception{
+    private void resetISConfiguration() throws Exception {
         log.info("Replacing identity.xml with default configurations");
 
         File defaultIdentityXML = new File(getISResourceLocation()
@@ -478,7 +479,7 @@ public class OpenIDSSOTestCase extends ISIntegrationTest {
         serverConfigurationManager.restartGracefully();
     }
 
-    static class KeyValue{
+    static class KeyValue {
         private String key;
         private String value;
 

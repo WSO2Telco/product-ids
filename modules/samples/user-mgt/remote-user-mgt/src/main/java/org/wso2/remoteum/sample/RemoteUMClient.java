@@ -290,8 +290,8 @@ public class RemoteUMClient {
 
     private static void loadConfiguration() throws IOException {
         Properties properties = new Properties();
-		FileInputStream freader = new FileInputStream(RemoteUMSampleConstants.PROPERTIES_FILE_NAME);
-		properties.load(freader);
+        FileInputStream freader = new FileInputStream(RemoteUMSampleConstants.PROPERTIES_FILE_NAME);
+        properties.load(freader);
 
         serverUrl = properties.getProperty(RemoteUMSampleConstants.REMOTE_SERVER_URL);
         username = properties.getProperty(RemoteUMSampleConstants.USER_NAME);

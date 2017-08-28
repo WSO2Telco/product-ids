@@ -40,7 +40,7 @@ public class ReadWriteLDAPUserStoreManagerTestCase extends UserManagementService
 
     @Override
     protected void setUserName() {
-        newUserName = "ReadWriteLDAPUserName" ;
+        newUserName = "ReadWriteLDAPUserName";
     }
 
     @Override
@@ -50,7 +50,7 @@ public class ReadWriteLDAPUserStoreManagerTestCase extends UserManagementService
 
     @Override
     protected void setUserRole() {
-       newUserRole = "ReadWriteLDAPUserRole";
+        newUserRole = "ReadWriteLDAPUserRole";
     }
 }
 

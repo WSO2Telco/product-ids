@@ -27,17 +27,18 @@
 
     <!-- enter the user and the password for the respective databases -->
     <!-- remove the commented section and enter the database names and mysql host -->
+    <!-- If IDS is used as the key manager for Hub please create necessary tables in IDENTITY_DB -->
     <datasource>
-      <name>AM_DB</name>
+      <name>IDENTITY_DB</name>
       <description>The datasource used for API Manager database</description>
       <jndiConfig>
-        <name>jdbc/WSO2AM_DB</name>
+        <name>jdbc/WSO2IDENTITY_DB</name>
       </jndiConfig>
       <definition type="RDBMS">
         <configuration>
-          <url>jdbc:mysql://localhost:3306/ids_apimgt?autoReconnect=true&amp;relaxAutoCommit=true&amp;</url>  <!-- enter the dbhost and apimgt db name -->
-          <username>{username}</username>        <!-- User name -->
-          <password>{password}</password>
+          <url>jdbc:mysql://localhost:3306/mig_identity?autoReconnect=true&amp;relaxAutoCommit=true&amp;</url>  <!-- enter the dbhost and apimgt db name -->
+          <username>root</username>        <!-- User name -->
+          <password></password>
 	  <driverClassName>com.mysql.jdbc.Driver</driverClassName>
           <maxActive>50</maxActive>
           <maxWait>60000</maxWait>
@@ -55,9 +56,9 @@
       </jndiConfig>
       <definition type="RDBMS">
         <configuration>
-          <url>jdbc:mysql://localhost:3306/ids_regdb?autoReconnect=true&amp;relaxAutoCommit=true&amp;</url>    <!-- enter the dbhost and gsma_registry db name -->
-          <username>{username}</username>      <!-- User name -->
-	  <password>{password}</password>
+          <url>jdbc:mysql://localhost:3306/mig_regdb?autoReconnect=true&amp;relaxAutoCommit=true&amp;</url>    <!-- enter the dbhost and gsma_registry db name -->
+          <username>root</username>      <!-- User name -->
+	  <password></password>
           <driverClassName>com.mysql.jdbc.Driver</driverClassName>
           <maxActive>50</maxActive>
           <maxWait>60000</maxWait>
@@ -75,9 +76,9 @@
       </jndiConfig>
       <definition type="RDBMS">
         <configuration>
-          <url>jdbc:mysql://localhost:3306/ids_userdb?autoReconnect=true&amp;relaxAutoCommit=true&amp;</url>     <!-- enter the dbhost and gsma_userstore db name -->
-         <username>{username}</username>       <!-- User name -->
-          <password>{password}</password>    <!-- Password -->
+          <url>jdbc:mysql://localhost:3306/mig_userdb?autoReconnect=true&amp;relaxAutoCommit=true&amp;</url>     <!-- enter the dbhost and gsma_userstore db name -->
+         <username>root</username>       <!-- User name -->
+          <password></password>    <!-- Password -->
           <driverClassName>com.mysql.jdbc.Driver</driverClassName>
           <maxActive>50</maxActive>
           <maxWait>60000</maxWait>
@@ -95,9 +96,9 @@
       </jndiConfig>
       <definition type="RDBMS">
         <configuration>
-          <url>jdbc:mysql://localhost:3306/ids_connectdb?autoReconnect=true&amp;relaxAutoCommit=true&amp;</url>   <!-- enter the dbhost and connect db name -->
-          <username>{username}</username>      <!-- User name -->
-          <password>{password}</password>   <!-- Password -->
+          <url>jdbc:mysql://localhost:3306/mig_connectdb?autoReconnect=true&amp;relaxAutoCommit=true&amp;</url>   <!-- enter the dbhost and connect db name -->
+          <username>root</username>      <!-- User name -->
+          <password></password>   <!-- Password -->
           <driverClassName>com.mysql.jdbc.Driver</driverClassName>
           <maxActive>50</maxActive>
           <maxWait>60000</maxWait>
@@ -115,9 +116,9 @@
       </jndiConfig>
       <definition type="RDBMS">
         <configuration>
-          <url>jdbc:mysql://localhost:3306/ids_operatorsdb?autoReconnect=true&amp;relaxAutoCommit=true</url>     <!-- enter the dbhost and axiata db name -->
-          <username>{username}</username>     <!-- User name -->
-          <password>{password}</password>   <!-- Password -->
+          <url>jdbc:mysql://localhost:3306/mig_operatorsdb?autoReconnect=true&amp;relaxAutoCommit=true</url>     <!-- enter the dbhost and axiata db name -->
+          <username>root</username>     <!-- User name -->
+          <password></password>   <!-- Password -->
           <driverClassName>com.mysql.jdbc.Driver</driverClassName>
           <maxActive>50</maxActive>
           <maxWait>60000</maxWait>

@@ -1,17 +1,17 @@
 /**
- *  Copyright (c) 2014, WSO2 Inc. (http://www.wso2.org) All Rights Reserved.
- *
- *  Licensed under the Apache License, Version 2.0 (the "License");
- *  you may not use this file except in compliance with the License.
- *  You may obtain a copy of the License at
- *
- *        http://www.apache.org/licenses/LICENSE-2.0
- *
- *  Unless required by applicable law or agreed to in writing, software
- *  distributed under the License is distributed on an "AS IS" BASIS,
- *  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- *  See the License for the specific language governing permissions and
- *  limitations under the License.
+ * Copyright (c) 2014, WSO2 Inc. (http://www.wso2.org) All Rights Reserved.
+ * <p>
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ * <p>
+ * http://www.apache.org/licenses/LICENSE-2.0
+ * <p>
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
  */
 
 package org.wso2.identity.integration.common.clients.entitlement;
@@ -51,13 +51,16 @@ public class EntitlementServiceClient {
     public EntitledResultSetDTO getEntitledAttributes(String subjectName, String resourceName, String subjectId,
                                                       String action, boolean enableChildSearch)
             throws RemoteException, EntitlementServiceIdentityException {
-        return entitlementServiceStub.getEntitledAttributes(subjectName, resourceName, subjectId, action, enableChildSearch);
+        return entitlementServiceStub.getEntitledAttributes(subjectName, resourceName, subjectId, action,
+                enableChildSearch);
     }
 
     public void startgetEntitledAttributes(String subjectName, String resourceName, String subjectId,
-                                           String action, boolean enableChildSearch, EntitlementServiceCallbackHandler callback)
+                                           String action, boolean enableChildSearch,
+                                           EntitlementServiceCallbackHandler callback)
             throws RemoteException {
-        entitlementServiceStub.startgetEntitledAttributes(subjectName, resourceName, subjectId, action, enableChildSearch, callback);
+        entitlementServiceStub.startgetEntitledAttributes(subjectName, resourceName, subjectId, action,
+                enableChildSearch, callback);
     }
 
     public String xACMLAuthzDecisionQuery(String request) throws EntitlementServiceException, RemoteException {

@@ -67,17 +67,18 @@ public class UserStoreDeployerTestCase extends ISIntegrationTest {
 
     @Test(groups = "wso2.is", description = "Test multiple user stores", dependsOnMethods = "testDroppingFile")
     public void testMultipleUserStores() throws RemoteException, UserAdminUserAdminException {
-        Assert.assertTrue("Multiple user stores not detected.",userMgtClient.hasMultipleUserStores());
+        Assert.assertTrue("Multiple user stores not detected.", userMgtClient.hasMultipleUserStores());
     }
 
     @Test(groups = "wso2.is", description = "Test user store add user", dependsOnMethods = "testMultipleUserStores")
     public void testAddUser() throws Exception {
-        userMgtClient.addUser("wso2.com/pushpalanka", "pushpalanka", new String[] {}, null);
+        userMgtClient.addUser("wso2.com/pushpalanka", "pushpalanka", new String[]{}, null);
         Assert.assertTrue("Couldn't add user to newly added user store",
-                          userMgtClient.getUserList().contains("WSO2.COM/pushpalanka"));
+                userMgtClient.getUserList().contains("WSO2.COM/pushpalanka"));
     }
 
-    @Test(groups = "wso2.is", description = "Test enable/disable user stores", dependsOnMethods = "testMultipleUserStores")
+    @Test(groups = "wso2.is", description = "Test enable/disable user stores", dependsOnMethods =
+            "testMultipleUserStores")
     public void testChangeUserStoreState() throws Exception {
         Boolean isDisabled = false;
         userStoreConfigurationClient.changeUserStoreState("wso2.com", true);
@@ -93,7 +94,8 @@ public class UserStoreDeployerTestCase extends ISIntegrationTest {
         Assert.assertTrue("Disabling user store has failed", isDisabled);
     }
 
-    @Test(groups = "wso2.is", description = "Delete a user store config file", dependsOnMethods = "testChangeUserStoreState")
+    @Test(groups = "wso2.is", description = "Delete a user store config file", dependsOnMethods =
+            "testChangeUserStoreState")
     public void testDeletingFile() throws Exception {
         destFile = new File(userStoreConfigFilePath + srcFile.getName());
 

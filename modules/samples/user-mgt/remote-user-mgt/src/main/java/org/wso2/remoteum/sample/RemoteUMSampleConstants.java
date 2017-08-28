@@ -29,7 +29,7 @@ public class RemoteUMSampleConstants {
     public static final String IS_HOME = ".." + File.separator + ".." + File.separator;
 
     public static final String TRUST_STORE_PATH = IS_HOME + "repository" + File.separator + "resources" +
-                                                  File.separator + "security" + File.separator + "wso2carbon.jks";
-    
+            File.separator + "security" + File.separator + "wso2carbon.jks";
+
     public static final String TRUST_STORE_PASSWORD = "wso2carbon";
 }

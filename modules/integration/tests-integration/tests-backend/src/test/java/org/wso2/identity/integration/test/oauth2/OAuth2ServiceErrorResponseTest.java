@@ -42,8 +42,8 @@ public class OAuth2ServiceErrorResponseTest extends OAuth2ServiceAbstractIntegra
         super.init(TestUserMode.SUPER_TENANT_USER);
         logManger = new AuthenticatorClient(backendURL);
         logManger.login(isServer.getSuperTenant().getTenantAdmin().getUserName(),
-                                              isServer.getSuperTenant().getTenantAdmin().getPassword(),
-                                              isServer.getInstance().getHosts().get("default"));
+                isServer.getSuperTenant().getTenantAdmin().getPassword(),
+                isServer.getInstance().getHosts().get("default"));
 
         setSystemproperties();
         client = new DefaultHttpClient();
@@ -71,13 +71,13 @@ public class OAuth2ServiceErrorResponseTest extends OAuth2ServiceAbstractIntegra
     public void testUnsupportedGrantTypeErrorResponse() throws Exception {
         List<NameValuePair> urlParameters = new ArrayList<NameValuePair>();
         urlParameters.add(new BasicNameValuePair("response_type",
-                                                 OAuth2Constant.OAUTH2_GRANT_TYPE_IMPLICIT));
+                OAuth2Constant.OAUTH2_GRANT_TYPE_IMPLICIT));
         urlParameters.add(new BasicNameValuePair("client_id", consumerKey));
         urlParameters.add(new BasicNameValuePair("redirect_uri", OAuth2Constant.CALLBACK_URL));
 
         HttpResponse response =
                 sendPostRequestWithParameters(client, urlParameters,
-                                              OAuth2Constant.APPROVAL_URL);
+                        OAuth2Constant.APPROVAL_URL);
         Assert.assertNotNull(response, "Authorization request failed. Authorized response is null");
 
         Header locationHeader =
@@ -85,8 +85,9 @@ public class OAuth2ServiceErrorResponseTest extends OAuth2ServiceAbstractIntegra
 
         String locationURI = locationHeader.getValue();
 
-        Assert.assertTrue(locationURI.contains(OAuth2Constant.UNSUPPORTED_GRANT_TYPE));
-        Assert.assertTrue(locationURI.contains("Requested+Grant+type+is+not+supported."));
+        Assert.assertTrue(locationURI.contains(OAuth2Constant.UNAUTHORIZED_CLIENT));
+        Assert.assertTrue(locationURI.contains("The+authenticated+client+is+not+authorized+to+use+this+authorization+" +
+                "grant+type"));
     }
 
     public OAuthConsumerAppDTO createApplication() throws Exception {

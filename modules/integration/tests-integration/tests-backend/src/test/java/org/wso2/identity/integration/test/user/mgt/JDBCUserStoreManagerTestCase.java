@@ -35,9 +35,9 @@ public class JDBCUserStoreManagerTestCase extends UserManagementServiceAbstractT
         super.init();
         String carbonHome = ServerConfigurationManager.getCarbonHome();
         userMgtServerFile = new File(carbonHome + File.separator + "repository" + File.separator
-                                     + "conf" + File.separator + "user-mgt.xml");
+                + "conf" + File.separator + "user-mgt.xml");
         File userMgtConfigFile = new File(getISResourceLocation() + File.separator + "userMgt"
-                                          + File.separator + "JdbcUserMgtConfig.xml");
+                + File.separator + "JdbcUserMgtConfig.xml");
 
         scm = new ServerConfigurationManager(isServer);
         scm.applyConfiguration(userMgtConfigFile, userMgtServerFile, true, true);

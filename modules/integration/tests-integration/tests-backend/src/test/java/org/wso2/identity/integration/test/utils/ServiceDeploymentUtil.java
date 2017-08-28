@@ -35,10 +35,9 @@ public class ServiceDeploymentUtil {
     /**
      * This method checks the deployment state of the Axis2 service.
      *
-     *
-     * @param backEndUrl Service backend URL of the service.
+     * @param backEndUrl    Service backend URL of the service.
      * @param sessionCookie Session cookie to authorize the stub.
-     * @param serviceName Corresponding service name.
+     * @param serviceName   Corresponding service name.
      * @return
      * @throws RemoteException
      */

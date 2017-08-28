@@ -31,7 +31,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- *  Modified version of default password grant type
+ * Modified version of default password grant type
  */
 public class RoleBasedPasswordGrant extends PasswordGrantHandler {
 
@@ -41,19 +41,20 @@ public class RoleBasedPasswordGrant extends PasswordGrantHandler {
     public boolean validateGrant(OAuthTokenReqMessageContext tokReqMsgCtx) throws IdentityOAuth2Exception {
 
         //  default password validation
-        boolean authorized =  super.authorizeAccessDelegation(tokReqMsgCtx);
+        boolean authorized = super.authorizeAccessDelegation(tokReqMsgCtx);
 
         // additional check for role based
-        if(authorized) {
+        if (authorized) {
 
             String username = tokReqMsgCtx.getOauth2AccessTokenReqDTO().getResourceOwnerUsername();
 
             try {
-                String[] roles = CarbonContext.getThreadLocalCarbonContext().getUserRealm().getUserStoreManager().getRoleListOfUser
+                String[] roles = CarbonContext.getThreadLocalCarbonContext().getUserRealm().getUserStoreManager()
+                        .getRoleListOfUser
                         (MultitenantUtils.getTenantAwareUsername(username));
 
-                for(String role : getAuthorizedRoles()){
-                    if((new ArrayList<>(java.util.Arrays.asList(roles))).contains(role)){
+                for (String role : getAuthorizedRoles()) {
+                    if ((new ArrayList<>(java.util.Arrays.asList(roles))).contains(role)) {
                         return true;
                     }
                 }

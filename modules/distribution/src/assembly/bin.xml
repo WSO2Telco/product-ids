@@ -153,15 +153,15 @@
             </outputDirectory>
         </fileSet>
 
-   <fileSet>
+        <fileSet>
             <directory>
                 ../p2-profile-gen/target/wso2carbon-core-${carbon.kernel.version}/repository/deployment/server/jaggeryapps
             </directory>
             <outputDirectory>${pom.artifactId}-${pom.version}/repository/deployment/server/jaggeryapps</outputDirectory>
             <includes>
                 <include>dashboard.zip</include>
-  		<include>portal.zip</include>
-		 <include>sign.zip</include>
+                <include>portal.zip</include>
+                <include>sign.zip</include>
 
             </includes>
         </fileSet>
@@ -173,13 +173,12 @@
             </directory>
             <outputDirectory>${pom.artifactId}-${pom.version}/repository/deployment/server/webapps</outputDirectory>
             <includes>
-                  <include>authenticationendpoint.war</include>
-		  <include>authenticationendpoint.war</include>
-		  <include>operatorproxyservice.war</include>
-		  <include>sessionupdater.war</include>
-		  <include>user-registration.war</include>
-
-            </includes>
+                <include>authenticationendpoint.war</include>
+                <include>authenticationendpoint.war</include>
+                <include>authproxy.war</include>
+                <include>sessionupdater.war</include>
+                <include>saaserver.war</include>
+			</includes>
         </fileSet>
 
         <!--copy jaxrs web app for OAuth feature-->
@@ -192,8 +191,9 @@
                 <include>oauth2.war</include>
             </includes>
         </fileSet>
+
         <!--copy web app for application authentication feature -->
-        <!--fileSet>
+        <!--<fileSet>
             <directory>
                 ../p2-profile-gen/target/wso2carbon-core-${carbon.kernel.version}/repository/deployment/server/webapps
             </directory>
@@ -201,7 +201,31 @@
             <includes>
                 <include>authenticationendpoint.war</include>
             </includes>
-        </fileSet-->
+        </fileSet>-->
+
+        <!--copy the authentication jars for totp, x509, emailotp, smsotp, office365 and twitter authenticators-->
+        <fileSet>
+            <directory>../connectors/target/authenticatorCopied/jar</directory>
+            <outputDirectory>${pom.artifactId}-${pom.version}/repository/components/dropins</outputDirectory>
+        </fileSet>
+
+        <!--copy the social authenticator jars Facebook,Google,Windows-Live,Yahoo.-->
+        <fileSet>
+            <directory>../social-authenticators/target/socialauthenticatorCopied/jar</directory>
+            <outputDirectory>${pom.artifactId}-${pom.version}/repository/components/dropins</outputDirectory>
+        </fileSet>
+
+        <!--Copy the outbound authenticator jars OIDC, Passive-STS.-->
+        <fileSet>
+            <directory>../authenticators/target/authenticatoroutboundCopied/jar</directory>
+            <outputDirectory>${pom.artifactId}-${pom.version}/repository/components/dropins</outputDirectory>
+        </fileSet>
+
+        <!--copy web apps for for totp, smsotp and emailotp authenticators-->
+        <fileSet>
+            <directory>../connectors/target/authenticatorCopied/war</directory>
+            <outputDirectory>${pom.artifactId}-${pom.version}/repository/deployment/server/webapps</outputDirectory>
+        </fileSet>
 
         <!--copy shindig war  -->
         <fileSet>
@@ -298,7 +322,33 @@
             <fileMode>644</fileMode>
             <directoryMode>775</directoryMode>
         </fileSet>
-
+        <fileSet>
+            <directory>
+                ../p2-profile-gen/target/wso2carbon-core-${carbon.kernel.version}/repository/conf/data-bridge
+            </directory>
+            <outputDirectory>wso2telcoids-${pom.version}/repository/conf/data-bridge</outputDirectory>
+            <includes>
+                <include>**/**</include>
+            </includes>
+        </fileSet>
+        <fileSet>
+            <directory>
+                ../p2-profile-gen/target/wso2carbon-core-${carbon.kernel.version}/repository/deployment/server/eventpublishers
+            </directory>
+            <outputDirectory>wso2telcoids-${pom.version}/repository/deployment/server/eventpublishers</outputDirectory>
+            <includes>
+                <include>**/**.xml</include>
+            </includes>
+        </fileSet>
+        <fileSet>
+            <directory>
+                ../p2-profile-gen/target/wso2carbon-core-${carbon.kernel.version}/repository/deployment/server/eventstreams
+            </directory>
+            <outputDirectory>wso2telcoids-${pom.version}/repository/deployment/server/eventstreams</outputDirectory>
+            <includes>
+                <include>**/**.json</include>
+            </includes>
+        </fileSet>
     </fileSets>
 
     <files>
@@ -429,13 +479,6 @@
             <outputDirectory>wso2telcoids-${pom.version}/repository/conf</outputDirectory>
             <fileMode>644</fileMode>
         </file-->
-        <file>
-            <source>
-                ../p2-profile-gen/target/wso2carbon-core-${carbon.kernel.version}/repository/conf/claim-config.xml
-            </source>
-            <outputDirectory>wso2telcoids-${pom.version}/repository/conf</outputDirectory>
-        </file>
-
         <!--file>
             <source>
                 ../p2-profile-gen/target/wso2carbon-core-${carbon.kernel.version}/repository/conf/identity/identity.xml
@@ -479,11 +522,10 @@
             <fileMode>644</fileMode>
         </file>
         <file>
-            <source>
-                ../p2-profile-gen/target/wso2carbon-core-${carbon.kernel.version}/repository/resources/identity/pages/samlsso_federate.html
-            </source>
+            <source>src/repository/resources/pages/samlsso_federate.html</source>
             <outputDirectory>wso2telcoids-${pom.version}/repository/resources/identity/pages</outputDirectory>
-            <fileMode>644</fileMode>
+            <destName>samlsso_federate.html</destName>
+            <filtered>true</filtered>
         </file>
         <file>
             <source>
@@ -534,6 +576,12 @@
             <filtered>true</filtered>
         </file>
         <file>
+            <source>src/repository/resources/security/wso2carbon.jks</source>
+            <outputDirectory>wso2telcoids-${pom.version}/repository/resources/security</outputDirectory>
+            <destName>wso2carbon.jks</destName>
+            <filtered>true</filtered>
+        </file>
+        <file>
             <source>
                 ../p2-profile-gen/target/wso2carbon-core-${carbon.kernel.version}/repository/data/is-default-schema.zip
             </source>
@@ -552,6 +600,14 @@
             <outputDirectory>${pom.artifactId}-${pom.version}/repository/conf/etc/
             </outputDirectory>
         </file>
+        <file>
+            <source>
+                ../p2-profile-gen/target/wso2carbon-core-${carbon.kernel.version}/repository/conf/event-processor.xml
+            </source>
+            <outputDirectory>${pom.artifactId}-${pom.version}/repository/conf/
+            </outputDirectory>
+            <filtered>true</filtered>
+        </file>
         <!--copy scim-consumer-config.xml-->
         <file>
             <source>
@@ -564,6 +620,13 @@
                 ../p2-profile-gen/target/wso2carbon-core-${carbon.kernel.version}/repository/conf/identity/scim-schema-extension.config
             </source>
             <outputDirectory>wso2telcoids-${pom.version}/repository/conf</outputDirectory>
+        </file>
+        <file>
+            <source>../jaggery-apps/user-dashboard/sp_dashboard.xml</source>
+            <outputDirectory>${pom.artifactId}-${pom.version}/repository/conf/identity/service-providers/
+            </outputDirectory>
+            <filtered>true</filtered>
+            <fileMode>644</fileMode>
         </file>
         <file>
             <source>
@@ -629,14 +692,16 @@
             <outputDirectory>wso2telcoids-${pom.version}/repository/conf/</outputDirectory>
             <fileMode>644</fileMode>
         </file>
-	<file>
-            <source>../p2-profile-gen/target/wso2carbon-core-${carbon.kernel.version}/repository/conf/output-event-adapters.xml
+        <file>
+            <source>
+                ../p2-profile-gen/target/wso2carbon-core-${carbon.kernel.version}/repository/conf/output-event-adapters.xml
             </source>
             <outputDirectory>wso2telcoids-${pom.version}/repository/conf/</outputDirectory>
             <fileMode>644</fileMode>
         </file>
-	<file>
-            <source>../p2-profile-gen/target/wso2carbon-core-${carbon.kernel.version}/repository/conf/attachment-management.xml
+        <file>
+            <source>
+                ../p2-profile-gen/target/wso2carbon-core-${carbon.kernel.version}/repository/conf/attachment-management.xml
             </source>
             <outputDirectory>wso2telcoids-${pom.version}/repository/conf/</outputDirectory>
             <fileMode>644</fileMode>
@@ -650,95 +715,123 @@
         </file>
 
         <file>
-            <source>../p2-profile-gen/target/wso2carbon-core-${carbon.kernel.version}/repository/conf/metrics.properties</source>
+            <source>
+                ../p2-profile-gen/target/wso2carbon-core-${carbon.kernel.version}/repository/conf/metrics.properties
+            </source>
             <outputDirectory>wso2telcoids-${pom.version}/repository/conf/</outputDirectory>
             <filtered>false</filtered>
             <fileMode>644</fileMode>
         </file>
         <file>
-            <source>../p2-profile-gen/target/wso2carbon-core-${carbon.kernel.version}/repository/conf/metrics.xml</source>
+            <source>../p2-profile-gen/target/wso2carbon-core-${carbon.kernel.version}/repository/conf/metrics.xml
+            </source>
             <outputDirectory>wso2telcoids-${pom.version}/repository/conf/</outputDirectory>
             <filtered>false</filtered>
             <fileMode>644</fileMode>
         </file>
         <file>
-            <source>../p2-profile-gen/target/wso2carbon-core-${carbon.kernel.version}/repository/conf/datasources/metrics-datasources.xml</source>
+            <source>
+                ../p2-profile-gen/target/wso2carbon-core-${carbon.kernel.version}/repository/conf/datasources/metrics-datasources.xml
+            </source>
             <outputDirectory>${pom.artifactId}-${pom.version}/repository/conf/datasources/</outputDirectory>
             <fileMode>644</fileMode>
         </file>
         <file>
-            <source>../p2-profile-gen/target/wso2carbon-core-${carbon.kernel.version}/repository/database/WSO2METRICS_DB.h2.db</source>
+            <source>
+                ../p2-profile-gen/target/wso2carbon-core-${carbon.kernel.version}/repository/database/WSO2METRICS_DB.h2.db
+            </source>
             <outputDirectory>${pom.artifactId}-${pom.version}/repository/database/</outputDirectory>
             <fileMode>644</fileMode>
         </file>
-	<file>
+        <file>
             <source>
                 ../idsconfig/LOA.xml
             </source>
             <outputDirectory>wso2telcoids-${pom.version}/repository/conf</outputDirectory>
-	    <fileMode>644</fileMode>
+            <fileMode>644</fileMode>
         </file>
-	<file>
+        <file>
             <source>
                 ../idsconfig/mobile-connect.xml
             </source>
             <outputDirectory>wso2telcoids-${pom.version}/repository/conf</outputDirectory>
-	    <fileMode>644</fileMode>
+            <fileMode>644</fileMode>
         </file>
-
-	<file>
+        <file>
             <source>
-              ../idsconfig/MobileCountryConfig.xml
+                ../idsconfig/config.yml
             </source>
             <outputDirectory>wso2telcoids-${pom.version}/repository/conf</outputDirectory>
-	    <fileMode>644</fileMode>
+            <fileMode>644</fileMode>
         </file>
-	<file>
+        <file>
+            <source>
+                ../idsconfig/claim-config.xml
+            </source>
+            <outputDirectory>wso2telcoids-${pom.version}/repository/conf</outputDirectory>
+            <fileMode>644</fileMode>
+        </file>
+        <file>
+            <source>
+                ../idsconfig/MobileCountryConfig.xml
+            </source>
+            <outputDirectory>wso2telcoids-${pom.version}/repository/conf</outputDirectory>
+            <fileMode>644</fileMode>
+        </file>
+        <file>
             <source>
                 ../idsconfig/operators.xml
             </source>
             <outputDirectory>wso2telcoids-${pom.version}/repository/conf</outputDirectory>
-	    <fileMode>644</fileMode>
+            <fileMode>644</fileMode>
         </file>
 
-	<file>
+        <file>
             <source>
                 ../idsconfig/scope-config.xml
             </source>
             <outputDirectory>wso2telcoids-${pom.version}/repository/conf</outputDirectory>
-	    <fileMode>644</fileMode>
-        </file>	
- 
-         <file>
+            <fileMode>644</fileMode>
+        </file>
+
+        <file>
             <source>
                 ../idsconfig/application-authentication.xml
             </source>
             <outputDirectory>wso2telcoids-${pom.version}/repository/conf/identity</outputDirectory>
-        <fileMode>644</fileMode>
-        </file> 
+            <fileMode>644</fileMode>
+        </file>
+
+        <file>
+            <source>
+                ../p2-profile-gen/target/wso2carbon-core-${carbon.kernel.version}/repository/conf/identity/oidc-scope-config.xml
+            </source>
+            <outputDirectory>wso2telcoids-${pom.version}/repository/conf/identity</outputDirectory>
+            <fileMode>644</fileMode>
+        </file>
 
         <file>
             <source>
                 ../idsconfig/identity.xml
             </source>
             <outputDirectory>wso2telcoids-${pom.version}/repository/conf/identity</outputDirectory>
-        <fileMode>644</fileMode>
-        </file> 
+            <fileMode>644</fileMode>
+        </file>
 
-         <file>
+        <file>
             <source>
                 ../idsconfig/identity-mgt.properties
             </source>
             <outputDirectory>wso2telcoids-${pom.version}/repository/conf/identity</outputDirectory>
-        <fileMode>644</fileMode>
-        </file> 
+            <fileMode>644</fileMode>
+        </file>
 
         <file>
             <source>
                 ../idsconfig/carbon.xml
             </source>
             <outputDirectory>wso2telcoids-${pom.version}/repository/conf</outputDirectory>
-        <fileMode>644</fileMode>
+            <fileMode>644</fileMode>
         </file>
 
         <file>
@@ -746,56 +839,55 @@
                 ../idsconfig/registry.xml
             </source>
             <outputDirectory>wso2telcoids-${pom.version}/repository/conf</outputDirectory>
-        <fileMode>644</fileMode>
-        </file>  
+            <fileMode>644</fileMode>
+        </file>
 
 
-    <file>
+        <file>
             <source>
                 ../idsconfig/master-datasources.xml
             </source>
             <outputDirectory>wso2telcoids-${pom.version}/repository/conf/datasources</outputDirectory>
-        <fileMode>644</fileMode>
-        </file>  
-
-	<file>
-            <source>
-                ../dbscripts/ids_apimgt.sql
-            </source>
-            <outputDirectory>wso2telcoids-${pom.version}/dbscripts/ids</outputDirectory>
-        <fileMode>644</fileMode>
+            <fileMode>644</fileMode>
         </file>
 
-	<file>
+        <file>
             <source>
-                ../dbscripts/ids_connectdb.sql
+                ../dbscripts/mig_identity.sql
             </source>
             <outputDirectory>wso2telcoids-${pom.version}/dbscripts/ids</outputDirectory>
-        <fileMode>644</fileMode>
+            <fileMode>644</fileMode>
         </file>
 
-	<file>
+        <file>
             <source>
-                ../dbscripts/ids_operatorsdb.sql
+                ../dbscripts/mig_identity_mysql-5.7.sql
             </source>
             <outputDirectory>wso2telcoids-${pom.version}/dbscripts/ids</outputDirectory>
-        <fileMode>644</fileMode>
+            <fileMode>644</fileMode>
+        </file>
+        <file>
+            <source>
+                ../dbscripts/mig_connectdb.sql
+            </source>
+            <outputDirectory>wso2telcoids-${pom.version}/dbscripts/ids</outputDirectory>
+            <fileMode>644</fileMode>
         </file>
 
-	<file>
+        <file>
             <source>
-                ../dbscripts/ids_regdb.sql
+                ../dbscripts/mig_regdb.sql
             </source>
             <outputDirectory>wso2telcoids-${pom.version}/dbscripts/ids</outputDirectory>
-        <fileMode>644</fileMode>
-        </file>	
+            <fileMode>644</fileMode>
+        </file>
 
-	<file>
+        <file>
             <source>
-                ../dbscripts/ids_userdb.sql
+                ../dbscripts/mig_userdb.sql
             </source>
             <outputDirectory>wso2telcoids-${pom.version}/dbscripts/ids</outputDirectory>
-        <fileMode>644</fileMode>
+            <fileMode>644</fileMode>
         </file>
 
 
@@ -804,7 +896,7 @@
                 ../idsconfig/sp_dashboard.xml
             </source>
             <outputDirectory>wso2telcoids-${pom.version}/repository/conf/identity/service-providers</outputDirectory>
-        <fileMode>644</fileMode>
+            <fileMode>644</fileMode>
         </file>
 
 
@@ -813,16 +905,42 @@
                 ../idsconfig/user-mgt.xml
             </source>
             <outputDirectory>wso2telcoids-${pom.version}/repository/conf</outputDirectory>
-        <fileMode>644</fileMode>
+            <fileMode>644</fileMode>
         </file>
 
-        <file>
-            <source>
-                ../lib/jettison-1.1.jar
-            </source>
-            <outputDirectory>wso2telcoids-${pom.version}/repository/components/lib</outputDirectory>
-        <fileMode>644</fileMode>
-        </file>
     </files>
-</assembly>
 
+    <dependencySets>
+        <dependencySet>
+            <outputDirectory>wso2telcoids-${pom.version}/repository/components/lib</outputDirectory>
+            <includes>
+                <include>org.codehaus.jettison:jettison:jar</include>
+                <include>org.apache.httpcomponents:httpasyncclient:jar</include>
+                <include>org.apache.httpcomponents:httpcore-nio:jar</include>
+                <include>org.hashids:hashids:jar</include>
+            </includes>
+        </dependencySet>
+        <dependencySet>
+            <outputDirectory>wso2telcoids-${pom.version}/lib/runtimes/ext</outputDirectory>
+            <includes>
+                <include>com.google.gdata.wso2:gdata-core:jar</include>
+                <include>commons-fileupload.wso2:commons-fileupload:jar</include>
+                <include>com.sun.jersey:jersey-server:jar</include>
+                <include>com.sun.jersey:jersey-core:jar</include>
+                <include>com.sun.jersey:jersey-servlet:jar</include>
+                <include>commons-logging:commons-logging:jar</include>
+                <include>javax.servlet:jstl:jar</include>
+                <include>com.google.code.gson:gson:jar</include>
+                <include>org.json.wso2:json:jar</include>
+                <include>com.atlassian.httpclient:atlassian-httpclient-plugin:jar</include>
+                <include>org.apache.httpcomponents:httpclient:jar</include>
+                <include>com.ibm.icu:icu4j:jar</include>
+                <include>com.sun.jersey:jersey-json:jar</include>
+                <include>com.sun.jersey:jersey-client:jar</include>
+                <include>dom4j:dom4j:jar</include>
+            </includes>
+            <useTransitiveFiltering>true</useTransitiveFiltering>
+            <useTransitiveDependencies>true</useTransitiveDependencies>
+        </dependencySet>
+    </dependencySets>
+</assembly>

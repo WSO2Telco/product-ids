@@ -28,18 +28,19 @@ import java.rmi.RemoteException;
 public class Oauth2TokenValidationClient {
 
     OAuth2TokenValidationServiceStub oAuth2TokenValidationServiceStub;
-	private final String serviceName = "OAuth2TokenValidationService";
+    private final String serviceName = "OAuth2TokenValidationService";
 
-	public Oauth2TokenValidationClient(String backendURL, String sessionCookie) throws AxisFault {
+    public Oauth2TokenValidationClient(String backendURL, String sessionCookie) throws AxisFault {
 
         String endPoint = backendURL + serviceName;
         oAuth2TokenValidationServiceStub = new OAuth2TokenValidationServiceStub(endPoint);
         AuthenticateStub.authenticateStub(sessionCookie, oAuth2TokenValidationServiceStub);
-	}
+    }
 
-    public OAuth2TokenValidationResponseDTO validateToken(OAuth2TokenValidationRequestDTO reqDto) throws RemoteException{
+    public OAuth2TokenValidationResponseDTO validateToken(OAuth2TokenValidationRequestDTO reqDto) throws
+            RemoteException {
         return oAuth2TokenValidationServiceStub.validate(reqDto);
     }
 
-    
-  }
+
+}

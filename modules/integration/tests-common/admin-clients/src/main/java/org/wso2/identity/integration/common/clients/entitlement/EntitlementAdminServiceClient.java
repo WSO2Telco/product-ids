@@ -35,7 +35,7 @@ public class EntitlementAdminServiceClient {
     private static final Log log = LogFactory.getLog(EntitlementAdminServiceClient.class);
 
     private final String serviceName = "EntitlementAdminService";
-	private EntitlementAdminServiceStub entitlementAdminServiceStub;
+    private EntitlementAdminServiceStub entitlementAdminServiceStub;
     private String endPoint;
 
     public EntitlementAdminServiceClient(String backEndUrl, String sessionCookie)
@@ -51,80 +51,80 @@ public class EntitlementAdminServiceClient {
         entitlementAdminServiceStub = new EntitlementAdminServiceStub(endPoint);
         AuthenticateStub.authenticateStub(userName, password, entitlementAdminServiceStub);
     }
-    
-    public String getGlobalPolicyAlgorithm() throws RemoteException{
-    	String algo = null;
-    	try {
-    		algo = entitlementAdminServiceStub.getGlobalPolicyAlgorithm();
-		} catch (EntitlementAdminServiceIdentityException e) {
-			e.printStackTrace();
-		}
-    	return algo;    	
+
+    public String getGlobalPolicyAlgorithm() throws RemoteException {
+        String algo = null;
+        try {
+            algo = entitlementAdminServiceStub.getGlobalPolicyAlgorithm();
+        } catch (EntitlementAdminServiceIdentityException e) {
+            e.printStackTrace();
+        }
+        return algo;
     }
-    
-    public String doTestRequest(String xacmlRequest) throws RemoteException{
-    	String requestStatus = null;
-    	try {
-			requestStatus = entitlementAdminServiceStub.doTestRequest(xacmlRequest);
-		} catch (EntitlementAdminServiceIdentityException e) {
-			e.printStackTrace();
-		}
-    	return requestStatus;
+
+    public String doTestRequest(String xacmlRequest) throws RemoteException {
+        String requestStatus = null;
+        try {
+            requestStatus = entitlementAdminServiceStub.doTestRequest(xacmlRequest);
+        } catch (EntitlementAdminServiceIdentityException e) {
+            e.printStackTrace();
+        }
+        return requestStatus;
     }
-    
-    public PDPDataHolder getPDPData() throws RemoteException{
-    	PDPDataHolder holder = null;
-    	holder = entitlementAdminServiceStub.getPDPData();
-    	return holder;
+
+    public PDPDataHolder getPDPData() throws RemoteException {
+        PDPDataHolder holder = null;
+        holder = entitlementAdminServiceStub.getPDPData();
+        return holder;
     }
-    
-    public PIPFinderDataHolder getPIPAttributeFinderData(String finder) throws RemoteException{
-    	PIPFinderDataHolder holder = null;
-    	holder = entitlementAdminServiceStub.getPIPAttributeFinderData(finder);
-    	return holder;
+
+    public PIPFinderDataHolder getPIPAttributeFinderData(String finder) throws RemoteException {
+        PIPFinderDataHolder holder = null;
+        holder = entitlementAdminServiceStub.getPIPAttributeFinderData(finder);
+        return holder;
     }
-    
-    public PIPFinderDataHolder getPIPResourceFinderData(String finder) throws RemoteException{
-    	PIPFinderDataHolder holder = null;
-    	holder = entitlementAdminServiceStub.getPIPResourceFinderData(finder);
-    	return holder;
+
+    public PIPFinderDataHolder getPIPResourceFinderData(String finder) throws RemoteException {
+        PIPFinderDataHolder holder = null;
+        holder = entitlementAdminServiceStub.getPIPResourceFinderData(finder);
+        return holder;
     }
-    
-    public PolicyFinderDataHolder getPolicyFinderData(String finder) throws RemoteException{
-    	PolicyFinderDataHolder holder = null;
-    	holder = entitlementAdminServiceStub.getPolicyFinderData(finder);
-    	return holder;    	
+
+    public PolicyFinderDataHolder getPolicyFinderData(String finder) throws RemoteException {
+        PolicyFinderDataHolder holder = null;
+        holder = entitlementAdminServiceStub.getPolicyFinderData(finder);
+        return holder;
     }
-    
-    public void refreshAttributeFinder(String attributeFinder) throws RemoteException{
-    	try {
-			entitlementAdminServiceStub.refreshAttributeFinder(attributeFinder);
-		} catch (EntitlementAdminServiceIdentityException e) {
-			e.printStackTrace();
-		}
+
+    public void refreshAttributeFinder(String attributeFinder) throws RemoteException {
+        try {
+            entitlementAdminServiceStub.refreshAttributeFinder(attributeFinder);
+        } catch (EntitlementAdminServiceIdentityException e) {
+            e.printStackTrace();
+        }
     }
-    
-    public void refreshPolicyFinders(String policyFinder) throws RemoteException{
-    	try {
-			entitlementAdminServiceStub.refreshPolicyFinders(policyFinder);
-		} catch (EntitlementAdminServiceIdentityException e) {
-			e.printStackTrace();
-		}
+
+    public void refreshPolicyFinders(String policyFinder) throws RemoteException {
+        try {
+            entitlementAdminServiceStub.refreshPolicyFinders(policyFinder);
+        } catch (EntitlementAdminServiceIdentityException e) {
+            e.printStackTrace();
+        }
     }
-    
-    public void refreshResourceFinder(String resourceFinder) throws RemoteException{
-    	try {
-			entitlementAdminServiceStub.refreshResourceFinder(resourceFinder);
-		} catch (EntitlementAdminServiceIdentityException e) {
-			e.printStackTrace();
-		}
+
+    public void refreshResourceFinder(String resourceFinder) throws RemoteException {
+        try {
+            entitlementAdminServiceStub.refreshResourceFinder(resourceFinder);
+        } catch (EntitlementAdminServiceIdentityException e) {
+            e.printStackTrace();
+        }
     }
-    
-    public void setGlobalPolicyAlgorithm(String policyCombiningAlgorithm) throws RemoteException{
-    	try {
-			entitlementAdminServiceStub.setGlobalPolicyAlgorithm(policyCombiningAlgorithm);
-		} catch (EntitlementAdminServiceIdentityException e) {
-			e.printStackTrace();
-		}
+
+    public void setGlobalPolicyAlgorithm(String policyCombiningAlgorithm) throws RemoteException {
+        try {
+            entitlementAdminServiceStub.setGlobalPolicyAlgorithm(policyCombiningAlgorithm);
+        } catch (EntitlementAdminServiceIdentityException e) {
+            e.printStackTrace();
+        }
     }
 }

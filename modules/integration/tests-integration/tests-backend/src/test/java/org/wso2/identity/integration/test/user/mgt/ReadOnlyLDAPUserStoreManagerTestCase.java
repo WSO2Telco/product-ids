@@ -59,15 +59,16 @@ public class ReadOnlyLDAPUserStoreManagerTestCase extends ISIntegrationTest {
         Assert.assertTrue(userMgtClient.roleNameExists(newUserRole), "Role name doesn't exists");
         Assert.assertTrue(userMgtClient.userNameExists(newUserRole, newUserName), "User name doesn't exists");
 
-        String sessionCookie = authenticatorClient.login(newUserName, newUserPassword, isServer.getInstance().getHosts().get("default"));
+        String sessionCookie = authenticatorClient.login(newUserName, newUserPassword, isServer.getInstance()
+                .getHosts().get("default"));
         Assert.assertTrue(sessionCookie.contains("JSESSIONID"), "Session Cookie not found. Login failed");
         authenticatorClient.logOut();
 
         String carbonHome = ServerConfigurationManager.getCarbonHome();
         userMgtServerFile = new File(carbonHome + File.separator + "repository" + File.separator
-                                     + "conf" + File.separator + "user-mgt.xml");
+                + "conf" + File.separator + "user-mgt.xml");
         File userMgtConfigFile = new File(getISResourceLocation() + File.separator + "userMgt"
-                                          + File.separator + "readOnlyLdapUserMgtConfig.xml");
+                + File.separator + "readOnlyLdapUserMgtConfig.xml");
 
         scm = new ServerConfigurationManager(isServer);
         scm.applyConfiguration(userMgtConfigFile, userMgtServerFile, true, true);
@@ -77,28 +78,34 @@ public class ReadOnlyLDAPUserStoreManagerTestCase extends ISIntegrationTest {
 
     @Test(groups = "wso2.is", description = "Test user login already exist in the ldap")
     public void userLoginTest() throws Exception {
-        String sessionCookie = authenticatorClient.login(newUserName, newUserPassword, isServer.getInstance().getHosts().get("default"));
+        String sessionCookie = authenticatorClient.login(newUserName, newUserPassword, isServer.getInstance()
+                .getHosts().get("default"));
         Assert.assertTrue(sessionCookie.contains("JSESSIONID"), "Session Cookie not found. Login failed");
         authenticatorClient.logOut();
     }
+
     @Test(groups = "wso2.is", description = "Test user login already exist in the ldap")
     public void getUsersOfRole() throws Exception {
-        Assert.assertTrue(nameExists(userMgtClient.getUsersOfRole(newUserRole, newUserName, 10), newUserName), "List does not contains the user");
+        Assert.assertTrue(nameExists(userMgtClient.getUsersOfRole(newUserRole, newUserName, 10), newUserName), "List " +
+                "does not contains the user");
     }
+
     @Test(groups = "wso2.is", description = "Test user login already exist in the ldap")
     public void getRolesOfUser() throws Exception {
-        Assert.assertTrue(nameExists(userMgtClient.getRolesOfUser(newUserName, newUserRole, 10), newUserRole), "List does not contains the role");
+        Assert.assertTrue(nameExists(userMgtClient.getRolesOfUser(newUserName, newUserRole, 10), newUserRole), "List " +
+                "does not contains the role");
     }
 
     @Test(groups = "wso2.is", description = "Test user login already exist in the ldap")
     public void getAllRolesNames() throws Exception {
-        Assert.assertTrue(userMgtClient.getAllRolesNames("*", 10).length >=1, "No role listed");
+        Assert.assertTrue(userMgtClient.getAllRolesNames("*", 10).length >= 1, "No role listed");
     }
 
     @SetEnvironment(executionEnvironments = {ExecutionEnvironment.STANDALONE})
     @Test(groups = "wso2.is", description = "Check role addition")
     public void testAddRole() throws RemoteException, UserAdminUserAdminException {
-        Assert.assertFalse(nameExists(userMgtClient.getAllRolesNames(newUserRole + "1", 100), newUserRole + "1"), "User Role already exist");
+        Assert.assertFalse(nameExists(userMgtClient.getAllRolesNames(newUserRole + "1", 100), newUserRole + "1"),
+                "User Role already exist");
         try {
             userMgtClient.addRole(newUserRole + "1", null, new String[]{"login"}, false);
         } catch (AxisFault axisFault) {
@@ -126,7 +133,7 @@ public class ReadOnlyLDAPUserStoreManagerTestCase extends ISIntegrationTest {
         } catch (Exception e) {
             Assert.assertTrue(e.getMessage().contains("Read-only UserStoreManager. Roles cannot be added or modified.")
                     , "Error message mismatched, expected 'Read-only UserStoreManager. Roles cannot be added or " +
-                    "modified.', but was '" + e.getMessage() + " '");
+                            "modified.', but was '" + e.getMessage() + " '");
         }
 
     }
@@ -148,7 +155,7 @@ public class ReadOnlyLDAPUserStoreManagerTestCase extends ISIntegrationTest {
             userMgtClient.updateUsersOfRole("admin", userFlagList);
         } catch (Exception e) {
             Assert.assertEquals(e.getMessage(), "UserAdminUserAdminException",
-                                "Error Message mismatched");
+                    "Error Message mismatched");
         }
 
     }
@@ -164,7 +171,7 @@ public class ReadOnlyLDAPUserStoreManagerTestCase extends ISIntegrationTest {
         } catch (Exception e) {
             Assert.assertTrue(e.getMessage().contains("Error occurred while updating hybrid role list of user")
                     , "Error Message mismatched, expected 'Error occurred while updating hybrid role list of user', " +
-                    "but was '" + e.getMessage() + " ,");
+                            "but was '" + e.getMessage() + " ,");
         }
     }
 
@@ -208,8 +215,8 @@ public class ReadOnlyLDAPUserStoreManagerTestCase extends ISIntegrationTest {
         claimValue.setValue("*");
         FlaggedName[] flaggedNames = userMgtClient.listUserByClaim(claimValue, "*", 1000);
 
-        for (FlaggedName name : flaggedNames){
-            if(name.getItemName().equals("krbtgt") || name.getItemName().equals("ldap")){
+        for (FlaggedName name : flaggedNames) {
+            if (name.getItemName().equals("krbtgt") || name.getItemName().equals("ldap")) {
                 Assert.fail("invalid user retrieved with claim : " + name.getItemName());
 
             }

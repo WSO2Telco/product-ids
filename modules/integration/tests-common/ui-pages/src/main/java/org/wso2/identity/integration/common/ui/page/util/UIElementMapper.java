@@ -36,7 +36,7 @@ public class UIElementMapper {
     private UIElementMapper() {
         try {
             setStream();
-        } catch (IOException ioe){
+        } catch (IOException ioe) {
             throw new ExceptionInInitializerError("mapper stream not set. Failed to read file");
         }
     }

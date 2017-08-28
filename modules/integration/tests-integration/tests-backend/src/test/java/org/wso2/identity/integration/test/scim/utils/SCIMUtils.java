@@ -38,7 +38,7 @@ public class SCIMUtils {
      * Construct and return basic authentication information of the given user.
      *
      * @param userInfo user representation
-     * @return         BasicAuthInfo instance containing user authentication information
+     * @return BasicAuthInfo instance containing user authentication information
      */
     public static BasicAuthInfo getBasicAuthInfo(org.wso2.carbon.automation.engine.context.beans.User userInfo) {
 
@@ -55,7 +55,7 @@ public class SCIMUtils {
      *
      * @param scimClient SCIMClient instance
      * @param scimUrl    SCIM base endpoint URL
-     * @return           UserResource REST access point client instance
+     * @return UserResource REST access point client instance
      */
     public static Resource getUserResource(SCIMClient scimClient, String scimUrl) {
 
@@ -63,7 +63,7 @@ public class SCIMUtils {
         responseHandler.setSCIMClient(scimClient);
         //set the handler in wink client config
         ClientConfig clientConfig = new ClientConfig();
-        clientConfig.handlers(new ClientHandler[] { responseHandler });
+        clientConfig.handlers(new ClientHandler[]{responseHandler});
         //create a wink rest client with the above config
         RestClient restClient = new RestClient(clientConfig);
         //create resource endpoint to access User resource
@@ -76,7 +76,7 @@ public class SCIMUtils {
      * @param scimClient SCIMClient instance
      * @param scimUrl    SCIM base endpoint URL
      * @param scimId     SCIM ID of the user resource
-     * @return           UserResource REST access point client instance
+     * @return UserResource REST access point client instance
      */
     public static Resource getUserResource(SCIMClient scimClient, String scimUrl, String scimId) {
 
@@ -84,7 +84,7 @@ public class SCIMUtils {
         responseHandler.setSCIMClient(scimClient);
         //set the handler in wink client config
         ClientConfig clientConfig = new ClientConfig();
-        clientConfig.handlers(new ClientHandler[] { responseHandler });
+        clientConfig.handlers(new ClientHandler[]{responseHandler});
         //create a wink rest client with the above config
         RestClient restClient = new RestClient(clientConfig);
         //create resource endpoint to access User resource
@@ -96,7 +96,7 @@ public class SCIMUtils {
      *
      * @param scimClient SCIMClient instance
      * @param scimUrl    SCIM base endpoint URL
-     * @return           GroupResource REST access point client instance
+     * @return GroupResource REST access point client instance
      */
     public static Resource getGroupResource(SCIMClient scimClient, String scimUrl) {
 
@@ -104,7 +104,7 @@ public class SCIMUtils {
         responseHandler.setSCIMClient(scimClient);
         //set the handler in wink client config
         ClientConfig clientConfig = new ClientConfig();
-        clientConfig.handlers(new ClientHandler[] { responseHandler });
+        clientConfig.handlers(new ClientHandler[]{responseHandler});
         //create a wink rest client with the above config
         RestClient restClient = new RestClient(clientConfig);
         //create resource endpoint to access User resource
@@ -115,15 +115,15 @@ public class SCIMUtils {
      * Constructs a User instance according to the SCIM Schema and returns the encoded JSON string of User
      * representation.
      *
-     * @param scimClient    SCIMClient instance
-     * @param username      Username
-     * @param externalID    External ID of the user
-     * @param emails        String array of emails
-     * @param displayName   Display Name of the User
-     * @param password      Password of the User
-     * @param language      Language
-     * @param phoneNumber   Phone No
-     * @return              JSON String representation of the User
+     * @param scimClient  SCIMClient instance
+     * @param username    Username
+     * @param externalID  External ID of the user
+     * @param emails      String array of emails
+     * @param displayName Display Name of the User
+     * @param password    Password of the User
+     * @param language    Language
+     * @param phoneNumber Phone No
+     * @return JSON String representation of the User
      * @throws CharonException
      */
     public static String getEncodedSCIMUser(SCIMClient scimClient, String username, String externalID, String[] emails,
@@ -131,18 +131,18 @@ public class SCIMUtils {
             throws CharonException {
 
         return scimClient.encodeSCIMObject(getSCIMUser(scimClient, username, externalID, emails, displayName,
-                                                       password, language, phoneNumber), SCIMConstants.JSON);
+                password, language, phoneNumber), SCIMConstants.JSON);
     }
 
     /**
      * Constructs and returns a Group instance according to the SCIM Schema.
      *
-     * @param scimClient    SCIMClient instance
-     * @param scimUserId    SCIM User Id
-     * @param username      Username
-     * @param externalID    External ID of the Group
-     * @param displayName   Display Name of the Group
-     * @return              Group instance
+     * @param scimClient  SCIMClient instance
+     * @param scimUserId  SCIM User Id
+     * @param username    Username
+     * @param externalID  External ID of the Group
+     * @param displayName Display Name of the Group
+     * @return Group instance
      * @throws CharonException
      */
     public static Group getSCIMGroup(SCIMClient scimClient, String scimUserId, String username, String externalID,
@@ -159,15 +159,15 @@ public class SCIMUtils {
     /**
      * Constructs and returns a User instance according to the SCIM Schema.
      *
-     * @param scimClient    SCIMClient instance
-     * @param username      Username
-     * @param externalID    External ID of the user
-     * @param emails        String array of emails
-     * @param displayName   Display Name of the User
-     * @param password      Password of the User
-     * @param language      Language
-     * @param phoneNumber   Phone No
-     * @return              User instance
+     * @param scimClient  SCIMClient instance
+     * @param username    Username
+     * @param externalID  External ID of the user
+     * @param emails      String array of emails
+     * @param displayName Display Name of the User
+     * @param password    Password of the User
+     * @param language    Language
+     * @param phoneNumber Phone No
+     * @return User instance
      * @throws CharonException
      */
     public static User getSCIMUser(SCIMClient scimClient, String username, String externalID, String[] emails,

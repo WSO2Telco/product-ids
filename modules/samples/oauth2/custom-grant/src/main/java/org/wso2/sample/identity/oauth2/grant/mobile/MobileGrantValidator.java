@@ -26,7 +26,7 @@ import javax.servlet.http.HttpServletRequest;
 /**
  * This validate the mobile grant request.
  */
-public class MobileGrantValidator  extends AbstractValidator<HttpServletRequest> {
+public class MobileGrantValidator extends AbstractValidator<HttpServletRequest> {
 
 
     public MobileGrantValidator() {

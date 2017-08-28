@@ -132,12 +132,12 @@ public class NotificationOnUserOperationTestCase extends ISIntegrationTest {
         prop.store(outputStream, null);
     }
 
-    private void resetISConfiguration()  {
+    private void resetISConfiguration() {
 
-        try{
+        try {
             resetMsgMgtProperties();
             serverConfigurationManager.restartGracefully();
-        } catch (Exception e){
+        } catch (Exception e) {
             log.info("Errors occur due to resource duplication..Ignoring..");
         }
 
@@ -151,7 +151,8 @@ public class NotificationOnUserOperationTestCase extends ISIntegrationTest {
                 + File.separator + "notification-mgt" + File.separator + "config" + File.separator
                 + "msg-mgt-default.properties");
 
-        serverConfigurationManager.applyConfigurationWithoutRestart(defaultMsgMgtPropertiesFile, notificationMgtProperties, true);
+        serverConfigurationManager.applyConfigurationWithoutRestart(defaultMsgMgtPropertiesFile,
+                notificationMgtProperties, true);
 
     }
 

@@ -29,20 +29,20 @@ import org.wso2.identity.integration.common.utils.ISIntegrationTest;
 
 public class OpenIDProviderServerConfigTestCase extends ISIntegrationTest {
 
-	OpenIDProviderServiceClient openidServiceClient;
-	String adminUserName;
-	
+    OpenIDProviderServiceClient openidServiceClient;
+    String adminUserName;
+
     @BeforeClass(alwaysRun = true)
     public void testInit() throws Exception {
         super.init();
-        
+
         openidServiceClient = new OpenIDProviderServiceClient(backendURL, sessionCookie);
         adminUserName = userInfo.getUserName();
     }
-    
+
     @AfterClass(alwaysRun = true)
     public void atEnd() throws Exception {
-     	openidServiceClient = null;
+        openidServiceClient = null;
     }
 
 
@@ -65,27 +65,27 @@ public class OpenIDProviderServerConfigTestCase extends ISIntegrationTest {
 
     @Test(alwaysRun = true, description = "Test Session Timeout", dependsOnMethods = "testProviderInfo")
     public void testSessionTimeOut() {
-        
+
         int sessionTimeout = 0;
         try {
-        	sessionTimeout = openidServiceClient.getOpenIDSessionTimeout();
+            sessionTimeout = openidServiceClient.getOpenIDSessionTimeout();
         } catch (RemoteException e) {
             Assert.fail("Error while getting session timeout", e);
         }
-        
+
         Assert.assertEquals(sessionTimeout, 36000);
     }
-    
+
     @Test(alwaysRun = true, description = "Check SkipUserConsent", dependsOnMethods = "testSessionTimeOut")
     public void testSkipUserConsent() {
-        
+
         boolean isSkipped = true;
         try {
-        	isSkipped = openidServiceClient.isOpenIDUserApprovalBypassEnabled();
+            isSkipped = openidServiceClient.isOpenIDUserApprovalBypassEnabled();
         } catch (RemoteException e) {
             Assert.fail("Error while reading SkipUserConsent config", e);
         }
-        
+
         Assert.assertFalse(isSkipped);
     }
 }

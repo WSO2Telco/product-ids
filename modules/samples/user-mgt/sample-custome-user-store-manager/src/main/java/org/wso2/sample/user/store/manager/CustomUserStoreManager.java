@@ -86,11 +86,13 @@ public class CustomUserStoreManager implements org.wso2.carbon.user.api.UserStor
     }
 
     @Override
-    public void addUser(String s, Object o, String[] strings, Map<String, String> stringStringMap, String s2) throws UserStoreException {
+    public void addUser(String s, Object o, String[] strings, Map<String, String> stringStringMap, String s2) throws
+            UserStoreException {
     }
 
     @Override
-    public void addUser(String s, Object o, String[] strings, Map<String, String> stringStringMap, String s2, boolean b) throws UserStoreException {
+    public void addUser(String s, Object o, String[] strings, Map<String, String> stringStringMap, String s2, boolean
+            b) throws UserStoreException {
     }
 
     @Override
@@ -203,12 +205,12 @@ public class CustomUserStoreManager implements org.wso2.carbon.user.api.UserStor
     }
 
     public Properties getDefaultUserStoreProperties() {
-            Properties properties = new Properties();
-            properties.setMandatoryProperties(CustomUserStoreManagerConstants.CUSTOM_USERSTORE_PROPERTIES.toArray
-                    (new Property[CustomUserStoreManagerConstants.CUSTOM_USERSTORE_PROPERTIES.size()]));
-            properties.setOptionalProperties(CustomUserStoreManagerConstants.OPTIONAL_CUSTOM_USERSTORE_PROPERTIES.toArray
-                    (new Property[CustomUserStoreManagerConstants.OPTIONAL_CUSTOM_USERSTORE_PROPERTIES.size()]));
-            return properties;
+        Properties properties = new Properties();
+        properties.setMandatoryProperties(CustomUserStoreManagerConstants.CUSTOM_USERSTORE_PROPERTIES.toArray
+                (new Property[CustomUserStoreManagerConstants.CUSTOM_USERSTORE_PROPERTIES.size()]));
+        properties.setOptionalProperties(CustomUserStoreManagerConstants.OPTIONAL_CUSTOM_USERSTORE_PROPERTIES.toArray
+                (new Property[CustomUserStoreManagerConstants.OPTIONAL_CUSTOM_USERSTORE_PROPERTIES.size()]));
+        return properties;
     }
 
 
