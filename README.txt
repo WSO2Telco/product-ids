@@ -14,19 +14,10 @@ This is based on the revolutionary WSO2 Carbon framework. All the major features
 New Features
 ============
 
-*  Internationalization
+*  Support for Federated MCX
 
-     This feature allows to change the preview language according to the pre configurations. 
-     Currently system facilitates to switch language between English and Portuguese.
-     
-*  SMS/OTP Authenticator
-
-     SMS/OTP Authenticator is a brand new Authenticator introduced to WSO2.Telco authenticator family.
-     Further SMS/OTP Authenticator is an extension to the SMS Authenticator where SMS is enriched with One Time 
-     Password (OTP) in Level Of Assurance (LOA) Level 2. This enables end users to click the sms to authenticated or use the OTP. 
-     
-     
-     
+     Federated MCX feature allow wso2telcoids to call different MCX providers. This feature can be easily configured to specific mobile
+     network operator to act as federated MCX provider.This allows Service providers to access other MCX providers via wso2telcoids with ease.
 
 
 
@@ -36,7 +27,7 @@ Other Key Features
 *    Dynamic Authenticator Selection with MNO and SP Level Configuration
 *    Enhanced Security with IP Validation for Header Enrichment Authenticator
 *    Custom Scope Configuration Support
-*    Scope Validation at SP Level
+*    Scope Validation at SP Levelle
 *    Enhanced Configurability for USSD/SMS Messages
 *    Configurable User Inputs for USSD Authenticator
 *    GSMA Standardized UUID Based PCR Support [Mobile Connect R2 feature]
