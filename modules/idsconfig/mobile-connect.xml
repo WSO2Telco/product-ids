@@ -24,8 +24,8 @@
     <Locale>en-US</Locale> <!-- "pt-BR" for Portuguese -->
     <IsFederatedDeployment>false</IsFederatedDeployment>
     <FederatedIdentityProviders>
-    	<Provider operator="spark">
-                <AuthzEndpoint>https://localhost:9444/authproxy/oauth2/authorize/operator/vivo</AuthzEndpoint>
+    	<Provider operator="op1">
+                <AuthzEndpoint>https://localhost:9444/authproxy/oauth2/authorize/operator/op1</AuthzEndpoint>
                 <TokenEndpoint>https://localhost:9444/oauth2/token</TokenEndpoint>
                 <UserInfoEndpoint>https://localhost:9444/oauth2/userinfo</UserInfoEndpoint>
         </Provider>
