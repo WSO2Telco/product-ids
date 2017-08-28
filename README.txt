@@ -27,7 +27,7 @@ Other Key Features
 *    Dynamic Authenticator Selection with MNO and SP Level Configuration
 *    Enhanced Security with IP Validation for Header Enrichment Authenticator
 *    Custom Scope Configuration Support
-*    Scope Validation at SP Levelle
+*    Scope Validation at SP Level
 *    Enhanced Configurability for USSD/SMS Messages
 *    Configurable User Inputs for USSD Authenticator
 *    GSMA Standardized UUID Based PCR Support [Mobile Connect R2 feature]
