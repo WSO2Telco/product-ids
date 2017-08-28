@@ -186,7 +186,8 @@
         <Operator>
             <operatorName>operator 1 name</operatorName>
             <ipValidation>false</ipValidation> <!-- to decide ip validation should be enabled for the operator -->
-            <MobileIPRanges>     <!-- The IP range the operator accepting the msisdn from the header -->
+               <!-- The IP range the operator accepting the msisdn from the header -->
+            <MobileIPRanges>
                 <IPRange>FROM IP:TO IP</IPRange>
                 <IPRange>XX.XX.XX.XX:XX.XX.XX.XX</IPRange>
                 <IPRange>XX.XX.XX.XX:XX.XX.XX.XX</IPRange>
@@ -210,6 +211,51 @@
         <DASUrl>tcp://localhost:7612</DASUrl>
         <DASSecureUrl>ssl://localhost:7712</DASSecureUrl>
     </DataPublisher>
+
+    <OperatorDiscoveryNamesMapping>
+        <entry>
+            <key>airtel</key>
+            <value>airtel</value>
+        </entry>
+        <entry>
+            <key>tata</key>
+            <value>tatadocomo</value>
+        </entry>
+        <entry>
+            <key>vodafone_india</key>
+            <value>vodafone</value>
+        </entry>
+        <entry>
+            <key>idea</key>
+            <value>idea</value>
+        </entry>
+        <entry>
+            <key>uninor</key>
+            <value>telenor</value>
+        </entry>
+        <entry>
+            <key>aircel</key>
+            <value>aircel</value>
+        </entry>
+        <entry>
+            <key>spark</key>
+            <value>spark</value>
+        </entry>
+    </OperatorDiscoveryNamesMapping>
+
+    <SelfServicePortal>
+        <SPOAuthClientKey></SPOAuthClientKey>
+        <SPOAuthClientSecret></SPOAuthClientSecret>
+        <UILoginUrl>https://localhost:9443/selfserviceportal/#/login</UILoginUrl>
+        <TokenEndpoint>https://localhost:9443/oauth2/token</TokenEndpoint>
+        <CallbackUrl>https://localhost:9443/selfserviceportal/api/v1/auth/callback</CallbackUrl>
+        <UserInfoCall>https://localhost:9443/oauth2/userinfo?schema=openid</UserInfoCall>
+        <AuthorizeCall>https://localhost:9443/authproxy/oauth2/authorize/operator/${operator}</AuthorizeCall>
+        <DiscoveryAPICall></DiscoveryAPICall>
+        <DiscoveryAPIToken></DiscoveryAPIToken>
+        <MsisdnClaim>msisdn</MsisdnClaim> <!-- MSISDN claim on user info call -->
+    </SelfServicePortal>
+
     <OperatorRecovery>
         <RecoveryOption>discovery</RecoveryOption>
         <RecoveryOptionURL>https://url</RecoveryOptionURL>
@@ -218,7 +264,4 @@
     <UserRegistrationAPI>
         <MaxMSISDNLimit>100</MaxMSISDNLimit>
     </UserRegistrationAPI>
-    <UserUnRegistrationAPI>
-        <MaxMSISDNLimit>100</MaxMSISDNLimit>
-    </UserUnRegistrationAPI>
 </MobileConnectConfig>
