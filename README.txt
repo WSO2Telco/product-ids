@@ -33,43 +33,23 @@ New Features
 Other Key Features
 =============
 
-*  User Account Enable,Disable.
-*  Exposing IdentityProviderManager an osgi service.
-*  Facilitated to configure the callback url in Facebook authenticator.
-*  Ability to configurable "ISS" value of JWT token (id_token) for a given tenant.
-*  Add PKCE Support for OAuth 2.0 Authorization Code Grant Type.
-*  Add PKCE Support Detection
-*  Scope parameter support for OIDC Id Token.
-*  Add user-profile in dashboard for TOTP authenticator
-*  Social login with Facebook, Google, Yahoo and Windows Live
-*  XACML 3.0/2.0 based Entitlement Engine with WS-XACML support
-*  OAuth 2.0/1.0a Authorization Server with OAuth 2.0/1.0a support
-*  Inbound and Outbound Identity Provisioning with SCIM 1.1
-*  Outbound Identity Provisioning with SPML 2.0, Salesforce and GoogleApps
-*  Integrated Windows Authentication and webSEAL authentication
-*  Multi-option and multi-step (multi-factor) authentication
-*  Claim based Security Token Service(STS) with SAML 2.0/1.1 support
-*  Support for various types of User Stores such as JDBC, Cassandra, LDAP, Active Directory in Read/Write mode
-*  Claim Management
-*  User Profiles and Profile Management
-*  Separable front-end and back-end - a single front-end server can be used to administer several back-end servers
-*  Identity Bridge
-*  Multi-option and multi-step authentication
-*  Request Path Authenticators
-*  Social Login with Facebook / Google / Microsoft Windows Live.
-*  Ability to plug-in custom developed authenticators.
-*  Provisioning Bridge
-*  Just-in-time provisioning
-*  Ability to plug-in custom developed provisioning connectors
-*  User Dashboard
-*  SAML2 Web SSO profile Request / Response validator
-*  Remote User Store Management
-*  Custom permissions
-*  Encrypted SAML2 Assertions
-*  NTLM grant type for OAuth 2.0
-*  Workflows for user management operations
-*  2 factor authentication with FIDO
-*  Linking 2 or more local/federated user accounts
+*    Dynamic Authenticator Selection with MNO and SP Level Configuration
+*    Enhanced Security with IP Validation for Header Enrichment Authenticator
+*    Custom Scope Configuration Support
+*    Scope Validation at SP Level
+*    Enhanced Configurability for USSD/SMS Messages
+*    Configurable User Inputs for USSD Authenticator
+*    GSMA Standardized UUID Based PCR Support [Mobile Connect R2 feature]
+*    Enhanced Compatibility to Support WSO2.Telco Smart Phone Authenticator App
+*    WSO2 Data Analytics Server powered analytics
+*    100% open source
+*    Fully GSMA MCX R1 compliant
+*    Supported authenticators
+    - SMS Click OK URL
+    - USSD Click OK and Enter PIN
+    - Smartphone application or SDK
+    - Supports third-party SIM applets via implementation of ETSI TS 102 204
+
 
 System Requirements
 ===================
@@ -78,25 +58,11 @@ System Requirements
 
 2. Processor - Pentium 800MHz or equivalent at minimum
 
-3. Java SE Development Kit 1.7 or higher
+3. Java SE Development Kit 1.8 or higher
 
 4. The Management Console requires full Javascript enablement of the Web browser.
 
 5. To build WSO2 Identity Server from the Source distribution, it is also necessary that you have Maven 3 or later.
-
-For more details see
-   http://docs.wso2.org/wiki/display/IS520/Installation+Prerequisites
-
-
-Project Resources
-=================
-
-* Home page          : http://wso2.com/products/identity-server
-* Library            : http://wso2.org/library/identity
-* Wiki               : http://docs.wso2.org/wiki/display/IS520/WSO2+Identity+Server+Documentation
-* JIRA-Issue Tracker : https://wso2.org/jira/browse/IDENTITY      
-* Forums             : http://stackoverflow.com/questions/tagged/wso2/
-* WSO2 Developer List: dev@wso2.org
 
     
 Installation and Running
@@ -108,18 +74,18 @@ Installation and Running
 4. User dashboard is available at https://localhost:9443/dashboard
 5. For more information, see the Installation Guide
 
-Known Issues
-============
+Documentation
+=============
 
-All known issues have been recorded at https://wso2.org/jira/issues/?filter=13028
+Please refer http://docs.wso2telco.com/display/MIG220
 
-Issues Fixed In This Release
-============================
+Reporting Issues
+================
 
-All the fixed for WSO2 Identity Server 5.2.0 release have been recorded at https://wso2.org/jira/browse/IDENTITY-5114?filter=13327
+We encourage you to report issues, documentation faults and feature requests regarding WSO2Telco Mobile Identiry Gateway through https://jira.wso2telco.com/jira/secure/Dashboard.jspa?selectPageId=10401
 
-WSO2 Identity Server Distribution Directory Structure
-==============================================
+WSO2Telco Mobile Identity Gateway Distribution Directory Structure
+==================================================================
 
 
             CARBON_HOME
@@ -202,7 +168,7 @@ WSO2 Identity Server Distribution Directory Structure
       This document.
 
     - release-notes.html
-      Release information for WSO2 Carbon ${product.version}.
+      Release information for WSO2 Carbon 5.2.0.
 
 Secure sensitive information in carbon configuration files
 ----------------------------------------------------------
@@ -246,10 +212,7 @@ We are committed to ensuring that your enterprise middleware deployment is compl
 evaluation to production. Our unique approach ensures that all support leverages our open development
 methodology and is provided by the very same engineers who build the technology.
 
-For more details and to take advantage of this unique opportunity, visit http://wso2.com/support/.
-
-
-For more information on WSO2 Carbon, visit the WSO2 Oxygen Tank (http://wso2.org)
+For more details and to take advantage of this unique opportunity, visit http://wso2telco.com/services. 
 
 
 Crypto Notice
@@ -282,11 +245,5 @@ Apache WSS4J     : http://ws.apache.org/wss4j/
 Apache Santuario : http://santuario.apache.org/
 Bouncycastle     : http://www.bouncycastle.org/
 
-For more information about WSO2 Identity Server please see http://wso2.org/projects/identity or visit the
-WSO2 Oxygen Tank developer portal for addition resources.
-
-For further details, see the WSO2 Identity Server documentation at
-https://docs.wso2.com/display/IS520/WSO2+Identity+Server+Documentation
-
 ---------------------------------------------------------------------------
-(c) Copyright 2016 WSO2 Inc.
+(c) Copyright 2017 WSO2TELCO Inc.
