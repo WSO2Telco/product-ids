@@ -1,5 +1,5 @@
 <ScopeConfigs>
-    <Scopes>
+    <PremiumInfoScopes>
         <Scope>
             <Name>profile</Name>
             <Claims>
@@ -409,5 +409,38 @@
                 <Optional>phone_number</Optional>
             </Request>
         </Scope>
-    </Scopes>
+    </PremiumInfoScopes>
+    <UserInfoScopes>
+        <Scope>
+            <Name>profile</Name>
+            <Claims>
+                <ClaimValue>name</ClaimValue>
+                <ClaimValue>family_name</ClaimValue>
+                <ClaimValue>given_name</ClaimValue>
+                <ClaimValue>middle_name</ClaimValue>
+                <ClaimValue>nickname</ClaimValue>
+                <ClaimValue>preferred_username</ClaimValue>
+                <ClaimValue>profile</ClaimValue>
+                <ClaimValue>picture</ClaimValue>
+                <ClaimValue>website</ClaimValue>
+                <ClaimValue>gender</ClaimValue>
+                <ClaimValue>birthdate</ClaimValue>
+                <ClaimValue>zoneinfo</ClaimValue>
+                <ClaimValue>locale</ClaimValue>
+                <ClaimValue>updated_at</ClaimValue>
+            </Claims>
+        </Scope>
+        <Scope>
+            <Name>phone</Name>
+            <Claims>
+                <ClaimValue>phone_number</ClaimValue>
+            </Claims>
+        </Scope>
+        <Scope>
+            <Name>email</Name>
+            <Claims>
+                <ClaimValue>email</ClaimValue>
+            </Claims>
+        </Scope>
+    </UserInfoScopes>
 </ScopeConfigs>
