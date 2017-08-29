@@ -192,9 +192,13 @@
         </SupportedResponseTypes>
         <!-- Supported Grant Types -->
         <SupportedGrantTypes>
-            <SupportedGrantType>
+<!--             <SupportedGrantType>
                 <GrantTypeName>authorization_code</GrantTypeName>
                 <GrantTypeHandlerImplClass>org.wso2.carbon.identity.oauth2.token.handlers.grant.AuthorizationCodeGrantHandler</GrantTypeHandlerImplClass>
+            </SupportedGrantType> -->
+            <SupportedGrantType>
+                <GrantTypeName>authorization_code</GrantTypeName>
+                <GrantTypeHandlerImplClass>com.wso2telco.openidtokenbuilder.CustomAuthorizationCodeGrantHandler</GrantTypeHandlerImplClass>
             </SupportedGrantType>
             <SupportedGrantType>
                 <GrantTypeName>password</GrantTypeName>
