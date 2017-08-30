@@ -19,7 +19,10 @@ New Features
      Federated MCX feature allow wso2telcoids to call different MCX providers. This feature can be easily configured to specific mobile
      network operator to act as federated MCX provider.This allows Service providers to access other MCX providers via wso2telcoids with ease.
 
+Bug Fixes
+=========
 
+	 IDSDEV-700 - FederatedAuthenticator Triggered for other operators
 
 Other Key Features
 =============
