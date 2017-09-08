@@ -328,10 +328,6 @@
                 <Attribute>Email address</Attribute>
                 <Attribute>Roaming details</Attribute>
             </AttributeToDisplay>
-            <Request>
-                <Optional>sub</Optional>
-                <Optional>phone_number</Optional>
-            </Request>
         </Scope>
         <Scope>
             <Name>v_id_match</Name>
@@ -361,18 +357,24 @@
                 <Attribute>Alternative phone number</Attribute>
                 <Attribute>Current phone number</Attribute>
             </AttributeToDisplay>
-            <Request>
-                <Optional>sub</Optional>
-                <Optional>phone_number</Optional>
-                <Optional>birthdate</Optional>
-                <Optional>gender</Optional>
-                <Mandatory>given_name</Mandatory>
-                <Mandatory>family_name</Mandatory>
-                <Mandatory>street_address</Mandatory>
-                <Mandatory>postal_address</Mandatory>
-                <Mandatory>postal_code</Mandatory>
-                <Mandatory>country</Mandatory>
-            </Request>
+            <MandatoryRequestClaimParams>
+                <Name>given_name</Name>
+            </MandatoryRequestClaimParams>
+            <MandatoryRequestClaimParams>
+                <Name>family_name</Name>
+            </MandatoryRequestClaimParams>
+            <MandatoryRequestClaimParams>
+                <Name>street_address</Name>
+            </MandatoryRequestClaimParams>
+            <MandatoryRequestClaimParams>
+                <Name>postal_address</Name>
+            </MandatoryRequestClaimParams>
+            <MandatoryRequestClaimParams>
+                <Name>postal_code</Name>
+            </MandatoryRequestClaimParams>
+            <MandatoryRequestClaimParams>
+                <Name>country</Name>
+            </MandatoryRequestClaimParams>
         </Scope>
         <Scope>
             <Name>v_country_check</Name>
@@ -383,11 +385,9 @@
                 <ClaimValue>roaming_country</ClaimValue>
                 <ClaimValue>location_country</ClaimValue>
             </Claims>
-            <Request>
-                <Optional>sub</Optional>
-                <Optional>phone_number</Optional>
-                <Mandatory>location_country</Mandatory>
-            </Request>
+            <MandatoryRequestClaimParams>
+                <Name>location_country</Name>
+            </MandatoryRequestClaimParams>
         </Scope>
         <Scope>
             <Name>p_anti_fraud</Name>
@@ -404,10 +404,76 @@
                 <ClaimValue>is_divert_set</ClaimValue>
                 <ClaimValue>device_change</ClaimValue>
             </Claims>
-            <Request>
-                <Optional>sub</Optional>
-                <Optional>phone_number</Optional>
-            </Request>
+        </Scope>
+        <Scope>
+            <Name>mc_kyc_plain</Name>
+            <Claims>
+                <ClaimValue>given_name</ClaimValue>
+                <ClaimValue>family_name</ClaimValue>
+                <ClaimValue>name</ClaimValue>
+                <ClaimValue>address</ClaimValue>
+                <ClaimValue>houseno_or_housename</ClaimValue>
+                <ClaimValue>postal_code</ClaimValue>
+                <ClaimValue>town</ClaimValue>
+                <ClaimValue>country</ClaimValue>
+                <ClaimValue>birthdate</ClaimValue>
+            </Claims>
+            <AttributeToDisplay>
+                <Attribute>Given Name</Attribute>
+                <Attribute>Family Name</Attribute>
+                <Attribute>Birth Date</Attribute>
+                <Attribute>House Number/House Name</Attribute>
+                <Attribute>Postal code</Attribute>
+                <Attribute>Town</Attribute>
+                <Attribute>Country</Attribute>
+            </AttributeToDisplay>
+            <MandatoryRequestClaimParams>
+                <Name>name</Name>
+                <SubValue>given_name</SubValue>
+                <SubValue>family_name</SubValue>
+            </MandatoryRequestClaimParams>
+            <MandatoryRequestClaimParams>
+                <Name>address</Name>
+                <SubValue>houseno_or_housename</SubValue>
+                <SubValue>postal_code</SubValue>
+                <SubValue>Town</SubValue>
+                <SubValue>Country</SubValue>
+            </MandatoryRequestClaimParams>
+        </Scope>
+        <Scope>
+            <Name>mc_kyc_hashed</Name>
+            <Claims>
+                <ClaimValue>given_name_hash</ClaimValue>
+                <ClaimValue>family_name_hash</ClaimValue>
+                <ClaimValue>name_hash</ClaimValue>
+                <ClaimValue>address_hash</ClaimValue>
+                <ClaimValue>houseno_or_housename_hash</ClaimValue>
+                <ClaimValue>postal_code_hash</ClaimValue>
+                <ClaimValue>town_hash</ClaimValue>
+                <ClaimValue>country_hash</ClaimValue>
+                <ClaimValue>birthdate_hash</ClaimValue>
+            </Claims>
+            <AttributeToDisplay>
+                <Attribute>Given Name</Attribute>
+                <Attribute>Family Name</Attribute>
+                <Attribute>Birth Date</Attribute>
+                <Attribute>House Number/House Name</Attribute>
+                <Attribute>Postal code</Attribute>
+                <Attribute>Town</Attribute>
+                <Attribute>Country</Attribute>
+            </AttributeToDisplay>
+            <MandatoryRequestClaimParams>
+                <Name>name_hash</Name>
+                <SubValue>given_name_hash</SubValue>
+                <SubValue>family_name_hash</SubValue>
+            </MandatoryRequestClaimParams>
+            <MandatoryRequestClaimParams>
+                <Name>address_hash</Name>
+                <SubValue>houseno_or_housename_hash</SubValue>
+                <SubValue>postal_code_hash</SubValue>
+                <SubValue>town_hash</SubValue>
+                <SubValue>country_hash</SubValue>
+            </MandatoryRequestClaimParams>
         </Scope>
     </PremiumInfoScopes>
     <UserInfoScopes>
