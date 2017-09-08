@@ -2,6 +2,7 @@
     <PremiumInfoScopes>
         <Scope>
             <Name>profile</Name>
+            <IsHashed>false</IsHashed>
             <Claims>
                 <ClaimValue>name</ClaimValue>
                 <ClaimValue>family_name</ClaimValue>
@@ -21,36 +22,42 @@
         </Scope>
         <Scope>
             <Name>phone</Name>
+            <IsHashed>false</IsHashed>
             <Claims>
                 <ClaimValue>phone_number</ClaimValue>
             </Claims>
         </Scope>
         <Scope>
             <Name>email</Name>
+            <IsHashed>false</IsHashed>
             <Claims>
                 <ClaimValue>email</ClaimValue>
             </Claims>
         </Scope>
         <Scope>
             <Name>address</Name>
+            <IsHashed>false</IsHashed>
             <Claims>
                 <ClaimValue>address</ClaimValue>
             </Claims>
         </Scope>
         <Scope>
             <Name>mc_identity_phonenumber_hashed</Name>
+            <IsHashed>false</IsHashed>
             <Claims>
                 <ClaimValue>phone_number</ClaimValue>
             </Claims>
         </Scope>
         <Scope>
             <Name>openid</Name>
+            <IsHashed>false</IsHashed>
             <Claims>
                 <ClaimValue>msisdn</ClaimValue>
             </Claims>
         </Scope>
         <Scope>
             <Name>sub</Name>
+            <IsHashed>false</IsHashed>
             <Claims>
                 <ClaimValue>sub</ClaimValue>
             </Claims>
@@ -60,6 +67,7 @@
         </Scope>
         <Scope>
             <Name>updated_at</Name>
+            <IsHashed>false</IsHashed>
             <Claims>
                 <ClaimValue>updated_at</ClaimValue>
             </Claims>
@@ -69,6 +77,7 @@
         </Scope>
         <Scope>
             <Name>title</Name>
+            <IsHashed>false</IsHashed>
             <Claims>
                 <ClaimValue>title</ClaimValue>
             </Claims>
@@ -78,6 +87,7 @@
         </Scope>
         <Scope>
             <Name>given_name</Name>
+            <IsHashed>false</IsHashed>
             <Claims>
                 <ClaimValue>given_name</ClaimValue>
             </Claims>
@@ -87,6 +97,7 @@
         </Scope>
         <Scope>
             <Name>family_name</Name>
+            <IsHashed>false</IsHashed>
             <Claims>
                 <ClaimValue>family_name</ClaimValue>
             </Claims>
@@ -96,6 +107,7 @@
         </Scope>
         <Scope>
             <Name>middle_name</Name>
+            <IsHashed>false</IsHashed>
             <Claims>
                 <ClaimValue>middle_name</ClaimValue>
             </Claims>
@@ -105,6 +117,7 @@
         </Scope>
         <Scope>
             <Name>gender</Name>
+            <IsHashed>false</IsHashed>
             <Claims>
                 <ClaimValue>gender</ClaimValue>
             </Claims>
@@ -114,6 +127,7 @@
         </Scope>
         <Scope>
             <Name>birthdate</Name>
+            <IsHashed>false</IsHashed>
             <Claims>
                 <ClaimValue>birthdate</ClaimValue>
             </Claims>
@@ -123,6 +137,7 @@
         </Scope>
         <Scope>
             <Name>AgeVerificationStatus</Name>
+            <IsHashed>false</IsHashed>
             <Claims>
                 <ClaimValue>AgeVerificationStatus</ClaimValue>
             </Claims>
@@ -132,6 +147,7 @@
         </Scope>
         <Scope>
             <Name>street_address</Name>
+            <IsHashed>false</IsHashed>
             <Claims>
                 <ClaimValue>street_address</ClaimValue>
             </Claims>
@@ -141,6 +157,7 @@
         </Scope>
         <Scope>
             <Name>postal_address</Name>
+            <IsHashed>false</IsHashed>
             <Claims>
                 <ClaimValue>postal_address</ClaimValue>
             </Claims>
@@ -150,6 +167,7 @@
         </Scope>
         <Scope>
             <Name>postal_code</Name>
+            <IsHashed>false</IsHashed>
             <Claims>
                 <ClaimValue>postal_code</ClaimValue>
             </Claims>
@@ -159,6 +177,7 @@
         </Scope>
         <Scope>
             <Name>country</Name>
+            <IsHashed>false</IsHashed>
             <Claims>
                 <ClaimValue>country</ClaimValue>
             </Claims>
@@ -168,6 +187,7 @@
         </Scope>
         <Scope>
             <Name>locale</Name>
+            <IsHashed>false</IsHashed>
             <Claims>
                 <ClaimValue>locale</ClaimValue>
             </Claims>
@@ -177,6 +197,7 @@
         </Scope>
         <Scope>
             <Name>phone_number_alternate</Name>
+            <IsHashed>false</IsHashed>
             <Claims>
                 <ClaimValue>phone_number_alternate</ClaimValue>
             </Claims>
@@ -186,6 +207,7 @@
         </Scope>
         <Scope>
             <Name>email</Name>
+            <IsHashed>false</IsHashed>
             <Claims>
                 <ClaimValue>email</ClaimValue>
             </Claims>
@@ -195,6 +217,7 @@
         </Scope>
         <Scope>
             <Name>email_verified</Name>
+            <IsHashed>false</IsHashed>
             <Claims>
                 <ClaimValue>email_verified</ClaimValue>
             </Claims>
@@ -204,96 +227,112 @@
         </Scope>
         <Scope>
             <Name>phone_number</Name>
+            <IsHashed>false</IsHashed>
             <Claims>
                 <ClaimValue>phone_number</ClaimValue>
             </Claims>
         </Scope>
         <Scope>
             <Name>phone_number_country_code</Name>
+            <IsHashed>false</IsHashed>
             <Claims>
                 <ClaimValue>phone_number_country_code</ClaimValue>
             </Claims>
         </Scope>
         <Scope>
             <Name>zoneinfo</Name>
+            <IsHashed>false</IsHashed>
             <Claims>
                 <ClaimValue>zoneinfo</ClaimValue>
             </Claims>
         </Scope>
         <Scope>
             <Name>BillingSegment</Name>
+            <IsHashed>false</IsHashed>
             <Claims>
                 <ClaimValue>BillingSegment</ClaimValue>
             </Claims>
         </Scope>
         <Scope>
             <Name>is_lost_stolen</Name>
+            <IsHashed>false</IsHashed>
             <Claims>
                 <ClaimValue>is_lost_stolen</ClaimValue>
             </Claims>
         </Scope>
         <Scope>
             <Name>id_hash</Name>
+            <IsHashed>false</IsHashed>
             <Claims>
                 <ClaimValue>id_hash</ClaimValue>
             </Claims>
         </Scope>
         <Scope>
             <Name>SubscriptionActivity-30</Name>
+            <IsHashed>false</IsHashed>
             <Claims>
                 <ClaimValue>SubscriptionActivity-30</ClaimValue>
             </Claims>
         </Scope>
         <Scope>
             <Name>SubscriptionActivity-365</Name>
+            <IsHashed>false</IsHashed>
             <Claims>
                 <ClaimValue>SubscriptionActivity-365</ClaimValue>
             </Claims>
         </Scope>
         <Scope>
             <Name>LengthOfTenure</Name>
+            <IsHashed>false</IsHashed>
             <Claims>
                 <ClaimValue>LengthOfTenure</ClaimValue>
             </Claims>
         </Scope>
         <Scope>
             <Name>pairing_change</Name>
+            <IsHashed>false</IsHashed>
             <Claims>
                 <ClaimValue>pairing_change</ClaimValue>
             </Claims>
         </Scope>
         <Scope>
             <Name>is_roaming</Name>
+            <IsHashed>false</IsHashed>
             <Claims>
                 <ClaimValue>is_roaming</ClaimValue>
             </Claims>
         </Scope>
         <Scope>
             <Name>roaming_country</Name>
+            <IsHashed>false</IsHashed>
             <Claims>
                 <ClaimValue>roaming_country</ClaimValue>
             </Claims>
         </Scope>
         <Scope>
             <Name>is_divert_set</Name>
+            <IsHashed>false</IsHashed>
             <Claims>
                 <ClaimValue>is_divert_set</ClaimValue>
             </Claims>
         </Scope>
         <Scope>
             <Name>location_country</Name>
+            <IsHashed>false</IsHashed>
             <Claims>
                 <ClaimValue>location_country</ClaimValue>
             </Claims>
         </Scope>
         <Scope>
             <Name>device_change</Name>
+            <IsHashed>false</IsHashed>
             <Claims>
                 <ClaimValue>device_change</ClaimValue>
             </Claims>
         </Scope>
         <Scope>
             <Name>p_form_fill</Name>
+            <IsHashed>false</IsHashed>
             <Claims>
                 <ClaimValue>sub</ClaimValue>
                 <ClaimValue>updated_at</ClaimValue>
@@ -331,6 +370,7 @@
         </Scope>
         <Scope>
             <Name>v_id_match</Name>
+            <IsHashed>false</IsHashed>
             <Claims>
                 <ClaimValue>sub</ClaimValue>
                 <ClaimValue>updated_at</ClaimValue>
@@ -378,6 +418,7 @@
         </Scope>
         <Scope>
             <Name>v_country_check</Name>
+            <IsHashed>false</IsHashed>
             <Claims>
                 <ClaimValue>sub</ClaimValue>
                 <ClaimValue>zoneinfo</ClaimValue>
@@ -391,6 +432,7 @@
         </Scope>
         <Scope>
             <Name>p_anti_fraud</Name>
+            <IsHashed>false</IsHashed>
             <Claims>
                 <ClaimValue>sub</ClaimValue>
                 <ClaimValue>phone_number_country_code</ClaimValue>
@@ -407,6 +449,7 @@
         </Scope>
         <Scope>
             <Name>mc_kyc_plain</Name>
+            <IsHashed>false</IsHashed>
             <Claims>
                 <ClaimValue>given_name</ClaimValue>
                 <ClaimValue>family_name</ClaimValue>
@@ -442,6 +485,7 @@
         </Scope>
         <Scope>
             <Name>mc_kyc_hashed</Name>
+            <IsHashed>true</IsHashed>
             <Claims>
                 <ClaimValue>given_name_hash</ClaimValue>
                 <ClaimValue>family_name_hash</ClaimValue>
