@@ -46,6 +46,7 @@
                 <exclude>**/security/authenticators.xml</exclude>
                 <exclude>**/datasources/master-datasources.xml</exclude>
                 <exclude>**/user-mgt.xml</exclude>
+                <exclude>**/identity/service-providers/default.xml</exclude>
             </excludes>
         </fileSet>
 
@@ -815,6 +816,14 @@
                 ../idsconfig/identity.xml
             </source>
             <outputDirectory>wso2telcoids-${pom.version}/repository/conf/identity</outputDirectory>
+            <fileMode>644</fileMode>
+        </file>
+
+	<file>
+            <source>
+                ../idsconfig/default.xml
+            </source>
+            <outputDirectory>wso2telcoids-${pom.version}/repository/conf/identity/service-providers</outputDirectory>
             <fileMode>644</fileMode>
         </file>
 
