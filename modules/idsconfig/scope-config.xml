@@ -19,6 +19,22 @@
                 <ClaimValue>locale</ClaimValue>
                 <ClaimValue>updated_at</ClaimValue>
             </Claims>
+            <AttributeToDisplay>
+                <Attribute>name</Attribute>
+                <Attribute>family_name</Attribute>
+                <Attribute>given_name</Attribute>
+                <Attribute>middle_name</Attribute>
+                <Attribute>nickname</Attribute>
+                <Attribute>preferred_username</Attribute>
+                <Attribute>profile</Attribute>
+                <Attribute>picture</Attribute>
+                <Attribute>website</Attribute>
+                <Attribute>gender</Attribute>
+                <Attribute>birthdate</Attribute>
+                <Attribute>zoneinfo</Attribute>
+                <Attribute>locale</Attribute>
+                <Attribute>updated_at</Attribute>
+            </AttributeToDisplay>
         </Scope>
         <Scope>
             <Name>phone</Name>
@@ -26,6 +42,9 @@
             <Claims>
                 <ClaimValue>phone_number</ClaimValue>
             </Claims>
+            <AttributeToDisplay>
+                <Attribute>phone_number</Attribute>
+            </AttributeToDisplay>
         </Scope>
         <Scope>
             <Name>email</Name>
@@ -33,6 +52,9 @@
             <Claims>
                 <ClaimValue>email</ClaimValue>
             </Claims>
+            <AttributeToDisplay>
+                <Attribute>email</Attribute>
+            </AttributeToDisplay>
         </Scope>
         <Scope>
             <Name>address</Name>
@@ -40,6 +62,9 @@
             <Claims>
                 <ClaimValue>address</ClaimValue>
             </Claims>
+            <AttributeToDisplay>
+                <Attribute>address</Attribute>
+            </AttributeToDisplay>
         </Scope>
         <Scope>
             <Name>mc_identity_phonenumber_hashed</Name>
@@ -47,6 +72,9 @@
             <Claims>
                 <ClaimValue>phone_number</ClaimValue>
             </Claims>
+            <AttributeToDisplay>
+                <Attribute>mc_identity_phonenumber_hashed</Attribute>
+            </AttributeToDisplay>
         </Scope>
         <Scope>
             <Name>openid</Name>
@@ -54,6 +82,9 @@
             <Claims>
                 <ClaimValue>msisdn</ClaimValue>
             </Claims>
+            <AttributeToDisplay>
+                <Attribute>openid</Attribute>
+            </AttributeToDisplay>
         </Scope>
         <Scope>
             <Name>sub</Name>
