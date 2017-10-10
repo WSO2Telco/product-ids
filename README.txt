@@ -22,10 +22,8 @@ New Features
 Bug Fixes
 =========
 
-	[MCSDDEV-93] : Brazil - User info is not working for VIVO according to the given multi scope
-	[MCSDDEV-92] : Brazil - If user click Cancel or No thanks button during auth flow of IDP context, It goes to an error page (No error handling)
-	[IDSDEV-715] : [BRAZIL][FederatedIDP] - Production Integration Issues
-	[MCSDDEV-97] : Brazil - User gets "authErrorMsg=No+valid+session+found" error for federated IDP
+	[DSABRT-22] expired sms link click bug fixed
+	Performance Improvements according to Load tests
 
 Other Key Features
 =============
