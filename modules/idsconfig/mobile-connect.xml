@@ -242,13 +242,13 @@
             <OperatorName>spark</OperatorName>
             <UserInfoEndPointType>Remote</UserInfoEndPointType>
             <UserInfoEndPointURL>http://demo0949818.mockable.io/customer/profile%3Fmsisdn=123456789</UserInfoEndPointURL>
-            <ClassName>com.wso2telco.user.impl.RemoteClaimsTelco</ClassName>
+            <ClassName>com.wso2telco.claims.RemoteClaimsTelco</ClassName>
         </OperatorData>
         <OperatorData>
             <OperatorName>operater2</OperatorName>
             <UserInfoEndPointType>Remote</UserInfoEndPointType>
             <UserInfoEndPointURL>http://demo0949818.mockable.io/customer/profile%3Fmsisdn=123456789</UserInfoEndPointURL>
-            <ClassName>com.wso2telco.user.impl.RemoteClaimsTelco</ClassName>
+            <ClassName>com.wso2telco.claims.RemoteClaimsTelco</ClassName>
         </OperatorData>
     </OperatorsList>
 </MobileConnectConfig>
