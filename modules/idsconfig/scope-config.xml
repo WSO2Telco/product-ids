@@ -80,7 +80,7 @@
             <Name>openid</Name>
             <IsHashed>false</IsHashed>
             <Claims>
-                <ClaimValue>msisdn</ClaimValue>
+                <ClaimValue></ClaimValue>
             </Claims>
             <AttributeToDisplay>
                 <Attribute>openid</Attribute>
