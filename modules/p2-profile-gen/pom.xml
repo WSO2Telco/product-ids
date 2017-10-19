@@ -14,7 +14,8 @@
   ~ See the License for the specific language governing permissions and
   ~ limitations under the License.
   -->
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
 
     <parent>
         <groupId>com.wso2telco.product.ids</groupId>
@@ -154,6 +155,9 @@
                                 </featureArtifactDef>
                                 <featureArtifactDef>
                                     com.wso2telco.ids:com.wso2telco.ids.tokenintrospection.feature:${com.wso2telco.ids.version}
+                                </featureArtifactDef>
+                                <featureArtifactDef>
+                                    com.wso2telco.ids:com.wso2telco.ids.premiuminfo.feature:${com.wso2telco.ids.version}
                                 </featureArtifactDef>
 
 
@@ -958,6 +962,10 @@
                                     <id>com.wso2telco.ids.tokenintrospection.feature.group</id>
                                     <version>${com.wso2telco.ids.version}</version>
                                 </feature>
+                                <feature>
+                                    <id>com.wso2telco.ids.premiuminfo.feature.group</id>
+                                    <version>${com.wso2telco.ids.version}</version>
+                                </feature>
                             </features>
                         </configuration>
                     </execution>
@@ -1096,6 +1104,10 @@
 
                                 <feature>
                                     <id>com.wso2telco.ids.datapublisher.feature.group</id>
+                                    <version>${com.wso2telco.ids.version}</version>
+                                </feature>
+                                <feature>
+                                    <id>com.wso2telco.ids.premiuminfo.feature.group</id>
                                     <version>${com.wso2telco.ids.version}</version>
                                 </feature>
 
@@ -1583,6 +1595,10 @@
                                     <version>${com.wso2telco.ids.version}</version>
                                 </feature>
                                 <feature>
+                                    <id>com.wso2telco.ids.premiuminfo.feature.group</id>
+                                    <version>${com.wso2telco.ids.version}</version>
+                                </feature>
+                                <feature>
                                     <id>org.jaggeryjs.server.feature.group</id>
                                     <version>${jaggeryjs.version}</version>
                                 </feature>
@@ -2045,6 +2061,10 @@
                                     <id>com.wso2telco.ids.tokenintrospection.feature.group</id>
                                     <version>${com.wso2telco.ids.version}</version>
                                 </feature>
+                                <feature>
+                                    <id>com.wso2telco.ids.premiuminfo.feature.group</id>
+                                    <version>${com.wso2telco.ids.version}</version>
+                                </feature>
                                 <!-- 1 Carbon Kernel -->
                                 <feature>
                                     <id>org.wso2.carbon.core.common.feature.group</id>
@@ -2228,10 +2248,13 @@
                         <phase>package</phase>
                         <configuration>
                             <tasks>
-                                <replace token="false" value="true" dir="target/wso2carbon-core-${carbon.kernel.version}/repository/components">
-                                    <include name="**/bundles.info" />
+                                <replace token="false" value="true"
+                                         dir="target/wso2carbon-core-${carbon.kernel.version}/repository/components">
+                                    <include name="**/bundles.info"/>
                                 </replace>
-                                <replace file="target/wso2carbon-core-${carbon.kernel.version}/repository/conf/tomcat/context.xml" token="&lt;Context&gt;" value="&lt;Context crossContext=&quot;true&quot;&gt;" />
+                                <replace
+                                        file="target/wso2carbon-core-${carbon.kernel.version}/repository/conf/tomcat/context.xml"
+                                        token="&lt;Context&gt;" value="&lt;Context crossContext=&quot;true&quot;&gt;"/>
                             </tasks>
                         </configuration>
                         <goals>

@@ -180,7 +180,8 @@
                 <include>sessionupdater.war</include>
                 <include>saaserver.war</include>
                 <include>introspect.war</include>
-			</includes>
+                <include>premiuminfo.war</include>
+            </includes>
         </fileSet>
 
         <!--copy jaxrs web app for OAuth feature-->
