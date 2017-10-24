@@ -38,7 +38,7 @@
         <configuration>
           <url>jdbc:mysql://localhost:3306/mig_identity?autoReconnect=true&amp;relaxAutoCommit=true&amp;</url>  <!-- enter the dbhost and apimgt db name -->
           <username>root</username>        <!-- User name -->
-          <password>root</password>
+          <password></password>
 	  <driverClassName>com.mysql.jdbc.Driver</driverClassName>
           <maxActive>50</maxActive>
           <maxWait>60000</maxWait>
@@ -58,7 +58,7 @@
         <configuration>
           <url>jdbc:mysql://localhost:3306/mig_regdb?autoReconnect=true&amp;relaxAutoCommit=true&amp;</url>    <!-- enter the dbhost and gsma_registry db name -->
           <username>root</username>      <!-- User name -->
-	  <password>root</password>
+	   <password></password>
           <driverClassName>com.mysql.jdbc.Driver</driverClassName>
           <maxActive>50</maxActive>
           <maxWait>60000</maxWait>
@@ -78,7 +78,7 @@
         <configuration>
           <url>jdbc:mysql://localhost:3306/mig_userdb?autoReconnect=true&amp;relaxAutoCommit=true&amp;</url>     <!-- enter the dbhost and gsma_userstore db name -->
          <username>root</username>       <!-- User name -->
-          <password>root</password>    <!-- Password -->
+          <password></password>    <!-- Password -->
           <driverClassName>com.mysql.jdbc.Driver</driverClassName>
           <maxActive>50</maxActive>
           <maxWait>60000</maxWait>
@@ -98,7 +98,7 @@
         <configuration>
           <url>jdbc:mysql://localhost:3306/mig_connectdb?autoReconnect=true&amp;relaxAutoCommit=true&amp;</url>   <!-- enter the dbhost and connect db name -->
           <username>root</username>      <!-- User name -->
-          <password>root</password>   <!-- Password -->
+          <password></password>   <!-- Password -->
           <driverClassName>com.mysql.jdbc.Driver</driverClassName>
           <maxActive>50</maxActive>
           <maxWait>60000</maxWait>
@@ -118,7 +118,7 @@
         <configuration>
           <url>jdbc:mysql://localhost:3306/mig_operatorsdb?autoReconnect=true&amp;relaxAutoCommit=true</url>     <!-- enter the dbhost and axiata db name -->
           <username>root</username>     <!-- User name -->
-          <password>root</password>   <!-- Password -->
+          <password></password>   <!-- Password -->
           <driverClassName>com.mysql.jdbc.Driver</driverClassName>
           <maxActive>50</maxActive>
           <maxWait>60000</maxWait>
