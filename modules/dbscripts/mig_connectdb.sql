@@ -357,36 +357,18 @@ CREATE TABLE consent (
     UNIQUE (client_id,scope_id,operator_id)
 )  ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
+
 DROP TABLE IF EXISTS `user_consent`;
 
 CREATE TABLE `user_consent` (
-    `user_consent_id` INT(20) NOT NULL AUTO_INCREMENT,
-    `msisdn` VARCHAR(255) NOT NULL,
-    `client_id` VARCHAR(100) NOT NULL,
-    `scope_id` INT(20) NOT NULL,
-    `operator_id` INT(20) NOT NULL,
-    `approve` TINYINT DEFAULT 0,
-    PRIMARY KEY (`user_consent_id`),
-    FOREIGN KEY (`scope_id`) REFERENCES `scope_parameter`(`param_id`),
-    UNIQUE (`msisdn`,`client_id`,`scope_id`,`operator_id`)
-)  ENGINE=InnoDB DEFAULT CHARSET=latin1;
+  `user_consent_id` int(20) NOT NULL AUTO_INCREMENT,
+  `consent_id` int(20) NOT NULL,
+  `msisdn` varchar(45) NOT NULL,
+  `expire_time` timestamp NULL DEFAULT NULL,
+  `consent_status` tinyint(4) DEFAULT '0',
+  PRIMARY KEY (`user_consent_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
-DROP TABLE IF EXISTS `consent_history`;
-
-CREATE TABLE `consent_history` (
-    `id` INT(20) NOT NULL AUTO_INCREMENT,
-    `msisdn` VARCHAR(255) NOT NULL,
-    `client_id` VARCHAR(100) NOT NULL,
-    `scope_id` INT(20) NOT NULL,
-    `operator_id` INT(20) NOT NULL,
-    `approve_status` VARCHAR(45),
-    `consent_date` TIMESTAMP NULL DEFAULT NULL,
-    `consent_expire_time` TIMESTAMP NULL DEFAULT NULL,
-    `consent_revoked_time` TIMESTAMP NULL DEFAULT NULL,
-    `consent_status` TIMESTAMP NULL DEFAULT NULL,
-    PRIMARY KEY (`id`),
-    FOREIGN KEY (`scope_id`) REFERENCES `scope_parameter`(`param_id`)
-)  ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 DROP TABLE IF EXISTS `prompt_configuration`;
 
