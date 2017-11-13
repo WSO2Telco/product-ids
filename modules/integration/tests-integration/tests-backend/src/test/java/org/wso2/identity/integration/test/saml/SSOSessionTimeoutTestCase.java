@@ -33,7 +33,7 @@ import java.io.File;
 
 import static java.io.File.separator;
 
-public class SSOSessionTimeoutTestCase extends ISIntegrationTest{
+public class SSOSessionTimeoutTestCase extends ISIntegrationTest {
 
     private static final Log log = LogFactory.getLog(SSOSessionTimeoutTestCase.class);
     private ServerConfigurationManager serverConfigurationManager;
@@ -68,9 +68,9 @@ public class SSOSessionTimeoutTestCase extends ISIntegrationTest{
      */
     @AfterClass(alwaysRun = true)
     public void atEnd() throws Exception {
-            Thread.sleep(3000);
-            serverConfigurationManager.restoreToLastConfiguration();
-            serverConfigurationManager = null;
+        Thread.sleep(3000);
+        serverConfigurationManager.restoreToLastConfiguration();
+        serverConfigurationManager = null;
 
 
     }

@@ -108,7 +108,7 @@ public class MasterSCIMInitiator extends ISIntegrationTest {
         return scimClient.encodeSCIMObject(scimUser, SCIMConstants.JSON);
     }
 
-    protected Group getSCIMGroup(String scimUserId,String externalID,String displayName) throws CharonException {
+    protected Group getSCIMGroup(String scimUserId, String externalID, String displayName) throws CharonException {
         Group scimGroup = scimClient.createGroup();
         scimGroup.setExternalId(externalID);
         scimGroup.setDisplayName(displayName);

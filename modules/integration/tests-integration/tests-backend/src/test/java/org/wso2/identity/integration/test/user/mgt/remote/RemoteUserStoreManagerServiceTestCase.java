@@ -91,10 +91,10 @@ public class RemoteUserStoreManagerServiceTestCase extends ISIntegrationTest {
         //Add role1 with configure, login, manage, monitor, protected permissions
         UserManagementClient userMgtClient = new UserManagementClient(backendURL, sessionCookie);
         String[] permissions = {"/permission/admin/configure/",
-                                "/permission/admin/login",
-                                "/permission/admin/manage/",
-                                "/permission/admin/monitor",
-                                "/permission/protected"};
+                "/permission/admin/login",
+                "/permission/admin/manage/",
+                "/permission/admin/monitor",
+                "/permission/protected"};
         userMgtClient.addRole(role1, null, permissions);
 
         //verify role addition
@@ -208,7 +208,8 @@ public class RemoteUserStoreManagerServiceTestCase extends ISIntegrationTest {
         String[] profiles = remoteUserStoreManagerClient.getProfileNames(user1);
 
         Assert.assertNotNull(profiles, "Retrieving user profiles failed");
-        Assert.assertEquals(profiles.length, 1, "Deviation from expected number of profiles related to user : " + user1);
+        Assert.assertEquals(profiles.length, 1, "Deviation from expected number of profiles related to user : " +
+                user1);
         Assert.assertEquals(profiles[0], "default", "User does not belong to default profile");
     }
 
@@ -234,11 +235,13 @@ public class RemoteUserStoreManagerServiceTestCase extends ISIntegrationTest {
         remoteUserStoreManagerClient.setUserClaimValue(user1, claimUri, claimValue, null);
 
         //verify claim addition
-        Assert.assertEquals(remoteUserStoreManagerClient.getUserClaimValue(user1, claimUri, null), claimValue, "Claim addition failed");
+        Assert.assertEquals(remoteUserStoreManagerClient.getUserClaimValue(user1, claimUri, null), claimValue, "Claim" +
+                " addition failed");
     }
 
 
-    @Test(priority = 4, groups = "wso2.is", description = "Test setUserClaimValues and getUserClaimValuesForClaims operations")
+    @Test(priority = 4, groups = "wso2.is", description = "Test setUserClaimValues and getUserClaimValuesForClaims " +
+            "operations")
     public void testSetUserClaimValues()
             throws RemoteUserStoreManagerServiceUserStoreExceptionException, RemoteException {
         //set claims for user2
@@ -364,7 +367,7 @@ public class RemoteUserStoreManagerServiceTestCase extends ISIntegrationTest {
 
         Assert.assertNotNull(userList, "User list retrieval failed");
         Assert.assertEquals(userList.length, 1,
-                            "Unexpected user has same claimURI : " + claimUri + " with claim value : " + claimValue);
+                "Unexpected user has same claimURI : " + claimUri + " with claim value : " + claimValue);
     }
 
 
@@ -398,11 +401,13 @@ public class RemoteUserStoreManagerServiceTestCase extends ISIntegrationTest {
     public void testUpdateCredential()
             throws RemoteUserStoreManagerServiceUserStoreExceptionException, RemoteException {
 
-        RemoteUserStoreManagerServiceClient rmtUserStoreManager = new RemoteUserStoreManagerServiceClient(backendURL, user2,
+        RemoteUserStoreManagerServiceClient rmtUserStoreManager = new RemoteUserStoreManagerServiceClient(backendURL,
+                user2,
                 user2Pwd);
         rmtUserStoreManager.updateCredential(user2, user2NewPwd, user2Pwd);
 
-        //TODO: user old credentials get authenticated even after updating the credentials for some time. Therefore comment out below assertion until get fixed
+        //TODO: user old credentials get authenticated even after updating the credentials for some time. Therefore
+        // comment out below assertion until get fixed
         //TODO: Uncomment after fixing above issue
 //        Assert.assertFalse(remoteUserStoreManagerClient.authenticate(user2, user2Pwd),
 //                           "Credential update failed : old password not unchanged");
@@ -493,7 +498,8 @@ public class RemoteUserStoreManagerServiceTestCase extends ISIntegrationTest {
         remoteUserStoreManagerClient.deleteUserClaimValue(user1, claimUri, null);
 
         //verify deletion
-        Assert.assertNull(remoteUserStoreManagerClient.getUserClaimValue(user1, claimUri, null), "Claim deletion failed");
+        Assert.assertNull(remoteUserStoreManagerClient.getUserClaimValue(user1, claimUri, null), "Claim deletion " +
+                "failed");
     }
 
 
@@ -505,9 +511,12 @@ public class RemoteUserStoreManagerServiceTestCase extends ISIntegrationTest {
         remoteUserStoreManagerClient.deleteUserClaimValues(user2, claims, null);
 
         //verify claim deletion
-        Assert.assertNull(remoteUserStoreManagerClient.getUserClaimValue(user2, claimURI1, null), "Claim deletion failed : " + claimURI1);
-        Assert.assertNull(remoteUserStoreManagerClient.getUserClaimValue(user2, claimURI2, null), "Claim deletion failed : " + claimURI2);
-        Assert.assertNull(remoteUserStoreManagerClient.getUserClaimValue(user2, claimURI2, null), "Claim deletion failed : " + claimURI3);
+        Assert.assertNull(remoteUserStoreManagerClient.getUserClaimValue(user2, claimURI1, null), "Claim deletion " +
+                "failed : " + claimURI1);
+        Assert.assertNull(remoteUserStoreManagerClient.getUserClaimValue(user2, claimURI2, null), "Claim deletion " +
+                "failed : " + claimURI2);
+        Assert.assertNull(remoteUserStoreManagerClient.getUserClaimValue(user2, claimURI2, null), "Claim deletion " +
+                "failed : " + claimURI3);
     }
 
 
@@ -538,6 +547,7 @@ public class RemoteUserStoreManagerServiceTestCase extends ISIntegrationTest {
 
         //verify role deletion
         Assert.assertFalse(remoteUserStoreManagerClient.isExistingRole(role1), "Role deletion failed : " + role1);
-        Assert.assertFalse(remoteUserStoreManagerClient.isExistingRole(role2NewName), "Role deletion failed : " + role2NewName);
+        Assert.assertFalse(remoteUserStoreManagerClient.isExistingRole(role2NewName), "Role deletion failed : " +
+                role2NewName);
     }
 }

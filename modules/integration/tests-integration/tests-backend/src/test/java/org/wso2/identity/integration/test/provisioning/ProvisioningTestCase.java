@@ -114,18 +114,24 @@ public class ProvisioningTestCase extends ISIntegrationTest {
         startOtherCarbonServers();
 
         createServiceClientsForServers(sessionCookie, PORT_OFFSET_0, new CommonConstants.AdminClients[]{
-                CommonConstants.AdminClients.APPLICATION_MANAGEMENT_SERVICE_CLIENT, CommonConstants.AdminClients.IDENTITY_PROVIDER_MGT_SERVICE_CLIENT });
+                CommonConstants.AdminClients.APPLICATION_MANAGEMENT_SERVICE_CLIENT, CommonConstants.AdminClients
+                .IDENTITY_PROVIDER_MGT_SERVICE_CLIENT});
 
         createServiceClientsForServers(null, PORT_OFFSET_1, new CommonConstants.AdminClients[]{
-                CommonConstants.AdminClients.APPLICATION_MANAGEMENT_SERVICE_CLIENT, CommonConstants.AdminClients.IDENTITY_PROVIDER_MGT_SERVICE_CLIENT,
-                CommonConstants.AdminClients.USER_MANAGEMENT_CLIENT });
+                CommonConstants.AdminClients.APPLICATION_MANAGEMENT_SERVICE_CLIENT, CommonConstants.AdminClients
+                .IDENTITY_PROVIDER_MGT_SERVICE_CLIENT,
+                CommonConstants.AdminClients.USER_MANAGEMENT_CLIENT});
 
-        createServiceClientsForServers(null, PORT_OFFSET_2, new CommonConstants.AdminClients[]{ CommonConstants.AdminClients.USER_MANAGEMENT_CLIENT });
+        createServiceClientsForServers(null, PORT_OFFSET_2, new CommonConstants.AdminClients[]{CommonConstants
+                .AdminClients.USER_MANAGEMENT_CLIENT});
 
         // TODO: port offset will no longer needed if TAF 4.3.1 issue get fixed
-        scim_url_0 = getSCIMUrl(PORT_OFFSET_0, automationContextMap.get(PORT_OFFSET_0).getContextUrls().getSecureServiceUrl());
-        scim_url_1 = getSCIMUrl(PORT_OFFSET_1, automationContextMap.get(PORT_OFFSET_1).getContextUrls().getSecureServiceUrl());
-        scim_url_2 = getSCIMUrl(PORT_OFFSET_2, automationContextMap.get(PORT_OFFSET_2).getContextUrls().getSecureServiceUrl());
+        scim_url_0 = getSCIMUrl(PORT_OFFSET_0, automationContextMap.get(PORT_OFFSET_0).getContextUrls()
+                .getSecureServiceUrl());
+        scim_url_1 = getSCIMUrl(PORT_OFFSET_1, automationContextMap.get(PORT_OFFSET_1).getContextUrls()
+                .getSecureServiceUrl());
+        scim_url_2 = getSCIMUrl(PORT_OFFSET_2, automationContextMap.get(PORT_OFFSET_2).getContextUrls()
+                .getSecureServiceUrl());
     }
 
     @AfterClass(alwaysRun = true)
@@ -174,7 +180,7 @@ public class ProvisioningTestCase extends ISIntegrationTest {
     }
 
     @Test(alwaysRun = true, description = "Add SCIM provisioning user on second server",
-          dependsOnMethods = "createUser")
+            dependsOnMethods = "createUser")
     @SetEnvironment(executionEnvironments = {ExecutionEnvironment.ALL})
     public void createUserForSecondServer() throws Exception {
 
@@ -240,9 +246,10 @@ public class ProvisioningTestCase extends ISIntegrationTest {
 
         try {
             identityProviderMgtServiceClients.get(portOffset).addIdP(fedIdp);
-            IdentityProvider addedIdp = identityProviderMgtServiceClients.get(portOffset).getIdPByName(SAMPLE_IDENTITY_PROVIDER_NAME);
+            IdentityProvider addedIdp = identityProviderMgtServiceClients.get(portOffset).getIdPByName
+                    (SAMPLE_IDENTITY_PROVIDER_NAME);
             Assert.assertNotNull(addedIdp, "Failed to create Identity Provider ");
-            identityProviderMgtServiceClients.get(portOffset).updateIdP(SAMPLE_IDENTITY_PROVIDER_NAME,addedIdp);
+            identityProviderMgtServiceClients.get(portOffset).updateIdP(SAMPLE_IDENTITY_PROVIDER_NAME, addedIdp);
 
         } catch (Exception ex) {
             //  log.error("Error occurred during handling identityProviderMgtServiceClient", ex);
@@ -298,7 +305,8 @@ public class ProvisioningTestCase extends ISIntegrationTest {
         if (provisioningIdps.size() > 0) {
             OutboundProvisioningConfig outboundProConfig = new OutboundProvisioningConfig();
             outboundProConfig.setProvisioningIdentityProviders(provisioningIdps.toArray(
-                    new org.wso2.carbon.identity.application.common.model.xsd.IdentityProvider[provisioningIdps.size()]));
+                    new org.wso2.carbon.identity.application.common.model.xsd.IdentityProvider[provisioningIdps.size
+                            ()]));
             serviceProvider.setOutboundProvisioningConfig(outboundProConfig);
         }
         applicationManagementServiceClients.get(portOffset).updateApplicationData(serviceProvider);
@@ -306,7 +314,7 @@ public class ProvisioningTestCase extends ISIntegrationTest {
 
 
     private void createServiceClientsForServers(String sessionCookie, int portOffset,
-                                               CommonConstants.AdminClients [] adminClients) throws Exception {
+                                                CommonConstants.AdminClients[] adminClients) throws Exception {
 
         if (adminClients == null) {
             return;
@@ -314,8 +322,8 @@ public class ProvisioningTestCase extends ISIntegrationTest {
 
         //TODO: Need to remove getSecureServiceUrl method when server start issue got fixed / TAF 4.3.1
         String serviceUrl = getSecureServiceUrl(portOffset,
-                                                automationContextMap.get(portOffset).getContextUrls()
-                                                        .getSecureServiceUrl());
+                automationContextMap.get(portOffset).getContextUrls()
+                        .getSecureServiceUrl());
 
         if (sessionCookie == null) {
 
@@ -339,12 +347,12 @@ public class ProvisioningTestCase extends ISIntegrationTest {
             if (CommonConstants.AdminClients.APPLICATION_MANAGEMENT_SERVICE_CLIENT.equals(client)) {
 
                 applicationManagementServiceClients.put(portOffset, new ApplicationManagementServiceClient
-                        (sessionCookie, serviceUrl,configContext));
+                        (sessionCookie, serviceUrl, configContext));
 
             } else if (CommonConstants.AdminClients.IDENTITY_PROVIDER_MGT_SERVICE_CLIENT.equals(client)) {
 
                 identityProviderMgtServiceClients.put(portOffset, new IdentityProviderMgtServiceClient(sessionCookie,
-                                                                                                       serviceUrl));
+                        serviceUrl));
 
             } else if (CommonConstants.AdminClients.USER_MANAGEMENT_CLIENT.equals(client)) {
 
@@ -419,7 +427,7 @@ public class ProvisioningTestCase extends ISIntegrationTest {
         automationContextMap.put(PORT_OFFSET_1, context1);
 
         CarbonTestServerManager server1 = new CarbonTestServerManager(context1, System.getProperty("carbon.zip"),
-                                                                      startupParameterMap1);
+                startupParameterMap1);
 
         Map<String, String> startupParameterMap2 = new HashMap<String, String>();
         startupParameterMap2.put(PORT_OFFSET_PARAM, String.valueOf(CommonConstants.IS_DEFAULT_OFFSET + PORT_OFFSET_2));
@@ -428,7 +436,7 @@ public class ProvisioningTestCase extends ISIntegrationTest {
         automationContextMap.put(PORT_OFFSET_2, context2);
 
         CarbonTestServerManager server2 = new CarbonTestServerManager(context2, System.getProperty("carbon.zip"),
-                                                                      startupParameterMap2);
+                startupParameterMap2);
 
         manager.startServers(server1, server2);
     }

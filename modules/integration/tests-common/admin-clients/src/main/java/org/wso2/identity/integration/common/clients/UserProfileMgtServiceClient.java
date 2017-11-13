@@ -120,8 +120,8 @@ public class UserProfileMgtServiceClient {
     }
 
     public UserProfileDTO getProfileFieldsForInternalStore() throws RemoteException,
-            UserProfileMgtServiceUserProfileExceptionException{
-    	return userProfileMgtServiceStub.getProfileFieldsForInternalStore();
+            UserProfileMgtServiceUserProfileExceptionException {
+        return userProfileMgtServiceStub.getProfileFieldsForInternalStore();
     }
 
     public boolean isAddProfileEnabled() throws RemoteException, UserProfileMgtServiceUserProfileExceptionException {

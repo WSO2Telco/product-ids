@@ -89,13 +89,14 @@ public class AccountCredentialMgtConfigServiceTestCase extends ISIntegrationTest
             }
         }
 
-        Assert.assertNotNull(emailTemplate, "Email template '"+testConfigName+"' is not found");
+        Assert.assertNotNull(emailTemplate, "Email template '" + testConfigName + "' is not found");
 
         if (emailTemplate != null) {
             Assert.assertEquals(emailTemplate.getName(), testConfigName, "Email template name mismatch");
             Assert.assertEquals(emailTemplate.getSubject(), testSubject, "Email template Subject update failed");
             Assert.assertEquals(emailTemplate.getBody(), testConfigBody, "Email template Body update failed");
-            Assert.assertEquals(emailTemplate.getDisplayName(), testDisplayName, "Email template display name mismatch");
+            Assert.assertEquals(emailTemplate.getDisplayName(), testDisplayName, "Email template display name " +
+                    "mismatch");
             Assert.assertEquals(emailTemplate.getFooter(), testFooter, "Email template footer update failed");
         }
 

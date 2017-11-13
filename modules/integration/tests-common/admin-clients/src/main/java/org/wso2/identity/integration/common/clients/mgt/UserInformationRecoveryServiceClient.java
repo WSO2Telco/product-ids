@@ -35,9 +35,9 @@ import org.wso2.identity.integration.common.clients.AuthenticateStub;
 
 public class UserInformationRecoveryServiceClient {
 
-	private UserInformationRecoveryServiceStub infoRecoveryStub;
+    private UserInformationRecoveryServiceStub infoRecoveryStub;
     private final String serviceName = "UserInformationRecoveryService";
-	
+
     public UserInformationRecoveryServiceClient(String backendURL, String sessionCookie)
             throws AxisFault {
         String endPoint = backendURL + serviceName;
@@ -51,142 +51,144 @@ public class UserInformationRecoveryServiceClient {
         infoRecoveryStub = new UserInformationRecoveryServiceStub(endPoint);
         AuthenticateStub.authenticateStub(userName, password, infoRecoveryStub);
     }
-    
-	public CaptchaInfoBean getCaptcha() throws RemoteException {
-		CaptchaInfoBean bean = null;
-		try {
-			bean = infoRecoveryStub.getCaptcha();
-		} catch (UserInformationRecoveryServiceIdentityMgtServiceExceptionException e) {
-			e.printStackTrace();
-		}
-		return bean;
-	}
-    
+
+    public CaptchaInfoBean getCaptcha() throws RemoteException {
+        CaptchaInfoBean bean = null;
+        try {
+            bean = infoRecoveryStub.getCaptcha();
+        } catch (UserInformationRecoveryServiceIdentityMgtServiceExceptionException e) {
+            e.printStackTrace();
+        }
+        return bean;
+    }
+
     public VerificationBean verifyUser(String username, CaptchaInfoBean captcha) throws RemoteException {
-    	VerificationBean bean = null;
-    	try {
-    		bean = infoRecoveryStub.verifyUser(username, captcha);
-		} catch (UserInformationRecoveryServiceIdentityMgtServiceExceptionException e) {
-			e.printStackTrace();
-		}
-    	return bean;
+        VerificationBean bean = null;
+        try {
+            bean = infoRecoveryStub.verifyUser(username, captcha);
+        } catch (UserInformationRecoveryServiceIdentityMgtServiceExceptionException e) {
+            e.printStackTrace();
+        }
+        return bean;
     }
-    
-    public VerificationBean sendRecoveryNotification(String username, String key, String notificationType) throws RemoteException {
-    	VerificationBean bean = null;
-    	try {
-    		bean = infoRecoveryStub.sendRecoveryNotification(username, key, notificationType);
-		} catch (UserInformationRecoveryServiceIdentityMgtServiceExceptionException e) {
-			e.printStackTrace();
-		}
-    	return bean;
+
+    public VerificationBean sendRecoveryNotification(String username, String key, String notificationType) throws
+            RemoteException {
+        VerificationBean bean = null;
+        try {
+            bean = infoRecoveryStub.sendRecoveryNotification(username, key, notificationType);
+        } catch (UserInformationRecoveryServiceIdentityMgtServiceExceptionException e) {
+            e.printStackTrace();
+        }
+        return bean;
     }
-    
+
     public VerificationBean verifyConfirmationCode(String username, String code,
-			CaptchaInfoBean captcha) throws RemoteException {
-    	VerificationBean bean = null;
-    	try {
-    		bean = infoRecoveryStub.verifyConfirmationCode(username, code, captcha);
-		} catch (UserInformationRecoveryServiceIdentityMgtServiceExceptionException e) {
-			e.printStackTrace();
-		}
-    	return bean;
+                                                   CaptchaInfoBean captcha) throws RemoteException {
+        VerificationBean bean = null;
+        try {
+            bean = infoRecoveryStub.verifyConfirmationCode(username, code, captcha);
+        } catch (UserInformationRecoveryServiceIdentityMgtServiceExceptionException e) {
+            e.printStackTrace();
+        }
+        return bean;
     }
-    
+
     public VerificationBean updatePassword(String username, String confirmationCode,
-			String newPassword) throws RemoteException {
-    	VerificationBean bean = null;
-    	try {
-    		bean = infoRecoveryStub.updatePassword(username, confirmationCode, newPassword);
-		} catch (UserInformationRecoveryServiceIdentityMgtServiceExceptionException e) {
-			e.printStackTrace();
-		}
-    	return bean;
+                                           String newPassword) throws RemoteException {
+        VerificationBean bean = null;
+        try {
+            bean = infoRecoveryStub.updatePassword(username, confirmationCode, newPassword);
+        } catch (UserInformationRecoveryServiceIdentityMgtServiceExceptionException e) {
+            e.printStackTrace();
+        }
+        return bean;
     }
-    
-    public ChallengeQuestionIdsDTO getUserChallengeQuestionIds(String username, String confirmation) throws RemoteException {
-    	ChallengeQuestionIdsDTO bean = null;
-    	try {
-    		bean = infoRecoveryStub.getUserChallengeQuestionIds(username, confirmation);
-		} catch (UserInformationRecoveryServiceIdentityMgtServiceExceptionException e) {
-			e.printStackTrace();
-		}
-    	return bean;
+
+    public ChallengeQuestionIdsDTO getUserChallengeQuestionIds(String username, String confirmation) throws
+            RemoteException {
+        ChallengeQuestionIdsDTO bean = null;
+        try {
+            bean = infoRecoveryStub.getUserChallengeQuestionIds(username, confirmation);
+        } catch (UserInformationRecoveryServiceIdentityMgtServiceExceptionException e) {
+            e.printStackTrace();
+        }
+        return bean;
     }
-    
+
     public UserChallengesDTO getUserChallengeQuestion(String userName, String confirmation,
-			String questionId) throws RemoteException {
-    	UserChallengesDTO bean = null;
-    	try {
-    		bean = infoRecoveryStub.getUserChallengeQuestion(userName, confirmation, questionId);
-		} catch (UserInformationRecoveryServiceIdentityMgtServiceExceptionException e) {
-			e.printStackTrace();
-		}
-    	return bean;
+                                                      String questionId) throws RemoteException {
+        UserChallengesDTO bean = null;
+        try {
+            bean = infoRecoveryStub.getUserChallengeQuestion(userName, confirmation, questionId);
+        } catch (UserInformationRecoveryServiceIdentityMgtServiceExceptionException e) {
+            e.printStackTrace();
+        }
+        return bean;
     }
-    
+
     public VerificationBean verifyUserChallengeAnswer(String userName, String confirmation,
-			String questionId, String answer) throws RemoteException {
-    	VerificationBean bean = null;
-    	try {
-			bean = infoRecoveryStub.verifyUserChallengeAnswer(userName, confirmation, questionId, answer);
-		} catch (UserInformationRecoveryServiceIdentityMgtServiceExceptionException e) {
-			e.printStackTrace();
-		}
-    	return bean;
+                                                      String questionId, String answer) throws RemoteException {
+        VerificationBean bean = null;
+        try {
+            bean = infoRecoveryStub.verifyUserChallengeAnswer(userName, confirmation, questionId, answer);
+        } catch (UserInformationRecoveryServiceIdentityMgtServiceExceptionException e) {
+            e.printStackTrace();
+        }
+        return bean;
     }
-    
+
     public ChallengeQuestionDTO[] getAllChallengeQuestions() throws RemoteException {
-    	ChallengeQuestionDTO[] questions = null;
-    	try {
-			questions = infoRecoveryStub.getAllChallengeQuestions();
-		} catch (UserInformationRecoveryServiceIdentityMgtServiceExceptionException e) {
-			e.printStackTrace();
-		}
-    	return questions;
+        ChallengeQuestionDTO[] questions = null;
+        try {
+            questions = infoRecoveryStub.getAllChallengeQuestions();
+        } catch (UserInformationRecoveryServiceIdentityMgtServiceExceptionException e) {
+            e.printStackTrace();
+        }
+        return questions;
     }
-    
+
     public UserIdentityClaimDTO[] getUserIdentitySupportedClaims(String dialect) throws RemoteException {
-    	UserIdentityClaimDTO[] claims = null;
-    	try {
-			claims = infoRecoveryStub.getUserIdentitySupportedClaims(dialect);
-		} catch (UserInformationRecoveryServiceIdentityExceptionException e) {
-			e.printStackTrace();
-		}
-    	return claims;
+        UserIdentityClaimDTO[] claims = null;
+        try {
+            claims = infoRecoveryStub.getUserIdentitySupportedClaims(dialect);
+        } catch (UserInformationRecoveryServiceIdentityExceptionException e) {
+            e.printStackTrace();
+        }
+        return claims;
     }
-    
+
     public VerificationBean verifyAccount(UserIdentityClaimDTO[] claims, CaptchaInfoBean captcha,
-			String tenantDomain) throws RemoteException {
-    	VerificationBean bean = null;
-    	try {
-			bean = infoRecoveryStub.verifyAccount(claims, captcha, tenantDomain);
-		} catch (UserInformationRecoveryServiceIdentityMgtServiceExceptionException e) {
-			e.printStackTrace();
-		}
-    	return bean;
+                                          String tenantDomain) throws RemoteException {
+        VerificationBean bean = null;
+        try {
+            bean = infoRecoveryStub.verifyAccount(claims, captcha, tenantDomain);
+        } catch (UserInformationRecoveryServiceIdentityMgtServiceExceptionException e) {
+            e.printStackTrace();
+        }
+        return bean;
     }
-    
+
     public VerificationBean registerUser(String userName, String password,
-			UserIdentityClaimDTO[] claims, String profileName, String tenantDomain) throws RemoteException {
-    	VerificationBean bean = null;
-    	try {
-			bean = infoRecoveryStub.registerUser(userName, password, claims, profileName, tenantDomain);
-		} catch (UserInformationRecoveryServiceIdentityMgtServiceExceptionException e) {
-			e.printStackTrace();
-		}
-    	return bean;
+                                         UserIdentityClaimDTO[] claims, String profileName, String tenantDomain)
+            throws RemoteException {
+        VerificationBean bean = null;
+        try {
+            bean = infoRecoveryStub.registerUser(userName, password, claims, profileName, tenantDomain);
+        } catch (UserInformationRecoveryServiceIdentityMgtServiceExceptionException e) {
+            e.printStackTrace();
+        }
+        return bean;
     }
-    
+
     public VerificationBean confirmUserSelfRegistration(String username, String code,
-			CaptchaInfoBean captcha, String tenantDomain) throws RemoteException {
-    	VerificationBean bean = null;
-    	try {
-			bean = infoRecoveryStub.confirmUserSelfRegistration(username, code, captcha, tenantDomain);
-		} catch (UserInformationRecoveryServiceIdentityMgtServiceExceptionException e) {
-			e.printStackTrace();
-		}
-    	return bean;
+                                                        CaptchaInfoBean captcha, String tenantDomain) throws RemoteException {
+        VerificationBean bean = null;
+        try {
+            bean = infoRecoveryStub.confirmUserSelfRegistration(username, code, captcha, tenantDomain);
+        } catch (UserInformationRecoveryServiceIdentityMgtServiceExceptionException e) {
+            e.printStackTrace();
+        }
+        return bean;
     }
 }
-	

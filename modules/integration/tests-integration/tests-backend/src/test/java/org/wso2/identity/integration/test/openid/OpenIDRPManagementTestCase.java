@@ -30,36 +30,36 @@ import org.wso2.identity.integration.common.utils.ISIntegrationTest;
 
 public class OpenIDRPManagementTestCase extends ISIntegrationTest {
 
-	OpenIDProviderServiceClient openidServiceClient;
-	
+    OpenIDProviderServiceClient openidServiceClient;
+
     private String userName = "admin";
     private String profileName = "default";
-    
+
     private String rp1Url = "http://localhost:8490/openidclient";
     private boolean rp1TrustedAlways = false;
     private int rp1VisitCount = 0;
     private Date rp1lastVisit = Calendar.getInstance().getTime();
-    
+
     private String rp2Url = "http://localhost:8490/openidclient2";
     private boolean rp2TrustedAlways = true;
     private int rp2VisitCount = 1;
     private Date rp2lastVisit = Calendar.getInstance().getTime();
-    
+
     @BeforeClass(alwaysRun = true)
     public void testInit() throws Exception {
         super.init();
-        
+
         openidServiceClient = new OpenIDProviderServiceClient(backendURL, sessionCookie);
     }
-    
+
     @AfterClass(alwaysRun = true)
     public void atEnd() throws Exception {
-     	openidServiceClient = null;
+        openidServiceClient = null;
     }
 
     @Test(alwaysRun = true, description = "Authenticate with Password")
     public void testOpenidRPAddUpdate() {
-        
+
         // add rp1
         OpenIDUserRPDTO rp1dto = new OpenIDUserRPDTO();
         rp1dto.setDefaultProfileName(profileName);
@@ -69,13 +69,13 @@ public class OpenIDRPManagementTestCase extends ISIntegrationTest {
         rp1dto.setTrustedAlways(rp1TrustedAlways);
         rp1dto.setVisitCount(rp1VisitCount);
         rp1dto.setLastVisit(rp1lastVisit);
-        
+
         try {
             openidServiceClient.updateOpenIDUserRPInfo(rp1dto);
         } catch (Exception e) {
             Assert.fail("Error while updating user RPInfo", e);
         }
-        
+
         // add rp2
         OpenIDUserRPDTO rp2dto = new OpenIDUserRPDTO();
         rp2dto.setDefaultProfileName(profileName);
@@ -85,47 +85,47 @@ public class OpenIDRPManagementTestCase extends ISIntegrationTest {
         rp2dto.setTrustedAlways(rp2TrustedAlways);
         rp2dto.setVisitCount(rp2VisitCount);
         rp2dto.setLastVisit(rp2lastVisit);
-        
+
         try {
             openidServiceClient.updateOpenIDUserRPInfo(rp2dto);
         } catch (Exception e) {
             Assert.fail("Error while updating user RPInfo", e);
         }
-        
+
         // reading rps back 
         OpenIDUserRPDTO[] rps = null;
-        
+
         try {
             rps = openidServiceClient.getOpenIDUserRPs(Util.getDefaultOpenIDIdentifier(userName));
         } catch (Exception e) {
             Assert.fail("Error while getting user RPs", e);
         }
-        
+
         // we should get two rps 
         Assert.assertEquals(rps.length, 2);
-        
+
         // lets read values back and check
-        for(OpenIDUserRPDTO rp : rps) {
-            
-            if(rp1Url.equals(rp.getRpUrl())) {
+        for (OpenIDUserRPDTO rp : rps) {
+
+            if (rp1Url.equals(rp.getRpUrl())) {
                 Assert.assertEquals(rp.getTrustedAlways(), rp1TrustedAlways);
                 Assert.assertEquals(rp.getUserName(), userName);
-                
-            } else if(rp2Url.equals(rp.getRpUrl())) {
+
+            } else if (rp2Url.equals(rp.getRpUrl())) {
                 Assert.assertEquals(rp.getTrustedAlways(), rp2TrustedAlways);
                 Assert.assertEquals(rp.getUserName(), userName);
-                
+
             } else {
                 Assert.fail("Invalid RP returned");
             }
-            
+
         }
-        
+
         // update the RP1, lets trust it always
         rp1TrustedAlways = true;
         rp1VisitCount++;
         rp1lastVisit = Calendar.getInstance().getTime();
-        
+
         // update rp1
         OpenIDUserRPDTO rp1Updateddto = new OpenIDUserRPDTO();
         rp1Updateddto.setDefaultProfileName(profileName);
@@ -140,7 +140,7 @@ public class OpenIDRPManagementTestCase extends ISIntegrationTest {
         } catch (Exception e) {
             Assert.fail("Error while updating user RPInfo", e);
         }
-        
+
         // read the RP1 back now
         OpenIDUserRPDTO rp1updted = null;
         try {
@@ -148,11 +148,11 @@ public class OpenIDRPManagementTestCase extends ISIntegrationTest {
         } catch (Exception e) {
             Assert.fail("Error while updating user RPInfo", e);
         }
-        
+
         Assert.assertEquals(rp1updted.getRpUrl(), rp1Url);
-        
+
         Assert.assertEquals(rp1updted.getTrustedAlways(), rp1TrustedAlways);
-        
+
     }
 
 }

@@ -90,7 +90,8 @@
 //            expectedExceptions = LoginAuthenticationExceptionException.class)
 //    public void testDisableUserStore() throws Exception {
 //        userStoreConfigurationClient.changeUserStoreState(domain, true);
-//        assertTrue("User store is active even after 15 min", userStoreConfigUtils.waitForUserStoreUnDeployment(domain));
+//        assertTrue("User store is active even after 15 min", userStoreConfigUtils.waitForUserStoreUnDeployment
+// (domain));
 //
 //        AuthenticatorClient loginLogoutUtil =
 //                new AuthenticatorClient(backendURL);

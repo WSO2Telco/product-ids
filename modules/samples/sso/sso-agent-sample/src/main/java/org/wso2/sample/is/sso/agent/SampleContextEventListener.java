@@ -1,13 +1,13 @@
 /**
  * Copyright (c) WSO2 Inc. (http://www.wso2.org) All Rights Reserved.
- *
- *  WSO2 Inc. licenses this file to you under the Apache License,
- *  Version 2.0 (the "License"); you may not use this file except
- *  in compliance with the License.
- *  You may obtain a copy of the License at
- *
- *    http://www.apache.org/licenses/LICENSE-2.0
- *
+ * <p>
+ * WSO2 Inc. licenses this file to you under the Apache License,
+ * Version 2.0 (the "License"); you may not use this file except
+ * in compliance with the License.
+ * You may obtain a copy of the License at
+ * <p>
+ * http://www.apache.org/licenses/LICENSE-2.0
+ * <p>
  * Unless required by applicable law or agreed to in writing,
  * software distributed under the License is distributed on an
  * "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
@@ -41,15 +41,15 @@ public class SampleContextEventListener implements ServletContextListener {
 
         properties = new Properties();
         try {
-            if(servletContextEvent.getServletContext().getContextPath().contains("travelocity.com")) {
+            if (servletContextEvent.getServletContext().getContextPath().contains("travelocity.com")) {
                 properties.load(servletContextEvent.getServletContext().
                         getResourceAsStream("/WEB-INF/classes/travelocity.properties"));
-            } else if(servletContextEvent.getServletContext().getContextPath().contains("avis.com")) {
+            } else if (servletContextEvent.getServletContext().getContextPath().contains("avis.com")) {
                 properties.load(servletContextEvent.getServletContext().
                         getResourceAsStream("/WEB-INF/classes/avis.properties"));
             }
             InputStream keyStoreInputStream = servletContextEvent.getServletContext().
-                    getResourceAsStream("WEB-INF/classes/wso2carbon.jks");
+                    getResourceAsStream("/WEB-INF/classes/wso2carbon.jks");
             SSOAgentX509Credential credential =
                     new SSOAgentX509KeyStoreCredential(keyStoreInputStream,
                             properties.getProperty("KeyStorePassword").toCharArray(),
@@ -62,7 +62,7 @@ public class SampleContextEventListener implements ServletContextListener {
             config.getOpenId().setAttributesRequestor(new SampleAttributesRequestor());
             servletContextEvent.getServletContext().
                     setAttribute(SSOAgentConstants.CONFIG_BEAN_NAME, config);
-        } catch (IOException e){
+        } catch (IOException e) {
             LOGGER.log(Level.SEVERE, e.getMessage(), e);
         } catch (SSOAgentException e) {
             LOGGER.log(Level.SEVERE, e.getMessage(), e);
@@ -77,7 +77,7 @@ public class SampleContextEventListener implements ServletContextListener {
      * Get the properties of the sample
      * @return Properties
      */
-    public static Properties getProperties(){
+    public static Properties getProperties() {
         return properties;
     }
 }

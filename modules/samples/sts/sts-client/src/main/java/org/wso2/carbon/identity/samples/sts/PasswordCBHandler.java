@@ -27,26 +27,26 @@ import javax.security.auth.callback.UnsupportedCallbackException;
 
 import org.apache.ws.security.WSPasswordCallback;
 
-public class PasswordCBHandler implements CallbackHandler{
-    
+public class PasswordCBHandler implements CallbackHandler {
+
     private String username;
     private String password;
     private String keyAlias;
     private String keyPassword;
-    
+
     public void handle(Callback[] callbacks) throws IOException, UnsupportedCallbackException {
 
         readUsernamePasswordFromProperties();
-        
+
         WSPasswordCallback pwcb = (WSPasswordCallback) callbacks[0];
         String id = pwcb.getIdentifier();
         int usage = pwcb.getUsage();
 
         if (usage == WSPasswordCallback.USERNAME_TOKEN) {
 
-           if (username.equals(id)) {
-               pwcb.setPassword(password);
-           }
+            if (username.equals(id)) {
+                pwcb.setPassword(password);
+            }
         } else if (usage == WSPasswordCallback.SIGNATURE || usage == WSPasswordCallback.DECRYPT) {
 
             if (keyAlias.equals(id)) {
@@ -54,8 +54,8 @@ public class PasswordCBHandler implements CallbackHandler{
             }
         }
     }
-    
-    public void readUsernamePasswordFromProperties() throws IOException{
+
+    public void readUsernamePasswordFromProperties() throws IOException {
         Properties properties = new Properties();
         FileInputStream freader = new FileInputStream(ClientConstants.PROPERTIES_FILE_PATH);
         properties.load(freader);

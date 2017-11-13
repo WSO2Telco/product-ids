@@ -33,7 +33,7 @@
 
         <h2>Step 1: Changing the default key store</h2>
 
-        <p>Open wso2telcoids-3.2.0/repository/conf/carbon.xml file</p>
+        <p>Open wso2is-3.2.0/repository/conf/carbon.xml file</p>
 
         <p>This private key is used for the HTTPS channel and for the token issuer to sign the
             issued tokens.
@@ -79,7 +79,7 @@
 
         <h2>Step 2: Changing the host name</h2>
 
-        <p>Open wso2telcoids-3.2.0/repository/conf/carbon.xml file</p>
+        <p>Open wso2is-3.2.0/repository/conf/carbon.xml file</p>
 
         <p>The host name of the Identity Provider must be changed to match the "Common Name" of the
             certificate of the private key.
@@ -99,7 +99,7 @@
 
         <h2>Step 3: Changing the HTTP/HTTPS ports</h2>
 
-        <p>Open wso2telcoids-3.2.0/repository/conf/transports.xml file</p>
+        <p>Open wso2is-3.2.0/repository/conf/transports.xml file</p>
 
         <p>The HTTP and HTTPS port also can be changed by changing the following configuration
             elements.
@@ -117,7 +117,7 @@
 
         <h2>Step 4: Changing the OpenID Provider configurations</h2>
 
-        <p>Open wso2telcoids-3.2.0/repository/conf/identity.xml file</p>
+        <p>Open wso2is-3.2.0/repository/conf/identity.xml file</p>
 
         <p>OpenID provider server url can be changed by changing the following configuration
             element.

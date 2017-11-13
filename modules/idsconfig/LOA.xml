@@ -1,147 +1,165 @@
-<LOAConfiguration>
-	<LOA>
+<AuthenticationLevels>
+	<AuthenticationLevel>
 		<Level>7</Level>
 		<!-- If whole LOA fails, should fall back to defined level -->
-		<Authentication fallbacklevel="1">
+		<Authentication>
+			<LevelToFallback>1</LevelToFallback>
 			<Authenticators>
-				<Authenicator onfail="break">MSISDNAuthenticator</Authenicator>
-				<Authenicator onfail="break">SMSAuthenticator</Authenicator>
-				<Authenicator onfail="break">USSDPinAuthenticator</Authenicator>
-				<!-- If onFail attribute values is 'break', and that authentactor fails,whole LOA should fail -->
+				<Authenicator onfail="break" supportiveFlow="any">MSISDNAuthenticator</Authenicator>
+				<Authenicator onfail="break" supportiveFlow="any">SMSAuthenticator</Authenicator>
+				<Authenicator onfail="break" supportiveFlow="any">USSDPinAuthenticator</Authenicator>
+				<!-- If onFail attribute values is 'break', and that authenticator fails,whole LOA should fail -->
 			</Authenticators>
 		</Authentication>
-	</LOA>
-	<LOA>
+	</AuthenticationLevel>
+	<AuthenticationLevel>
 		<Level>6</Level>
 		<!-- If whole LOA fails, should fall back to defined level -->
-		<Authentication fallbacklevel="5">
+		<Authentication>
+			<LevelToFallback>5</LevelToFallback>
 			<Authenticators>
-				<Authenicator onfail="fallback">HeaderEnrichmentAuthenticator</Authenicator>
-				<Authenicator onfail="break">SMSAuthenticator</Authenicator>
-				<!-- If onFail attribute values is 'break', and that authentactor fails,whole LOA should fail -->
+				<Authenicator onfail="fallback" supportiveFlow="onnet">HeaderEnrichmentAuthenticator</Authenicator>
+				<Authenicator onfail="break" supportiveFlow="any">SMSAuthenticator</Authenicator>
+				<!-- If onFail attribute values is 'break', and that authenticator fails,whole LOA should fail -->
 			</Authenticators>
 		</Authentication>
-	</LOA>
-	<LOA>
+	</AuthenticationLevel>
+	<AuthenticationLevel>
 		<Level>5</Level>
 		<!-- If whole LOA fails, should fall back to defined level -->
-		<Authentication fallbacklevel="51">
+		<Authentication>
+			<LevelToFallback>51</LevelToFallback>
 			<Authenticators>
-				<Authenicator onfail="break">MSISDNAuthenticator</Authenicator>
-				<Authenicator onfail="break">SMSAuthenticator</Authenicator>
-				<!-- If onFail attribute values is 'break', and that authentactor fails,whole LOA should fail -->
+				<Authenicator onfail="break" supportiveFlow="any">MSISDNAuthenticator</Authenicator>
+				<Authenicator onfail="break" supportiveFlow="any">SMSAuthenticator</Authenicator>
+				<!-- If onFail attribute values is 'break', and that authenticator fails,whole LOA should fail -->
 			</Authenticators>
 		</Authentication>
-	</LOA>
-	<LOA>
+	</AuthenticationLevel>
+	<AuthenticationLevel>
 		<Level>51</Level>
 		<Authentication>
 			<Authenticators>
-				<Authenicator onfail="break">MSISDNAuthenticator</Authenicator>
-				<Authenicator onfail="break">USSDPinAuthenticator</Authenicator>
-				<!-- If onFail attribute values is 'break', and that authentactor fails,whole LOA should fail -->
+				<Authenicator onfail="break" supportiveFlow="any">MSISDNAuthenticator</Authenicator>
+				<Authenicator onfail="break" supportiveFlow="any">USSDPinAuthenticator</Authenicator>
+				<!-- If onFail attribute values is 'break', and that authenticator fails,whole LOA should fail -->
 			</Authenticators>
 		</Authentication>
-	</LOA>
-	<LOA>
+	</AuthenticationLevel>
+	<AuthenticationLevel>
 		<Level>4</Level>
 		<!-- If whole LOA fails, should fall back to defined level -->
-		<Authentication fallbacklevel="41">
+		<Authentication>
+			<LevelToFallback>41</LevelToFallback>
 			<Authenticators>
-				<Authenicator onfail="break">MSISDNAuthenticator</Authenicator>
-				<Authenicator onfail="break">USSDPinAuthenticator</Authenicator>
-				<!-- If onFail attribute values is 'break', and that authentactor fails,whole LOA should fail -->
+				<Authenicator onfail="break" supportiveFlow="any">MSISDNAuthenticator</Authenicator>
+				<Authenicator onfail="break" supportiveFlow="any">USSDPinAuthenticator</Authenicator>
+				<!-- If onFail attribute values is 'break', and that authenticator fails,whole LOA should fail -->
 			</Authenticators>
 		</Authentication>
-	</LOA>
-	<LOA>
+	</AuthenticationLevel>
+	<AuthenticationLevel>
 		<Level>41</Level>
 		<Authentication>
 			<Authenticators>
-				<Authenicator onfail="break">MSISDNAuthenticator</Authenicator>
-				<Authenicator onfail="break">SMSAuthenticator</Authenicator>
-				<!-- If onFail attribute values is 'break', and that authentactor fails,whole LOA should fail -->
+				<Authenicator onfail="break" supportiveFlow="any">MSISDNAuthenticator</Authenicator>
+				<Authenicator onfail="break" supportiveFlow="any">SMSAuthenticator</Authenicator>
+				<!-- If onFail attribute values is 'break', and that authenticator fails,whole LOA should fail -->
 			</Authenticators>
 		</Authentication>
-	</LOA>
-	<LOA>
+	</AuthenticationLevel>
+	<AuthenticationLevel>
 		<Level>3</Level>
-		<Authentication fallbacklevel="31">
+		<Authentication>
+			<LevelToFallback>31</LevelToFallback>
 			<Authenticators>
 				<!--<Authenicator onfail="fallback">HeaderEnrichmentAuthenticator</Authenicator>-->
-				<Authenicator onfail="fallback">HeaderEnrichmentAuthenticator</Authenicator>
-				<Authenicator onfail="break">USSDPinAuthenticator</Authenicator>
-				<!-- If onFail attribute values is 'break', and that authentactor fails,whole LOA should fail -->
+				<Authenicator onfail="fallback" supportiveFlow="onnet">HeaderEnrichmentAuthenticator</Authenicator>
+				<Authenicator onfail="break" supportiveFlow="onnet">USSDPinAuthenticator</Authenicator>
+				<!-- If onFail attribute values is 'break', and that authenticator fails,whole LOA should fail -->
 			</Authenticators>
 		</Authentication>
-	</LOA>
-	<LOA>
+	</AuthenticationLevel>
+	<AuthenticationLevel>
 		<Level>31</Level>
 		<Authentication>
 			<Authenticators>
-				<Authenicator onfail="break">MSISDNAuthenticator</Authenicator>
-				<Authenicator onfail="break">USSDPinAuthenticator</Authenicator>
-				<!-- If onFail attribute values is 'break', and that authentactor fails,whole LOA should fail -->
+				<Authenicator onfail="break" supportiveFlow="any">MSISDNAuthenticator</Authenicator>
+				<Authenicator onfail="break" supportiveFlow="any">USSDPinAuthenticator</Authenicator>
+				<!-- If onFail attribute values is 'break', and that authenticator fails,whole LOA should fail -->
 			</Authenticators>
 		</Authentication>
-	</LOA>
-	<LOA>
+	</AuthenticationLevel>
+	<AuthenticationLevel>
 		<Level>2</Level>
-		<Authentication fallbacklevel="21">
+		<Authentication>
+			<LevelToFallback>21</LevelToFallback>
 			<Authenticators>
-				<Authenicator onfail="fallback">HeaderEnrichmentAuthenticator</Authenicator>
-				<!-- If onFail attribute values is 'break', and that authentactor fails,whole LOA should fail -->
+				<Authenicator onfail="fallback" supportiveFlow="onnet">HeaderEnrichmentAuthenticator</Authenicator>
+				<!-- If onFail attribute values is 'break', and that authenticator fails,whole LOA should fail -->
 			</Authenticators>
 		</Authentication>
-	</LOA>
-	<LOA>
+	</AuthenticationLevel>
+	<AuthenticationLevel>
 		<Level>21</Level>
 		<Authentication>
+			<LevelToFallback>10</LevelToFallback>
 			<Authenticators>
-				<Authenicator onfail="break">MSISDNAuthenticator</Authenicator>
-				<Authenicator onfail="break">USSDAuthenticator</Authenicator>
-				<!-- If onFail attribute values is 'break', and that authentactor fails,whole LOA should fail -->
+				<Authenicator onfail="break" supportiveFlow="any">MSISDNAuthenticator</Authenicator>
+				<Authenicator onfail="continue" supportiveFlow="any">SmartPhoneAppAuthenticator</Authenicator>
+				<Authenicator onfail="fallback" supportiveFlow="any">USSDAuthenticator</Authenicator>
+				<!-- If onFail attribute values is 'break', and that authenticator fails,whole LOA should fail -->
 			</Authenticators>
 		</Authentication>
-	</LOA>
-	<LOA>
+	</AuthenticationLevel>
+	<AuthenticationLevel>
 		<Level>1</Level>
 		<Authentication>
 			<Authenticators>
-				<Authenicator onfail="break">BasicAuthenticator</Authenicator>
-				<!-- If onFail attribute values is 'break', and that authentactor fails,whole LOA should fail -->
+				<Authenicator onfail="break" supportiveFlow="any">BasicAuthenticator</Authenicator>
+				<!-- If onFail attribute values is 'break', and that authenticator fails,whole LOA should fail -->
 			</Authenticators>
 		</Authentication>
-	</LOA>
-	 <LOA>
-                <Level>8</Level>
-                <Authentication fallbacklevel="71">
-                        <Authenticators>
-                                <Authenicator onfail="fallback">HeaderEnrichmentAuthenticator</Authenicator>
-                                <!-- If onFail attribute values is 'break', and that authentactor fails,whole LOA should fail -->
-                        </Authenticators>
-			 <Authenicator onfail="break">USSDAuthenticator</Authenicator>
-                </Authentication>
-        </LOA>
-         <LOA>
-                <Level>71</Level>
-                <Authentication>
-                        <Authenticators>
-                                <Authenicator onfail="break">MSISDNAuthenticator</Authenicator>
-                                <Authenicator onfail="break">USSDAuthenticator</Authenicator>
-                                <!-- If onFail attribute values is 'break', and that authentactor fails,whole LOA should fail -->
-                        </Authenticators>
-                </Authentication>
-        </LOA>
-	<LOA>
-                <Level>9</Level>
-                <Authentication>
-                        <Authenticators>
-                                <Authenicator onfail="break">MSISDNAuthenticator</Authenicator>
-                                <Authenicator onfail="break">MePinAuthenticatorPIN</Authenicator>
-                                <!-- If onFail attribute values is 'break', and that authentactor fails, whole LOA should fail -->
-                        </Authenticators>
-                </Authentication>
-        </LOA>
+	</AuthenticationLevel>
+	<AuthenticationLevel>
+		<Level>8</Level>
+		<Authentication>
+			<LevelToFallback>71</LevelToFallback>
+			<Authenticators>
+				<Authenicator onfail="fallback" supportiveFlow="onnet">HeaderEnrichmentAuthenticator</Authenicator>
+				<Authenicator onfail="break" supportiveFlow="any">USSDAuthenticator</Authenicator>
+				<!-- If onFail attribute values is 'break', and that authenticator fails,whole LOA should fail -->
+			</Authenticators>
 
-</LOAConfiguration>
+		</Authentication>
+	</AuthenticationLevel>
+	<AuthenticationLevel>
+		<Level>71</Level>
+		<Authentication>
+			<Authenticators>
+				<Authenicator onfail="break" supportiveFlow="any">MSISDNAuthenticator</Authenicator>
+				<Authenicator onfail="break" supportiveFlow="any">USSDAuthenticator</Authenicator>
+				<!-- If onFail attribute values is 'break', and that authenticator fails,whole LOA should fail -->
+			</Authenticators>
+		</Authentication>
+	</AuthenticationLevel>
+	<AuthenticationLevel>
+		<Level>9</Level>
+		<Authentication>
+			<Authenticators>
+				<Authenicator onfail="break" supportiveFlow="any">MSISDNAuthenticator</Authenicator>
+				<Authenicator onfail="break" supportiveFlow="any">MePinAuthenticatorPIN</Authenicator>
+				<!-- If onFail attribute values is 'break', and that authentactor fails, whole LOA should fail -->
+			</Authenticators>
+		</Authentication>
+	</AuthenticationLevel>
+	<AuthenticationLevel>
+		<Level>10</Level>
+		<Authentication>
+			<Authenticators>
+				<Authenicator onfail="break" supportiveFlow="any">SMSAuthenticator</Authenicator>
+				<!-- If onFail attribute values is 'break', and that authenticator fails,whole LOA should fail -->
+			</Authenticators>
+		</Authentication>
+	</AuthenticationLevel>
+</AuthenticationLevels>

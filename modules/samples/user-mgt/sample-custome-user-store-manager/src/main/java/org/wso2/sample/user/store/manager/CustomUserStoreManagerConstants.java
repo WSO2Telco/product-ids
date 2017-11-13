@@ -27,44 +27,63 @@ public class CustomUserStoreManagerConstants {
     //Properties for CustomUserStoreManager
     public static final ArrayList<Property> CUSTOM_USERSTORE_PROPERTIES = new ArrayList<Property>();
     public static final ArrayList<Property> OPTIONAL_CUSTOM_USERSTORE_PROPERTIES = new ArrayList<Property>();
+
     static {
-        setMandatoryProperty(UserStoreConfigConstants.connectionName,"uid=admin,ou=system",UserStoreConfigConstants.connectionNameDescription);
-        setMandatoryProperty(UserStoreConfigConstants.connectionURL,"ldap://localhost:10389",UserStoreConfigConstants.connectionURLDescription);
-        setMandatoryProperty(UserStoreConfigConstants.connectionPassword,"admin",UserStoreConfigConstants.connectionPasswordDescription);
-        setMandatoryProperty(UserStoreConfigConstants.userSearchBase,"ou=system",UserStoreConfigConstants.userSearchBaseDescription);
-        setMandatoryProperty(UserStoreConfigConstants.disabled,"false",UserStoreConfigConstants.disabledDescription);
-        setMandatoryProperty(UserStoreConfigConstants.usernameListFilter, "(objectClass=person)", UserStoreConfigConstants.usernameListFilterDescription);
-        setMandatoryProperty(UserStoreConfigConstants.userNameAttribute, "uid", UserStoreConfigConstants.userNameAttributeDescription);
-        setMandatoryProperty("ReadOnly","true","Indicates whether the user store of this realm operates in the user read only mode or not");
+        setMandatoryProperty(UserStoreConfigConstants.connectionName, "uid=admin,ou=system", UserStoreConfigConstants
+                .connectionNameDescription);
+        setMandatoryProperty(UserStoreConfigConstants.connectionURL, "ldap://localhost:10389",
+                UserStoreConfigConstants.connectionURLDescription);
+        setMandatoryProperty(UserStoreConfigConstants.connectionPassword, "admin", UserStoreConfigConstants
+                .connectionPasswordDescription);
+        setMandatoryProperty(UserStoreConfigConstants.userSearchBase, "ou=system", UserStoreConfigConstants
+                .userSearchBaseDescription);
+        setMandatoryProperty(UserStoreConfigConstants.disabled, "false", UserStoreConfigConstants.disabledDescription);
+        setMandatoryProperty(UserStoreConfigConstants.usernameListFilter, "(objectClass=person)",
+                UserStoreConfigConstants.usernameListFilterDescription);
+        setMandatoryProperty(UserStoreConfigConstants.userNameAttribute, "uid", UserStoreConfigConstants
+                .userNameAttributeDescription);
+        setMandatoryProperty("ReadOnly", "true", "Indicates whether the user store of this realm operates in the user" +
+                " read only mode or not");
 
-        setProperty(UserStoreConfigConstants.maxUserNameListLength, "100", UserStoreConfigConstants.maxUserNameListLengthDescription);
-        setProperty(UserStoreConfigConstants.maxRoleNameListLength, "100", UserStoreConfigConstants.maxRoleNameListLengthDescription);
-        setProperty(UserStoreConfigConstants.userRolesCacheEnabled, "true", UserStoreConfigConstants.userRolesCacheEnabledDescription);
+        setProperty(UserStoreConfigConstants.maxUserNameListLength, "100", UserStoreConfigConstants
+                .maxUserNameListLengthDescription);
+        setProperty(UserStoreConfigConstants.maxRoleNameListLength, "100", UserStoreConfigConstants
+                .maxRoleNameListLengthDescription);
+        setProperty(UserStoreConfigConstants.userRolesCacheEnabled, "true", UserStoreConfigConstants
+                .userRolesCacheEnabledDescription);
 
-        Property readLDAPGroups = new Property(UserStoreConfigConstants.readGroups,"true",UserStoreConfigConstants.readLDAPGroupsDescription,null);
+        Property readLDAPGroups = new Property(UserStoreConfigConstants.readGroups, "true", UserStoreConfigConstants
+                .readLDAPGroupsDescription, null);
         //Mandatory only if readGroups is enabled
-        Property groupSearchBase = new Property(UserStoreConfigConstants.groupSearchBase,"ou=system",UserStoreConfigConstants.groupSearchBaseDescription,null);
-        Property groupNameListFilter = new Property(UserStoreConfigConstants.groupNameListFilter,"(objectClass=groupOfNames)",UserStoreConfigConstants.groupNameListFilterDescription,null);
-        Property groupNameAttribute = new Property(UserStoreConfigConstants.groupNameAttribute,"cn",UserStoreConfigConstants.groupNameAttributeDescription,null);
-        Property membershipAttribute = new Property(UserStoreConfigConstants.membershipAttribute,"member",UserStoreConfigConstants.membershipAttributeDescription,null);
-        readLDAPGroups.setChildProperties(new Property[]{groupSearchBase,groupNameListFilter,groupNameAttribute,membershipAttribute});
+        Property groupSearchBase = new Property(UserStoreConfigConstants.groupSearchBase, "ou=system",
+                UserStoreConfigConstants.groupSearchBaseDescription, null);
+        Property groupNameListFilter = new Property(UserStoreConfigConstants.groupNameListFilter, "" +
+                "(objectClass=groupOfNames)", UserStoreConfigConstants.groupNameListFilterDescription, null);
+        Property groupNameAttribute = new Property(UserStoreConfigConstants.groupNameAttribute, "cn",
+                UserStoreConfigConstants.groupNameAttributeDescription, null);
+        Property membershipAttribute = new Property(UserStoreConfigConstants.membershipAttribute, "member",
+                UserStoreConfigConstants.membershipAttributeDescription, null);
+        readLDAPGroups.setChildProperties(new Property[]{groupSearchBase, groupNameListFilter, groupNameAttribute,
+                membershipAttribute});
         OPTIONAL_CUSTOM_USERSTORE_PROPERTIES.add(readLDAPGroups);
 
 //      LDAP Specific Properties
-        setProperty(UserStoreConfigConstants.passwordHashMethod,"PLAIN_TEXT",UserStoreConfigConstants.passwordHashMethodDescription);
-        setProperty("ReplaceEscapeCharactersAtUserLogin","true","Whether replace escape character when user login");
-        setProperty("ReadOnly","true","Indicates whether the user store of this realm operates in the user read only mode or not");
+        setProperty(UserStoreConfigConstants.passwordHashMethod, "PLAIN_TEXT", UserStoreConfigConstants
+                .passwordHashMethodDescription);
+        setProperty("ReplaceEscapeCharactersAtUserLogin", "true", "Whether replace escape character when user login");
+        setProperty("ReadOnly", "true", "Indicates whether the user store of this realm operates in the user read " +
+                "only mode or not");
 
     }
 
-    private static void setMandatoryProperty(String name,String value,String description){
-        Property property = new Property(name,value,description,null);
+    private static void setMandatoryProperty(String name, String value, String description) {
+        Property property = new Property(name, value, description, null);
         CUSTOM_USERSTORE_PROPERTIES.add(property);
 
     }
 
-    private static void setProperty(String name,String value,String description){
-        Property property = new Property(name,value,description,null);
+    private static void setProperty(String name, String value, String description) {
+        Property property = new Property(name, value, description, null);
         OPTIONAL_CUSTOM_USERSTORE_PROPERTIES.add(property);
 
     }

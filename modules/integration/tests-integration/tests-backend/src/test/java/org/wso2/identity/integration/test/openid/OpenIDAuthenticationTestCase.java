@@ -26,71 +26,73 @@ import org.wso2.identity.integration.common.clients.openid.OpenIDProviderService
 import org.wso2.identity.integration.common.utils.ISIntegrationTest;
 
 public class OpenIDAuthenticationTestCase extends ISIntegrationTest {
-    
-	OpenIDProviderServiceClient openidServiceClient;
-	String adminUserName;
-	String adminPassword;
-	
+
+    OpenIDProviderServiceClient openidServiceClient;
+    String adminUserName;
+    String adminPassword;
+
     @BeforeClass(alwaysRun = true)
     public void testInit() throws Exception {
         super.init();
-        
+
         openidServiceClient = new OpenIDProviderServiceClient(backendURL, sessionCookie);
         adminUserName = userInfo.getUserName();
         adminPassword = userInfo.getPassword();
     }
-    
+
     @AfterClass(alwaysRun = true)
     public void atEnd() throws Exception {
- 
-    	openidServiceClient = null;
+
+        openidServiceClient = null;
     }
 
     @Test(alwaysRun = true, description = "Authenticate with Password")
     public void testOpenidPasswordAuthentication() {
-        
+
         String openId = Util.getDefaultOpenIDIdentifier(adminUserName);
-        
+
         boolean isAuthenticated = false;
-        
+
         try {
             isAuthenticated = openidServiceClient.authenticateWithOpenID(openId, adminPassword);
         } catch (Exception e) {
             Assert.fail("Error while authenticating", e);
         }
-        
+
         Assert.assertTrue(isAuthenticated);
     }
 
-    @Test(alwaysRun = true, description = "Authenticate with Remember ME", dependsOnMethods="testOpenidPasswordAuthentication")
+    @Test(alwaysRun = true, description = "Authenticate with Remember ME", dependsOnMethods =
+            "testOpenidPasswordAuthentication")
     public void testOpenidRememberMeAuthentication() {
-        
+
         // first authenticate without a cookie 
         String openID = Util.getDefaultOpenIDIdentifier(adminUserName);
         OpenIDRememberMeDTO rememberMeDTO = null;
-        
+
         try {
-            rememberMeDTO = openidServiceClient.authenticateWithOpenIDRememberMe(openID, adminPassword, "127.0.0.1", null);
+            rememberMeDTO = openidServiceClient.authenticateWithOpenIDRememberMe(openID, adminPassword, "127.0.0.1",
+                    null);
         } catch (Exception e) {
             Assert.fail("Error while authenticating with remember me", e);
         }
-        
+
         Assert.assertTrue(rememberMeDTO.getAuthenticated());
-        
+
         // now lets authenticate with remember me
-        
+
         String cookie = rememberMeDTO.getNewCookieValue();
-        
+
         OpenIDRememberMeDTO newRememberMeDTO = null;
-        
+
         try {
             newRememberMeDTO = openidServiceClient.authenticateWithOpenIDRememberMe(openID, null, "127.0.0.1", cookie);
         } catch (Exception e) {
             Assert.fail("Error while authenticating with remember me cookie", e);
         }
-        
+
         Assert.assertTrue(newRememberMeDTO.getAuthenticated());
-        
+
     }
 
 }

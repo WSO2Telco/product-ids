@@ -1,8 +1,8 @@
 <project name="SCIM_Provisioning_Client">
-    <property name="wso2telcoids.home" value="../../"/>
-    <property name="scim.samples.lib" value="${wso2telcoids.home}/samples/scim-provisioning/lib"/>
-    <property name="wso2telcoids.plugins" value="${wso2telcoids.home}/repository/components/plugins"/>
-    <property name="wso2telcoids.lib.api" value="${wso2telcoids.home}/lib/api"/>
+    <property name="wso2is.home" value="../../"/>
+    <property name="scim.samples.lib" value="${wso2is.home}/samples/scim-provisioning/lib"/>
+    <property name="wso2is.plugins" value="${wso2is.home}/repository/components/plugins"/>
+    <property name="wso2is.lib.api" value="${wso2is.home}/lib/api"/>
     <property name="build.dir" value="build"/>
     <property name="classes.dir" value="${build.dir}/classes"/>
     <property name="src.dir" value="src"/>
@@ -30,7 +30,7 @@
     <target name="copy-libs">
         <mkdir dir="${scim.samples.lib}"/>
         <copy todir="${scim.samples.lib}" overwrite="false">
-            <fileset dir="${wso2telcoids.plugins}">
+            <fileset dir="${wso2is.plugins}">
                 <include name="org.wso2.charon.core*.jar"/>
                 <include name="commons-httpclient*.jar"/>
                 <include name="axiom*.jar"/>

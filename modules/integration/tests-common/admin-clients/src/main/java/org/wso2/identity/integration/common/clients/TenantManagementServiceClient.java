@@ -91,7 +91,7 @@ public class TenantManagementServiceClient {
     }
 
     public void updateTenant(String tenantDomain, String admin, String adminPassword, String email, String firstName,
-                          String lastName)
+                             String lastName)
             throws RemoteException, TenantMgtAdminServiceExceptionException {
 
         TenantInfoBean tenantInfoBean = new TenantInfoBean();

@@ -59,7 +59,7 @@ public class OpenIDRelyingPartyServlet extends HttpServlet {
     public void init(ServletConfig config) throws ServletException {
 
         openidUserPattern = config.getInitParameter("OpenIDUserPattern");
-        
+
         // All the code below is to overcome host name verification failure we get in certificate
         // validation due to self-signed certificate. This code should not be used in a production
         // setup.
@@ -74,23 +74,23 @@ public class OpenIDRelyingPartyServlet extends HttpServlet {
                 }
             };
             // Create a trust manager that does not validate certificate chains
-            TrustManager[] trustAllCerts = new TrustManager[] { new X509TrustManager() {
+            TrustManager[] trustAllCerts = new TrustManager[]{new X509TrustManager() {
                 public java.security.cert.X509Certificate[] getAcceptedIssuers() {
                     return null;
                 }
 
                 public void checkClientTrusted(java.security.cert.X509Certificate[] certs,
-                        String authType) {
+                                               String authType) {
                 }
 
                 public void checkServerTrusted(java.security.cert.X509Certificate[] certs,
-                        String authType) {
+                                               String authType) {
                 }
-            } };
+            }};
             sc.init(null, trustAllCerts, new java.security.SecureRandom());
             SSLContext.setDefault(sc);
             HttpsURLConnection.setDefaultHostnameVerifier(hv);
-            
+
         } catch (Exception e) {
             throw new ServletException(e);
         }
@@ -98,7 +98,7 @@ public class OpenIDRelyingPartyServlet extends HttpServlet {
 
     /**
      * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse
-     *      response)
+     * response)
      */
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException,
             IOException {
@@ -107,7 +107,7 @@ public class OpenIDRelyingPartyServlet extends HttpServlet {
 
     /**
      * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse
-     *      response)
+     * response)
      */
     protected void doPost(HttpServletRequest httpRequest, HttpServletResponse httpResponse)
             throws ServletException, IOException {
@@ -145,17 +145,17 @@ public class OpenIDRelyingPartyServlet extends HttpServlet {
                         String firstAttr = fetchResp.getAttributeAlias("http://axschema.org/namePerson/first");
                         String lastAttrr = fetchResp.getAttributeAlias("http://axschema.org/namePerson/last");
                         String countryAttr = fetchResp.getAttributeAlias("http://axschema.org/contact/country/home");
-                        
-                        if(emailAttr != null) {
+
+                        if (emailAttr != null) {
                             email = fetchResp.getAttributeValue(emailAttr);
                         }
-                        if(firstAttr != null) {
+                        if (firstAttr != null) {
                             firstname = fetchResp.getAttributeValue(firstAttr);
                         }
-                        if(lastAttrr != null) {
+                        if (lastAttrr != null) {
                             lastname = fetchResp.getAttributeValue(lastAttrr);
                         }
-                        if(countryAttr != null) {
+                        if (countryAttr != null) {
                             country = fetchResp.getAttributeValue(countryAttr);
                         }
 

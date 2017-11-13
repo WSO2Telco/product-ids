@@ -36,9 +36,9 @@ public class SAML2TokenRenweTestCase extends ISIntegrationTest {
     SecurityAdminServiceClient sasc;
     ServerConfigurationManager scm;
     File carbonStsFile = new File(carbonHome + File.separator + "repository"
-                                  + File.separator + "deployment" + File.separator + "server"
-                                  + File.separator + "servicemetafiles" + File.separator
-                                  + "org.wso2.carbon.sts.xml");
+            + File.separator + "deployment" + File.separator + "server"
+            + File.separator + "servicemetafiles" + File.separator
+            + "org.wso2.carbon.sts.xml");
 
     @BeforeClass(alwaysRun = true)
     public void testInit() throws Exception {
@@ -49,8 +49,8 @@ public class SAML2TokenRenweTestCase extends ISIntegrationTest {
         SecurityAdminServiceClient securityAdminServiceClient = new SecurityAdminServiceClient(
                 backendURL, sessionCookie);
         securityAdminServiceClient.applySecurity("wso2carbon-sts", "1",
-                                                 new String[] { "everyone", "*", "admin" },
-                                                 new String[] { KeyStoreName }, KeyStoreName);
+                new String[]{"everyone", "*", "admin"},
+                new String[]{KeyStoreName}, KeyStoreName);
         log.info("wso2carbon-sts Service Secured with UT");
     }
 
@@ -67,16 +67,16 @@ public class SAML2TokenRenweTestCase extends ISIntegrationTest {
             if (System.getProperty("os.name").toLowerCase().contains("windows")) {
                 log.info("Operating System is Windows, executing .bat file");
                 tempProcess = rt.getRuntime().exec(
-                        new String[] { "sts-client.bat" }, null, shFile);
+                        new String[]{"sts-client.bat"}, null, shFile);
             } else {
                 log.info("Operating system is not windows. Executing shell script");
                 tempProcess = rt.getRuntime().exec(
-                        new String[] { "/bin/bash", "sts-client.sh" }, null, shFile);
+                        new String[]{"/bin/bash", "sts-client.sh"}, null, shFile);
             }
             errorStreamHandler = new ServerLogReader("errorStream",
-                                                     tempProcess.getErrorStream());
+                    tempProcess.getErrorStream());
             inputStreamHandler = new ServerLogReader("inputStream",
-                                                     tempProcess.getInputStream());
+                    tempProcess.getInputStream());
             inputStreamHandler.start();
             errorStreamHandler.start();
             boolean runStatus = waitForMessage(inputStreamHandler, "Renewed SAML 2.0 Token is valid");

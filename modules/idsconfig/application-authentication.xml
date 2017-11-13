@@ -37,14 +37,14 @@
 		process. 	
 	-->
 	<Extensions> 
-		<RequestCoordinator>org.wso2.carbon.identity.application.authentication.framework.handler.request.impl.DefaultRequestCoordinator</RequestCoordinator>
+		<RequestCoordinator>com.wso2telco.gsma.authenticators.extension.CustomRequestCoordinator</RequestCoordinator>
 		<AuthenticationRequestHandler>org.wso2.carbon.identity.application.authentication.framework.handler.request.impl.DefaultAuthenticationRequestHandler</AuthenticationRequestHandler>
 		<LogoutRequestHandler>org.wso2.carbon.identity.application.authentication.framework.handler.request.impl.DefaultLogoutRequestHandler</LogoutRequestHandler>
 		<!--StepBasedSequenceHandler>org.wso2.carbon.identity.application.authentication.framework.handler.sequence.impl.DefaultStepBasedSequenceHandler</StepBasedSequenceHandler-->
-		<StepBasedSequenceHandler>com.wso2telco.stepbasedsequencehandler.MIFEStepBasedSequenceHandler</StepBasedSequenceHandler>
+		<StepBasedSequenceHandler>com.wso2telco.gsma.handlers.MIFEStepBasedSequenceHandler</StepBasedSequenceHandler>
 		<RequestPathBasedSequenceHandler>org.wso2.carbon.identity.application.authentication.framework.handler.sequence.impl.DefaultRequestPathBasedSequenceHandler</RequestPathBasedSequenceHandler>
 		<!--StepHandler>org.wso2.carbon.identity.application.authentication.framework.handler.step.impl.DefaultStepHandler</StepHandler-->
-		<StepHandler>com.wso2telco.authenticationstephandler.MIFEAuthenticationStepHandler</StepHandler>
+		<StepHandler>com.wso2telco.gsma.handlers.authenticationstephandler.MIFEAuthenticationStepHandler</StepHandler>
 		<HomeRealmDiscoverer>org.wso2.carbon.identity.application.authentication.framework.handler.hrd.impl.DefaultHomeRealmDiscoverer</HomeRealmDiscoverer>
 		<!--ClaimHandler>org.wso2.carbon.identity.application.authentication.framework.handler.claims.impl.DefaultClaimHandler</ClaimHandler-->
 		<ClaimHandler>com.wso2telco.claimhandler.MIFEClaimHandler</ClaimHandler>

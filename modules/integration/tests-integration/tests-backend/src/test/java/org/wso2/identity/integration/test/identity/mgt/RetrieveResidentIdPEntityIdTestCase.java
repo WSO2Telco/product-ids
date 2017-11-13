@@ -53,8 +53,8 @@ public class RetrieveResidentIdPEntityIdTestCase extends ISIntegrationTest {
         super.init();
         changeISConfiguration();
         super.init();
-        tenantServiceClient = new TenantManagementServiceClient( isServer.getContextUrls().getBackEndUrl(),
-                                                                 sessionCookie);
+        tenantServiceClient = new TenantManagementServiceClient(isServer.getContextUrls().getBackEndUrl(),
+                sessionCookie);
     }
 
     @AfterClass(alwaysRun = true)
@@ -71,16 +71,17 @@ public class RetrieveResidentIdPEntityIdTestCase extends ISIntegrationTest {
     }
 
     @Test(alwaysRun = true, groups = "wso2.is", description = "Testing resident IdP entity Id value for new tenant",
-          dependsOnMethods = {"testCreateTenant"})
+            dependsOnMethods = {"testCreateTenant"})
     public void testResidentIdPEntityId() throws Exception {
 
         boolean residentIdPEntityIdChanged = false;
         ConfigurationContext configContext = ConfigurationContextFactory.createConfigurationContextFromFileSystem
                 (null, null);
         loginManger = new AuthenticatorClient(isServer.getContextUrls().getBackEndUrl());
-        String cookie = loginManger.login("phoebe@friends.com", "password", isServer.getInstance().getHosts().get("default"));
+        String cookie = loginManger.login("phoebe@friends.com", "password", isServer.getInstance().getHosts().get
+                ("default"));
         idpMgtServiceClient = new IdentityProviderMgtServiceClient(cookie, isServer.getContextUrls().getBackEndUrl(),
-                                                                   configContext);
+                configContext);
 
         IdentityProvider residentIdP = idpMgtServiceClient.getResidentIdP();
         FederatedAuthenticatorConfig[] configs = residentIdP.getFederatedAuthenticatorConfigs();
@@ -102,7 +103,7 @@ public class RetrieveResidentIdPEntityIdTestCase extends ISIntegrationTest {
         }
 
         Assert.assertTrue(residentIdPEntityIdChanged, "Unable to modify resident IdP entity value through identity" +
-                                                      ".xml");
+                ".xml");
     }
 
     private void changeISConfiguration() throws Exception {
@@ -111,11 +112,11 @@ public class RetrieveResidentIdPEntityIdTestCase extends ISIntegrationTest {
 
         String carbonHome = CarbonUtils.getCarbonHome();
         identityXML = new File(carbonHome + File.separator
-                               + "repository" + File.separator + "conf" + File.separator + "identity" + File.separator
+                + "repository" + File.separator + "conf" + File.separator + "identity" + File.separator
                 + "identity.xml");
         File configuredIdentityXML = new File(getISResourceLocation()
-                                              + File.separator + "identityMgt" + File.separator
-                                              + "identity-ssoservice-entityid-changed.xml");
+                + File.separator + "identityMgt" + File.separator
+                + "identity-ssoservice-entityid-changed.xml");
         serverConfigurationManager = new ServerConfigurationManager(isServer);
         serverConfigurationManager.applyConfigurationWithoutRestart(configuredIdentityXML, identityXML, true);
         serverConfigurationManager.restartGracefully();

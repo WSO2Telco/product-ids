@@ -33,7 +33,8 @@ import org.wso2.carbon.identity.application.common.model.xsd.IdentityProvider;
 import org.wso2.carbon.identity.application.common.model.xsd.LocalAuthenticatorConfig;
 import org.wso2.carbon.identity.application.common.model.xsd.RequestPathAuthenticatorConfig;
 import org.wso2.carbon.identity.application.common.model.xsd.ServiceProvider;
-import org.wso2.carbon.identity.application.mgt.stub.IdentityApplicationManagementServiceIdentityApplicationManagementException;
+import org.wso2.carbon.identity.application.mgt.stub
+        .IdentityApplicationManagementServiceIdentityApplicationManagementException;
 import org.wso2.carbon.identity.application.mgt.stub.IdentityApplicationManagementServiceStub;
 import org.wso2.carbon.user.mgt.stub.UserAdminStub;
 import org.wso2.carbon.user.mgt.stub.types.carbon.UserRealmInfo;
@@ -48,7 +49,6 @@ public class ApplicationManagementServiceClient {
     boolean debugEnabled = log.isErrorEnabled();
 
     /**
-     *
      * @param cookie
      * @param backendServerURL
      * @param configCtx
@@ -80,7 +80,6 @@ public class ApplicationManagementServiceClient {
     }
 
     /**
-     *
      * @param serviceProvider
      * @throws Exception
      */
@@ -101,7 +100,6 @@ public class ApplicationManagementServiceClient {
     }
 
     /**
-     *
      * @param applicationName
      * @return
      * @throws Exception
@@ -120,7 +118,6 @@ public class ApplicationManagementServiceClient {
     }
 
     /**
-     *
      * @return
      * @throws Exception
      */
@@ -137,7 +134,6 @@ public class ApplicationManagementServiceClient {
     }
 
     /**
-     *
      * @param serviceProvider
      * @throws Exception
      */
@@ -154,7 +150,6 @@ public class ApplicationManagementServiceClient {
     }
 
     /**
-     *
      * @param applicationID
      * @throws Exception
      */
@@ -172,7 +167,6 @@ public class ApplicationManagementServiceClient {
     }
 
     /**
-     *
      * @param identityProviderName
      * @throws Exception
      */
@@ -182,7 +176,6 @@ public class ApplicationManagementServiceClient {
     }
 
     /**
-     *
      * @return
      * @throws Exception
      */
@@ -191,7 +184,6 @@ public class ApplicationManagementServiceClient {
     }
 
     /**
-     *
      * @return
      * @throws Exception
      */
@@ -200,7 +192,6 @@ public class ApplicationManagementServiceClient {
     }
 
     /**
-     *
      * @return
      * @throws Exception
      */
@@ -216,7 +207,6 @@ public class ApplicationManagementServiceClient {
     }
 
     /**
-     *
      * @return
      * @throws Exception
      */
@@ -226,6 +216,7 @@ public class ApplicationManagementServiceClient {
 
     /**
      * Get User Store Domains
+     *
      * @return
      * @throws Exception
      */
@@ -234,8 +225,8 @@ public class ApplicationManagementServiceClient {
         try {
             List<String> readWriteDomainNames = new ArrayList<String>();
             UserStoreInfo[] storesInfo = userAdminStub.getUserRealmInfo().getUserStoresInfo();
-            for(UserStoreInfo storeInfo : storesInfo){
-                if(!storeInfo.getReadOnly()){
+            for (UserStoreInfo storeInfo : storesInfo) {
+                if (!storeInfo.getReadOnly()) {
                     readWriteDomainNames.add(storeInfo.getDomainName());
                 }
             }
@@ -243,7 +234,8 @@ public class ApplicationManagementServiceClient {
         } catch (Exception e) {
             log.error(e.getMessage(), e);
             throw new Exception(
-                    "Error occurred while retrieving Read-Write User Store Domain IDs for logged-in user's tenant realm");
+                    "Error occurred while retrieving Read-Write User Store Domain IDs for logged-in user's tenant " +
+                            "realm");
         }
     }
 

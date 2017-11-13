@@ -80,10 +80,10 @@ public class RemoteUserStoreManagerServiceClient {
                         ClaimValue[] claimValues,
                         String profileName, boolean requirePasswordChange)
             throws UserStoreException, RemoteException,
-                   RemoteUserStoreManagerServiceUserStoreExceptionException {
+            RemoteUserStoreManagerServiceUserStoreExceptionException {
 
         remoteUserStoreManagerServiceStub.addUser(userName, credential, roleList, claimValues,
-                                                  profileName, requirePasswordChange);
+                profileName, requirePasswordChange);
     }
 
     /**
@@ -124,8 +124,10 @@ public class RemoteUserStoreManagerServiceClient {
      * @return If the value is true the provided credential match with the user name. False is
      * returned for invalid credential, invalid user name and mismatching credential with
      * user name.
-     * @throws org.wso2.carbon.um.ws.api.stub.RemoteUserStoreManagerServiceUserStoreExceptionException An unexpected exception has occured
-     * @throws java.rmi.RemoteException                                          An unexpected exception has occured
+     * @throws org.wso2.carbon.um.ws.api.stub.RemoteUserStoreManagerServiceUserStoreExceptionException An unexpected
+     * exception has occured
+     * @throws java.rmi.RemoteException                                                                An unexpected
+     * exception has occured
      */
     public boolean authenticate(String userName, String credential)
             throws RemoteUserStoreManagerServiceUserStoreExceptionException, RemoteException {
@@ -254,7 +256,7 @@ public class RemoteUserStoreManagerServiceClient {
 
 
     public String[] getProfileNames(String userName) throws RemoteException,
-                                                            RemoteUserStoreManagerServiceUserStoreExceptionException {
+            RemoteUserStoreManagerServiceUserStoreExceptionException {
         return remoteUserStoreManagerServiceStub.getProfileNames(userName);
     }
 
@@ -440,7 +442,8 @@ public class RemoteUserStoreManagerServiceClient {
      *
      * @param userName
      * @return
-     * @throws org.wso2.carbon.um.ws.api.stub.RemoteUserStoreManagerServiceUserStoreExceptionException If the realm is not super tenant's this method should throw exception
+     * @throws org.wso2.carbon.um.ws.api.stub.RemoteUserStoreManagerServiceUserStoreExceptionException If the realm
+     * is not super tenant's this method should throw exception
      * @throws java.rmi.RemoteException
      */
     public int getTenantIdofUser(String userName)

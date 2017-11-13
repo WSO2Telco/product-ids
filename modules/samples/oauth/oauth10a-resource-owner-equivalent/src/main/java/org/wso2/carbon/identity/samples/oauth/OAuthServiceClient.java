@@ -56,7 +56,7 @@ public class OAuthServiceClient {
     private String consumerSecret;
 
     public OAuthServiceClient(String backendServerURL, ConfigurationContext configCtx,
-                                       String username, String password) {
+                              String username, String password) {
 
         this.backendServerURL = backendServerURL;
         this.configCtx = configCtx;
@@ -64,16 +64,16 @@ public class OAuthServiceClient {
         this.password = password;
     }
 
-    public void registerOAuthApplicationData (String applicationName, String oauthVersion,
-                                          String consumerKey, String consumerSecret) throws Exception {
+    public void registerOAuthApplicationData(String applicationName, String oauthVersion,
+                                             String consumerKey, String consumerSecret) throws Exception {
 
-        if(consumerKey == null){
+        if (consumerKey == null) {
             consumerKey = getRandomNumber();
         }
-        if(consumerSecret == null){
+        if (consumerSecret == null) {
             consumerSecret = getRandomNumber();
         }
-        if(oauthVersion == null){
+        if (oauthVersion == null) {
             oauthVersion = "OAuth-1.0a";
         }
 
@@ -109,7 +109,7 @@ public class OAuthServiceClient {
 
     public void getRequestToken(String scope) throws Exception {
 
-        if(scope != null){
+        if (scope != null) {
             params.setScope(scope);
         }
 
@@ -122,14 +122,14 @@ public class OAuthServiceClient {
         GoogleService service = new GoogleService(params.getAppName(), params.getAppName());
         service.setOAuthCredentials(oauthParameters, signer);
         String baseString = backendServerURL + "oauth/request-token";
-        if(scope != null){
+        if (scope != null) {
             baseString += "?scope=" + scope;
         }
         URL feedUrl = new URL(baseString);
         request = service.createFeedRequest(feedUrl);
         request.execute();
         Parameters params = populateOauthConsumerData(convertStreamToString(request.getResponseStream()));
-        if(params.getOauthToken() != null && params.getOauthTokenSecret() != null){
+        if (params.getOauthToken() != null && params.getOauthTokenSecret() != null) {
             this.params.setOauthToken(params.getOauthToken());
             this.params.setOauthTokenSecret(params.getOauthTokenSecret());
             System.out.println("Request token granted for " + this.params.getAppName() + ". " +
@@ -142,10 +142,10 @@ public class OAuthServiceClient {
 
     public void authorizeRequestToken(String authorizedUser, String authorizedUserPassword) throws Exception {
 
-        if(authorizedUser == null){
+        if (authorizedUser == null) {
             authorizedUser = this.username;
         }
-        if(authorizedUserPassword == null){
+        if (authorizedUserPassword == null) {
             authorizedUserPassword = this.password;
         }
         this.params.setAuthorizedbyUserName(authorizedUser);
@@ -173,7 +173,7 @@ public class OAuthServiceClient {
         params.setAuthorizedbyUserName(authorizedUser);
         params.setAuthorizedbyUserPassword(authorizedUserPassword);
         Parameters respParams = oauth.authorizeOauthRequestToken(params);
-        if(respParams.getOauthTokenVerifier() != null){
+        if (respParams.getOauthTokenVerifier() != null) {
             this.params.setOauthTokenVerifier(respParams.getOauthTokenVerifier());
             System.out.println(this.params.getAppName() + " with request token " + this.params.getOauthToken() +
                     " has been authorized by " + authorizedUser + "." +
@@ -200,7 +200,7 @@ public class OAuthServiceClient {
         request = service.createFeedRequest(feedUrl);
         request.execute();
         Parameters params = populateOauthConsumerData(convertStreamToString(request.getResponseStream()));
-        if(params.getOauthToken() != null && params.getOauthTokenSecret() != null){
+        if (params.getOauthToken() != null && params.getOauthTokenSecret() != null) {
             this.params.setOauthToken(params.getOauthToken());
             this.params.setOauthTokenSecret(params.getOauthTokenSecret());
             System.out.println("Access token granted for " + this.params.getAppName() +

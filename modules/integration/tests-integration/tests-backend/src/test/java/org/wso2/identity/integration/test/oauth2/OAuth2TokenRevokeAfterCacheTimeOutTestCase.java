@@ -67,7 +67,7 @@ public class OAuth2TokenRevokeAfterCacheTimeOutTestCase extends OAuth2ServiceAbs
      *
      * @throws Exception
      */
-    @SetEnvironment(executionEnvironments = { ExecutionEnvironment.ALL })
+    @SetEnvironment(executionEnvironments = {ExecutionEnvironment.ALL})
     @Test(description = "Revoke token after cache timed out")
     public void testRevokeTokenAfterCacheTimedOut() throws Exception {
         //Application utils
@@ -168,11 +168,11 @@ public class OAuth2TokenRevokeAfterCacheTimeOutTestCase extends OAuth2ServiceAbs
 
         String carbonHome = CarbonUtils.getCarbonHome();
         File webXml = new File(carbonHome + File.separator
-                               + "repository" + File.separator + "conf" + File.separator + "tomcat" + File.separator
-                               + "carbon" + File.separator + "WEB-INF" + File.separator + "web.xml");
+                + "repository" + File.separator + "conf" + File.separator + "tomcat" + File.separator
+                + "carbon" + File.separator + "WEB-INF" + File.separator + "web.xml");
         File configuredWebXml = new File(getISResourceLocation()
-                                              + File.separator + "oauth" + File.separator
-                                              + "web.xml");
+                + File.separator + "oauth" + File.separator
+                + "web.xml");
 
         ServerConfigurationManager serverConfigurationManager = new ServerConfigurationManager(isServer);
         serverConfigurationManager.applyConfigurationWithoutRestart(configuredWebXml, webXml, true);
@@ -184,7 +184,7 @@ public class OAuth2TokenRevokeAfterCacheTimeOutTestCase extends OAuth2ServiceAbs
      *
      * @throws Exception
      */
-    private void resetISConfiguration() throws Exception{
+    private void resetISConfiguration() throws Exception {
         log.info("Replacing default configurations");
         ServerConfigurationManager serverConfigurationManager = new ServerConfigurationManager(isServer);
         serverConfigurationManager.restoreToLastConfiguration();

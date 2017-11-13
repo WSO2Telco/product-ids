@@ -24,7 +24,6 @@ import org.apache.axis2.context.ConfigurationContextFactory;
 import java.io.File;
 
 /**
- *
  * This client demonstrates an OAuth1.0a equivalent flow to the Resource Owner Password grant type flow of OAuth2.0.
  * This client will first register a OAuth1.0a client in Identity Server using the OAuthAdminService SOAP API.
  * Then it will request for OAuth1.0a request token credentials (request token + request token secret)
@@ -36,7 +35,6 @@ import java.io.File;
  * from Identity Server using the OAuth1.0a access token endpoint.
  * Finally the client will validate the access token credentials received from Identity Server using the OAuthService
  * SOAP API.
- *
  */
 public class Main {
 
@@ -51,7 +49,7 @@ public class Main {
     private static final String ADMIN_USER_NAME = "admin";
 
     //User password
-    private static final  String ADMIN_PASSWORD = "admin";
+    private static final String ADMIN_PASSWORD = "admin";
 
     // Resource owner user name
     private static final String RESOURCE_OWNER_USER_NAME = "admin";
@@ -81,12 +79,13 @@ public class Main {
              * trust store. Following code sets what trust-store to look for and its JKs password.
              * Note : The trust store should have server's certificate.
              */
-            System.setProperty("javax.net.ssl.trustStore",   new File("src/main/resources/wso2carbon.jks").getAbsolutePath());
+            System.setProperty("javax.net.ssl.trustStore", new File("src/main/resources/wso2carbon.jks")
+                    .getAbsolutePath());
             System.setProperty("javax.net.ssl.trustStorePassword", "wso2carbon");
 
-            client = new OAuthServiceClient(IDENTITY_SERVER , configContext, ADMIN_USER_NAME, ADMIN_PASSWORD);
+            client = new OAuthServiceClient(IDENTITY_SERVER, configContext, ADMIN_USER_NAME, ADMIN_PASSWORD);
 
-			client.registerOAuthApplicationData(APPLICATION_NAME, null, null, null);
+            client.registerOAuthApplicationData(APPLICATION_NAME, null, null, null);
 
             client.getRequestToken("test");
 
@@ -132,7 +131,7 @@ public class Main {
 //            request.execute();
 //
 //            System.out.println(convertStreamToString(request.getResponseStream()));
-            
+
         } catch (Exception e) {
             e.printStackTrace();
         }
