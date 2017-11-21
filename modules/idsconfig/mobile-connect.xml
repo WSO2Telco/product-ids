@@ -1,5 +1,6 @@
 <MobileConnectConfig>
     <DataSourceName>jdbc/CONNECT_DB</DataSourceName>
+    <WSO2APIMDataSourceName>jdbc/IDENTITY_DB</WSO2APIMDataSourceName><!-- "WSO2AM_DB" when IS as  a Key Manager -->
     <EncryptAppend>
         TheServingOperatorthencanrecognizetheyhavereceivedanencryptedMSISDNanddecryptthestringusingitsprivatekeywichisnotknowntotheOneAPI
     </EncryptAppend>
