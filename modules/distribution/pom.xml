@@ -234,6 +234,7 @@
 
                                 <replace file="target/wso2carbon-core-${carbon.kernel.version}/repository/conf/log4j.properties" token="log4j.appender.CARBON_MEMORY.layout.ConversionPattern=[%d] %5p {%c} - %x %m %n" value="log4j.appender.CARBON_MEMORY.layout.ConversionPattern=TID: [%T] [%S] [%d] %P%5p {%c} - %x %m {%c}%n${line.separator}log4j.appender.CARBON_MEMORY.layout.TenantPattern=%U%@%D [%T] [%S]${line.separator}log4j.appender.CARBON_MEMORY.columnList=%T,%S,%A,%d,%c,%p,%m,%H,%I,%Stacktrace" />
 
+                                <replace file="target/wso2carbon-core-${carbon.kernel.version}/repository/conf/log4j.properties" token="log4j.appender.CARBON_LOGFILE.layout.ConversionPattern=TID: [%T] [%S] [%d] %P%5p {%c} - %x %m %n" value="log4j.appender.CARBON_LOGFILE.layout.ConversionPattern=TID: [%T] [%S] [%d] %P%5p {%c} - [%X{REF_ID}] %x %m %n" />
                                 <!--Update log4j.properties with IDS appenders -->
                                 <echo file="target/wso2carbon-core-${carbon.kernel.version}/repository/conf/log4j.properties" append="true">${line.separator}#IDS specific loggers and appenders</echo>
 
@@ -247,7 +248,7 @@
 
                                 <echo file="target/wso2carbon-core-${carbon.kernel.version}/repository/conf/log4j.properties" append="true">${line.separator}log4j.appender.IDS_LOGFILE.layout=org.wso2.carbon.utils.logging.TenantAwarePatternLayout</echo>
 
-                                <echo file="target/wso2carbon-core-${carbon.kernel.version}/repository/conf/log4j.properties" append="true">${line.separator}log4j.appender.IDS_LOGFILE.layout.ConversionPattern=TID: [%T] [%S] [%d] %P%5p {%c} - %x %m %n</echo>
+                                <echo file="target/wso2carbon-core-${carbon.kernel.version}/repository/conf/log4j.properties" append="true">${line.separator}log4j.appender.IDS_LOGFILE.layout.ConversionPattern=TID: [%T] [%S] [%d] %P%5p {%c} - [%X{REF_ID}] %x %m %n</echo>
 
                                 <echo file="target/wso2carbon-core-${carbon.kernel.version}/repository/conf/log4j.properties" append="true">${line.separator}log4j.appender.IDS_LOGFILE.layout.TenantPattern=%U%@%D [%T] [%S]</echo>
 
