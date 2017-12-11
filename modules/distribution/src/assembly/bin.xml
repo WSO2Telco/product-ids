@@ -351,6 +351,16 @@
                 <include>**/**.json</include>
             </includes>
         </fileSet>
+        <!-- bundled patches -->
+        <fileSet>
+            <directory>
+                ../patches
+            </directory>
+            <outputDirectory>wso2telcoids-${pom.version}/repository/components/patches</outputDirectory>
+            <includes>
+                <include>**/**</include>
+            </includes>
+        </fileSet>
     </fileSets>
 
     <files>
