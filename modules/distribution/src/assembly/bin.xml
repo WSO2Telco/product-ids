@@ -179,7 +179,6 @@
                 <include>authproxy.war</include>
                 <include>sessionupdater.war</include>
                 <include>saaserver.war</include>
-                <include>introspect.war</include>
 			</includes>
         </fileSet>
 
@@ -341,9 +340,6 @@
             <includes>
                 <include>**/**.xml</include>
             </includes>
-            <excludes>
-                <exclude>README</exclude>
-            </excludes>
         </fileSet>
         <fileSet>
             <directory>
@@ -363,6 +359,9 @@
             <includes>
                 <include>**/**</include>
             </includes>
+            <excludes>
+                <exclude>README</exclude>
+            </excludes>
         </fileSet>
     </fileSets>
 
