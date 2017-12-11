@@ -341,6 +341,9 @@
             <includes>
                 <include>**/**.xml</include>
             </includes>
+            <excludes>
+                <exclude>README</exclude>
+            </excludes>
         </fileSet>
         <fileSet>
             <directory>
