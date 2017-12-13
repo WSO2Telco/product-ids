@@ -21,14 +21,14 @@
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
     <head>
         <meta content="text/html; charset=iso-8859-1" http-equiv="content-type"/>
-        <title>WSO2Telco Mobile Identity Gateway 2.3.0-rc4 Released - 10th Octomber 2017</title>
+        <title>WSO2Telco Mobile Identity Gateway 2.3.0-rc5 Released - 13th December 2017</title>
     </head>
     <body>
         <div id="main-content">
-            <h1>WSO2Telco Mobile Identity Gateway 2.3.0-rc4 Released!</h1>
+            <h1>WSO2Telco Mobile Identity Gateway 2.3.0-rc5 Released!</h1>
 
             <p>
-                The WSO2Telco team is pleased to announce the release of version 2.3.0_rc4 of
+                The WSO2Telco team is pleased to announce the release of version 2.3.0_rc5 of
                 the Open Source WSO2Telco Mobile Identity Gateway.
             </p>
 
@@ -65,9 +65,10 @@
             <ul>
                 <li>
                     <ul>
-                       	<li>Internationalization</li>
-					   	<li>SMS/OTP Authenticator</li>
 					   	<li>Federated Authenticator Implementation</li>
+                        <li>[MIG] OAuth 2.0 Token Introspection Implementation</li>
+                        <li>Valdisoft Voice Authenticator</li>
+                        <li>T&C page Per MNO</li>
 <br>
                     </ul>
 
@@ -88,6 +89,7 @@
                         <li>Fully GSMA MCX R1 compliant</li>
                         <li>Supported authenticators
                         	 	<br />- 	SMS Click OK URL
+                                <br />- 	SMS OTP
 								<br />-	USSD Click OK and Enter PIN
 								<br />-	Smartphone application or SDK
 								<br />-	Supports third-party SIM applets via implementation of ETSI TS 102 204
@@ -102,8 +104,27 @@
             <ul>
                 <li>
                     <ul>
-                       	<li>[DSABRT-22] expired sms link click bug fixed</li>
-			            <li>Performance Improvements according to Load tests</li>
+                        <li>[IDSDEV-628]-HazelcastSerializationException on clustered setup</li>
+                        <li>[IDSDEV-662]-No error message is displayed for a wrong OTP attempt</li>
+                        <li>[IDSDEV-668]-If user clicks enter button on OTP field, session is getting crashed (retry.do)</li>
+                        <li>[IDSDEV-673]-Some feilds are not localized in Questions Asking page</li>
+                        <li>[IDSDEV-687]-HE flow needs new configuration value for IP header</li>
+                        <li>[IDSDEV-690]-LOA 3 Pin reset flow last USSD message error</li>
+                        <li>[IDSDEV-700]-FederatedAuthenticator Triggered for other operators</li>
+                        <li>[IDSDEV-715]-[BRAZIL][FederatedIDP]  - Production Integration Issues</li>
+                        <li>[IDSDEV-739]-Waiting page of registration flow contains an invalid character</li>
+                        <li>[IDSDEV-740]-PIN reset flow is not functioning</li>
+                        <li>[IDSDEV-741]-User navigates to number entering page when user tries with a login_hint PCR for irrelevant application</li>
+                        <li>[IDSDEV-742]-SMS login url is not working when shortenurl is disabled</li>
+                        <li>[IDSDEV-756]-SP Scope validation enabled issue</li>
+                        <li>[IDSDEV-760]-Dropouts of waiting page during sms process is not counting for DAS reporting</li>
+                        <li>[IDSDEV-776]-Clustering enabled data publishing issue</li>
+                        <li>[IDSDEV-787]-SP creates in IS for every registration request in voice authenticator</li>
+                        <li>[MCSDDEV-93]-Brazil - User info is not working for VIVO according to the given multi scope</li>
+                        <li>[MCSDDEV-92]-Brazil - If user click Cancel or No thanks button during auth flow of IDP context, It goes to an error page (No error handling)</li>
+                        <li>[DSABRT-12]-Service Provider Name</li>
+                        <li>[DSABRT-22]-SMS URL expired</li>
+                        <li>[DSABRT-37]-Clicking on link in SMS after reaching expiration time</li>
                     </ul>
 
                 </li>
@@ -111,7 +132,7 @@
             
              <h2>Documentation</h2>
              
-             <p>Please refer <a href="http://docs.wso2telco.com/display/MI/MIG-2.3.0+MCX+Brazil+Deployment"> WSO2Telco MIG 2.3.0-rc4 documentation</a></p>
+             <p>Please refer <a href="http://docs.wso2telco.com/display/MI/MIG-2.3.0+MCX+Brazil+Deployment"> WSO2Telco MIG 2.3.0-rc5 documentation</a></p>
 
     
             <h2>How You Can Contribute</h2>
