@@ -28,7 +28,7 @@
     <artifactId>identity-server-parent</artifactId>
     <packaging>pom</packaging>
     <description>WSO2 Identity Server</description>
-    <version>2.3.0-rc5</version>
+    <version>2.3.0-SNAPSHOT</version>
     <name>WSO2Telco Identity Server</name>
     <url>http://wso2.org/projects/identity</url>
 
@@ -1636,7 +1636,7 @@
         <url>https://github.com/WSO2Telco/product-ids.git</url>
         <developerConnection>scm:git:https://github.com/WSO2Telco/product-ids.git</developerConnection>
         <connection>scm:git:https://github.com/WSO2Telco/product-ids.git</connection>
-        <tag>v2_3_0-rc5</tag>
+        <tag>HEAD</tag>
     </scm>
 
 
