@@ -14,16 +14,48 @@ This is based on the revolutionary WSO2 Carbon framework. All the major features
 New Features
 ============
 
-*  Support for Federated MCX
+*  Support for Federated MCX-[IDSDEV-679]
 
      Federated MCX feature allow wso2telcoids to call different MCX providers. This feature can be easily configured to specific mobile
      network operator to act as federated MCX provider.This allows Service providers to access other MCX providers via wso2telcoids with ease.
 
+* Support for Token Introspection-[IDSDEV-752]
+
+     Token Introspection provides information according to the OAuath 2.0 specification.
+
+* Support for Voice Authenticator with ValidSoft
+
+     Allows Valid Soft Voice Biometrics to be used as the user identifier for authentication.
+
+* Support for T&C page Per MNO
+
+     Allows custom T&C pages to be used as preference for MNO
+
+
 Bug Fixes
 =========
 
-	[DSABRT-22] expired sms link click bug fixed
-	Performance Improvements according to Load tests
+	[IDSDEV-628]-HazelcastSerializationException on clustered setup
+    [IDSDEV-662]-No error message is displayed for a wrong OTP attempt
+    [IDSDEV-668]-If user clicks enter button on OTP field, session is getting crashed (retry.do)
+    [IDSDEV-673]-Some feilds are not localized in Questions Asking page
+    [IDSDEV-687]-HE flow needs new configuration value for IP header
+    [IDSDEV-690]-LOA 3 Pin reset flow last USSD message error
+    [IDSDEV-700]-FederatedAuthenticator Triggered for other operators
+    [IDSDEV-715]-[BRAZIL][FederatedIDP]  - Production Integration Issues
+    [IDSDEV-739]-Waiting page of registration flow contains an invalid character.
+    [IDSDEV-740]-PIN reset flow is not functioning
+    [IDSDEV-741]-User navigates to number entering page when user tries with a login_hint PCR for irrelevant application
+    [IDSDEV-742]-SMS login url is not working when shortenurl is disabled.
+    [IDSDEV-756]-SP Scope validation enabled issue
+    [IDSDEV-760]-Dropouts of waiting page during sms process is not counting for DAS reporting
+    [IDSDEV-776]-Clustering enabled data publishing issue.
+    [IDSDEV-787]-SP creates in IS for every registration request in voice authenticator
+    [MCSDDEV-93]-Brazil - User info is not working for VIVO according to the given multi scope
+    [MCSDDEV-92]-Brazil - If user click Cancel or No thanks button during auth flow of IDP context, It goes to an error page (No error handling)
+    [DSABRT-12]-Service Provider Name
+    [DSABRT-22]-SMS URL expired
+    [DSABRT-37]-Clicking on link in SMS after reaching expiration time
 
 Other Key Features
 =============
