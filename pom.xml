@@ -1368,7 +1368,7 @@
 
         <!-- Telco dependency's version-->
         <com.wso2telco.ids.version>2.3.0</com.wso2telco.ids.version>
-        <com.wso2telco.core.version>2.3.2</com.wso2telco.core.version>
+        <com.wso2telco.core.version>2.4.2-SNAPSHOT</com.wso2telco.core.version>
 
         <!--Carbon Identity Framework Version-->
         <carbon.identity.framework.version>5.2.2</carbon.identity.framework.version>
