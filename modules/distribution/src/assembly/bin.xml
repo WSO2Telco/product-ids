@@ -179,6 +179,7 @@
                 <include>authproxy.war</include>
                 <include>sessionupdater.war</include>
                 <include>saaserver.war</include>
+                <include>premiuminfo.war</include>
 			</includes>
         </fileSet>
 
