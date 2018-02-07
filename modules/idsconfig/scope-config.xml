@@ -262,6 +262,9 @@
             <Claims>
                 <ClaimValue>phone_number</ClaimValue>
             </Claims>
+            <AttributeToDisplay>
+                <Attribute>Phone Number</Attribute>
+            </AttributeToDisplay>
         </Scope>
         <Scope>
             <Name>phone_number_country_code</Name>
@@ -269,6 +272,9 @@
             <Claims>
                 <ClaimValue>phone_number_country_code</ClaimValue>
             </Claims>
+            <AttributeToDisplay>
+                <Attribute>Phone Number Country Code</Attribute>
+            </AttributeToDisplay>
         </Scope>
         <Scope>
             <Name>zoneinfo</Name>
@@ -276,6 +282,9 @@
             <Claims>
                 <ClaimValue>zoneinfo</ClaimValue>
             </Claims>
+            <AttributeToDisplay>
+                <Attribute>Zone Info</Attribute>
+            </AttributeToDisplay>
         </Scope>
         <Scope>
             <Name>BillingSegment</Name>
@@ -283,6 +292,9 @@
             <Claims>
                 <ClaimValue>BillingSegment</ClaimValue>
             </Claims>
+            <AttributeToDisplay>
+                <Attribute>Billing Segment</Attribute>
+            </AttributeToDisplay>
         </Scope>
         <Scope>
             <Name>is_lost_stolen</Name>
@@ -290,6 +302,9 @@
             <Claims>
                 <ClaimValue>is_lost_stolen</ClaimValue>
             </Claims>
+            <AttributeToDisplay>
+                <Attribute>Phone Lost/Stolen Status</Attribute>
+            </AttributeToDisplay>
         </Scope>
         <Scope>
             <Name>id_hash</Name>
@@ -297,6 +312,9 @@
             <Claims>
                 <ClaimValue>id_hash</ClaimValue>
             </Claims>
+            <AttributeToDisplay>
+                <Attribute>ID</Attribute>
+            </AttributeToDisplay>
         </Scope>
         <Scope>
             <Name>SubscriptionActivity-30</Name>
@@ -304,6 +322,9 @@
             <Claims>
                 <ClaimValue>SubscriptionActivity-30</ClaimValue>
             </Claims>
+            <AttributeToDisplay>
+                <Attribute>Subscription Activity for 30 days</Attribute>
+            </AttributeToDisplay>
         </Scope>
         <Scope>
             <Name>SubscriptionActivity-365</Name>
@@ -311,6 +332,9 @@
             <Claims>
                 <ClaimValue>SubscriptionActivity-365</ClaimValue>
             </Claims>
+            <AttributeToDisplay>
+                <Attribute>Subscriptio Activity for 365 days</Attribute>
+            </AttributeToDisplay>
         </Scope>
         <Scope>
             <Name>LengthOfTenure</Name>
@@ -318,6 +342,9 @@
             <Claims>
                 <ClaimValue>LengthOfTenure</ClaimValue>
             </Claims>
+            <AttributeToDisplay>
+                <Attribute>Length of Tenure</Attribute>
+            </AttributeToDisplay>
         </Scope>
         <Scope>
             <Name>pairing_change</Name>
@@ -325,6 +352,9 @@
             <Claims>
                 <ClaimValue>pairing_change</ClaimValue>
             </Claims>
+            <AttributeToDisplay>
+                <Attribute>Pairig Change Status</Attribute>
+            </AttributeToDisplay>
         </Scope>
         <Scope>
             <Name>is_roaming</Name>
@@ -332,6 +362,9 @@
             <Claims>
                 <ClaimValue>is_roaming</ClaimValue>
             </Claims>
+            <AttributeToDisplay>
+                <Attribute>Is Roaming Status</Attribute>
+            </AttributeToDisplay>
         </Scope>
         <Scope>
             <Name>roaming_country</Name>
@@ -339,6 +372,9 @@
             <Claims>
                 <ClaimValue>roaming_country</ClaimValue>
             </Claims>
+            <AttributeToDisplay>
+                <Attribute>Roaming Country</Attribute>
+            </AttributeToDisplay>
         </Scope>
         <Scope>
             <Name>is_divert_set</Name>
@@ -346,6 +382,9 @@
             <Claims>
                 <ClaimValue>is_divert_set</ClaimValue>
             </Claims>
+            <AttributeToDisplay>
+                <Attribute>Divert Status</Attribute>
+            </AttributeToDisplay>
         </Scope>
         <Scope>
             <Name>location_country</Name>
@@ -353,6 +392,9 @@
             <Claims>
                 <ClaimValue>location_country</ClaimValue>
             </Claims>
+            <AttributeToDisplay>
+                <Attribute>Location Country</Attribute>
+            </AttributeToDisplay>
         </Scope>
         <Scope>
             <Name>device_change</Name>
@@ -360,6 +402,9 @@
             <Claims>
                 <ClaimValue>device_change</ClaimValue>
             </Claims>
+            <AttributeToDisplay>
+                <Attribute>Device Change Status</Attribute>
+            </AttributeToDisplay>
         </Scope>
         <Scope>
             <Name>p_form_fill</Name>
@@ -457,6 +502,12 @@
                 <ClaimValue>roaming_country</ClaimValue>
                 <ClaimValue>location_country</ClaimValue>
             </Claims>
+            <AttributeToDisplay>
+                <Attribute>Zone Info</Attribute>
+                <Attribute>Roaming Status</Attribute>
+                <Attribute>Roaming Country</Attribute>
+                <Attribute>Located Country</Attribute>
+            </AttributeToDisplay>
             <MandatoryRequestClaimParams>
                 <Name>location_country</Name>
             </MandatoryRequestClaimParams>
@@ -477,6 +528,13 @@
                 <ClaimValue>is_divert_set</ClaimValue>
                 <ClaimValue>device_change</ClaimValue>
             </Claims>
+            <AttributeToDisplay>
+                <Attribute>Phone Number Country Code</Attribute>
+                <Attribute>Phone Lost/Stolen Status</Attribute>
+                <Attribute>Account Start Date</Attribute>
+                <Attribute>Account Type</Attribute>
+                <Attribute>Roaming Country</Attribute>
+            </AttributeToDisplay>
         </Scope>
         <Scope>
             <Name>mc_kyc_plain</Name>
