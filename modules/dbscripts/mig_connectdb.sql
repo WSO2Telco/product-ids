@@ -45,6 +45,7 @@ CREATE TABLE consent_validity_type (
 
 INSERT INTO consent_validity_type(validity_id,validity_type,has_exp_period,default_exp_period) VALUES(1,'transactional',0,0);
 INSERT INTO consent_validity_type(validity_id,validity_type,has_exp_period,default_exp_period) VALUES(2,'long_live',1,30);
+INSERT INTO consent_validity_type(validity_id,validity_type,has_exp_period,default_exp_period) VALUES(3,'undefined',0,0);
 
 DROP TABLE IF EXISTS scope_types;
 
@@ -284,16 +285,12 @@ CREATE TABLE `scope_parameter` (
     `is_multiscope` TINYINT DEFAULT 0,
     `is_consent_page` TINYINT NOT NULL DEFAULT 0,
     `description` VARCHAR(255),
-    `consent_type` INT(11),
-    `consent_validity_type` INT(11),
     `scope_type` VARCHAR(30),
     PRIMARY KEY (`param_id`),
-    FOREIGN KEY (`consent_type`) REFERENCES `consent_type`(`consent_typeID`),
-    FOREIGN KEY (`consent_validity_type`) REFERENCES `consent_validity_type`(`validity_id`),
-    FOREIGN KEY (`scope_type`) REFERENCES `scope_types`(`scope_type`),
-    UNIQUE (`scope`)
+    UNIQUE KEY `scope` (`scope`),
+    KEY `scope_type` (`scope_type`),
+    CONSTRAINT `scope_parameter_ibfk_3` FOREIGN KEY (`scope_type`) REFERENCES `scope_types` (`scope_type`)
 )  ENGINE=INNODB DEFAULT CHARSET=LATIN1;
-
 
 INSERT INTO scope_parameter(param_id,scope,is_login_hint_mandatory,is_header_msisdn_mandatory,is_tnc_visible,msisdn_mismatch_result,he_failure_result,is_multiscope)
 VALUES(1,'openid',0,0,1,'CONTINUE_WITH_HEADER','TRUST_LOGINHINT_MSISDN',0);
@@ -337,25 +334,32 @@ VALUES(13,'charge',1,1,'Charge API will be charged per transaction');
 INSERT INTO scope_parameter(param_id,scope,is_multiscope,is_consent_page,description)
 VALUES(14,'payment',1,1,'A convenient fee of 1% charged');
 
-INSERT INTO scope_parameter(param_id,scope,is_login_hint_mandatory,is_header_msisdn_mandatory,is_tnc_visible,msisdn_mismatch_result,he_failure_result,is_multiscope,is_consent_page,description,consent_type,consent_validity_type,scope_type)
-VALUES(15,'p_form_fill',0,0,0,NULL,NULL,1,1,'p_form_fill',2,1,'ATT_SHARE');
+INSERT INTO scope_parameter(param_id,scope,is_login_hint_mandatory,is_header_msisdn_mandatory,is_tnc_visible,msisdn_mismatch_result,he_failure_result,is_multiscope,is_consent_page,description,scope_type)
+VALUES(15,'p_form_fill',0,0,0,NULL,NULL,1,1,'p_form_fill','ATT_SHARE');
 
-INSERT INTO scope_parameter(param_id,scope,is_login_hint_mandatory,is_header_msisdn_mandatory,is_tnc_visible,msisdn_mismatch_result,he_failure_result,is_multiscope,is_consent_page,description,consent_type,consent_validity_type,scope_type)
-VALUES(16,'p_anti_fraud',0,0,0,NULL,NULL,1,1,'p_anti_fraud',3,2,'ATT_SHARE');
+INSERT INTO scope_parameter(param_id,scope,is_login_hint_mandatory,is_header_msisdn_mandatory,is_tnc_visible,msisdn_mismatch_result,he_failure_result,is_multiscope,is_consent_page,description,scope_type)
+VALUES(16,'p_anti_fraud',0,0,0,NULL,NULL,1,1,'p_anti_fraud','ATT_SHARE');
 
 DROP TABLE IF EXISTS consent;
 
-CREATE TABLE consent (
-    consent_id INT(20) NOT NULL AUTO_INCREMENT,
-    client_id VARCHAR(100) NOT NULL,
-    scope_id INT(20) NOT NULL,
-    operator_id INT(20) NOT NULL,
-    approve_status VARCHAR(45),
-    exp_period INT(11),
-    PRIMARY KEY (consent_id),
-    FOREIGN KEY (scope_id) REFERENCES scope_parameter(param_id),
-    UNIQUE (client_id,scope_id,operator_id)
-)  ENGINE=InnoDB DEFAULT CHARSET=latin1;
+CREATE TABLE `consent` (
+  `consent_id` int(20) NOT NULL AUTO_INCREMENT,
+  `client_id` varchar(100) NOT NULL,
+  `scope_id` int(20) NOT NULL,
+  `operator_id` varchar(50) DEFAULT NULL,
+  `approve_status` varchar(45) DEFAULT NULL,
+  `exp_period` int(11) DEFAULT NULL,
+  `consent_type` int(11) DEFAULT NULL,
+  `consent_validity_type` int(11) DEFAULT NULL,
+  PRIMARY KEY (`consent_id`),
+  UNIQUE KEY `client_id` (`client_id`,`scope_id`,`operator_id`),
+  KEY `scope_id` (`scope_id`),
+  KEY `consent_ibfk_2` (`consent_type`),
+  KEY `consent_ibfk_3` (`consent_validity_type`),
+  CONSTRAINT `consent_ibfk_1` FOREIGN KEY (`scope_id`) REFERENCES `scope_parameter` (`param_id`),
+  CONSTRAINT `consent_ibfk_2` FOREIGN KEY (`consent_type`) REFERENCES `consent_type` (`consent_typeID`),
+  CONSTRAINT `consent_ibfk_3` FOREIGN KEY (`consent_validity_type`) REFERENCES `consent_validity_type` (`validity_id`)
+) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=latin1;
 
 
 DROP TABLE IF EXISTS `user_consent`;
