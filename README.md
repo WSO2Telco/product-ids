@@ -176,7 +176,7 @@ For more details and to take advantage of this unique opportunity please visit h
 ### Big Thanks
 
 Cross-browser Testing Platform and Open Source &#10084; Provided by 
-![Alt text](https://github.com/sahantelco/product-ids/blob/master/images/LOGO_Sauce-Labs_Horiz_Red-Grey_RGB.png)
+![Alt text](https://github.com/WSO2Telco/product-ids/blob/master/images/LOGO_Sauce-Labs_Horiz_Red-Grey_RGB.png)
  https://saucelabs.com	
 
 ---------------------------------------------------------------------------
