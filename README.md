@@ -172,5 +172,12 @@ We are committed to ensuring that your enterprise middleware deployment is compl
 
 For more details and to take advantage of this unique opportunity please visit http://wso2telco.com/services.
 
+
+### Big Thanks
+
+Cross-browser Testing Platform and Open Source &#10084; Provided by 
+![Alt text](https://github.com/WSO2Telco/product-ids/blob/master/images/LOGO_Sauce-Labs_Horiz_Red-Grey_RGB.png)
+ https://saucelabs.com	
+
 ---------------------------------------------------------------------------
 (c) Copyright 2017 WSO2Telco
