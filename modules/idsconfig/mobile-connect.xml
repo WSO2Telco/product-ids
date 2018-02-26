@@ -235,11 +235,4 @@
         <DASUrl>tcp://localhost:7612</DASUrl>
         <DASSecureUrl>ssl://localhost:7712</DASSecureUrl>
     </DataPublisher>
-
-    <VOICE>
-        <UserOnboardEndpoint>https://poc.vsservic.es/pwr/onboardUser</UserOnboardEndpoint>
-        <UserAuthenticationEndpoint>https://poc.vsservic.es/pwr/authenticateUser</UserAuthenticationEndpoint>
-        <UserEnrollmentCheckEndpoint>https://poc.vsservic.es/pwr/isUserActive</UserEnrollmentCheckEndpoint>
-    </VOICE>
-
 </MobileConnectConfig>
