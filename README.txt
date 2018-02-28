@@ -1,10 +1,10 @@
 ==========================
-WSO2 Identity Server ${product.version}
+WSO2Telco Mobile Identity Gateway ${product.version}
 ==========================
 
-Welcome to the WSO2 Identity Server ${product.version} release.
+Welcome to the WSO2Telco Mobile Identity Gateway ${product.version} release.
 
-WSO2 Identity Server is an open source Identity and Entitlement management server. It supports a wide array of authentication 
+WSO2Telco Mobile Identity Gateway is an open source Identity and Entitlement management server. It supports a wide array of authentication 
 protocols such as SAML 2.0 Web SSO, OAuth 2.0/1.0a, OpenID Connect and WS-Federation Passive.
 It supports role based authorization and fined grained authorization with XACML 2.0/3.0 while inbound/outbound provisioning is 
 supported through SCIM and SPML.
@@ -103,7 +103,7 @@ System Requirements
 
 4. The Management Console requires full Javascript enablement of the Web browser.
 
-5. To build WSO2 Identity Server from the Source distribution, it is also necessary that you have Maven 3 or later.
+5. To build WSO2Telco Mobile Identity Gateway from the Source distribution, it is also necessary that you have Maven 3 or later.
 
     
 Installation and Running
@@ -118,7 +118,7 @@ Installation and Running
 Documentation
 =============
 
-Please refer http://docs.wso2telco.com/display/MIG220
+Please refer http://docs.wso2telco.com/display/HG/MIG+2.3.0
 
 Reporting Issues
 ================
