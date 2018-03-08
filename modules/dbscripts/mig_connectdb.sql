@@ -370,6 +370,8 @@ CREATE TABLE `user_consent` (
   `msisdn` varchar(45) NOT NULL,
   `expire_time` timestamp NULL DEFAULT NULL,
   `consent_status` tinyint(4) DEFAULT '0',
+  `client_id` varchar(100) NOT NULL,
+  `operator` varchar(100) NOT NULL,
   PRIMARY KEY (`user_consent_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 

@@ -1134,6 +1134,14 @@
 				<AttributeID>country</AttributeID>
 				<Description>Country name component</Description>
 			</Claim>
+            <Claim>
+                <ClaimURI>operator</ClaimURI>
+                <DisplayName>Operator</DisplayName>
+                <AttributeID>operator</AttributeID>
+                <SupportedByDefault />
+                <Required />
+                <Description>Operator related to MSISDN</Description>
+            </Claim>
 		</Dialect>
 	</Dialects>
 </ClaimConfig>
