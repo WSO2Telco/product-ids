@@ -26,6 +26,20 @@
 				<SupportedByDefault />
 			</Claim>
 			<Claim>
+				<ClaimURI>http://wso2.org/claims/operator</ClaimURI>
+				<DisplayName>Operator</DisplayName>
+				<AttributeID>operator</AttributeID>
+				<Description>Operator</Description>
+				<SupportedByDefault />
+			</Claim>
+			<Claim>
+				<ClaimURI>http://wso2.org/claims/status</ClaimURI>
+				<DisplayName>Status</DisplayName>
+				<AttributeID>status</AttributeID>
+				<Description>Status</Description>
+				<SupportedByDefault />
+			</Claim>
+			<Claim>
 				<ClaimURI>http://wso2.org/claims/challengeQuestion1</ClaimURI>
 				<DisplayName>Challenge Question1</DisplayName>
 				<AttributeID>cq1</AttributeID>
@@ -1120,6 +1134,14 @@
 				<AttributeID>country</AttributeID>
 				<Description>Country name component</Description>
 			</Claim>
+            <Claim>
+                <ClaimURI>operator</ClaimURI>
+                <DisplayName>Operator</DisplayName>
+                <AttributeID>operator</AttributeID>
+                <SupportedByDefault />
+                <Required />
+                <Description>Operator related to MSISDN</Description>
+            </Claim>
 		</Dialect>
 	</Dialects>
 </ClaimConfig>

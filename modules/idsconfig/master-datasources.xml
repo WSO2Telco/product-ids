@@ -58,7 +58,7 @@
         <configuration>
           <url>jdbc:mysql://localhost:3306/mig_regdb?autoReconnect=true&amp;relaxAutoCommit=true&amp;</url>    <!-- enter the dbhost and gsma_registry db name -->
           <username>root</username>      <!-- User name -->
-	  <password></password>
+	   <password></password>
           <driverClassName>com.mysql.jdbc.Driver</driverClassName>
           <maxActive>50</maxActive>
           <maxWait>60000</maxWait>

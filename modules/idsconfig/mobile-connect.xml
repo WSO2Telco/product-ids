@@ -211,7 +211,8 @@
         <Operator>
             <operatorName>operator 1 name</operatorName>
             <ipValidation>false</ipValidation> <!-- to decide ip validation should be enabled for the operator -->
-            <MobileIPRanges>     <!-- The IP range the operator accepting the msisdn from the header -->
+               <!-- The IP range the operator accepting the msisdn from the header -->
+            <MobileIPRanges>
                 <IPRange>FROM IP:TO IP</IPRange>
                 <IPRange>XX.XX.XX.XX:XX.XX.XX.XX</IPRange>
                 <IPRange>XX.XX.XX.XX:XX.XX.XX.XX</IPRange>
@@ -235,4 +236,19 @@
         <DASUrl>tcp://localhost:7612</DASUrl>
         <DASSecureUrl>ssl://localhost:7712</DASSecureUrl>
     </DataPublisher>
+
+    <OperatorsList>
+        <OperatorData>
+            <OperatorName>spark</OperatorName>
+            <UserInfoEndPointType>Remote</UserInfoEndPointType>
+            <UserInfoEndPointURL>http://demo0949818.mockable.io/customer/profile%3Fmsisdn=123456789</UserInfoEndPointURL>
+            <ClassName>com.wso2telco.claims.RemoteClaimsTelco</ClassName>
+        </OperatorData>
+        <OperatorData>
+            <OperatorName>operater2</OperatorName>
+            <UserInfoEndPointType>Remote</UserInfoEndPointType>
+            <UserInfoEndPointURL>http://demo0949818.mockable.io/customer/profile%3Fmsisdn=123456789</UserInfoEndPointURL>
+            <ClassName>com.wso2telco.claims.RemoteClaimsTelco</ClassName>
+        </OperatorData>
+    </OperatorsList>
 </MobileConnectConfig>
