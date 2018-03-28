@@ -396,3 +396,26 @@ CREATE TABLE `federated_idp_mappings` (
   PRIMARY KEY (`ID`),
   KEY `idx_accesstoken` (`accesstoken`)
 ) ENGINE=InnoDB;
+
+DROP TABLE IF EXISTS backchannel_request_details;
+
+CREATE TABLE backchannel_request_details (
+    correlation_id varchar(255),
+    session_id varchar(255) UNIQUE,
+    msisdn varchar(20),
+    notification_bearer_token varchar(255),
+    notification_url varchar(255) NOT NULL,
+    auth_code varchar(50),
+    request_initiated_time DATETIME,
+    auth_requested_id varchar(255),
+    client_id varchar(50),
+    redirect_url varchar(255),
+    PRIMARY KEY(correlation_id)
+) ENGINE=INNODB DEFAULT CHARSET=LATIN1;
+
+DROP TABLE IF EXISTS sp_notification_url;
+
+CREATE TABLE sp_notification_url (
+    client_id varchar(100),
+    notification_url varchar(255)
+) ENGINE=INNODB DEFAULT CHARSET=LATIN1;
