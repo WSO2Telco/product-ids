@@ -286,6 +286,7 @@ CREATE TABLE `scope_parameter` (
     `is_consent_page` TINYINT NOT NULL DEFAULT 0,
     `description` VARCHAR(255),
     `scope_type` VARCHAR(30),
+    `is_backchannel_allowed` TINYINT DEFAULT 0,
     PRIMARY KEY (`param_id`),
     UNIQUE KEY `scope` (`scope`),
     KEY `scope_type` (`scope_type`),
