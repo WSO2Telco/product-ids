@@ -228,6 +228,7 @@ CREATE TABLE `scope_parameter` (
     `msisdn_mismatch_result` VARCHAR(255),
     `he_failure_result` VARCHAR(255),
     `is_multiscope` TINYINT DEFAULT 0,
+    `is_backchannel_allowed` TINYINT DEFAULT 0,
     PRIMARY KEY (`param_id`),
     UNIQUE (`scope`)
 )  ENGINE=INNODB DEFAULT CHARSET=LATIN1;
