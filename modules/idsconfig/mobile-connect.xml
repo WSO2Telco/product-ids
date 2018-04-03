@@ -255,6 +255,6 @@
     <BackChannelConfig>
         <authorizeEndpoint>https://localhost:9443/authproxy/oauth2/authorize</authorizeEndpoint>
         <ussdNotifyUrl>http://localhost:9763/sessionupdater/tnspoints/endpoint/serverinitiated/login/ussd</ussdNotifyUrl>
-        <smsCallbackUrl>/sessionupdater/tnspoints/endpoint/serverinitiated/sms/response</smsCallbackUrl>
+        <smsCallbackUrl>http://localhost:9763/sessionupdater/tnspoints/endpoint/serverinitiated/sms/response</smsCallbackUrl>
     </BackChannelConfig>
 </MobileConnectConfig>
