@@ -251,4 +251,10 @@
             <ClassName>com.wso2telco.claims.RemoteClaimsTelco</ClassName>
         </OperatorData>
     </OperatorsList>
+
+    <BackChannelConfig>
+        <authorizeEndpoint>https://localhost:9443/authproxy/oauth2/authorize</authorizeEndpoint>
+        <ussdNotifyUrl>http://localhost:9763/sessionupdater/tnspoints/endpoint/serverinitiated/login/ussd</ussdNotifyUrl>
+        <smsCallbackUrl>http://localhost:9763/sessionupdater/tnspoints/endpoint/serverinitiated/sms/response</smsCallbackUrl>
+    </BackChannelConfig>
 </MobileConnectConfig>
