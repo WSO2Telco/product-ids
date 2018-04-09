@@ -162,4 +162,14 @@
 			</Authenticators>
 		</Authentication>
 	</AuthenticationLevel>
+	<AuthenticationLevel>
+		<Level>11</Level>
+		<Authentication>
+			<Authenticators>
+				<!--Authenicator onfail="break" supportiveFlow="any">ServerInitiatedSMSAuthenticator</Authenicator-->
+				<Authenicator onfail="break" supportiveFlow="any">ServerInitiatedUSSDAuthenticator</Authenicator>
+			</Authenticators>
+		</Authentication>
+	</AuthenticationLevel>
+
 </AuthenticationLevels>
