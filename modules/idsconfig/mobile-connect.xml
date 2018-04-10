@@ -66,15 +66,12 @@
             <ConnectionRequestTimeout>30</ConnectionRequestTimeout>
         </TimeoutConfig>
         <WelcomeMessageDisabled>true</WelcomeMessageDisabled>
-        <DefaultWelcomeMessage>Welcome to Mobile Connect - a simple and safer way to login which is always free. Please visit
-            http://mobileconnect.in to know more.</DefaultWelcomeMessage>
+        <DefaultWelcomeMessage>Welcome to Mobile Connect - a simple and safer way to login which is always free. Please visit http://mobileconnect.in to know more.</DefaultWelcomeMessage>
         <OperatorWelcomeMessage>
             <!--Multiple operators can be configured here-->
             <Operator>
                 <Name>spark</Name>
-                <Message>Spark welcomes you on Mobile Connect - a simple and safer way to login which is always free. Please visit
-                    http://mobileconnect.in to know more.
-                </Message>
+                <Message>Spark welcomes you on Mobile Connect - a simple and safer way to login which is always free. Please visit http://mobileconnect.in to know more.</Message>
                 <Disabled>true</Disabled>
             </Operator>
         </OperatorWelcomeMessage>
@@ -251,4 +248,100 @@
             <ClassName>com.wso2telco.claims.RemoteClaimsTelco</ClassName>
         </OperatorData>
     </OperatorsList>
+
+    <SeamlessProvisioningEnabled>true</SeamlessProvisioningEnabled>
+    <DiscoveryConfigs>
+        <Auth_clientId>J2lAGcsgEILuhiSyPwsljG4OoxzyIiaX</Auth_clientId>
+        <Auth_clientSecret>EBmKGJmSsOsniAXY</Auth_clientSecret>
+        <DiscoveryCrConfig>
+            <CrdServiceUrl>https://integration.mobileconnect.io/rv/v1/exchange/organizations/dialog_srilanka/validate</CrdServiceUrl>
+        </DiscoveryCrConfig>
+        <DiscoveryEksConfig>
+            <EksServiceUrl>https://india.discover.mobileconnect.io/gsma/v2/discovery/</EksServiceUrl>
+            <EksRedirectUrl>http://jenkins.wso2telco.com:9763/playground2/oauth2.jsp</EksRedirectUrl>
+            <Msisdn>919958713388</Msisdn>
+        </DiscoveryEksConfig>
+    </DiscoveryConfigs>
+
+    <SpProvisionConfig>
+        <AdminServiceHostUrl>https://localhost:9443/services/OAuthAdminService</AdminServiceHostUrl>
+        <ApplicationManagementHostUrl>https://localhost:9443/services/IdentityApplicationManagementService</ApplicationManagementHostUrl>
+        <UserName>admin</UserName>
+        <Password>admin</Password>
+        <MaximumTotalHttpConections>100</MaximumTotalHttpConections>
+        <MaximumHttpConnectionsPerHost>2</MaximumHttpConnectionsPerHost>
+        <config>
+            <AlwaysSendMappedLocalSubjectId>false</AlwaysSendMappedLocalSubjectId>
+            <LocalClaimDialect>true</LocalClaimDialect>
+            <InboundAuthType>oauth2</InboundAuthType>
+            <Confidential>false</Confidential>
+            <DefaultValue>null</DefaultValue>
+            <PropertyName>oauthConsumerSecret</PropertyName>
+            <PropertyRequired>false</PropertyRequired>
+            <ProvisioningEnabled>false</ProvisioningEnabled>
+            <ProvisioningUserStore>PRIMARY</ProvisioningUserStore>
+            <SaasApp>true</SaasApp>
+            <LocalAuthenticatorConfigsDisplayName>LOA</LocalAuthenticatorConfigsDisplayName>
+            <LocalAuthenticatorConfigsEnabled>false</LocalAuthenticatorConfigsEnabled>
+            <LocalAuthenticatorConfigsName>LOACompositeAuthenticator</LocalAuthenticatorConfigsName>
+            <LocalAuthenticatorConfigsValid>true</LocalAuthenticatorConfigsValid>
+            <LocalAuthenticatorConfigsAuthenticationType>local</LocalAuthenticatorConfigsAuthenticationType>
+            <UserName>admin</UserName>
+            <Password>admin</Password>
+            <OauthVersion>OAuth-2.0</OauthVersion>
+            <GrantTypes>authorization_code implicit password client_credentials refresh_token urn:ietf:params:oauth:grant-type:saml2-bearer iwa:ntlm</GrantTypes>
+            <PkceMandatory>false</PkceMandatory>
+            <PkceSupportPlain>false</PkceSupportPlain>
+        </config>
+    </SpProvisionConfig>
+
+    <OpenIDAdminServices>
+        <UserName>admin</UserName>
+        <Password>admin</Password>
+    </OpenIDAdminServices>
+
+    <ServiceProviderHeaders>
+        <UserName>admin</UserName>
+        <Password>admin</Password>
+    </ServiceProviderHeaders>
+
+    <OperatorDiscoveryNamesMapping>
+        <entry>
+            <key>operator1</key>
+            <value>operator1</value>
+        </entry>
+        <entry>
+            <key>operator2</key>
+            <value>operator2</value>
+        </entry>
+        <entry>
+            <key>spark</key>
+            <value>spark</value>
+        </entry>
+    </OperatorDiscoveryNamesMapping>
+
+    <SelfServicePortal>
+        <SPOAuthClientKey></SPOAuthClientKey>
+        <SPOAuthClientSecret></SPOAuthClientSecret>
+        <UILoginUrl>https://localhost:9443/selfserviceportal/#/login</UILoginUrl>
+        <TokenEndpoint>https://localhost:9443/oauth2/token</TokenEndpoint>
+        <CallbackUrl>https://localhost:9443/selfserviceportal/api/v1/auth/callback</CallbackUrl>
+        <UserInfoCall>https://localhost:9443/oauth2/userinfo?schema=openid</UserInfoCall>
+        <AuthorizeCall>https://localhost:9443/authproxy/oauth2/authorize/operator/${operator}</AuthorizeCall>
+        <DiscoveryAPICall></DiscoveryAPICall>
+        <DiscoveryAPIToken></DiscoveryAPIToken>
+        <MsisdnClaim>msisdn</MsisdnClaim> <!-- MSISDN claim on user info call -->
+    </SelfServicePortal>
+
+    <OperatorRecovery>
+        <RecoveryOption>discovery</RecoveryOption>
+        <RecoveryOptionURL>https://url</RecoveryOptionURL>
+        <RecoveryOptionAuthCode>oauthCode</RecoveryOptionAuthCode>
+    </OperatorRecovery>
+    <UserRegistrationAPI>
+        <MaxMSISDNLimit>100</MaxMSISDNLimit>
+    </UserRegistrationAPI>
+    <UserUnRegistrationAPI>
+        <MaxMSISDNLimit>100</MaxMSISDNLimit>
+    </UserUnRegistrationAPI>
 </MobileConnectConfig>

@@ -106,9 +106,9 @@
 			<LevelToFallback>10</LevelToFallback>
 			<Authenticators>
 				<Authenicator onfail="break" supportiveFlow="any">MSISDNAuthenticator</Authenicator>
-				<Authenicator onfail="continue" supportiveFlow="any">SmartPhoneAppAuthenticator</Authenicator>
-				<Authenicator onfail="fallback" supportiveFlow="any">USSDAuthenticator</Authenicator>
-				<!-- If onFail attribute values is 'break', and that authenticator fails,whole LOA should fail -->
+                <Authenicator onfail="break" supportiveFlow="any">ConsentAuthenticator</Authenicator>
+				<Authenicator onfail="fallback" supportiveFlow="any">SMSOTPAuthenticator</Authenicator>
+                <!-- If onFail attribute values is 'break', and that authenticator fails,whole LOA should fail -->
 			</Authenticators>
 		</Authentication>
 	</AuthenticationLevel>
