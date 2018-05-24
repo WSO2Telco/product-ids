@@ -300,7 +300,8 @@ CREATE TABLE `scope_parameter` (
     `is_multiscope` TINYINT DEFAULT 0,
     `is_consent_page` TINYINT NOT NULL DEFAULT 0,
     `description` VARCHAR(255),
-    `scope_type` VARCHAR(30) NOT NULL,
+    `scope_type` VARCHAR(30),
+    `is_backchannel_allowed` TINYINT DEFAULT 0,
     PRIMARY KEY (`param_id`),
     FOREIGN KEY (`scope_type`) REFERENCES `scope_types`(`scope_type`),
     UNIQUE KEY `scope` (`scope`),
@@ -537,4 +538,51 @@ CREATE TABLE `scope_log` (
     `sub` VARCHAR(200) DEFAULT NULL,
     PRIMARY KEY (`id`),
     KEY `accessToken` (`access_token`)
-)  ENGINE=INNODB DEFAULT CHARSET=LATIN1
+)  ENGINE=INNODB AUTO_INCREMENT=11 DEFAULT CHARSET=LATIN1;
+
+
+DROP TABLE IF EXISTS `sms_otp`;
+
+CREATE TABLE `sms_otp` (
+    `session_id` VARCHAR(255),
+    `otp` VARCHAR(65) DEFAULT NULL,
+    `status` VARCHAR(15) DEFAULT NULL,
+  PRIMARY KEY (`session_id`)
+)  ENGINE=INNODB DEFAULT CHARSET=LATIN1;
+
+DROP TABLE IF EXISTS `federated_idp_mappings`;
+
+CREATE TABLE `federated_idp_mappings` (
+  `ID` int(11) NOT NULL AUTO_INCREMENT,
+  `operator` varchar(45) DEFAULT NULL,
+  `federated_authcode` varchar(255) DEFAULT NULL,
+  `accesstoken` varchar(255) DEFAULT NULL,
+  `federated_accesstoken` varchar(255) DEFAULT NULL,
+  `updated_time` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  PRIMARY KEY (`ID`),
+  KEY `idx_accesstoken` (`accesstoken`)
+) ENGINE=InnoDB;
+
+DROP TABLE IF EXISTS backchannel_request_details;
+
+CREATE TABLE backchannel_request_details (
+    correlation_id varchar(255),
+    session_id varchar(255) UNIQUE,
+    msisdn varchar(20),
+    notification_bearer_token varchar(255),
+    notification_url varchar(255) NOT NULL,
+    auth_code varchar(50),
+    request_initiated_time DATETIME,
+    client_id varchar(50),
+    redirect_url varchar(255),
+    PRIMARY KEY(correlation_id)
+) ENGINE=INNODB DEFAULT CHARSET=LATIN1;
+
+DROP TABLE IF EXISTS sp_notification_url;
+
+CREATE TABLE sp_notification_url (
+    client_id varchar(100),
+    notification_url varchar(255)
+) ENGINE=INNODB DEFAULT CHARSET=LATIN1;
+
+>>>>>>> 1fd057a675592bccb3b819be214415f65183daa5
