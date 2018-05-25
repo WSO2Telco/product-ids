@@ -181,6 +181,7 @@
                 <include>saaserver.war</include>
                 <include>introspect.war</include>
                 <include>premiuminfo.war</include>
+                <include>samplerequest.war</include>
             </includes>
         </fileSet>
 
