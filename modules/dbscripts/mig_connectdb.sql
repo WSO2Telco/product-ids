@@ -21,6 +21,60 @@ CREATE TABLE `authenticated_login` (
     PRIMARY KEY (`tokenID`)
 )  ENGINE=INNODB DEFAULT CHARSET=LATIN1;
 
+DROP TABLE IF EXISTS consent_type;
+
+CREATE TABLE consent_type (
+    consent_typeID INT(11) NOT NULL,
+    consent_type VARCHAR(45),
+    PRIMARY KEY (consent_typeID)
+)  ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+INSERT INTO consent_type(consent_typeID,consent_type) VALUES(1,'implicit');
+INSERT INTO consent_type(consent_typeID,consent_type) VALUES(2,'explicit');
+INSERT INTO consent_type(consent_typeID,consent_type) VALUES(3,'no_consent');
+
+DROP TABLE IF EXISTS consent_validity_type;
+
+CREATE TABLE consent_validity_type (
+    validity_id INT(11) NOT NULL,
+    validity_type VARCHAR(50),
+    has_exp_period SMALLINT(6),
+    default_exp_period INT(11),
+    PRIMARY KEY (validity_id)
+)  ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+INSERT INTO consent_validity_type(validity_id,validity_type,has_exp_period,default_exp_period) VALUES(1,'transactional',0,0);
+INSERT INTO consent_validity_type(validity_id,validity_type,has_exp_period,default_exp_period) VALUES(2,'long_live',1,30);
+INSERT INTO consent_validity_type(validity_id,validity_type,has_exp_period,default_exp_period) VALUES(3,'undefined',0,0);
+
+DROP TABLE IF EXISTS scope_types;
+
+CREATE TABLE scope_types (
+    scope_type VARCHAR(30) NOT NULL,
+    description VARCHAR(30) NOT NULL,
+    PRIMARY KEY (scope_type)
+)  ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+INSERT INTO scope_types(scope_type,description) VALUES('APICONSENT','Api Consent Requesting Scope');
+INSERT INTO scope_types(scope_type,description) VALUES('ATT_SHARE','Attribute Sharing Scopes');
+INSERT INTO scope_types(scope_type,description) VALUES('ATT_VERIFICATION','Attribute verification Scopes');
+INSERT INTO scope_types(scope_type,description) VALUES('MAIN','Main Scopes');
+
+DROP TABLE IF EXISTS trustedstatus;
+
+CREATE TABLE trustedstatus (
+    id_Trusted_type INT(11) NOT NULL,
+    status VARCHAR(255),
+    isMsisdnMandatory TINYINT(1),
+    sptype VARCHAR(255),
+    description VARCHAR(255),
+    PRIMARY KEY (id_Trusted_type)
+)  ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+INSERT INTO trustedstatus(id_Trusted_type,status,isMsisdnMandatory,sptype,description) VALUES(1,'fullytrusted',1,'tsp1','have rights to both authenticate and get cons');
+INSERT INTO trustedstatus(id_Trusted_type,status,isMsisdnMandatory,sptype,description) VALUES(2,'trusted',1,'tsp2','have rights to authenticate user');
+INSERT INTO trustedstatus(id_Trusted_type,status,isMsisdnMandatory,sptype,description) VALUES(3,'normal',0,'normal','no right for authenticate nor get consent');
+
 
 DROP TABLE IF EXISTS `clientstatus`;
 
@@ -143,7 +197,6 @@ CREATE TABLE `sp_login_history` (
     PRIMARY KEY (`id`)
 )  ENGINE=INNODB DEFAULT CHARSET=LATIN1;
 
-
 DROP TABLE IF EXISTS `sp_configuration`;
 
 CREATE TABLE `sp_configuration` (
@@ -219,6 +272,23 @@ CREATE TABLE operators_msisdn_headers_properties (
 
 INSERT INTO operators_msisdn_headers_properties VALUES (1,'msisdn','0','','',1),(1,'msisdn_header_1','1','DecryptMsisdn','wdTDoh8YxYcd3p',2);
 
+DROP TABLE IF EXISTS scope_types;
+
+CREATE TABLE `scope_types` (
+    `scope_type` VARCHAR(30) NOT NULL,
+    `description` VARCHAR(30) NOT NULL,
+    PRIMARY KEY (`scope_type`)
+)  ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+INSERT INTO scope_types(scope_type,description)
+VALUES("MAIN","Main Scopes");
+
+INSERT INTO scope_types(scope_type,description)
+VALUES("APICONSENT","Api Consent Requesting Scope");
+
+
+DROP TABLE IF EXISTS scope_parameter;
+
 CREATE TABLE `scope_parameter` (
     `param_id` INT(20) NOT NULL,
     `scope` VARCHAR(255) NOT NULL,
@@ -228,26 +298,31 @@ CREATE TABLE `scope_parameter` (
     `msisdn_mismatch_result` VARCHAR(255),
     `he_failure_result` VARCHAR(255),
     `is_multiscope` TINYINT DEFAULT 0,
+    `is_consent_page` TINYINT NOT NULL DEFAULT 0,
+    `description` VARCHAR(255),
+    `scope_type` VARCHAR(30),
     `is_backchannel_allowed` TINYINT DEFAULT 0,
     PRIMARY KEY (`param_id`),
-    UNIQUE (`scope`)
+    FOREIGN KEY (`scope_type`) REFERENCES `scope_types`(`scope_type`),
+    UNIQUE KEY `scope` (`scope`),
+    KEY `scope_type` (`scope_type`),
+    CONSTRAINT `scope_parameter_ibfk_3` FOREIGN KEY (`scope_type`) REFERENCES `scope_types` (`scope_type`)
 )  ENGINE=INNODB DEFAULT CHARSET=LATIN1;
 
+INSERT INTO scope_parameter(param_id,scope,is_login_hint_mandatory,is_header_msisdn_mandatory,is_tnc_visible,msisdn_mismatch_result,he_failure_result,is_multiscope,scope_type)
+VALUES(1,'openid',0,0,1,'CONTINUE_WITH_HEADER','TRUST_LOGINHINT_MSISDN',0,"MAIN");
 
-INSERT INTO scope_parameter(param_id,scope,is_login_hint_mandatory,is_header_msisdn_mandatory,is_tnc_visible,msisdn_mismatch_result,he_failure_result,is_multiscope)
-VALUES(1,'openid',0,0,1,'CONTINUE_WITH_HEADER','TRUST_LOGINHINT_MSISDN',0);
+INSERT INTO scope_parameter(param_id,scope,is_login_hint_mandatory,is_header_msisdn_mandatory,is_tnc_visible,msisdn_mismatch_result,he_failure_result,is_multiscope,scope_type)
+VALUES(2,'mnv',1,0,0,'ERROR_RETURN','BREAK',0,"MAIN");
 
-INSERT INTO scope_parameter(param_id,scope,is_login_hint_mandatory,is_header_msisdn_mandatory,is_tnc_visible,msisdn_mismatch_result,he_failure_result,is_multiscope)
-VALUES(2,'mnv',1,0,0,'ERROR_RETURN','BREAK',0);
+INSERT INTO scope_parameter(param_id,scope,is_login_hint_mandatory,is_header_msisdn_mandatory,is_tnc_visible,msisdn_mismatch_result,he_failure_result,is_multiscope,scope_type)
+VALUES(3,'mc_mnv_validate',1,0,0,'OFFNET_FALLBACK_TRUST_LOGINHINT','TRUST_LOGINHINT_MSISDN',0,"MAIN");
 
-INSERT INTO scope_parameter(param_id,scope,is_login_hint_mandatory,is_header_msisdn_mandatory,is_tnc_visible,msisdn_mismatch_result,he_failure_result,is_multiscope)
-VALUES(3,'mc_mnv_validate',1,0,0,'OFFNET_FALLBACK_TRUST_LOGINHINT','TRUST_LOGINHINT_MSISDN',0);
+INSERT INTO scope_parameter(param_id,scope,is_login_hint_mandatory,is_header_msisdn_mandatory,is_tnc_visible,msisdn_mismatch_result,he_failure_result,is_multiscope,scope_type)
+VALUES(4,'mc_mnv_validate_plus',1,1,0,'ERROR_RETURN','BREAK',0,"MAIN");
 
-INSERT INTO scope_parameter(param_id,scope,is_login_hint_mandatory,is_header_msisdn_mandatory,is_tnc_visible,msisdn_mismatch_result,he_failure_result,is_multiscope)
-VALUES(4,'mc_mnv_validate_plus',1,1,0,'ERROR_RETURN','BREAK',0);
-
-INSERT INTO scope_parameter(param_id,scope,is_login_hint_mandatory,is_header_msisdn_mandatory,is_tnc_visible,msisdn_mismatch_result,he_failure_result,is_multiscope)
-VALUES(5,'mnv_tc',1,0,1,'OFFNET_FALLBACK_TRUST_LOGINHINT','TRUST_LOGINHINT_MSISDN',0);
+INSERT INTO scope_parameter(param_id,scope,is_login_hint_mandatory,is_header_msisdn_mandatory,is_tnc_visible,msisdn_mismatch_result,he_failure_result,is_multiscope,scope_type)
+VALUES(5,'mnv_tc',1,0,1,'OFFNET_FALLBACK_TRUST_LOGINHINT','TRUST_LOGINHINT_MSISDN',0,"MAIN");
 
 INSERT INTO scope_parameter(param_id,scope,is_multiscope)
 VALUES(6,'phone',1);
@@ -263,6 +338,96 @@ VALUES(9,'address',1);
 
 INSERT INTO scope_parameter(param_id,scope,is_multiscope)
 VALUES(10,'mc_identity_phonenumber_hashed',1);
+
+INSERT INTO scope_parameter(param_id,scope,is_login_hint_mandatory,is_header_msisdn_mandatory,is_tnc_visible,msisdn_mismatch_result,he_failure_result,is_multiscope,is_consent_page)
+VALUES(11,'api',0,0,0,'CONTINUE_WITH_HEADER','TRUST_LOGINHINT_MSISDN',0,1);
+
+INSERT INTO scope_parameter(param_id,scope,is_multiscope,is_consent_page,description,scope_type)
+VALUES(12,'sms',1,1,'SMS is Charged 5 per sms',"APICONSENT");
+
+INSERT INTO scope_parameter(param_id,scope,is_multiscope,is_consent_page,description,scope_type)
+VALUES(13,'charge',1,1,'Charge API will be charged per transaction',"APICONSENT");
+
+INSERT INTO scope_parameter(param_id,scope,is_multiscope,is_consent_page,description,scope_type)
+VALUES(14,'payment',1,1,'A convenient fee of 1% charged',"APICONSENT");
+
+INSERT INTO scope_parameter(param_id,scope,is_login_hint_mandatory,is_header_msisdn_mandatory,is_tnc_visible,msisdn_mismatch_result,he_failure_result,is_multiscope,is_consent_page,description,scope_type)
+VALUES(15,'p_form_fill',0,0,0,NULL,NULL,1,1,'p_form_fill','ATT_SHARE');
+
+INSERT INTO scope_parameter(param_id,scope,is_login_hint_mandatory,is_header_msisdn_mandatory,is_tnc_visible,msisdn_mismatch_result,he_failure_result,is_multiscope,is_consent_page,description,scope_type)
+VALUES(16,'p_anti_fraud',0,0,0,NULL,NULL,1,1,'p_anti_fraud','ATT_SHARE');
+
+DROP TABLE IF EXISTS consent;
+
+CREATE TABLE `consent` (
+  `consent_id` int(20) NOT NULL AUTO_INCREMENT,
+  `client_id` varchar(100) NOT NULL,
+  `scope_id` int(20) NOT NULL,
+  `operator_id` varchar(50) DEFAULT NULL,
+  `approve_status` varchar(45) DEFAULT NULL,
+  `exp_period` int(11) DEFAULT NULL,
+  `consent_type` int(11) DEFAULT NULL,
+  `consent_validity_type` int(11) DEFAULT NULL,
+  PRIMARY KEY (`consent_id`),
+  UNIQUE KEY `client_id` (`client_id`,`scope_id`,`operator_id`),
+  KEY `scope_id` (`scope_id`),
+  KEY `consent_ibfk_2` (`consent_type`),
+  KEY `consent_ibfk_3` (`consent_validity_type`),
+  CONSTRAINT `consent_ibfk_1` FOREIGN KEY (`scope_id`) REFERENCES `scope_parameter` (`param_id`),
+  CONSTRAINT `consent_ibfk_2` FOREIGN KEY (`consent_type`) REFERENCES `consent_type` (`consent_typeID`),
+  CONSTRAINT `consent_ibfk_3` FOREIGN KEY (`consent_validity_type`) REFERENCES `consent_validity_type` (`validity_id`)
+) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=latin1;
+
+
+DROP TABLE IF EXISTS `user_consent`;
+
+CREATE TABLE `user_consent` (
+  `user_consent_id` int(20) NOT NULL AUTO_INCREMENT,
+  `consent_id` int(20) NOT NULL,
+  `msisdn` varchar(45) NOT NULL,
+  `expire_time` timestamp NULL DEFAULT NULL,
+  `consent_status` tinyint(4) DEFAULT '0',
+  `client_id` varchar(100) NOT NULL,
+  `operator` varchar(100) NOT NULL,
+  PRIMARY KEY (`user_consent_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+DROP TABLE IF EXISTS `consent_configuration`;
+
+CREATE TABLE `consent_configuration` (
+    `consent_id` INT(20) NOT NULL AUTO_INCREMENT,
+    `client_id` VARCHAR(100) NOT NULL,
+    `scope_id` INT(20) NOT NULL,
+    `operator_id` INT(20) NOT NULL,
+    `approve_status` VARCHAR(45),
+    PRIMARY KEY (`consent_id`),
+    FOREIGN KEY (`scope_id`) REFERENCES `scope_parameter`(`param_id`),
+    UNIQUE (`client_id`,`scope_id`,`operator_id`)
+)  ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+
+DROP TABLE IF EXISTS `consent_given_user_lifetime`;
+
+CREATE TABLE `consent_given_user_lifetime` (
+    `user_consent_id` INT(20) NOT NULL AUTO_INCREMENT,
+    `msisdn` VARCHAR(255) NOT NULL,
+    `consent_id` INT(20),
+    `approve` TINYINT DEFAULT 0,
+    PRIMARY KEY (`user_consent_id`),
+    FOREIGN KEY (`consent_id`) REFERENCES `consent_configuration`(`consent_id`)
+)  ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+DROP TABLE IF EXISTS `consent_user_history`;
+
+CREATE TABLE `consent_user_history` (
+    `id` INT(20) NOT NULL AUTO_INCREMENT,
+    `msisdn` VARCHAR(255) NOT NULL,
+    `consent_id` INT(20),
+    `approve_status` VARCHAR(45),
+    `consent_date` TIMESTAMP NULL DEFAULT NULL,
+    PRIMARY KEY (`id`),
+    FOREIGN KEY (`consent_id`) REFERENCES `consent_configuration`(`consent_id`)
+)  ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 
 DROP TABLE IF EXISTS `prompt_configuration`;
@@ -408,7 +573,6 @@ CREATE TABLE backchannel_request_details (
     notification_url varchar(255) NOT NULL,
     auth_code varchar(50),
     request_initiated_time DATETIME,
-    auth_requested_id varchar(255),
     client_id varchar(50),
     redirect_url varchar(255),
     PRIMARY KEY(correlation_id)
@@ -420,3 +584,5 @@ CREATE TABLE sp_notification_url (
     client_id varchar(100),
     notification_url varchar(255)
 ) ENGINE=INNODB DEFAULT CHARSET=LATIN1;
+
+>>>>>>> 1fd057a675592bccb3b819be214415f65183daa5

@@ -28,7 +28,7 @@
     <artifactId>identity-server-parent</artifactId>
     <packaging>pom</packaging>
     <description>WSO2 Identity Server</description>
-    <version>2.3.0-SNAPSHOT</version>
+    <version>2.4.0-SNAPSHOT</version>
     <name>WSO2Telco Identity Server</name>
     <url>http://wso2.org/projects/identity</url>
 
@@ -1208,6 +1208,11 @@
             </dependency>
             <dependency>
                 <groupId>com.wso2telco.ids</groupId>
+                <artifactId>com.wso2telco.ids.samplerequest.feature</artifactId>
+                <version>${com.wso2telco.ids.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.wso2telco.ids</groupId>
                 <artifactId>com.wso2telco.ids.tokenintrospection</artifactId>
                 <version>${com.wso2telco.ids.version}</version>
             </dependency>
@@ -1368,8 +1373,8 @@
     <properties>
 
         <!-- Telco dependency's version-->
-        <com.wso2telco.ids.version>2.3.0</com.wso2telco.ids.version>
-        <com.wso2telco.core.version>2.3.2</com.wso2telco.core.version>
+        <com.wso2telco.ids.version>2.4.0-SNAPSHOT</com.wso2telco.ids.version>
+        <com.wso2telco.core.version>2.4.2-SNAPSHOT</com.wso2telco.core.version>
 
         <!--Carbon Identity Framework Version-->
         <carbon.identity.framework.version>5.2.2</carbon.identity.framework.version>
