@@ -585,4 +585,4 @@ CREATE TABLE sp_notification_url (
     notification_url varchar(255)
 ) ENGINE=INNODB DEFAULT CHARSET=LATIN1;
 
->>>>>>> 1fd057a675592bccb3b819be214415f65183daa5
+

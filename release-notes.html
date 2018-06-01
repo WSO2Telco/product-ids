@@ -21,14 +21,14 @@
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
 <head>
     <meta content="text/html; charset=iso-8859-1" http-equiv="content-type"/>
-    <title>WSO2Telco Mobile Identity Gateway 2.3.0 Released - 28th February 2018</title>
+    <title>WSO2Telco Mobile Identity Gateway 2.4.0 Released - 28th February 2018</title>
 </head>
 <body>
 <div id="main-content">
-    <h1>WSO2Telco Mobile Identity Gateway 2.3.0 Released!</h1>
+    <h1>WSO2Telco Mobile Identity Gateway 2.4.0 Released!</h1>
 
     <p>
-        The WSO2Telco team is pleased to announce the release of version 2.3.0 of
+        The WSO2Telco team is pleased to announce the release of version 2.4.0 of
         the Open Source WSO2Telco Mobile Identity Gateway.
     </p>
 
@@ -94,72 +94,43 @@
     <h2>New Features : </h2>
 
     <ul>
-        <li>Support for Federated MCX</li>
-        <p>Federated MCX feature allow Wso2Telco IDS to call different MCX providers. This feature can be easily
-            configured to specific mobile
-            network operator to act as federated MCX provider.This allows Service providers to access other MCX
-            providers via wso2telcoids with ease.</p></br>
-        <li>Support for OAuth 2.0 Token Introspection</li>
-        <p>OAuth 2.0 Token Introspection defines a method for a protected resource to query an OAuth 2.0 authorization
-            server to determine the active
-            state of an OAuth 2.0 token and to determine meta-information about this token. meta-information includes
-            current validity, approved scopes,
-            and information about the context in which the token was issued.</p>
-        <li>Support for Internationalization</li>
-        <p>Language can be switched as per configurations.</p>
-        <li>Support for SMS OTP Authenticator</li>
-        <p>This is a secured user authentication service based on a one time password received to user's mobile.</p>
+        <li>Back Channelling</li>
+        <p>Server initiated authorize request capability without any browser interaction.</p></br>
+        <li>Attribute sharing</li>
+        <p>Mobile Connect Attribute Sharing feature enables Operators to share information
+            with Service Providers through acquiring user consent from the end user.
+            This includes information about the user as well as details about their device,
+            their account with the Operator and contextual information provided by the network.
+            Currently, this architecture supports attribute provision (in which attribute
+            values are provided to the SP). In a future phase, there will be ability to verify
+            attribute values passed (attribute verification) by the SP against the Operator?s
+            own user records.</p>
+        <li>Consent management</li>
+        <p>WSO2.Telco Hub API invocation tokens will be issued, via ID gateway once user provides
+            the consent.  This will facilitate consent management for any API via MC.</p>
+        <li>Smart phone authenticator</li>
+        <p>Authentication for different business process can be done using biometric options
+            available in Android devices.Currently this authenticator only supports  fingerprint
+            and PIN to get the authentication from end user.</p>
     </ul>
 
     <h2>Bug Fixes : </h2>
 
     <ul>
-        <li>[IDSDEV-628] - HazelcastSerializationException on clustered setup</li>
-        <li>[IDSDEV-662] - No error message is displayed for a wrong OTP attempt</li>
-        <li>[IDSDEV-668] - If user clicks enter button on OTP field, session is getting crashed (retry.do)</li>
-        <li>[IDSDEV-673] - Some fields are not localized in Questions Asking page</li>
-        <li>[IDSDEV-687] - HE flow needs new configuration value for IP header</li>
-        <li>[IDSDEV-690] - LOA 3 Pin reset flow last USSD message error</li>
-        <li>[IDSDEV-700] - FederatedAuthenticator Triggered for other operators</li>
-        <li>[IDSDEV-715] - [FederatedIDP] - Production Integration Issues</li>
-        <li>[IDSDEV-739] - Waiting page of registration flow contains an invalid character</li>
-        <li>[IDSDEV-740] - PIN reset flow is not functioning</li>
-        <li>[IDSDEV-741] - User navigates to number entering page when user tries with a login_hint PCR for
-            irrelevant application
-        </li>
-        <li>[IDSDEV-742] - SMS login url is not working when shorten url is disabled</li>
-        <li>[IDSDEV-756] - SP Scope validation enabled issue</li>
-        <li>[IDSDEV-760] - Dropouts of waiting page during sms process is not counting for DAS reporting</li>
-        <li>[IDSDEV-776] - Clustering enabled data publishing issue</li>
-        <li>[IDSDEV-787] - SP creates in IS for every registration request in voice authenticator</li>
-        <li>[IDSDEV-801] - Duplicates in data publishing for single sessionID</li>
-        <li>[IDSDEV-809] - Session time out notification is missing for registration flow</li>
-        <li>[IDSDEV-812] - Operator based Authenticators disabling is not applied for
-            'USSDAuthenticator,'USSDPinAuthenticator',''SMSAuthenticator'
-        </li>
-        <li>[IDSDEV-815] - REDIRECT_TO_CONSENT_PAGE status publish for both Login and Registration Flows</li>
-        <li>[IDSDEV-831] - Analytics - Auth Code Success-SMS mismatch</li>
-        <li>[IDSDEV-832] - Kibana - State Attribute</li>
-        <li>[IDSDEV-833] - User info doesn't response correctly according to the given multi scope</li>
-        <li>[IDSDEV-834] - Redirects to an error page when user click cancel or No Thanks button in auth flow
-        </li>
-        <li>[IDSDEV-836] - Clicking on link in SMS after reaching expiration time</li>
-        <li>[IDSDEV-837] - Click on the expired link in SMS redirects to an empty page with "SMS Authenticator"
-            heading
-        </li>
-        <li>[IDSDEV-838] - User gets "authErrorMsg=No+valid+session+found" error for federated IDP</li>
+        <li>[IDSDEV-870] - Skipping user registration in API Consent page if user has already been created</li>
+        <li>[IDSDEV-840] - Database table improvements</li>
+        <li>[IDSDEV-841] - User cannot come back to the authentication flow, once he clicks links contained in T&C page. (Specially Mobile Phones)</li>
+        <li>[IDSDEV-842] - IDSDEV-620 Change the customer Info API interface in premiumInfo endpoint implementation</li>
     </ul>
 
     <h2>Improvements : </h2>
 
     <ul>
-        <li>Display Term and Condition Page per MNO</li>
-        <li>Improved data publishing in the product</li>
-        <li>Supports to extract MSISDN from the login_hint PCR sent by the service providers</li>
+        <li>SSO & SLO - SAML based single sign on and Single Logout support. This enables to do automatic account login for all WSO2Telco products by providing user credentials once. Account log out from all logged WSO2Telco products can automatically done through a single logout from any application.</li>
     </ul>
     <h2>Documentation</h2>
 
-    <p>Please refer <a href="http://docs.wso2telco.com/display/HG/MIG+2.3.0"> WSO2Telco MIG 2.3.0
+    <p>Please refer <a href="http://docs.wso2telco.com/display/HG/MIG+2.4.0"> WSO2Telco MIG 2.4.0
         documentation</a></p>
 
 
