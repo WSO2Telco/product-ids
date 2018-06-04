@@ -122,6 +122,7 @@
         <PinConfirmMessage>Re-enter your PIN</PinConfirmMessage> <!-- PIN confirmation ussd message -->
         <PinInvalidFormatMessage>Invalid format. Please re-enter your pin</PinInvalidFormatMessage> <!-- PIN invalid format error ussd message -->
         <PinMismatchMessage>Pin mismatch. Please re-enter your pin</PinMismatchMessage> <!-- PIN mismatch error ussd message -->
+        <PinResetFlowMessage>Please reset your PIN from website prompt</PinResetFlowMessage> <!-- Redirect to PIN reset ussd message -->
         <PinRegistrationSuccessMessage>Registration Success</PinRegistrationSuccessMessage> <!-- PIN registration success ussd message -->
         <PinInvalidFormatAttemptsExceedMessage>Access Denied. You have exceeded maximum number of retry attempts</PinInvalidFormatAttemptsExceedMessage> <!-- Maximum attempts exceeded for PIN format error ussd message -->
         <PinMismatchAttemptsExceedMessage>Access Denied. You have exceeded maximum number of confirmation attempts</PinMismatchAttemptsExceedMessage> <!-- Maximum attempts exceeded for PIN mismatch error ussd message -->
