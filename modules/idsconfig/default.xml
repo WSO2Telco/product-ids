@@ -32,8 +32,8 @@
 				<StepOrder>1</StepOrder>
 				<LocalAuthenticatorConfigs>
 					<LocalAuthenticatorConfig>
-						<Name>LOACompositeAuthenticator</Name>
-						<DisplayName>LOA</DisplayName>
+						<Name>BasicAuthenticator</Name>
+						<DisplayName>basicauth</DisplayName>
 						<IsEnabled>true</IsEnabled>
 					</LocalAuthenticatorConfig>
 				</LocalAuthenticatorConfigs>

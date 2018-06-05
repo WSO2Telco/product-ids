@@ -540,7 +540,6 @@ CREATE TABLE `scope_log` (
     KEY `accessToken` (`access_token`)
 )  ENGINE=INNODB AUTO_INCREMENT=11 DEFAULT CHARSET=LATIN1;
 
-
 DROP TABLE IF EXISTS `sms_otp`;
 
 CREATE TABLE `sms_otp` (
@@ -584,5 +583,4 @@ CREATE TABLE sp_notification_url (
     client_id varchar(100),
     notification_url varchar(255)
 ) ENGINE=INNODB DEFAULT CHARSET=LATIN1;
-
 

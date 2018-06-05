@@ -533,20 +533,25 @@
         </file>
         <file>
             <source>
-                ../p2-profile-gen/target/wso2carbon-core-${carbon.kernel.version}/repository/resources/identity/pages/samlsso_response.html
+                <!--../p2-profile-gen/target/wso2carbon-core-${carbon.kernel.version}/repository/resources/identity/pages/samlsso_response.html-->
+                ../sso-redirect-pages/samlsso_response.html
             </source>
             <outputDirectory>wso2telcoids-${pom.version}/repository/resources/identity/pages</outputDirectory>
             <fileMode>644</fileMode>
         </file>
         <file>
-            <source>src/repository/resources/pages/samlsso_federate.html</source>
+            <source>
+                <!--src/repository/resources/pages/samlsso_federate.html-->
+                ../sso-redirect-pages/samlsso_federate.html
+            </source>
             <outputDirectory>wso2telcoids-${pom.version}/repository/resources/identity/pages</outputDirectory>
             <destName>samlsso_federate.html</destName>
             <filtered>true</filtered>
         </file>
         <file>
             <source>
-                ../p2-profile-gen/target/wso2carbon-core-${carbon.kernel.version}/repository/resources/identity/pages/sts_response.html
+                <!--../p2-profile-gen/target/wso2carbon-core-${carbon.kernel.version}/repository/resources/identity/pages/sts_response.html -->
+                ../sso-redirect-pages/sts_response.html
             </source>
             <outputDirectory>wso2telcoids-${pom.version}/repository/resources/identity/pages</outputDirectory>
             <fileMode>644</fileMode>
