@@ -272,21 +272,6 @@ CREATE TABLE operators_msisdn_headers_properties (
 
 INSERT INTO operators_msisdn_headers_properties VALUES (1,'msisdn','0','','',1),(1,'msisdn_header_1','1','DecryptMsisdn','wdTDoh8YxYcd3p',2);
 
-DROP TABLE IF EXISTS scope_types;
-
-CREATE TABLE `scope_types` (
-    `scope_type` VARCHAR(30) NOT NULL,
-    `description` VARCHAR(30) NOT NULL,
-    PRIMARY KEY (`scope_type`)
-)  ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
-INSERT INTO scope_types(scope_type,description)
-VALUES("MAIN","Main Scopes");
-
-INSERT INTO scope_types(scope_type,description)
-VALUES("APICONSENT","Api Consent Requesting Scope");
-
-
 DROP TABLE IF EXISTS scope_parameter;
 
 CREATE TABLE `scope_parameter` (
