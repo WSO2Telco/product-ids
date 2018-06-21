@@ -441,7 +441,10 @@
             <Enabled>true</Enabled>
             <Rule>allow</Rule>
             <Patterns>
-                <!--Pattern></Pattern-->
+                <Pattern>commonauth</Pattern>
+                <Pattern>authorize</Pattern>
+                <Pattern>authenticationendpoint</Pattern>
+                <Pattern>dashboard</Pattern>
             </Patterns>
         </XSSPreventionConfig>
 
