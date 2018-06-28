@@ -693,4 +693,10 @@
 	
 	<LoadAPIContextsInServerStartup>true</LoadAPIContextsInServerStartup>
    </APIManagement>
+
+    <HideMenuItemIds>
+        <HideMenuItemId>claim_mgt_menu</HideMenuItemId>
+        <HideMenuItemId>identity_mgt_emailtemplate_menu</HideMenuItemId>
+        <HideMenuItemId>identity_security_questions_menu</HideMenuItemId>
+    </HideMenuItemIds>
 </Server>
