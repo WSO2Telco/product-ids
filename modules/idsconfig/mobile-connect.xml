@@ -264,38 +264,6 @@
         </DiscoveryEksConfig>
     </DiscoveryConfigs>
 
-    <SpProvisionConfig>
-        <AdminServiceHostUrl>https://localhost:9443/services/OAuthAdminService</AdminServiceHostUrl>
-        <ApplicationManagementHostUrl>https://localhost:9443/services/IdentityApplicationManagementService</ApplicationManagementHostUrl>
-        <UserName>admin</UserName>
-        <Password>admin</Password>
-        <MaximumTotalHttpConections>100</MaximumTotalHttpConections>
-        <MaximumHttpConnectionsPerHost>2</MaximumHttpConnectionsPerHost>
-        <config>
-            <AlwaysSendMappedLocalSubjectId>false</AlwaysSendMappedLocalSubjectId>
-            <LocalClaimDialect>true</LocalClaimDialect>
-            <InboundAuthType>oauth2</InboundAuthType>
-            <Confidential>false</Confidential>
-            <DefaultValue>null</DefaultValue>
-            <PropertyName>oauthConsumerSecret</PropertyName>
-            <PropertyRequired>false</PropertyRequired>
-            <ProvisioningEnabled>false</ProvisioningEnabled>
-            <ProvisioningUserStore>PRIMARY</ProvisioningUserStore>
-            <SaasApp>true</SaasApp>
-            <LocalAuthenticatorConfigsDisplayName>LOA</LocalAuthenticatorConfigsDisplayName>
-            <LocalAuthenticatorConfigsEnabled>false</LocalAuthenticatorConfigsEnabled>
-            <LocalAuthenticatorConfigsName>LOACompositeAuthenticator</LocalAuthenticatorConfigsName>
-            <LocalAuthenticatorConfigsValid>true</LocalAuthenticatorConfigsValid>
-            <LocalAuthenticatorConfigsAuthenticationType>local</LocalAuthenticatorConfigsAuthenticationType>
-            <UserName>admin</UserName>
-            <Password>admin</Password>
-            <OauthVersion>OAuth-2.0</OauthVersion>
-            <GrantTypes>authorization_code implicit password client_credentials refresh_token urn:ietf:params:oauth:grant-type:saml2-bearer iwa:ntlm</GrantTypes>
-            <PkceMandatory>false</PkceMandatory>
-            <PkceSupportPlain>false</PkceSupportPlain>
-        </config>
-    </SpProvisionConfig>
-
     <OpenIDAdminServices>
         <UserName>admin</UserName>
         <Password>admin</Password>
@@ -352,4 +320,43 @@
         <smsCallbackUrl>http://localhost:9763/sessionupdater/tnspoints/endpoint/serverinitiated/sms/response</smsCallbackUrl>
         <tokenEndpoint>http://localhost:9763/oauth2/token</tokenEndpoint>
     </BackChannelConfig>
+
+    <SpProvisionConfig>
+        <DefaultUserPassword>1qaz2wsx@</DefaultUserPassword>
+        <ApiManagerUrl>https://localhost:9443</ApiManagerUrl>
+        <MigUserName>admin</MigUserName>
+        <MigUserPassword>admin</MigUserPassword>
+        <AuthUrl>https://localhost:9444/authorize/v1/spark/oauth2/authorize</AuthUrl>
+        <TokenUrl>https://localhost:9444/token/v1/spark/oauth2/token</TokenUrl>
+        <AmTokenUrl>https://localhost:9444/token</AmTokenUrl>
+        <UserInfoUrl>https://localhost:9444/oauth2/userinfo</UserInfoUrl>
+        <ApiConfigs>
+            <Api>
+                <ApiName>Authorize</ApiName>
+                <ApiVersion>v1</ApiVersion>
+                <ApiProvider>admin</ApiProvider>
+                <ApiTier>Gold</ApiTier>
+            </Api>
+            <Api>
+                <ApiName>authorizemnv</ApiName>
+                <ApiVersion>v1</ApiVersion>
+                <ApiProvider>admin</ApiProvider>
+                <ApiTier>Gold</ApiTier>
+            </Api>
+            <Api>
+                <ApiName>token</ApiName>
+                <ApiVersion>v1</ApiVersion>
+                <ApiProvider>admin</ApiProvider>
+                <ApiTier>Gold</ApiTier>
+            </Api>
+            <Api>
+                <ApiName>tokenmnv</ApiName>
+                <ApiVersion>v1</ApiVersion>
+                <ApiProvider>admin</ApiProvider>
+                <ApiTier>Gold</ApiTier>
+            </Api>
+        </ApiConfigs>
+        <OauthVersion>OAuth-2.0</OauthVersion>
+        <GrantTypes>authorization_code implicit password client_credentials refresh_token urn:ietf:params:oauth:grant-type:saml2-bearer iwa:ntlm</GrantTypes>
+    </SpProvisionConfig>
 </MobileConnectConfig>
