@@ -1455,6 +1455,18 @@
                 <version>${identity.oauth2.jwt.bearer.grant.version}</version>
             </dependency>
 
+            <!-- Forget-me tool. -->
+            <dependency>
+                <groupId>org.wso2.carbon.privacy</groupId>
+                <artifactId>org.wso2.carbon.privacy.forgetme.conf</artifactId>
+                <version>${forgetme.tool.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.wso2.carbon.privacy</groupId>
+                <artifactId>org.wso2.carbon.privacy.forgetme.tool</artifactId>
+                <version>${forgetme.tool.version}</version>
+            </dependency>
+
             <dependency>
                 <groupId>org.wso2.carbon.identity.application.authz.xacml</groupId>
                 <artifactId>org.wso2.carbon.identity.application.authz.xacml.server.feature</artifactId>

@@ -79,6 +79,31 @@
                             </artifactItems>
                         </configuration>
                     </execution>
+
+                    <execution>
+                        <id>download_grant_jwt</id>
+                        <phase>compile</phase>
+                        <goals>
+                            <goal>copy</goal>
+                        </goals>
+                        <configuration>
+                            <artifactItems>
+                                <artifactItem>
+                                    <groupId>org.wso2.carbon.extension.identity.oauth2.grantType.jwt</groupId>
+                                    <artifactId>
+                                        org.wso2.carbon.identity.oauth2.grant.jwt
+                                    </artifactId>
+                                    <version>${identity.oauth2.jwt.bearer.grant.version}</version>
+                                    <type>jar</type>
+                                    <overWrite>true</overWrite>
+                                    <outputDirectory>${basedir}/target/authenticatorCopied/jar
+                                    </outputDirectory>
+                                    <includes>**/*.jar</includes>
+                                </artifactItem>
+                            </artifactItems>
+                        </configuration>
+                    </execution>
+
                     <!-- Download smsotp authenticator jar from nexus and copy to the authenticatorCopied/jar folder-->
                     <execution>
                         <id>download_smsotp</id>
@@ -257,5 +282,6 @@
         <authenticator.emailotp.version>2.0.2</authenticator.emailotp.version>
         <authenticator.twitter.version>1.0.5</authenticator.twitter.version>
         <authenticator.x509.version>2.0.1</authenticator.x509.version>
+        <identity.oauth2.jwt.bearer.grant.version>1.0.10</identity.oauth2.jwt.bearer.grant.version>
     </properties>
 </project>
