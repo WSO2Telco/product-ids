@@ -122,9 +122,7 @@
                                 <featureArtifactDef>
                                     com.wso2telco.ids:com.wso2telco.ids.authenticateselector.feature:${com.wso2telco.ids.version}
                                 </featureArtifactDef>
-                                <featureArtifactDef>
-                                    com.wso2telco.ids:com.wso2telco.ids.authenticationendpoint.ui.feature:${com.wso2telco.ids.version}
-                                </featureArtifactDef>
+
                                 <featureArtifactDef>
                                     com.wso2telco.ids:com.wso2telco.ids.gsmaauthenticator.feature:${com.wso2telco.ids.version}
                                 </featureArtifactDef>
@@ -508,6 +506,10 @@
                                 </featureArtifactDef>
                                 <featureArtifactDef>
                                     org.wso2.carbon.utils:org.wso2.carbon.database.utils.feature:${carbon.database.utils.version}
+                                </featureArtifactDef>
+
+                                <featureArtifactDef>
+                                    com.wso2telco.ids:com.wso2telco.ids.authenticationendpoint.ui.feature:${com.wso2telco.ids.version}
                                 </featureArtifactDef>
                             </featureArtifacts>
                         </configuration>
@@ -968,11 +970,6 @@
                                 </feature>
 
                                 <feature>
-                                    <id>com.wso2telco.ids.authenticationendpoint.ui.feature.group</id>
-                                    <version>${com.wso2telco.ids.version}</version>
-                                </feature>
-
-                                <feature>
                                     <id>com.wso2telco.ids.gsmaauthenticator.feature.group</id>
                                     <version>${com.wso2telco.ids.version}</version>
                                 </feature>
@@ -1047,6 +1044,11 @@
                                     </id>
                                     <version>${identity.app.authz.xacml.version}</version>
                                 </feature>
+                                <feature>
+                                    <id>com.wso2telco.ids.authenticationendpoint.ui.feature.group</id>
+                                    <version>${com.wso2telco.ids.version}</version>
+                                </feature>
+
 
 
                             </features>
@@ -1141,10 +1143,7 @@
                                     <version>${com.wso2telco.ids.version}</version>
                                 </feature>
 
-                                <feature>
-                                    <id>com.wso2telco.ids.authenticationendpoint.ui.feature.group</id>
-                                    <version>${com.wso2telco.ids.version}</version>
-                                </feature>
+
 
                                 <feature>
                                     <id>com.wso2telco.ids.gsmaauthenticator.feature.group</id>
@@ -1601,6 +1600,10 @@
                                     </id>
                                     <version>${identity.app.authz.xacml.version}</version>
                                 </feature>
+                                <feature>
+                                    <id>com.wso2telco.ids.authenticationendpoint.ui.feature.group</id>
+                                    <version>${com.wso2telco.ids.version}</version>
+                                </feature>
 
 
                             </features>
@@ -1677,10 +1680,6 @@
                                     <version>${com.wso2telco.ids.version}</version>
                                 </feature>
 
-                                <feature>
-                                    <id>com.wso2telco.ids.authenticationendpoint.ui.feature.group</id>
-                                    <version>${com.wso2telco.ids.version}</version>
-                                </feature>
 
                                 <feature>
                                     <id>com.wso2telco.ids.gsmaauthenticator.feature.group</id>
@@ -2117,6 +2116,11 @@
                                     <id>org.wso2.carbon.database.utils.feature.group</id>
                                     <version>${carbon.database.utils.version}</version>
                                 </feature>
+                                <feature>
+                                    <id>com.wso2telco.ids.authenticationendpoint.ui.feature.group</id>
+                                    <version>${com.wso2telco.ids.version}</version>
+                                </feature>
+
 
 
                             </features>
@@ -2207,10 +2211,6 @@
                                     <version>${com.wso2telco.ids.version}</version>
                                 </feature>
 
-                                <feature>
-                                    <id>com.wso2telco.ids.authenticationendpoint.ui.feature.group</id>
-                                    <version>${com.wso2telco.ids.version}</version>
-                                </feature>
 
                                 <feature>
                                     <id>com.wso2telco.ids.gsmaauthenticator.feature.group</id>
@@ -2435,6 +2435,11 @@
                                     <id>org.wso2.carbon.event.stream.server.feature.group</id>
                                     <version>${carbon.analytics-common.version}</version>
                                 </feature>
+                                <feature>
+                                    <id>com.wso2telco.ids.authenticationendpoint.ui.feature.group</id>
+                                    <version>${com.wso2telco.ids.version}</version>
+                                </feature>
+
 
                             </features>
                         </configuration>
