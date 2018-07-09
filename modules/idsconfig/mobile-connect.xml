@@ -14,7 +14,7 @@
     <IsSpValidationDisabled>true</IsSpValidationDisabled>
     <GSMAExchangeConfig>
         <SOHost>integration-axiatagroup.apiexchange.org</SOHost>
-        <Organization>axiaD:\1.6-RC2\log\mobile-connect.xmltagroup</Organization>
+        <Organization>axiatagroup</Organization>
         <AuthToken>d0f865b4453be954b03b8b67556a395</AuthToken>
         <ServingOperator>
             <mcc>413</mcc>
@@ -323,36 +323,37 @@
     <SpProvisionConfig>
         <DefaultUserPassword>1qaz2wsx@</DefaultUserPassword>
         <ApiManagerUrl>https://localhost:9443</ApiManagerUrl>
+        <MIGUrl>https://localhost:9444</MIGUrl>
         <MigUserName>admin</MigUserName>
         <MigUserPassword>admin</MigUserPassword>
         <AuthUrl>https://localhost:9444/authorize/v1/spark/oauth2/authorize</AuthUrl>
         <TokenUrl>https://localhost:9444/token/v1/spark/oauth2/token</TokenUrl>
-        <AmTokenUrl>https://localhost:9444/token</AmTokenUrl>
+        <AmTokenUrl>https://localhost:9443/token</AmTokenUrl>
         <UserInfoUrl>https://localhost:9444/oauth2/userinfo</UserInfoUrl>
         <ApiConfigs>
             <Api>
                 <ApiName>Authorize</ApiName>
                 <ApiVersion>v1</ApiVersion>
                 <ApiProvider>admin</ApiProvider>
-                <ApiTier>Gold</ApiTier>
+                <ApiTier>Unlimited</ApiTier>
             </Api>
             <Api>
                 <ApiName>authorizemnv</ApiName>
                 <ApiVersion>v1</ApiVersion>
                 <ApiProvider>admin</ApiProvider>
-                <ApiTier>Gold</ApiTier>
+                <ApiTier>Unlimited</ApiTier>
             </Api>
             <Api>
                 <ApiName>token</ApiName>
                 <ApiVersion>v1</ApiVersion>
                 <ApiProvider>admin</ApiProvider>
-                <ApiTier>Gold</ApiTier>
+                <ApiTier>Unlimited</ApiTier>
             </Api>
             <Api>
                 <ApiName>tokenmnv</ApiName>
                 <ApiVersion>v1</ApiVersion>
                 <ApiProvider>admin</ApiProvider>
-                <ApiTier>Gold</ApiTier>
+                <ApiTier>Unlimited</ApiTier>
             </Api>
         </ApiConfigs>
         <OauthVersion>OAuth-2.0</OauthVersion>
