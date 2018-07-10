@@ -323,7 +323,6 @@
     <SpProvisionConfig>
         <DefaultUserPassword>1qaz2wsx@</DefaultUserPassword>
         <ApiManagerUrl>https://localhost:9443</ApiManagerUrl>
-        <MIGUrl>https://localhost:9444</MIGUrl>
         <MigUserName>admin</MigUserName>
         <MigUserPassword>admin</MigUserPassword>
         <AuthUrl>https://localhost:9444/authorize/v1/spark/oauth2/authorize</AuthUrl>
