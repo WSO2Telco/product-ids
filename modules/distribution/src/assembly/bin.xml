@@ -183,6 +183,7 @@
                 <include>premiuminfo.war</include>
                 <include>samplerequest.war</include>
                 <include>selfserviceportal.war</include>
+                <include>spprovisionservice.war</include>
             </includes>
         </fileSet>
 
