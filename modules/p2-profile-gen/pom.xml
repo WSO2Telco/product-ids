@@ -158,6 +158,9 @@
                                 <featureArtifactDef>
                                     com.wso2telco.ids:com.wso2telco.ids.tokenintrospection.feature:${com.wso2telco.ids.version}
                                 </featureArtifactDef>
+                                <featureArtifactDef>
+                                    com.wso2telco.ids:com.wso2telco.ids.premiuminfo.feature:${com.wso2telco.ids.version}
+                                </featureArtifactDef>
 
 
                                 <!--jaggery features-->
@@ -966,6 +969,10 @@
                                     <id>com.wso2telco.ids.tokenintrospection.feature.group</id>
                                     <version>${com.wso2telco.ids.version}</version>
                                 </feature>
+                                <feature>
+                                    <id>com.wso2telco.ids.premiuminfo.feature.group</id>
+                                    <version>${com.wso2telco.ids.version}</version>
+                                </feature>
                             </features>
                         </configuration>
                     </execution>
@@ -1085,6 +1092,11 @@
 
                                 <feature>
                                     <id>com.wso2telco.ids.saaserver.feature.group</id>
+                                    <version>${com.wso2telco.ids.version}</version>
+                                </feature>
+
+                                <feature>
+                                    <id>com.wso2telco.ids.premiuminfo.feature.group</id>
                                     <version>${com.wso2telco.ids.version}</version>
                                 </feature>
 
@@ -1573,6 +1585,12 @@
                                     <id>com.wso2telco.ids.saaserver.feature.group</id>
                                     <version>${com.wso2telco.ids.version}</version>
                                 </feature>
+
+                                <feature>
+                                    <id>com.wso2telco.ids.premiuminfo.feature.group</id>
+                                    <version>${com.wso2telco.ids.version}</version>
+                                </feature>
+
                                 <feature>
                                     <id>com.wso2telco.ids.samplerequest.feature.group</id>
                                     <version>${com.wso2telco.ids.version}</version>
@@ -2040,6 +2058,12 @@
                                     <id>com.wso2telco.ids.saaserver.feature.group</id>
                                     <version>${com.wso2telco.ids.version}</version>
                                 </feature>
+
+                                <feature>
+                                    <id>com.wso2telco.ids.premiuminfo.feature.group</id>
+                                    <version>${com.wso2telco.ids.version}</version>
+                                </feature>
+
                                 <feature>
                                     <id>com.wso2telco.ids.samplerequest.feature.group</id>
                                     <version>${com.wso2telco.ids.version}</version>
