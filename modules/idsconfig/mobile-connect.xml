@@ -249,7 +249,7 @@
             <ClassName>com.wso2telco.claims.RemoteClaimsTelco</ClassName>
         </OperatorData>
     </OperatorsList>
-
+    <SeamlessProvisioningEnabled>true</SeamlessProvisioningEnabled>
     <DiscoveryConfigs>
         <Auth_clientId>J2lAGcsgEILuhiSyPwsljG4OoxzyIiaX</Auth_clientId>
         <Auth_clientSecret>EBmKGJmSsOsniAXY</Auth_clientSecret>
