@@ -289,13 +289,13 @@
     </OperatorDiscoveryNamesMapping>
 
     <SelfServicePortal>
-        <SPOAuthClientKey></SPOAuthClientKey>
-        <SPOAuthClientSecret></SPOAuthClientSecret>
-        <UILoginUrl>https://localhost:9443/selfserviceportal/#/login</UILoginUrl>
-        <TokenEndpoint>https://localhost:9443/oauth2/token</TokenEndpoint>
-        <CallbackUrl>https://localhost:9443/selfserviceportal/api/v1/auth/callback</CallbackUrl>
-        <UserInfoCall>https://localhost:9443/oauth2/userinfo?schema=openid</UserInfoCall>
-        <AuthorizeCall>https://localhost:9443/authproxy/oauth2/authorize/operator/${operator}</AuthorizeCall>
+        <SPOAuthClientKey>8iwbH6Gtc_1LluEHxZxZw7k5Qh4a</SPOAuthClientKey>
+        <SPOAuthClientSecret>HDagnd6nncGHmTgEbjfON0WCLzEa</SPOAuthClientSecret>
+        <UILoginUrl>https://localhost:9444/selfserviceportal/#/login</UILoginUrl>
+        <TokenEndpoint>https://localhost:9444/oauth2/token</TokenEndpoint>
+        <CallbackUrl>https://localhost:9444/selfserviceportal/api/v1/auth/callback</CallbackUrl>
+        <UserInfoCall>https://localhost:9444/oauth2/userinfo?schema=openid</UserInfoCall>
+        <AuthorizeCall>https://localhost:9444/authproxy/oauth2/authorize/operator/${operator}</AuthorizeCall>
         <DiscoveryAPICall></DiscoveryAPICall>
         <DiscoveryAPIToken></DiscoveryAPIToken>
         <MsisdnClaim>msisdn</MsisdnClaim> <!-- MSISDN claim on user info call -->
@@ -326,7 +326,7 @@
         <MigUserName>admin</MigUserName>
         <MigUserPassword>admin</MigUserPassword>
         <AuthUrl>https://localhost:9444/authorize/v1/spark/oauth2/authorize</AuthUrl>
-        <TokenUrl>https://localhost:9444/token/v1/spark/oauth2/token</TokenUrl>
+        <TokenUrl>https://localhost:9444/oauth2/token</TokenUrl>
         <AmTokenUrl>https://localhost:9443/token</AmTokenUrl>
         <UserInfoUrl>https://localhost:9444/oauth2/userinfo</UserInfoUrl>
         <ApiConfigs>
