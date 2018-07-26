@@ -325,7 +325,7 @@
         <ApiManagerUrl>https://localhost:9443</ApiManagerUrl>
         <MigUserName>admin</MigUserName>
         <MigUserPassword>admin</MigUserPassword>
-        <AuthUrl>https://localhost:9444/authorize/v1/spark/oauth2/authorize</AuthUrl>
+        <AuthUrl>https://localhost:9444/authorize/v1/${operator}/oauth2/authorize</AuthUrl>
         <TokenUrl>https://localhost:9444/oauth2/token</TokenUrl>
         <AmTokenUrl>https://localhost:9443/token</AmTokenUrl>
         <UserInfoUrl>https://localhost:9444/oauth2/userinfo</UserInfoUrl>
