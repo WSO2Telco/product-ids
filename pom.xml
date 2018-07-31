@@ -1216,6 +1216,11 @@
                 <artifactId>com.wso2telco.ids.tokenintrospection</artifactId>
                 <version>${com.wso2telco.ids.version}</version>
             </dependency>
+            <dependency>
+                <groupId>com.wso2telco.ids</groupId>
+                <artifactId>com.wso2telco.ids.premiuminfo.feature</artifactId>
+                <version>${com.wso2telco.ids.version}</version>
+            </dependency>
 
             <!--custom webapps' runtime environment dependencies -->
             <dependency>
@@ -1374,6 +1379,8 @@
 
         <!-- Telco dependency's version-->
         <com.wso2telco.ids.version>2.4.0-rc1</com.wso2telco.ids.version>
+        <com.wso2telco.ids.version>2.4.0-SNAPSHOT</com.wso2telco.ids.version>
+
         <com.wso2telco.core.version>2.4.4-SNAPSHOT</com.wso2telco.core.version>
 
         <!--Carbon Identity Framework Version-->
