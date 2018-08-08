@@ -96,6 +96,7 @@
 			<LevelToFallback>21</LevelToFallback>
 			<Authenticators>
 				<Authenicator onfail="fallback" supportiveFlow="onnet">HeaderEnrichmentAuthenticator</Authenicator>
+				<Authenicator onfail="break" supportiveFlow="onnet">ConsentAuthenticator</Authenicator>
 				<!-- If onFail attribute values is 'break', and that authenticator fails,whole LOA should fail -->
 			</Authenticators>
 		</Authentication>
