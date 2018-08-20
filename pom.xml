@@ -1213,7 +1213,17 @@
             </dependency>
             <dependency>
                 <groupId>com.wso2telco.ids</groupId>
+                <artifactId>com.wso2telco.ids.spprovisionservice.feature</artifactId>
+                <version>${com.wso2telco.ids.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.wso2telco.ids</groupId>
                 <artifactId>com.wso2telco.ids.tokenintrospection</artifactId>
+                <version>${com.wso2telco.ids.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.wso2telco.ids</groupId>
+                <artifactId>com.wso2telco.ids.selfserviceportal.feature</artifactId>
                 <version>${com.wso2telco.ids.version}</version>
             </dependency>
 
@@ -1373,7 +1383,7 @@
     <properties>
 
         <!-- Telco dependency's version-->
-        <com.wso2telco.ids.version>2.4.0-rc1</com.wso2telco.ids.version>
+        <com.wso2telco.ids.version>2.4.0-SNAPSHOT</com.wso2telco.ids.version>
         <com.wso2telco.core.version>2.4.4-SNAPSHOT</com.wso2telco.core.version>
 
         <!--Carbon Identity Framework Version-->

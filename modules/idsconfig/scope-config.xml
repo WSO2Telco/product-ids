@@ -641,5 +641,11 @@
                 <ClaimValue>email</ClaimValue>
             </Claims>
         </Scope>
+        <Scope>
+            <Name>openid</Name>
+            <Claims>
+                <ClaimValue>msisdn</ClaimValue>
+            </Claims>
+        </Scope>
     </UserInfoScopes>
 </ScopeConfigs>
