@@ -326,7 +326,7 @@ INSERT INTO scope_parameter(param_id,scope,is_multiscope)
 VALUES(10,'mc_identity_phonenumber_hashed',1);
 
 INSERT INTO scope_parameter(param_id,scope,is_login_hint_mandatory,is_header_msisdn_mandatory,is_tnc_visible,msisdn_mismatch_result,he_failure_result,is_multiscope,is_consent_page,scope_type)
-VALUES(11,'api',0,0,0,'CONTINUE_WITH_HEADER','TRUST_LOGINHINT_MSISDN',0,1,"MAIN");
+VALUES(11,'api',0,0,1,'CONTINUE_WITH_HEADER','TRUST_LOGINHINT_MSISDN',0,1,"MAIN");
 
 INSERT INTO scope_parameter(param_id,scope,is_multiscope,is_consent_page,description,scope_type,scope_role)
 VALUES(12,'sms',1,1,'SMS is Charged 5 per sms',"APICONSENT","mig_sp_sms");
@@ -471,18 +471,21 @@ INSERT INTO `scope_supp_login_hint_format`(param_id,format_id) VALUES(2,1);
 INSERT INTO `scope_supp_login_hint_format`(param_id,format_id) VALUES(3,1);
 INSERT INTO `scope_supp_login_hint_format`(param_id,format_id) VALUES(4,1);
 INSERT INTO `scope_supp_login_hint_format`(param_id,format_id) VALUES(5,1);
+INSERT INTO `scope_supp_login_hint_format`(param_id,format_id) VALUES(11,1);
 
 INSERT INTO `scope_supp_login_hint_format`(param_id,format_id) VALUES(1,2);
 INSERT INTO `scope_supp_login_hint_format`(param_id,format_id) VALUES(2,2);
 INSERT INTO `scope_supp_login_hint_format`(param_id,format_id) VALUES(3,2);
 INSERT INTO `scope_supp_login_hint_format`(param_id,format_id) VALUES(4,2);
 INSERT INTO `scope_supp_login_hint_format`(param_id,format_id) VALUES(5,2);
+INSERT INTO `scope_supp_login_hint_format`(param_id,format_id) VALUES(11,2);
 
 INSERT INTO `scope_supp_login_hint_format`(param_id,format_id) VALUES(1,3);
 INSERT INTO `scope_supp_login_hint_format`(param_id,format_id) VALUES(2,3);
 INSERT INTO `scope_supp_login_hint_format`(param_id,format_id) VALUES(3,3);
 INSERT INTO `scope_supp_login_hint_format`(param_id,format_id) VALUES(4,3);
 INSERT INTO `scope_supp_login_hint_format`(param_id,format_id) VALUES(5,3);
+INSERT INTO `scope_supp_login_hint_format`(param_id,format_id) VALUES(11,3);
 
 DROP TABLE IF EXISTS `sms_hashkey_contextid_mapping`;
 CREATE TABLE `sms_hashkey_contextid_mapping` (
