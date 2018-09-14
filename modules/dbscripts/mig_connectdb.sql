@@ -59,6 +59,7 @@ INSERT INTO scope_types(scope_type,description) VALUES('APICONSENT','Api Consent
 INSERT INTO scope_types(scope_type,description) VALUES('ATT_SHARE','Attribute Sharing Scopes');
 INSERT INTO scope_types(scope_type,description) VALUES('ATT_VERIFICATION','Attribute verification Scopes');
 INSERT INTO scope_types(scope_type,description) VALUES('MAIN','Main Scopes');
+INSERT INTO scope_types(scope_type,description) VALUES('OTHER','Other Scopes');
 
 DROP TABLE IF EXISTS trustedstatus;
 
@@ -310,20 +311,20 @@ VALUES(4,'mc_mnv_validate_plus',1,1,0,'ERROR_RETURN','BREAK',0,"MAIN");
 INSERT INTO scope_parameter(param_id,scope,is_login_hint_mandatory,is_header_msisdn_mandatory,is_tnc_visible,msisdn_mismatch_result,he_failure_result,is_multiscope,scope_type)
 VALUES(5,'mnv_tc',1,0,1,'OFFNET_FALLBACK_TRUST_LOGINHINT','TRUST_LOGINHINT_MSISDN',0,"MAIN");
 
-INSERT INTO scope_parameter(param_id,scope,is_multiscope)
-VALUES(6,'phone',1);
+INSERT INTO scope_parameter(param_id,scope,scope_type,is_multiscope)
+VALUES(6,'phone','OTHER',1);
 
-INSERT INTO scope_parameter(param_id,scope,is_multiscope)
-VALUES(7,'profile',1);
+INSERT INTO scope_parameter(param_id,scope,scope_type,is_multiscope)
+VALUES(7,'profile','OTHER',1);
 
-INSERT INTO scope_parameter(param_id,scope,is_multiscope)
-VALUES(8,'email',1);
+INSERT INTO scope_parameter(param_id,scope,scope_type,is_multiscope)
+VALUES(8,'email','OTHER',1);
 
-INSERT INTO scope_parameter(param_id,scope,is_multiscope)
-VALUES(9,'address',1);
+INSERT INTO scope_parameter(param_id,scope,scope_type,is_multiscope)
+VALUES(9,'address','OTHER',1);
 
-INSERT INTO scope_parameter(param_id,scope,is_multiscope)
-VALUES(10,'mc_identity_phonenumber_hashed',1);
+INSERT INTO scope_parameter(param_id,scope,scope_type,is_multiscope)
+VALUES(10,'mc_identity_phonenumber_hashed','OTHER',1);
 
 INSERT INTO scope_parameter(param_id,scope,is_login_hint_mandatory,is_header_msisdn_mandatory,is_tnc_visible,msisdn_mismatch_result,he_failure_result,is_multiscope,is_consent_page,scope_type)
 VALUES(11,'api',0,0,1,'CONTINUE_WITH_HEADER','TRUST_LOGINHINT_MSISDN',0,1,"MAIN");
