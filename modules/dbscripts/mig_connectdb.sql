@@ -59,6 +59,7 @@ INSERT INTO scope_types(scope_type,description) VALUES('APICONSENT','Api Consent
 INSERT INTO scope_types(scope_type,description) VALUES('ATT_SHARE','Attribute Sharing Scopes');
 INSERT INTO scope_types(scope_type,description) VALUES('ATT_VERIFICATION','Attribute verification Scopes');
 INSERT INTO scope_types(scope_type,description) VALUES('MAIN','Main Scopes');
+INSERT INTO scope_types(scope_type,description) VALUES('OTHER','Other Scopes');
 
 DROP TABLE IF EXISTS trustedstatus;
 
@@ -287,6 +288,7 @@ CREATE TABLE `scope_parameter` (
     `description` VARCHAR(255),
     `scope_type` VARCHAR(30),
     `is_backchannel_allowed` TINYINT DEFAULT 0,
+    `scope_role` VARCHAR(30),
     PRIMARY KEY (`param_id`),
     FOREIGN KEY (`scope_type`) REFERENCES `scope_types`(`scope_type`),
     UNIQUE KEY `scope` (`scope`),
@@ -309,32 +311,32 @@ VALUES(4,'mc_mnv_validate_plus',1,1,0,'ERROR_RETURN','BREAK',0,"MAIN");
 INSERT INTO scope_parameter(param_id,scope,is_login_hint_mandatory,is_header_msisdn_mandatory,is_tnc_visible,msisdn_mismatch_result,he_failure_result,is_multiscope,scope_type)
 VALUES(5,'mnv_tc',1,0,1,'OFFNET_FALLBACK_TRUST_LOGINHINT','TRUST_LOGINHINT_MSISDN',0,"MAIN");
 
-INSERT INTO scope_parameter(param_id,scope,is_multiscope)
-VALUES(6,'phone',1);
+INSERT INTO scope_parameter(param_id,scope,scope_type,is_multiscope)
+VALUES(6,'phone','OTHER',1);
 
-INSERT INTO scope_parameter(param_id,scope,is_multiscope)
-VALUES(7,'profile',1);
+INSERT INTO scope_parameter(param_id,scope,scope_type,is_multiscope)
+VALUES(7,'profile','OTHER',1);
 
-INSERT INTO scope_parameter(param_id,scope,is_multiscope)
-VALUES(8,'email',1);
+INSERT INTO scope_parameter(param_id,scope,scope_type,is_multiscope)
+VALUES(8,'email','OTHER',1);
 
-INSERT INTO scope_parameter(param_id,scope,is_multiscope)
-VALUES(9,'address',1);
+INSERT INTO scope_parameter(param_id,scope,scope_type,is_multiscope)
+VALUES(9,'address','OTHER',1);
 
-INSERT INTO scope_parameter(param_id,scope,is_multiscope)
-VALUES(10,'mc_identity_phonenumber_hashed',1);
+INSERT INTO scope_parameter(param_id,scope,scope_type,is_multiscope)
+VALUES(10,'mc_identity_phonenumber_hashed','OTHER',1);
 
-INSERT INTO scope_parameter(param_id,scope,is_login_hint_mandatory,is_header_msisdn_mandatory,is_tnc_visible,msisdn_mismatch_result,he_failure_result,is_multiscope,is_consent_page)
-VALUES(11,'api',0,0,0,'CONTINUE_WITH_HEADER','TRUST_LOGINHINT_MSISDN',0,1);
+INSERT INTO scope_parameter(param_id,scope,is_login_hint_mandatory,is_header_msisdn_mandatory,is_tnc_visible,msisdn_mismatch_result,he_failure_result,is_multiscope,is_consent_page,scope_type)
+VALUES(11,'api',0,0,1,'CONTINUE_WITH_HEADER','TRUST_LOGINHINT_MSISDN',0,1,"MAIN");
 
-INSERT INTO scope_parameter(param_id,scope,is_multiscope,is_consent_page,description,scope_type)
-VALUES(12,'sms',1,1,'SMS is Charged 5 per sms',"APICONSENT");
+INSERT INTO scope_parameter(param_id,scope,is_multiscope,is_consent_page,description,scope_type,scope_role)
+VALUES(12,'sms',1,1,'SMS is Charged 5 per sms',"APICONSENT","mig_sp_sms");
 
-INSERT INTO scope_parameter(param_id,scope,is_multiscope,is_consent_page,description,scope_type)
-VALUES(13,'charge',1,1,'Charge API will be charged per transaction',"APICONSENT");
+INSERT INTO scope_parameter(param_id,scope,is_multiscope,is_consent_page,description,scope_type,scope_role)
+VALUES(13,'charge',1,1,'Charge API will be charged per transaction',"APICONSENT","mig_sp_charge");
 
-INSERT INTO scope_parameter(param_id,scope,is_multiscope,is_consent_page,description,scope_type)
-VALUES(14,'payment',1,1,'A convenient fee of 1% charged',"APICONSENT");
+INSERT INTO scope_parameter(param_id,scope,is_multiscope,is_consent_page,description,scope_type,scope_role)
+VALUES(14,'payment',1,1,'A convenient fee of 1% charged',"APICONSENT","mig_sp_payment");
 
 INSERT INTO scope_parameter(param_id,scope,is_login_hint_mandatory,is_header_msisdn_mandatory,is_tnc_visible,msisdn_mismatch_result,he_failure_result,is_multiscope,is_consent_page,description,scope_type)
 VALUES(15,'p_form_fill',0,0,0,NULL,NULL,1,1,'p_form_fill','ATT_SHARE');
@@ -470,18 +472,21 @@ INSERT INTO `scope_supp_login_hint_format`(param_id,format_id) VALUES(2,1);
 INSERT INTO `scope_supp_login_hint_format`(param_id,format_id) VALUES(3,1);
 INSERT INTO `scope_supp_login_hint_format`(param_id,format_id) VALUES(4,1);
 INSERT INTO `scope_supp_login_hint_format`(param_id,format_id) VALUES(5,1);
+INSERT INTO `scope_supp_login_hint_format`(param_id,format_id) VALUES(11,1);
 
 INSERT INTO `scope_supp_login_hint_format`(param_id,format_id) VALUES(1,2);
 INSERT INTO `scope_supp_login_hint_format`(param_id,format_id) VALUES(2,2);
 INSERT INTO `scope_supp_login_hint_format`(param_id,format_id) VALUES(3,2);
 INSERT INTO `scope_supp_login_hint_format`(param_id,format_id) VALUES(4,2);
 INSERT INTO `scope_supp_login_hint_format`(param_id,format_id) VALUES(5,2);
+INSERT INTO `scope_supp_login_hint_format`(param_id,format_id) VALUES(11,2);
 
 INSERT INTO `scope_supp_login_hint_format`(param_id,format_id) VALUES(1,3);
 INSERT INTO `scope_supp_login_hint_format`(param_id,format_id) VALUES(2,3);
 INSERT INTO `scope_supp_login_hint_format`(param_id,format_id) VALUES(3,3);
 INSERT INTO `scope_supp_login_hint_format`(param_id,format_id) VALUES(4,3);
 INSERT INTO `scope_supp_login_hint_format`(param_id,format_id) VALUES(5,3);
+INSERT INTO `scope_supp_login_hint_format`(param_id,format_id) VALUES(11,3);
 
 DROP TABLE IF EXISTS `sms_hashkey_contextid_mapping`;
 CREATE TABLE `sms_hashkey_contextid_mapping` (
