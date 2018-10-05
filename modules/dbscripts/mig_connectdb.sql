@@ -564,6 +564,8 @@ CREATE TABLE backchannel_request_details (
     request_initiated_time DATETIME,
     client_id varchar(50),
     redirect_url varchar(255),
+    scopes varchar(255) NOT NULL,
+    operator varchar(20) NOT NULL,
     PRIMARY KEY(correlation_id)
 ) ENGINE=INNODB DEFAULT CHARSET=LATIN1;
 
