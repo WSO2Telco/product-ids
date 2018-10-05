@@ -132,6 +132,7 @@
         <InvalidFormatPinAttempts>3</InvalidFormatPinAttempts> <!-- Maximum allowed PIN invalid format attempt count -->
         <PinMismatchAttempts>3</PinMismatchAttempts> <!-- Maximum allowed PIN mismatch attempt count -->
         <LoginMessage>Message content for USSD login ${application}&#xA;1. Yes&#xA;2. No</LoginMessage> <!-- Common USSD login message -->
+        <APIConsentMessage>Request Access for ${apis} apis for USSD login ${application}&#xA;${inputs}</APIConsentMessage> <!-- Common USSD message for API Consent Login -->
         <AcceptUserInputs>1,yes,ok,y</AcceptUserInputs> <!-- comma separated list of USSD user accept input responses -->
         <RejectUserInputs>2,no,n</RejectUserInputs> <!-- comma separated list of USSD user reject input responses -->
         <OperatorSpecificMessages> <!-- Contains operator specific ussd messages -->
@@ -139,11 +140,13 @@
                 <!-- ${application} is replaced with the application name -->
                 <RegistrationMessage>op1 Message content for USSD registration ${application}&#xA;1. Yes&#xA;2. No</RegistrationMessage>
                 <LoginMessage>op1 Message content for USSD login ${application}&#xA;1. Yes&#xA;2. No</LoginMessage>
+                <APIConsentMessage>op1 Request Access for ${apis} apis for USSD login ${application}&#xA;${inputs}</APIConsentMessage> <!-- Common USSD message for API Consent Login -->
             </OperatorSpecificMessage>
             <OperatorSpecificMessage operator="op2">
                 <!-- ${application} is replaced with the application name -->
                 <RegistrationMessage>op2 Message content for USSD registration ${application}&#xA;1. Yes&#xA;2. No</RegistrationMessage>
                 <LoginMessage>op2 Message content for USSD login ${application}&#xA;1. Yes&#xA;2. No</LoginMessage>
+                <APIConsentMessage>op2 Request Access for ${apis} apis for USSD login ${application}&#xA;${inputs}</APIConsentMessage> <!-- Common USSD message for API Consent Login -->
             </OperatorSpecificMessage>
         </OperatorSpecificMessages>
         <TimeoutConfig> <!--Timeout for sending ussd request-->
@@ -352,6 +355,8 @@
         <ussdNotifyUrl>http://localhost:9763/sessionupdater/tnspoints/endpoint/serverinitiated/login/ussd</ussdNotifyUrl>
         <smsCallbackUrl>http://localhost:9763/sessionupdater/tnspoints/endpoint/serverinitiated/sms/response</smsCallbackUrl>
         <tokenEndpoint>http://localhost:9763/oauth2/token</tokenEndpoint>
+        <ussdApiNotifyUrl>http://localhost:9763/sessionupdater/tnspoints/endpoint/serverinitiated/login/api/ussd</ussdApiNotifyUrl>
+        <ussdApiRegNotifyUrl>http://localhost:9763/sessionupdater/tnspoints/endpoint/serverinitiated/registration/api/ussd</ussdApiRegNotifyUrl>
         <userConsentEndpoint>https://localhost:9443/authenticationendpoint/user_consent_bc.do</userConsentEndpoint>
     </BackChannelConfig>
 </MobileConnectConfig>
