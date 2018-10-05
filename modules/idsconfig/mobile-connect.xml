@@ -135,9 +135,6 @@
         <APIConsentMessage>Request Access for ${apis} apis for USSD login ${application}&#xA;${inputs}</APIConsentMessage> <!-- Common USSD message for API Consent Login -->
         <AcceptUserInputs>1,yes,ok,y</AcceptUserInputs> <!-- comma separated list of USSD user accept input responses -->
         <RejectUserInputs>2,no,n</RejectUserInputs> <!-- comma separated list of USSD user reject input responses -->
-        <ApproveOnceInputs>1,approve</ApproveOnceInputs>
-        <ApproveAlwaysInputs>2,approve_always</ApproveAlwaysInputs>
-        <DenyInputs>3,deny</DenyInputs>
         <OperatorSpecificMessages> <!-- Contains operator specific ussd messages -->
             <OperatorSpecificMessage operator="op1">
                 <!-- ${application} is replaced with the application name -->
