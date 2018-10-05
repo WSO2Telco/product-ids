@@ -357,5 +357,6 @@
         <tokenEndpoint>http://localhost:9763/oauth2/token</tokenEndpoint>
         <ussdApiNotifyUrl>http://localhost:9763/sessionupdater/tnspoints/endpoint/serverinitiated/login/api/ussd</ussdApiNotifyUrl>
         <ussdApiRegNotifyUrl>http://localhost:9763/sessionupdater/tnspoints/endpoint/serverinitiated/registration/api/ussd</ussdApiRegNotifyUrl>
+        <userConsentEndpoint>https://localhost:9443/authenticationendpoint/user_consent_bc.do</userConsentEndpoint>
     </BackChannelConfig>
 </MobileConnectConfig>
