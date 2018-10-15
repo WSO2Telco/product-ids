@@ -566,6 +566,9 @@ CREATE TABLE backchannel_request_details (
     redirect_url varchar(255),
     scopes varchar(255) NOT NULL,
     operator varchar(20) NOT NULL,
+    isNewUser BOOLEAN NOT NULL DEFAULT 0,
+    spName varchar(50),
+    isLongLive BOOLEAN DEFAULT 0,
     PRIMARY KEY(correlation_id)
 ) ENGINE=INNODB DEFAULT CHARSET=LATIN1;
 
