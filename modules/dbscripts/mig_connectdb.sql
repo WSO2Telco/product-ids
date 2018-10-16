@@ -569,6 +569,7 @@ CREATE TABLE backchannel_request_details (
     isNewUser BOOLEAN NOT NULL DEFAULT 0,
     spName varchar(50),
     isLongLive BOOLEAN DEFAULT 0,
+    isFullyTrusted BOOLEAN DEFAULT 0,
     PRIMARY KEY(correlation_id)
 ) ENGINE=INNODB DEFAULT CHARSET=LATIN1;
 
