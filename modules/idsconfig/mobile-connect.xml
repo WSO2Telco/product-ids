@@ -361,5 +361,6 @@
         <ussdApiNotifyUrl>http://localhost:9763/sessionupdater/tnspoints/endpoint/serverinitiated/login/api/ussd</ussdApiNotifyUrl>
         <ussdApiRegNotifyUrl>http://localhost:9763/sessionupdater/tnspoints/endpoint/serverinitiated/registration/api/ussd</ussdApiRegNotifyUrl>
         <userConsentEndpoint>https://localhost:9443/authenticationendpoint/user_consent_bc.do</userConsentEndpoint>
+        <trustedNotifyUrl>http://localhost:9763/sessionupdater/tnspoints/endpoint/serverinitiated/token</trustedNotifyUrl>
     </BackChannelConfig>
 </MobileConnectConfig>
