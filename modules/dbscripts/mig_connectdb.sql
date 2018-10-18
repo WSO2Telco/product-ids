@@ -46,6 +46,7 @@ CREATE TABLE consent_validity_type (
 INSERT INTO consent_validity_type(validity_id,validity_type,has_exp_period,default_exp_period) VALUES(1,'transactional',0,0);
 INSERT INTO consent_validity_type(validity_id,validity_type,has_exp_period,default_exp_period) VALUES(2,'long_live',1,30);
 INSERT INTO consent_validity_type(validity_id,validity_type,has_exp_period,default_exp_period) VALUES(3,'undefined',0,0);
+INSERT INTO consent_validity_type(validity_id,validity_type,has_exp_period,default_exp_period) VALUES(4,'deny',0,0);
 
 DROP TABLE IF EXISTS scope_types;
 
