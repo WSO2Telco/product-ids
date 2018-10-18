@@ -205,6 +205,7 @@
             </SupportedGrantType>
             <SupportedGrantType>
                 <GrantTypeName>client_credentials</GrantTypeName>
+                <!-- <GrantTypeHandlerImplClass>org.wso2.carbon.identity.oauth2.token.handlers.grant.ClientCredentialsGrantHandler</GrantTypeHandlerImplClass> -->
                 <GrantTypeHandlerImplClass>org.wso2.carbon.apimgt.keymgt.handlers.ExtendedClientCredentialsGrantHandler</GrantTypeHandlerImplClass>
             </SupportedGrantType>
             <SupportedGrantType>
