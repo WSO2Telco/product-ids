@@ -95,7 +95,9 @@
 
     <ul>
         <li>Back Channelling</li>
-        <p>Server initiated authorize request capability without any browser interaction.</p></br>
+        <p>Server initiated authorize request capability without any browser interaction.
+            In this release we have implemented Consent Management support for back-channeling
+        compatible with fully trusted, trusted and normal sp</p></br>
         <li>Attribute sharing</li>
         <p>Mobile Connect Attribute Sharing feature enables Operators to share information
             with Service Providers through acquiring user consent from the end user.
@@ -120,17 +122,47 @@
 
     <h2>Bug Fixes: </h2>
     <ul>
-        <li>[<a href='https://jira.wso2telco.com/jira/browse/IDSDEV-839'>IDSDEV-839</a>] -         NPE occurred when refreshing a token
+        <li>[<a href='https://jira.wso2telco.com/jira/browse/IDSDEV-992'>IDSDEV-992</a>] -         NPE occurred when refreshing a token
         </li>
-        <li>[<a href='https://jira.wso2telco.com/jira/browse/IDSDEV-840'>IDSDEV-840</a>] -         Database table improvements
+        <li>[<a href='https://jira.wso2telco.com/jira/browse/IDSDEV-993'>IDSDEV-993</a>] -         Database table improvements
         </li>
-        <li>[<a href='https://jira.wso2telco.com/jira/browse/IDSDEV-841'>IDSDEV-841</a>] -         User cannot come back to the authentication flow, once he clicks links contained in T&amp;C page. (Specially Mobile Phones)
+        <li>[<a href='https://jira.wso2telco.com/jira/browse/IDSDEV-994'>IDSDEV-994</a>] -         User cannot come back to the authentication flow, once he clicks links contained in T&amp;C page. (Specially Mobile Phones)
         </li>
-        <li>[<a href='https://jira.wso2telco.com/jira/browse/IDSDEV-855'>IDSDEV-855</a>] -         Some Strings in waiting.jsp don&#39;t convert to Portuguese in Voice Authenticator
+        <li>[<a href='https://jira.wso2telco.com/jira/browse/IDSDEV-995'>IDSDEV-995</a>] -         Some Strings in waiting.jsp don&#39;t convert to Portuguese in Voice Authenticator
         </li>
-        <li>[<a href='https://jira.wso2telco.com/jira/browse/IDSDEV-859'>IDSDEV-859</a>] -         User Info log entry MSISDN and MSISDN claim not the same
+        <li>[<a href='https://jira.wso2telco.com/jira/browse/IDSDEV-996'>IDSDEV-996</a>] -         User Info log entry MSISDN and MSISDN claim not the same
         </li>
-        <li>[<a href='https://jira.wso2telco.com/jira/browse/IDSDEV-870'>IDSDEV-870</a>] -         Skipping user registration in API Consent page if user has already been created
+        <li>[<a href='https://jira.wso2telco.com/jira/browse/IDSDEV-997'>IDSDEV-997</a>] -         Skipping user registration in API Consent page if user has already been created
+        </li>
+        <li>[<a href='https://jira.wso2telco.com/jira/browse/IDSDEV-998'>IDSDEV-998</a>] -         NPE occurred when refreshing a token
+        </li>
+        <li>[<a href='https://jira.wso2telco.com/jira/browse/IDSDEV-999'>IDSDEV-999</a>] -         Database table improvements
+        </li>
+        <li>[<a href='https://jira.wso2telco.com/jira/browse/IDSDEV-1000'>IDSDEV-1000</a>] -         User cannot come back to the authentication flow, once he clicks links contained in T&amp;C page. (Specially Mobile Phones)
+        </li>
+        <li>[<a href='https://jira.wso2telco.com/jira/browse/IDSDEV-1005'>IDSDEV-1005</a>] -         Some Strings in waiting.jsp don&#39;t convert to Portuguese in Voice Authenticator
+        </li>
+        <li>[<a href='https://jira.wso2telco.com/jira/browse/IDSDEV-975'>IDSDEV-975</a>] -         User Info log entry MSISDN and MSISDN claim not the same
+        </li>
+        <li>[<a href='https://jira.wso2telco.com/jira/browse/IDSDEV-981'>IDSDEV-981</a>] -         Skipping user registration in API Consent page if user has already been created
+        </li>
+        <li>[<a href='https://jira.wso2telco.com/jira/browse/IDSDEV-979'>IDSDEV-979</a>] -         Some Strings in waiting.jsp don&#39;t convert to Portuguese in Voice Authenticator
+        </li>
+        <li>[<a href='https://jira.wso2telco.com/jira/browse/IDSDEV-988'>IDSDEV-988</a>] -         User Info log entry MSISDN and MSISDN claim not the same
+        </li>
+        <li>[<a href='https://jira.wso2telco.com/jira/browse/IDSDEV-978'>IDSDEV-978</a>] -         Skipping user registration in API Consent page if user has already been created
+        </li>
+        <li>[<a href='https://jira.wso2telco.com/jira/browse/IDSDEV-982'>IDSDEV-982</a>] -         NPE occurred when refreshing a token
+        </li>
+        <li>[<a href='https://jira.wso2telco.com/jira/browse/IDSDEV-983'>IDSDEV-983</a>] -         Database table improvements
+        </li>
+        <li>[<a href='https://jira.wso2telco.com/jira/browse/IDSDEV-985'>IDSDEV-985</a>] -         User cannot come back to the authentication flow, once he clicks links contained in T&amp;C page. (Specially Mobile Phones)
+        </li>
+        <li>[<a href='https://jira.wso2telco.com/jira/browse/IDSDEV-986'>IDSDEV-986</a>] -         Some Strings in waiting.jsp don&#39;t convert to Portuguese in Voice Authenticator
+        </li>
+        <li>[<a href='https://jira.wso2telco.com/jira/browse/IDSDEV-1006'>IDSDEV-1006</a>] -         User Info log entry MSISDN and MSISDN claim not the same
+        </li>
+        <li>[<a href='https://jira.wso2telco.com/jira/browse/IDSDEV-1007'>IDSDEV-1007</a>] -         Skipping user registration in API Consent page if user has already been created
         </li>
     </ul>
 
@@ -152,119 +184,33 @@
 
     <h2>Tasks : </h2>
     <ul>
-        <li>[<a href='https://jira.wso2telco.com/jira/browse/IDSDEV-621'>IDSDEV-621</a>] -         User registration flow change based on the user registered status
+        <li>[<a href='https://jira.wso2telco.com/jira/browse/IDSDEV-1007'>IDSDEV-1007</a>] -         User registration flow change based on the user registered status
         </li>
-        <li>[<a href='https://jira.wso2telco.com/jira/browse/IDSDEV-622'>IDSDEV-622</a>] -         Customization on user consent mechanisam
+        <li>[<a href='https://jira.wso2telco.com/jira/browse/IDSDEV-1012'>IDSDEV-1012</a>] -         Customization on user consent mechanisam
         </li>
-        <li>[<a href='https://jira.wso2telco.com/jira/browse/IDSDEV-702'>IDSDEV-702</a>] -         Implementing a validation layer for attribute sharing requests
+        <li>[<a href='https://jira.wso2telco.com/jira/browse/IDSDEV-1036'>IDSDEV-1036</a>] -         Implementing a validation layer for attribute sharing requests
         </li>
-        <li>[<a href='https://jira.wso2telco.com/jira/browse/IDSDEV-829'>IDSDEV-829</a>] -         Update Attribute Sharing feature to work with different SPs and Operators
+        <li>[<a href='https://jira.wso2telco.com/jira/browse/IDSDEV-1037'>IDSDEV-1037</a>] -         Update Attribute Sharing feature to work with different SPs and Operators
+        </li>
+        <li>[<a href='https://jira.wso2telco.com/jira/browse/IDSDEV-1008'>IDSDEV-1008</a>] -         User registration flow change based on the user registered status
+        </li>
+        <li>[<a href='https://jira.wso2telco.com/jira/browse/IDSDEV-1039'>IDSDEV-1039</a>] -         Update Attribute Sharing feature to work with different SPs and Operators
+        </li>
+        <li>[<a href='https://jira.wso2telco.com/jira/browse/IDSDEV-1040'>IDSDEV-1040</a>] -         Update Attribute Sharing feature to work with different SPs and Operators
+        </li>
+        <li>[<a href='https://jira.wso2telco.com/jira/browse/IDSDEV-1041'>IDSDEV-1041</a>] -         Update Attribute Sharing feature to work with different SPs and Operators
+        </li>
+        <li>[<a href='https://jira.wso2telco.com/jira/browse/IDSDEV-1057'>IDSDEV-1057</a>] -         Update Attribute Sharing feature to work with different SPs and Operators
+        </li>
+        <li>[<a href='https://jira.wso2telco.com/jira/browse/IDSDEV-1055'>IDSDEV-1055</a>] -         Update Attribute Sharing feature to work with different SPs and Operators
+        </li>
+        <li>[<a href='https://jira.wso2telco.com/jira/browse/IDSDEV-1059'>IDSDEV-1059</a>] -         Update Attribute Sharing feature to work with different SPs and Operators
         </li>
     </ul>
 
     <h2>Sub-tasks : </h2>
     <ul>
-        <li>[<a href='https://jira.wso2telco.com/jira/browse/IDSDEV-623'>IDSDEV-623</a>] -         Implementing DB services for maintain the user status
-        </li>
-        <li>[<a href='https://jira.wso2telco.com/jira/browse/IDSDEV-624'>IDSDEV-624</a>] -         Create Rest service for Revoke Consent by Service provider
-        </li>
-        <li>[<a href='https://jira.wso2telco.com/jira/browse/IDSDEV-625'>IDSDEV-625</a>] -         Create rest service for Revoke Consent by Operator
-        </li>
-        <li>[<a href='https://jira.wso2telco.com/jira/browse/IDSDEV-626'>IDSDEV-626</a>] -         UI - Customization on user consent page
-        </li>
-        <li>[<a href='https://jira.wso2telco.com/jira/browse/IDSDEV-636'>IDSDEV-636</a>] -         Document scopes and their related consents to use in attribute sharing
-        </li>
-        <li>[<a href='https://jira.wso2telco.com/jira/browse/IDSDEV-647'>IDSDEV-647</a>] -         Clam creation automation
-        </li>
-        <li>[<a href='https://jira.wso2telco.com/jira/browse/IDSDEV-648'>IDSDEV-648</a>] -         Service Provider type Validation
-        </li>
-        <li>[<a href='https://jira.wso2telco.com/jira/browse/IDSDEV-659'>IDSDEV-659</a>] -         User info endpoint change
-        </li>
-        <li>[<a href='https://jira.wso2telco.com/jira/browse/IDSDEV-669'>IDSDEV-669</a>] -         Service Provider type validation
-        </li>
-        <li>[<a href='https://jira.wso2telco.com/jira/browse/IDSDEV-671'>IDSDEV-671</a>] -         Implementing Long-Lived/One-Time consent approaches
-        </li>
-        <li>[<a href='https://jira.wso2telco.com/jira/browse/IDSDEV-675'>IDSDEV-675</a>] -         Updated the user status according to the scope
-        </li>
-        <li>[<a href='https://jira.wso2telco.com/jira/browse/IDSDEV-677'>IDSDEV-677</a>] -         Validate the Authorize Request
-        </li>
-        <li>[<a href='https://jira.wso2telco.com/jira/browse/IDSDEV-681'>IDSDEV-681</a>] -         Implementing DB services for store user consented attributes
-        </li>
-        <li>[<a href='https://jira.wso2telco.com/jira/browse/IDSDEV-695'>IDSDEV-695</a>] -         Display user consent page for implicit attributes
-        </li>
-        <li>[<a href='https://jira.wso2telco.com/jira/browse/IDSDEV-696'>IDSDEV-696</a>] -         implement user consent flow for registered user
-        </li>
-        <li>[<a href='https://jira.wso2telco.com/jira/browse/IDSDEV-697'>IDSDEV-697</a>] -         Update the user consent page to display multiple attributes related to scopes
-        </li>
-        <li>[<a href='https://jira.wso2telco.com/jira/browse/IDSDEV-698'>IDSDEV-698</a>] -         Implement Off-net user consent flow
-        </li>
-        <li>[<a href='https://jira.wso2telco.com/jira/browse/IDSDEV-703'>IDSDEV-703</a>] -         Validate mandatory attributes in attribute sharing scope requests and validate SP type
-        </li>
-        <li>[<a href='https://jira.wso2telco.com/jira/browse/IDSDEV-704'>IDSDEV-704</a>] -         Validate the authorization request for provisioning scopes
-        </li>
-        <li>[<a href='https://jira.wso2telco.com/jira/browse/IDSDEV-707'>IDSDEV-707</a>] -         Validate attribute sharing scopes against the SPs
-        </li>
-        <li>[<a href='https://jira.wso2telco.com/jira/browse/IDSDEV-708'>IDSDEV-708</a>] -         Add KYC match related scopes and attributes to Scope-config.xml
-        </li>
-        <li>[<a href='https://jira.wso2telco.com/jira/browse/IDSDEV-713'>IDSDEV-713</a>] -         Add isHashed tag to the scope-config.xml and update core-util accordingly
-        </li>
-        <li>[<a href='https://jira.wso2telco.com/jira/browse/IDSDEV-723'>IDSDEV-723</a>] -         Customize the Authentication Flow based on the Service provider type
-        </li>
-        <li>[<a href='https://jira.wso2telco.com/jira/browse/IDSDEV-725'>IDSDEV-725</a>] -         Code integration of Premium Info Implementation
-        </li>
-        <li>[<a href='https://jira.wso2telco.com/jira/browse/IDSDEV-738'>IDSDEV-738</a>] -         Bug Fixes for premium info endpoint implementation
-        </li>
-        <li>[<a href='https://jira.wso2telco.com/jira/browse/IDSDEV-746'>IDSDEV-746</a>] -         PremiumInfo feature creation and bundling to product-ids
-        </li>
-        <li>[<a href='https://jira.wso2telco.com/jira/browse/IDSDEV-747'>IDSDEV-747</a>] -         Update DB Scripts for Attribute sharing feature
-        </li>
-        <li>[<a href='https://jira.wso2telco.com/jira/browse/IDSDEV-753'>IDSDEV-753</a>] -         Remove Password field value from master-datasources.xml
-        </li>
-        <li>[<a href='https://jira.wso2telco.com/jira/browse/IDSDEV-754'>IDSDEV-754</a>] -         Documentation
-        </li>
-        <li>[<a href='https://jira.wso2telco.com/jira/browse/IDSDEV-772'>IDSDEV-772</a>] -         Bug Fix : LOA level doesn&#39;t update from 2 to 3
-        </li>
-        <li>[<a href='https://jira.wso2telco.com/jira/browse/IDSDEV-773'>IDSDEV-773</a>] -         commit attribute all attribute sharing changes from mig-release-2.1.0-ext-m3 branch to mig-release-2.3.0-attr branch
-        </li>
-        <li>[<a href='https://jira.wso2telco.com/jira/browse/IDSDEV-777'>IDSDEV-777</a>] -         Test data publishing in Attribute Sharing
-        </li>
-        <li>[<a href='https://jira.wso2telco.com/jira/browse/IDSDEV-842'>IDSDEV-842</a>] -         Change the customer Info API interface in premiumInfo endpoint implementation
-        </li>
-        <li>[<a href='https://jira.wso2telco.com/jira/browse/IDSDEV-844'>IDSDEV-844</a>] -         Bug Fixes for Attribute Sharing Feature when merge the code with master
-        </li>
-        <li>[<a href='https://jira.wso2telco.com/jira/browse/IDSDEV-847'>IDSDEV-847</a>] -         In Proxy level store the Request URl prams details (eg: msisdn/operator/notificationUrl etc) in the DB against a UUID
-        </li>
-        <li>[<a href='https://jira.wso2telco.com/jira/browse/IDSDEV-848'>IDSDEV-848</a>] -         Pass the BC UUID to IS framwwork and in LOA Composite authenticator Store sessionid against the BC UUID
-        </li>
-        <li>[<a href='https://jira.wso2telco.com/jira/browse/IDSDEV-849'>IDSDEV-849</a>] -         When the httpClient recieves the code, store Auth Code against the BC UUID Generate a token and save against the BC UUID
-        </li>
-        <li>[<a href='https://jira.wso2telco.com/jira/browse/IDSDEV-850'>IDSDEV-850</a>] -         Retrieve the signed key from sp_configuratation table (need to store when onboarding a SP) and complete funtion - getSharedKey()
-        </li>
-        <li>[<a href='https://jira.wso2telco.com/jira/browse/IDSDEV-852'>IDSDEV-852</a>] -         Implement BC SMS authenticator
-        </li>
-        <li>[<a href='https://jira.wso2telco.com/jira/browse/IDSDEV-853'>IDSDEV-853</a>] -         Implement BC SMSOTP authenticator
-        </li>
-        <li>[<a href='https://jira.wso2telco.com/jira/browse/IDSDEV-854'>IDSDEV-854</a>] -         Implement support for multiple notification urls
-        </li>
-        <li>[<a href='https://jira.wso2telco.com/jira/browse/IDSDEV-857'>IDSDEV-857</a>] -         Create generic payload to pass the token to the user
-        </li>
-        <li>[<a href='https://jira.wso2telco.com/jira/browse/IDSDEV-861'>IDSDEV-861</a>] -         Configurable endpoints
-        </li>
-        <li>[<a href='https://jira.wso2telco.com/jira/browse/IDSDEV-862'>IDSDEV-862</a>] -         Implement proper error handling and passing response to SP
-        </li>
-        <li>[<a href='https://jira.wso2telco.com/jira/browse/IDSDEV-864'>IDSDEV-864</a>] -         move token generation call to session updator
-        </li>
-        <li>[<a href='https://jira.wso2telco.com/jira/browse/IDSDEV-865'>IDSDEV-865</a>] -         update database scripts in product ids
-        </li>
-        <li>[<a href='https://jira.wso2telco.com/jira/browse/IDSDEV-866'>IDSDEV-866</a>] -         si-endpoint validation for the users and scopes
-        </li>
-        <li>[<a href='https://jira.wso2telco.com/jira/browse/IDSDEV-886'>IDSDEV-886</a>] -         Unable to do automatic account login for all WSO2Telco products by providing user credentials once.
-        </li>
-        <li>[<a href='https://jira.wso2telco.com/jira/browse/IDSDEV-887'>IDSDEV-887</a>] -         No option for the users to redirect back to login page after the account locking timeout
-        </li>
-        <li>[<a href='https://jira.wso2telco.com/jira/browse/IDSDEV-888'>IDSDEV-888</a>] -         Remaining time for enabling account in the Account locking notification is not updating.
-        </li>
-        <li>[<a href='https://jira.wso2telco.com/jira/browse/IDSDEV-891'>IDSDEV-891</a>] -         Fix api store related issues when SSO enabled in IS
+        <li>[<a href='https://jira.wso2telco.com/jira/browse/IDSDEV-1061'>IDSDEV-1061</a>] -         Implementing DB services for maintain the user status
         </li>
     </ul>
 
