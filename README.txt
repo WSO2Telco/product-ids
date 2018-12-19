@@ -21,84 +21,30 @@ New Features
 
 Bug Fixes
 =========
-    [IDSDEV-839] - NPE occurred when refreshing a token
-    [IDSDEV-840] - Database table improvements
-    [IDSDEV-841] - User cannot come back to the authentication flow, once he clicks links contained in T&C page. (Specially Mobile Phones)
-    [IDSDEV-855] - Some Strings in waiting.jsp don't convert to Portuguese in Voice Authenticator
-    [IDSDEV-859] - User Info log entry MSISDN and MSISDN claim not the same
-    [IDSDEV-870] - Skipping user registration in API Consent page if user has already been created
+    [IDSDEV-1079] - User status is marked as 'Active' in the profile when Auth request is send with combination as 'api+attribute'(sms+phone) for SP type TSP1 or TSP2
+    [IDSDEV-1080] - API consent page is displayed for scope 'No-Consnet' when validity type is NOT put as 'Undefined'
+    [IDSDEV-1081] - Required roles are not assigned for the users having consent_types Implicit & No consent.
+    [IDSDEV-1083] - The user unable to proceed second time if the user select 'Approve Always' at the first time.(SP - Explicit/longlive)
+    [IDSDEV-1084] - Back_Channeling - API user roles are not assigning for the users when the request was authenticated via SMS authenticate.
+    [IDSDEV-1086] - After accepting the consents, the 'consent_user_history' does not update.
+    [IDSDEV-1088] - Proper application name is not displaying in the consent page
 
-Epics
-=====
-    [IDSDEV-620] - This epic for the tasks which related to attibute sharing freature in mig open source release
-    [IDSDEV-884] - Fix SAML SSO and SLO issues in MIG product
-
-Stories
-=======
-    [IDSDEV-592] - Create rest web-service for off-line user registration
-    [IDSDEV-845] - Back channel Implementation
-
-Tasks
-=====
-    [IDSDEV-621] - User registration flow change based on the user registered status
-    [IDSDEV-622] - Customization on user consent mechanisam
-    [IDSDEV-702] - Implementing a validation layer for attribute sharing requests
-    [IDSDEV-829] - Update Attribute Sharing feature to work with different SPs and Operators
-
-Sub-tasks
-=========
-    [IDSDEV-623] - Implementing DB services for maintain the user status
-    [IDSDEV-624] - Create Rest service for Revoke Consent by Service provider
-    [IDSDEV-625] - Create rest service for Revoke Consent by Operator
-    [IDSDEV-626] - UI - Customization on user consent page
-    [IDSDEV-636] - Document scopes and their related consents to use in attribute sharing
-    [IDSDEV-647] - Clam creation automation
-    [IDSDEV-648] - Service Provider type Validation
-    [IDSDEV-659] - User info endpoint change
-    [IDSDEV-669] - Service Provider type validation
-    [IDSDEV-671] - Implementing Long-Lived/One-Time consent approaches
-    [IDSDEV-675] - Updated the user status according to the scope
-    [IDSDEV-677] - Validate the Authorize Request
-    [IDSDEV-681] - Implementing DB services for store user consented attributes
-    [IDSDEV-695] - Display user consent page for implicit attributes
-    [IDSDEV-696] - implement user consent flow for registered user
-    [IDSDEV-697] - Update the user consent page to display multiple attributes related to scopes
-    [IDSDEV-698] - Implement Off-net user consent flow
-    [IDSDEV-703] - Validate mandatory attributes in attribute sharing scope requests and validate SP type
-    [IDSDEV-704] - Validate the authorization request for provisioning scopes
-    [IDSDEV-707] - Validate attribute sharing scopes against the SPs
-    [IDSDEV-708] - Add KYC match related scopes and attributes to Scope-config.xml
-    [IDSDEV-713] - Add isHashed tag to the scope-config.xml and update core-util accordingly
-    [IDSDEV-723] - Customize the Authentication Flow based on the Service provider type
-    [IDSDEV-725] - Code integration of Premium Info Implementation
-    [IDSDEV-738] - Bug Fixes for premium info endpoint implementation
-    [IDSDEV-746] - PremiumInfo feature creation and bundling to product-ids
-    [IDSDEV-747] - Update DB Scripts for Attribute sharing feature
-    [IDSDEV-753] - Remove Password field value from master-datasources.xml
-    [IDSDEV-754] - Documentation
-    [IDSDEV-772] - Bug Fix : LOA level doesn't update from 2 to 3
-    [IDSDEV-773] - commit attribute all attribute sharing changes from mig-release-2.1.0-ext-m3 branch to mig-release-2.3.0-attr branch
-    [IDSDEV-777] - Test data publishing in Attribute Sharing
-    [IDSDEV-842] - Change the customer Info API interface in premiumInfo endpoint implementation
-    [IDSDEV-844] - Bug Fixes for Attribute Sharing Feature when merge the code with master
-    [IDSDEV-847] - In Proxy level store the Request URl prams details (eg: msisdn/operator/notificationUrl etc) in the DB against a UUID
-    [IDSDEV-848] - Pass the BC UUID to IS framwwork and in LOA Composite authenticator Store sessionid against the BC UUID
-    [IDSDEV-849] - When the httpClient recieves the code, store Auth Code against the BC UUID Generate a token and save against the BC UUID
-    [IDSDEV-850] - Retrieve the signed key from sp_configuratation table (need to store when onboarding a SP) and complete funtion - getSharedKey()
-    [IDSDEV-852] - Implement BC SMS authenticator
-    [IDSDEV-853] - Implement BC SMSOTP authenticator
-    [IDSDEV-854] - Implement support for multiple notification urls
-    [IDSDEV-857] - Create generic payload to pass the token to the user
-    [IDSDEV-861] - Configurable endpoints
-    [IDSDEV-862] - Implement proper error handling and passing response to SP
-    [IDSDEV-864] - move token generation call to session updator
-    [IDSDEV-865] - update database scripts in product ids
-    [IDSDEV-866] - si-endpoint validation for the users and scopes
-    [IDSDEV-886] - Unable to do automatic account login for all WSO2Telco products by providing user credentials once.
-    [IDSDEV-887] - No option for the users to redirect back to login page after the account locking timeout
-    [IDSDEV-888] - Remaining time for enabling account in the Account locking notification is not updating.
-    [IDSDEV-891] - Fix api store related issues when SSO enabled in IS
-
+Known Issues
+============
+    [IDSDEV-1082] - Consent page is not displaying for onnet 'mnv' scope and Untrusted(Normal) SP
+    [IDSDEV-1085] - Back_Channeling - LOA 3 level is not supported.
+    [IDSDEV-1089] - LOA.xml file is depending on the feature
+    [IDSDEV-1090] - SAA App - It is not supported for multiple operators and only dialog.
+    [IDSDEV-1091] - SAA App - There are several configurations that were hardcoded and it is not possible to change after SAA.apk is built.
+    [IDSDEV-1092] - SAA app - SAA app cannot be registered with the msisdn and continue, if the SAA App is configured with TSP1 & TSP2 sp levels.
+    [IDSDEV-1093] - SAA App - if there is any interruption while registering, app is waiting forever, no time out
+    [IDSDEV-1094] - Contact info are not available retry page in the SAA app
+    [IDSDEV-1095] - SAA App - User is unable to receive the request from SP to respond from mobile app..
+    [IDSDEV-1096] - SAA App - When resetting the PIN, there is not limitation to re-enter the exisitng PIN.
+    [IDSDEV-1097] - SAA App - There is no option to reset the PIN, if the user forget the PIN.
+    [IDSDEV-1067] - In Backchannel SMS OTP Authentication OTP entering page should be directed when Click on the sms url
+    [IDSDEV-1068] - Implement trusted untrusted sp handling for openid workflow
+    [IDSDEV-1069] - Show TnC pages for partially active users and make them active
 
 Other Key Features
 =============

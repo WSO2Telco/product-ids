@@ -412,9 +412,9 @@ CREATE TABLE `consent_user_history` (
     `msisdn` VARCHAR(255) NOT NULL,
     `consent_id` INT(20),
     `approve_status` VARCHAR(45),
-    `consent_date` TIMESTAMP NULL DEFAULT NULL,
+    `consent_date` TIMESTAMP NULL DEFAULT CURRENT_TIMESTAMP,
     PRIMARY KEY (`id`),
-    FOREIGN KEY (`consent_id`) REFERENCES `consent_configuration`(`consent_id`)
+    FOREIGN KEY (`consent_id`) REFERENCES `consent`(`consent_id`)
 )  ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 
