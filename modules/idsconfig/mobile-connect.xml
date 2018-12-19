@@ -357,6 +357,7 @@
         <authorizeEndpoint>https://localhost:9443/authproxy/oauth2/authorize</authorizeEndpoint>
         <ussdNotifyUrl>http://localhost:9763/sessionupdater/tnspoints/endpoint/serverinitiated/login/ussd</ussdNotifyUrl>
         <smsCallbackUrl>https://localhost:9443/authenticationendpoint/si/sms</smsCallbackUrl>
+        <smsOTPCallbackUrl>https://localhost:9443/authenticationendpoint/si/smsotp.do</smsOTPCallbackUrl>
         <tokenEndpoint>http://localhost:9763/oauth2/token</tokenEndpoint>
         <ussdApiNotifyUrl>http://localhost:9763/sessionupdater/tnspoints/endpoint/serverinitiated/login/api/ussd</ussdApiNotifyUrl>
         <ussdApiRegNotifyUrl>http://localhost:9763/sessionupdater/tnspoints/endpoint/serverinitiated/registration/api/ussd</ussdApiRegNotifyUrl>

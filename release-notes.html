@@ -122,93 +122,62 @@
 
 
 
-    Release Notes - WSO2.Telco Mobile Identity Gateway - Version 2.4.0-rc2
+    Release Notes - WSO2.Telco Mobile Identity Gateway - Version 2.4.0-rc3
 
-    <h2>Bug : </h2>
+    <h2>        Bug Fixed
+    </h2>
     <ul>
-        <li>[<a href='https://jira.wso2telco.com/jira/browse/IDSDEV-975'>IDSDEV-975</a>] -         User Status field is missing from user profile of carbon
+        <li>[<a href='https://jira.wso2telco.com/jira/browse/IDSDEV-1079'>IDSDEV-1079</a>] -         User status is marked as &#39;Active&#39; in the profile when Auth request is send with combination as &#39;api+attribute&#39;(sms+phone)  for SP type TSP1 or TSP2
         </li>
-        <li>[<a href='https://jira.wso2telco.com/jira/browse/IDSDEV-978'>IDSDEV-978</a>] -         User can not invoke premium info endpoint
+        <li>[<a href='https://jira.wso2telco.com/jira/browse/IDSDEV-1080'>IDSDEV-1080</a>] -         API consent page is displayed for scope &#39;No-Consnet&#39; when validity type is NOT put as &#39;Undefined&#39;
         </li>
-        <li>[<a href='https://jira.wso2telco.com/jira/browse/IDSDEV-979'>IDSDEV-979</a>] -         HE IP Validation is not applying for attribute sharing scopes
+        <li>[<a href='https://jira.wso2telco.com/jira/browse/IDSDEV-1081'>IDSDEV-1081</a>] -         Required roles are not assigned for the users having consent_types Implicit &amp; No consent.
         </li>
-        <li>[<a href='https://jira.wso2telco.com/jira/browse/IDSDEV-981'>IDSDEV-981</a>] -         Plain login_hint is not supported for normal service providers
+        <li>[<a href='https://jira.wso2telco.com/jira/browse/IDSDEV-1083'>IDSDEV-1083</a>] -         The user unable to proceed second time if the user select &#39;Approve Always&#39; at the first time.(SP -  Explicit/longlive)
         </li>
-        <li>[<a href='https://jira.wso2telco.com/jira/browse/IDSDEV-982'>IDSDEV-982</a>] -         Onnet flow behave incorrectly for normal SPs
+        <li>[<a href='https://jira.wso2telco.com/jira/browse/IDSDEV-1084'>IDSDEV-1084</a>] -         Back_Channeling - API user roles are not assigning for the users when the request was authenticated via SMS authenticate.
         </li>
-        <li>[<a href='https://jira.wso2telco.com/jira/browse/IDSDEV-983'>IDSDEV-983</a>] -         New User can not see T&amp;C page for normal SPs - offnet flow
+        <li>[<a href='https://jira.wso2telco.com/jira/browse/IDSDEV-1086'>IDSDEV-1086</a>] -         After accepting the consents, the &#39;consent_user_history&#39; does not update.
         </li>
-        <li>[<a href='https://jira.wso2telco.com/jira/browse/IDSDEV-985'>IDSDEV-985</a>] -         Attribute sharing scopes can not be used when scope validation is disabled
-        </li>
-        <li>[<a href='https://jira.wso2telco.com/jira/browse/IDSDEV-986'>IDSDEV-986</a>] -         Admin can not make whitelist an SP for &quot;All&quot; MNOs
-        </li>
-        <li>[<a href='https://jira.wso2telco.com/jira/browse/IDSDEV-988'>IDSDEV-988</a>] -         Atrribute sharing scopes do not comply with major scopes - mnv, mc_mnv_validate,mnv_tc
-        </li>
-        <li>[<a href='https://jira.wso2telco.com/jira/browse/IDSDEV-992'>IDSDEV-992</a>] -         T&amp;C UI should not allow seeing for the existing user under Offnet scenario
-        </li>
-        <li>[<a href='https://jira.wso2telco.com/jira/browse/IDSDEV-993'>IDSDEV-993</a>] -         API call should not success without approving subscriptions by OP as well
-        </li>
-        <li>[<a href='https://jira.wso2telco.com/jira/browse/IDSDEV-994'>IDSDEV-994</a>] -         API calls should not success when &#39;approve_status&#39; is &#39;deny&#39;
-        </li>
-        <li>[<a href='https://jira.wso2telco.com/jira/browse/IDSDEV-995'>IDSDEV-995</a>] -         Consent page should be able to show after the playground UI under the Onnet scenario
-        </li>
-        <li>[<a href='https://jira.wso2telco.com/jira/browse/IDSDEV-996'>IDSDEV-996</a>] -         &#39;Waiting page&#39; should be able to see after the Number Entering page under the Offnet scenarios
-        </li>
-        <li>[<a href='https://jira.wso2telco.com/jira/browse/IDSDEV-997'>IDSDEV-997</a>] -         A T&amp;C embedded consent page should be able to see for the  new user under the Offnet scenario
-        </li>
-        <li>[<a href='https://jira.wso2telco.com/jira/browse/IDSDEV-998'>IDSDEV-998</a>] -         T&amp;C embedded consent page should be able to see to the New user under the Onnet scenario
-        </li>
-        <li>[<a href='https://jira.wso2telco.com/jira/browse/IDSDEV-999'>IDSDEV-999</a>] -         API calls can&#39;t be successful when denied APIs from the consent page under the Offnet scenario
-        </li>
-        <li>[<a href='https://jira.wso2telco.com/jira/browse/IDSDEV-1000'>IDSDEV-1000</a>] -         &#39;Phone&#39; scope doesn&#39;t work properly
-        </li>
-        <li>[<a href='https://jira.wso2telco.com/jira/browse/IDSDEV-1005'>IDSDEV-1005</a>] -         User can not authenticate through back Chanel
-        </li>
-        <li>[<a href='https://jira.wso2telco.com/jira/browse/IDSDEV-1006'>IDSDEV-1006</a>] -         &#39;MSISDN&#39; claim is missing in userInfo response
-        </li>
-        <li>[<a href='https://jira.wso2telco.com/jira/browse/IDSDEV-1007'>IDSDEV-1007</a>] -         Device msisdn can not be captured for Smart Phone Authenticator
-        </li>
-        <li>[<a href='https://jira.wso2telco.com/jira/browse/IDSDEV-1008'>IDSDEV-1008</a>] -         APIConsent Page not visible for after Header Enrichment Authentication
-        </li>
-        <li>[<a href='https://jira.wso2telco.com/jira/browse/IDSDEV-1037'>IDSDEV-1037</a>] -         APIConsent page should be skipped when &#39;approve_status&#39; of all scopes are &#39;approve_all&#39; and all are already approved
-        </li>
-        <li>[<a href='https://jira.wso2telco.com/jira/browse/IDSDEV-1059'>IDSDEV-1059</a>] -         Workflow breaks when SP Based Authenticator Selection Enabled
+        <li>[<a href='https://jira.wso2telco.com/jira/browse/IDSDEV-1088'>IDSDEV-1088</a>] -         Proper application name is not displaying in the consent page
         </li>
     </ul>
 
-    <h2>Task : </h2>
+    <h2>        Known Issues
+    </h2>
     <ul>
-        <li>[<a href='https://jira.wso2telco.com/jira/browse/IDSDEV-1012'>IDSDEV-1012</a>] -         Redirect to API Consent Page within the authenticator and remove consent authenticator as an separate authenticator
+        <li>[<a href='https://jira.wso2telco.com/jira/browse/IDSDEV-1067'>IDSDEV-1067</a>] -         In Backchannel SMS OTP Authentication OTP entering page should be directed when Click on the sms url
         </li>
-        <li>[<a href='https://jira.wso2telco.com/jira/browse/IDSDEV-1036'>IDSDEV-1036</a>] -         Assign Roles according to the API consent Scope to the mig user
+        <li>[<a href='https://jira.wso2telco.com/jira/browse/IDSDEV-1068'>IDSDEV-1068</a>] -         Implement trusted untrusted sp handling for openid workflow
         </li>
-        <li>[<a href='https://jira.wso2telco.com/jira/browse/IDSDEV-1039'>IDSDEV-1039</a>] -         Backchannel user registration for a new User
+        <li>[<a href='https://jira.wso2telco.com/jira/browse/IDSDEV-1069'>IDSDEV-1069</a>] -         Show TnC pages for partially active users and make them active
         </li>
-        <li>[<a href='https://jira.wso2telco.com/jira/browse/IDSDEV-1040'>IDSDEV-1040</a>] -         Trusted Untrusted SP Related Changes in Consent Management
+        <li>[<a href='https://jira.wso2telco.com/jira/browse/IDSDEV-1077'>IDSDEV-1077</a>] -         SAA App - If the user click on &#39;No&#39; in T &amp; C page at the registration, user is getting waiting page continuously.
         </li>
-        <li>[<a href='https://jira.wso2telco.com/jira/browse/IDSDEV-1041'>IDSDEV-1041</a>] -         Customized message support for back channel API consent
+        <li>[<a href='https://jira.wso2telco.com/jira/browse/IDSDEV-1082'>IDSDEV-1082</a>] -         Consent page is not displaying for onnet &#39;mnv&#39; scope and Untrusted(Normal) SP
         </li>
-        <li>[<a href='https://jira.wso2telco.com/jira/browse/IDSDEV-1055'>IDSDEV-1055</a>] -         Back Channel API Consent management Implementation
+        <li>[<a href='https://jira.wso2telco.com/jira/browse/IDSDEV-1085'>IDSDEV-1085</a>] -         Back_Channeling - LOA 3 level is not supported.
         </li>
-        <li>[<a href='https://jira.wso2telco.com/jira/browse/IDSDEV-1057'>IDSDEV-1057</a>] -         Trusted Untrusted SP Related Changes in Back Channeling
+        <li>[<a href='https://jira.wso2telco.com/jira/browse/IDSDEV-1089'>IDSDEV-1089</a>] -         LOA.xml file is depending on the feature
         </li>
-        <li>[<a href='https://jira.wso2telco.com/jira/browse/IDSDEV-1063'>IDSDEV-1063</a>] -         After adding attributes to openid claim premiuminfo doesn&#39;t work
+        <li>[<a href='https://jira.wso2telco.com/jira/browse/IDSDEV-1090'>IDSDEV-1090</a>] -         SAA App - It is not supported for multiple operators and only dialog.
         </li>
-        <li>[<a href='https://jira.wso2telco.com/jira/browse/IDSDEV-1065'>IDSDEV-1065</a>] -         Remove TnC checkbox in API Consent page when new user is Registering in Backchenneling
+        <li>[<a href='https://jira.wso2telco.com/jira/browse/IDSDEV-1091'>IDSDEV-1091</a>] -         SAA App - There are several configurations that were hardcoded and it is not possible to change after SAA.apk is built.
+        </li>
+        <li>[<a href='https://jira.wso2telco.com/jira/browse/IDSDEV-1092'>IDSDEV-1092</a>] -         SAA app -  SAA app cannot be registered with the msisdn and continue, if the SAA App is configured with TSP1 &amp; TSP2 sp levels.
+        </li>
+        <li>[<a href='https://jira.wso2telco.com/jira/browse/IDSDEV-1093'>IDSDEV-1093</a>] -         SAA App - if there is any interruption while registering, app is waiting forever, no time out
+        </li>
+        <li>[<a href='https://jira.wso2telco.com/jira/browse/IDSDEV-1094'>IDSDEV-1094</a>] -         Contact info are not available retry page in the SAA app
+        </li>
+        <li>[<a href='https://jira.wso2telco.com/jira/browse/IDSDEV-1095'>IDSDEV-1095</a>] -         SAA App - User is unable to receive the request from SP to respond from mobile app..
+        </li>
+        <li>[<a href='https://jira.wso2telco.com/jira/browse/IDSDEV-1096'>IDSDEV-1096</a>] -         SAA App - When resetting the PIN, there is not limitation to re-enter the exisitng PIN.
+        </li>
+        <li>[<a href='https://jira.wso2telco.com/jira/browse/IDSDEV-1097'>IDSDEV-1097</a>] -         SAA App - There is no option to reset the PIN, if the user forget the PIN.
         </li>
     </ul>
 
-    <h2>Sub-task : </h2>
-    <ul>
-        <li>[<a href='https://jira.wso2telco.com/jira/browse/IDSDEV-1061'>IDSDEV-1061</a>] -         HE IP Validation is not applying for api consent scopes
-        </li>
-    </ul>
-
-    <h2>Sub-tasks : </h2>
-    <ul>
-        <li>[<a href='https://jira.wso2telco.com/jira/browse/IDSDEV-1061'>IDSDEV-1061</a>] -         Implementing DB services for maintain the user status
-        </li>
-    </ul>
 
     <h2>Documentation</h2>
 

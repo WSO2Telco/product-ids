@@ -1379,7 +1379,7 @@
 
         <!-- Telco dependency's version-->
         <com.wso2telco.ids.version>2.4.0-SNAPSHOT</com.wso2telco.ids.version>
-        <com.wso2telco.core.version>2.4.5-SNAPSHOT</com.wso2telco.core.version>
+        <com.wso2telco.core.version>2.4.4</com.wso2telco.core.version>
 
         <!--Carbon Identity Framework Version-->
         <carbon.identity.framework.version>5.2.2</carbon.identity.framework.version>
@@ -1646,7 +1646,7 @@
         <url>https://github.com/WSO2Telco/product-ids.git</url>
         <developerConnection>scm:git:https://github.com/WSO2Telco/product-ids.git</developerConnection>
         <connection>scm:git:https://github.com/WSO2Telco/product-ids.git</connection>
-        <tag>v2.4.0_rc2</tag>
+        <tag>v2.4.0_SNAPSHOT</tag>
     </scm>
 
 
