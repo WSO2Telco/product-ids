@@ -1378,7 +1378,7 @@
     <properties>
 
         <!-- Telco dependency's version-->
-        <com.wso2telco.ids.version>2.4.0-SNAPSHOT</com.wso2telco.ids.version>
+        <com.wso2telco.ids.version>2.4.0-rc3</com.wso2telco.ids.version>
         <com.wso2telco.core.version>2.4.4</com.wso2telco.core.version>
 
         <!--Carbon Identity Framework Version-->
